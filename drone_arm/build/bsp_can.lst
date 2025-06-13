@@ -1,0 +1,390 @@
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccocQyIf.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"bsp_can.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Bsp/bsp_can.c"
+  20              		.section	.text.can_filter_init,"ax",%progbits
+  21              		.align	1
+  22              		.global	can_filter_init
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	can_filter_init:
+  28              	.LFB134:
+   1:Bsp/bsp_can.c **** #include "stm32f4xx_hal.h"
+   2:Bsp/bsp_can.c **** #include "bsp_can.h"
+   3:Bsp/bsp_can.c **** #include "can.h"
+   4:Bsp/bsp_can.c **** #include <stdint.h>
+   5:Bsp/bsp_can.c **** 
+   6:Bsp/bsp_can.c **** extern CAN_HandleTypeDef hcan1;//CAN总线接口声明
+   7:Bsp/bsp_can.c **** extern CAN_HandleTypeDef hcan2;
+   8:Bsp/bsp_can.c **** 
+   9:Bsp/bsp_can.c **** /**
+  10:Bsp/bsp_can.c ****  * 初始化STM32的CAN过滤器系统，目前接收所有CAN_ID发来的消息
+  11:Bsp/bsp_can.c ****  * 配置CAN过滤器，硬件级数据筛选，用于高效过滤掉不需要的CAN消息，减少
+  12:Bsp/bsp_can.c ****  * 启动CAN外设
+  13:Bsp/bsp_can.c ****  * 使能接收中断
+  14:Bsp/bsp_can.c ****  * 设置消息接收FIFO
+  15:Bsp/bsp_can.c ****  */
+  16:Bsp/bsp_can.c **** void can_filter_init(void)
+  17:Bsp/bsp_can.c **** {
+  29              		.loc 1 17 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 40
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 10B5     		push	{r4, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 14, -4
+  38 0002 8AB0     		sub	sp, sp, #40
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 48
+  18:Bsp/bsp_can.c **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccocQyIf.s 			page 2
+
+
+  19:Bsp/bsp_can.c ****     CAN_FilterTypeDef can_filter_st;//声明CAN过滤器结构体
+  41              		.loc 1 19 5 view .LVU1
+  20:Bsp/bsp_can.c ****     can_filter_st.FilterActivation = ENABLE; //启用此过滤器
+  42              		.loc 1 20 5 view .LVU2
+  43              		.loc 1 20 36 is_stmt 0 view .LVU3
+  44 0004 0122     		movs	r2, #1
+  45 0006 0892     		str	r2, [sp, #32]
+  21:Bsp/bsp_can.c ****     can_filter_st.FilterMode = CAN_FILTERMODE_IDMASK; //掩码模式(另一种是ID列表模式)
+  46              		.loc 1 21 5 is_stmt 1 view .LVU4
+  47              		.loc 1 21 30 is_stmt 0 view .LVU5
+  48 0008 0023     		movs	r3, #0
+  49 000a 0693     		str	r3, [sp, #24]
+  22:Bsp/bsp_can.c ****     can_filter_st.FilterScale = CAN_FILTERSCALE_32BIT; //32位宽过滤器
+  50              		.loc 1 22 5 is_stmt 1 view .LVU6
+  51              		.loc 1 22 31 is_stmt 0 view .LVU7
+  52 000c 0792     		str	r2, [sp, #28]
+  23:Bsp/bsp_can.c ****     can_filter_st.FilterIdHigh = 0x0000; //要接收的ID高位
+  53              		.loc 1 23 5 is_stmt 1 view .LVU8
+  54              		.loc 1 23 32 is_stmt 0 view .LVU9
+  55 000e 0093     		str	r3, [sp]
+  24:Bsp/bsp_can.c ****     can_filter_st.FilterIdLow = 0x0000; //要接收的ID低位
+  56              		.loc 1 24 5 is_stmt 1 view .LVU10
+  57              		.loc 1 24 31 is_stmt 0 view .LVU11
+  58 0010 0193     		str	r3, [sp, #4]
+  25:Bsp/bsp_can.c ****     can_filter_st.FilterMaskIdHigh = 0x0000; //掩码高位(决定哪些位需匹配)
+  59              		.loc 1 25 5 is_stmt 1 view .LVU12
+  60              		.loc 1 25 36 is_stmt 0 view .LVU13
+  61 0012 0293     		str	r3, [sp, #8]
+  26:Bsp/bsp_can.c ****     can_filter_st.FilterMaskIdLow = 0x0000;  //掩码低位
+  62              		.loc 1 26 5 is_stmt 1 view .LVU14
+  63              		.loc 1 26 35 is_stmt 0 view .LVU15
+  64 0014 0393     		str	r3, [sp, #12]
+  27:Bsp/bsp_can.c ****     can_filter_st.FilterBank = 0; //使用的过滤器编号
+  65              		.loc 1 27 5 is_stmt 1 view .LVU16
+  66              		.loc 1 27 30 is_stmt 0 view .LVU17
+  67 0016 0593     		str	r3, [sp, #20]
+  28:Bsp/bsp_can.c ****     can_filter_st.FilterFIFOAssignment = CAN_RX_FIFO0; //将接收到的消息存到FIFO0
+  68              		.loc 1 28 5 is_stmt 1 view .LVU18
+  69              		.loc 1 28 40 is_stmt 0 view .LVU19
+  70 0018 0493     		str	r3, [sp, #16]
+  29:Bsp/bsp_can.c ****     HAL_CAN_ConfigFilter(&hcan1, &can_filter_st); //使用的过滤器组编号
+  71              		.loc 1 29 5 is_stmt 1 view .LVU20
+  72 001a 0E4C     		ldr	r4, .L3
+  73 001c 6946     		mov	r1, sp
+  74 001e 2046     		mov	r0, r4
+  75 0020 FFF7FEFF 		bl	HAL_CAN_ConfigFilter
+  76              	.LVL0:
+  30:Bsp/bsp_can.c ****     HAL_CAN_Start(&hcan1); //
+  77              		.loc 1 30 5 view .LVU21
+  78 0024 2046     		mov	r0, r4
+  79 0026 FFF7FEFF 		bl	HAL_CAN_Start
+  80              	.LVL1:
+  31:Bsp/bsp_can.c ****     HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
+  81              		.loc 1 31 5 view .LVU22
+  82 002a 0221     		movs	r1, #2
+  83 002c 2046     		mov	r0, r4
+  84 002e FFF7FEFF 		bl	HAL_CAN_ActivateNotification
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccocQyIf.s 			page 3
+
+
+  85              	.LVL2:
+  32:Bsp/bsp_can.c **** 
+  33:Bsp/bsp_can.c **** 
+  34:Bsp/bsp_can.c ****     can_filter_st.SlaveStartFilterBank = 14; //
+  86              		.loc 1 34 5 view .LVU23
+  87              		.loc 1 34 40 is_stmt 0 view .LVU24
+  88 0032 0E23     		movs	r3, #14
+  89 0034 0993     		str	r3, [sp, #36]
+  35:Bsp/bsp_can.c ****     can_filter_st.FilterBank = 14;
+  90              		.loc 1 35 5 is_stmt 1 view .LVU25
+  91              		.loc 1 35 30 is_stmt 0 view .LVU26
+  92 0036 0593     		str	r3, [sp, #20]
+  36:Bsp/bsp_can.c ****     HAL_CAN_ConfigFilter(&hcan2, &can_filter_st);
+  93              		.loc 1 36 5 is_stmt 1 view .LVU27
+  94 0038 074C     		ldr	r4, .L3+4
+  95 003a 6946     		mov	r1, sp
+  96 003c 2046     		mov	r0, r4
+  97 003e FFF7FEFF 		bl	HAL_CAN_ConfigFilter
+  98              	.LVL3:
+  37:Bsp/bsp_can.c ****     HAL_CAN_Start(&hcan2);
+  99              		.loc 1 37 5 view .LVU28
+ 100 0042 2046     		mov	r0, r4
+ 101 0044 FFF7FEFF 		bl	HAL_CAN_Start
+ 102              	.LVL4:
+  38:Bsp/bsp_can.c ****     HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING);
+ 103              		.loc 1 38 5 view .LVU29
+ 104 0048 0221     		movs	r1, #2
+ 105 004a 2046     		mov	r0, r4
+ 106 004c FFF7FEFF 		bl	HAL_CAN_ActivateNotification
+ 107              	.LVL5:
+  39:Bsp/bsp_can.c **** 
+  40:Bsp/bsp_can.c **** }
+ 108              		.loc 1 40 1 is_stmt 0 view .LVU30
+ 109 0050 0AB0     		add	sp, sp, #40
+ 110              	.LCFI2:
+ 111              		.cfi_def_cfa_offset 8
+ 112              		@ sp needed
+ 113 0052 10BD     		pop	{r4, pc}
+ 114              	.L4:
+ 115              		.align	2
+ 116              	.L3:
+ 117 0054 00000000 		.word	hcan1
+ 118 0058 00000000 		.word	hcan2
+ 119              		.cfi_endproc
+ 120              	.LFE134:
+ 122              		.section	.text.CANx_SendStdData,"ax",%progbits
+ 123              		.align	1
+ 124              		.global	CANx_SendStdData
+ 125              		.syntax unified
+ 126              		.thumb
+ 127              		.thumb_func
+ 129              	CANx_SendStdData:
+ 130              	.LVL6:
+ 131              	.LFB135:
+  41:Bsp/bsp_can.c **** 
+  42:Bsp/bsp_can.c **** uint8_t CANx_SendStdData(CAN_HandleTypeDef* hcan,uint16_t ID,uint8_t *pData,uint16_t Len, uint8_t i
+  43:Bsp/bsp_can.c **** {
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccocQyIf.s 			page 4
+
+
+ 132              		.loc 1 43 1 is_stmt 1 view -0
+ 133              		.cfi_startproc
+ 134              		@ args = 8, pretend = 0, frame = 32
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136              		.loc 1 43 1 is_stmt 0 view .LVU32
+ 137 0000 70B5     		push	{r4, r5, r6, lr}
+ 138              	.LCFI3:
+ 139              		.cfi_def_cfa_offset 16
+ 140              		.cfi_offset 4, -16
+ 141              		.cfi_offset 5, -12
+ 142              		.cfi_offset 6, -8
+ 143              		.cfi_offset 14, -4
+ 144 0002 88B0     		sub	sp, sp, #32
+ 145              	.LCFI4:
+ 146              		.cfi_def_cfa_offset 48
+ 147 0004 0546     		mov	r5, r0
+ 148 0006 1646     		mov	r6, r2
+ 149 0008 9DF83000 		ldrb	r0, [sp, #48]	@ zero_extendqisi2
+ 150              	.LVL7:
+ 151              		.loc 1 43 1 view .LVU33
+ 152 000c 9DF83420 		ldrb	r2, [sp, #52]	@ zero_extendqisi2
+ 153              	.LVL8:
+  44:Bsp/bsp_can.c ****   CAN_TxHeaderTypeDef   Tx_Header;
+ 154              		.loc 1 44 3 is_stmt 1 view .LVU34
+  45:Bsp/bsp_can.c ****   uint32_t mailbox;
+ 155              		.loc 1 45 3 view .LVU35
+  46:Bsp/bsp_can.c **** 	
+  47:Bsp/bsp_can.c **** 	Tx_Header.StdId=ID;
+ 156              		.loc 1 47 2 view .LVU36
+ 157              		.loc 1 47 17 is_stmt 0 view .LVU37
+ 158 0010 0291     		str	r1, [sp, #8]
+  48:Bsp/bsp_can.c **** 	Tx_Header.ExtId=0;
+ 159              		.loc 1 48 2 is_stmt 1 view .LVU38
+ 160              		.loc 1 48 17 is_stmt 0 view .LVU39
+ 161 0012 0021     		movs	r1, #0
+ 162              	.LVL9:
+ 163              		.loc 1 48 17 view .LVU40
+ 164 0014 0391     		str	r1, [sp, #12]
+  49:Bsp/bsp_can.c **** 	Tx_Header.IDE=isStandard ? CAN_ID_STD : CAN_ID_EXT;
+ 165              		.loc 1 49 2 is_stmt 1 view .LVU41
+ 166              		.loc 1 49 40 is_stmt 0 view .LVU42
+ 167 0016 00B9     		cbnz	r0, .L6
+ 168              		.loc 1 49 40 discriminator 2 view .LVU43
+ 169 0018 0421     		movs	r1, #4
+ 170              	.L6:
+ 171              		.loc 1 49 15 discriminator 4 view .LVU44
+ 172 001a 0491     		str	r1, [sp, #16]
+  50:Bsp/bsp_can.c **** 	Tx_Header.RTR=isDataFrame ? CAN_RTR_DATA : CAN_RTR_REMOTE;
+ 173              		.loc 1 50 2 is_stmt 1 view .LVU45
+ 174              		.loc 1 50 43 is_stmt 0 view .LVU46
+ 175 001c 3AB1     		cbz	r2, .L15
+ 176              		.loc 1 50 43 discriminator 1 view .LVU47
+ 177 001e 0022     		movs	r2, #0
+ 178              	.L7:
+ 179              		.loc 1 50 15 discriminator 4 view .LVU48
+ 180 0020 0592     		str	r2, [sp, #20]
+  51:Bsp/bsp_can.c **** 	Tx_Header.DLC=Len > 8 ? 8 : Len;
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccocQyIf.s 			page 5
+
+
+ 181              		.loc 1 51 2 is_stmt 1 view .LVU49
+ 182              		.loc 1 51 28 is_stmt 0 view .LVU50
+ 183 0022 082B     		cmp	r3, #8
+ 184 0024 28BF     		it	cs
+ 185 0026 0823     		movcs	r3, #8
+ 186              	.LVL10:
+ 187              		.loc 1 51 15 view .LVU51
+ 188 0028 0693     		str	r3, [sp, #24]
+  52:Bsp/bsp_can.c **** 
+  53:Bsp/bsp_can.c ****   for(uint8_t attempt = 0;attempt < 3 ; attempt ++)
+ 189              		.loc 1 53 3 is_stmt 1 view .LVU52
+ 190              	.LBB2:
+ 191              		.loc 1 53 7 view .LVU53
+ 192              	.LVL11:
+ 193              		.loc 1 53 15 is_stmt 0 view .LVU54
+ 194 002a 0024     		movs	r4, #0
+ 195              		.loc 1 53 3 view .LVU55
+ 196 002c 0DE0     		b	.L8
+ 197              	.LVL12:
+ 198              	.L15:
+ 199              		.loc 1 53 3 view .LVU56
+ 200              	.LBE2:
+  50:Bsp/bsp_can.c **** 	Tx_Header.DLC=Len > 8 ? 8 : Len;
+ 201              		.loc 1 50 43 discriminator 2 view .LVU57
+ 202 002e 0222     		movs	r2, #2
+ 203 0030 F6E7     		b	.L7
+ 204              	.LVL13:
+ 205              	.L18:
+ 206              	.LBB3:
+  54:Bsp/bsp_can.c ****   {
+  55:Bsp/bsp_can.c ****     if (attempt == 0) mailbox = CAN_TX_MAILBOX0;
+ 207              		.loc 1 55 23 is_stmt 1 discriminator 1 view .LVU58
+ 208              		.loc 1 55 31 is_stmt 0 discriminator 1 view .LVU59
+ 209 0032 0123     		movs	r3, #1
+ 210 0034 0193     		str	r3, [sp, #4]
+ 211              	.L10:
+  56:Bsp/bsp_can.c ****     else if(attempt == 1) mailbox = CAN_TX_MAILBOX1;
+  57:Bsp/bsp_can.c ****     else mailbox = CAN_TX_MAILBOX2;
+  58:Bsp/bsp_can.c ****   
+  59:Bsp/bsp_can.c ****     if(HAL_CAN_AddTxMessage(hcan,&Tx_Header,pData,&mailbox)==HAL_OK)
+ 212              		.loc 1 59 5 is_stmt 1 view .LVU60
+ 213              		.loc 1 59 8 is_stmt 0 view .LVU61
+ 214 0036 01AB     		add	r3, sp, #4
+ 215 0038 3246     		mov	r2, r6
+ 216 003a 02A9     		add	r1, sp, #8
+ 217 003c 2846     		mov	r0, r5
+ 218 003e FFF7FEFF 		bl	HAL_CAN_AddTxMessage
+ 219              	.LVL14:
+ 220              		.loc 1 59 7 discriminator 1 view .LVU62
+ 221 0042 0346     		mov	r3, r0
+ 222 0044 70B1     		cbz	r0, .L12
+  53:Bsp/bsp_can.c ****   {
+ 223              		.loc 1 53 49 is_stmt 1 discriminator 2 view .LVU63
+ 224 0046 0134     		adds	r4, r4, #1
+ 225              	.LVL15:
+  53:Bsp/bsp_can.c ****   {
+ 226              		.loc 1 53 49 is_stmt 0 discriminator 2 view .LVU64
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccocQyIf.s 			page 6
+
+
+ 227 0048 E4B2     		uxtb	r4, r4
+ 228              	.LVL16:
+ 229              	.L8:
+  53:Bsp/bsp_can.c ****   {
+ 230              		.loc 1 53 35 is_stmt 1 discriminator 1 view .LVU65
+ 231 004a 022C     		cmp	r4, #2
+ 232 004c 09D8     		bhi	.L17
+  55:Bsp/bsp_can.c ****     else if(attempt == 1) mailbox = CAN_TX_MAILBOX1;
+ 233              		.loc 1 55 5 view .LVU66
+  55:Bsp/bsp_can.c ****     else if(attempt == 1) mailbox = CAN_TX_MAILBOX1;
+ 234              		.loc 1 55 8 is_stmt 0 view .LVU67
+ 235 004e 002C     		cmp	r4, #0
+ 236 0050 EFD0     		beq	.L18
+  56:Bsp/bsp_can.c ****     else if(attempt == 1) mailbox = CAN_TX_MAILBOX1;
+ 237              		.loc 1 56 10 is_stmt 1 view .LVU68
+  56:Bsp/bsp_can.c ****     else if(attempt == 1) mailbox = CAN_TX_MAILBOX1;
+ 238              		.loc 1 56 12 is_stmt 0 view .LVU69
+ 239 0052 012C     		cmp	r4, #1
+ 240 0054 02D0     		beq	.L19
+  57:Bsp/bsp_can.c ****   
+ 241              		.loc 1 57 10 is_stmt 1 view .LVU70
+  57:Bsp/bsp_can.c ****   
+ 242              		.loc 1 57 18 is_stmt 0 view .LVU71
+ 243 0056 0423     		movs	r3, #4
+ 244 0058 0193     		str	r3, [sp, #4]
+ 245 005a ECE7     		b	.L10
+ 246              	.L19:
+  56:Bsp/bsp_can.c ****     else mailbox = CAN_TX_MAILBOX2;
+ 247              		.loc 1 56 27 is_stmt 1 discriminator 1 view .LVU72
+  56:Bsp/bsp_can.c ****     else mailbox = CAN_TX_MAILBOX2;
+ 248              		.loc 1 56 35 is_stmt 0 discriminator 1 view .LVU73
+ 249 005c 0223     		movs	r3, #2
+ 250 005e 0193     		str	r3, [sp, #4]
+ 251 0060 E9E7     		b	.L10
+ 252              	.L17:
+ 253              	.LBE3:
+  60:Bsp/bsp_can.c ****     {
+  61:Bsp/bsp_can.c ****       return 0;
+  62:Bsp/bsp_can.c ****     }
+  63:Bsp/bsp_can.c ****   }
+  64:Bsp/bsp_can.c ****   return 1;//指连试三次之后，均不行则返回一
+ 254              		.loc 1 64 10 view .LVU74
+ 255 0062 0123     		movs	r3, #1
+ 256              	.L12:
+  65:Bsp/bsp_can.c **** 
+  66:Bsp/bsp_can.c **** 
+  67:Bsp/bsp_can.c **** }
+ 257              		.loc 1 67 1 view .LVU75
+ 258 0064 1846     		mov	r0, r3
+ 259 0066 08B0     		add	sp, sp, #32
+ 260              	.LCFI5:
+ 261              		.cfi_def_cfa_offset 16
+ 262              		@ sp needed
+ 263 0068 70BD     		pop	{r4, r5, r6, pc}
+ 264              		.loc 1 67 1 view .LVU76
+ 265              		.cfi_endproc
+ 266              	.LFE135:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccocQyIf.s 			page 7
+
+
+ 268              		.text
+ 269              	.Letext0:
+ 270              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 271              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 272              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 273              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 274              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 275              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 276              		.file 8 "Core/Inc/can.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccocQyIf.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 bsp_can.c
+C:\Users\30514\AppData\Local\Temp\ccocQyIf.s:21     .text.can_filter_init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccocQyIf.s:27     .text.can_filter_init:00000000 can_filter_init
+C:\Users\30514\AppData\Local\Temp\ccocQyIf.s:117    .text.can_filter_init:00000054 $d
+C:\Users\30514\AppData\Local\Temp\ccocQyIf.s:123    .text.CANx_SendStdData:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccocQyIf.s:129    .text.CANx_SendStdData:00000000 CANx_SendStdData
+
+UNDEFINED SYMBOLS
+HAL_CAN_ConfigFilter
+HAL_CAN_Start
+HAL_CAN_ActivateNotification
+hcan1
+hcan2
+HAL_CAN_AddTxMessage

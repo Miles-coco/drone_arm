@@ -16,7 +16,7 @@
 #define Master_ID 0
 
 
-typedef __packed struct
+typedef struct __packed
 {
 	int id;
 	int state;
@@ -34,7 +34,7 @@ typedef __packed struct
 	float Tcoil;
 }Motor_Inf;
 
-typedef __packed struct
+typedef struct __packed
 {
 	float p_int;
 	float v_int;

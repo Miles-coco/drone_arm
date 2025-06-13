@@ -49,7 +49,7 @@ uint8_t CANx_SendStdData(CAN_HandleTypeDef* hcan,uint16_t ID,uint8_t *pData,uint
 	Tx_Header.IDE=isStandard ? CAN_ID_STD : CAN_ID_EXT;
 	Tx_Header.RTR=isDataFrame ? CAN_RTR_DATA : CAN_RTR_REMOTE;
 	Tx_Header.DLC=Len > 8 ? 8 : Len;
-        /*�ҵ��յķ������䣬�����ݷ��ͳ�ȥ*/
+
   for(uint8_t attempt = 0;attempt < 3 ; attempt ++)
   {
     if (attempt == 0) mailbox = CAN_TX_MAILBOX0;
@@ -61,4 +61,7 @@ uint8_t CANx_SendStdData(CAN_HandleTypeDef* hcan,uint16_t ID,uint8_t *pData,uint
       return 0;
     }
   }
+  return 1;//指连试三次之后，均不行则返回一
+
+
 }
