@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "cstdint": "c"
+        "cstdint": "c",
+        "dm_ctrl.h": "c",
+        "can_driver.h": "c",
+        "key_module.h": "c"
     }
 }
