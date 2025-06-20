@@ -1,0 +1,55 @@
+# 通用文本文件设置
+* text=auto eol=lf
+
+# 源代码文件
+*.c text diff eol=lf
+*.h text diff eol=lf
+*.cpp text diff eol=lf
+*.hpp text diff eol=lf
+*.py text diff eol=lf
+*.js text diff eol=lf
+*.ts text diff eol=lf
+*.html text diff eol=lf
+*.css text diff eol=lf
+*.md text diff eol=lf
+*.json text diff eol=lf
+*.yml text diff eol=lf
+*.yaml text diff eol=lf
+
+# Windows特定文件
+*.bat eol=crlf
+*.cmd eol=crlf
+
+# 二进制文件
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.tar binary
+*.7z binary
+*.exe binary
+*.dll binary
+*.o binary
+*.a binary
+*.so binary
+
+# 文档文件
+*.doc -text
+*.docx -text
+*.xls -text
+*.xlsx -text
+*.ppt -text
+*.pptx -text
+
+# Git自己的文件
+.gitattributes text eol=lf
+.gitignore text eol=lf
+.gitmodules text eol=lf
+
+# 特殊处理
+LICENSE text eol=lf
+README* text eol=lf
