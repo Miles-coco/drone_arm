@@ -60,8 +60,12 @@ Core/Src/dma.c \
 Core/Src/usart.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c \
 Bsp/bsp_can.c \
-Model/dm4340_control.c \
-Model/Remote_control.c
+Module/motor/dm_ctrl.c \
+Module/motor/dm_drv.c \
+Module/remote_control/remote_control.c \
+Module/scheduler/scheduler.c \
+Module/task/task.c \
+driver/can_driver.c 
 
 # ASM sources
 ASM_SOURCES =  \
@@ -127,7 +131,11 @@ C_INCLUDES =  \
 -IDrivers/CMSIS/Device/ST/STM32F4xx/Include \
 -IDrivers/CMSIS/Include \
 -IBsp \
--IModel
+-IModule/motor \
+-IModule/remote_control \
+-IModule/scheduler \
+-IModule/task \
+-Idriver
 
 
 # compile gcc flags

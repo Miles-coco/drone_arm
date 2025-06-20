@@ -1,6 +1,6 @@
 #include "can_driver.h"
 #include "string.h"
-#include "can_dricer.h"
+#include "can_driver.h"
 
 uint8_t can_buff[CAN_BUFFER_SIZE] = {0};
 can_fifo_buffer_t can_rx_buffer;

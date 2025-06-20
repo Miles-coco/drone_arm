@@ -1,0 +1,1153 @@
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"can_driver.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "driver/can_driver.c"
+  20              		.section	.text.can_driver_init,"ax",%progbits
+  21              		.align	1
+  22              		.global	can_driver_init
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	can_driver_init:
+  28              	.LFB134:
+   1:driver/can_driver.c **** #include "can_driver.h"
+   2:driver/can_driver.c **** #include "string.h"
+   3:driver/can_driver.c **** #include "can_driver.h"
+   4:driver/can_driver.c **** 
+   5:driver/can_driver.c **** uint8_t can_buff[CAN_BUFFER_SIZE] = {0};
+   6:driver/can_driver.c **** can_fifo_buffer_t can_rx_buffer;
+   7:driver/can_driver.c **** uint8_t can_rx_buff[CAN_BUFFER_SIZE];
+   8:driver/can_driver.c **** 
+   9:driver/can_driver.c **** can_fifo_buffer_t can_tx_buffer;
+  10:driver/can_driver.c **** uint8_t can_tx_buff[CAN_BUFFER_SIZE];
+  11:driver/can_driver.c **** 
+  12:driver/can_driver.c **** /**
+  13:driver/can_driver.c **** ************************************************************************
+  14:driver/can_driver.c **** * @brief:      	can_driver_init(void)
+  15:driver/can_driver.c **** * @param[in]:   void
+  16:driver/can_driver.c **** * @retval:     	void
+  17:driver/can_driver.c **** * @details:    	CAN�豸��ʼ��
+  18:driver/can_driver.c **** ************************************************************************
+  19:driver/can_driver.c **** **/
+  20:driver/can_driver.c **** void can_driver_init(void)
+  21:driver/can_driver.c **** {
+  29              		.loc 1 21 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 2
+
+
+  22:driver/can_driver.c **** 	can_bsp_init();
+  38              		.loc 1 22 2 view .LVU1
+  39 0002 FFF7FEFF 		bl	can_bsp_init
+  40              	.LVL0:
+  23:driver/can_driver.c **** }
+  41              		.loc 1 23 1 is_stmt 0 view .LVU2
+  42 0006 08BD     		pop	{r3, pc}
+  43              		.cfi_endproc
+  44              	.LFE134:
+  46              		.section	.text.canx_send_data,"ax",%progbits
+  47              		.align	1
+  48              		.global	canx_send_data
+  49              		.syntax unified
+  50              		.thumb
+  51              		.thumb_func
+  53              	canx_send_data:
+  54              	.LVL1:
+  55              	.LFB135:
+  24:driver/can_driver.c **** /**
+  25:driver/can_driver.c **** ************************************************************************
+  26:driver/can_driver.c **** * @brief:      	canx_send_data: �û������㷢�ͺ���
+  27:driver/can_driver.c **** * @param:       hcan: CAN���
+  28:driver/can_driver.c **** * @param:       id: 	CAN�豸ID
+  29:driver/can_driver.c **** * @param:       data: ���͵�����
+  30:driver/can_driver.c **** * @param:       len:  ���͵����ݳ���
+  31:driver/can_driver.c **** * @retval:     	void
+  32:driver/can_driver.c **** * @details:    	CAN���߷�������
+  33:driver/can_driver.c **** ************************************************************************
+  34:driver/can_driver.c **** **/
+  35:driver/can_driver.c **** void canx_send_data(hcan_t *hcan, uint16_t id, uint8_t *data, uint32_t len)
+  36:driver/can_driver.c **** {
+  56              		.loc 1 36 1 is_stmt 1 view -0
+  57              		.cfi_startproc
+  58              		@ args = 0, pretend = 0, frame = 0
+  59              		@ frame_needed = 0, uses_anonymous_args = 0
+  60              		.loc 1 36 1 is_stmt 0 view .LVU4
+  61 0000 08B5     		push	{r3, lr}
+  62              	.LCFI1:
+  63              		.cfi_def_cfa_offset 8
+  64              		.cfi_offset 3, -8
+  65              		.cfi_offset 14, -4
+  37:driver/can_driver.c **** 	canx_bsp_send_data(hcan, id, data, len);
+  66              		.loc 1 37 2 is_stmt 1 view .LVU5
+  67 0002 FFF7FEFF 		bl	canx_bsp_send_data
+  68              	.LVL2:
+  38:driver/can_driver.c **** }
+  69              		.loc 1 38 1 is_stmt 0 view .LVU6
+  70 0006 08BD     		pop	{r3, pc}
+  71              		.cfi_endproc
+  72              	.LFE135:
+  74              		.section	.text.canx_receive_data,"ax",%progbits
+  75              		.align	1
+  76              		.global	canx_receive_data
+  77              		.syntax unified
+  78              		.thumb
+  79              		.thumb_func
+  81              	canx_receive_data:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 3
+
+
+  82              	.LVL3:
+  83              	.LFB136:
+  39:driver/can_driver.c **** /**
+  40:driver/can_driver.c **** ************************************************************************
+  41:driver/can_driver.c **** * @brief:      	canx_receive_data: �û������㷢�ͺ���
+  42:driver/can_driver.c **** * @param:       hcan��CAN���
+  43:driver/can_driver.c **** * @param:       buf���������ݻ���
+  44:driver/can_driver.c **** * @retval:     	���յ����ݳ���
+  45:driver/can_driver.c **** * @details:    	��������
+  46:driver/can_driver.c **** ************************************************************************
+  47:driver/can_driver.c **** **/
+  48:driver/can_driver.c **** uint8_t canx_receive_data(hcan_t *hcan, uint16_t *rec_id, uint8_t *buf)
+  49:driver/can_driver.c **** {
+  84              		.loc 1 49 1 is_stmt 1 view -0
+  85              		.cfi_startproc
+  86              		@ args = 0, pretend = 0, frame = 0
+  87              		@ frame_needed = 0, uses_anonymous_args = 0
+  88              		.loc 1 49 1 is_stmt 0 view .LVU8
+  89 0000 08B5     		push	{r3, lr}
+  90              	.LCFI2:
+  91              		.cfi_def_cfa_offset 8
+  92              		.cfi_offset 3, -8
+  93              		.cfi_offset 14, -4
+  50:driver/can_driver.c **** 	uint8_t len;
+  94              		.loc 1 50 2 is_stmt 1 view .LVU9
+  51:driver/can_driver.c **** 	len = canx_bsp_receive(hcan, rec_id, buf);
+  95              		.loc 1 51 2 view .LVU10
+  96              		.loc 1 51 8 is_stmt 0 view .LVU11
+  97 0002 FFF7FEFF 		bl	canx_bsp_receive
+  98              	.LVL4:
+  52:driver/can_driver.c **** 	return len;
+  99              		.loc 1 52 2 is_stmt 1 view .LVU12
+  53:driver/can_driver.c **** }
+ 100              		.loc 1 53 1 is_stmt 0 view .LVU13
+ 101 0006 08BD     		pop	{r3, pc}
+ 102              		.cfi_endproc
+ 103              	.LFE136:
+ 105              		.section	.text.can_para_init,"ax",%progbits
+ 106              		.align	1
+ 107              		.global	can_para_init
+ 108              		.syntax unified
+ 109              		.thumb
+ 110              		.thumb_func
+ 112              	can_para_init:
+ 113              	.LFB137:
+  54:driver/can_driver.c **** 
+  55:driver/can_driver.c **** /**
+  56:driver/can_driver.c **** ************************************************************************
+  57:driver/can_driver.c **** * @brief:      	can1_rx_callback(void)
+  58:driver/can_driver.c **** * @param:       void
+  59:driver/can_driver.c **** * @retval:     	void
+  60:driver/can_driver.c **** * @details:    	���û����õĽ���������
+  61:driver/can_driver.c **** ************************************************************************
+  62:driver/can_driver.c **** **/
+  63:driver/can_driver.c **** //void can1_rx_callback(void)
+  64:driver/can_driver.c **** //{
+  65:driver/can_driver.c **** //	uint8_t rx_data[8] = {0};
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 4
+
+
+  66:driver/can_driver.c **** //	canx_bsp_receive(&hcan1, rx_data);
+  67:driver/can_driver.c **** //}
+  68:driver/can_driver.c **** 
+  69:driver/can_driver.c **** /**
+  70:driver/can_driver.c **** ************************************************************************
+  71:driver/can_driver.c **** * @brief:      	can_para_init(void)
+  72:driver/can_driver.c **** * @param[in]:   void
+  73:driver/can_driver.c **** * @retval:     	void
+  74:driver/can_driver.c **** * @details:    	���ݽṹ���ʼ��
+  75:driver/can_driver.c **** ************************************************************************
+  76:driver/can_driver.c **** **/
+  77:driver/can_driver.c **** void can_para_init(void)
+  78:driver/can_driver.c **** {
+ 114              		.loc 1 78 1 is_stmt 1 view -0
+ 115              		.cfi_startproc
+ 116              		@ args = 0, pretend = 0, frame = 0
+ 117              		@ frame_needed = 0, uses_anonymous_args = 0
+ 118              		@ link register save eliminated.
+  79:driver/can_driver.c **** 	can_tx_buffer.data = can_tx_buff;
+ 119              		.loc 1 79 2 view .LVU15
+ 120              		.loc 1 79 21 is_stmt 0 view .LVU16
+ 121 0000 074B     		ldr	r3, .L8
+ 122 0002 084A     		ldr	r2, .L8+4
+ 123 0004 1A60     		str	r2, [r3]
+  80:driver/can_driver.c **** 	can_tx_buffer.size = CAN_BUFFER_SIZE;
+ 124              		.loc 1 80 2 is_stmt 1 view .LVU17
+ 125              		.loc 1 80 21 is_stmt 0 view .LVU18
+ 126 0006 8021     		movs	r1, #128
+ 127 0008 1981     		strh	r1, [r3, #8]	@ movhi
+  81:driver/can_driver.c **** 	can_tx_buffer.read_index = 0;
+ 128              		.loc 1 81 2 is_stmt 1 view .LVU19
+ 129              		.loc 1 81 27 is_stmt 0 view .LVU20
+ 130 000a 0022     		movs	r2, #0
+ 131 000c 9A80     		strh	r2, [r3, #4]	@ movhi
+  82:driver/can_driver.c **** 	can_tx_buffer.write_index = 0;
+ 132              		.loc 1 82 2 is_stmt 1 view .LVU21
+ 133              		.loc 1 82 28 is_stmt 0 view .LVU22
+ 134 000e DA80     		strh	r2, [r3, #6]	@ movhi
+  83:driver/can_driver.c **** 	
+  84:driver/can_driver.c **** 	can_rx_buffer.data = can_rx_buff;
+ 135              		.loc 1 84 2 is_stmt 1 view .LVU23
+ 136              		.loc 1 84 21 is_stmt 0 view .LVU24
+ 137 0010 054B     		ldr	r3, .L8+8
+ 138 0012 0648     		ldr	r0, .L8+12
+ 139 0014 1860     		str	r0, [r3]
+  85:driver/can_driver.c **** 	can_rx_buffer.size = CAN_BUFFER_SIZE;
+ 140              		.loc 1 85 2 is_stmt 1 view .LVU25
+ 141              		.loc 1 85 21 is_stmt 0 view .LVU26
+ 142 0016 1981     		strh	r1, [r3, #8]	@ movhi
+  86:driver/can_driver.c **** 	can_rx_buffer.read_index = 0;
+ 143              		.loc 1 86 2 is_stmt 1 view .LVU27
+ 144              		.loc 1 86 27 is_stmt 0 view .LVU28
+ 145 0018 9A80     		strh	r2, [r3, #4]	@ movhi
+  87:driver/can_driver.c **** 	can_rx_buffer.write_index = 0;
+ 146              		.loc 1 87 2 is_stmt 1 view .LVU29
+ 147              		.loc 1 87 28 is_stmt 0 view .LVU30
+ 148 001a DA80     		strh	r2, [r3, #6]	@ movhi
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 5
+
+
+  88:driver/can_driver.c **** }
+ 149              		.loc 1 88 1 view .LVU31
+ 150 001c 7047     		bx	lr
+ 151              	.L9:
+ 152 001e 00BF     		.align	2
+ 153              	.L8:
+ 154 0020 00000000 		.word	can_tx_buffer
+ 155 0024 00000000 		.word	can_tx_buff
+ 156 0028 00000000 		.word	can_rx_buffer
+ 157 002c 00000000 		.word	can_rx_buff
+ 158              		.cfi_endproc
+ 159              	.LFE137:
+ 161              		.section	.text.can_serial_read_char,"ax",%progbits
+ 162              		.align	1
+ 163              		.global	can_serial_read_char
+ 164              		.syntax unified
+ 165              		.thumb
+ 166              		.thumb_func
+ 168              	can_serial_read_char:
+ 169              	.LFB138:
+  89:driver/can_driver.c **** /**
+  90:driver/can_driver.c **** ************************************************************************
+  91:driver/can_driver.c **** * @brief:      	can_serial_available(void)
+  92:driver/can_driver.c **** * @param[in]:   void
+  93:driver/can_driver.c **** * @retval:     	ch: �ֽ�����
+  94:driver/can_driver.c **** * @details:    	�ӻ�������ȡһ���ֽ�
+  95:driver/can_driver.c **** ************************************************************************
+  96:driver/can_driver.c **** **/
+  97:driver/can_driver.c **** uint8_t can_serial_read_char(void)
+  98:driver/can_driver.c **** {
+ 170              		.loc 1 98 1 is_stmt 1 view -0
+ 171              		.cfi_startproc
+ 172              		@ args = 0, pretend = 0, frame = 0
+ 173              		@ frame_needed = 0, uses_anonymous_args = 0
+ 174              		@ link register save eliminated.
+  99:driver/can_driver.c ****     uint8_t ch = 0;
+ 175              		.loc 1 99 5 view .LVU33
+ 176              	.LVL5:
+ 100:driver/can_driver.c ****     ch = can_rx_buffer.data[can_rx_buffer.read_index];
+ 177              		.loc 1 100 5 view .LVU34
+ 178              		.loc 1 100 23 is_stmt 0 view .LVU35
+ 179 0000 054A     		ldr	r2, .L11
+ 180 0002 1168     		ldr	r1, [r2]
+ 181              		.loc 1 100 42 view .LVU36
+ 182 0004 9388     		ldrh	r3, [r2, #4]
+ 183              		.loc 1 100 8 view .LVU37
+ 184 0006 C85C     		ldrb	r0, [r1, r3]	@ zero_extendqisi2
+ 185              	.LVL6:
+ 101:driver/can_driver.c ****     can_rx_buffer.read_index = (can_rx_buffer.read_index + 1) % can_rx_buffer.size;
+ 186              		.loc 1 101 5 is_stmt 1 view .LVU38
+ 187              		.loc 1 101 58 is_stmt 0 view .LVU39
+ 188 0008 0133     		adds	r3, r3, #1
+ 189              	.LVL7:
+ 190              		.loc 1 101 78 view .LVU40
+ 191 000a 1189     		ldrh	r1, [r2, #8]
+ 192              	.LVL8:
+ 193              		.loc 1 101 63 view .LVU41
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 6
+
+
+ 194 000c 93FBF1FC 		sdiv	ip, r3, r1
+ 195 0010 01FB1C33 		mls	r3, r1, ip, r3
+ 196              	.LVL9:
+ 197              		.loc 1 101 30 view .LVU42
+ 198 0014 9380     		strh	r3, [r2, #4]	@ movhi
+ 199              	.LVL10:
+ 102:driver/can_driver.c ****     return ch;
+ 200              		.loc 1 102 5 is_stmt 1 view .LVU43
+ 103:driver/can_driver.c **** }
+ 201              		.loc 1 103 1 is_stmt 0 view .LVU44
+ 202 0016 7047     		bx	lr
+ 203              	.L12:
+ 204              		.align	2
+ 205              	.L11:
+ 206 0018 00000000 		.word	can_rx_buffer
+ 207              		.cfi_endproc
+ 208              	.LFE138:
+ 210              		.section	.text.can_serial_read,"ax",%progbits
+ 211              		.align	1
+ 212              		.global	can_serial_read
+ 213              		.syntax unified
+ 214              		.thumb
+ 215              		.thumb_func
+ 217              	can_serial_read:
+ 218              	.LVL11:
+ 219              	.LFB139:
+ 104:driver/can_driver.c **** /**
+ 105:driver/can_driver.c **** ************************************************************************
+ 106:driver/can_driver.c **** * @brief:      	can_serial_read(uint8_t *buffer, uint16_t length)
+ 107:driver/can_driver.c **** * @param[in]:   buffer: ����
+ 108:driver/can_driver.c **** * @param[in]:   length: ���������ݳ���
+ 109:driver/can_driver.c **** * @retval:     	i: ���ݸ���
+ 110:driver/can_driver.c **** * @details:    	�ӻ�������ȡ����
+ 111:driver/can_driver.c **** ************************************************************************
+ 112:driver/can_driver.c **** **/
+ 113:driver/can_driver.c **** uint16_t can_serial_read(uint8_t *buffer, uint16_t length)
+ 114:driver/can_driver.c **** {
+ 220              		.loc 1 114 1 is_stmt 1 view -0
+ 221              		.cfi_startproc
+ 222              		@ args = 0, pretend = 0, frame = 0
+ 223              		@ frame_needed = 0, uses_anonymous_args = 0
+ 224              		.loc 1 114 1 is_stmt 0 view .LVU46
+ 225 0000 30B5     		push	{r4, r5, lr}
+ 226              	.LCFI3:
+ 227              		.cfi_def_cfa_offset 12
+ 228              		.cfi_offset 4, -12
+ 229              		.cfi_offset 5, -8
+ 230              		.cfi_offset 14, -4
+ 231 0002 0446     		mov	r4, r0
+ 115:driver/can_driver.c **** 	uint16_t i = 0;
+ 232              		.loc 1 115 2 is_stmt 1 view .LVU47
+ 233              	.LVL12:
+ 116:driver/can_driver.c **** 
+ 117:driver/can_driver.c **** 	for (i = 0; i < length; i++) {
+ 234              		.loc 1 117 2 view .LVU48
+ 235              		.loc 1 117 9 is_stmt 0 view .LVU49
+ 236 0004 0020     		movs	r0, #0
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 7
+
+
+ 237              	.LVL13:
+ 238              		.loc 1 117 2 view .LVU50
+ 239 0006 0FE0     		b	.L14
+ 240              	.LVL14:
+ 241              	.L15:
+ 118:driver/can_driver.c **** 		buffer[i] = can_rx_buffer.data[can_rx_buffer.read_index];
+ 242              		.loc 1 118 3 is_stmt 1 view .LVU51
+ 243              		.loc 1 118 28 is_stmt 0 view .LVU52
+ 244 0008 094A     		ldr	r2, .L17
+ 245              		.loc 1 118 47 view .LVU53
+ 246 000a 9388     		ldrh	r3, [r2, #4]
+ 247              		.loc 1 118 33 view .LVU54
+ 248 000c 1568     		ldr	r5, [r2]
+ 249 000e EB5C     		ldrb	r3, [r5, r3]	@ zero_extendqisi2
+ 250              		.loc 1 118 13 view .LVU55
+ 251 0010 2354     		strb	r3, [r4, r0]
+ 119:driver/can_driver.c **** 		can_rx_buffer.read_index = (can_rx_buffer.read_index + 1) % can_rx_buffer.size;
+ 252              		.loc 1 119 3 is_stmt 1 view .LVU56
+ 253              		.loc 1 119 44 is_stmt 0 view .LVU57
+ 254 0012 9388     		ldrh	r3, [r2, #4]
+ 255              		.loc 1 119 56 view .LVU58
+ 256 0014 0133     		adds	r3, r3, #1
+ 257              		.loc 1 119 76 view .LVU59
+ 258 0016 B2F808C0 		ldrh	ip, [r2, #8]
+ 259              		.loc 1 119 61 view .LVU60
+ 260 001a 93FBFCFE 		sdiv	lr, r3, ip
+ 261 001e 0CFB1E33 		mls	r3, ip, lr, r3
+ 262              		.loc 1 119 28 view .LVU61
+ 263 0022 9380     		strh	r3, [r2, #4]	@ movhi
+ 117:driver/can_driver.c **** 		buffer[i] = can_rx_buffer.data[can_rx_buffer.read_index];
+ 264              		.loc 1 117 27 is_stmt 1 discriminator 3 view .LVU62
+ 265 0024 0130     		adds	r0, r0, #1
+ 266              	.LVL15:
+ 117:driver/can_driver.c **** 		buffer[i] = can_rx_buffer.data[can_rx_buffer.read_index];
+ 267              		.loc 1 117 27 is_stmt 0 discriminator 3 view .LVU63
+ 268 0026 80B2     		uxth	r0, r0
+ 269              	.LVL16:
+ 270              	.L14:
+ 117:driver/can_driver.c **** 		buffer[i] = can_rx_buffer.data[can_rx_buffer.read_index];
+ 271              		.loc 1 117 16 is_stmt 1 discriminator 1 view .LVU64
+ 272 0028 8842     		cmp	r0, r1
+ 273 002a EDD3     		bcc	.L15
+ 120:driver/can_driver.c **** 	}
+ 121:driver/can_driver.c **** 	return i;
+ 274              		.loc 1 121 2 view .LVU65
+ 122:driver/can_driver.c **** }
+ 275              		.loc 1 122 1 is_stmt 0 view .LVU66
+ 276 002c 30BD     		pop	{r4, r5, pc}
+ 277              	.LVL17:
+ 278              	.L18:
+ 279              		.loc 1 122 1 view .LVU67
+ 280 002e 00BF     		.align	2
+ 281              	.L17:
+ 282 0030 00000000 		.word	can_rx_buffer
+ 283              		.cfi_endproc
+ 284              	.LFE139:
+ 286              		.section	.text.can_serial_available,"ax",%progbits
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 8
+
+
+ 287              		.align	1
+ 288              		.global	can_serial_available
+ 289              		.syntax unified
+ 290              		.thumb
+ 291              		.thumb_func
+ 293              	can_serial_available:
+ 294              	.LFB140:
+ 123:driver/can_driver.c **** /**
+ 124:driver/can_driver.c **** ************************************************************************
+ 125:driver/can_driver.c **** * @brief:      	can_serial_available(void)
+ 126:driver/can_driver.c **** * @param[in]:   void
+ 127:driver/can_driver.c **** * @retval:     	void
+ 128:driver/can_driver.c **** * @details:    	�ӻ�������ȡ���ݳ���
+ 129:driver/can_driver.c **** ************************************************************************
+ 130:driver/can_driver.c **** **/
+ 131:driver/can_driver.c **** uint16_t can_serial_available(void)
+ 132:driver/can_driver.c **** {
+ 295              		.loc 1 132 1 is_stmt 1 view -0
+ 296              		.cfi_startproc
+ 297              		@ args = 0, pretend = 0, frame = 0
+ 298              		@ frame_needed = 0, uses_anonymous_args = 0
+ 299              		@ link register save eliminated.
+ 133:driver/can_driver.c **** 	uint16_t len = 0;
+ 300              		.loc 1 133 2 view .LVU69
+ 301              	.LVL18:
+ 134:driver/can_driver.c **** 	uint16_t can_rx_buffer_read_index = can_rx_buffer.read_index;
+ 302              		.loc 1 134 2 view .LVU70
+ 303              		.loc 1 134 11 is_stmt 0 view .LVU71
+ 304 0000 094B     		ldr	r3, .L23
+ 305 0002 9A88     		ldrh	r2, [r3, #4]
+ 306              	.LVL19:
+ 135:driver/can_driver.c **** 	uint16_t can_rx_buffer_write_index = can_rx_buffer.write_index;
+ 307              		.loc 1 135 2 is_stmt 1 view .LVU72
+ 308              		.loc 1 135 11 is_stmt 0 view .LVU73
+ 309 0004 DB88     		ldrh	r3, [r3, #6]
+ 310              	.LVL20:
+ 136:driver/can_driver.c **** 
+ 137:driver/can_driver.c **** 	if (can_rx_buffer_read_index > can_rx_buffer_write_index) {
+ 311              		.loc 1 137 2 is_stmt 1 view .LVU74
+ 312              		.loc 1 137 5 is_stmt 0 view .LVU75
+ 313 0006 9A42     		cmp	r2, r3
+ 314 0008 06D9     		bls	.L20
+ 138:driver/can_driver.c **** 		len = can_rx_buffer.size + can_rx_buffer_write_index - can_rx_buffer_read_index;
+ 315              		.loc 1 138 3 is_stmt 1 view .LVU76
+ 316              		.loc 1 138 22 is_stmt 0 view .LVU77
+ 317 000a 0749     		ldr	r1, .L23
+ 318 000c 0889     		ldrh	r0, [r1, #8]
+ 319              		.loc 1 138 28 view .LVU78
+ 320 000e 1844     		add	r0, r0, r3
+ 321 0010 80B2     		uxth	r0, r0
+ 322              		.loc 1 138 7 view .LVU79
+ 323 0012 801A     		subs	r0, r0, r2
+ 324 0014 80B2     		uxth	r0, r0
+ 325              	.LVL21:
+ 326              		.loc 1 138 7 view .LVU80
+ 327 0016 7047     		bx	lr
+ 328              	.LVL22:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 9
+
+
+ 329              	.L20:
+ 139:driver/can_driver.c **** 	}
+ 140:driver/can_driver.c **** 	else if (can_rx_buffer_read_index  < can_rx_buffer_write_index) {
+ 330              		.loc 1 140 7 is_stmt 1 view .LVU81
+ 331              		.loc 1 140 10 is_stmt 0 view .LVU82
+ 332 0018 9A42     		cmp	r2, r3
+ 333 001a 02D2     		bcs	.L22
+ 141:driver/can_driver.c **** 		len = can_rx_buffer_write_index - can_rx_buffer_read_index;
+ 334              		.loc 1 141 3 is_stmt 1 view .LVU83
+ 335              		.loc 1 141 7 is_stmt 0 view .LVU84
+ 336 001c 9B1A     		subs	r3, r3, r2
+ 337              	.LVL23:
+ 338              		.loc 1 141 7 view .LVU85
+ 339 001e 98B2     		uxth	r0, r3
+ 340              	.LVL24:
+ 341              		.loc 1 141 7 view .LVU86
+ 342 0020 7047     		bx	lr
+ 343              	.LVL25:
+ 344              	.L22:
+ 133:driver/can_driver.c **** 	uint16_t can_rx_buffer_read_index = can_rx_buffer.read_index;
+ 345              		.loc 1 133 11 view .LVU87
+ 346 0022 0020     		movs	r0, #0
+ 347              	.LVL26:
+ 142:driver/can_driver.c **** 	}
+ 143:driver/can_driver.c **** 	return len;
+ 348              		.loc 1 143 2 is_stmt 1 view .LVU88
+ 144:driver/can_driver.c **** }
+ 349              		.loc 1 144 1 is_stmt 0 view .LVU89
+ 350 0024 7047     		bx	lr
+ 351              	.L24:
+ 352 0026 00BF     		.align	2
+ 353              	.L23:
+ 354 0028 00000000 		.word	can_rx_buffer
+ 355              		.cfi_endproc
+ 356              	.LFE140:
+ 358              		.section	.text.can_tx_buf,"ax",%progbits
+ 359              		.align	1
+ 360              		.global	can_tx_buf
+ 361              		.syntax unified
+ 362              		.thumb
+ 363              		.thumb_func
+ 365              	can_tx_buf:
+ 366              	.LVL27:
+ 367              	.LFB141:
+ 145:driver/can_driver.c **** /**
+ 146:driver/can_driver.c **** ************************************************************************
+ 147:driver/can_driver.c **** * @brief:      	can_tx_buf
+ 148:driver/can_driver.c **** * @param[in]:   buffer: ����
+ 149:driver/can_driver.c **** * @param[in]:   length: ���������ݳ���
+ 150:driver/can_driver.c **** * @param[in]:   tx_buffer: ���ͽṹ����
+ 151:driver/can_driver.c **** * @retval:     	i: ���ݸ���
+ 152:driver/can_driver.c **** * @details:    	�Ѵ����͵�����д�뻺����
+ 153:driver/can_driver.c **** ************************************************************************
+ 154:driver/can_driver.c **** **/
+ 155:driver/can_driver.c **** uint16_t can_tx_buf(uint8_t *buffer, uint16_t length, can_fifo_buffer_t *tx_buffer)
+ 156:driver/can_driver.c **** {
+ 368              		.loc 1 156 1 is_stmt 1 view -0
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 10
+
+
+ 369              		.cfi_startproc
+ 370              		@ args = 0, pretend = 0, frame = 0
+ 371              		@ frame_needed = 0, uses_anonymous_args = 0
+ 372              		.loc 1 156 1 is_stmt 0 view .LVU91
+ 373 0000 30B5     		push	{r4, r5, lr}
+ 374              	.LCFI4:
+ 375              		.cfi_def_cfa_offset 12
+ 376              		.cfi_offset 4, -12
+ 377              		.cfi_offset 5, -8
+ 378              		.cfi_offset 14, -4
+ 379 0002 0446     		mov	r4, r0
+ 157:driver/can_driver.c **** 	uint16_t i = 0;
+ 380              		.loc 1 157 2 is_stmt 1 view .LVU92
+ 381              	.LVL28:
+ 158:driver/can_driver.c **** 
+ 159:driver/can_driver.c **** 	for (i = 0; i < length; i++) {
+ 382              		.loc 1 159 2 view .LVU93
+ 383              		.loc 1 159 9 is_stmt 0 view .LVU94
+ 384 0004 0020     		movs	r0, #0
+ 385              	.LVL29:
+ 386              		.loc 1 159 2 view .LVU95
+ 387 0006 10E0     		b	.L26
+ 388              	.LVL30:
+ 389              	.L27:
+ 160:driver/can_driver.c **** 		tx_buffer->data[tx_buffer->write_index] = buffer[i];
+ 390              		.loc 1 160 3 is_stmt 1 view .LVU96
+ 391              		.loc 1 160 28 is_stmt 0 view .LVU97
+ 392 0008 D388     		ldrh	r3, [r2, #6]
+ 393              		.loc 1 160 51 view .LVU98
+ 394 000a 14F800C0 		ldrb	ip, [r4, r0]	@ zero_extendqisi2
+ 395              		.loc 1 160 43 view .LVU99
+ 396 000e 1568     		ldr	r5, [r2]
+ 397 0010 05F803C0 		strb	ip, [r5, r3]
+ 161:driver/can_driver.c **** 		tx_buffer->write_index = (tx_buffer->write_index + 1) % tx_buffer->size;
+ 398              		.loc 1 161 3 is_stmt 1 view .LVU100
+ 399              		.loc 1 161 38 is_stmt 0 view .LVU101
+ 400 0014 D388     		ldrh	r3, [r2, #6]
+ 401              		.loc 1 161 52 view .LVU102
+ 402 0016 0133     		adds	r3, r3, #1
+ 403              		.loc 1 161 68 view .LVU103
+ 404 0018 B2F808C0 		ldrh	ip, [r2, #8]
+ 405              		.loc 1 161 57 view .LVU104
+ 406 001c 93FBFCFE 		sdiv	lr, r3, ip
+ 407 0020 0CFB1E33 		mls	r3, ip, lr, r3
+ 408              		.loc 1 161 26 view .LVU105
+ 409 0024 D380     		strh	r3, [r2, #6]	@ movhi
+ 159:driver/can_driver.c **** 		tx_buffer->data[tx_buffer->write_index] = buffer[i];
+ 410              		.loc 1 159 27 is_stmt 1 discriminator 3 view .LVU106
+ 411 0026 0130     		adds	r0, r0, #1
+ 412              	.LVL31:
+ 159:driver/can_driver.c **** 		tx_buffer->data[tx_buffer->write_index] = buffer[i];
+ 413              		.loc 1 159 27 is_stmt 0 discriminator 3 view .LVU107
+ 414 0028 80B2     		uxth	r0, r0
+ 415              	.LVL32:
+ 416              	.L26:
+ 159:driver/can_driver.c **** 		tx_buffer->data[tx_buffer->write_index] = buffer[i];
+ 417              		.loc 1 159 16 is_stmt 1 discriminator 1 view .LVU108
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 11
+
+
+ 418 002a 8842     		cmp	r0, r1
+ 419 002c ECD3     		bcc	.L27
+ 162:driver/can_driver.c **** 	}
+ 163:driver/can_driver.c **** 	return i;
+ 420              		.loc 1 163 2 view .LVU109
+ 164:driver/can_driver.c **** }
+ 421              		.loc 1 164 1 is_stmt 0 view .LVU110
+ 422 002e 30BD     		pop	{r4, r5, pc}
+ 423              		.loc 1 164 1 view .LVU111
+ 424              		.cfi_endproc
+ 425              	.LFE141:
+ 427              		.section	.text.can_serial_write,"ax",%progbits
+ 428              		.align	1
+ 429              		.global	can_serial_write
+ 430              		.syntax unified
+ 431              		.thumb
+ 432              		.thumb_func
+ 434              	can_serial_write:
+ 435              	.LVL33:
+ 436              	.LFB142:
+ 165:driver/can_driver.c **** /**
+ 166:driver/can_driver.c **** ************************************************************************
+ 167:driver/can_driver.c **** * @brief:      	can_serial_write(uint8_t *buffer, uint16_t length)
+ 168:driver/can_driver.c **** * @param[in]:   buffer: ����
+ 169:driver/can_driver.c **** * @param[in]:   length: ���������ݳ���
+ 170:driver/can_driver.c **** * @retval:     	i: ���ݸ���
+ 171:driver/can_driver.c **** * @details:    	�Ѵ����͵�����д�뻺����
+ 172:driver/can_driver.c **** ************************************************************************
+ 173:driver/can_driver.c **** **/
+ 174:driver/can_driver.c **** uint16_t can_serial_write(uint8_t *buffer, uint16_t length)
+ 175:driver/can_driver.c **** {
+ 437              		.loc 1 175 1 is_stmt 1 view -0
+ 438              		.cfi_startproc
+ 439              		@ args = 0, pretend = 0, frame = 0
+ 440              		@ frame_needed = 0, uses_anonymous_args = 0
+ 441              		.loc 1 175 1 is_stmt 0 view .LVU113
+ 442 0000 08B5     		push	{r3, lr}
+ 443              	.LCFI5:
+ 444              		.cfi_def_cfa_offset 8
+ 445              		.cfi_offset 3, -8
+ 446              		.cfi_offset 14, -4
+ 176:driver/can_driver.c **** 	uint16_t i = 0;
+ 447              		.loc 1 176 2 is_stmt 1 view .LVU114
+ 448              	.LVL34:
+ 177:driver/can_driver.c **** 	i = can_tx_buf(buffer, length, &can_tx_buffer);
+ 449              		.loc 1 177 2 view .LVU115
+ 450              		.loc 1 177 6 is_stmt 0 view .LVU116
+ 451 0002 024A     		ldr	r2, .L31
+ 452 0004 FFF7FEFF 		bl	can_tx_buf
+ 453              	.LVL35:
+ 178:driver/can_driver.c **** 	return i;
+ 454              		.loc 1 178 2 is_stmt 1 view .LVU117
+ 179:driver/can_driver.c **** }
+ 455              		.loc 1 179 1 is_stmt 0 view .LVU118
+ 456 0008 08BD     		pop	{r3, pc}
+ 457              	.L32:
+ 458 000a 00BF     		.align	2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 12
+
+
+ 459              	.L31:
+ 460 000c 00000000 		.word	can_tx_buffer
+ 461              		.cfi_endproc
+ 462              	.LFE142:
+ 464              		.section	.text.can_tx_available,"ax",%progbits
+ 465              		.align	1
+ 466              		.global	can_tx_available
+ 467              		.syntax unified
+ 468              		.thumb
+ 469              		.thumb_func
+ 471              	can_tx_available:
+ 472              	.LVL36:
+ 473              	.LFB143:
+ 180:driver/can_driver.c **** /**
+ 181:driver/can_driver.c **** ************************************************************************
+ 182:driver/can_driver.c **** * @brief:      	can_tx_available(can_fifo_buffer_t * tx_buffer)
+ 183:driver/can_driver.c **** * @param[in]:   tx_buffer: ���ͽṹ����
+ 184:driver/can_driver.c **** * @retval:     	len: ���������ݳ���
+ 185:driver/can_driver.c **** * @details:    	�жϻ��������ݳ���
+ 186:driver/can_driver.c **** ************************************************************************
+ 187:driver/can_driver.c **** **/
+ 188:driver/can_driver.c **** uint16_t can_tx_available(can_fifo_buffer_t *tx_buffer)
+ 189:driver/can_driver.c **** {
+ 474              		.loc 1 189 1 is_stmt 1 view -0
+ 475              		.cfi_startproc
+ 476              		@ args = 0, pretend = 0, frame = 0
+ 477              		@ frame_needed = 0, uses_anonymous_args = 0
+ 478              		@ link register save eliminated.
+ 190:driver/can_driver.c **** 	uint16_t len = 0;
+ 479              		.loc 1 190 2 view .LVU120
+ 191:driver/can_driver.c **** 	if (tx_buffer->read_index > tx_buffer->write_index) {
+ 480              		.loc 1 191 2 view .LVU121
+ 481              		.loc 1 191 15 is_stmt 0 view .LVU122
+ 482 0000 8288     		ldrh	r2, [r0, #4]
+ 483              		.loc 1 191 39 view .LVU123
+ 484 0002 C388     		ldrh	r3, [r0, #6]
+ 485              		.loc 1 191 5 view .LVU124
+ 486 0004 9A42     		cmp	r2, r3
+ 487 0006 05D9     		bls	.L34
+ 192:driver/can_driver.c **** 		len = tx_buffer->size + tx_buffer->write_index - tx_buffer->read_index;
+ 488              		.loc 1 192 3 is_stmt 1 view .LVU125
+ 489              		.loc 1 192 18 is_stmt 0 view .LVU126
+ 490 0008 0189     		ldrh	r1, [r0, #8]
+ 491              		.loc 1 192 25 view .LVU127
+ 492 000a 5818     		adds	r0, r3, r1
+ 493              	.LVL37:
+ 494              		.loc 1 192 25 view .LVU128
+ 495 000c 80B2     		uxth	r0, r0
+ 496              		.loc 1 192 7 view .LVU129
+ 497 000e 801A     		subs	r0, r0, r2
+ 498 0010 80B2     		uxth	r0, r0
+ 499              	.LVL38:
+ 500              		.loc 1 192 7 view .LVU130
+ 501 0012 7047     		bx	lr
+ 502              	.LVL39:
+ 503              	.L34:
+ 193:driver/can_driver.c **** 	}
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 13
+
+
+ 194:driver/can_driver.c **** 	else if (tx_buffer->read_index  < tx_buffer->write_index) {
+ 504              		.loc 1 194 7 is_stmt 1 view .LVU131
+ 505              		.loc 1 194 10 is_stmt 0 view .LVU132
+ 506 0014 9A42     		cmp	r2, r3
+ 507 0016 02D2     		bcs	.L36
+ 195:driver/can_driver.c **** 		len = tx_buffer->write_index - tx_buffer->read_index;
+ 508              		.loc 1 195 3 is_stmt 1 view .LVU133
+ 509              		.loc 1 195 7 is_stmt 0 view .LVU134
+ 510 0018 981A     		subs	r0, r3, r2
+ 511              	.LVL40:
+ 512              		.loc 1 195 7 view .LVU135
+ 513 001a 80B2     		uxth	r0, r0
+ 514              	.LVL41:
+ 515              		.loc 1 195 7 view .LVU136
+ 516 001c 7047     		bx	lr
+ 517              	.LVL42:
+ 518              	.L36:
+ 190:driver/can_driver.c **** 	if (tx_buffer->read_index > tx_buffer->write_index) {
+ 519              		.loc 1 190 11 view .LVU137
+ 520 001e 0020     		movs	r0, #0
+ 521              	.LVL43:
+ 196:driver/can_driver.c **** 	}
+ 197:driver/can_driver.c **** 	return len;
+ 522              		.loc 1 197 2 is_stmt 1 view .LVU138
+ 198:driver/can_driver.c **** }
+ 523              		.loc 1 198 1 is_stmt 0 view .LVU139
+ 524 0020 7047     		bx	lr
+ 525              		.cfi_endproc
+ 526              	.LFE143:
+ 528              		.section	.text.can_transmit,"ax",%progbits
+ 529              		.align	1
+ 530              		.global	can_transmit
+ 531              		.syntax unified
+ 532              		.thumb
+ 533              		.thumb_func
+ 535              	can_transmit:
+ 536              	.LFB144:
+ 199:driver/can_driver.c **** /**
+ 200:driver/can_driver.c **** ************************************************************************
+ 201:driver/can_driver.c **** * @brief:      	can_transmit(void)
+ 202:driver/can_driver.c **** * @param[in]:   void
+ 203:driver/can_driver.c **** * @retval:     	void
+ 204:driver/can_driver.c **** * @details:    	can�������ݷ���
+ 205:driver/can_driver.c **** ************************************************************************
+ 206:driver/can_driver.c **** **/
+ 207:driver/can_driver.c **** uint16_t tx_len1 = 0;
+ 208:driver/can_driver.c **** uint8_t tx_msg[8];
+ 209:driver/can_driver.c **** void can_transmit(void)
+ 210:driver/can_driver.c **** {  
+ 537              		.loc 1 210 1 is_stmt 1 view -0
+ 538              		.cfi_startproc
+ 539              		@ args = 0, pretend = 0, frame = 0
+ 540              		@ frame_needed = 0, uses_anonymous_args = 0
+ 541 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 542              	.LCFI6:
+ 543              		.cfi_def_cfa_offset 24
+ 544              		.cfi_offset 3, -24
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 14
+
+
+ 545              		.cfi_offset 4, -20
+ 546              		.cfi_offset 5, -16
+ 547              		.cfi_offset 6, -12
+ 548              		.cfi_offset 7, -8
+ 549              		.cfi_offset 14, -4
+ 211:driver/can_driver.c **** 	tx_len1 =  can_tx_available(&can_tx_buffer);
+ 550              		.loc 1 211 2 view .LVU141
+ 551              		.loc 1 211 13 is_stmt 0 view .LVU142
+ 552 0002 3248     		ldr	r0, .L46
+ 553 0004 FFF7FEFF 		bl	can_tx_available
+ 554              	.LVL44:
+ 555              		.loc 1 211 10 discriminator 1 view .LVU143
+ 556 0008 314B     		ldr	r3, .L46+4
+ 557 000a 1880     		strh	r0, [r3]	@ movhi
+ 212:driver/can_driver.c **** 	if(tx_len1 > 0) {
+ 558              		.loc 1 212 2 is_stmt 1 view .LVU144
+ 559              		.loc 1 212 4 is_stmt 0 view .LVU145
+ 560 000c 00B3     		cbz	r0, .L37
+ 561 000e 0446     		mov	r4, r0
+ 562              	.LBB2:
+ 213:driver/can_driver.c **** 		uint16_t temp;
+ 563              		.loc 1 213 3 is_stmt 1 view .LVU146
+ 214:driver/can_driver.c **** 		if(CAN_SEND_ID != 0) {
+ 564              		.loc 1 214 3 view .LVU147
+ 215:driver/can_driver.c **** 			if(tx_len1 > 8) {
+ 565              		.loc 1 215 4 view .LVU148
+ 566              		.loc 1 215 6 is_stmt 0 view .LVU149
+ 567 0010 0828     		cmp	r0, #8
+ 568 0012 2CD9     		bls	.L39
+ 216:driver/can_driver.c **** 				temp = can_tx_buffer.size - can_tx_buffer.read_index;
+ 569              		.loc 1 216 5 is_stmt 1 view .LVU150
+ 570              		.loc 1 216 25 is_stmt 0 view .LVU151
+ 571 0014 2D4B     		ldr	r3, .L46
+ 572 0016 1C89     		ldrh	r4, [r3, #8]
+ 573              		.loc 1 216 46 view .LVU152
+ 574 0018 9988     		ldrh	r1, [r3, #4]
+ 575              		.loc 1 216 10 view .LVU153
+ 576 001a 641A     		subs	r4, r4, r1
+ 577 001c A4B2     		uxth	r4, r4
+ 578              	.LVL45:
+ 217:driver/can_driver.c **** 				if(temp < 8) {
+ 579              		.loc 1 217 5 is_stmt 1 view .LVU154
+ 580              		.loc 1 217 7 is_stmt 0 view .LVU155
+ 581 001e 072C     		cmp	r4, #7
+ 582 0020 17D9     		bls	.L45
+ 218:driver/can_driver.c **** 					memcpy(tx_msg,&(can_tx_buffer.data[can_tx_buffer.read_index]), temp);
+ 219:driver/can_driver.c **** 					memcpy(&tx_msg[temp],&(can_tx_buffer.data[0]), 8-temp);
+ 220:driver/can_driver.c **** 				}
+ 221:driver/can_driver.c **** 				else {
+ 222:driver/can_driver.c **** 					memcpy(tx_msg, &(can_tx_buffer.data[can_tx_buffer.read_index]), 8);
+ 583              		.loc 1 222 6 is_stmt 1 view .LVU156
+ 584              		.loc 1 222 36 is_stmt 0 view .LVU157
+ 585 0022 2A4B     		ldr	r3, .L46
+ 586 0024 1A68     		ldr	r2, [r3]
+ 587              		.loc 1 222 21 view .LVU158
+ 588 0026 5418     		adds	r4, r2, r1
+ 589              	.LVL46:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 15
+
+
+ 590              		.loc 1 222 6 view .LVU159
+ 591 0028 2A4B     		ldr	r3, .L46+8
+ 592 002a 5058     		ldr	r0, [r2, r1]	@ unaligned
+ 593 002c 6168     		ldr	r1, [r4, #4]	@ unaligned
+ 594              	.LVL47:
+ 595              		.loc 1 222 6 view .LVU160
+ 596 002e 03C3     		stmia	r3!, {r0, r1}
+ 597              	.LVL48:
+ 598              	.L41:
+ 223:driver/can_driver.c **** 				}
+ 224:driver/can_driver.c **** 				canx_send_data(&hcan2, CAN_SEND_ID, tx_msg, 8);
+ 599              		.loc 1 224 5 is_stmt 1 view .LVU161
+ 600 0030 0823     		movs	r3, #8
+ 601 0032 284A     		ldr	r2, .L46+8
+ 602 0034 4FF4A061 		mov	r1, #1280
+ 603 0038 2748     		ldr	r0, .L46+12
+ 604 003a FFF7FEFF 		bl	canx_send_data
+ 605              	.LVL49:
+ 225:driver/can_driver.c **** 				can_tx_buffer.read_index = (can_tx_buffer.read_index + 8)%can_tx_buffer.size;
+ 606              		.loc 1 225 5 view .LVU162
+ 607              		.loc 1 225 46 is_stmt 0 view .LVU163
+ 608 003e 234A     		ldr	r2, .L46
+ 609 0040 9388     		ldrh	r3, [r2, #4]
+ 610              		.loc 1 225 58 view .LVU164
+ 611 0042 0833     		adds	r3, r3, #8
+ 612              		.loc 1 225 76 view .LVU165
+ 613 0044 1189     		ldrh	r1, [r2, #8]
+ 614              		.loc 1 225 62 view .LVU166
+ 615 0046 93FBF1F0 		sdiv	r0, r3, r1
+ 616 004a 01FB1033 		mls	r3, r1, r0, r3
+ 617              		.loc 1 225 30 view .LVU167
+ 618 004e 9380     		strh	r3, [r2, #4]	@ movhi
+ 619              	.LVL50:
+ 620              	.L37:
+ 621              		.loc 1 225 30 view .LVU168
+ 622              	.LBE2:
+ 226:driver/can_driver.c **** 			}
+ 227:driver/can_driver.c **** 			else {
+ 228:driver/can_driver.c **** 				temp = can_tx_buffer.size - can_tx_buffer.read_index;
+ 229:driver/can_driver.c **** 				if(temp < tx_len1) {
+ 230:driver/can_driver.c **** 					memcpy(tx_msg,&(can_tx_buffer.data[can_tx_buffer.read_index]), temp);
+ 231:driver/can_driver.c **** 					memcpy(&tx_msg[temp],&(can_tx_buffer.data[0]), tx_len1-temp);
+ 232:driver/can_driver.c **** 				}
+ 233:driver/can_driver.c **** 				else {
+ 234:driver/can_driver.c **** 					memcpy(tx_msg,&(can_tx_buffer.data[can_tx_buffer.read_index]), tx_len1);
+ 235:driver/can_driver.c **** 				}
+ 236:driver/can_driver.c **** 				canx_send_data(&hcan2, CAN_SEND_ID, tx_msg, tx_len1);
+ 237:driver/can_driver.c **** 				can_tx_buffer.read_index = (can_tx_buffer.read_index + tx_len1)%can_tx_buffer.size;
+ 238:driver/can_driver.c **** 			}
+ 239:driver/can_driver.c **** 		}
+ 240:driver/can_driver.c **** 	}
+ 241:driver/can_driver.c **** }
+ 623              		.loc 1 241 1 view .LVU169
+ 624 0050 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 625              	.LVL51:
+ 626              	.L45:
+ 627              	.LBB3:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 16
+
+
+ 218:driver/can_driver.c **** 					memcpy(&tx_msg[temp],&(can_tx_buffer.data[0]), 8-temp);
+ 628              		.loc 1 218 6 is_stmt 1 view .LVU170
+ 218:driver/can_driver.c **** 					memcpy(&tx_msg[temp],&(can_tx_buffer.data[0]), 8-temp);
+ 629              		.loc 1 218 35 is_stmt 0 view .LVU171
+ 630 0052 1E68     		ldr	r6, [r3]
+ 218:driver/can_driver.c **** 					memcpy(&tx_msg[temp],&(can_tx_buffer.data[0]), 8-temp);
+ 631              		.loc 1 218 6 view .LVU172
+ 632 0054 1F4D     		ldr	r5, .L46+8
+ 633 0056 2246     		mov	r2, r4
+ 634 0058 3144     		add	r1, r1, r6
+ 635 005a 2846     		mov	r0, r5
+ 636 005c FFF7FEFF 		bl	memcpy
+ 637              	.LVL52:
+ 219:driver/can_driver.c **** 				}
+ 638              		.loc 1 219 6 is_stmt 1 view .LVU173
+ 639 0060 C4F10802 		rsb	r2, r4, #8
+ 640 0064 3146     		mov	r1, r6
+ 641 0066 2819     		adds	r0, r5, r4
+ 642 0068 FFF7FEFF 		bl	memcpy
+ 643              	.LVL53:
+ 644 006c E0E7     		b	.L41
+ 645              	.LVL54:
+ 646              	.L39:
+ 228:driver/can_driver.c **** 				if(temp < tx_len1) {
+ 647              		.loc 1 228 5 view .LVU174
+ 228:driver/can_driver.c **** 				if(temp < tx_len1) {
+ 648              		.loc 1 228 25 is_stmt 0 view .LVU175
+ 649 006e 174B     		ldr	r3, .L46
+ 650 0070 1D89     		ldrh	r5, [r3, #8]
+ 228:driver/can_driver.c **** 				if(temp < tx_len1) {
+ 651              		.loc 1 228 46 view .LVU176
+ 652 0072 9988     		ldrh	r1, [r3, #4]
+ 228:driver/can_driver.c **** 				if(temp < tx_len1) {
+ 653              		.loc 1 228 10 view .LVU177
+ 654 0074 6D1A     		subs	r5, r5, r1
+ 655 0076 ADB2     		uxth	r5, r5
+ 656              	.LVL55:
+ 229:driver/can_driver.c **** 					memcpy(tx_msg,&(can_tx_buffer.data[can_tx_buffer.read_index]), temp);
+ 657              		.loc 1 229 5 is_stmt 1 view .LVU178
+ 229:driver/can_driver.c **** 					memcpy(tx_msg,&(can_tx_buffer.data[can_tx_buffer.read_index]), temp);
+ 658              		.loc 1 229 7 is_stmt 0 view .LVU179
+ 659 0078 A842     		cmp	r0, r5
+ 660 007a 1ED9     		bls	.L42
+ 230:driver/can_driver.c **** 					memcpy(&tx_msg[temp],&(can_tx_buffer.data[0]), tx_len1-temp);
+ 661              		.loc 1 230 6 is_stmt 1 view .LVU180
+ 230:driver/can_driver.c **** 					memcpy(&tx_msg[temp],&(can_tx_buffer.data[0]), tx_len1-temp);
+ 662              		.loc 1 230 35 is_stmt 0 view .LVU181
+ 663 007c 1F68     		ldr	r7, [r3]
+ 230:driver/can_driver.c **** 					memcpy(&tx_msg[temp],&(can_tx_buffer.data[0]), tx_len1-temp);
+ 664              		.loc 1 230 6 view .LVU182
+ 665 007e 154E     		ldr	r6, .L46+8
+ 666 0080 2A46     		mov	r2, r5
+ 667 0082 3944     		add	r1, r1, r7
+ 668 0084 3046     		mov	r0, r6
+ 669 0086 FFF7FEFF 		bl	memcpy
+ 670              	.LVL56:
+ 231:driver/can_driver.c **** 				}
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 17
+
+
+ 671              		.loc 1 231 6 is_stmt 1 view .LVU183
+ 672 008a 621B     		subs	r2, r4, r5
+ 673 008c 3946     		mov	r1, r7
+ 674 008e 7019     		adds	r0, r6, r5
+ 675 0090 FFF7FEFF 		bl	memcpy
+ 676              	.LVL57:
+ 677              	.L43:
+ 236:driver/can_driver.c **** 				can_tx_buffer.read_index = (can_tx_buffer.read_index + tx_len1)%can_tx_buffer.size;
+ 678              		.loc 1 236 5 view .LVU184
+ 679 0094 2346     		mov	r3, r4
+ 680 0096 0F4A     		ldr	r2, .L46+8
+ 681 0098 4FF4A061 		mov	r1, #1280
+ 682 009c 0E48     		ldr	r0, .L46+12
+ 683 009e FFF7FEFF 		bl	canx_send_data
+ 684              	.LVL58:
+ 237:driver/can_driver.c **** 			}
+ 685              		.loc 1 237 5 view .LVU185
+ 237:driver/can_driver.c **** 			}
+ 686              		.loc 1 237 46 is_stmt 0 view .LVU186
+ 687 00a2 0A4A     		ldr	r2, .L46
+ 688 00a4 9188     		ldrh	r1, [r2, #4]
+ 237:driver/can_driver.c **** 			}
+ 689              		.loc 1 237 58 view .LVU187
+ 690 00a6 0A4B     		ldr	r3, .L46+4
+ 691 00a8 1B88     		ldrh	r3, [r3]
+ 692 00aa 0B44     		add	r3, r3, r1
+ 237:driver/can_driver.c **** 			}
+ 693              		.loc 1 237 82 view .LVU188
+ 694 00ac 1189     		ldrh	r1, [r2, #8]
+ 237:driver/can_driver.c **** 			}
+ 695              		.loc 1 237 68 view .LVU189
+ 696 00ae 93FBF1F0 		sdiv	r0, r3, r1
+ 697 00b2 01FB1033 		mls	r3, r1, r0, r3
+ 237:driver/can_driver.c **** 			}
+ 698              		.loc 1 237 30 view .LVU190
+ 699 00b6 9380     		strh	r3, [r2, #4]	@ movhi
+ 700              	.LBE3:
+ 701              		.loc 1 241 1 view .LVU191
+ 702 00b8 CAE7     		b	.L37
+ 703              	.L42:
+ 704              	.LBB4:
+ 234:driver/can_driver.c **** 				}
+ 705              		.loc 1 234 6 is_stmt 1 view .LVU192
+ 234:driver/can_driver.c **** 				}
+ 706              		.loc 1 234 35 is_stmt 0 view .LVU193
+ 707 00ba 044B     		ldr	r3, .L46
+ 708 00bc 1B68     		ldr	r3, [r3]
+ 234:driver/can_driver.c **** 				}
+ 709              		.loc 1 234 6 view .LVU194
+ 710 00be 0246     		mov	r2, r0
+ 711 00c0 1944     		add	r1, r1, r3
+ 712 00c2 0448     		ldr	r0, .L46+8
+ 713 00c4 FFF7FEFF 		bl	memcpy
+ 714              	.LVL59:
+ 715 00c8 E4E7     		b	.L43
+ 716              	.L47:
+ 717 00ca 00BF     		.align	2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 18
+
+
+ 718              	.L46:
+ 719 00cc 00000000 		.word	can_tx_buffer
+ 720 00d0 00000000 		.word	tx_len1
+ 721 00d4 00000000 		.word	tx_msg
+ 722 00d8 00000000 		.word	hcan2
+ 723              	.LBE4:
+ 724              		.cfi_endproc
+ 725              	.LFE144:
+ 727              		.global	tx_msg
+ 728              		.section	.bss.tx_msg,"aw",%nobits
+ 729              		.align	2
+ 732              	tx_msg:
+ 733 0000 00000000 		.space	8
+ 733      00000000 
+ 734              		.global	tx_len1
+ 735              		.section	.bss.tx_len1,"aw",%nobits
+ 736              		.align	1
+ 739              	tx_len1:
+ 740 0000 0000     		.space	2
+ 741              		.global	can_tx_buff
+ 742              		.section	.bss.can_tx_buff,"aw",%nobits
+ 743              		.align	2
+ 746              	can_tx_buff:
+ 747 0000 00000000 		.space	128
+ 747      00000000 
+ 747      00000000 
+ 747      00000000 
+ 747      00000000 
+ 748              		.global	can_tx_buffer
+ 749              		.section	.bss.can_tx_buffer,"aw",%nobits
+ 750              		.align	2
+ 753              	can_tx_buffer:
+ 754 0000 00000000 		.space	12
+ 754      00000000 
+ 754      00000000 
+ 755              		.global	can_rx_buff
+ 756              		.section	.bss.can_rx_buff,"aw",%nobits
+ 757              		.align	2
+ 760              	can_rx_buff:
+ 761 0000 00000000 		.space	128
+ 761      00000000 
+ 761      00000000 
+ 761      00000000 
+ 761      00000000 
+ 762              		.global	can_rx_buffer
+ 763              		.section	.bss.can_rx_buffer,"aw",%nobits
+ 764              		.align	2
+ 767              	can_rx_buffer:
+ 768 0000 00000000 		.space	12
+ 768      00000000 
+ 768      00000000 
+ 769              		.global	can_buff
+ 770              		.section	.bss.can_buff,"aw",%nobits
+ 771              		.align	2
+ 774              	can_buff:
+ 775 0000 00000000 		.space	128
+ 775      00000000 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 19
+
+
+ 775      00000000 
+ 775      00000000 
+ 775      00000000 
+ 776              		.text
+ 777              	.Letext0:
+ 778              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 779              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 780              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 781              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 782              		.file 6 "D:/enviroment/msys2/mingw64/lib/gcc/arm-none-eabi/13.3.0/include/stddef.h"
+ 783              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 784              		.file 8 "Bsp/bsp_can.h"
+ 785              		.file 9 "driver/can_driver.h"
+ 786              		.file 10 "Core/Inc/can.h"
+ 787              		.file 11 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/string.h"
+ 788              		.file 12 "<built-in>"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJivkvk.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 can_driver.c
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:21     .text.can_driver_init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:27     .text.can_driver_init:00000000 can_driver_init
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:47     .text.canx_send_data:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:53     .text.canx_send_data:00000000 canx_send_data
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:75     .text.canx_receive_data:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:81     .text.canx_receive_data:00000000 canx_receive_data
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:106    .text.can_para_init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:112    .text.can_para_init:00000000 can_para_init
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:154    .text.can_para_init:00000020 $d
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:753    .bss.can_tx_buffer:00000000 can_tx_buffer
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:746    .bss.can_tx_buff:00000000 can_tx_buff
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:767    .bss.can_rx_buffer:00000000 can_rx_buffer
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:760    .bss.can_rx_buff:00000000 can_rx_buff
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:162    .text.can_serial_read_char:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:168    .text.can_serial_read_char:00000000 can_serial_read_char
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:206    .text.can_serial_read_char:00000018 $d
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:211    .text.can_serial_read:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:217    .text.can_serial_read:00000000 can_serial_read
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:282    .text.can_serial_read:00000030 $d
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:287    .text.can_serial_available:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:293    .text.can_serial_available:00000000 can_serial_available
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:354    .text.can_serial_available:00000028 $d
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:359    .text.can_tx_buf:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:365    .text.can_tx_buf:00000000 can_tx_buf
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:428    .text.can_serial_write:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:434    .text.can_serial_write:00000000 can_serial_write
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:460    .text.can_serial_write:0000000c $d
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:465    .text.can_tx_available:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:471    .text.can_tx_available:00000000 can_tx_available
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:529    .text.can_transmit:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:535    .text.can_transmit:00000000 can_transmit
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:719    .text.can_transmit:000000cc $d
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:739    .bss.tx_len1:00000000 tx_len1
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:732    .bss.tx_msg:00000000 tx_msg
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:729    .bss.tx_msg:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:736    .bss.tx_len1:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:743    .bss.can_tx_buff:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:750    .bss.can_tx_buffer:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:757    .bss.can_rx_buff:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:764    .bss.can_rx_buffer:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:774    .bss.can_buff:00000000 can_buff
+C:\Users\30514\AppData\Local\Temp\ccJivkvk.s:771    .bss.can_buff:00000000 $d
+
+UNDEFINED SYMBOLS
+can_bsp_init
+canx_bsp_send_data
+canx_bsp_receive
+memcpy
+hcan2
