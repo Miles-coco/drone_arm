@@ -812,6 +812,10 @@ Discarded input sections
                 0x00000000       0xde build/remote_control.o
  .text.Sbus_Data_Count
                 0x00000000      0x1b0 build/remote_control.o
+ .text.get_channel_raw_value
+                0x00000000       0x48 build/remote_control.o
+ .text.get_channel_mapped_value
+                0x00000000       0x26 build/remote_control.o
  .text.USART3_IRQHandler
                 0x00000000       0xe4 build/remote_control.o
  .bss.this_time_rx_len.0
@@ -821,16 +825,16 @@ Discarded input sections
  .bss.channels  0x00000000       0x24 build/remote_control.o
  .bss.sbus_rx_buf
                 0x00000000       0x64 build/remote_control.o
- .debug_info    0x00000000      0xad2 build/remote_control.o
- .debug_abbrev  0x00000000      0x243 build/remote_control.o
- .debug_loc     0x00000000      0x1bf build/remote_control.o
+ .debug_info    0x00000000      0xbad build/remote_control.o
+ .debug_abbrev  0x00000000      0x297 build/remote_control.o
+ .debug_loc     0x00000000      0x3ac build/remote_control.o
  .debug_aranges
-                0x00000000       0x48 build/remote_control.o
- .debug_ranges  0x00000000       0x38 build/remote_control.o
- .debug_line    0x00000000      0x6bc build/remote_control.o
- .debug_str     0x00000000      0x739 build/remote_control.o
+                0x00000000       0x58 build/remote_control.o
+ .debug_ranges  0x00000000       0x48 build/remote_control.o
+ .debug_line    0x00000000      0x755 build/remote_control.o
+ .debug_str     0x00000000      0x77f build/remote_control.o
  .comment       0x00000000       0x13 build/remote_control.o
- .debug_frame   0x00000000       0xb4 build/remote_control.o
+ .debug_frame   0x00000000       0xe0 build/remote_control.o
  .ARM.attributes
                 0x00000000       0x34 build/remote_control.o
  .text          0x00000000        0x0 build/scheduler.o
@@ -3209,6 +3213,8 @@ exit                                              D:/enviroment/msys2/mingw64/bi
 fflush                                            D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fflush.o)
 float_to_uint                                     build/dm_drv.o
 g_pfnVectors                                      build/startup_stm32f446xx.o
+get_channel_mapped_value                          build/remote_control.o
+get_channel_raw_value                             build/remote_control.o
 get_remote_control_point                          build/remote_control.o
 hardware_init_hook                                D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
 hcan1                                             build/can.o

@@ -94,6 +94,8 @@ extern rc_info_t rc_ctrl1;//用于存储天地飞遥控器的数据结构体
 void Sbus_Data_Count(rc_info_t *rc, uint8_t *sbusData);//天地飞遥控解析函数
 void RC_init(uint8_t *rx1_buf, uint8_t *rx2_buf, uint16_t dma_buf_num);
 void remote_control_init(void);
+int16_t get_channel_raw_value(uint8_t ch_num);
+int16_t get_channel_mapped_value(uint8_t ch_num,int16_t min,int16_t max);
 RC_ctrl_t get_remote_control_data(void);
 __weak void USART3_IRQHandler(void); 
 

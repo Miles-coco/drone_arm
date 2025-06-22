@@ -171,6 +171,48 @@ void Sbus_Data_Count(rc_info_t *rc, uint8_t *sbusData)
 
 }
 
+//获取指定通道解析后的值
+int16_t get_channel_raw_value(uint8_t ch_num)
+{
+    if(ch_num > 4) return 0;//只支持0-4通道
+
+    #if defined(RC_PROTOCOL_DJI)
+        return rc_ctrl.rc.ch[ch_num];
+    #elif defined(RC_PROTOCOL_TDF)
+        switch (ch_num)
+        {
+        case 0 : return rc_ctrl1.ch1;
+        case 1 : return rc_ctrl1.ch2;
+        case 2 : return rc_ctrl1.ch3;
+        case 3 : return rc_ctrl1.ch4;
+        case 4 : return rc_ctrl1.Vra;
+        default : return 0;
+        }
+    #else 
+        return 0;
+    #endif
+}
+
+//获取遥控器通道映射后的值
+int16_t get_channel_mapped_value(uint8_t ch_num,int16_t min,int16_t max)
+{
+    int16_t raw = get_channel_raw_value(ch_num);
+
+    //确定原始值范围
+    #if defined(RC_PROTOCOL_DJI)
+        const int16_t RAW_MIN = -660;
+        const int16_t RAW_MAX =  660;
+    #elif defined(RC_PROTOCOL_TDF)
+        const int16_t RAW_MIN = -1024;
+        const int16_t RAW_MAX =  1024;
+    #else
+        return 0;
+    #endif
+
+    //执行线性映射 
+    return min + (max-min)*(raw-RAW_MIN)/(RAW_MAX-RAW_MIN);  
+}
+
 
 //中断处理逻辑
 void USART3_IRQHandler(void)

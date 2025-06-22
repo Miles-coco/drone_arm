@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
   17:Module/remote_control/remote_control.c ****     //设置USART3控制寄存器的DMAR位，使串口在接收到数据自动触发DMA请求
   18:Module/remote_control/remote_control.c ****     SET_BIT(huart3.Instance->CR3, USART_CR3_DMAR);
   40              		.loc 1 18 5 is_stmt 1 view .LVU2
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 2
 
 
   41 0002 164B     		ldr	r3, .L5
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
   77 003a 9C60     		str	r4, [r3, #8]
   33:Module/remote_control/remote_control.c ****     //memory buffer 1
   34:Module/remote_control/remote_control.c ****     //内存缓冲地址1
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 3
 
 
   35:Module/remote_control/remote_control.c ****     hdma_usart3_rx.Instance->M0AR = (uint32_t)(rx1_buf);
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  117              		.syntax unified
  118              		.thumb
  119              		.thumb_func
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 4
 
 
  121              	remote_control_init:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  167 0002 86B0     		sub	sp, sp, #24
  168              	.LCFI4:
  169              		.cfi_def_cfa_offset 32
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 5
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 5
 
 
  170 0004 8446     		mov	ip, r0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
   47:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_INLINE                        static inline
   48:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   49:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __STATIC_FORCEINLINE
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 6
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 6
 
 
   50:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __STATIC_FORCEINLINE                   __attribute__((always_inline)) static inline
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  104:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
  105:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
  106:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT32_READ { uint32_t v; };
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 7
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 7
 
 
  107:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  161:Drivers/CMSIS/Include/cmsis_gcc.h ****   }
  162:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  163:Drivers/CMSIS/Include/cmsis_gcc.h ****   _start();
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 8
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 8
 
 
  164:Drivers/CMSIS/Include/cmsis_gcc.h **** }
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  218:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
  219:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_OUT_REG(r) "=r" (r)
  220:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_RW_REG(r) "+r" (r)
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 9
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 9
 
 
  221:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_USE_REG(r) "r" (r)
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  275:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  276:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Data Memory Barrier
  277:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Ensures the apparent order of the explicit memory operations before
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 10
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 10
 
 
  278:Drivers/CMSIS/Include/cmsis_gcc.h ****            and after the instruction, without ensuring their completion.
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  332:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  333:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM ("revsh %0, %1" : __CMSIS_GCC_OUT_REG (result) : __CMSIS_GCC_USE_REG (value) );
  334:Drivers/CMSIS/Include/cmsis_gcc.h ****   return result;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 11
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 11
 
 
  335:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  389:Drivers/CMSIS/Include/cmsis_gcc.h ****     s--;
  390:Drivers/CMSIS/Include/cmsis_gcc.h ****   }
  391:Drivers/CMSIS/Include/cmsis_gcc.h ****   result <<= s;                        /* shift when v's highest bits are zero */
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 12
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 12
 
 
  392:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  446:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  447:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  448:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 13
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 13
 
 
  449:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   LDR Exclusive (16 bit)
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  503:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   STR Exclusive (16 bit)
  504:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Executes a exclusive STR instruction for 16 bit values.
  505:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]  value  Value to store
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 14
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 14
 
 
  506:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    ptr  Pointer to location
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  560:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  561:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __SSAT(ARG1, ARG2) \
  562:Drivers/CMSIS/Include/cmsis_gcc.h **** __extension__ \
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 15
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 15
 
 
  563:Drivers/CMSIS/Include/cmsis_gcc.h **** ({                          \
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  617:Drivers/CMSIS/Include/cmsis_gcc.h ****     */
  618:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM volatile ("ldrbt %0, [%1]" : "=r" (result) : "r" (ptr) : "memory" );
  619:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 16
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 16
 
 
  620:Drivers/CMSIS/Include/cmsis_gcc.h ****    return ((uint8_t) result);    /* Add explicit type cast here */
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  674:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   STRT Unprivileged (16 bit)
  675:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Executes a Unprivileged STRT instruction for 16 bit values.
  676:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]  value  Value to store
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 17
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 17
 
 
  677:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    ptr  Pointer to location
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  731:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  732:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __USAT(int32_t val, uint32_t sat)
  733:Drivers/CMSIS/Include/cmsis_gcc.h **** {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 18
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 18
 
 
  734:Drivers/CMSIS/Include/cmsis_gcc.h ****   if (sat <= 31U)
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  788:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Executes a LDA instruction for 32 bit values.
  789:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    ptr  Pointer to data
  790:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return        value of type uint32_t at (*ptr)
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 19
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 19
 
 
  791:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  845:Drivers/CMSIS/Include/cmsis_gcc.h ****     uint32_t result;
  846:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  847:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM volatile ("ldaexb %0, %1" : "=r" (result) : "Q" (*ptr) : "memory" );
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 20
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 20
 
 
  848:Drivers/CMSIS/Include/cmsis_gcc.h ****    return ((uint8_t) result);
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  902:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]  value  Value to store
  903:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    ptr  Pointer to location
  904:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return          0  Function succeeded
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 21
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 21
 
 
  905:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return          1  Function failed
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  959:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  960:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __disable_irq(void)
  176              		.loc 2 960 27 view .LVU31
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 22
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 22
 
 
  177              	.LBB7:
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  223              		.loc 1 66 1 view .LVU40
  224 0046 6046     		mov	r0, ip
  225 0048 06B0     		add	sp, sp, #24
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 23
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 23
 
 
  226              	.LCFI5:
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  261              	.LCFI6:
  262              		.cfi_def_cfa_offset 12
  263              		.cfi_offset 4, -12
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 24
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 24
 
 
  264              		.cfi_offset 5, -8
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  307              		.loc 1 95 35 is_stmt 0 view .LVU67
  308 0046 1D79     		ldrb	r5, [r3, #4]	@ zero_extendqisi2
  309              		.loc 1 95 56 view .LVU68
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 25
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 25
 
 
  310 0048 5879     		ldrb	r0, [r3, #5]	@ zero_extendqisi2
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  101:Module/remote_control/remote_control.c ****     rc_ctrl->mouse.press_l = sbus_buf[12];                                  //!< Mouse Left Is Pres
  359              		.loc 1 101 5 is_stmt 1 view .LVU95
  360              		.loc 1 101 38 is_stmt 0 view .LVU96
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 26
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 26
 
 
  361 0098 1D7B     		ldrb	r5, [r3, #12]	@ zero_extendqisi2
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  405              		.loc 1 111 23 is_stmt 0 view .LVU120
  406 00d4 A3F58063 		sub	r3, r3, #1024
  407 00d8 0B81     		strh	r3, [r1, #8]	@ unaligned
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 27
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 27
 
 
  112:Module/remote_control/remote_control.c **** }
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  131:Module/remote_control/remote_control.c ****             case 240 : rc->sw1 = 1;break;     //上
  132:Module/remote_control/remote_control.c ****             case 0   : rc->sw1 = 2;break;     //中
  133:Module/remote_control/remote_control.c ****             case 15  : rc->sw1 = 3;break;     //下
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 28
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 28
 
 
  134:Module/remote_control/remote_control.c ****             default  : rc->sw1 = 1;           //上(默认)
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  456 000e 4B78     		ldrb	r3, [r1, #1]	@ zero_extendqisi2
  120:Module/remote_control/remote_control.c ****         rc->ch2 = ((sbusData[2]>>3|sbusData[3]<<5) & 0x07FF) - 1024;
  457              		.loc 1 120 41 view .LVU132
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 29
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 29
 
 
  458 0010 8A78     		ldrb	r2, [r1, #2]	@ zero_extendqisi2
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  494 0044 C3F30A03 		ubfx	r3, r3, #0, #11
  122:Module/remote_control/remote_control.c ****         rc->ch4 = ((sbusData[5]>>1|sbusData[6]<<7) & 0x07FF) - 1024;
  495              		.loc 1 122 78 view .LVU151
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 30
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 30
 
 
  496 0048 A3F58063 		sub	r3, r3, #1024
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  126:Module/remote_control/remote_control.c ****         //拨杆开关解析
  532              		.loc 1 126 35 view .LVU170
  533 007a 5B00     		lsls	r3, r3, #1
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 31
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 31
 
 
  534 007c 43EAD213 		orr	r3, r3, r2, lsr #7
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  572              		.loc 1 131 36 is_stmt 1 view .LVU186
  573              	.L27:
  137:Module/remote_control/remote_control.c ****         switch(rc->sw2)
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 32
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 32
 
 
  574              		.loc 1 137 9 view .LVU187
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  613 00dc 0123     		movs	r3, #1
  614 00de 4373     		strb	r3, [r0, #13]
  140:Module/remote_control/remote_control.c ****             case 0   : rc->sw2 = 2;break;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 33
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 33
 
 
  615              		.loc 1 140 36 is_stmt 1 view .LVU203
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  155:Module/remote_control/remote_control.c ****         switch(rc->sw4)
  654              		.loc 1 155 29 is_stmt 0 view .LVU219
  655 0104 4A7B     		ldrb	r2, [r1, #13]	@ zero_extendqisi2
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 34
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 34
 
 
  155:Module/remote_control/remote_control.c ****         switch(rc->sw4)
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  695              		.loc 1 158 36 is_stmt 1 view .LVU234
  696              	.L42:
  164:Module/remote_control/remote_control.c ****         channels[11] = ((sbusData[16]>>1|sbusData[17]<<7) & 0x07FF);
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 35
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 35
 
 
  697              		.loc 1 164 9 view .LVU235
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  734 0162 43EA1013 		orr	r3, r3, r0, lsr #4
  166:Module/remote_control/remote_control.c ****         channels[13] = ((sbusData[18]>>7|sbusData[19]<<1|sbusData[20]<<9) & 0x07FF);
  735              		.loc 1 166 59 view .LVU253
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 36
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 36
 
 
  736 0166 C3F30A03 		ubfx	r3, r3, #0, #11
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  169:Module/remote_control/remote_control.c ****     }
  772              		.loc 1 169 41 view .LVU272
  773 0196 DB00     		lsls	r3, r3, #3
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 37
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 37
 
 
  169:Module/remote_control/remote_control.c ****     }
@@ -2196,423 +2196,633 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 1
  798 01ac 00000000 		.word	channels
  799              		.cfi_endproc
  800              	.LFE138:
- 802              		.section	.text.USART3_IRQHandler,"ax",%progbits
+ 802              		.section	.text.get_channel_raw_value,"ax",%progbits
  803              		.align	1
- 804              		.weak	USART3_IRQHandler
+ 804              		.global	get_channel_raw_value
  805              		.syntax unified
  806              		.thumb
  807              		.thumb_func
- 809              	USART3_IRQHandler:
- 810              	.LFB139:
+ 809              	get_channel_raw_value:
+ 810              	.LVL14:
+ 811              	.LFB139:
  173:Module/remote_control/remote_control.c **** 
- 174:Module/remote_control/remote_control.c **** 
- 175:Module/remote_control/remote_control.c **** //中断处理逻辑
- 176:Module/remote_control/remote_control.c **** void USART3_IRQHandler(void)
- 177:Module/remote_control/remote_control.c **** {
- 811              		.loc 1 177 1 view -0
- 812              		.cfi_startproc
- 813              		@ args = 0, pretend = 0, frame = 8
- 814              		@ frame_needed = 0, uses_anonymous_args = 0
- 815 0000 00B5     		push	{lr}
- 816              	.LCFI8:
- 817              		.cfi_def_cfa_offset 4
- 818              		.cfi_offset 14, -4
- 819 0002 83B0     		sub	sp, sp, #12
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 38
+ 174:Module/remote_control/remote_control.c **** //获取指定通道解析后的值
+ 175:Module/remote_control/remote_control.c **** int16_t get_channel_raw_value(uint8_t ch_num)
+ 176:Module/remote_control/remote_control.c **** {
+ 812              		.loc 1 176 1 view -0
+ 813              		.cfi_startproc
+ 814              		@ args = 0, pretend = 0, frame = 0
+ 815              		@ frame_needed = 0, uses_anonymous_args = 0
+ 816              		@ link register save eliminated.
+ 177:Module/remote_control/remote_control.c ****     if(ch_num > 4) return 0;//只支持0-4通道
+ 817              		.loc 1 177 5 view .LVU283
+ 818              		.loc 1 177 7 is_stmt 0 view .LVU284
+ 819 0000 0428     		cmp	r0, #4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 38
 
 
- 820              	.LCFI9:
- 821              		.cfi_def_cfa_offset 16
- 178:Module/remote_control/remote_control.c ****     
- 179:Module/remote_control/remote_control.c ****     if(huart3.Instance->SR & UART_FLAG_RXNE)//接收数据寄存器非空,即缓冲区内接收到�
- 822              		.loc 1 179 5 view .LVU283
- 823              		.loc 1 179 14 is_stmt 0 view .LVU284
- 824 0004 2F4B     		ldr	r3, .L55
- 825 0006 1B68     		ldr	r3, [r3]
- 826              		.loc 1 179 23 view .LVU285
- 827 0008 1A68     		ldr	r2, [r3]
- 828              		.loc 1 179 7 view .LVU286
- 829 000a 12F0200F 		tst	r2, #32
- 830 000e 09D0     		beq	.L51
- 180:Module/remote_control/remote_control.c ****     {
- 181:Module/remote_control/remote_control.c ****         __HAL_UART_CLEAR_PEFLAG(&huart3);//清除数据未被读取标志，不需做其他处理�
- 831              		.loc 1 181 9 is_stmt 1 view .LVU287
- 832              	.LBB10:
- 833              		.loc 1 181 9 view .LVU288
- 834 0010 0022     		movs	r2, #0
- 835 0012 0092     		str	r2, [sp]
- 836              		.loc 1 181 9 view .LVU289
- 837 0014 1A68     		ldr	r2, [r3]
- 838 0016 0092     		str	r2, [sp]
- 839              		.loc 1 181 9 view .LVU290
- 840 0018 5B68     		ldr	r3, [r3, #4]
- 841 001a 0093     		str	r3, [sp]
- 842              		.loc 1 181 9 view .LVU291
- 843 001c 009B     		ldr	r3, [sp]
- 844              	.LBE10:
- 845              		.loc 1 181 9 view .LVU292
- 846              	.L50:
- 182:Module/remote_control/remote_control.c ****     }
- 183:Module/remote_control/remote_control.c ****     else if(USART3->SR & UART_FLAG_IDLE)//如果数据接收器为空，即监测到串口总线空
- 184:Module/remote_control/remote_control.c ****     {
- 185:Module/remote_control/remote_control.c ****         //静态变量初始化(用于保存接收数据的长度)
- 186:Module/remote_control/remote_control.c ****         static uint16_t this_time_rx_len = 0;
- 187:Module/remote_control/remote_control.c **** 
- 188:Module/remote_control/remote_control.c ****         __HAL_UART_CLEAR_PEFLAG(&huart3); //清除空闲标志
- 189:Module/remote_control/remote_control.c **** 
- 190:Module/remote_control/remote_control.c ****         if ((hdma_usart3_rx.Instance->CR & DMA_SxCR_CT) == RESET)//使用缓冲区0
- 191:Module/remote_control/remote_control.c ****         {
- 192:Module/remote_control/remote_control.c ****             //停止DMA传输，防止配置期间发生数据传输
- 193:Module/remote_control/remote_control.c ****             __HAL_DMA_DISABLE(&hdma_usart3_rx);
- 194:Module/remote_control/remote_control.c **** 
- 195:Module/remote_control/remote_control.c ****             //计算接受数据长度
- 196:Module/remote_control/remote_control.c ****             this_time_rx_len = SBUS_RX_BUF_NUM - hdma_usart3_rx.Instance->NDTR;
- 197:Module/remote_control/remote_control.c **** 
- 198:Module/remote_control/remote_control.c ****             //重置DMA计数器
- 199:Module/remote_control/remote_control.c ****             hdma_usart3_rx.Instance->NDTR = SBUS_RX_BUF_NUM;
+ 820 0002 1AD8     		bhi	.L58
+ 178:Module/remote_control/remote_control.c **** 
+ 179:Module/remote_control/remote_control.c ****     #if defined(RC_PROTOCOL_DJI)
+ 180:Module/remote_control/remote_control.c ****         return rc_ctrl.rc.ch[ch_num];
+ 181:Module/remote_control/remote_control.c ****     #elif defined(RC_PROTOCOL_TDF)
+ 182:Module/remote_control/remote_control.c ****         switch (ch_num)
+ 821              		.loc 1 182 9 is_stmt 1 view .LVU285
+ 822 0004 0428     		cmp	r0, #4
+ 823 0006 1AD8     		bhi	.L59
+ 824 0008 DFE800F0 		tbb	[pc, r0]
+ 825              	.L53:
+ 826 000c 03       		.byte	(.L57-.L53)/2
+ 827 000d 07       		.byte	(.L56-.L53)/2
+ 828 000e 0B       		.byte	(.L55-.L53)/2
+ 829 000f 0F       		.byte	(.L54-.L53)/2
+ 830 0010 13       		.byte	(.L52-.L53)/2
+ 831 0011 00       		.p2align 1
+ 832              	.L57:
+ 183:Module/remote_control/remote_control.c ****         {
+ 184:Module/remote_control/remote_control.c ****         case 0 : return rc_ctrl1.ch1;
+ 833              		.loc 1 184 18 view .LVU286
+ 834              		.loc 1 184 33 is_stmt 0 view .LVU287
+ 835 0012 0C4B     		ldr	r3, .L60
+ 836 0014 B3F90000 		ldrsh	r0, [r3]
+ 837              	.LVL15:
+ 838              		.loc 1 184 33 view .LVU288
+ 839 0018 7047     		bx	lr
+ 840              	.LVL16:
+ 841              	.L56:
+ 185:Module/remote_control/remote_control.c ****         case 1 : return rc_ctrl1.ch2;
+ 842              		.loc 1 185 18 is_stmt 1 view .LVU289
+ 843              		.loc 1 185 33 is_stmt 0 view .LVU290
+ 844 001a 0A4B     		ldr	r3, .L60
+ 845 001c B3F90200 		ldrsh	r0, [r3, #2]
+ 846              	.LVL17:
+ 847              		.loc 1 185 33 view .LVU291
+ 848 0020 7047     		bx	lr
+ 849              	.LVL18:
+ 850              	.L55:
+ 186:Module/remote_control/remote_control.c ****         case 2 : return rc_ctrl1.ch3;
+ 851              		.loc 1 186 18 is_stmt 1 view .LVU292
+ 852              		.loc 1 186 33 is_stmt 0 view .LVU293
+ 853 0022 084B     		ldr	r3, .L60
+ 854 0024 B3F90400 		ldrsh	r0, [r3, #4]
+ 855              	.LVL19:
+ 856              		.loc 1 186 33 view .LVU294
+ 857 0028 7047     		bx	lr
+ 858              	.LVL20:
+ 859              	.L54:
+ 187:Module/remote_control/remote_control.c ****         case 3 : return rc_ctrl1.ch4;
+ 860              		.loc 1 187 18 is_stmt 1 view .LVU295
+ 861              		.loc 1 187 33 is_stmt 0 view .LVU296
+ 862 002a 064B     		ldr	r3, .L60
+ 863 002c B3F90600 		ldrsh	r0, [r3, #6]
+ 864              	.LVL21:
+ 865              		.loc 1 187 33 view .LVU297
+ 866 0030 7047     		bx	lr
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 39
+
+
+ 867              	.LVL22:
+ 868              	.L52:
+ 188:Module/remote_control/remote_control.c ****         case 4 : return rc_ctrl1.Vra;
+ 869              		.loc 1 188 18 is_stmt 1 view .LVU298
+ 870              		.loc 1 188 33 is_stmt 0 view .LVU299
+ 871 0032 044B     		ldr	r3, .L60
+ 872 0034 B3F90800 		ldrsh	r0, [r3, #8]
+ 873              	.LVL23:
+ 874              		.loc 1 188 33 view .LVU300
+ 875 0038 7047     		bx	lr
+ 876              	.LVL24:
+ 877              	.L58:
+ 177:Module/remote_control/remote_control.c **** 
+ 878              		.loc 1 177 27 discriminator 1 view .LVU301
+ 879 003a 0020     		movs	r0, #0
+ 880              	.LVL25:
+ 177:Module/remote_control/remote_control.c **** 
+ 881              		.loc 1 177 27 discriminator 1 view .LVU302
+ 882 003c 7047     		bx	lr
+ 883              	.LVL26:
+ 884              	.L59:
+ 182:Module/remote_control/remote_control.c ****         {
+ 885              		.loc 1 182 9 view .LVU303
+ 886 003e 0020     		movs	r0, #0
+ 887              	.LVL27:
+ 189:Module/remote_control/remote_control.c ****         default : return 0;
+ 190:Module/remote_control/remote_control.c ****         }
+ 191:Module/remote_control/remote_control.c ****     #else 
+ 192:Module/remote_control/remote_control.c ****         return 0;
+ 193:Module/remote_control/remote_control.c ****     #endif
+ 194:Module/remote_control/remote_control.c **** }
+ 888              		.loc 1 194 1 view .LVU304
+ 889 0040 7047     		bx	lr
+ 890              	.L61:
+ 891 0042 00BF     		.align	2
+ 892              	.L60:
+ 893 0044 00000000 		.word	rc_ctrl1
+ 894              		.cfi_endproc
+ 895              	.LFE139:
+ 897              		.section	.text.get_channel_mapped_value,"ax",%progbits
+ 898              		.align	1
+ 899              		.global	get_channel_mapped_value
+ 900              		.syntax unified
+ 901              		.thumb
+ 902              		.thumb_func
+ 904              	get_channel_mapped_value:
+ 905              	.LVL28:
+ 906              	.LFB140:
+ 195:Module/remote_control/remote_control.c **** 
+ 196:Module/remote_control/remote_control.c **** //获取遥控器通道映射后的值
+ 197:Module/remote_control/remote_control.c **** int16_t get_channel_mapped_value(uint8_t ch_num,int16_t min,int16_t max)
+ 198:Module/remote_control/remote_control.c **** {
+ 907              		.loc 1 198 1 is_stmt 1 view -0
+ 908              		.cfi_startproc
+ 909              		@ args = 0, pretend = 0, frame = 0
+ 910              		@ frame_needed = 0, uses_anonymous_args = 0
+ 911              		.loc 1 198 1 is_stmt 0 view .LVU306
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 40
+
+
+ 912 0000 38B5     		push	{r3, r4, r5, lr}
+ 913              	.LCFI8:
+ 914              		.cfi_def_cfa_offset 16
+ 915              		.cfi_offset 3, -16
+ 916              		.cfi_offset 4, -12
+ 917              		.cfi_offset 5, -8
+ 918              		.cfi_offset 14, -4
+ 919 0002 0D46     		mov	r5, r1
+ 920 0004 1446     		mov	r4, r2
+ 199:Module/remote_control/remote_control.c ****     int16_t raw = get_channel_raw_value(ch_num);
+ 921              		.loc 1 199 5 is_stmt 1 view .LVU307
+ 922              		.loc 1 199 19 is_stmt 0 view .LVU308
+ 923 0006 FFF7FEFF 		bl	get_channel_raw_value
+ 924              	.LVL29:
  200:Module/remote_control/remote_control.c **** 
- 201:Module/remote_control/remote_control.c ****             //切换到缓冲区1
- 202:Module/remote_control/remote_control.c ****             hdma_usart3_rx.Instance->CR |= DMA_SxCR_CT;
- 203:Module/remote_control/remote_control.c ****             
- 204:Module/remote_control/remote_control.c ****             //重启DMA
- 205:Module/remote_control/remote_control.c ****             __HAL_DMA_ENABLE(&hdma_usart3_rx);
- 206:Module/remote_control/remote_control.c **** 
- 207:Module/remote_control/remote_control.c ****             //数据处理
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 39
+ 201:Module/remote_control/remote_control.c ****     //确定原始值范围
+ 202:Module/remote_control/remote_control.c ****     #if defined(RC_PROTOCOL_DJI)
+ 203:Module/remote_control/remote_control.c ****         const int16_t RAW_MIN = -660;
+ 204:Module/remote_control/remote_control.c ****         const int16_t RAW_MAX =  660;
+ 205:Module/remote_control/remote_control.c ****     #elif defined(RC_PROTOCOL_TDF)
+ 206:Module/remote_control/remote_control.c ****         const int16_t RAW_MIN = -1024;
+ 925              		.loc 1 206 9 is_stmt 1 view .LVU309
+ 207:Module/remote_control/remote_control.c ****         const int16_t RAW_MAX =  1024;
+ 926              		.loc 1 207 9 view .LVU310
+ 208:Module/remote_control/remote_control.c ****     #else
+ 209:Module/remote_control/remote_control.c ****         return 0;
+ 210:Module/remote_control/remote_control.c ****     #endif
+ 211:Module/remote_control/remote_control.c **** 
+ 212:Module/remote_control/remote_control.c ****     //执行线性映射 
+ 213:Module/remote_control/remote_control.c ****     return min + (max-min)*(raw-RAW_MIN)/(RAW_MAX-RAW_MIN);  
+ 927              		.loc 1 213 5 view .LVU311
+ 928              		.loc 1 213 22 is_stmt 0 view .LVU312
+ 929 000a 621B     		subs	r2, r4, r5
+ 930              		.loc 1 213 32 view .LVU313
+ 931 000c 00F58060 		add	r0, r0, #1024
+ 932              	.LVL30:
+ 933              		.loc 1 213 27 view .LVU314
+ 934 0010 00FB02F2 		mul	r2, r0, r2
+ 935              		.loc 1 213 41 view .LVU315
+ 936 0014 002A     		cmp	r2, #0
+ 937 0016 03DB     		blt	.L65
+ 938              	.L63:
+ 939              		.loc 1 213 16 view .LVU316
+ 940 0018 05EBE220 		add	r0, r5, r2, asr #11
+ 941              	.LVL31:
+ 214:Module/remote_control/remote_control.c **** }
+ 942              		.loc 1 214 1 view .LVU317
+ 943 001c 00B2     		sxth	r0, r0
+ 944 001e 38BD     		pop	{r3, r4, r5, pc}
+ 945              	.LVL32:
+ 946              	.L65:
+ 213:Module/remote_control/remote_control.c **** }
+ 947              		.loc 1 213 41 view .LVU318
+ 948 0020 02F2FF72 		addw	r2, r2, #2047
+ 949 0024 F8E7     		b	.L63
+ 950              		.cfi_endproc
+ 951              	.LFE140:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 41
 
 
- 208:Module/remote_control/remote_control.c ****             if(this_time_rx_len == RC_FRAME_LENGTH)//仅在接收到的数据个数正好等于遥�
- 209:Module/remote_control/remote_control.c ****             {
- 210:Module/remote_control/remote_control.c ****                 //sbus_to_rc(sbus_rx_buf[0], &rc_ctrl);
- 211:Module/remote_control/remote_control.c ****                 //Sbus_Data_Count(&rc_ctrl1,sbus_rx_buf[0]);//处理DMA0的数据
- 212:Module/remote_control/remote_control.c ****                 //协议选择
- 213:Module/remote_control/remote_control.c ****                 #if defined(RC_PROTOCOL_DJI)
- 214:Module/remote_control/remote_control.c ****                     sbus_to_rc(sbus_rx_buf[0], &rc_ctrl);
- 215:Module/remote_control/remote_control.c ****                 #elif defined(RC_PROTOCOL_TDF)
- 216:Module/remote_control/remote_control.c ****                     Sbus_Data_Count(&rc_ctrl1, sbus_rx_buf[0]);
- 217:Module/remote_control/remote_control.c ****                 #else 
- 218:Module/remote_control/remote_control.c ****                     #error "No remote control protocol defined! Please add #define RC_PROTOCOL_DJI 
- 219:Module/remote_control/remote_control.c ****                 #endif
- 220:Module/remote_control/remote_control.c **** 
- 221:Module/remote_control/remote_control.c **** 
- 222:Module/remote_control/remote_control.c ****             }
- 223:Module/remote_control/remote_control.c ****         }
- 224:Module/remote_control/remote_control.c ****         else//使用缓冲区1
- 225:Module/remote_control/remote_control.c ****         {
- 226:Module/remote_control/remote_control.c ****             //停止DMA运输，防止运输期间发生数据传输
- 227:Module/remote_control/remote_control.c ****             __HAL_DMA_DISABLE(&hdma_usart3_rx);
- 228:Module/remote_control/remote_control.c **** 
- 229:Module/remote_control/remote_control.c ****             //get receive data length, length = set_data_length - remain_length，获得数据传�
- 230:Module/remote_control/remote_control.c ****             this_time_rx_len = SBUS_RX_BUF_NUM - hdma_usart3_rx.Instance->NDTR;
+ 953              		.section	.text.USART3_IRQHandler,"ax",%progbits
+ 954              		.align	1
+ 955              		.weak	USART3_IRQHandler
+ 956              		.syntax unified
+ 957              		.thumb
+ 958              		.thumb_func
+ 960              	USART3_IRQHandler:
+ 961              	.LFB141:
+ 215:Module/remote_control/remote_control.c **** 
+ 216:Module/remote_control/remote_control.c **** 
+ 217:Module/remote_control/remote_control.c **** //中断处理逻辑
+ 218:Module/remote_control/remote_control.c **** void USART3_IRQHandler(void)
+ 219:Module/remote_control/remote_control.c **** {
+ 962              		.loc 1 219 1 is_stmt 1 view -0
+ 963              		.cfi_startproc
+ 964              		@ args = 0, pretend = 0, frame = 8
+ 965              		@ frame_needed = 0, uses_anonymous_args = 0
+ 966 0000 00B5     		push	{lr}
+ 967              	.LCFI9:
+ 968              		.cfi_def_cfa_offset 4
+ 969              		.cfi_offset 14, -4
+ 970 0002 83B0     		sub	sp, sp, #12
+ 971              	.LCFI10:
+ 972              		.cfi_def_cfa_offset 16
+ 220:Module/remote_control/remote_control.c ****     
+ 221:Module/remote_control/remote_control.c ****     if(huart3.Instance->SR & UART_FLAG_RXNE)//接收数据寄存器非空,即缓冲区内接收到�
+ 973              		.loc 1 221 5 view .LVU320
+ 974              		.loc 1 221 14 is_stmt 0 view .LVU321
+ 975 0004 2F4B     		ldr	r3, .L71
+ 976 0006 1B68     		ldr	r3, [r3]
+ 977              		.loc 1 221 23 view .LVU322
+ 978 0008 1A68     		ldr	r2, [r3]
+ 979              		.loc 1 221 7 view .LVU323
+ 980 000a 12F0200F 		tst	r2, #32
+ 981 000e 09D0     		beq	.L67
+ 222:Module/remote_control/remote_control.c ****     {
+ 223:Module/remote_control/remote_control.c ****         __HAL_UART_CLEAR_PEFLAG(&huart3);//清除数据未被读取标志，不需做其他处理�
+ 982              		.loc 1 223 9 is_stmt 1 view .LVU324
+ 983              	.LBB10:
+ 984              		.loc 1 223 9 view .LVU325
+ 985 0010 0022     		movs	r2, #0
+ 986 0012 0092     		str	r2, [sp]
+ 987              		.loc 1 223 9 view .LVU326
+ 988 0014 1A68     		ldr	r2, [r3]
+ 989 0016 0092     		str	r2, [sp]
+ 990              		.loc 1 223 9 view .LVU327
+ 991 0018 5B68     		ldr	r3, [r3, #4]
+ 992 001a 0093     		str	r3, [sp]
+ 993              		.loc 1 223 9 view .LVU328
+ 994 001c 009B     		ldr	r3, [sp]
+ 995              	.LBE10:
+ 996              		.loc 1 223 9 view .LVU329
+ 997              	.L66:
+ 224:Module/remote_control/remote_control.c ****     }
+ 225:Module/remote_control/remote_control.c ****     else if(USART3->SR & UART_FLAG_IDLE)//如果数据接收器为空，即监测到串口总线空
+ 226:Module/remote_control/remote_control.c ****     {
+ 227:Module/remote_control/remote_control.c ****         //静态变量初始化(用于保存接收数据的长度)
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 42
+
+
+ 228:Module/remote_control/remote_control.c ****         static uint16_t this_time_rx_len = 0;
+ 229:Module/remote_control/remote_control.c **** 
+ 230:Module/remote_control/remote_control.c ****         __HAL_UART_CLEAR_PEFLAG(&huart3); //清除空闲标志
  231:Module/remote_control/remote_control.c **** 
- 232:Module/remote_control/remote_control.c ****             //reset set_data_lenght重置DMA计数器
- 233:Module/remote_control/remote_control.c ****             hdma_usart3_rx.Instance->NDTR = SBUS_RX_BUF_NUM;
- 234:Module/remote_control/remote_control.c **** 
- 235:Module/remote_control/remote_control.c ****             //set memory buffer 0 切换到DMA0
- 236:Module/remote_control/remote_control.c ****             DMA1_Stream1->CR &= ~(DMA_SxCR_CT);
- 237:Module/remote_control/remote_control.c ****             
- 238:Module/remote_control/remote_control.c ****             //enable DMA使能DMA
- 239:Module/remote_control/remote_control.c ****             __HAL_DMA_ENABLE(&hdma_usart3_rx);
- 240:Module/remote_control/remote_control.c **** 
- 241:Module/remote_control/remote_control.c ****             //数据处理
- 242:Module/remote_control/remote_control.c ****             if(this_time_rx_len == RC_FRAME_LENGTH)
- 243:Module/remote_control/remote_control.c ****             {
- 244:Module/remote_control/remote_control.c ****                 //sbus_to_rc(sbus_rx_buf[1], &rc_ctrl);
- 245:Module/remote_control/remote_control.c ****                 //Sbus_Data_Count(&rc_ctrl1,sbus_rx_buf[1]);
- 246:Module/remote_control/remote_control.c ****                 //协议选择
- 247:Module/remote_control/remote_control.c ****                 #if defined(RC_PROTOCOL_DJI)
- 248:Module/remote_control/remote_control.c ****                     sbus_to_rc(sbus_rx_buf[1], &rc_ctrl);
- 249:Module/remote_control/remote_control.c ****                 #elif defined(RC_PROTOCOL_TDF)
- 250:Module/remote_control/remote_control.c ****                     Sbus_Data_Count(&rc_ctrl1, sbus_rx_buf[1]);
- 251:Module/remote_control/remote_control.c ****                 #else 
- 252:Module/remote_control/remote_control.c ****                     #error "No remote control protocol defined! Please add #define RC_PROTOCOL_DJI 
- 253:Module/remote_control/remote_control.c ****                 #endif
- 254:Module/remote_control/remote_control.c ****             }
- 255:Module/remote_control/remote_control.c ****         }
- 256:Module/remote_control/remote_control.c ****     }
- 257:Module/remote_control/remote_control.c **** }
- 847              		.loc 1 257 1 is_stmt 0 view .LVU293
- 848 001e 03B0     		add	sp, sp, #12
- 849              	.LCFI10:
- 850              		.cfi_remember_state
- 851              		.cfi_def_cfa_offset 4
- 852              		@ sp needed
- 853 0020 5DF804FB 		ldr	pc, [sp], #4
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 40
-
-
- 854              	.L51:
- 855              	.LCFI11:
- 856              		.cfi_restore_state
- 183:Module/remote_control/remote_control.c ****     {
- 857              		.loc 1 183 10 is_stmt 1 view .LVU294
- 183:Module/remote_control/remote_control.c ****     {
- 858              		.loc 1 183 19 is_stmt 0 view .LVU295
- 859 0024 284A     		ldr	r2, .L55+4
- 860 0026 1268     		ldr	r2, [r2]
- 183:Module/remote_control/remote_control.c ****     {
- 861              		.loc 1 183 12 view .LVU296
- 862 0028 12F0100F 		tst	r2, #16
- 863 002c F7D0     		beq	.L50
- 864              	.LBB11:
- 186:Module/remote_control/remote_control.c **** 
- 865              		.loc 1 186 9 is_stmt 1 view .LVU297
- 188:Module/remote_control/remote_control.c **** 
- 866              		.loc 1 188 9 view .LVU298
- 867              	.LBB12:
- 188:Module/remote_control/remote_control.c **** 
- 868              		.loc 1 188 9 view .LVU299
- 869 002e 0022     		movs	r2, #0
- 870 0030 0192     		str	r2, [sp, #4]
- 188:Module/remote_control/remote_control.c **** 
- 871              		.loc 1 188 9 view .LVU300
- 872 0032 1A68     		ldr	r2, [r3]
- 873 0034 0192     		str	r2, [sp, #4]
- 188:Module/remote_control/remote_control.c **** 
- 874              		.loc 1 188 9 view .LVU301
- 875 0036 5B68     		ldr	r3, [r3, #4]
- 876 0038 0193     		str	r3, [sp, #4]
- 188:Module/remote_control/remote_control.c **** 
- 877              		.loc 1 188 9 view .LVU302
- 878 003a 019B     		ldr	r3, [sp, #4]
- 879              	.LBE12:
- 188:Module/remote_control/remote_control.c **** 
- 880              		.loc 1 188 9 view .LVU303
- 190:Module/remote_control/remote_control.c ****         {
- 881              		.loc 1 190 9 view .LVU304
- 190:Module/remote_control/remote_control.c ****         {
- 882              		.loc 1 190 28 is_stmt 0 view .LVU305
- 883 003c 234B     		ldr	r3, .L55+8
- 884 003e 1B68     		ldr	r3, [r3]
- 190:Module/remote_control/remote_control.c ****         {
- 885              		.loc 1 190 37 view .LVU306
- 886 0040 1A68     		ldr	r2, [r3]
- 190:Module/remote_control/remote_control.c ****         {
- 887              		.loc 1 190 12 view .LVU307
- 888 0042 12F4002F 		tst	r2, #524288
- 889 0046 1DD1     		bne	.L53
- 193:Module/remote_control/remote_control.c **** 
- 890              		.loc 1 193 13 is_stmt 1 view .LVU308
- 891 0048 1A68     		ldr	r2, [r3]
- 892 004a 22F00102 		bic	r2, r2, #1
- 893 004e 1A60     		str	r2, [r3]
- 196:Module/remote_control/remote_control.c **** 
- 894              		.loc 1 196 13 view .LVU309
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 41
-
-
- 196:Module/remote_control/remote_control.c **** 
- 895              		.loc 1 196 64 is_stmt 0 view .LVU310
- 896 0050 1E48     		ldr	r0, .L55+8
- 897 0052 0268     		ldr	r2, [r0]
- 196:Module/remote_control/remote_control.c **** 
- 898              		.loc 1 196 73 view .LVU311
- 899 0054 5368     		ldr	r3, [r2, #4]
- 196:Module/remote_control/remote_control.c **** 
- 900              		.loc 1 196 48 view .LVU312
- 901 0056 C3F13203 		rsb	r3, r3, #50
- 902 005a 9BB2     		uxth	r3, r3
- 196:Module/remote_control/remote_control.c **** 
- 903              		.loc 1 196 30 view .LVU313
- 904 005c 1C49     		ldr	r1, .L55+12
- 905 005e 0B80     		strh	r3, [r1]	@ movhi
- 199:Module/remote_control/remote_control.c **** 
- 906              		.loc 1 199 13 is_stmt 1 view .LVU314
- 199:Module/remote_control/remote_control.c **** 
- 907              		.loc 1 199 43 is_stmt 0 view .LVU315
- 908 0060 3221     		movs	r1, #50
- 909 0062 5160     		str	r1, [r2, #4]
- 202:Module/remote_control/remote_control.c ****             
- 910              		.loc 1 202 13 is_stmt 1 view .LVU316
- 202:Module/remote_control/remote_control.c ****             
- 911              		.loc 1 202 36 is_stmt 0 view .LVU317
- 912 0064 1168     		ldr	r1, [r2]
- 202:Module/remote_control/remote_control.c ****             
- 913              		.loc 1 202 41 view .LVU318
- 914 0066 41F40021 		orr	r1, r1, #524288
- 915 006a 1160     		str	r1, [r2]
- 205:Module/remote_control/remote_control.c **** 
- 916              		.loc 1 205 13 is_stmt 1 view .LVU319
- 917 006c 0168     		ldr	r1, [r0]
- 918 006e 0A68     		ldr	r2, [r1]
- 919 0070 42F00102 		orr	r2, r2, #1
- 920 0074 0A60     		str	r2, [r1]
- 208:Module/remote_control/remote_control.c ****             {
- 921              		.loc 1 208 13 view .LVU320
- 208:Module/remote_control/remote_control.c ****             {
- 922              		.loc 1 208 15 is_stmt 0 view .LVU321
- 923 0076 192B     		cmp	r3, #25
- 924 0078 D1D1     		bne	.L50
- 216:Module/remote_control/remote_control.c ****                 #else 
- 925              		.loc 1 216 21 is_stmt 1 view .LVU322
- 926 007a 1649     		ldr	r1, .L55+16
- 927 007c 1648     		ldr	r0, .L55+20
- 928 007e FFF7FEFF 		bl	Sbus_Data_Count
- 929              	.LVL14:
- 930 0082 CCE7     		b	.L50
- 931              	.L53:
- 227:Module/remote_control/remote_control.c **** 
- 932              		.loc 1 227 13 view .LVU323
- 933 0084 1A68     		ldr	r2, [r3]
- 934 0086 22F00102 		bic	r2, r2, #1
- 935 008a 1A60     		str	r2, [r3]
- 230:Module/remote_control/remote_control.c **** 
- 936              		.loc 1 230 13 view .LVU324
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 42
-
-
- 230:Module/remote_control/remote_control.c **** 
- 937              		.loc 1 230 64 is_stmt 0 view .LVU325
- 938 008c 0F49     		ldr	r1, .L55+8
- 939 008e 0A68     		ldr	r2, [r1]
- 230:Module/remote_control/remote_control.c **** 
- 940              		.loc 1 230 73 view .LVU326
- 941 0090 5368     		ldr	r3, [r2, #4]
- 230:Module/remote_control/remote_control.c **** 
- 942              		.loc 1 230 48 view .LVU327
- 943 0092 C3F13203 		rsb	r3, r3, #50
- 944 0096 9BB2     		uxth	r3, r3
- 230:Module/remote_control/remote_control.c **** 
- 945              		.loc 1 230 30 view .LVU328
- 946 0098 0D48     		ldr	r0, .L55+12
- 947 009a 0380     		strh	r3, [r0]	@ movhi
- 233:Module/remote_control/remote_control.c **** 
- 948              		.loc 1 233 13 is_stmt 1 view .LVU329
- 233:Module/remote_control/remote_control.c **** 
- 949              		.loc 1 233 43 is_stmt 0 view .LVU330
- 950 009c 3220     		movs	r0, #50
- 951 009e 5060     		str	r0, [r2, #4]
- 236:Module/remote_control/remote_control.c ****             
- 952              		.loc 1 236 13 is_stmt 1 view .LVU331
- 236:Module/remote_control/remote_control.c ****             
- 953              		.loc 1 236 25 is_stmt 0 view .LVU332
- 954 00a0 0E48     		ldr	r0, .L55+24
- 955 00a2 826A     		ldr	r2, [r0, #40]
- 236:Module/remote_control/remote_control.c ****             
- 956              		.loc 1 236 30 view .LVU333
- 957 00a4 22F40022 		bic	r2, r2, #524288
- 958 00a8 8262     		str	r2, [r0, #40]
+ 232:Module/remote_control/remote_control.c ****         if ((hdma_usart3_rx.Instance->CR & DMA_SxCR_CT) == RESET)//使用缓冲区0
+ 233:Module/remote_control/remote_control.c ****         {
+ 234:Module/remote_control/remote_control.c ****             //停止DMA传输，防止配置期间发生数据传输
+ 235:Module/remote_control/remote_control.c ****             __HAL_DMA_DISABLE(&hdma_usart3_rx);
+ 236:Module/remote_control/remote_control.c **** 
+ 237:Module/remote_control/remote_control.c ****             //计算接受数据长度
+ 238:Module/remote_control/remote_control.c ****             this_time_rx_len = SBUS_RX_BUF_NUM - hdma_usart3_rx.Instance->NDTR;
  239:Module/remote_control/remote_control.c **** 
- 959              		.loc 1 239 13 is_stmt 1 view .LVU334
- 960 00aa 0968     		ldr	r1, [r1]
- 961 00ac 0A68     		ldr	r2, [r1]
- 962 00ae 42F00102 		orr	r2, r2, #1
- 963 00b2 0A60     		str	r2, [r1]
- 242:Module/remote_control/remote_control.c ****             {
- 964              		.loc 1 242 13 view .LVU335
- 242:Module/remote_control/remote_control.c ****             {
- 965              		.loc 1 242 15 is_stmt 0 view .LVU336
- 966 00b4 192B     		cmp	r3, #25
- 967 00b6 B2D1     		bne	.L50
- 250:Module/remote_control/remote_control.c ****                 #else 
- 968              		.loc 1 250 21 is_stmt 1 view .LVU337
- 969 00b8 0949     		ldr	r1, .L55+28
- 970 00ba 0748     		ldr	r0, .L55+20
- 971 00bc FFF7FEFF 		bl	Sbus_Data_Count
- 972              	.LVL15:
- 973              	.LBE11:
- 974              		.loc 1 257 1 is_stmt 0 view .LVU338
- 975 00c0 ADE7     		b	.L50
- 976              	.L56:
- 977 00c2 00BF     		.align	2
- 978              	.L55:
- 979 00c4 00000000 		.word	huart3
- 980 00c8 00480040 		.word	1073760256
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 43
+ 240:Module/remote_control/remote_control.c ****             //重置DMA计数器
+ 241:Module/remote_control/remote_control.c ****             hdma_usart3_rx.Instance->NDTR = SBUS_RX_BUF_NUM;
+ 242:Module/remote_control/remote_control.c **** 
+ 243:Module/remote_control/remote_control.c ****             //切换到缓冲区1
+ 244:Module/remote_control/remote_control.c ****             hdma_usart3_rx.Instance->CR |= DMA_SxCR_CT;
+ 245:Module/remote_control/remote_control.c ****             
+ 246:Module/remote_control/remote_control.c ****             //重启DMA
+ 247:Module/remote_control/remote_control.c ****             __HAL_DMA_ENABLE(&hdma_usart3_rx);
+ 248:Module/remote_control/remote_control.c **** 
+ 249:Module/remote_control/remote_control.c ****             //数据处理
+ 250:Module/remote_control/remote_control.c ****             if(this_time_rx_len == RC_FRAME_LENGTH)//仅在接收到的数据个数正好等于遥�
+ 251:Module/remote_control/remote_control.c ****             {
+ 252:Module/remote_control/remote_control.c ****                 //sbus_to_rc(sbus_rx_buf[0], &rc_ctrl);
+ 253:Module/remote_control/remote_control.c ****                 //Sbus_Data_Count(&rc_ctrl1,sbus_rx_buf[0]);//处理DMA0的数据
+ 254:Module/remote_control/remote_control.c ****                 //协议选择
+ 255:Module/remote_control/remote_control.c ****                 #if defined(RC_PROTOCOL_DJI)
+ 256:Module/remote_control/remote_control.c ****                     sbus_to_rc(sbus_rx_buf[0], &rc_ctrl);
+ 257:Module/remote_control/remote_control.c ****                 #elif defined(RC_PROTOCOL_TDF)
+ 258:Module/remote_control/remote_control.c ****                     Sbus_Data_Count(&rc_ctrl1, sbus_rx_buf[0]);
+ 259:Module/remote_control/remote_control.c ****                 #else 
+ 260:Module/remote_control/remote_control.c ****                     #error "No remote control protocol defined! Please add #define RC_PROTOCOL_DJI 
+ 261:Module/remote_control/remote_control.c ****                 #endif
+ 262:Module/remote_control/remote_control.c **** 
+ 263:Module/remote_control/remote_control.c **** 
+ 264:Module/remote_control/remote_control.c ****             }
+ 265:Module/remote_control/remote_control.c ****         }
+ 266:Module/remote_control/remote_control.c ****         else//使用缓冲区1
+ 267:Module/remote_control/remote_control.c ****         {
+ 268:Module/remote_control/remote_control.c ****             //停止DMA运输，防止运输期间发生数据传输
+ 269:Module/remote_control/remote_control.c ****             __HAL_DMA_DISABLE(&hdma_usart3_rx);
+ 270:Module/remote_control/remote_control.c **** 
+ 271:Module/remote_control/remote_control.c ****             //get receive data length, length = set_data_length - remain_length，获得数据传�
+ 272:Module/remote_control/remote_control.c ****             this_time_rx_len = SBUS_RX_BUF_NUM - hdma_usart3_rx.Instance->NDTR;
+ 273:Module/remote_control/remote_control.c **** 
+ 274:Module/remote_control/remote_control.c ****             //reset set_data_lenght重置DMA计数器
+ 275:Module/remote_control/remote_control.c ****             hdma_usart3_rx.Instance->NDTR = SBUS_RX_BUF_NUM;
+ 276:Module/remote_control/remote_control.c **** 
+ 277:Module/remote_control/remote_control.c ****             //set memory buffer 0 切换到DMA0
+ 278:Module/remote_control/remote_control.c ****             DMA1_Stream1->CR &= ~(DMA_SxCR_CT);
+ 279:Module/remote_control/remote_control.c ****             
+ 280:Module/remote_control/remote_control.c ****             //enable DMA使能DMA
+ 281:Module/remote_control/remote_control.c ****             __HAL_DMA_ENABLE(&hdma_usart3_rx);
+ 282:Module/remote_control/remote_control.c **** 
+ 283:Module/remote_control/remote_control.c ****             //数据处理
+ 284:Module/remote_control/remote_control.c ****             if(this_time_rx_len == RC_FRAME_LENGTH)
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 43
 
 
- 981 00cc 00000000 		.word	hdma_usart3_rx
- 982 00d0 00000000 		.word	this_time_rx_len.0
- 983 00d4 00000000 		.word	sbus_rx_buf
- 984 00d8 00000000 		.word	rc_ctrl1
- 985 00dc 00600240 		.word	1073897472
- 986 00e0 32000000 		.word	sbus_rx_buf+50
- 987              		.cfi_endproc
- 988              	.LFE139:
- 990              		.section	.bss.this_time_rx_len.0,"aw",%nobits
- 991              		.align	1
- 994              	this_time_rx_len.0:
- 995 0000 0000     		.space	2
- 996              		.global	rc_ctrl1
- 997              		.section	.bss.rc_ctrl1,"aw",%nobits
- 998              		.align	2
- 1001              	rc_ctrl1:
- 1002 0000 00000000 		.space	16
- 1002      00000000 
- 1002      00000000 
- 1002      00000000 
- 1003              		.global	rc_ctrl
- 1004              		.section	.bss.rc_ctrl,"aw",%nobits
- 1005              		.align	2
- 1008              	rc_ctrl:
- 1009 0000 00000000 		.space	22
- 1009      00000000 
- 1009      00000000 
- 1009      00000000 
- 1009      00000000 
- 1010              		.global	channels
- 1011              		.section	.bss.channels,"aw",%nobits
- 1012              		.align	2
- 1015              	channels:
- 1016 0000 00000000 		.space	36
- 1016      00000000 
- 1016      00000000 
- 1016      00000000 
- 1016      00000000 
- 1017              		.section	.bss.sbus_rx_buf,"aw",%nobits
- 1018              		.align	2
- 1021              	sbus_rx_buf:
- 1022 0000 00000000 		.space	100
- 1022      00000000 
- 1022      00000000 
- 1022      00000000 
- 1022      00000000 
- 1023              		.text
- 1024              	.Letext0:
- 1025              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
- 1026              		.file 4 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
- 1027              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
- 1028              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 1029              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 1030              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 1031              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 1032              		.file 10 "Core/Inc/usart.h"
- 1033              		.file 11 "Module/remote_control/Remote_Control.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 44
+ 285:Module/remote_control/remote_control.c ****             {
+ 286:Module/remote_control/remote_control.c ****                 //sbus_to_rc(sbus_rx_buf[1], &rc_ctrl);
+ 287:Module/remote_control/remote_control.c ****                 //Sbus_Data_Count(&rc_ctrl1,sbus_rx_buf[1]);
+ 288:Module/remote_control/remote_control.c ****                 //协议选择
+ 289:Module/remote_control/remote_control.c ****                 #if defined(RC_PROTOCOL_DJI)
+ 290:Module/remote_control/remote_control.c ****                     sbus_to_rc(sbus_rx_buf[1], &rc_ctrl);
+ 291:Module/remote_control/remote_control.c ****                 #elif defined(RC_PROTOCOL_TDF)
+ 292:Module/remote_control/remote_control.c ****                     Sbus_Data_Count(&rc_ctrl1, sbus_rx_buf[1]);
+ 293:Module/remote_control/remote_control.c ****                 #else 
+ 294:Module/remote_control/remote_control.c ****                     #error "No remote control protocol defined! Please add #define RC_PROTOCOL_DJI 
+ 295:Module/remote_control/remote_control.c ****                 #endif
+ 296:Module/remote_control/remote_control.c ****             }
+ 297:Module/remote_control/remote_control.c ****         }
+ 298:Module/remote_control/remote_control.c ****     }
+ 299:Module/remote_control/remote_control.c **** }
+ 998              		.loc 1 299 1 is_stmt 0 view .LVU330
+ 999 001e 03B0     		add	sp, sp, #12
+ 1000              	.LCFI11:
+ 1001              		.cfi_remember_state
+ 1002              		.cfi_def_cfa_offset 4
+ 1003              		@ sp needed
+ 1004 0020 5DF804FB 		ldr	pc, [sp], #4
+ 1005              	.L67:
+ 1006              	.LCFI12:
+ 1007              		.cfi_restore_state
+ 225:Module/remote_control/remote_control.c ****     {
+ 1008              		.loc 1 225 10 is_stmt 1 view .LVU331
+ 225:Module/remote_control/remote_control.c ****     {
+ 1009              		.loc 1 225 19 is_stmt 0 view .LVU332
+ 1010 0024 284A     		ldr	r2, .L71+4
+ 1011 0026 1268     		ldr	r2, [r2]
+ 225:Module/remote_control/remote_control.c ****     {
+ 1012              		.loc 1 225 12 view .LVU333
+ 1013 0028 12F0100F 		tst	r2, #16
+ 1014 002c F7D0     		beq	.L66
+ 1015              	.LBB11:
+ 228:Module/remote_control/remote_control.c **** 
+ 1016              		.loc 1 228 9 is_stmt 1 view .LVU334
+ 230:Module/remote_control/remote_control.c **** 
+ 1017              		.loc 1 230 9 view .LVU335
+ 1018              	.LBB12:
+ 230:Module/remote_control/remote_control.c **** 
+ 1019              		.loc 1 230 9 view .LVU336
+ 1020 002e 0022     		movs	r2, #0
+ 1021 0030 0192     		str	r2, [sp, #4]
+ 230:Module/remote_control/remote_control.c **** 
+ 1022              		.loc 1 230 9 view .LVU337
+ 1023 0032 1A68     		ldr	r2, [r3]
+ 1024 0034 0192     		str	r2, [sp, #4]
+ 230:Module/remote_control/remote_control.c **** 
+ 1025              		.loc 1 230 9 view .LVU338
+ 1026 0036 5B68     		ldr	r3, [r3, #4]
+ 1027 0038 0193     		str	r3, [sp, #4]
+ 230:Module/remote_control/remote_control.c **** 
+ 1028              		.loc 1 230 9 view .LVU339
+ 1029 003a 019B     		ldr	r3, [sp, #4]
+ 1030              	.LBE12:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 44
 
 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s 			page 45
+ 230:Module/remote_control/remote_control.c **** 
+ 1031              		.loc 1 230 9 view .LVU340
+ 232:Module/remote_control/remote_control.c ****         {
+ 1032              		.loc 1 232 9 view .LVU341
+ 232:Module/remote_control/remote_control.c ****         {
+ 1033              		.loc 1 232 28 is_stmt 0 view .LVU342
+ 1034 003c 234B     		ldr	r3, .L71+8
+ 1035 003e 1B68     		ldr	r3, [r3]
+ 232:Module/remote_control/remote_control.c ****         {
+ 1036              		.loc 1 232 37 view .LVU343
+ 1037 0040 1A68     		ldr	r2, [r3]
+ 232:Module/remote_control/remote_control.c ****         {
+ 1038              		.loc 1 232 12 view .LVU344
+ 1039 0042 12F4002F 		tst	r2, #524288
+ 1040 0046 1DD1     		bne	.L69
+ 235:Module/remote_control/remote_control.c **** 
+ 1041              		.loc 1 235 13 is_stmt 1 view .LVU345
+ 1042 0048 1A68     		ldr	r2, [r3]
+ 1043 004a 22F00102 		bic	r2, r2, #1
+ 1044 004e 1A60     		str	r2, [r3]
+ 238:Module/remote_control/remote_control.c **** 
+ 1045              		.loc 1 238 13 view .LVU346
+ 238:Module/remote_control/remote_control.c **** 
+ 1046              		.loc 1 238 64 is_stmt 0 view .LVU347
+ 1047 0050 1E48     		ldr	r0, .L71+8
+ 1048 0052 0268     		ldr	r2, [r0]
+ 238:Module/remote_control/remote_control.c **** 
+ 1049              		.loc 1 238 73 view .LVU348
+ 1050 0054 5368     		ldr	r3, [r2, #4]
+ 238:Module/remote_control/remote_control.c **** 
+ 1051              		.loc 1 238 48 view .LVU349
+ 1052 0056 C3F13203 		rsb	r3, r3, #50
+ 1053 005a 9BB2     		uxth	r3, r3
+ 238:Module/remote_control/remote_control.c **** 
+ 1054              		.loc 1 238 30 view .LVU350
+ 1055 005c 1C49     		ldr	r1, .L71+12
+ 1056 005e 0B80     		strh	r3, [r1]	@ movhi
+ 241:Module/remote_control/remote_control.c **** 
+ 1057              		.loc 1 241 13 is_stmt 1 view .LVU351
+ 241:Module/remote_control/remote_control.c **** 
+ 1058              		.loc 1 241 43 is_stmt 0 view .LVU352
+ 1059 0060 3221     		movs	r1, #50
+ 1060 0062 5160     		str	r1, [r2, #4]
+ 244:Module/remote_control/remote_control.c ****             
+ 1061              		.loc 1 244 13 is_stmt 1 view .LVU353
+ 244:Module/remote_control/remote_control.c ****             
+ 1062              		.loc 1 244 36 is_stmt 0 view .LVU354
+ 1063 0064 1168     		ldr	r1, [r2]
+ 244:Module/remote_control/remote_control.c ****             
+ 1064              		.loc 1 244 41 view .LVU355
+ 1065 0066 41F40021 		orr	r1, r1, #524288
+ 1066 006a 1160     		str	r1, [r2]
+ 247:Module/remote_control/remote_control.c **** 
+ 1067              		.loc 1 247 13 is_stmt 1 view .LVU356
+ 1068 006c 0168     		ldr	r1, [r0]
+ 1069 006e 0A68     		ldr	r2, [r1]
+ 1070 0070 42F00102 		orr	r2, r2, #1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 45
+
+
+ 1071 0074 0A60     		str	r2, [r1]
+ 250:Module/remote_control/remote_control.c ****             {
+ 1072              		.loc 1 250 13 view .LVU357
+ 250:Module/remote_control/remote_control.c ****             {
+ 1073              		.loc 1 250 15 is_stmt 0 view .LVU358
+ 1074 0076 192B     		cmp	r3, #25
+ 1075 0078 D1D1     		bne	.L66
+ 258:Module/remote_control/remote_control.c ****                 #else 
+ 1076              		.loc 1 258 21 is_stmt 1 view .LVU359
+ 1077 007a 1649     		ldr	r1, .L71+16
+ 1078 007c 1648     		ldr	r0, .L71+20
+ 1079 007e FFF7FEFF 		bl	Sbus_Data_Count
+ 1080              	.LVL33:
+ 1081 0082 CCE7     		b	.L66
+ 1082              	.L69:
+ 269:Module/remote_control/remote_control.c **** 
+ 1083              		.loc 1 269 13 view .LVU360
+ 1084 0084 1A68     		ldr	r2, [r3]
+ 1085 0086 22F00102 		bic	r2, r2, #1
+ 1086 008a 1A60     		str	r2, [r3]
+ 272:Module/remote_control/remote_control.c **** 
+ 1087              		.loc 1 272 13 view .LVU361
+ 272:Module/remote_control/remote_control.c **** 
+ 1088              		.loc 1 272 64 is_stmt 0 view .LVU362
+ 1089 008c 0F49     		ldr	r1, .L71+8
+ 1090 008e 0A68     		ldr	r2, [r1]
+ 272:Module/remote_control/remote_control.c **** 
+ 1091              		.loc 1 272 73 view .LVU363
+ 1092 0090 5368     		ldr	r3, [r2, #4]
+ 272:Module/remote_control/remote_control.c **** 
+ 1093              		.loc 1 272 48 view .LVU364
+ 1094 0092 C3F13203 		rsb	r3, r3, #50
+ 1095 0096 9BB2     		uxth	r3, r3
+ 272:Module/remote_control/remote_control.c **** 
+ 1096              		.loc 1 272 30 view .LVU365
+ 1097 0098 0D48     		ldr	r0, .L71+12
+ 1098 009a 0380     		strh	r3, [r0]	@ movhi
+ 275:Module/remote_control/remote_control.c **** 
+ 1099              		.loc 1 275 13 is_stmt 1 view .LVU366
+ 275:Module/remote_control/remote_control.c **** 
+ 1100              		.loc 1 275 43 is_stmt 0 view .LVU367
+ 1101 009c 3220     		movs	r0, #50
+ 1102 009e 5060     		str	r0, [r2, #4]
+ 278:Module/remote_control/remote_control.c ****             
+ 1103              		.loc 1 278 13 is_stmt 1 view .LVU368
+ 278:Module/remote_control/remote_control.c ****             
+ 1104              		.loc 1 278 25 is_stmt 0 view .LVU369
+ 1105 00a0 0E48     		ldr	r0, .L71+24
+ 1106 00a2 826A     		ldr	r2, [r0, #40]
+ 278:Module/remote_control/remote_control.c ****             
+ 1107              		.loc 1 278 30 view .LVU370
+ 1108 00a4 22F40022 		bic	r2, r2, #524288
+ 1109 00a8 8262     		str	r2, [r0, #40]
+ 281:Module/remote_control/remote_control.c **** 
+ 1110              		.loc 1 281 13 is_stmt 1 view .LVU371
+ 1111 00aa 0968     		ldr	r1, [r1]
+ 1112 00ac 0A68     		ldr	r2, [r1]
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 46
+
+
+ 1113 00ae 42F00102 		orr	r2, r2, #1
+ 1114 00b2 0A60     		str	r2, [r1]
+ 284:Module/remote_control/remote_control.c ****             {
+ 1115              		.loc 1 284 13 view .LVU372
+ 284:Module/remote_control/remote_control.c ****             {
+ 1116              		.loc 1 284 15 is_stmt 0 view .LVU373
+ 1117 00b4 192B     		cmp	r3, #25
+ 1118 00b6 B2D1     		bne	.L66
+ 292:Module/remote_control/remote_control.c ****                 #else 
+ 1119              		.loc 1 292 21 is_stmt 1 view .LVU374
+ 1120 00b8 0949     		ldr	r1, .L71+28
+ 1121 00ba 0748     		ldr	r0, .L71+20
+ 1122 00bc FFF7FEFF 		bl	Sbus_Data_Count
+ 1123              	.LVL34:
+ 1124              	.LBE11:
+ 1125              		.loc 1 299 1 is_stmt 0 view .LVU375
+ 1126 00c0 ADE7     		b	.L66
+ 1127              	.L72:
+ 1128 00c2 00BF     		.align	2
+ 1129              	.L71:
+ 1130 00c4 00000000 		.word	huart3
+ 1131 00c8 00480040 		.word	1073760256
+ 1132 00cc 00000000 		.word	hdma_usart3_rx
+ 1133 00d0 00000000 		.word	this_time_rx_len.0
+ 1134 00d4 00000000 		.word	sbus_rx_buf
+ 1135 00d8 00000000 		.word	rc_ctrl1
+ 1136 00dc 00600240 		.word	1073897472
+ 1137 00e0 32000000 		.word	sbus_rx_buf+50
+ 1138              		.cfi_endproc
+ 1139              	.LFE141:
+ 1141              		.section	.bss.this_time_rx_len.0,"aw",%nobits
+ 1142              		.align	1
+ 1145              	this_time_rx_len.0:
+ 1146 0000 0000     		.space	2
+ 1147              		.global	rc_ctrl1
+ 1148              		.section	.bss.rc_ctrl1,"aw",%nobits
+ 1149              		.align	2
+ 1152              	rc_ctrl1:
+ 1153 0000 00000000 		.space	16
+ 1153      00000000 
+ 1153      00000000 
+ 1153      00000000 
+ 1154              		.global	rc_ctrl
+ 1155              		.section	.bss.rc_ctrl,"aw",%nobits
+ 1156              		.align	2
+ 1159              	rc_ctrl:
+ 1160 0000 00000000 		.space	22
+ 1160      00000000 
+ 1160      00000000 
+ 1160      00000000 
+ 1160      00000000 
+ 1161              		.global	channels
+ 1162              		.section	.bss.channels,"aw",%nobits
+ 1163              		.align	2
+ 1166              	channels:
+ 1167 0000 00000000 		.space	36
+ 1167      00000000 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 47
+
+
+ 1167      00000000 
+ 1167      00000000 
+ 1167      00000000 
+ 1168              		.section	.bss.sbus_rx_buf,"aw",%nobits
+ 1169              		.align	2
+ 1172              	sbus_rx_buf:
+ 1173 0000 00000000 		.space	100
+ 1173      00000000 
+ 1173      00000000 
+ 1173      00000000 
+ 1173      00000000 
+ 1174              		.text
+ 1175              	.Letext0:
+ 1176              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 1177              		.file 4 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 1178              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 1179              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 1180              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1181              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1182              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 1183              		.file 10 "Core/Inc/usart.h"
+ 1184              		.file 11 "Module/remote_control/Remote_Control.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJlCajL.s 			page 48
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 remote_control.c
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:21     .text.RC_init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:27     .text.RC_init:00000000 RC_init
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:108    .text.RC_init:0000005c $d
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:115    .text.remote_control_init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:121    .text.remote_control_init:00000000 remote_control_init
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:143    .text.remote_control_init:00000010 $d
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:1021   .bss.sbus_rx_buf:00000000 sbus_rx_buf
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:148    .text.get_remote_control_point:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:154    .text.get_remote_control_point:00000000 get_remote_control_point
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:233    .text.get_remote_control_point:0000004c $d
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:1008   .bss.rc_ctrl:00000000 rc_ctrl
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:238    .text.sbus_to_rc:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:244    .text.sbus_to_rc:00000000 sbus_to_rc
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:423    .text.Sbus_Data_Count:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:429    .text.Sbus_Data_Count:00000000 Sbus_Data_Count
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:798    .text.Sbus_Data_Count:000001ac $d
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:1015   .bss.channels:00000000 channels
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:803    .text.USART3_IRQHandler:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:809    .text.USART3_IRQHandler:00000000 USART3_IRQHandler
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:979    .text.USART3_IRQHandler:000000c4 $d
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:994    .bss.this_time_rx_len.0:00000000 this_time_rx_len.0
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:1001   .bss.rc_ctrl1:00000000 rc_ctrl1
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:991    .bss.this_time_rx_len.0:00000000 $d
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:998    .bss.rc_ctrl1:00000000 $d
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:1005   .bss.rc_ctrl:00000000 $d
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:1012   .bss.channels:00000000 $d
-C:\Users\30514\AppData\Local\Temp\cc6AuWcG.s:1018   .bss.sbus_rx_buf:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:21     .text.RC_init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:27     .text.RC_init:00000000 RC_init
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:108    .text.RC_init:0000005c $d
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:115    .text.remote_control_init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:121    .text.remote_control_init:00000000 remote_control_init
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:143    .text.remote_control_init:00000010 $d
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:1172   .bss.sbus_rx_buf:00000000 sbus_rx_buf
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:148    .text.get_remote_control_point:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:154    .text.get_remote_control_point:00000000 get_remote_control_point
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:233    .text.get_remote_control_point:0000004c $d
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:1159   .bss.rc_ctrl:00000000 rc_ctrl
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:238    .text.sbus_to_rc:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:244    .text.sbus_to_rc:00000000 sbus_to_rc
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:423    .text.Sbus_Data_Count:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:429    .text.Sbus_Data_Count:00000000 Sbus_Data_Count
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:798    .text.Sbus_Data_Count:000001ac $d
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:1166   .bss.channels:00000000 channels
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:803    .text.get_channel_raw_value:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:809    .text.get_channel_raw_value:00000000 get_channel_raw_value
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:826    .text.get_channel_raw_value:0000000c $d
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:893    .text.get_channel_raw_value:00000044 $d
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:1152   .bss.rc_ctrl1:00000000 rc_ctrl1
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:898    .text.get_channel_mapped_value:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:904    .text.get_channel_mapped_value:00000000 get_channel_mapped_value
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:954    .text.USART3_IRQHandler:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:960    .text.USART3_IRQHandler:00000000 USART3_IRQHandler
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:1130   .text.USART3_IRQHandler:000000c4 $d
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:1145   .bss.this_time_rx_len.0:00000000 this_time_rx_len.0
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:1142   .bss.this_time_rx_len.0:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:1149   .bss.rc_ctrl1:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:1156   .bss.rc_ctrl:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:1163   .bss.channels:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:1169   .bss.sbus_rx_buf:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:831    .text.get_channel_raw_value:00000011 $d
+C:\Users\30514\AppData\Local\Temp\ccJlCajL.s:831    .text.get_channel_raw_value:00000012 $t
 
 UNDEFINED SYMBOLS
 huart3
