@@ -1,0 +1,457 @@
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"coordinate_mapping.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Module/coordinate/coordinate_mapping.c"
+  20              		.section	.text.Mapping_Init,"ax",%progbits
+  21              		.align	1
+  22              		.global	Mapping_Init
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	Mapping_Init:
+  28              	.LVL0:
+  29              	.LFB135:
+   1:Module/coordinate/coordinate_mapping.c **** #include "coordinate_mapping.h"
+   2:Module/coordinate/coordinate_mapping.c **** #include "math.h"
+   3:Module/coordinate/coordinate_mapping.c **** #include "Remote_Control.h"
+   4:Module/coordinate/coordinate_mapping.c **** 
+   5:Module/coordinate/coordinate_mapping.c **** // 默认工作空间配置
+   6:Module/coordinate/coordinate_mapping.c **** static WorkspaceConfig workspace_config = {
+   7:Module/coordinate/coordinate_mapping.c ****     .x_min = -0.3f,
+   8:Module/coordinate/coordinate_mapping.c ****     .x_max = 0.3f,
+   9:Module/coordinate/coordinate_mapping.c ****     .y_min = 0.1f,
+  10:Module/coordinate/coordinate_mapping.c ****     .y_max = 0.5f,
+  11:Module/coordinate/coordinate_mapping.c ****     .safety_margin = 0.02f
+  12:Module/coordinate/coordinate_mapping.c **** };
+  13:Module/coordinate/coordinate_mapping.c **** 
+  14:Module/coordinate/coordinate_mapping.c **** // 默认摇杆通道配置
+  15:Module/coordinate/coordinate_mapping.c **** static StickChannelConfig stick_config = {
+  16:Module/coordinate/coordinate_mapping.c ****     .x_channel = 0, // 默认通道0控制X轴
+  17:Module/coordinate/coordinate_mapping.c ****     .y_channel = 1  // 默认通道1控制Y轴
+  18:Module/coordinate/coordinate_mapping.c **** };
+  19:Module/coordinate/coordinate_mapping.c **** 
+  20:Module/coordinate/coordinate_mapping.c **** // 映射曲线平滑函数
+  21:Module/coordinate/coordinate_mapping.c **** static float smooth_curve(float value) {
+  22:Module/coordinate/coordinate_mapping.c ****     // 使用Sigmoid函数实现平滑过渡
+  23:Module/coordinate/coordinate_mapping.c ****     const float k = 3.0f; // 调整曲线陡峭程度
+  24:Module/coordinate/coordinate_mapping.c ****     return (2.0f / (1.0f + expf(-k * value))) - 1.0f;
+  25:Module/coordinate/coordinate_mapping.c **** }
+  26:Module/coordinate/coordinate_mapping.c **** 
+  27:Module/coordinate/coordinate_mapping.c **** void Mapping_Init(WorkspaceConfig* config) {
+  30              		.loc 1 27 44 view -0
+  31              		.cfi_startproc
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 2
+
+
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  28:Module/coordinate/coordinate_mapping.c ****     if (config != NULL) {
+  35              		.loc 1 28 5 view .LVU1
+  36              		.loc 1 28 8 is_stmt 0 view .LVU2
+  37 0000 58B1     		cbz	r0, .L4
+  27:Module/coordinate/coordinate_mapping.c ****     if (config != NULL) {
+  38              		.loc 1 27 44 view .LVU3
+  39 0002 10B4     		push	{r4}
+  40              	.LCFI0:
+  41              		.cfi_def_cfa_offset 4
+  42              		.cfi_offset 4, -4
+  43 0004 8446     		mov	ip, r0
+  29:Module/coordinate/coordinate_mapping.c ****         workspace_config = *config;
+  44              		.loc 1 29 9 is_stmt 1 view .LVU4
+  45              		.loc 1 29 26 is_stmt 0 view .LVU5
+  46 0006 054C     		ldr	r4, .L7
+  47 0008 BCE80F00 		ldmia	ip!, {r0, r1, r2, r3}
+  48              	.LVL1:
+  49              		.loc 1 29 26 view .LVU6
+  50 000c 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+  51 000e DCF80030 		ldr	r3, [ip]
+  52 0012 2360     		str	r3, [r4]
+  30:Module/coordinate/coordinate_mapping.c ****     }
+  31:Module/coordinate/coordinate_mapping.c **** }
+  53              		.loc 1 31 1 view .LVU7
+  54 0014 5DF8044B 		ldr	r4, [sp], #4
+  55              	.LCFI1:
+  56              		.cfi_restore 4
+  57              		.cfi_def_cfa_offset 0
+  58 0018 7047     		bx	lr
+  59              	.LVL2:
+  60              	.L4:
+  61              		.loc 1 31 1 view .LVU8
+  62 001a 7047     		bx	lr
+  63              	.L8:
+  64              		.align	2
+  65              	.L7:
+  66 001c 00000000 		.word	workspace_config
+  67              		.cfi_endproc
+  68              	.LFE135:
+  70              		.section	.text.Set_Stick_Channels,"ax",%progbits
+  71              		.align	1
+  72              		.global	Set_Stick_Channels
+  73              		.syntax unified
+  74              		.thumb
+  75              		.thumb_func
+  77              	Set_Stick_Channels:
+  78              	.LVL3:
+  79              	.LFB136:
+  32:Module/coordinate/coordinate_mapping.c **** 
+  33:Module/coordinate/coordinate_mapping.c **** void Set_Stick_Channels(uint8_t x_ch, uint8_t y_ch) {
+  80              		.loc 1 33 53 is_stmt 1 view -0
+  81              		.cfi_startproc
+  82              		@ args = 0, pretend = 0, frame = 0
+  83              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 3
+
+
+  84              		@ link register save eliminated.
+  34:Module/coordinate/coordinate_mapping.c ****     stick_config.x_channel = x_ch;
+  85              		.loc 1 34 5 view .LVU10
+  86              		.loc 1 34 28 is_stmt 0 view .LVU11
+  87 0000 014B     		ldr	r3, .L10
+  88 0002 1870     		strb	r0, [r3]
+  35:Module/coordinate/coordinate_mapping.c ****     stick_config.y_channel = y_ch;
+  89              		.loc 1 35 5 is_stmt 1 view .LVU12
+  90              		.loc 1 35 28 is_stmt 0 view .LVU13
+  91 0004 5970     		strb	r1, [r3, #1]
+  36:Module/coordinate/coordinate_mapping.c **** }
+  92              		.loc 1 36 1 view .LVU14
+  93 0006 7047     		bx	lr
+  94              	.L11:
+  95              		.align	2
+  96              	.L10:
+  97 0008 00000000 		.word	stick_config
+  98              		.cfi_endproc
+  99              	.LFE136:
+ 101              		.section	.text.Map_To_Cartesian,"ax",%progbits
+ 102              		.align	1
+ 103              		.global	Map_To_Cartesian
+ 104              		.syntax unified
+ 105              		.thumb
+ 106              		.thumb_func
+ 108              	Map_To_Cartesian:
+ 109              	.LFB137:
+  37:Module/coordinate/coordinate_mapping.c **** 
+  38:Module/coordinate/coordinate_mapping.c **** point2D Map_To_Cartesian(void) {
+ 110              		.loc 1 38 32 is_stmt 1 view -0
+ 111              		.cfi_startproc
+ 112              		@ args = 0, pretend = 0, frame = 24
+ 113              		@ frame_needed = 0, uses_anonymous_args = 0
+ 114 0000 30B5     		push	{r4, r5, lr}
+ 115              	.LCFI2:
+ 116              		.cfi_def_cfa_offset 12
+ 117              		.cfi_offset 4, -12
+ 118              		.cfi_offset 5, -8
+ 119              		.cfi_offset 14, -4
+ 120 0002 2DED068B 		vpush.64	{d8, d9, d10}
+ 121              	.LCFI3:
+ 122              		.cfi_def_cfa_offset 36
+ 123              		.cfi_offset 80, -36
+ 124              		.cfi_offset 81, -32
+ 125              		.cfi_offset 82, -28
+ 126              		.cfi_offset 83, -24
+ 127              		.cfi_offset 84, -20
+ 128              		.cfi_offset 85, -16
+ 129 0006 87B0     		sub	sp, sp, #28
+ 130              	.LCFI4:
+ 131              		.cfi_def_cfa_offset 64
+  39:Module/coordinate/coordinate_mapping.c ****     point2D result = {0, 0};
+ 132              		.loc 1 39 5 view .LVU16
+ 133              		.loc 1 39 13 is_stmt 0 view .LVU17
+ 134 0008 0023     		movs	r3, #0
+ 135 000a 0293     		str	r3, [sp, #8]	@ float
+ 136 000c 0393     		str	r3, [sp, #12]	@ float
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 4
+
+
+  40:Module/coordinate/coordinate_mapping.c ****     
+  41:Module/coordinate/coordinate_mapping.c ****     // 获取摇杆原始值
+  42:Module/coordinate/coordinate_mapping.c ****     int16_t ch_x = get_channel_raw_value(stick_config.x_channel);
+ 137              		.loc 1 42 5 is_stmt 1 view .LVU18
+ 138              		.loc 1 42 20 is_stmt 0 view .LVU19
+ 139 000e 424D     		ldr	r5, .L18
+ 140 0010 2878     		ldrb	r0, [r5]	@ zero_extendqisi2
+ 141 0012 FFF7FEFF 		bl	get_channel_raw_value
+ 142              	.LVL4:
+ 143 0016 0446     		mov	r4, r0
+ 144              	.LVL5:
+  43:Module/coordinate/coordinate_mapping.c ****     int16_t ch_y = get_channel_raw_value(stick_config.y_channel);
+ 145              		.loc 1 43 5 is_stmt 1 view .LVU20
+ 146              		.loc 1 43 20 is_stmt 0 view .LVU21
+ 147 0018 6878     		ldrb	r0, [r5, #1]	@ zero_extendqisi2
+ 148 001a FFF7FEFF 		bl	get_channel_raw_value
+ 149              	.LVL6:
+  44:Module/coordinate/coordinate_mapping.c ****     
+  45:Module/coordinate/coordinate_mapping.c ****     // 确定原始值范围（根据遥控器类型）
+  46:Module/coordinate/coordinate_mapping.c ****     #if defined(RC_PROTOCOL_DJI)
+  47:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MIN = -660;
+  48:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MAX = 660;
+  49:Module/coordinate/coordinate_mapping.c ****     #elif defined(RC_PROTOCOL_TDF)
+  50:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MIN = -1024;
+ 150              		.loc 1 50 9 is_stmt 1 view .LVU22
+  51:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MAX = 1024;
+ 151              		.loc 1 51 9 view .LVU23
+  52:Module/coordinate/coordinate_mapping.c ****     #else
+  53:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MIN = -1000;
+  54:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MAX = 1000;
+  55:Module/coordinate/coordinate_mapping.c ****     #endif
+  56:Module/coordinate/coordinate_mapping.c ****     
+  57:Module/coordinate/coordinate_mapping.c ****     // 归一化到[-1, 1]范围
+  58:Module/coordinate/coordinate_mapping.c ****     float norm_x = (float)(ch_x - RAW_MIN) / (RAW_MAX - RAW_MIN) * 2.0f - 1.0f;
+ 152              		.loc 1 58 5 view .LVU24
+ 153              		.loc 1 58 33 is_stmt 0 view .LVU25
+ 154 001e 04F58063 		add	r3, r4, #1024
+ 155 0022 07EE903A 		vmov	s15, r3	@ int
+ 156              		.loc 1 58 20 view .LVU26
+ 157 0026 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 158              		.loc 1 58 44 view .LVU27
+ 159 002a 9FED3C6A 		vldr.32	s12, .L18+4
+ 160 002e 67EE867A 		vmul.f32	s15, s15, s12
+ 161              		.loc 1 58 66 view .LVU28
+ 162 0032 77EEA77A 		vadd.f32	s15, s15, s15
+ 163              		.loc 1 58 11 view .LVU29
+ 164 0036 F7EE006A 		vmov.f32	s13, #1.0e+0
+ 165 003a 77EEE67A 		vsub.f32	s15, s15, s13
+ 166              	.LVL7:
+  59:Module/coordinate/coordinate_mapping.c ****     float norm_y = (float)(ch_y - RAW_MIN) / (RAW_MAX - RAW_MIN) * 2.0f - 1.0f;
+ 167              		.loc 1 59 5 is_stmt 1 view .LVU30
+ 168              		.loc 1 59 33 is_stmt 0 view .LVU31
+ 169 003e 00F58063 		add	r3, r0, #1024
+ 170 0042 07EE103A 		vmov	s14, r3	@ int
+ 171              		.loc 1 59 20 view .LVU32
+ 172 0046 B8EEC77A 		vcvt.f32.s32	s14, s14
+ 173              		.loc 1 59 44 view .LVU33
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 5
+
+
+ 174 004a 27EE067A 		vmul.f32	s14, s14, s12
+ 175              		.loc 1 59 66 view .LVU34
+ 176 004e 37EE077A 		vadd.f32	s14, s14, s14
+ 177              		.loc 1 59 11 view .LVU35
+ 178 0052 37EE667A 		vsub.f32	s14, s14, s13
+ 179              	.LVL8:
+  60:Module/coordinate/coordinate_mapping.c ****     
+  61:Module/coordinate/coordinate_mapping.c ****     // 应用死区处理（避免摇杆微动）
+  62:Module/coordinate/coordinate_mapping.c ****     const float deadzone = 0.05f; // 5%死区
+ 180              		.loc 1 62 5 is_stmt 1 view .LVU36
+  63:Module/coordinate/coordinate_mapping.c ****     if (fabsf(norm_x) < deadzone) norm_x = 0.0f;
+ 181              		.loc 1 63 5 view .LVU37
+ 182              		.loc 1 63 9 is_stmt 0 view .LVU38
+ 183 0056 B0EEE76A 		vabs.f32	s12, s15
+ 184              		.loc 1 63 8 view .LVU39
+ 185 005a DFED316A 		vldr.32	s13, .L18+8
+ 186 005e B4EEE66A 		vcmpe.f32	s12, s13
+ 187 0062 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 188 0066 01D5     		bpl	.L13
+ 189              		.loc 1 63 42 discriminator 1 view .LVU40
+ 190 0068 DFED2E7A 		vldr.32	s15, .L18+12
+ 191              	.LVL9:
+ 192              	.L13:
+  64:Module/coordinate/coordinate_mapping.c ****     if (fabsf(norm_y) < deadzone) norm_y = 0.0f;
+ 193              		.loc 1 64 5 is_stmt 1 view .LVU41
+ 194              		.loc 1 64 9 is_stmt 0 view .LVU42
+ 195 006c F0EEC76A 		vabs.f32	s13, s14
+ 196              		.loc 1 64 8 view .LVU43
+ 197 0070 9FED2B6A 		vldr.32	s12, .L18+8
+ 198 0074 F4EEC66A 		vcmpe.f32	s13, s12
+ 199 0078 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 200 007c 01D5     		bpl	.L14
+ 201              		.loc 1 64 42 discriminator 1 view .LVU44
+ 202 007e 9FED297A 		vldr.32	s14, .L18+12
+ 203              	.LVL10:
+ 204              	.L14:
+  65:Module/coordinate/coordinate_mapping.c ****     
+  66:Module/coordinate/coordinate_mapping.c ****     // 应用平滑曲线（可选）
+  67:Module/coordinate/coordinate_mapping.c ****     // norm_x = smooth_curve(norm_x);
+  68:Module/coordinate/coordinate_mapping.c ****     // norm_y = smooth_curve(norm_y);
+  69:Module/coordinate/coordinate_mapping.c ****     
+  70:Module/coordinate/coordinate_mapping.c ****     // 计算范围比例
+  71:Module/coordinate/coordinate_mapping.c ****     float range_x = workspace_config.x_max - workspace_config.x_min;
+ 205              		.loc 1 71 5 is_stmt 1 view .LVU45
+ 206              		.loc 1 71 37 is_stmt 0 view .LVU46
+ 207 0082 294B     		ldr	r3, .L18+16
+ 208 0084 D3ED010A 		vldr.32	s1, [r3, #4]
+ 209              		.loc 1 71 62 view .LVU47
+ 210 0088 D3ED009A 		vldr.32	s19, [r3]
+ 211              		.loc 1 71 11 view .LVU48
+ 212 008c 70EEE95A 		vsub.f32	s11, s1, s19
+ 213              	.LVL11:
+  72:Module/coordinate/coordinate_mapping.c ****     float range_y = workspace_config.y_max - workspace_config.y_min;
+ 214              		.loc 1 72 5 is_stmt 1 view .LVU49
+ 215              		.loc 1 72 37 is_stmt 0 view .LVU50
+ 216 0090 93ED03AA 		vldr.32	s20, [r3, #12]
+ 217              		.loc 1 72 62 view .LVU51
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 6
+
+
+ 218 0094 93ED029A 		vldr.32	s18, [r3, #8]
+ 219              		.loc 1 72 11 view .LVU52
+ 220 0098 3AEE496A 		vsub.f32	s12, s20, s18
+ 221              	.LVL12:
+  73:Module/coordinate/coordinate_mapping.c ****     
+  74:Module/coordinate/coordinate_mapping.c ****     // 映射到实际工作空间
+  75:Module/coordinate/coordinate_mapping.c ****     result.x = workspace_config.x_min + (norm_x + 1.0f) * 0.5f * range_x;
+ 222              		.loc 1 75 5 is_stmt 1 view .LVU53
+ 223              		.loc 1 75 49 is_stmt 0 view .LVU54
+ 224 009c F7EE006A 		vmov.f32	s13, #1.0e+0
+ 225 00a0 37EEA60A 		vadd.f32	s0, s15, s13
+ 226              		.loc 1 75 57 view .LVU55
+ 227 00a4 F6EE007A 		vmov.f32	s15, #5.0e-1
+ 228              	.LVL13:
+ 229              		.loc 1 75 57 view .LVU56
+ 230 00a8 20EE270A 		vmul.f32	s0, s0, s15
+ 231              		.loc 1 75 64 view .LVU57
+ 232 00ac 20EE250A 		vmul.f32	s0, s0, s11
+ 233              		.loc 1 75 39 view .LVU58
+ 234 00b0 39EE800A 		vadd.f32	s0, s19, s0
+ 235              		.loc 1 75 14 view .LVU59
+ 236 00b4 8DED020A 		vstr.32	s0, [sp, #8]
+  76:Module/coordinate/coordinate_mapping.c ****     result.y = workspace_config.y_min + (norm_y + 1.0f) * 0.5f * range_y;
+ 237              		.loc 1 76 5 is_stmt 1 view .LVU60
+ 238              		.loc 1 76 49 is_stmt 0 view .LVU61
+ 239 00b8 37EE268A 		vadd.f32	s16, s14, s13
+ 240              		.loc 1 76 57 view .LVU62
+ 241 00bc 28EE278A 		vmul.f32	s16, s16, s15
+ 242              		.loc 1 76 64 view .LVU63
+ 243 00c0 28EE068A 		vmul.f32	s16, s16, s12
+ 244              		.loc 1 76 39 view .LVU64
+ 245 00c4 39EE088A 		vadd.f32	s16, s18, s16
+ 246              		.loc 1 76 14 view .LVU65
+ 247 00c8 8DED038A 		vstr.32	s16, [sp, #12]
+  77:Module/coordinate/coordinate_mapping.c ****     
+  78:Module/coordinate/coordinate_mapping.c ****     // 应用安全边界（确保不超出工作空间）
+  79:Module/coordinate/coordinate_mapping.c ****     result.x = fmaxf(fminf(result.x, workspace_config.x_max - workspace_config.safety_margin), 
+ 248              		.loc 1 79 5 is_stmt 1 view .LVU66
+ 249              		.loc 1 79 79 is_stmt 0 view .LVU67
+ 250 00cc D3ED048A 		vldr.32	s17, [r3, #16]
+ 251              		.loc 1 79 16 view .LVU68
+ 252 00d0 70EEE80A 		vsub.f32	s1, s1, s17
+ 253 00d4 FFF7FEFF 		bl	fminf
+ 254              	.LVL14:
+ 255              		.loc 1 79 16 view .LVU69
+ 256 00d8 79EEA80A 		vadd.f32	s1, s19, s17
+ 257 00dc FFF7FEFF 		bl	fmaxf
+ 258              	.LVL15:
+ 259              		.loc 1 79 14 discriminator 1 view .LVU70
+ 260 00e0 8DED020A 		vstr.32	s0, [sp, #8]
+  80:Module/coordinate/coordinate_mapping.c ****                      workspace_config.x_min + workspace_config.safety_margin);
+  81:Module/coordinate/coordinate_mapping.c ****     result.y = fmaxf(fminf(result.y, workspace_config.y_max - workspace_config.safety_margin), 
+ 261              		.loc 1 81 5 is_stmt 1 view .LVU71
+ 262              		.loc 1 81 16 is_stmt 0 view .LVU72
+ 263 00e4 7AEE680A 		vsub.f32	s1, s20, s17
+ 264 00e8 B0EE480A 		vmov.f32	s0, s16
+ 265 00ec FFF7FEFF 		bl	fminf
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 7
+
+
+ 266              	.LVL16:
+ 267 00f0 79EE280A 		vadd.f32	s1, s18, s17
+ 268 00f4 FFF7FEFF 		bl	fmaxf
+ 269              	.LVL17:
+ 270              		.loc 1 81 14 discriminator 1 view .LVU73
+ 271 00f8 8DED030A 		vstr.32	s0, [sp, #12]
+  82:Module/coordinate/coordinate_mapping.c ****                      workspace_config.y_min + workspace_config.safety_margin);
+  83:Module/coordinate/coordinate_mapping.c ****     
+  84:Module/coordinate/coordinate_mapping.c ****     return result;
+ 272              		.loc 1 84 5 is_stmt 1 view .LVU74
+ 273              		.loc 1 84 12 is_stmt 0 view .LVU75
+ 274 00fc 02AB     		add	r3, sp, #8
+ 275 00fe 93E80300 		ldm	r3, {r0, r1}
+ 276 0102 06AB     		add	r3, sp, #24
+ 277 0104 03E90300 		stmdb	r3, {r0, r1}
+  85:Module/coordinate/coordinate_mapping.c **** }...
+ 278              		.loc 1 85 1 view .LVU76
+ 279 0108 9DED040A 		vldr.32	s0, [sp, #16]
+ 280 010c DDED050A 		vldr.32	s1, [sp, #20]
+ 281 0110 07B0     		add	sp, sp, #28
+ 282              	.LCFI5:
+ 283              		.cfi_def_cfa_offset 36
+ 284              		@ sp needed
+ 285 0112 BDEC068B 		vldm	sp!, {d8-d10}
+ 286              	.LCFI6:
+ 287              		.cfi_restore 84
+ 288              		.cfi_restore 85
+ 289              		.cfi_restore 82
+ 290              		.cfi_restore 83
+ 291              		.cfi_restore 80
+ 292              		.cfi_restore 81
+ 293              		.cfi_def_cfa_offset 12
+ 294              	.LVL18:
+ 295              		.loc 1 85 1 view .LVU77
+ 296 0116 30BD     		pop	{r4, r5, pc}
+ 297              	.LVL19:
+ 298              	.L19:
+ 299              		.loc 1 85 1 view .LVU78
+ 300              		.align	2
+ 301              	.L18:
+ 302 0118 00000000 		.word	stick_config
+ 303 011c 0000003A 		.word	973078528
+ 304 0120 CDCC4C3D 		.word	1028443341
+ 305 0124 00000000 		.word	0
+ 306 0128 00000000 		.word	workspace_config
+ 307              		.cfi_endproc
+ 308              	.LFE137:
+ 310              		.section	.data.stick_config,"aw"
+ 311              		.align	2
+ 314              	stick_config:
+ 315 0000 00       		.byte	0
+ 316 0001 01       		.byte	1
+ 317              		.section	.data.workspace_config,"aw"
+ 318              		.align	2
+ 321              	workspace_config:
+ 322 0000 9A9999BE 		.word	-1097229926
+ 323 0004 9A99993E 		.word	1050253722
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 8
+
+
+ 324 0008 CDCCCC3D 		.word	1036831949
+ 325 000c 0000003F 		.word	1056964608
+ 326 0010 0AD7A33C 		.word	1017370378
+ 327              		.text
+ 328              	.Letext0:
+ 329              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 330              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 331              		.file 4 "Module/kinematic/kinematic_solver.h"
+ 332              		.file 5 "Module/coordinate/coordinate_mapping.h"
+ 333              		.file 6 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/math.h"
+ 334              		.file 7 "Module/remote_control/remote_control.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 coordinate_mapping.c
+C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:21     .text.Mapping_Init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:27     .text.Mapping_Init:00000000 Mapping_Init
+C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:66     .text.Mapping_Init:0000001c $d
+C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:321    .data.workspace_config:00000000 workspace_config
+C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:71     .text.Set_Stick_Channels:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:77     .text.Set_Stick_Channels:00000000 Set_Stick_Channels
+C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:97     .text.Set_Stick_Channels:00000008 $d
+C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:314    .data.stick_config:00000000 stick_config
+C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:102    .text.Map_To_Cartesian:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:108    .text.Map_To_Cartesian:00000000 Map_To_Cartesian
+C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:302    .text.Map_To_Cartesian:00000118 $d
+C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:311    .data.stick_config:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:318    .data.workspace_config:00000000 $d
+
+UNDEFINED SYMBOLS
+get_channel_raw_value
+fminf
+fmaxf
