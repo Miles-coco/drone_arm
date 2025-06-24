@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccmat23d.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 1
   29:Module/arm_control/arm_control.c **** static JointAngles current_angles = {M_PI/4, M_PI/2}; // 当前角度
   30:Module/arm_control/arm_control.c **** static JointAngles target_angles = {M_PI/4, M_PI/2}; // 目标角度
   31:Module/arm_control/arm_control.c **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccmat23d.s 			page 2
 
 
   32:Module/arm_control/arm_control.c **** // 初始化函数
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 1
   52              		.loc 1 61 34 is_stmt 0 view .LVU9
   53 0020 17EE903A 		vmov	r3, s15	@ int
   54 0024 002B     		cmp	r3, #0
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccmat23d.s 			page 3
 
 
   55 0026 01DA     		bge	.L4
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 1
   95 006c DFED107A 		vldr.32	s15, .L19+20
   96              	.LVL4:
   97              		.loc 1 75 8 view .LVU23
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccmat23d.s 			page 4
 
 
   98 0070 F4EEE76A 		vcmpe.f32	s13, s15
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 1
  146              		.global	ArmControl_Init
  147              		.syntax unified
  148              		.thumb
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 5
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccmat23d.s 			page 5
 
 
  149              		.thumb_func
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 1
  197              		.thumb_func
  199              	Set_Target_Position:
  200              	.LFB135:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 6
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccmat23d.s 			page 6
 
 
   49:Module/arm_control/arm_control.c ****     current_target = target;
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 1
  248              		@ frame_needed = 0, uses_anonymous_args = 0
   82:Module/arm_control/arm_control.c ****     // 空闲状态等待新目标
   83:Module/arm_control/arm_control.c ****     if (arm_state == ARM_IDLE) {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 7
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccmat23d.s 			page 7
 
 
  249              		.loc 1 83 5 view .LVU47
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 1
  100:Module/arm_control/arm_control.c ****     
  101:Module/arm_control/arm_control.c ****     // 选择最优解（IK_Solve已将结果写入current_angles）
  102:Module/arm_control/arm_control.c ****     // target_angles = current_angles; // 不再需要
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 8
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccmat23d.s 			page 8
 
 
  103:Module/arm_control/arm_control.c ****     
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 1
  314 004e FFF7FEFF 		bl	ctrl_send
  315              	.LVL17:
  316 0052 EBE7     		b	.L29
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 9
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccmat23d.s 			page 9
 
 
  317              	.L38:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 1
  375              		.align	2
  378              	workspace_config:
  379 0000 9A9999BE 		.word	-1097229926
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 10
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccmat23d.s 			page 10
 
 
  380 0004 9A99993E 		.word	1050253722
@@ -564,36 +564,36 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 1
  402              		.file 7 "Module/arm_control/arm_control.h"
  403              		.file 8 "Module/motor/dm_ctrl.h"
  404              		.file 9 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/math.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cchEbkNe.s 			page 11
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccmat23d.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 arm_control.c
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:21     .text.Smooth_Angle_Transition:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:26     .text.Smooth_Angle_Transition:00000000 Smooth_Angle_Transition
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:132    .text.Smooth_Angle_Transition:0000009c $d
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:359    .data.current_angles:00000000 current_angles
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:372    .bss.arm_state:00000000 arm_state
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:145    .text.ArmControl_Init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:151    .text.ArmControl_Init:00000000 ArmControl_Init
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:187    .text.ArmControl_Init:00000020 $d
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:378    .data.workspace_config:00000000 workspace_config
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:193    .text.Set_Target_Position:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:199    .text.Set_Target_Position:00000000 Set_Target_Position
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:231    .text.Set_Target_Position:00000020 $d
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:366    .data.current_target:00000000 current_target
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:237    .text.ArmControl_Update:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:243    .text.ArmControl_Update:00000000 ArmControl_Update
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:320    .text.ArmControl_Update:00000054 $d
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:388    .rodata.arm_config:00000000 arm_config
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:330    .text.Get_Arm_State:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:336    .text.Get_Arm_State:00000000 Get_Arm_State
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:351    .text.Get_Arm_State:00000008 $d
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:356    .data.current_angles:00000000 $d
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:363    .data.current_target:00000000 $d
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:373    .bss.arm_state:00000000 $d
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:375    .data.workspace_config:00000000 $d
-C:\Users\30514\AppData\Local\Temp\cchEbkNe.s:385    .rodata.arm_config:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:21     .text.Smooth_Angle_Transition:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:26     .text.Smooth_Angle_Transition:00000000 Smooth_Angle_Transition
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:132    .text.Smooth_Angle_Transition:0000009c $d
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:359    .data.current_angles:00000000 current_angles
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:372    .bss.arm_state:00000000 arm_state
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:145    .text.ArmControl_Init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:151    .text.ArmControl_Init:00000000 ArmControl_Init
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:187    .text.ArmControl_Init:00000020 $d
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:378    .data.workspace_config:00000000 workspace_config
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:193    .text.Set_Target_Position:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:199    .text.Set_Target_Position:00000000 Set_Target_Position
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:231    .text.Set_Target_Position:00000020 $d
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:366    .data.current_target:00000000 current_target
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:237    .text.ArmControl_Update:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:243    .text.ArmControl_Update:00000000 ArmControl_Update
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:320    .text.ArmControl_Update:00000054 $d
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:388    .rodata.arm_config:00000000 arm_config
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:330    .text.Get_Arm_State:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:336    .text.Get_Arm_State:00000000 Get_Arm_State
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:351    .text.Get_Arm_State:00000008 $d
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:356    .data.current_angles:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:363    .data.current_target:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:373    .bss.arm_state:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:375    .data.workspace_config:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccmat23d.s:385    .rodata.arm_config:00000000 $d
 
 UNDEFINED SYMBOLS
 Mapping_Init

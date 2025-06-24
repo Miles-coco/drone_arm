@@ -7,7 +7,7 @@
 void MCU_init(void)
 {
     task_init();
-    //RC_init();
+    remote_control_init();
     can_driver_init();
     dm4310_motor_init();
 

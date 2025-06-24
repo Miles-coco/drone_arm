@@ -20,22 +20,22 @@ void dm4310_motor_init(void)
 	// 初始化Motor1和Motor2的电机结构
 	memset(&motor[Motor1], 0, sizeof(motor[Motor1]));
 	memset(&motor[Motor2], 0, sizeof(motor[Motor2]));
-	memset(&motor[Motor3], 0, sizeof(motor[Motor2]));
+	//memset(&motor[Motor3], 0, sizeof(motor[Motor2]));
 
 	// 设置Motor1的电机信息
 	motor[Motor1].id = 1;
-	motor[Motor1].ctrl.mode = 2;		// 0: MIT模式   1: 位置速度模式   2: 速度模式
-	motor[Motor1].cmd.mode = 2;
+	motor[Motor1].ctrl.mode = 0;		// 0: MIT模式   1: 位置速度模式   2: 速度模式
+	motor[Motor1].cmd.mode = 0;
 
 	// 设置Motor2的电机信息
 	motor[Motor2].id = 1;
-	motor[Motor2].ctrl.mode = 2;
-	motor[Motor2].cmd.mode = 2;
+	motor[Motor2].ctrl.mode = 0;
+	motor[Motor2].cmd.mode = 0;
 	
 	// 设置Motor3的电机信息
-	motor[Motor3].id = 2;
-	motor[Motor3].ctrl.mode = 2;
-	motor[Motor3].cmd.mode = 2;
+	//motor[Motor3].id = 2;
+	//motor[Motor3].ctrl.mode = 2;
+	//motor[Motor3].cmd.mode = 2;
 }
 
 /**
@@ -61,11 +61,11 @@ void ctrl_enable(void)
 			motor[Motor2].start_flag = 1;
 			dm4310_enable(&hcan2, &motor[Motor2]);
 			break;
-		case 3:
+		//case 3:
 			// 启用Motor3的电机控制
-			motor[Motor3].start_flag = 1;
-			dm4310_enable(&hcan1, &motor[Motor3]);
-			break;
+		//	motor[Motor3].start_flag = 1;
+		//	dm4310_enable(&hcan1, &motor[Motor3]);
+		//	break;
 	}
 }
 /**
@@ -91,11 +91,11 @@ void ctrl_disable(void)
 			motor[Motor2].start_flag = 0;
 			dm4310_disable(&hcan2, &motor[Motor2]);
 			break;
-		case 3:
+		//case 3:
 			// 禁用Motor2的电机控制
-			motor[Motor3].start_flag = 0;
-			dm4310_disable(&hcan1, &motor[Motor3]);
-			break;
+		//	motor[Motor3].start_flag = 0;
+		//	dm4310_disable(&hcan1, &motor[Motor3]);
+		//	break;
 	}
 }
 /**
@@ -119,10 +119,10 @@ void ctrl_set(void)
 			// 设置Motor2的电机参数
 			dm4310_set(&motor[Motor2]);
 			break;
-		case 3:
+		//case 3:
 			// 设置Motor3的电机参数
-			dm4310_set(&motor[Motor3]);
-			break;
+		//	dm4310_set(&motor[Motor3]);
+		//	break;
 	}
 }
 /**
@@ -146,10 +146,10 @@ void ctrl_clear_para(void)
 			// 清除Motor2的电机参数
 			dm4310_clear_para(&motor[Motor2]);
 			break;
-		case 3:
+		//case 3:
 			// 清除Motor2的电机参数
-			dm4310_clear_para(&motor[Motor3]);
-			break;
+		//	dm4310_clear_para(&motor[Motor3]);
+		//	break;
 	}
 }
 /**
@@ -173,10 +173,10 @@ void ctrl_clear_err(void)
 			// 清除Motor2的电机错误参数
 			dm4310_clear_err(&hcan2, &motor[Motor2]);
 			break;
-		case 3:
+		//case 3:
 			// 清除Motor3的电机错误参数
-			dm4310_clear_err(&hcan1, &motor[Motor3]);
-			break;
+		//	dm4310_clear_err(&hcan1, &motor[Motor3]);
+		//	break;
 	}
 }
 /**
@@ -200,10 +200,10 @@ void ctrl_send(void)
 			 // 向Motor2发送控制命令
 			dm4310_ctrl_send(&hcan2, &motor[Motor2]);
 			break;
-		case 3:
+		//case 3:
 			 // 向Motor3发送控制命令
-			dm4310_ctrl_send(&hcan1, &motor[Motor3]);
-			break;
+		//	dm4310_ctrl_send(&hcan1, &motor[Motor3]);
+		//	break;
 	}
 }
 /**
@@ -227,7 +227,7 @@ void can1_rx_callback(void)
 				switch ((rx_data[0])&0x0F)
 				{
 					case 11: dm4310_fbdata(&motor[Motor1], rx_data); break;
-					case 12: dm4310_fbdata(&motor[Motor3], rx_data); break;
+					case 12: dm4310_fbdata(&motor[Motor2], rx_data); break;
 				}
 				
 			} break;
@@ -242,15 +242,15 @@ void can1_rx_callback(void)
 *               当接收到ID为0时，调用dm4310_fbdata函数更新Motor的反馈数据。
 ************************************************************************
 **/
-uint16_t rec_id;
-void can2_rx_callback(void)
-{
+//uint16_t rec_id;
+//void can2_rx_callback(void)
+//{
 	
-	uint8_t rx_data[8] = {0};
-	canx_receive_data(&hcan2, &rec_id, rx_data);
-	switch (rec_id)
-	{
-		case 0: dm4310_fbdata(&motor[Motor2], rx_data); break;
-	}
-}
+//	uint8_t rx_data[8] = {0};
+//	canx_receive_data(&hcan2, &rec_id, rx_data);
+//	switch (rec_id)
+//	{
+//		case 0: dm4310_fbdata(&motor[Motor3], rx_data); break;
+//	}
+//}
 

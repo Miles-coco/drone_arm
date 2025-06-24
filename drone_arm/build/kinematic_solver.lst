@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -34,8 +34,8 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
    4:Module/kinematic/kinematic_solver.c **** #include "arm_math.h"
    5:Module/kinematic/kinematic_solver.c **** 
    6:Module/kinematic/kinematic_solver.c **** // 定义π常量
-   7:Module/kinematic/kinematic_solver.c **** #define PI_2 (PI / 2.0f)     // π/2
-   8:Module/kinematic/kinematic_solver.c **** #define PI_4 (PI / 4.0f)     // π/4
+   7:Module/kinematic/kinematic_solver.c **** #define PI 3.14159265358979323846f
+   8:Module/kinematic/kinematic_solver.c **** #define PI_2 (PI / 2.0f)     // π/2
    9:Module/kinematic/kinematic_solver.c **** #define DEG_TO_RAD(x) ((x) * PI / 180.0f)
   10:Module/kinematic/kinematic_solver.c **** #define RAD_TO_DEG(x) ((x) * 180.0f / PI)
   11:Module/kinematic/kinematic_solver.c **** 
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
   42 0006 FFF7FEFF 		bl	fmodf
   43              	.LVL1:
   15:Module/kinematic/kinematic_solver.c ****     if (angle < 0.0f) angle += 2.0f * PI;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 2
 
 
   44              		.loc 1 15 5 is_stmt 1 view .LVU4
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
   91              		.cfi_offset 81, -12
   92 0006 B0EE608A 		vmov.f32	s16, s1
   93 000a F0EE418A 		vmov.f32	s17, s2
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 3
 
 
   21:Module/kinematic/kinematic_solver.c ****     angle = normalize_angle(angle);
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
   25:Module/kinematic/kinematic_solver.c ****         return (angle >= min) || (angle <= max);
  135              		.loc 1 25 31 view .LVU27
  136 0052 00E0     		b	.L14
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 4
 
 
  137              	.L26:
@@ -218,92 +218,89 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  170              	.LVL7:
  171              	.LFB152:
   29:Module/kinematic/kinematic_solver.c **** 
-  30:Module/kinematic/kinematic_solver.c **** // 逆运动学求解函数 - 使用CMSIS-DSP优化
+  30:Module/kinematic/kinematic_solver.c **** // 简化的逆运动学求解函数 - 利用θ₁>θ₂约束
   31:Module/kinematic/kinematic_solver.c **** int IK_Solve(point2D target, float L1, float L2, const JointLimits* limits, JointAngles* angles) {
  172              		.loc 1 31 98 is_stmt 1 view -0
  173              		.cfi_startproc
- 174              		@ args = 0, pretend = 0, frame = 40
+ 174              		@ args = 0, pretend = 0, frame = 16
  175              		@ frame_needed = 0, uses_anonymous_args = 0
  176              		.loc 1 31 98 is_stmt 0 view .LVU34
- 177 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 177 0000 30B5     		push	{r4, r5, lr}
  178              	.LCFI5:
- 179              		.cfi_def_cfa_offset 24
- 180              		.cfi_offset 4, -24
- 181              		.cfi_offset 5, -20
- 182              		.cfi_offset 6, -16
- 183              		.cfi_offset 7, -12
- 184              		.cfi_offset 8, -8
- 185              		.cfi_offset 14, -4
- 186 0004 2DED068B 		vpush.64	{d8, d9, d10}
- 187              	.LCFI6:
- 188              		.cfi_def_cfa_offset 48
- 189              		.cfi_offset 80, -48
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 5
+ 179              		.cfi_def_cfa_offset 12
+ 180              		.cfi_offset 4, -12
+ 181              		.cfi_offset 5, -8
+ 182              		.cfi_offset 14, -4
+ 183 0002 2DED068B 		vpush.64	{d8, d9, d10}
+ 184              	.LCFI6:
+ 185              		.cfi_def_cfa_offset 36
+ 186              		.cfi_offset 80, -36
+ 187              		.cfi_offset 81, -32
+ 188              		.cfi_offset 82, -28
+ 189              		.cfi_offset 83, -24
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 5
 
 
- 190              		.cfi_offset 81, -44
- 191              		.cfi_offset 82, -40
- 192              		.cfi_offset 83, -36
- 193              		.cfi_offset 84, -32
- 194              		.cfi_offset 85, -28
- 195 0008 8AB0     		sub	sp, sp, #40
- 196              	.LCFI7:
- 197              		.cfi_def_cfa_offset 88
- 198 000a 8DED000A 		vstr.32	s0, [sp]
- 199 000e CDED010A 		vstr.32	s1, [sp, #4]
+ 190              		.cfi_offset 84, -20
+ 191              		.cfi_offset 85, -16
+ 192 0006 85B0     		sub	sp, sp, #20
+ 193              	.LCFI7:
+ 194              		.cfi_def_cfa_offset 56
+ 195 0008 8DED000A 		vstr.32	s0, [sp]
+ 196 000c CDED010A 		vstr.32	s1, [sp, #4]
   32:Module/kinematic/kinematic_solver.c ****     // 检查有效输入
   33:Module/kinematic/kinematic_solver.c ****     if (L1 <= 0.001f || L2 <= 0.001f) return 0;
- 200              		.loc 1 33 5 is_stmt 1 view .LVU35
- 201              		.loc 1 33 8 is_stmt 0 view .LVU36
- 202 0012 DFED7E7A 		vldr.32	s15, .L53
- 203 0016 B4EEE71A 		vcmpe.f32	s2, s15
- 204 001a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 205 001e 40F2E980 		bls	.L39
- 206 0022 B0EE418A 		vmov.f32	s16, s2
- 207 0026 F0EE618A 		vmov.f32	s17, s3
- 208 002a 0446     		mov	r4, r0
- 209 002c 0E46     		mov	r6, r1
- 210              		.loc 1 33 22 discriminator 2 view .LVU37
- 211 002e F4EEE71A 		vcmpe.f32	s3, s15
- 212 0032 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 213 0036 40F2E480 		bls	.L40
+ 197              		.loc 1 33 5 is_stmt 1 view .LVU35
+ 198              		.loc 1 33 8 is_stmt 0 view .LVU36
+ 199 0010 DFED677A 		vldr.32	s15, .L54
+ 200 0014 B4EEE71A 		vcmpe.f32	s2, s15
+ 201 0018 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 202 001c 40F2BE80 		bls	.L36
+ 203 0020 B0EE418A 		vmov.f32	s16, s2
+ 204 0024 B0EE619A 		vmov.f32	s18, s3
+ 205 0028 0446     		mov	r4, r0
+ 206 002a 0D46     		mov	r5, r1
+ 207              		.loc 1 33 22 discriminator 2 view .LVU37
+ 208 002c F4EEE71A 		vcmpe.f32	s3, s15
+ 209 0030 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 210 0034 40F2B780 		bls	.L37
   34:Module/kinematic/kinematic_solver.c ****     
   35:Module/kinematic/kinematic_solver.c ****     float x = target.x;
- 214              		.loc 1 35 5 is_stmt 1 view .LVU38
- 215              		.loc 1 35 11 is_stmt 0 view .LVU39
- 216 003a F0EE409A 		vmov.f32	s19, s0
- 217              	.LVL8:
+ 211              		.loc 1 35 5 is_stmt 1 view .LVU38
+ 212              		.loc 1 35 11 is_stmt 0 view .LVU39
+ 213 0038 B0EE40AA 		vmov.f32	s20, s0
+ 214              	.LVL8:
   36:Module/kinematic/kinematic_solver.c ****     float y = target.y;
- 218              		.loc 1 36 5 is_stmt 1 view .LVU40
- 219              		.loc 1 36 11 is_stmt 0 view .LVU41
- 220 003e B0EE60AA 		vmov.f32	s20, s1
- 221              	.LVL9:
+ 215              		.loc 1 36 5 is_stmt 1 view .LVU40
+ 216              		.loc 1 36 11 is_stmt 0 view .LVU41
+ 217 003c F0EE609A 		vmov.f32	s19, s1
+ 218              	.LVL9:
   37:Module/kinematic/kinematic_solver.c ****     
   38:Module/kinematic/kinematic_solver.c ****     // 计算目标到原点的距离（使用CMSIS-DSP优化平方根）
   39:Module/kinematic/kinematic_solver.c ****     float32_t R;
- 222              		.loc 1 39 5 is_stmt 1 view .LVU42
+ 219              		.loc 1 39 5 is_stmt 1 view .LVU42
   40:Module/kinematic/kinematic_solver.c ****     arm_sqrt_f32(x*x + y*y, &R);
- 223              		.loc 1 40 5 view .LVU43
- 224              		.loc 1 40 19 is_stmt 0 view .LVU44
- 225 0042 20EE000A 		vmul.f32	s0, s0, s0
- 226              	.LVL10:
- 227              		.loc 1 40 25 view .LVU45
- 228 0046 60EEA07A 		vmul.f32	s15, s1, s1
- 229              		.loc 1 40 5 view .LVU46
- 230 004a 30EE270A 		vadd.f32	s0, s0, s15
- 231              	.LVL11:
- 232              	.LBB7:
- 233              	.LBI7:
- 234              		.file 2 "Middlewares/ST/ARM/DSP/Inc/arm_math.h"
+ 220              		.loc 1 40 5 view .LVU43
+ 221              		.loc 1 40 19 is_stmt 0 view .LVU44
+ 222 0040 20EE000A 		vmul.f32	s0, s0, s0
+ 223              	.LVL10:
+ 224              		.loc 1 40 25 view .LVU45
+ 225 0044 60EEA07A 		vmul.f32	s15, s1, s1
+ 226              		.loc 1 40 5 view .LVU46
+ 227 0048 30EE270A 		vadd.f32	s0, s0, s15
+ 228              	.LVL11:
+ 229              	.LBB4:
+ 230              	.LBI4:
+ 231              		.file 2 "Middlewares/ST/ARM/DSP/Inc/arm_math.h"
    1:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** /******************************************************************************
    2:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * @file     arm_math.h
    3:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * @brief    Public header file for CMSIS DSP Library
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 6
-
-
    4:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * @version  V1.7.0
    5:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * @date     18. March 2019
    6:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  ******************************************************************************/
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 6
+
+
    7:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** /*
    8:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * Copyright (c) 2010-2019 Arm Limited or its affiliates. All rights reserved.
    9:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  *
@@ -358,12 +355,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
   58:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * Here is the list of pre-built libraries :
   59:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * - arm_cortexM7lfdp_math.lib (Cortex-M7, Little endian, Double Precision Floating Point Unit)
   60:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * - arm_cortexM7bfdp_math.lib (Cortex-M7, Big endian, Double Precision Floating Point Unit)
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 7
-
-
   61:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * - arm_cortexM7lfsp_math.lib (Cortex-M7, Little endian, Single Precision Floating Point Unit)
   62:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * - arm_cortexM7bfsp_math.lib (Cortex-M7, Big endian and Single Precision Floating Point Unit on
   63:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * - arm_cortexM7l_math.lib (Cortex-M7, Little endian)
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 7
+
+
   64:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * - arm_cortexM7b_math.lib (Cortex-M7, Big endian)
   65:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * - arm_cortexM4lf_math.lib (Cortex-M4, Little endian, Floating Point Unit)
   66:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * - arm_cortexM4bf_math.lib (Cortex-M4, Big endian, Floating Point Unit)
@@ -418,12 +415,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  115:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * Define macro ARM_MATH_BIG_ENDIAN to build the library for big endian targets. By default libra
  116:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    *
  117:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * - ARM_MATH_MATRIX_CHECK:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 8
-
-
  118:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    *
  119:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * Define macro ARM_MATH_MATRIX_CHECK for checking on the input and output sizes of matrices
  120:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    *
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 8
+
+
  121:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * - ARM_MATH_ROUNDING:
  122:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    *
  123:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * Define macro ARM_MATH_ROUNDING for rounding on support functions
@@ -478,12 +475,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  172:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    *
  173:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * <hr>
  174:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * Revision History of CMSIS-DSP
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 9
-
-
  175:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * ------------
  176:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * Please refer to \ref ChangeLog_pg.
  177:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 9
+
+
  178:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  179:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  180:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** /**
@@ -538,12 +535,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  229:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * <pre>
  230:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  *     pData[i*numCols + j]
  231:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * </pre>
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 10
-
-
  232:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  *
  233:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * \par Init Functions
  234:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * There is an associated initialization function for each type of matrix
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 10
+
+
  235:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * data structure.
  236:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * The initialization function sets the values of the internal structure fields.
  237:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * Refer to \ref arm_mat_init_f32(), \ref arm_mat_init_q31() and \ref arm_mat_init_q15()
@@ -598,12 +595,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  286:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** /**
  287:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * @defgroup groupStats Statistics Functions
  288:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  */
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 11
-
-
  289:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  290:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** /**
  291:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * @defgroup groupSupport Support Functions
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 11
+
+
  292:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  */
  293:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  294:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** /**
@@ -658,12 +655,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  343:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #ifdef   __cplusplus
  344:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** extern "C"
  345:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 12
-
-
  346:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #endif
  347:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  348:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** /* Compiler specific diagnostic adjustment */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 12
+
+
  349:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #if   defined ( __CC_ARM )
  350:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  351:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #elif defined ( __ARMCC_VERSION ) && ( __ARMCC_VERSION >= 6010050 )
@@ -718,12 +715,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  400:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  401:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #define F64_MAX   ((float64_t)DBL_MAX)
  402:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #define F32_MAX   ((float32_t)FLT_MAX)
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 13
-
-
  403:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  404:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #if defined(ARM_MATH_FLOAT16)
  405:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #define F16_MAX   ((float16_t)FLT_MAX)
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 13
+
+
  406:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #endif
  407:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  408:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #define F64_MIN   (-DBL_MAX)
@@ -778,12 +775,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  457:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #if defined (ARM_MATH_MVEF)
  458:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   #define ARM_MATH_MVEI
  459:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   #define ARM_MATH_FLOAT16
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 14
-
-
  460:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #endif
  461:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  462:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #if defined (ARM_MATH_HELIUM) || defined(ARM_MATH_MVEF) || defined(ARM_MATH_MVEI)
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 14
+
+
  463:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #include <arm_mve.h>
  464:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #endif
  465:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
@@ -838,12 +835,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  514:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     ARM_MATH_SINGULAR       = -5,        /**< Input matrix is singular and cannot be inverted */
  515:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     ARM_MATH_TEST_FAILURE   = -6         /**< Test Failed */
  516:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   } arm_status;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 15
-
-
  517:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  518:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
  519:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief 8-bit fractional data type in 1.7 format.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 15
+
+
  520:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
  521:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef int8_t q7_t;
  522:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
@@ -898,12 +895,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  571:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  572:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     /**
  573:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief 32-bit fractional 128-bit vector pair data type in 1.31 format.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 16
-
-
  574:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
  575:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef int32x4x2_t q31x4x2_t;
  576:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 16
+
+
  577:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
  578:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief 32-bit fractional 128-bit vector quadruplet data type in 1.31 format.
  579:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
@@ -958,12 +955,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  628:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief 8-bit status 128-bit vector data type.
  629:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
  630:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef int8x16_t status8x16_t;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 17
-
-
  631:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  632:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  633:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #endif
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 17
+
+
  634:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  635:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #if defined(ARM_MATH_NEON) || defined(ARM_MATH_MVEF) /* floating point vector*/
  636:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
@@ -1018,12 +1015,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  685:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       float16x8_t     f;
  686:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       int16x8_t       i;
  687:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   } any16x8_t;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 18
-
-
  688:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #endif
  689:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  690:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #endif
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 18
+
+
  691:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  692:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #if defined(ARM_MATH_NEON)
  693:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
@@ -1078,12 +1075,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  742:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
  743:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief 8-bit fractional 128-bit vector triplet data type in 1.7 format
  744:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 19
-
-
  745:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef int8x16x3_t q7x16x3_t;
  746:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  747:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 19
+
+
  748:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief 32-bit floating-point 64-bit vector pair data type
  749:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
  750:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef float32x2x2_t f32x2x2_t;
@@ -1138,12 +1135,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  799:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
  800:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief 16-bit fractional 64-bit vector triplet data type in 1.15 format
  801:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 20
-
-
  802:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef int16x4x2_t q15x4x3_t;
  803:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  804:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 20
+
+
  805:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief 16-bit fractional 64-bit vector quadruplet data type in 1.15 format
  806:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
  807:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef int16x4x3_t q15x4x4_t;
@@ -1198,12 +1195,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  856:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
  857:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef int8x16_t status8x8_t;
  858:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 21
-
-
  859:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #endif
  860:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  861:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 21
+
+
  862:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  863:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** /**
  864:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @brief definition to read/write two 16 bit values.
@@ -1258,12 +1255,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  913:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  914:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   return (val);
  915:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** }
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 22
-
-
  916:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  917:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** /**
  918:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @brief         Read 2 Q15 from Q15 pointer and increment pointer afterwards.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 22
+
+
  919:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[in]     pQ15      points to input value
  920:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @return        Q31 value
  921:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  */
@@ -1318,12 +1315,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
  970:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #else
  971:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   (*pQ15)[0] = (val & 0x0FFFF);
  972:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   (*pQ15)[1] = (val >> 16) & 0x0FFFF;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 23
-
-
  973:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #endif
  974:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  975:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  *pQ15 += 2;
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 23
+
+
  976:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** }
  977:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
  978:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** /**
@@ -1378,12 +1375,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1027:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   q7_t ** pQ7)
 1028:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** {
 1029:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   q31_t val;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 24
-
-
 1030:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #ifdef __ARM_FEATURE_UNALIGNED
 1031:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   memcpy (&val, *pQ7, 4);
 1032:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #else
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 24
+
+
 1033:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   val = ((((*pQ7)[3]) & 0x0FF) << 24) | ((((*pQ7)[2]) & 0x0FF) << 16)   | ((((*pQ7)[1]) & 0x0FF) <<
 1034:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #endif 
 1035:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   *pQ7 -= 4;
@@ -1438,12 +1435,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1084:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       while ((data & mask) == 0U)
 1085:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       {
 1086:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         count += 1U;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 25
-
-
 1087:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         mask = mask >> 1U;
 1088:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       }
 1089:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       return count;
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 25
+
+
 1090:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     }
 1091:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 1092:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   __STATIC_FORCEINLINE int32_t __SSAT(int32_t val, uint32_t sat)
@@ -1498,12 +1495,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1141:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #ifndef ARM_MATH_BIG_ENDIAN
 1142:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   #define __PACKq7(v0,v1,v2,v3) ( (((int32_t)(v0) <<  0) & (int32_t)0x000000FF) | \
 1143:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****                                   (((int32_t)(v1) <<  8) & (int32_t)0x0000FF00) | \
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 26
-
-
 1144:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****                                   (((int32_t)(v2) << 16) & (int32_t)0x00FF0000) | \
 1145:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****                                   (((int32_t)(v3) << 24) & (int32_t)0xFF000000)  )
 1146:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #else
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 26
+
+
 1147:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   #define __PACKq7(v0,v1,v2,v3) ( (((int32_t)(v3) <<  0) & (int32_t)0x000000FF) | \
 1148:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****                                   (((int32_t)(v2) <<  8) & (int32_t)0x0000FF00) | \
 1149:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****                                   (((int32_t)(v1) << 16) & (int32_t)0x00FF0000) | \
@@ -1558,12 +1555,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1198:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   q63_t x,
 1199:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   q31_t y)
 1200:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 27
-
-
 1201:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     return ((((q63_t) (x & 0x00000000FFFFFFFF) * y) >> 32) +
 1202:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****             (((q63_t) (x >> 32)                * y)      )  );
 1203:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   }
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 27
+
+
 1204:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 1205:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 1206:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Function to Calculates 1/in (reciprocal) value of Q31 Data type.
@@ -1618,12 +1615,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1255:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 1256:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 1257:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Function to Calculates 1/in (reciprocal) value of Q15 Data type.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 28
-
-
 1258:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 1259:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   __STATIC_FORCEINLINE uint32_t arm_recip_q15(
 1260:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q15_t in,
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 28
+
+
 1261:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q15_t * dst,
 1262:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const q15_t * pRecipTable)
 1263:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
@@ -1678,12 +1675,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1312:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  */
 1313:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** __STATIC_INLINE float32_t arm_exponent_f32(float32_t x, int32_t nb)
 1314:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 29
-
-
 1315:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     float32_t r = x;
 1316:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     nb --;
 1317:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     while(nb > 0)
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 29
+
+
 1318:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     {
 1319:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         r = r * x;
 1320:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         nb--;
@@ -1738,12 +1735,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1369:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     } else
 1370:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     {
 1371:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         /*
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 30
-
-
 1372:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****          * input fits in 64-bit
 1373:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****          */
 1374:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         n1 = 1 - n1;
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 30
+
+
 1375:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         *norm = -n1;
 1376:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         /*
 1377:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****          * 64 bit normalization
@@ -1798,12 +1795,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1426:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     s = __SSAT(((((q31_t)x << 16) >> 24) + (((q31_t)y << 16) >> 24)), 8) & (int32_t)0x000000FF;
 1427:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     t = __SSAT(((((q31_t)x <<  8) >> 24) + (((q31_t)y <<  8) >> 24)), 8) & (int32_t)0x000000FF;
 1428:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     u = __SSAT(((((q31_t)x      ) >> 24) + (((q31_t)y      ) >> 24)), 8) & (int32_t)0x000000FF;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 31
-
-
 1429:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 1430:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     return ((uint32_t)((u << 24) | (t << 16) | (s <<  8) | (r      )));
 1431:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   }
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 31
+
+
 1432:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 1433:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 1434:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /*
@@ -1858,12 +1855,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1483:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 1484:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 1485:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /*
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 32
-
-
 1486:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief C custom defined QSUB16
 1487:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 1488:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   __STATIC_FORCEINLINE uint32_t __QSUB16(
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 32
+
+
 1489:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   uint32_t x,
 1490:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   uint32_t y)
 1491:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
@@ -1918,12 +1915,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1540:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     q31_t r, s;
 1541:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 1542:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     r = (((((q31_t)x << 16) >> 16) - (((q31_t)y      ) >> 16)) >> 1) & (int32_t)0x0000FFFF;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 33
-
-
 1543:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     s = (((((q31_t)x      ) >> 16) + (((q31_t)y << 16) >> 16)) >> 1) & (int32_t)0x0000FFFF;
 1544:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 1545:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     return ((uint32_t)((s << 16) | (r      )));
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 33
+
+
 1546:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   }
 1547:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 1548:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
@@ -1978,12 +1975,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1597:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   uint32_t y)
 1598:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
 1599:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     return ((uint32_t)(((((q31_t)x << 16) >> 16) * (((q31_t)y      ) >> 16)) +
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 34
-
-
 1600:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****                        ((((q31_t)x      ) >> 16) * (((q31_t)y << 16) >> 16))   ));
 1601:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   }
 1602:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 34
+
+
 1603:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 1604:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /*
 1605:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief C custom defined QADD
@@ -2038,12 +2035,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1654:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /*
 1655:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief C custom defined SMLSDX
 1656:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 35
-
-
 1657:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   __STATIC_FORCEINLINE uint32_t __SMLSDX(
 1658:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   uint32_t x,
 1659:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   uint32_t y,
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 35
+
+
 1660:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   uint32_t sum)
 1661:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
 1662:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     return ((uint32_t)(((((q31_t)x << 16) >> 16) * (((q31_t)y      ) >> 16)) -
@@ -2098,12 +2095,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1711:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief C custom defined SMUSD
 1712:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 1713:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   __STATIC_FORCEINLINE uint32_t __SMUSD(
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 36
-
-
 1714:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   uint32_t x,
 1715:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   uint32_t y)
 1716:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 36
+
+
 1717:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     return ((uint32_t)(((((q31_t)x << 16) >> 16) * (((q31_t)y << 16) >> 16)) -
 1718:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****                        ((((q31_t)x      ) >> 16) * (((q31_t)y      ) >> 16))   ));
 1719:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   }
@@ -2158,12 +2155,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1768:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 1769:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef struct
 1770:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 37
-
-
 1771:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           uint16_t numTaps;         /**< number of filter coefficients in the filter. */
 1772:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           q31_t *pState;            /**< points to the state variable array. The array is of length
 1773:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     const q31_t *pCoeffs;           /**< points to the coefficient array. The array is of length nu
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 37
+
+
 1774:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   } arm_fir_instance_q31;
 1775:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 1776:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
@@ -2218,12 +2215,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1825:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize);
 1826:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 1827:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 38
-
-
 1828:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Processing function for the fast Q15 FIR filter (fast version).
 1829:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  S          points to an instance of the Q15 FIR filter structure.
 1830:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrc       points to the block of input data.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 38
+
+
 1831:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst       points to the block of output data.
 1832:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  blockSize  number of samples to process.
 1833:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
@@ -2278,12 +2275,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1882:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize);
 1883:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 1884:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 39
-
-
 1885:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief  Initialization function for the Q31 FIR filter.
 1886:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in,out] S          points to an instance of the Q31 FIR structure.
 1887:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     numTaps    Number of filter coefficients in the filter.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 39
+
+
 1888:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     pCoeffs    points to the filter coefficients.
 1889:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     pState     points to the state buffer.
 1890:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     blockSize  number of samples that are processed at a time.
@@ -2338,12 +2335,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1939:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Instance structure for the Q31 Biquad cascade filter.
 1940:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 1941:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef struct
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 40
-
-
 1942:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
 1943:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           uint32_t numStages;      /**< number of 2nd order stages in the filter.  Overall order is
 1944:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           q31_t *pState;           /**< Points to the array of state coefficients.  The array is of
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 40
+
+
 1945:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     const q31_t *pCoeffs;          /**< Points to the array of coefficients.  The array is of lengt
 1946:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           uint8_t postShift;       /**< Additional shift, in bits, applied to each output sample. *
 1947:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   } arm_biquad_casd_df1_inst_q31;
@@ -2398,12 +2395,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 1996:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 1997:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 1998:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Fast but less precise processing function for the Q15 Biquad cascade filter for Cortex-
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 41
-
-
 1999:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  S          points to an instance of the Q15 Biquad cascade structure.
 2000:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrc       points to the block of input data.
 2001:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst       points to the block of output data.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 41
+
+
 2002:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  blockSize  number of samples to process.
 2003:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 2004:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_biquad_cascade_df1_fast_q15(
@@ -2458,12 +2455,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2053:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  S          points to an instance of the floating-point Biquad cascade structure.
 2054:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrc       points to the block of input data.
 2055:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst       points to the block of output data.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 42
-
-
 2056:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  blockSize  number of samples to process.
 2057:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 2058:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_biquad_cascade_df1_f32(
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 42
+
+
 2059:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const arm_biquad_casd_df1_inst_f32 * S,
 2060:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const float32_t * pSrc,
 2061:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         float32_t * pDst,
@@ -2518,12 +2515,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2110:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_and_u32(
 2111:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     const uint32_t * pSrcA,
 2112:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     const uint32_t * pSrcB,
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 43
-
-
 2113:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           uint32_t * pDst,
 2114:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           uint32_t blockSize);
 2115:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 43
+
+
 2116:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 2117:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief         Compute the logical bitwise AND of two fixed-point vectors.
 2118:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     pSrcA      points to input vector A
@@ -2578,12 +2575,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2167:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     const uint8_t * pSrcA,
 2168:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     const uint8_t * pSrcB,
 2169:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           uint8_t * pDst,
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 44
-
-
 2170:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           uint32_t blockSize);
 2171:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 2172:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 44
+
+
 2173:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief         Compute the logical bitwise NOT of a fixed-point vector.
 2174:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     pSrc       points to input vector 
 2175:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out]    pDst       points to output vector
@@ -2638,12 +2635,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2224:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     pSrcA      points to input vector A
 2225:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     pSrcB      points to input vector B
 2226:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out]    pDst       points to output vector
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 45
-
-
 2227:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     blockSize  number of samples in each vector
 2228:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @return        none
 2229:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 45
+
+
 2230:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_xor_u32(
 2231:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     const uint32_t * pSrcA,
 2232:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     const uint32_t * pSrcB,
@@ -2698,12 +2695,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2281:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Instance structure for the sorting algorithms.
 2282:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 2283:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef struct            
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 46
-
-
 2284:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
 2285:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     arm_sort_alg alg;        /**< Sorting algorithm selected */
 2286:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     arm_sort_dir dir;        /**< Sorting order (direction)  */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 46
+
+
 2287:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   } arm_sort_instance_f32;  
 2288:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 2289:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
@@ -2758,12 +2755,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2338:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     arm_merge_sort_instance_f32 * S,
 2339:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     arm_sort_dir dir,
 2340:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     float32_t * buffer);
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 47
-
-
 2341:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 2342:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 2343:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Struct for specifying cubic spline type
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 47
+
+
 2344:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 2345:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef enum
 2346:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
@@ -2818,12 +2815,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2395:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 2396:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Instance structure for the floating-point matrix structure.
 2397:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 48
-
-
 2398:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef struct
 2399:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
 2400:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     uint16_t numRows;     /**< number of rows of the matrix.     */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 48
+
+
 2401:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     uint16_t numCols;     /**< number of columns of the matrix.  */
 2402:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     float32_t *pData;     /**< points to the data of the matrix. */
 2403:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   } arm_matrix_instance_f32;
@@ -2878,12 +2875,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2452:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out]  pDst   points to output matrix structure
 2453:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @return     The function returns either
 2454:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * <code>ARM_MATH_SIZE_MISMATCH</code> or <code>ARM_MATH_SUCCESS</code> based on the outcome of s
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 49
-
-
 2455:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 2456:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** arm_status arm_mat_add_q15(
 2457:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const arm_matrix_instance_q15 * pSrcA,
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 49
+
+
 2458:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const arm_matrix_instance_q15 * pSrcB,
 2459:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_matrix_instance_q15 * pDst);
 2460:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
@@ -2938,12 +2935,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2509:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** arm_status arm_mat_cmplx_mult_q31(
 2510:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const arm_matrix_instance_q31 * pSrcA,
 2511:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const arm_matrix_instance_q31 * pSrcB,
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 50
-
-
 2512:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_matrix_instance_q31 * pDst);
 2513:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 2514:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 50
+
+
 2515:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Floating-point matrix transpose.
 2516:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrc  points to the input matrix
 2517:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst  points to the output matrix
@@ -2998,12 +2995,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2566:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @return     The function returns either
 2567:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * <code>ARM_MATH_SIZE_MISMATCH</code> or <code>ARM_MATH_SUCCESS</code> based on the outcome of s
 2568:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 51
-
-
 2569:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** arm_status arm_mat_mult_q15(
 2570:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const arm_matrix_instance_q15 * pSrcA,
 2571:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const arm_matrix_instance_q15 * pSrcB,
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 51
+
+
 2572:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_matrix_instance_q15 * pDst,
 2573:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q15_t * pState);
 2574:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
@@ -3058,12 +3055,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2623:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 2624:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** arm_status arm_mat_sub_f32(
 2625:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const arm_matrix_instance_f32 * pSrcA,
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 52
-
-
 2626:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const arm_matrix_instance_f32 * pSrcB,
 2627:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_matrix_instance_f32 * pDst);
 2628:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 52
+
+
 2629:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 2630:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Q15 matrix subtraction
 2631:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrcA  points to the first input matrix structure
@@ -3118,12 +3115,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2680:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         int32_t shift,
 2681:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_matrix_instance_q15 * pDst);
 2682:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 53
-
-
 2683:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 2684:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Q31 matrix scaling.
 2685:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrc        points to input matrix
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 53
+
+
 2686:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  scaleFract  fractional portion of the scale factor
 2687:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  shift       number of bits to shift the result by
 2688:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst        points to output matrix structure
@@ -3178,12 +3175,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2737:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 2738:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 2739:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Instance structure for the Q15 PID Control.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 54
-
-
 2740:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 2741:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef struct
 2742:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 54
+
+
 2743:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           q15_t A0;           /**< The derived gain, A0 = Kp + Ki + Kd . */
 2744:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #if !defined (ARM_MATH_DSP)
 2745:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           q15_t A1;
@@ -3238,12 +3235,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2794:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 2795:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 2796:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 55
-
-
 2797:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief  Reset function for the floating-point PID Control.
 2798:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in,out] S  is an instance of the floating-point PID Control structure
 2799:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 55
+
+
 2800:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_pid_reset_f32(
 2801:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_pid_instance_f32 * S);
 2802:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
@@ -3298,12 +3295,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2851:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 2852:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 2853:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Instance structure for the floating-point bilinear interpolation function.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 56
-
-
 2854:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 2855:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef struct
 2856:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 56
+
+
 2857:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           uint16_t numRows;   /**< number of rows in the data table. */
 2858:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           uint16_t numCols;   /**< number of columns in the data table. */
 2859:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           float32_t *pData;   /**< points to the data table. */
@@ -3358,12 +3355,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2908:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Q15 vector multiplication.
 2909:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrcA      points to the first input vector
 2910:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrcB      points to the second input vector
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 57
-
-
 2911:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst       points to the output vector
 2912:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  blockSize  number of samples in each vector
 2913:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 57
+
+
 2914:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_mult_q15(
 2915:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const q15_t * pSrcA,
 2916:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const q15_t * pSrcB,
@@ -3418,12 +3415,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 2965:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_cfft_radix2_instance_q15 * S,
 2966:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint16_t fftLen,
 2967:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint8_t ifftFlag,
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 58
-
-
 2968:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint8_t bitReverseFlag);
 2969:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 2970:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** /* Deprecated */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 58
+
+
 2971:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_cfft_radix2_q15(
 2972:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const arm_cfft_radix2_instance_q15 * S,
 2973:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q15_t * pSrc);
@@ -3478,12 +3475,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3022:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 3023:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** /* Deprecated */
 3024:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_cfft_radix2_q31(
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 59
-
-
 3025:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const arm_cfft_radix2_instance_q31 * S,
 3026:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q31_t * pSrc);
 3027:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 59
+
+
 3028:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 3029:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Instance structure for the Q31 CFFT/CIFFT function.
 3030:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
@@ -3538,12 +3535,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3079:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         float32_t * pSrc);
 3080:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 3081:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 60
-
-
 3082:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Instance structure for the floating-point CFFT/CIFFT function.
 3083:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 3084:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef struct
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 60
+
+
 3085:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
 3086:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           uint16_t fftLen;                   /**< length of the FFT. */
 3087:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           uint8_t ifftFlag;                  /**< flag that selects forward (ifftFlag=0) or inverse
@@ -3598,12 +3595,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3136:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 3137:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 3138:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Instance structure for the fixed-point CFFT/CIFFT function.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 61
-
-
 3139:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 3140:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef struct
 3141:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 61
+
+
 3142:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           uint16_t fftLen;                   /**< length of the FFT. */
 3143:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     const q31_t *pTwiddle;             /**< points to the Twiddle factor table. */
 3144:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     const uint16_t *pBitRevTable;      /**< points to the bit reversal table. */
@@ -3658,12 +3655,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3193:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint8_t ifftFlag,
 3194:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint8_t bitReverseFlag);
 3195:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 62
-
-
 3196:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 3197:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 3198:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Instance structure for the Double Precision Floating-point CFFT/CIFFT function.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 62
+
+
 3199:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 3200:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef struct
 3201:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
@@ -3718,12 +3715,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3250:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           uint8_t bitReverseFlagR;                    /**< flag that enables (bitReverseFlagR=1) or
 3251:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           uint32_t twidCoefRModifier;                 /**< twiddle coefficient modifier that suppor
 3252:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     const q31_t *pTwiddleAReal;                       /**< points to the real twiddle factor table.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 63
-
-
 3253:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     const q31_t *pTwiddleBReal;                       /**< points to the imag twiddle factor table.
 3254:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #if defined(ARM_MATH_MVEI)
 3255:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     arm_cfft_instance_q31 cfftInst;
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 63
+
+
 3256:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #else
 3257:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     const arm_cfft_instance_q31 *pCfft;         /**< points to the complex FFT instance. */
 3258:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #endif
@@ -3778,12 +3775,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3307:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   } arm_rfft_fast_instance_f64 ;
 3308:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 3309:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** arm_status arm_rfft_fast_init_f64 (
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 64
-
-
 3310:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****          arm_rfft_fast_instance_f64 * S,
 3311:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****          uint16_t fftLen);
 3312:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 64
+
+
 3313:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 3314:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** void arm_rfft_fast_f64(
 3315:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     arm_rfft_fast_instance_f64 * S,
@@ -3838,12 +3835,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3364:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 3365:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   arm_status arm_dct4_init_f32(
 3366:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_dct4_instance_f32 * S,
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 65
-
-
 3367:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_rfft_instance_f32 * S_RFFT,
 3368:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_cfft_radix4_instance_f32 * S_CFFT,
 3369:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint16_t N,
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 65
+
+
 3370:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint16_t Nby2,
 3371:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         float32_t normalize);
 3372:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
@@ -3898,12 +3895,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3421:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Processing function for the Q31 DCT4/IDCT4.
 3422:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     S              points to an instance of the Q31 DCT4 structure.
 3423:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     pState         points to state buffer.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 66
-
-
 3424:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in,out] pInlineBuffer  points to the in-place input and output buffer.
 3425:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 3426:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_dct4_q31(
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 66
+
+
 3427:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const arm_dct4_instance_q31 * S,
 3428:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q31_t * pState,
 3429:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q31_t * pInlineBuffer);
@@ -3958,12 +3955,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3478:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 3479:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Floating-point vector addition.
 3480:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrcA      points to the first input vector
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 67
-
-
 3481:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrcB      points to the second input vector
 3482:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst       points to the output vector
 3483:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  blockSize  number of samples in each vector
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 67
+
+
 3484:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 3485:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_add_f32(
 3486:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const float32_t * pSrcA,
@@ -4018,12 +4015,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3535:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Floating-point vector subtraction.
 3536:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrcA      points to the first input vector
 3537:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrcB      points to the second input vector
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 68
-
-
 3538:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst       points to the output vector
 3539:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  blockSize  number of samples in each vector
 3540:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 68
+
+
 3541:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_sub_f32(
 3542:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const float32_t * pSrcA,
 3543:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const float32_t * pSrcB,
@@ -4078,12 +4075,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3592:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrc       points to the input vector
 3593:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  scale      scale factor to be applied
 3594:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst       points to the output vector
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 69
-
-
 3595:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  blockSize  number of samples in the vector
 3596:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 3597:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_scale_f32(
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 69
+
+
 3598:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const float32_t * pSrc,
 3599:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         float32_t scale,
 3600:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         float32_t * pDst,
@@ -4138,12 +4135,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3649:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize);
 3650:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 3651:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 70
-
-
 3652:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 3653:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Q7 vector absolute value.
 3654:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrc       points to the input buffer
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 70
+
+
 3655:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst       points to the output buffer
 3656:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  blockSize  number of samples in each vector
 3657:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
@@ -4198,12 +4195,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3706:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 3707:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_dot_prod_f32(
 3708:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const float32_t * pSrcA,
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 71
-
-
 3709:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const float32_t * pSrcB,
 3710:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize,
 3711:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         float32_t * result);
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 71
+
+
 3712:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 3713:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 3714:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
@@ -4258,12 +4255,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3763:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_shift_q7(
 3764:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const q7_t * pSrc,
 3765:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         int8_t shiftBits,
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 72
-
-
 3766:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q7_t * pDst,
 3767:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize);
 3768:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 72
+
+
 3769:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 3770:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 3771:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief  Shifts the elements of a Q15 vector a specified number of bits.
@@ -4318,12 +4315,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3820:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const q7_t * pSrc,
 3821:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q7_t offset,
 3822:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q7_t * pDst,
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 73
-
-
 3823:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize);
 3824:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 3825:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 73
+
+
 3826:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 3827:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief  Adds a constant offset to a Q15 vector.
 3828:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrc       points to the input vector
@@ -4378,12 +4375,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3877:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 3878:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 3879:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief  Negates the elements of a Q15 vector.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 74
-
-
 3880:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrc       points to the input vector
 3881:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst       points to the output vector
 3882:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  blockSize  number of samples in the vector
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 74
+
+
 3883:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 3884:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_negate_q15(
 3885:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const q15_t * pSrc,
@@ -4438,12 +4435,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3934:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q15_t * pDst,
 3935:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize);
 3936:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 75
-
-
 3937:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 3938:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 3939:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief  Copies the elements of a Q31 vector.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 75
+
+
 3940:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrc       input pointer
 3941:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst       output pointer
 3942:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  blockSize  number of samples to process
@@ -4498,12 +4495,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 3991:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 3992:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_fill_q31(
 3993:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q31_t value,
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 76
-
-
 3994:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q31_t * pDst,
 3995:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize);
 3996:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 76
+
+
 3997:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 3998:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** /**
 3999:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * @brief Convolution of floating-point sequences.
@@ -4558,12 +4555,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4048:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 4049:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 4050:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 77
-
-
 4051:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Convolution of Q15 sequences (fast version) for Cortex-M3 and Cortex-M4
 4052:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrcA    points to the first input sequence.
 4053:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  srcALen  length of the first input sequence.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 77
+
+
 4054:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrcB    points to the second input sequence.
 4055:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  srcBLen  length of the second input sequence.
 4056:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst     points to the block of output data  Length srcALen+srcBLen-1.
@@ -4618,12 +4615,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4105:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  srcALen  length of the first input sequence.
 4106:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrcB    points to the second input sequence.
 4107:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  srcBLen  length of the second input sequence.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 78
-
-
 4108:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst     points to the block of output data  Length srcALen+srcBLen-1.
 4109:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 4110:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_conv_fast_q31(
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 78
+
+
 4111:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const q31_t * pSrcA,
 4112:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t srcALen,
 4113:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const q31_t * pSrcB,
@@ -4678,12 +4675,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4162:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  numPoints   is the number of output points to be computed.
 4163:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @return  Returns either ARM_MATH_SUCCESS if the function completed correctly or ARM_MATH_ARGUM
 4164:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 79
-
-
 4165:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   arm_status arm_conv_partial_f32(
 4166:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const float32_t * pSrcA,
 4167:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t srcALen,
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 79
+
+
 4168:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const float32_t * pSrcB,
 4169:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t srcBLen,
 4170:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         float32_t * pDst,
@@ -4738,12 +4735,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4219:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 4220:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 4221:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 80
-
-
 4222:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Partial convolution of Q15 sequences (fast version) for Cortex-M3 and Cortex-M4
 4223:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrcA       points to the first input sequence.
 4224:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  srcALen     length of the first input sequence.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 80
+
+
 4225:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrcB       points to the second input sequence.
 4226:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  srcBLen     length of the second input sequence.
 4227:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst        points to the block of output data
@@ -4798,12 +4795,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4276:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @return  Returns either ARM_MATH_SUCCESS if the function completed correctly or ARM_MATH_ARGUM
 4277:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 4278:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   arm_status arm_conv_partial_q31(
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 81
-
-
 4279:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const q31_t * pSrcA,
 4280:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t srcALen,
 4281:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const q31_t * pSrcB,
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 81
+
+
 4282:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t srcBLen,
 4283:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q31_t * pDst,
 4284:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t firstIndex,
@@ -4858,12 +4855,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4333:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 4334:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** /**
 4335:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Partial convolution of Q7 sequences.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 82
-
-
 4336:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrcA       points to the first input sequence.
 4337:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  srcALen     length of the first input sequence.
 4338:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrcB       points to the second input sequence.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 82
+
+
 4339:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  srcBLen     length of the second input sequence.
 4340:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst        points to the block of output data
 4341:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  firstIndex  is the first output sample to start with.
@@ -4918,12 +4915,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4390:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @brief         Processing function for floating-point FIR decimator.
 4391:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[in]     S         points to an instance of the floating-point FIR decimator structure
 4392:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[in]     pSrc      points to the block of input data
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 83
-
-
 4393:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[out]    pDst      points to the block of output data
 4394:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[in]     blockSize number of samples to process
 4395:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 83
+
+
 4396:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** void arm_fir_decimate_f32(
 4397:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const arm_fir_decimate_instance_f32 * S,
 4398:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const float32_t * pSrc,
@@ -4978,12 +4975,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4447:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const q15_t * pSrc,
 4448:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q15_t * pDst,
 4449:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize);
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 84
-
-
 4450:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 4451:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 4452:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 84
+
+
 4453:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief  Initialization function for the Q15 FIR decimator.
 4454:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in,out] S          points to an instance of the Q15 FIR decimator structure.
 4455:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     numTaps    number of coefficients in the filter.
@@ -5038,12 +5035,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4504:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     pCoeffs    points to the filter coefficients.
 4505:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     pState     points to the state buffer.
 4506:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     blockSize  number of input samples to process per call.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 85
-
-
 4507:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @return    The function returns ARM_MATH_SUCCESS if initialization is successful or ARM_MATH_L
 4508:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * <code>blockSize</code> is not a multiple of <code>M</code>.
 4509:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 85
+
+
 4510:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   arm_status arm_fir_decimate_init_q31(
 4511:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_fir_decimate_instance_q31 * S,
 4512:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint16_t numTaps,
@@ -5098,12 +5095,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4561:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const arm_fir_interpolate_instance_q15 * S,
 4562:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const q15_t * pSrc,
 4563:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q15_t * pDst,
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 86
-
-
 4564:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize);
 4565:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 4566:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 86
+
+
 4567:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 4568:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief  Initialization function for the Q15 FIR interpolator.
 4569:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in,out] S          points to an instance of the Q15 FIR interpolator structure.
@@ -5158,12 +5155,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4618:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize);
 4619:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 4620:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 87
-
-
 4621:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 4622:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Processing function for the floating-point FIR interpolator.
 4623:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  S          points to an instance of the floating-point FIR interpolator structure.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 87
+
+
 4624:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrc       points to the block of input data.
 4625:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst       points to the block of output data.
 4626:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  blockSize  number of input samples to process per call.
@@ -5218,12 +5215,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4675:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const q31_t * pSrc,
 4676:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q31_t * pDst,
 4677:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize);
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 88
-
-
 4678:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 4679:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 4680:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 88
+
+
 4681:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in,out] S          points to an instance of the high precision Q31 Biquad cascade filte
 4682:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     numStages  number of 2nd order stages in the filter.
 4683:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     pCoeffs    points to the filter coefficients.
@@ -5278,12 +5275,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4732:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 4733:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_biquad_cascade_df2T_f32(
 4734:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const arm_biquad_cascade_df2T_instance_f32 * S,
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 89
-
-
 4735:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const float32_t * pSrc,
 4736:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         float32_t * pDst,
 4737:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize);
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 89
+
+
 4738:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 4739:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 4740:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
@@ -5338,12 +5335,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4789:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief  Initialization function for the floating-point transposed direct form II Biquad cascad
 4790:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in,out] S          points to an instance of the filter data structure.
 4791:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     numStages  number of 2nd order stages in the filter.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 90
-
-
 4792:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     pCoeffs    points to the filter coefficients.
 4793:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     pState     points to the state buffer.
 4794:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 90
+
+
 4795:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_biquad_cascade_stereo_df2T_init_f32(
 4796:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_biquad_cascade_stereo_df2T_instance_f32 * S,
 4797:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint8_t numStages,
@@ -5398,12 +5395,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4846:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 4847:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 4848:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Initialization function for the Q15 FIR lattice filter.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 91
-
-
 4849:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] S          points to an instance of the Q15 FIR lattice structure.
 4850:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] numStages  number of filter stages.
 4851:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] pCoeffs    points to the coefficient buffer.  The array is of length numStages.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 91
+
+
 4852:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] pState     points to the state buffer.  The array is of length numStages.
 4853:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 4854:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_fir_lattice_init_q15(
@@ -5458,12 +5455,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4903:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** /**
 4904:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * @brief Initialization function for the floating-point FIR lattice filter.
 4905:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * @param[in] S          points to an instance of the floating-point FIR lattice structure.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 92
-
-
 4906:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * @param[in] numStages  number of filter stages.
 4907:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * @param[in] pCoeffs    points to the coefficient buffer.  The array is of length numStages.
 4908:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  * @param[in] pState     points to the state buffer.  The array is of length numStages.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 92
+
+
 4909:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  */
 4910:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_fir_lattice_init_f32(
 4911:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_fir_lattice_instance_f32 * S,
@@ -5518,12 +5515,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 4960:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           float32_t *pkCoeffs;                 /**< points to the reflection coefficient array. The
 4961:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           float32_t *pvCoeffs;                 /**< points to the ladder coefficient array. The arr
 4962:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   } arm_iir_lattice_instance_f32;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 93
-
-
 4963:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 4964:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 4965:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 93
+
+
 4966:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Processing function for the floating-point IIR lattice filter.
 4967:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  S          points to an instance of the floating-point IIR lattice structure.
 4968:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrc       points to the block of input data.
@@ -5578,12 +5575,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5017:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] pState     points to the state buffer.  The array is of length numStages+blockSize.
 5018:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] blockSize  number of samples to process.
 5019:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 94
-
-
 5020:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_iir_lattice_init_q31(
 5021:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_iir_lattice_instance_q31 * S,
 5022:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint16_t numStages,
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 94
+
+
 5023:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q31_t * pkCoeffs,
 5024:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q31_t * pvCoeffs,
 5025:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q31_t * pState,
@@ -5638,12 +5635,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5074:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Processing function for floating-point LMS filter.
 5075:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  S          points to an instance of the floating-point LMS filter structure.
 5076:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrc       points to the block of input data.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 95
-
-
 5077:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pRef       points to the block of reference data.
 5078:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pOut       points to the block of output data.
 5079:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pErr       points to the block of error data.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 95
+
+
 5080:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  blockSize  number of samples to process.
 5081:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 5082:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_lms_f32(
@@ -5698,12 +5695,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5131:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 5132:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_lms_init_q15(
 5133:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_lms_instance_q15 * S,
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 96
-
-
 5134:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint16_t numTaps,
 5135:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q15_t * pCoeffs,
 5136:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q15_t * pState,
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 96
+
+
 5137:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q15_t mu,
 5138:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize,
 5139:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t postShift);
@@ -5758,12 +5755,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5188:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize);
 5189:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 5190:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 97
-
-
 5191:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 5192:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Initialization function for Q31 LMS filter.
 5193:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] S          points to an instance of the Q31 LMS filter structure.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 97
+
+
 5194:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] numTaps    number of filter coefficients.
 5195:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] pCoeffs    points to coefficient buffer.
 5196:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] pState     points to state buffer.
@@ -5818,12 +5815,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5245:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] S          points to an instance of the floating-point LMS filter structure.
 5246:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] numTaps    number of filter coefficients.
 5247:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] pCoeffs    points to coefficient buffer.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 98
-
-
 5248:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] pState     points to state buffer.
 5249:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] mu         step size that controls filter coefficient updates.
 5250:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] blockSize  number of samples to process.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 98
+
+
 5251:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 5252:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_lms_norm_init_f32(
 5253:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_lms_norm_instance_f32 * S,
@@ -5878,12 +5875,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5302:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] blockSize  number of samples to process.
 5303:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] postShift  bit shift applied to coefficients.
 5304:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 99
-
-
 5305:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_lms_norm_init_q31(
 5306:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_lms_norm_instance_q31 * S,
 5307:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint16_t numTaps,
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 99
+
+
 5308:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q31_t * pCoeffs,
 5309:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q31_t * pState,
 5310:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q31_t mu,
@@ -5938,12 +5935,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5359:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_lms_norm_init_q15(
 5360:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         arm_lms_norm_instance_q15 * S,
 5361:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint16_t numTaps,
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 100
-
-
 5362:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q15_t * pCoeffs,
 5363:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q15_t * pState,
 5364:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q15_t mu,
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 100
+
+
 5365:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize,
 5366:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint8_t postShift);
 5367:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
@@ -5998,12 +5995,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5416:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q15_t * pDst);
 5417:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 5418:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 101
-
-
 5419:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** /**
 5420:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @brief         Correlation of Q15 sequences (fast version).
 5421:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[in]     pSrcA      points to the first input sequence
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 101
+
+
 5422:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[in]     srcALen    length of the first input sequence
 5423:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[in]     pSrcB      points to the second input sequence
 5424:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[in]     srcBLen    length of the second input sequence
@@ -6058,12 +6055,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5473:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[in]  srcALen  length of the first input sequence
 5474:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[in]  pSrcB    points to the second input sequence
 5475:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[in]  srcBLen  length of the second input sequence
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 102
-
-
 5476:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[out] pDst     points to the block of output data  Length 2 * max(srcALen, srcBLen) - 1.
 5477:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  */
 5478:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** void arm_correlate_fast_q31(
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 102
+
+
 5479:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const q31_t * pSrcA,
 5480:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t srcALen,
 5481:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const q31_t * pSrcB,
@@ -6118,12 +6115,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5530:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     const float32_t *pCoeffs;           /**< points to the coefficient array. The array is of lengt
 5531:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           uint16_t maxDelay;            /**< maximum offset specified by the pTapDelay array. */
 5532:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****           int32_t *pTapDelay;           /**< points to the array of delay values.  The array is of 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 103
-
-
 5533:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   } arm_fir_sparse_instance_f32;
 5534:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 5535:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 103
+
+
 5536:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Instance structure for the Q31 sparse FIR filter.
 5537:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 5538:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   typedef struct
@@ -6178,12 +6175,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5587:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         float32_t * pScratchIn,
 5588:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize);
 5589:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 104
-
-
 5590:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 5591:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 5592:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief  Initialization function for the floating-point sparse FIR filter.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 104
+
+
 5593:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in,out] S          points to an instance of the floating-point sparse FIR structure.
 5594:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     numTaps    number of nonzero coefficients in the filter.
 5595:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     pCoeffs    points to the array of filter coefficients.
@@ -6238,12 +6235,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5644:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t blockSize);
 5645:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 5646:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 105
-
-
 5647:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 5648:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief Processing function for the Q15 sparse FIR filter.
 5649:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  S            points to an instance of the Q15 sparse FIR structure.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 105
+
+
 5650:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrc         points to the block of input data.
 5651:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst         points to the block of output data
 5652:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pScratchIn   points to a temporary buffer of size blockSize.
@@ -6298,12 +6295,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5701:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 5702:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 5703:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 106
-
-
 5704:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief  Initialization function for the Q7 sparse FIR filter.
 5705:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in,out] S          points to an instance of the Q7 sparse FIR structure.
 5706:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     numTaps    number of nonzero coefficients in the filter.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 106
+
+
 5707:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     pCoeffs    points to the array of filter coefficients.
 5708:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     pState     points to the state buffer.
 5709:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]     pTapDelay  points to the array of offset times.
@@ -6358,12 +6355,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5758:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 5759:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief  Q31 complex conjugate.
 5760:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  pSrc        points to the input vector
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 107
-
-
 5761:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pDst        points to the output vector
 5762:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  numSamples  number of complex samples in each vector
 5763:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 107
+
+
 5764:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   void arm_cmplx_conj_q31(
 5765:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   const q31_t * pSrc,
 5766:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         q31_t * pDst,
@@ -6418,12 +6415,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5815:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****         uint32_t numSamples);
 5816:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 5817:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 108
-
-
 5818:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  /**
 5819:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @ingroup groupController
 5820:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 108
+
+
 5821:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 5822:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 5823:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @defgroup PID PID Motor Control
@@ -6478,12 +6475,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5872:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * Instance structure cannot be placed into a const data section and it is recommended to use the
 5873:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    *
 5874:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * \par Fixed-Point Behavior
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 109
-
-
 5875:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * Care must be taken when using the fixed-point versions of the PID Controller functions.
 5876:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * In particular, the overflow and saturation behavior of the accumulator used in each function m
 5877:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * Refer to the function specific documentation below for usage guidelines.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 109
+
+
 5878:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 5879:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 5880:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
@@ -6538,12 +6535,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5929:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     q31_t out;
 5930:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 5931:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     /* acc = A0 * x[n]  */
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 110
-
-
 5932:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     acc = (q63_t) S->A0 * in;
 5933:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 5934:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     /* acc += A1 * x[n-1] */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 110
+
+
 5935:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     acc += (q63_t) S->A1 * S->state[0];
 5936:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 5937:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     /* acc += A2 * x[n-2]  */
@@ -6598,12 +6595,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 5986:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     /* acc = A0 * x[n]  */
 5987:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     acc = ((q31_t) S->A0) * in;
 5988:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 111
-
-
 5989:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     /* acc += A1 * x[n-1] + A2 * x[n-2]  */
 5990:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     acc += (q31_t) S->A1 * S->state[0];
 5991:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     acc += (q31_t) S->A2 * S->state[1];
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 111
+
+
 5992:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #endif
 5993:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 5994:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     /* acc += y[n-1] */
@@ -6658,12 +6655,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 6043:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 6044:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @defgroup clarke Vector Clarke Transform
 6045:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * Forward Clarke transform converts the instantaneous stator phases into a two-coordinate time i
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 112
-
-
 6046:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * Generally the Clarke transform uses three-phase currents <code>Ia, Ib and Ic</code> to calcula
 6047:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * in the two-phase orthogonal stator axis <code>Ialpha</code> and <code>Ibeta</code>.
 6048:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * When <code>Ialpha</code> is superposed with <code>Ia</code> as shown in the figure below
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 112
+
+
 6049:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * \image html clarke.gif Stator current space vector and its components in (a,b).
 6050:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * and <code>Ia + Ib + Ic = 0</code>, in this condition <code>Ialpha</code> and <code>Ibeta</code
 6051:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * can be calculated using only <code>Ia</code> and <code>Ib</code>.
@@ -6718,12 +6715,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 6100:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 6101:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   \par Scaling and Overflow Behavior
 6102:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****          The function is implemented using an internal 32-bit accumulator.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 113
-
-
 6103:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****          The accumulator maintains 1.31 format by truncating lower 31 bits of the intermediate mult
 6104:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****          There is saturation on the addition, hence there is no risk of overflow.
 6105:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 113
+
+
 6106:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** __STATIC_FORCEINLINE void arm_clarke_q31(
 6107:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   q31_t Ia,
 6108:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   q31_t Ib,
@@ -6778,12 +6775,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 6157:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    /**
 6158:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief  Floating-point Inverse Clarke transform
 6159:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  Ialpha  input two-phase orthogonal vector axis alpha
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 114
-
-
 6160:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in]  Ibeta   input two-phase orthogonal vector axis beta
 6161:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pIa     points to output three-phase coordinate <code>a</code>
 6162:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[out] pIb     points to output three-phase coordinate <code>b</code>
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 114
+
+
 6163:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @return     none
 6164:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 6165:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   __STATIC_FORCEINLINE void arm_inv_clarke_f32(
@@ -6838,12 +6835,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 6214:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @} end of inv_clarke group
 6215:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 6216:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 115
-
-
 6217:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 6218:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 6219:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 115
+
+
 6220:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @ingroup groupController
 6221:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 6222:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
@@ -6898,12 +6895,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 6271:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   float32_t cosVal)
 6272:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
 6273:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     /* Calculate pId using the equation, pId = Ialpha * cosVal + Ibeta * sinVal */
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 116
-
-
 6274:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     *pId = Ialpha * cosVal + Ibeta * sinVal;
 6275:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 6276:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     /* Calculate pIq using the equation, pIq = - Ialpha * sinVal + Ibeta * cosVal */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 116
+
+
 6277:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     *pIq = -Ialpha * sinVal + Ibeta * cosVal;
 6278:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   }
 6279:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
@@ -6958,12 +6955,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 6328:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @} end of park group
 6329:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 6330:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 117
-
-
 6331:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 6332:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 6333:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @ingroup groupController
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 117
+
+
 6334:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 6335:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 6336:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
@@ -7018,12 +7015,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 6385:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @brief  Inverse Park transform for   Q31 version
 6386:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[in]  Id       input coordinate of rotor reference frame d
 6387:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[in]  Iq       input coordinate of rotor reference frame q
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 118
-
-
 6388:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[out] pIalpha  points to output two-phase orthogonal vector axis alpha
 6389:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[out] pIbeta   points to output two-phase orthogonal vector axis beta
 6390:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[in]  sinVal   sine value of rotation angle theta
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 118
+
+
 6391:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @param[in]  cosVal   cosine value of rotation angle theta
 6392:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   @return     none
 6393:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
@@ -7078,12 +7075,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 6442:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * Linear interpolation is a method of curve fitting using linear polynomials.
 6443:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * Linear interpolation works by effectively drawing a straight line between two neighboring samp
 6444:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    *
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 119
-
-
 6445:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * \par
 6446:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * \image html LinearInterp.gif "Linear interpolation"
 6447:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    *
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 119
+
+
 6448:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * \par
 6449:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * A  Linear Interpolate function calculates an output value(y), for the input(x)
 6450:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * using linear interpolation of the input values x0, x1( nearest input values) and the output va
@@ -7138,12 +7135,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 6499:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       /* Iniatilize output for below specified range as least output value of table */
 6500:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       y = pYData[0];
 6501:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     }
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 120
-
-
 6502:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     else if ((uint32_t)i >= (S->nValues - 1))
 6503:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     {
 6504:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       /* Iniatilize output for above specified range as last output value of table */
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 120
+
+
 6505:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       y = pYData[S->nValues - 1];
 6506:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     }
 6507:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     else
@@ -7198,12 +7195,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 6556:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     {
 6557:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       return (pYData[nValues - 1]);
 6558:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     }
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 121
-
-
 6559:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     else if (index < 0)
 6560:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     {
 6561:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       return (pYData[0]);
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 121
+
+
 6562:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     }
 6563:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     else
 6564:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     {
@@ -7258,12 +7255,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 6613:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     if (index >= (int32_t)(nValues - 1))
 6614:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     {
 6615:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       return (pYData[nValues - 1]);
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 122
-
-
 6616:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     }
 6617:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     else if (index < 0)
 6618:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     {
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 122
+
+
 6619:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       return (pYData[0]);
 6620:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     }
 6621:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     else
@@ -7318,12 +7315,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 6670:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       return (pYData[0]);
 6671:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     }
 6672:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     index = (x >> 20) & 0xfff;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 123
-
-
 6673:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 6674:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     if (index >= (nValues - 1))
 6675:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     {
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 123
+
+
 6676:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       return (pYData[nValues - 1]);
 6677:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     }
 6678:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     else
@@ -7378,12 +7375,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 6727:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   q15_t x);
 6728:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 6729:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 124
-
-
 6730:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
 6731:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @brief  Fast approximation to the trigonometric cosine function for floating-point data.
 6732:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @param[in] x  input value in radians.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 124
+
+
 6733:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @return  cos(x).
 6734:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    */
 6735:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   float32_t arm_cos_f32(
@@ -7438,12 +7435,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 6784:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 6785:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 6786:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   /**
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 125
-
-
 6787:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * @defgroup SQRT Square Root
 6788:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    *
 6789:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * Computes the square root of a number.
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 125
+
+
 6790:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * There are separate functions for Q15, Q31, and floating-point data types.
 6791:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * The square root function is computed using the Newton-Raphson algorithm.
 6792:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****    * This is an iterative algorithm of the form:
@@ -7475,17 +7472,17 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 6818:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****                    - \ref ARM_MATH_ARGUMENT_ERROR : input value is negative; *pOut is set to 0
 6819:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****  */
 6820:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** __STATIC_FORCEINLINE arm_status arm_sqrt_f32(
- 235              		.loc 2 6820 33 is_stmt 1 view .LVU47
- 236              	.LBB8:
+ 232              		.loc 2 6820 33 is_stmt 1 view .LVU47
+ 233              	.LBB5:
 6821:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   float32_t in,
 6822:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   float32_t * pOut)
 6823:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   {
 6824:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     if (in >= 0.0f)
- 237              		.loc 2 6824 5 view .LVU48
- 238              		.loc 2 6824 8 is_stmt 0 view .LVU49
- 239 004e B5EEC00A 		vcmpe.f32	s0, #0
- 240 0052 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 241 0056 1CDB     		blt	.L48
+ 234              		.loc 2 6824 5 view .LVU48
+ 235              		.loc 2 6824 8 is_stmt 0 view .LVU49
+ 236 004c B5EEC00A 		vcmpe.f32	s0, #0
+ 237 0050 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 238 0054 1CDB     		blt	.L47
 6825:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     {
 6826:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #if defined ( __CC_ARM )
 6827:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   #if defined __TARGET_FPU_VFP
@@ -7498,550 +7495,412 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 1
 6834:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   #if defined __ARMVFP__
 6835:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       __ASM("VSQRT.F32 %0,%1" : "=t"(*pOut) : "t"(in));
 6836:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   #else
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 126
-
-
 6837:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       *pOut = sqrtf(in);
 6838:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****   #endif
 6839:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 126
+
+
 6840:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #else
 6841:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       *pOut = sqrtf(in);
- 242              		.loc 2 6841 7 is_stmt 1 view .LVU50
- 243              		.loc 2 6841 15 is_stmt 0 view .LVU51
- 244 0058 FFF7FEFF 		bl	sqrtf
- 245              	.LVL12:
- 246              		.loc 2 6841 15 view .LVU52
- 247 005c B0EE409A 		vmov.f32	s18, s0
- 248              	.LVL13:
+ 239              		.loc 2 6841 7 is_stmt 1 view .LVU50
+ 240              		.loc 2 6841 15 is_stmt 0 view .LVU51
+ 241 0056 FFF7FEFF 		bl	sqrtf
+ 242              	.LVL12:
+ 243              		.loc 2 6841 15 view .LVU52
+ 244 005a F0EE408A 		vmov.f32	s17, s0
+ 245              	.LVL13:
 6842:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** #endif
 6843:Middlewares/ST/ARM/DSP/Inc/arm_math.h **** 
 6844:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       return (ARM_MATH_SUCCESS);
- 249              		.loc 2 6844 7 is_stmt 1 view .LVU53
- 250              	.L31:
- 251              		.loc 2 6844 7 is_stmt 0 view .LVU54
- 252              	.LBE8:
- 253              	.LBE7:
+ 246              		.loc 2 6844 7 is_stmt 1 view .LVU53
+ 247              	.L31:
+ 248              		.loc 2 6844 7 is_stmt 0 view .LVU54
+ 249              	.LBE5:
+ 250              	.LBE4:
   41:Module/kinematic/kinematic_solver.c ****     
   42:Module/kinematic/kinematic_solver.c ****     // 检查工作空间边界
   43:Module/kinematic/kinematic_solver.c ****     float minR = fabsf(L1 - L2);
- 254              		.loc 1 43 5 is_stmt 1 view .LVU55
- 255              		.loc 1 43 27 is_stmt 0 view .LVU56
- 256 0060 78EE687A 		vsub.f32	s15, s16, s17
- 257              		.loc 1 43 11 view .LVU57
- 258 0064 F0EEE77A 		vabs.f32	s15, s15
- 259              	.LVL14:
+ 251              		.loc 1 43 5 is_stmt 1 view .LVU55
+ 252              		.loc 1 43 27 is_stmt 0 view .LVU56
+ 253 005e 78EE497A 		vsub.f32	s15, s16, s18
+ 254              		.loc 1 43 11 view .LVU57
+ 255 0062 F0EEE77A 		vabs.f32	s15, s15
+ 256              	.LVL14:
   44:Module/kinematic/kinematic_solver.c ****     float maxR = L1 + L2;
- 260              		.loc 1 44 5 is_stmt 1 view .LVU58
- 261              		.loc 1 44 11 is_stmt 0 view .LVU59
- 262 0068 38EE287A 		vadd.f32	s14, s16, s17
- 263              	.LVL15:
+ 257              		.loc 1 44 5 is_stmt 1 view .LVU58
+ 258              		.loc 1 44 11 is_stmt 0 view .LVU59
+ 259 0066 38EE097A 		vadd.f32	s14, s16, s18
+ 260              	.LVL15:
   45:Module/kinematic/kinematic_solver.c ****     
   46:Module/kinematic/kinematic_solver.c ****     if (R < minR - 0.001f || R > maxR + 0.001f) {
- 264              		.loc 1 46 5 is_stmt 1 view .LVU60
- 265              		.loc 1 46 18 is_stmt 0 view .LVU61
- 266 006c DFED676A 		vldr.32	s13, .L53
- 267 0070 77EEE67A 		vsub.f32	s15, s15, s13
- 268              	.LVL16:
- 269              		.loc 1 46 8 view .LVU62
- 270 0074 F4EEC97A 		vcmpe.f32	s15, s18
- 271 0078 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 272 007c 00F3C380 		bgt	.L42
- 273              		.loc 1 46 39 discriminator 1 view .LVU63
- 274 0080 37EE267A 		vadd.f32	s14, s14, s13
- 275              	.LVL17:
- 276              		.loc 1 46 27 discriminator 1 view .LVU64
- 277 0084 B4EEC97A 		vcmpe.f32	s14, s18
- 278 0088 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 279 008c 04D5     		bpl	.L50
+ 261              		.loc 1 46 5 is_stmt 1 view .LVU60
+ 262              		.loc 1 46 18 is_stmt 0 view .LVU61
+ 263 006a DFED516A 		vldr.32	s13, .L54
+ 264 006e 77EEE67A 		vsub.f32	s15, s15, s13
+ 265              	.LVL16:
+ 266              		.loc 1 46 8 view .LVU62
+ 267 0072 F4EEE87A 		vcmpe.f32	s15, s17
+ 268 0076 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 269 007a 00F39680 		bgt	.L39
+ 270              		.loc 1 46 39 discriminator 1 view .LVU63
+ 271 007e 37EE267A 		vadd.f32	s14, s14, s13
+ 272              	.LVL17:
+ 273              		.loc 1 46 27 discriminator 1 view .LVU64
+ 274 0082 B4EEE87A 		vcmpe.f32	s14, s17
+ 275 0086 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 276 008a 04D5     		bpl	.L49
   47:Module/kinematic/kinematic_solver.c ****         return 0; // 超出工作空间
- 280              		.loc 1 47 16 view .LVU65
- 281 008e 0025     		movs	r5, #0
- 282              	.LVL18:
- 283              		.loc 1 47 16 view .LVU66
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 127
+ 277              		.loc 1 47 16 view .LVU65
+ 278 008c 0020     		movs	r0, #0
+ 279 008e 86E0     		b	.L29
+ 280              	.LVL18:
+ 281              	.L47:
+ 282              	.LBB7:
+ 283              	.LBB6:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 127
 
 
- 284 0090 B1E0     		b	.L29
- 285              	.LVL19:
- 286              	.L48:
- 287              	.LBB10:
- 288              	.LBB9:
 6845:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     }
 6846:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     else
 6847:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****     {
 6848:Middlewares/ST/ARM/DSP/Inc/arm_math.h ****       *pOut = 0.0f;
+ 284              		.loc 2 6848 13 view .LVU66
+ 285 0090 DFED488A 		vldr.32	s17, .L54+4
+ 286 0094 E3E7     		b	.L31
+ 287              	.LVL19:
+ 288              	.L49:
  289              		.loc 2 6848 13 view .LVU67
- 290 0092 9FED5F9A 		vldr.32	s18, .L53+4
- 291 0096 E3E7     		b	.L31
- 292              	.LVL20:
- 293              	.L50:
- 294              		.loc 2 6848 13 view .LVU68
- 295              	.LBE9:
- 296              	.LBE10:
+ 290              	.LBE6:
+ 291              	.LBE7:
   48:Module/kinematic/kinematic_solver.c ****     }
   49:Module/kinematic/kinematic_solver.c ****     
-  50:Module/kinematic/kinematic_solver.c ****     // 计算目标方向角度
-  51:Module/kinematic/kinematic_solver.c ****     float beta = atan2f(y, x); // 使用标准atan2保证精度
- 297              		.loc 1 51 5 is_stmt 1 view .LVU69
- 298              		.loc 1 51 18 is_stmt 0 view .LVU70
- 299 0098 F0EE690A 		vmov.f32	s1, s19
- 300 009c B0EE4A0A 		vmov.f32	s0, s20
- 301 00a0 FFF7FEFF 		bl	atan2f
- 302              	.LVL21:
- 303 00a4 F0EE40AA 		vmov.f32	s21, s0
- 304              	.LVL22:
+  50:Module/kinematic/kinematic_solver.c ****     // 计算基础方向角度
+  51:Module/kinematic/kinematic_solver.c ****     float alpha = atan2f(y, x);
+ 292              		.loc 1 51 5 is_stmt 1 view .LVU68
+ 293              		.loc 1 51 19 is_stmt 0 view .LVU69
+ 294 0096 F0EE4A0A 		vmov.f32	s1, s20
+ 295 009a B0EE690A 		vmov.f32	s0, s19
+ 296 009e FFF7FEFF 		bl	atan2f
+ 297              	.LVL20:
+ 298 00a2 F0EE40AA 		vmov.f32	s21, s0
+ 299              	.LVL21:
   52:Module/kinematic/kinematic_solver.c ****     
-  53:Module/kinematic/kinematic_solver.c ****     // 使用余弦定律计算中间角度
-  54:Module/kinematic/kinematic_solver.c ****     float L1_sq = L1 * L1;
- 305              		.loc 1 54 5 is_stmt 1 view .LVU71
- 306              		.loc 1 54 11 is_stmt 0 view .LVU72
- 307 00a8 68EE087A 		vmul.f32	s15, s16, s16
-  55:Module/kinematic/kinematic_solver.c ****     float R_sq = R * R;
- 308              		.loc 1 55 5 is_stmt 1 view .LVU73
- 309              		.loc 1 55 11 is_stmt 0 view .LVU74
- 310 00ac 29EE097A 		vmul.f32	s14, s18, s18
- 311              	.LVL23:
-  56:Module/kinematic/kinematic_solver.c ****     float L2_sq = L2 * L2;
- 312              		.loc 1 56 5 is_stmt 1 view .LVU75
- 313              		.loc 1 56 11 is_stmt 0 view .LVU76
- 314 00b0 68EEA88A 		vmul.f32	s17, s17, s17
- 315              	.LVL24:
-  57:Module/kinematic/kinematic_solver.c ****     float cos_alpha = (L1_sq + R_sq - L2_sq) / (2.0f * L1 * R);
- 316              		.loc 1 57 5 is_stmt 1 view .LVU77
- 317              		.loc 1 57 30 is_stmt 0 view .LVU78
- 318 00b4 77EE877A 		vadd.f32	s15, s15, s14
- 319              		.loc 1 57 37 view .LVU79
- 320 00b8 77EEE87A 		vsub.f32	s15, s15, s17
- 321              		.loc 1 57 54 view .LVU80
- 322 00bc 38EE087A 		vadd.f32	s14, s16, s16
- 323              	.LVL25:
- 324              		.loc 1 57 59 view .LVU81
- 325 00c0 27EE097A 		vmul.f32	s14, s14, s18
- 326              		.loc 1 57 11 view .LVU82
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 128
+  53:Module/kinematic/kinematic_solver.c ****     // 使用余弦定律计算中间变量（简化公式）
+  54:Module/kinematic/kinematic_solver.c ****     float cos_beta = (L1 * L1 + R * R - L2 * L2) / (2.0f * L1 * R);
+ 300              		.loc 1 54 5 is_stmt 1 view .LVU70
+ 301              		.loc 1 54 26 is_stmt 0 view .LVU71
+ 302 00a6 68EE087A 		vmul.f32	s15, s16, s16
+ 303              		.loc 1 54 35 view .LVU72
+ 304 00aa 28EEA87A 		vmul.f32	s14, s17, s17
+ 305              		.loc 1 54 31 view .LVU73
+ 306 00ae 77EE877A 		vadd.f32	s15, s15, s14
+ 307              		.loc 1 54 44 view .LVU74
+ 308 00b2 29EE097A 		vmul.f32	s14, s18, s18
+ 309              		.loc 1 54 39 view .LVU75
+ 310 00b6 77EEC77A 		vsub.f32	s15, s15, s14
+ 311              		.loc 1 54 58 view .LVU76
+ 312 00ba 38EE087A 		vadd.f32	s14, s16, s16
+ 313              		.loc 1 54 63 view .LVU77
+ 314 00be 27EE287A 		vmul.f32	s14, s14, s17
+ 315              		.loc 1 54 11 view .LVU78
+ 316 00c2 87EE870A 		vdiv.f32	s0, s15, s14
+ 317              	.LVL22:
+  55:Module/kinematic/kinematic_solver.c ****     
+  56:Module/kinematic/kinematic_solver.c ****     // 数值稳定性处理
+  57:Module/kinematic/kinematic_solver.c ****     if (cos_beta > 1.0f) cos_beta = 1.0f;
+ 318              		.loc 1 57 5 is_stmt 1 view .LVU79
+ 319              		.loc 1 57 8 is_stmt 0 view .LVU80
+ 320 00c6 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 321 00ca B4EEE70A 		vcmpe.f32	s0, s15
+ 322 00ce F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 323 00d2 3FDD     		ble	.L50
+ 324              		.loc 1 57 35 discriminator 1 view .LVU81
+ 325 00d4 B7EE000A 		vmov.f32	s0, #1.0e+0
+ 326              	.LVL23:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 128
 
 
- 327 00c4 87EE870A 		vdiv.f32	s0, s15, s14
- 328              	.LVL26:
-  58:Module/kinematic/kinematic_solver.c ****     
-  59:Module/kinematic/kinematic_solver.c ****     // 数值稳定性处理
-  60:Module/kinematic/kinematic_solver.c ****     if (cos_alpha > 1.0f) cos_alpha = 1.0f;
- 329              		.loc 1 60 5 is_stmt 1 view .LVU83
- 330              		.loc 1 60 8 is_stmt 0 view .LVU84
- 331 00c8 F7EE007A 		vmov.f32	s15, #1.0e+0
- 332 00cc B4EEE70A 		vcmpe.f32	s0, s15
- 333 00d0 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 334 00d4 16DD     		ble	.L51
- 335              		.loc 1 60 37 discriminator 1 view .LVU85
- 336 00d6 B7EE000A 		vmov.f32	s0, #1.0e+0
- 337              	.LVL27:
- 338              	.L33:
-  61:Module/kinematic/kinematic_solver.c ****     if (cos_alpha < -1.0f) cos_alpha = -1.0f;
+ 327              	.L33:
+  58:Module/kinematic/kinematic_solver.c ****     if (cos_beta < -1.0f) cos_beta = -1.0f;
+  59:Module/kinematic/kinematic_solver.c ****     
+  60:Module/kinematic/kinematic_solver.c ****     // 计算beta角度
+  61:Module/kinematic/kinematic_solver.c ****     float beta = acosf(cos_beta);
+ 328              		.loc 1 61 5 is_stmt 1 view .LVU82
+ 329              		.loc 1 61 18 is_stmt 0 view .LVU83
+ 330 00d8 FFF7FEFF 		bl	acosf
+ 331              	.LVL24:
   62:Module/kinematic/kinematic_solver.c ****     
-  63:Module/kinematic/kinematic_solver.c ****     // 计算alpha角度（使用标准函数保证精度）
-  64:Module/kinematic/kinematic_solver.c ****     float alpha = acosf(cos_alpha);
- 339              		.loc 1 64 5 is_stmt 1 view .LVU86
- 340              		.loc 1 64 19 is_stmt 0 view .LVU87
- 341 00da FFF7FEFF 		bl	acosf
- 342              	.LVL28:
- 343              		.loc 1 64 19 view .LVU88
- 344 00de F0EE408A 		vmov.f32	s17, s0
- 345              	.LVL29:
+  63:Module/kinematic/kinematic_solver.c ****     // 基于θ₁>θ₂约束计算唯一解
+  64:Module/kinematic/kinematic_solver.c ****     float theta1 = normalize_angle(alpha + beta);
+ 332              		.loc 1 64 5 is_stmt 1 view .LVU84
+ 333              		.loc 1 64 20 is_stmt 0 view .LVU85
+ 334 00dc 3AEE800A 		vadd.f32	s0, s21, s0
+ 335              	.LVL25:
+ 336              		.loc 1 64 20 view .LVU86
+ 337 00e0 FFF7FEFF 		bl	normalize_angle
+ 338              	.LVL26:
+ 339 00e4 F0EE408A 		vmov.f32	s17, s0
+ 340              	.LVL27:
   65:Module/kinematic/kinematic_solver.c ****     
-  66:Module/kinematic/kinematic_solver.c ****     // 计算两种可能的配置
-  67:Module/kinematic/kinematic_solver.c ****     float theta1_options[2] = {
- 346              		.loc 1 67 5 is_stmt 1 view .LVU89
-  68:Module/kinematic/kinematic_solver.c ****         normalize_angle(beta + alpha),
- 347              		.loc 1 68 9 is_stmt 0 view .LVU90
- 348 00e2 3AEE800A 		vadd.f32	s0, s21, s0
- 349              	.LVL30:
- 350              		.loc 1 68 9 view .LVU91
- 351 00e6 FFF7FEFF 		bl	normalize_angle
- 352              	.LVL31:
-  67:Module/kinematic/kinematic_solver.c ****         normalize_angle(beta + alpha),
- 353              		.loc 1 67 11 view .LVU92
- 354 00ea 8DED080A 		vstr.32	s0, [sp, #32]
-  69:Module/kinematic/kinematic_solver.c ****         normalize_angle(beta - alpha)
- 355              		.loc 1 69 9 view .LVU93
- 356 00ee 3AEEE80A 		vsub.f32	s0, s21, s17
- 357 00f2 FFF7FEFF 		bl	normalize_angle
- 358              	.LVL32:
-  67:Module/kinematic/kinematic_solver.c ****         normalize_angle(beta + alpha),
- 359              		.loc 1 67 11 view .LVU94
- 360 00f6 8DED090A 		vstr.32	s0, [sp, #36]
-  70:Module/kinematic/kinematic_solver.c ****     };
-  71:Module/kinematic/kinematic_solver.c ****     
-  72:Module/kinematic/kinematic_solver.c ****     float theta2_options[2];
- 361              		.loc 1 72 5 is_stmt 1 view .LVU95
-  73:Module/kinematic/kinematic_solver.c ****     int valid_solution_count = 0;
- 362              		.loc 1 73 5 view .LVU96
- 363              	.LVL33:
-  74:Module/kinematic/kinematic_solver.c ****     float best_difference = 1e6f; // 初始化为一个大的值
- 364              		.loc 1 74 5 view .LVU97
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 129
+  66:Module/kinematic/kinematic_solver.c ****     // 使用CMSIS-DSP优化三角函数计算
+  67:Module/kinematic/kinematic_solver.c ****     float32_t sin_theta1, cos_theta1;
+ 341              		.loc 1 67 5 is_stmt 1 view .LVU87
+  68:Module/kinematic/kinematic_solver.c ****     arm_sin_cos_f32(RAD_TO_DEG(theta1), &sin_theta1, &cos_theta1);
+ 342              		.loc 1 68 5 view .LVU88
+ 343              		.loc 1 68 21 is_stmt 0 view .LVU89
+ 344 00e8 DFED337A 		vldr.32	s15, .L54+8
+ 345 00ec 60EE277A 		vmul.f32	s15, s0, s15
+ 346              		.loc 1 68 5 view .LVU90
+ 347 00f0 02A9     		add	r1, sp, #8
+ 348 00f2 03A8     		add	r0, sp, #12
+ 349 00f4 9FED310A 		vldr.32	s0, .L54+12
+ 350              	.LVL28:
+ 351              		.loc 1 68 5 view .LVU91
+ 352 00f8 87EE800A 		vdiv.f32	s0, s15, s0
+ 353 00fc FFF7FEFF 		bl	arm_sin_cos_f32
+ 354              	.LVL29:
+  69:Module/kinematic/kinematic_solver.c ****     
+  70:Module/kinematic/kinematic_solver.c ****     // 根据新方程计算sinθ2和cosθ2
+  71:Module/kinematic/kinematic_solver.c ****     float sin_theta2 = (L1 * sin_theta1 - x) / L2;
+ 355              		.loc 1 71 5 is_stmt 1 view .LVU92
+ 356              		.loc 1 71 28 is_stmt 0 view .LVU93
+ 357 0100 9DED030A 		vldr.32	s0, [sp, #12]
+ 358 0104 28EE000A 		vmul.f32	s0, s16, s0
+ 359              		.loc 1 71 41 view .LVU94
+ 360 0108 30EE4A0A 		vsub.f32	s0, s0, s20
+ 361              	.LVL30:
+  72:Module/kinematic/kinematic_solver.c ****     float cos_theta2 = (L1 * cos_theta1 + y) / L2;
+ 362              		.loc 1 72 5 is_stmt 1 view .LVU95
+ 363              		.loc 1 72 28 is_stmt 0 view .LVU96
+ 364 010c DDED027A 		vldr.32	s15, [sp, #8]
+ 365 0110 68EE270A 		vmul.f32	s1, s16, s15
+ 366              		.loc 1 72 41 view .LVU97
+ 367 0114 70EEA90A 		vadd.f32	s1, s1, s19
+ 368              	.LVL31:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 129
 
 
-  75:Module/kinematic/kinematic_solver.c ****     JointAngles best_solution;
- 365              		.loc 1 75 5 view .LVU98
-  76:Module/kinematic/kinematic_solver.c ****     
-  77:Module/kinematic/kinematic_solver.c ****     // 计算两种可能的theta2
-  78:Module/kinematic/kinematic_solver.c ****     for (int i = 0; i < 2; i++) {
- 366              		.loc 1 78 5 view .LVU99
- 367              	.LBB11:
- 368              		.loc 1 78 10 view .LVU100
- 369              		.loc 1 78 14 is_stmt 0 view .LVU101
- 370 00fa 0027     		movs	r7, #0
- 371              	.LBE11:
-  74:Module/kinematic/kinematic_solver.c ****     JointAngles best_solution;
- 372              		.loc 1 74 11 view .LVU102
- 373 00fc DFED45AA 		vldr.32	s21, .L53+8
- 374              	.LVL34:
-  73:Module/kinematic/kinematic_solver.c ****     float best_difference = 1e6f; // 初始化为一个大的值
- 375              		.loc 1 73 9 view .LVU103
- 376 0100 3D46     		mov	r5, r7
- 377              	.LBB16:
- 378              		.loc 1 78 5 view .LVU104
- 379 0102 0BE0     		b	.L34
- 380              	.LVL35:
- 381              	.L51:
- 382              		.loc 1 78 5 view .LVU105
- 383              	.LBE16:
-  61:Module/kinematic/kinematic_solver.c ****     
- 384              		.loc 1 61 5 is_stmt 1 view .LVU106
-  61:Module/kinematic/kinematic_solver.c ****     
- 385              		.loc 1 61 8 is_stmt 0 view .LVU107
- 386 0104 FFEE007A 		vmov.f32	s15, #-1.0e+0
- 387 0108 B4EEE70A 		vcmpe.f32	s0, s15
- 388 010c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 389 0110 E3D5     		bpl	.L33
-  61:Module/kinematic/kinematic_solver.c ****     
- 390              		.loc 1 61 38 discriminator 1 view .LVU108
- 391 0112 BFEE000A 		vmov.f32	s0, #-1.0e+0
- 392              	.LVL36:
-  61:Module/kinematic/kinematic_solver.c ****     
- 393              		.loc 1 61 38 discriminator 1 view .LVU109
- 394 0116 E0E7     		b	.L33
+  73:Module/kinematic/kinematic_solver.c ****     
+  74:Module/kinematic/kinematic_solver.c ****     // 计算θ2
+  75:Module/kinematic/kinematic_solver.c ****     float theta2 = atan2f(sin_theta2, cos_theta2);
+ 369              		.loc 1 75 5 is_stmt 1 view .LVU98
+ 370              		.loc 1 75 20 is_stmt 0 view .LVU99
+ 371 0118 C0EE890A 		vdiv.f32	s1, s1, s18
+ 372              	.LVL32:
+ 373              		.loc 1 75 20 view .LVU100
+ 374 011c 80EE090A 		vdiv.f32	s0, s0, s18
+ 375              	.LVL33:
+ 376              		.loc 1 75 20 view .LVU101
+ 377 0120 FFF7FEFF 		bl	atan2f
+ 378              	.LVL34:
+  76:Module/kinematic/kinematic_solver.c ****     theta2 = normalize_angle(theta2);
+ 379              		.loc 1 76 5 is_stmt 1 view .LVU102
+ 380              		.loc 1 76 14 is_stmt 0 view .LVU103
+ 381 0124 FFF7FEFF 		bl	normalize_angle
+ 382              	.LVL35:
+ 383              		.loc 1 76 14 view .LVU104
+ 384 0128 B0EE408A 		vmov.f32	s16, s0
+ 385              	.LVL36:
+  77:Module/kinematic/kinematic_solver.c ****     
+  78:Module/kinematic/kinematic_solver.c ****     // 验证θ₁>θ₂约束
+  79:Module/kinematic/kinematic_solver.c ****     const float angle_tolerance = 0.001f; // 允许的误差范围
+ 386              		.loc 1 79 5 is_stmt 1 view .LVU105
+  80:Module/kinematic/kinematic_solver.c ****     if (theta1 < theta2 - angle_tolerance) {
+ 387              		.loc 1 80 5 view .LVU106
+ 388              		.loc 1 80 25 is_stmt 0 view .LVU107
+ 389 012c DFED207A 		vldr.32	s15, .L54
+ 390 0130 70EE677A 		vsub.f32	s15, s0, s15
+ 391              		.loc 1 80 8 view .LVU108
+ 392 0134 F4EEE87A 		vcmpe.f32	s15, s17
+ 393 0138 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 394 013c 14DC     		bgt	.L51
  395              	.LVL37:
- 396              	.L36:
- 397              	.LBB17:
- 398              	.LBB12:
- 399              	.LBB13:
-  79:Module/kinematic/kinematic_solver.c ****         // 使用CMSIS-DSP优化三角函数计算
-  80:Module/kinematic/kinematic_solver.c ****         float32_t sin_theta1, cos_theta1;
-  81:Module/kinematic/kinematic_solver.c ****         arm_sin_cos_f32(RAD_TO_DEG(theta1_options[i]), &sin_theta1, &cos_theta1);
-  82:Module/kinematic/kinematic_solver.c ****         
-  83:Module/kinematic/kinematic_solver.c ****         // 计算从末端到第二个主动臂的向量
-  84:Module/kinematic/kinematic_solver.c ****         float x2 = x - L1 * cos_theta1;
-  85:Module/kinematic/kinematic_solver.c ****         float y2 = y - L1 * sin_theta1;
-  86:Module/kinematic/kinematic_solver.c ****         
-  87:Module/kinematic/kinematic_solver.c ****         // 计算theta2
-  88:Module/kinematic/kinematic_solver.c ****         theta2_options[i] = atan2f(y2, x2); // 使用标准函数保证精度
-  89:Module/kinematic/kinematic_solver.c ****         
-  90:Module/kinematic/kinematic_solver.c ****         // 归一化角度
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 130
-
-
-  91:Module/kinematic/kinematic_solver.c ****         theta1_options[i] = normalize_angle(theta1_options[i]);
-  92:Module/kinematic/kinematic_solver.c ****         theta2_options[i] = normalize_angle(theta2_options[i]);
-  93:Module/kinematic/kinematic_solver.c ****         
-  94:Module/kinematic/kinematic_solver.c ****         // 检查是否在限位范围内
-  95:Module/kinematic/kinematic_solver.c ****         bool valid_theta1 = within_limits(theta1_options[i], limits->min_theta1, limits->max_theta1
-  96:Module/kinematic/kinematic_solver.c ****         bool valid_theta2 = within_limits(theta2_options[i], limits->min_theta2, limits->max_theta2
-  97:Module/kinematic/kinematic_solver.c ****         
-  98:Module/kinematic/kinematic_solver.c ****         if (valid_theta1 && valid_theta2) {
-  99:Module/kinematic/kinematic_solver.c ****             // 计算与当前角度的差异
- 100:Module/kinematic/kinematic_solver.c ****             float difference = fabsf(theta1_options[i] - angles->theta1) + 
- 101:Module/kinematic/kinematic_solver.c ****                               fabsf(theta2_options[i] - angles->theta2);
- 102:Module/kinematic/kinematic_solver.c ****             
- 103:Module/kinematic/kinematic_solver.c ****             // 如果这是更优的解，或者第一个有效解
- 104:Module/kinematic/kinematic_solver.c ****             if (difference < best_difference) {
- 105:Module/kinematic/kinematic_solver.c ****                 best_difference = difference;
- 106:Module/kinematic/kinematic_solver.c ****                 best_solution.theta1 = theta1_options[i];
- 107:Module/kinematic/kinematic_solver.c ****                 best_solution.theta2 = theta2_options[i];
- 108:Module/kinematic/kinematic_solver.c ****             }
- 109:Module/kinematic/kinematic_solver.c ****             valid_solution_count++;
- 400              		.loc 1 109 13 is_stmt 1 view .LVU110
- 401              		.loc 1 109 33 is_stmt 0 view .LVU111
- 402 0118 0135     		adds	r5, r5, #1
+ 396              	.L34:
+  81:Module/kinematic/kinematic_solver.c ****         // 如果违反约束，应用修正
+  82:Module/kinematic/kinematic_solver.c ****         theta1 += 2.0f * PI;
+  83:Module/kinematic/kinematic_solver.c ****         theta1 = normalize_angle(theta1);
+  84:Module/kinematic/kinematic_solver.c ****     }
+  85:Module/kinematic/kinematic_solver.c ****     
+  86:Module/kinematic/kinematic_solver.c ****     // 检查是否在限位范围内
+  87:Module/kinematic/kinematic_solver.c ****     bool valid = within_limits(theta1, limits->min_theta1, limits->max_theta1) &&
+ 397              		.loc 1 87 5 is_stmt 1 view .LVU109
+ 398              		.loc 1 87 18 is_stmt 0 view .LVU110
+ 399 013e 94ED011A 		vldr.32	s2, [r4, #4]
+ 400 0142 D4ED000A 		vldr.32	s1, [r4]
+ 401 0146 B0EE680A 		vmov.f32	s0, s17
+ 402 014a FFF7FEFF 		bl	within_limits
  403              	.LVL38:
- 404              	.L35:
- 405              		.loc 1 109 33 view .LVU112
- 406              	.LBE13:
- 407              	.LBE12:
-  78:Module/kinematic/kinematic_solver.c ****         // 使用CMSIS-DSP优化三角函数计算
- 408              		.loc 1 78 29 is_stmt 1 discriminator 2 view .LVU113
- 409 011a 0137     		adds	r7, r7, #1
- 410              	.LVL39:
- 411              	.L34:
-  78:Module/kinematic/kinematic_solver.c ****         // 使用CMSIS-DSP优化三角函数计算
- 412              		.loc 1 78 23 discriminator 1 view .LVU114
- 413 011c 012F     		cmp	r7, #1
- 414 011e 62DC     		bgt	.L52
- 415              	.LBB15:
-  80:Module/kinematic/kinematic_solver.c ****         arm_sin_cos_f32(RAD_TO_DEG(theta1_options[i]), &sin_theta1, &cos_theta1);
- 416              		.loc 1 80 9 view .LVU115
-  81:Module/kinematic/kinematic_solver.c ****         
- 417              		.loc 1 81 9 view .LVU116
-  81:Module/kinematic/kinematic_solver.c ****         
- 418              		.loc 1 81 25 is_stmt 0 view .LVU117
- 419 0120 0AAB     		add	r3, sp, #40
- 420 0122 03EB8708 		add	r8, r3, r7, lsl #2
- 421 0126 18ED029A 		vldr.32	s18, [r8, #-8]
- 422 012a DFED3B7A 		vldr.32	s15, .L53+12
- 423 012e 69EE277A 		vmul.f32	s15, s18, s15
-  81:Module/kinematic/kinematic_solver.c ****         
- 424              		.loc 1 81 9 view .LVU118
- 425 0132 03A9     		add	r1, sp, #12
- 426 0134 02A8     		add	r0, sp, #8
- 427 0136 9FED390A 		vldr.32	s0, .L53+16
- 428 013a 87EE800A 		vdiv.f32	s0, s15, s0
- 429 013e FFF7FEFF 		bl	arm_sin_cos_f32
- 430              	.LVL40:
-  84:Module/kinematic/kinematic_solver.c ****         float y2 = y - L1 * sin_theta1;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 131
+ 404              		.loc 1 87 80 discriminator 1 view .LVU111
+ 405 014e A0B9     		cbnz	r0, .L52
+  88:Module/kinematic/kinematic_solver.c ****                  within_limits(theta2, limits->min_theta2, limits->max_theta2);
+  89:Module/kinematic/kinematic_solver.c ****     
+  90:Module/kinematic/kinematic_solver.c ****     if (valid) {
+  91:Module/kinematic/kinematic_solver.c ****         angles->theta1 = theta1;
+  92:Module/kinematic/kinematic_solver.c ****         angles->theta2 = theta2;
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 130
 
 
- 431              		.loc 1 84 9 is_stmt 1 view .LVU119
-  84:Module/kinematic/kinematic_solver.c ****         float y2 = y - L1 * sin_theta1;
- 432              		.loc 1 84 27 is_stmt 0 view .LVU120
- 433 0142 DDED030A 		vldr.32	s1, [sp, #12]
- 434 0146 68EE200A 		vmul.f32	s1, s16, s1
- 435              	.LVL41:
-  85:Module/kinematic/kinematic_solver.c ****         
- 436              		.loc 1 85 9 is_stmt 1 view .LVU121
-  85:Module/kinematic/kinematic_solver.c ****         
- 437              		.loc 1 85 27 is_stmt 0 view .LVU122
- 438 014a 9DED020A 		vldr.32	s0, [sp, #8]
- 439 014e 28EE000A 		vmul.f32	s0, s16, s0
- 440              	.LVL42:
-  88:Module/kinematic/kinematic_solver.c ****         
- 441              		.loc 1 88 9 is_stmt 1 view .LVU123
-  88:Module/kinematic/kinematic_solver.c ****         
- 442              		.loc 1 88 29 is_stmt 0 view .LVU124
- 443 0152 79EEE00A 		vsub.f32	s1, s19, s1
- 444              	.LVL43:
-  88:Module/kinematic/kinematic_solver.c ****         
- 445              		.loc 1 88 29 view .LVU125
- 446 0156 3AEE400A 		vsub.f32	s0, s20, s0
- 447              	.LVL44:
-  88:Module/kinematic/kinematic_solver.c ****         
- 448              		.loc 1 88 29 view .LVU126
- 449 015a FFF7FEFF 		bl	atan2f
- 450              	.LVL45:
-  88:Module/kinematic/kinematic_solver.c ****         
- 451              		.loc 1 88 29 view .LVU127
- 452 015e F0EE408A 		vmov.f32	s17, s0
-  88:Module/kinematic/kinematic_solver.c ****         
- 453              		.loc 1 88 27 discriminator 1 view .LVU128
- 454 0162 08ED040A 		vstr.32	s0, [r8, #-16]
-  91:Module/kinematic/kinematic_solver.c ****         theta2_options[i] = normalize_angle(theta2_options[i]);
- 455              		.loc 1 91 9 is_stmt 1 view .LVU129
-  91:Module/kinematic/kinematic_solver.c ****         theta2_options[i] = normalize_angle(theta2_options[i]);
- 456              		.loc 1 91 29 is_stmt 0 view .LVU130
- 457 0166 B0EE490A 		vmov.f32	s0, s18
- 458 016a FFF7FEFF 		bl	normalize_angle
- 459              	.LVL46:
- 460 016e B0EE409A 		vmov.f32	s18, s0
-  91:Module/kinematic/kinematic_solver.c ****         theta2_options[i] = normalize_angle(theta2_options[i]);
- 461              		.loc 1 91 27 discriminator 1 view .LVU131
- 462 0172 08ED020A 		vstr.32	s0, [r8, #-8]
-  92:Module/kinematic/kinematic_solver.c ****         
- 463              		.loc 1 92 9 is_stmt 1 view .LVU132
-  92:Module/kinematic/kinematic_solver.c ****         
- 464              		.loc 1 92 29 is_stmt 0 view .LVU133
- 465 0176 B0EE680A 		vmov.f32	s0, s17
- 466 017a FFF7FEFF 		bl	normalize_angle
- 467              	.LVL47:
- 468 017e F0EE408A 		vmov.f32	s17, s0
-  92:Module/kinematic/kinematic_solver.c ****         
- 469              		.loc 1 92 27 discriminator 1 view .LVU134
- 470 0182 08ED040A 		vstr.32	s0, [r8, #-16]
-  95:Module/kinematic/kinematic_solver.c ****         bool valid_theta2 = within_limits(theta2_options[i], limits->min_theta2, limits->max_theta2
- 471              		.loc 1 95 9 is_stmt 1 view .LVU135
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 132
+  93:Module/kinematic/kinematic_solver.c ****         return 1; // 唯一解
+  94:Module/kinematic/kinematic_solver.c ****     }
+  95:Module/kinematic/kinematic_solver.c ****     
+  96:Module/kinematic/kinematic_solver.c ****     return 0; // 不在限位范围内
+ 406              		.loc 1 96 12 view .LVU112
+ 407 0150 0020     		movs	r0, #0
+ 408 0152 24E0     		b	.L29
+ 409              	.LVL39:
+ 410              	.L50:
+  58:Module/kinematic/kinematic_solver.c ****     
+ 411              		.loc 1 58 5 is_stmt 1 view .LVU113
+  58:Module/kinematic/kinematic_solver.c ****     
+ 412              		.loc 1 58 8 is_stmt 0 view .LVU114
+ 413 0154 FFEE007A 		vmov.f32	s15, #-1.0e+0
+ 414 0158 B4EEE70A 		vcmpe.f32	s0, s15
+ 415 015c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 416 0160 BAD5     		bpl	.L33
+  58:Module/kinematic/kinematic_solver.c ****     
+ 417              		.loc 1 58 36 discriminator 1 view .LVU115
+ 418 0162 BFEE000A 		vmov.f32	s0, #-1.0e+0
+ 419              	.LVL40:
+  58:Module/kinematic/kinematic_solver.c ****     
+ 420              		.loc 1 58 36 discriminator 1 view .LVU116
+ 421 0166 B7E7     		b	.L33
+ 422              	.LVL41:
+ 423              	.L51:
+  82:Module/kinematic/kinematic_solver.c ****         theta1 = normalize_angle(theta1);
+ 424              		.loc 1 82 9 is_stmt 1 view .LVU117
+  83:Module/kinematic/kinematic_solver.c ****     }
+ 425              		.loc 1 83 9 view .LVU118
+  83:Module/kinematic/kinematic_solver.c ****     }
+ 426              		.loc 1 83 18 is_stmt 0 view .LVU119
+ 427 0168 9FED150A 		vldr.32	s0, .L54+16
+ 428              	.LVL42:
+  83:Module/kinematic/kinematic_solver.c ****     }
+ 429              		.loc 1 83 18 view .LVU120
+ 430 016c 38EE800A 		vadd.f32	s0, s17, s0
+ 431              	.LVL43:
+  83:Module/kinematic/kinematic_solver.c ****     }
+ 432              		.loc 1 83 18 view .LVU121
+ 433 0170 FFF7FEFF 		bl	normalize_angle
+ 434              	.LVL44:
+  83:Module/kinematic/kinematic_solver.c ****     }
+ 435              		.loc 1 83 18 view .LVU122
+ 436 0174 F0EE408A 		vmov.f32	s17, s0
+ 437              	.LVL45:
+  83:Module/kinematic/kinematic_solver.c ****     }
+ 438              		.loc 1 83 18 view .LVU123
+ 439 0178 E1E7     		b	.L34
+ 440              	.LVL46:
+ 441              	.L52:
+  88:Module/kinematic/kinematic_solver.c ****     
+ 442              		.loc 1 88 18 view .LVU124
+ 443 017a 94ED031A 		vldr.32	s2, [r4, #12]
+ 444 017e D4ED020A 		vldr.32	s1, [r4, #8]
+ 445 0182 B0EE480A 		vmov.f32	s0, s16
+ 446 0186 FFF7FEFF 		bl	within_limits
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 131
 
 
-  95:Module/kinematic/kinematic_solver.c ****         bool valid_theta2 = within_limits(theta2_options[i], limits->min_theta2, limits->max_theta2
- 472              		.loc 1 95 29 is_stmt 0 view .LVU136
- 473 0186 94ED011A 		vldr.32	s2, [r4, #4]
- 474 018a D4ED000A 		vldr.32	s1, [r4]
- 475 018e B0EE490A 		vmov.f32	s0, s18
- 476 0192 FFF7FEFF 		bl	within_limits
- 477              	.LVL48:
- 478 0196 8046     		mov	r8, r0
- 479              	.LVL49:
-  96:Module/kinematic/kinematic_solver.c ****         
- 480              		.loc 1 96 9 is_stmt 1 view .LVU137
-  96:Module/kinematic/kinematic_solver.c ****         
- 481              		.loc 1 96 29 is_stmt 0 view .LVU138
- 482 0198 94ED031A 		vldr.32	s2, [r4, #12]
- 483 019c D4ED020A 		vldr.32	s1, [r4, #8]
- 484 01a0 B0EE680A 		vmov.f32	s0, s17
- 485 01a4 FFF7FEFF 		bl	within_limits
- 486              	.LVL50:
-  98:Module/kinematic/kinematic_solver.c ****             // 计算与当前角度的差异
- 487              		.loc 1 98 9 is_stmt 1 view .LVU139
-  98:Module/kinematic/kinematic_solver.c ****             // 计算与当前角度的差异
- 488              		.loc 1 98 12 is_stmt 0 view .LVU140
- 489 01a8 B8F1000F 		cmp	r8, #0
- 490 01ac B5D0     		beq	.L35
-  98:Module/kinematic/kinematic_solver.c ****             // 计算与当前角度的差异
- 491              		.loc 1 98 26 discriminator 1 view .LVU141
- 492 01ae 0028     		cmp	r0, #0
- 493 01b0 B3D0     		beq	.L35
- 494              	.LBB14:
- 100:Module/kinematic/kinematic_solver.c ****                               fabsf(theta2_options[i] - angles->theta2);
- 495              		.loc 1 100 13 is_stmt 1 view .LVU142
- 100:Module/kinematic/kinematic_solver.c ****                               fabsf(theta2_options[i] - angles->theta2);
- 496              		.loc 1 100 64 is_stmt 0 view .LVU143
- 497 01b2 D6ED007A 		vldr.32	s15, [r6]
- 100:Module/kinematic/kinematic_solver.c ****                               fabsf(theta2_options[i] - angles->theta2);
- 498              		.loc 1 100 56 view .LVU144
- 499 01b6 79EE677A 		vsub.f32	s15, s18, s15
- 100:Module/kinematic/kinematic_solver.c ****                               fabsf(theta2_options[i] - angles->theta2);
- 500              		.loc 1 100 32 view .LVU145
- 501 01ba F0EEE77A 		vabs.f32	s15, s15
- 101:Module/kinematic/kinematic_solver.c ****             
- 502              		.loc 1 101 63 view .LVU146
- 503 01be 96ED017A 		vldr.32	s14, [r6, #4]
- 101:Module/kinematic/kinematic_solver.c ****             
- 504              		.loc 1 101 55 view .LVU147
- 505 01c2 38EEC77A 		vsub.f32	s14, s17, s14
- 101:Module/kinematic/kinematic_solver.c ****             
- 506              		.loc 1 101 31 view .LVU148
- 507 01c6 B0EEC77A 		vabs.f32	s14, s14
- 100:Module/kinematic/kinematic_solver.c ****                               fabsf(theta2_options[i] - angles->theta2);
- 508              		.loc 1 100 19 view .LVU149
- 509 01ca 77EE877A 		vadd.f32	s15, s15, s14
- 510              	.LVL51:
- 104:Module/kinematic/kinematic_solver.c ****                 best_difference = difference;
- 511              		.loc 1 104 13 is_stmt 1 view .LVU150
- 104:Module/kinematic/kinematic_solver.c ****                 best_difference = difference;
- 512              		.loc 1 104 16 is_stmt 0 view .LVU151
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 133
-
-
- 513 01ce F4EEE7AA 		vcmpe.f32	s21, s15
- 514 01d2 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 515 01d6 9FDD     		ble	.L36
- 105:Module/kinematic/kinematic_solver.c ****                 best_solution.theta1 = theta1_options[i];
- 516              		.loc 1 105 17 is_stmt 1 view .LVU152
- 517              	.LVL52:
- 106:Module/kinematic/kinematic_solver.c ****                 best_solution.theta2 = theta2_options[i];
- 518              		.loc 1 106 17 view .LVU153
- 106:Module/kinematic/kinematic_solver.c ****                 best_solution.theta2 = theta2_options[i];
- 519              		.loc 1 106 38 is_stmt 0 view .LVU154
- 520 01d8 8DED049A 		vstr.32	s18, [sp, #16]
- 107:Module/kinematic/kinematic_solver.c ****             }
- 521              		.loc 1 107 17 is_stmt 1 view .LVU155
- 107:Module/kinematic/kinematic_solver.c ****             }
- 522              		.loc 1 107 38 is_stmt 0 view .LVU156
- 523 01dc CDED058A 		vstr.32	s17, [sp, #20]
- 105:Module/kinematic/kinematic_solver.c ****                 best_solution.theta1 = theta1_options[i];
- 524              		.loc 1 105 33 view .LVU157
- 525 01e0 F0EE67AA 		vmov.f32	s21, s15
- 526 01e4 98E7     		b	.L36
- 527              	.LVL53:
- 528              	.L52:
- 105:Module/kinematic/kinematic_solver.c ****                 best_solution.theta1 = theta1_options[i];
- 529              		.loc 1 105 33 view .LVU158
- 530              	.LBE14:
- 531              	.LBE15:
- 532              	.LBE17:
- 110:Module/kinematic/kinematic_solver.c ****         }
- 111:Module/kinematic/kinematic_solver.c ****     }
- 112:Module/kinematic/kinematic_solver.c ****     
- 113:Module/kinematic/kinematic_solver.c ****     // 如果有有效解，更新输出
- 114:Module/kinematic/kinematic_solver.c ****     if (valid_solution_count > 0) {
- 533              		.loc 1 114 5 is_stmt 1 view .LVU159
- 534              		.loc 1 114 8 is_stmt 0 view .LVU160
- 535 01e6 002D     		cmp	r5, #0
- 536 01e8 05DD     		ble	.L29
- 115:Module/kinematic/kinematic_solver.c ****         angles->theta1 = best_solution.theta1;
- 537              		.loc 1 115 9 is_stmt 1 view .LVU161
- 538              		.loc 1 115 39 is_stmt 0 view .LVU162
- 539 01ea 049B     		ldr	r3, [sp, #16]	@ float
- 540              		.loc 1 115 24 view .LVU163
- 541 01ec 3360     		str	r3, [r6]	@ float
- 116:Module/kinematic/kinematic_solver.c ****         angles->theta2 = best_solution.theta2;
- 542              		.loc 1 116 9 is_stmt 1 view .LVU164
- 543              		.loc 1 116 39 is_stmt 0 view .LVU165
- 544 01ee 059B     		ldr	r3, [sp, #20]	@ float
- 545              		.loc 1 116 24 view .LVU166
- 546 01f0 7360     		str	r3, [r6, #4]	@ float
- 547 01f2 00E0     		b	.L29
- 548              	.LVL54:
- 549              	.L39:
+ 447              	.LVL47:
+  87:Module/kinematic/kinematic_solver.c ****                  within_limits(theta2, limits->min_theta2, limits->max_theta2);
+ 448              		.loc 1 87 80 discriminator 1 view .LVU125
+ 449 018a 08B9     		cbnz	r0, .L53
+ 450              		.loc 1 96 12 view .LVU126
+ 451 018c 0020     		movs	r0, #0
+ 452              	.LVL48:
+ 453              		.loc 1 96 12 view .LVU127
+ 454 018e 06E0     		b	.L29
+ 455              	.LVL49:
+ 456              	.L53:
+  90:Module/kinematic/kinematic_solver.c ****         angles->theta1 = theta1;
+ 457              		.loc 1 90 5 is_stmt 1 view .LVU128
+  91:Module/kinematic/kinematic_solver.c ****         angles->theta2 = theta2;
+ 458              		.loc 1 91 9 view .LVU129
+  91:Module/kinematic/kinematic_solver.c ****         angles->theta2 = theta2;
+ 459              		.loc 1 91 24 is_stmt 0 view .LVU130
+ 460 0190 C5ED008A 		vstr.32	s17, [r5]
+  92:Module/kinematic/kinematic_solver.c ****         return 1; // 唯一解
+ 461              		.loc 1 92 9 is_stmt 1 view .LVU131
+  92:Module/kinematic/kinematic_solver.c ****         return 1; // 唯一解
+ 462              		.loc 1 92 24 is_stmt 0 view .LVU132
+ 463 0194 85ED018A 		vstr.32	s16, [r5, #4]
+  93:Module/kinematic/kinematic_solver.c ****     }
+ 464              		.loc 1 93 9 is_stmt 1 view .LVU133
+  93:Module/kinematic/kinematic_solver.c ****     }
+ 465              		.loc 1 93 16 is_stmt 0 view .LVU134
+ 466 0198 0120     		movs	r0, #1
+ 467 019a 00E0     		b	.L29
+ 468              	.LVL50:
+ 469              	.L36:
   33:Module/kinematic/kinematic_solver.c ****     
- 550              		.loc 1 33 46 discriminator 3 view .LVU167
- 551 01f4 0025     		movs	r5, #0
- 552              	.LVL55:
- 553              	.L29:
- 117:Module/kinematic/kinematic_solver.c ****     }
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 134
+ 470              		.loc 1 33 46 discriminator 3 view .LVU135
+ 471 019c 0020     		movs	r0, #0
+ 472              	.LVL51:
+ 473              	.L29:
+  97:Module/kinematic/kinematic_solver.c **** }...
+ 474              		.loc 1 97 1 view .LVU136
+ 475 019e 05B0     		add	sp, sp, #20
+ 476              	.LCFI8:
+ 477              		.cfi_remember_state
+ 478              		.cfi_def_cfa_offset 36
+ 479              		@ sp needed
+ 480 01a0 BDEC068B 		vldm	sp!, {d8-d10}
+ 481              	.LCFI9:
+ 482              		.cfi_restore 84
+ 483              		.cfi_restore 85
+ 484              		.cfi_restore 82
+ 485              		.cfi_restore 83
+ 486              		.cfi_restore 80
+ 487              		.cfi_restore 81
+ 488              		.cfi_def_cfa_offset 12
+ 489 01a4 30BD     		pop	{r4, r5, pc}
+ 490              	.LVL52:
+ 491              	.L37:
+ 492              	.LCFI10:
+ 493              		.cfi_restore_state
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 132
 
 
- 118:Module/kinematic/kinematic_solver.c ****     
- 119:Module/kinematic/kinematic_solver.c ****     return valid_solution_count;
- 120:Module/kinematic/kinematic_solver.c **** }...
- 554              		.loc 1 120 1 view .LVU168
- 555 01f6 2846     		mov	r0, r5
- 556 01f8 0AB0     		add	sp, sp, #40
- 557              	.LCFI8:
- 558              		.cfi_remember_state
- 559              		.cfi_def_cfa_offset 48
- 560              		@ sp needed
- 561 01fa BDEC068B 		vldm	sp!, {d8-d10}
- 562              	.LCFI9:
- 563              		.cfi_restore 84
- 564              		.cfi_restore 85
- 565              		.cfi_restore 82
- 566              		.cfi_restore 83
- 567              		.cfi_restore 80
- 568              		.cfi_restore 81
- 569              		.cfi_def_cfa_offset 24
- 570 01fe BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
- 571              	.LVL56:
- 572              	.L40:
- 573              	.LCFI10:
- 574              		.cfi_restore_state
   33:Module/kinematic/kinematic_solver.c ****     
- 575              		.loc 1 33 46 discriminator 3 view .LVU169
- 576 0202 0025     		movs	r5, #0
- 577 0204 F7E7     		b	.L29
- 578              	.LVL57:
- 579              	.L42:
+ 494              		.loc 1 33 46 discriminator 3 view .LVU137
+ 495 01a6 0020     		movs	r0, #0
+ 496              	.LVL53:
+  33:Module/kinematic/kinematic_solver.c ****     
+ 497              		.loc 1 33 46 discriminator 3 view .LVU138
+ 498 01a8 F9E7     		b	.L29
+ 499              	.LVL54:
+ 500              	.L39:
   47:Module/kinematic/kinematic_solver.c ****         return 0; // 超出工作空间
- 580              		.loc 1 47 16 view .LVU170
- 581 0206 0025     		movs	r5, #0
- 582 0208 F5E7     		b	.L29
- 583              	.L54:
- 584 020a 00BF     		.align	2
- 585              	.L53:
- 586 020c 6F12833A 		.word	981668463
- 587 0210 00000000 		.word	0
- 588 0214 00247449 		.word	1232348160
- 589 0218 00003443 		.word	1127481344
- 590 021c DB0F4940 		.word	1078530011
- 591              		.cfi_endproc
- 592              	.LFE152:
- 594              		.text
- 595              	.Letext0:
- 596              		.file 3 "Module/kinematic/kinematic_solver.h"
- 597              		.file 4 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/math.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s 			page 135
+ 501              		.loc 1 47 16 view .LVU139
+ 502 01aa 0020     		movs	r0, #0
+ 503 01ac F7E7     		b	.L29
+ 504              	.L55:
+ 505 01ae 00BF     		.align	2
+ 506              	.L54:
+ 507 01b0 6F12833A 		.word	981668463
+ 508 01b4 00000000 		.word	0
+ 509 01b8 00003443 		.word	1127481344
+ 510 01bc DB0F4940 		.word	1078530011
+ 511 01c0 DB0FC940 		.word	1086918619
+ 512              		.cfi_endproc
+ 513              	.LFE152:
+ 515              		.text
+ 516              	.Letext0:
+ 517              		.file 3 "Module/kinematic/kinematic_solver.h"
+ 518              		.file 4 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/math.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s 			page 133
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 kinematic_solver.c
-C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s:21     .text.normalize_angle:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s:26     .text.normalize_angle:00000000 normalize_angle
-C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s:64     .text.normalize_angle:00000020 $d
-C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s:69     .text.within_limits:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s:74     .text.within_limits:00000000 within_limits
-C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s:163    .text.IK_Solve:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s:169    .text.IK_Solve:00000000 IK_Solve
-C:\Users\30514\AppData\Local\Temp\ccYqjPCu.s:586    .text.IK_Solve:0000020c $d
+C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s:21     .text.normalize_angle:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s:26     .text.normalize_angle:00000000 normalize_angle
+C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s:64     .text.normalize_angle:00000020 $d
+C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s:69     .text.within_limits:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s:74     .text.within_limits:00000000 within_limits
+C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s:163    .text.IK_Solve:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s:169    .text.IK_Solve:00000000 IK_Solve
+C:\Users\30514\AppData\Local\Temp\cc3KnEIZ.s:507    .text.IK_Solve:000001b0 $d
 
 UNDEFINED SYMBOLS
 fmodf

@@ -9,7 +9,7 @@ typedef enum
 {
 	Motor1,
 	Motor2,
-	Motor3,
+	//Motor3,
 	num
 } motor_num;
 

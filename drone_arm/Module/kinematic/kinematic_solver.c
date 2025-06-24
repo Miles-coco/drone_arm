@@ -4,8 +4,8 @@
 #include "arm_math.h"
 
 // 定义π常量
+#define PI 3.14159265358979323846f
 #define PI_2 (PI / 2.0f)     // π/2
-#define PI_4 (PI / 4.0f)     // π/4
 #define DEG_TO_RAD(x) ((x) * PI / 180.0f)
 #define RAD_TO_DEG(x) ((x) * 180.0f / PI)
 
@@ -27,7 +27,7 @@ static bool within_limits(float angle, float min, float max) {
     return (angle >= min) && (angle <= max);
 }
 
-// 逆运动学求解函数 - 使用CMSIS-DSP优化
+// 简化的逆运动学求解函数 - 利用θ₁>θ₂约束
 int IK_Solve(point2D target, float L1, float L2, const JointLimits* limits, JointAngles* angles) {
     // 检查有效输入
     if (L1 <= 0.001f || L2 <= 0.001f) return 0;
@@ -47,74 +47,51 @@ int IK_Solve(point2D target, float L1, float L2, const JointLimits* limits, Join
         return 0; // 超出工作空间
     }
     
-    // 计算目标方向角度
-    float beta = atan2f(y, x); // 使用标准atan2保证精度
+    // 计算基础方向角度
+    float alpha = atan2f(y, x);
     
-    // 使用余弦定律计算中间角度
-    float L1_sq = L1 * L1;
-    float R_sq = R * R;
-    float L2_sq = L2 * L2;
-    float cos_alpha = (L1_sq + R_sq - L2_sq) / (2.0f * L1 * R);
+    // 使用余弦定律计算中间变量（简化公式）
+    float cos_beta = (L1 * L1 + R * R - L2 * L2) / (2.0f * L1 * R);
     
     // 数值稳定性处理
-    if (cos_alpha > 1.0f) cos_alpha = 1.0f;
-    if (cos_alpha < -1.0f) cos_alpha = -1.0f;
+    if (cos_beta > 1.0f) cos_beta = 1.0f;
+    if (cos_beta < -1.0f) cos_beta = -1.0f;
     
-    // 计算alpha角度（使用标准函数保证精度）
-    float alpha = acosf(cos_alpha);
+    // 计算beta角度
+    float beta = acosf(cos_beta);
     
-    // 计算两种可能的配置
-    float theta1_options[2] = {
-        normalize_angle(beta + alpha),
-        normalize_angle(beta - alpha)
-    };
+    // 基于θ₁>θ₂约束计算唯一解
+    float theta1 = normalize_angle(alpha + beta);
     
-    float theta2_options[2];
-    int valid_solution_count = 0;
-    float best_difference = 1e6f; // 初始化为一个大的值
-    JointAngles best_solution;
+    // 使用CMSIS-DSP优化三角函数计算
+    float32_t sin_theta1, cos_theta1;
+    arm_sin_cos_f32(RAD_TO_DEG(theta1), &sin_theta1, &cos_theta1);
     
-    // 计算两种可能的theta2
-    for (int i = 0; i < 2; i++) {
-        // 使用CMSIS-DSP优化三角函数计算
-        float32_t sin_theta1, cos_theta1;
-        arm_sin_cos_f32(RAD_TO_DEG(theta1_options[i]), &sin_theta1, &cos_theta1);
-        
-        // 计算从末端到第二个主动臂的向量
-        float x2 = x - L1 * cos_theta1;
-        float y2 = y - L1 * sin_theta1;
-        
-        // 计算theta2
-        theta2_options[i] = atan2f(y2, x2); // 使用标准函数保证精度
-        
-        // 归一化角度
-        theta1_options[i] = normalize_angle(theta1_options[i]);
-        theta2_options[i] = normalize_angle(theta2_options[i]);
-        
-        // 检查是否在限位范围内
-        bool valid_theta1 = within_limits(theta1_options[i], limits->min_theta1, limits->max_theta1);
-        bool valid_theta2 = within_limits(theta2_options[i], limits->min_theta2, limits->max_theta2);
-        
-        if (valid_theta1 && valid_theta2) {
-            // 计算与当前角度的差异
-            float difference = fabsf(theta1_options[i] - angles->theta1) + 
-                              fabsf(theta2_options[i] - angles->theta2);
-            
-            // 如果这是更优的解，或者第一个有效解
-            if (difference < best_difference) {
-                best_difference = difference;
-                best_solution.theta1 = theta1_options[i];
-                best_solution.theta2 = theta2_options[i];
-            }
-            valid_solution_count++;
-        }
+    // 根据新方程计算sinθ2和cosθ2
+    float sin_theta2 = (L1 * sin_theta1 - x) / L2;
+    float cos_theta2 = (L1 * cos_theta1 + y) / L2;
+    
+    // 计算θ2
+    float theta2 = atan2f(sin_theta2, cos_theta2);
+    theta2 = normalize_angle(theta2);
+    
+    // 验证θ₁>θ₂约束
+    const float angle_tolerance = 0.001f; // 允许的误差范围
+    if (theta1 < theta2 - angle_tolerance) {
+        // 如果违反约束，应用修正
+        theta1 += 2.0f * PI;
+        theta1 = normalize_angle(theta1);
     }
     
-    // 如果有有效解，更新输出
-    if (valid_solution_count > 0) {
-        angles->theta1 = best_solution.theta1;
-        angles->theta2 = best_solution.theta2;
+    // 检查是否在限位范围内
+    bool valid = within_limits(theta1, limits->min_theta1, limits->max_theta1) &&
+                 within_limits(theta2, limits->min_theta2, limits->max_theta2);
+    
+    if (valid) {
+        angles->theta1 = theta1;
+        angles->theta2 = theta2;
+        return 1; // 唯一解
     }
     
-    return valid_solution_count;
+    return 0; // 不在限位范围内
 }

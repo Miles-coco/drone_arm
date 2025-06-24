@@ -2,42 +2,24 @@
 #include "can_driver.h"
 #include "can.h"
 
-
-/**
-************************************************************************
-* @brief:      	dm4310_enable: ����DM4310�������ģʽ����
-* @param[in]:   hcan:    ָ��CAN_HandleTypeDef�ṹ��ָ��
-* @param[in]:   motor:   ָ��motor_t�ṹ��ָ�룬������������Ϣ�Ϳ��Ʋ���
-* @retval:     	void
-* @details:    	���ݵ������ģʽ������Ӧ��ģʽ��ͨ��CAN���߷�����������
-*               ֧�ֵĿ���ģʽ����λ��ģʽ��λ���ٶȿ���ģʽ���ٶȿ���ģʽ
-************************************************************************
-**/
+//使能电机函数
 void dm4310_enable(hcan_t* hcan, motor_t *motor)
 {
 	switch(motor->ctrl.mode)
 	{
 		case 0:
-			enable_motor_mode(hcan, motor->id, MIT_MODE);
+			enable_motor_mode(hcan, motor->id, MIT_MODE);//如果是0，则mit模式
 			break;
 		case 1:
-			enable_motor_mode(hcan, motor->id, POS_MODE);
+			enable_motor_mode(hcan, motor->id, POS_MODE);//如果是1，则位置模式
 			break;
 		case 2:
-			enable_motor_mode(hcan, motor->id, SPEED_MODE);
+			enable_motor_mode(hcan, motor->id, SPEED_MODE);//如果是2，则速度模式
 			break;
 	}	
 }
-/**
-************************************************************************
-* @brief:      	dm4310_disable: ����DM4310�������ģʽ����
-* @param[in]:   hcan:    ָ��CAN_HandleTypeDef�ṹ��ָ��
-* @param[in]:   motor:   ָ��motor_t�ṹ��ָ�룬������������Ϣ�Ϳ��Ʋ���
-* @retval:     	void
-* @details:    	���ݵ������ģʽ������Ӧ��ģʽ��ͨ��CAN���߷��ͽ�������
-*               ֧�ֵĿ���ģʽ����λ��ģʽ��λ���ٶȿ���ģʽ���ٶȿ���ģʽ
-************************************************************************
-**/
+
+//失能电机函数，根据电机模式来失能
 void dm4310_disable(hcan_t* hcan, motor_t *motor)
 {
 	switch(motor->ctrl.mode)
@@ -54,16 +36,8 @@ void dm4310_disable(hcan_t* hcan, motor_t *motor)
 	}	
 	dm4310_clear_para(motor);
 }
-/**
-************************************************************************
-* @brief:      	dm4310_ctrl_send: ����DM4310������������
-* @param[in]:   hcan:    ָ��CAN_HandleTypeDef�ṹ��ָ��
-* @param[in]:   motor:   ָ��motor_t�ṹ��ָ�룬������������Ϣ�Ϳ��Ʋ���
-* @retval:     	void
-* @details:    	���ݵ������ģʽ������Ӧ�����DM4310���
-*               ֧�ֵĿ���ģʽ����λ��ģʽ��λ���ٶȿ���ģʽ���ٶȿ���ģʽ
-************************************************************************
-**/
+
+//发送电机指令函数
 void dm4310_ctrl_send(hcan_t* hcan, motor_t *motor)
 {
 	switch(motor->ctrl.mode)
@@ -79,15 +53,8 @@ void dm4310_ctrl_send(hcan_t* hcan, motor_t *motor)
 			break;
 	}	
 }
-/**
-************************************************************************
-* @brief:      	dm4310_set: ����DM4310������Ʋ�������
-* @param[in]:   motor:   ָ��motor_t�ṹ��ָ�룬������������Ϣ�Ϳ��Ʋ���
-* @retval:     	void
-* @details:    	���������������DM4310����Ŀ��Ʋ���������λ�á��ٶȡ�
-*               ��������(KP)��΢������(KD)��Ť��
-************************************************************************
-**/
+
+//motor_t是一个用于存储各项电机参数的结构体，该函数的核心作用是将用户在motor->cmd中设置的最新控制参数值同步到实际用于电机控制的motor->ctrl结构中
 void dm4310_set(motor_t *motor)
 {
 	motor->ctrl.kd_set 	= motor->cmd.kd_set;
@@ -97,15 +64,8 @@ void dm4310_set(motor_t *motor)
 	motor->ctrl.tor_set	= motor->cmd.tor_set;
 
 }
-/**
-************************************************************************
-* @brief:      	dm4310_clear: ���DM4310������Ʋ�������
-* @param[in]:   motor:   ָ��motor_t�ṹ��ָ�룬������������Ϣ�Ϳ��Ʋ���
-* @retval:     	void
-* @details:    	��DM4310�������������Ϳ��Ʋ������㣬����λ�á��ٶȡ�
-*               ��������(KP)��΢������(KD)��Ť��
-************************************************************************
-**/
+
+//重置电机各项参数
 void dm4310_clear_para(motor_t *motor)
 {
 	motor->cmd.kd_set 	= 0;
@@ -120,15 +80,8 @@ void dm4310_clear_para(motor_t *motor)
 	motor->ctrl.vel_set = 0;
 	motor->ctrl.tor_set = 0;
 }
-/**
-************************************************************************
-* @brief:      	dm4310_clear_err: ���DM4310���������
-* @param[in]:   hcan: 	 ָ��CAN���ƽṹ���ָ��
-* @param[in]:  	motor:   ָ�����ṹ���ָ��
-* @retval:     	void
-* @details:    	���ݵ���Ŀ���ģʽ�����ö�Ӧģʽ�����������
-************************************************************************
-**/
+
+//用于清除电机在特定模式下可能产生的错误状态
 void dm4310_clear_err(hcan_t* hcan, motor_t *motor)
 {
 	switch(motor->ctrl.mode)
@@ -144,41 +97,24 @@ void dm4310_clear_err(hcan_t* hcan, motor_t *motor)
 			break;
 	}	
 }
-/**
-************************************************************************
-* @brief:      	dm4310_fbdata: ��ȡDM4310����������ݺ���
-* @param[in]:   motor:    ָ��motor_t�ṹ��ָ�룬������������Ϣ�ͷ�������
-* @param[in]:   rx_data:  ָ������������ݵ�����ָ��
-* @retval:     	void
-* @details:    	�ӽ��յ�����������ȡDM4310����ķ�����Ϣ���������ID��
-*               ״̬��λ�á��ٶȡ�Ť���Լ�����¶Ȳ���
-************************************************************************
-**/
+
+//通过运算得到电机的反馈值
 void dm4310_fbdata(motor_t *motor, uint8_t *rx_data)
 {
-	motor->para.id = (rx_data[0])&0x0F;
-	motor->para.state = (rx_data[0])>>4;
-	motor->para.p_int=(rx_data[1]<<8)|rx_data[2];
-	motor->para.v_int=(rx_data[3]<<4)|(rx_data[4]>>4);
-	motor->para.t_int=((rx_data[4]&0xF)<<8)|rx_data[5];
+	motor->para.id = (rx_data[0])&0x0F;                                 //电机id
+	motor->para.state = (rx_data[0])>>4;								//电机状态
+	motor->para.p_int=(rx_data[1]<<8)|rx_data[2];						//位置反馈
+	motor->para.v_int=(rx_data[3]<<4)|(rx_data[4]>>4);					//速度反馈
+	motor->para.t_int=((rx_data[4]&0xF)<<8)|rx_data[5];					//转矩反馈
 	motor->para.pos = uint_to_float(motor->para.p_int, P_MIN, P_MAX, 16); // (-12.5,12.5)
 	motor->para.vel = uint_to_float(motor->para.v_int, V_MIN, V_MAX, 12); // (-45.0,45.0)
 	motor->para.tor = uint_to_float(motor->para.t_int, T_MIN, T_MAX, 12);  // (-18.0,18.0)
-	motor->para.Tmos = (float)(rx_data[6]);
-	motor->para.Tcoil = (float)(rx_data[7]);
+	motor->para.Tmos = (float)(rx_data[6]);								//mos温度反馈
+	motor->para.Tcoil = (float)(rx_data[7]);							//电机线圈温度反馈
 }
 
-/**
-************************************************************************
-* @brief:      	float_to_uint: ������ת��Ϊ�޷�����������
-* @param[in]:   x_float:	��ת���ĸ�����
-* @param[in]:   x_min:		��Χ��Сֵ
-* @param[in]:   x_max:		��Χ���ֵ
-* @param[in]:   bits: 		Ŀ���޷���������λ��
-* @retval:     	�޷����������
-* @details:    	�������ĸ����� x ��ָ����Χ [x_min, x_max] �ڽ�������ӳ�䣬ӳ����Ϊһ��ָ��λ�����޷�������
-************************************************************************
-**/
+
+
 int float_to_uint(float x_float, float x_min, float x_max, int bits)
 {
 	/* Converts a float to an unsigned int, given range and number of bits */
@@ -186,17 +122,8 @@ int float_to_uint(float x_float, float x_min, float x_max, int bits)
 	float offset = x_min;
 	return (int) ((x_float-offset)*((float)((1<<bits)-1))/span);
 }
-/**
-************************************************************************
-* @brief:      	uint_to_float: �޷�������ת��Ϊ����������
-* @param[in]:   x_int: ��ת�����޷�������
-* @param[in]:   x_min: ��Χ��Сֵ
-* @param[in]:   x_max: ��Χ���ֵ
-* @param[in]:   bits:  �޷���������λ��
-* @retval:     	���������
-* @details:    	���������޷������� x_int ��ָ����Χ [x_min, x_max] �ڽ�������ӳ�䣬ӳ����Ϊһ��������
-************************************************************************
-**/
+
+
 float uint_to_float(int x_int, float x_min, float x_max, int bits)
 {
 	/* converts unsigned int to float, given range and number of bits */
@@ -205,16 +132,7 @@ float uint_to_float(int x_int, float x_min, float x_max, int bits)
 	return ((float)x_int)*span/((float)((1<<bits)-1)) + offset;
 }
 
-/**
-************************************************************************
-* @brief:      	enable_motor_mode: ���õ��ģʽ����
-* @param[in]:   hcan:     ָ��CAN_HandleTypeDef�ṹ��ָ��
-* @param[in]:   motor_id: ���ID��ָ��Ŀ����
-* @param[in]:   mode_id:  ģʽID��ָ��Ҫ������ģʽ
-* @retval:     	void
-* @details:    	ͨ��CAN�������ض�������������ض�ģʽ������
-************************************************************************
-**/
+
 void enable_motor_mode(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id)
 {
 	uint8_t data[8];
@@ -231,16 +149,8 @@ void enable_motor_mode(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id)
 	
 	canx_send_data(hcan, id, data, 8);
 }
-/**
-************************************************************************
-* @brief:      	disable_motor_mode: ���õ��ģʽ����
-* @param[in]:   hcan:     ָ��CAN_HandleTypeDef�ṹ��ָ��
-* @param[in]:   motor_id: ���ID��ָ��Ŀ����
-* @param[in]:   mode_id:  ģʽID��ָ��Ҫ���õ�ģʽ
-* @retval:     	void
-* @details:    	ͨ��CAN�������ض�������ͽ����ض�ģʽ������
-************************************************************************
-**/
+
+
 void disable_motor_mode(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id)
 {
 	uint8_t data[8];
@@ -257,16 +167,8 @@ void disable_motor_mode(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id)
 	
 	canx_send_data(hcan, id, data, 8);
 }
-/**
-************************************************************************
-* @brief:      	save_pos_zero: ����λ����㺯��
-* @param[in]:   hcan:     ָ��CAN_HandleTypeDef�ṹ��ָ��
-* @param[in]:   motor_id: ���ID��ָ��Ŀ����
-* @param[in]:   mode_id:  ģʽID��ָ��Ҫ����λ������ģʽ
-* @retval:     	void
-* @details:    	ͨ��CAN�������ض�������ͱ���λ����������
-************************************************************************
-**/
+
+
 void save_pos_zero(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id)
 {
 	uint8_t data[8];
@@ -283,16 +185,8 @@ void save_pos_zero(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id)
 	
 	canx_send_data(hcan, id, data, 8);
 }
-/**
-************************************************************************
-* @brief:      	clear_err: ������������
-* @param[in]:   hcan:     ָ��CAN_HandleTypeDef�ṹ��ָ��
-* @param[in]:   motor_id: ���ID��ָ��Ŀ����
-* @param[in]:   mode_id:  ģʽID��ָ��Ҫ��������ģʽ
-* @retval:     	void
-* @details:    	ͨ��CAN�������ض�������������������
-************************************************************************
-**/
+
+
 void clear_err(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id)
 {
 	uint8_t data[8];
@@ -309,20 +203,8 @@ void clear_err(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id)
 	
 	canx_send_data(hcan, id, data, 8);
 }
-/**
-************************************************************************
-* @brief:      	mit_ctrl: MITģʽ�µĵ�����ƺ���
-* @param[in]:   hcan:			ָ��CAN_HandleTypeDef�ṹ��ָ�룬����ָ��CAN����
-* @param[in]:   motor_id:	���ID��ָ��Ŀ����
-* @param[in]:   pos:			λ�ø���ֵ
-* @param[in]:   vel:			�ٶȸ���ֵ
-* @param[in]:   kp:				λ�ñ���ϵ��
-* @param[in]:   kd:				λ��΢��ϵ��
-* @param[in]:   torq:			ת�ظ���ֵ
-* @retval:     	void
-* @details:    	ͨ��CAN������������MITģʽ�µĿ���֡��
-************************************************************************
-**/
+
+
 void mit_ctrl(hcan_t* hcan, uint16_t motor_id, float pos, float vel,float kp, float kd, float torq)
 {
 	uint8_t data[8];
@@ -346,16 +228,8 @@ void mit_ctrl(hcan_t* hcan, uint16_t motor_id, float pos, float vel,float kp, fl
 	
 	canx_send_data(hcan, id, data, 8);
 }
-/**
-************************************************************************
-* @brief:      	pos_speed_ctrl: λ���ٶȿ��ƺ���
-* @param[in]:   hcan:			ָ��CAN_HandleTypeDef�ṹ��ָ�룬����ָ��CAN����
-* @param[in]:   motor_id:	���ID��ָ��Ŀ����
-* @param[in]:   vel:			�ٶȸ���ֵ
-* @retval:     	void
-* @details:    	ͨ��CAN������������λ���ٶȿ�������
-************************************************************************
-**/
+
+
 void pos_speed_ctrl(hcan_t* hcan,uint16_t motor_id, float pos, float vel)
 {
 	uint16_t id;
@@ -378,16 +252,8 @@ void pos_speed_ctrl(hcan_t* hcan,uint16_t motor_id, float pos, float vel)
 	
 	canx_send_data(hcan, id, data, 8);
 }
-/**
-************************************************************************
-* @brief:      	speed_ctrl: �ٶȿ��ƺ���
-* @param[in]:   hcan: 		ָ��CAN_HandleTypeDef�ṹ��ָ�룬����ָ��CAN����
-* @param[in]:   motor_id: ���ID��ָ��Ŀ����
-* @param[in]:   vel: 			�ٶȸ���ֵ
-* @retval:     	void
-* @details:    	ͨ��CAN�������������ٶȿ�������
-************************************************************************
-**/
+
+
 void speed_ctrl(hcan_t* hcan,uint16_t motor_id, float vel)
 {
 	uint16_t id;

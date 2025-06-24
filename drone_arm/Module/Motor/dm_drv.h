@@ -38,7 +38,6 @@ typedef struct
 	float Tcoil;
 }motor_fbpara_t;
 
-// ����������ýṹ��
 typedef struct 
 {
 	int8_t mode;
