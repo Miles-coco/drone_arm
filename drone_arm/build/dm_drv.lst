@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
   27:Module/motor/dm_drv.c **** 		case 0:
   28:Module/motor/dm_drv.c **** 			disable_motor_mode(hcan, motor->id, MIT_MODE);
   29:Module/motor/dm_drv.c **** 			break;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 2
 
 
   30:Module/motor/dm_drv.c **** 		case 1:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
   50              		.loc 1 63 2 is_stmt 1 view .LVU10
   51              		.loc 1 63 34 is_stmt 0 view .LVU11
   52 000c C36D     		ldr	r3, [r0, #92]	@ float
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 3
 
 
   53              		.loc 1 63 22 view .LVU12
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
   77:Module/motor/dm_drv.c **** 	motor->ctrl.kd_set 	= 0;
   96              		.loc 1 77 2 is_stmt 1 view .LVU28
   97              		.loc 1 77 22 is_stmt 0 view .LVU29
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 4
 
 
   98 000c 0365     		str	r3, [r0, #80]	@ float
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  106:Module/motor/dm_drv.c **** 	motor->para.p_int=(rx_data[1]<<8)|rx_data[2];						//位置反馈
  107:Module/motor/dm_drv.c **** 	motor->para.v_int=(rx_data[3]<<4)|(rx_data[4]>>4);					//速度反馈
  108:Module/motor/dm_drv.c **** 	motor->para.t_int=((rx_data[4]&0xF)<<8)|rx_data[5];					//转矩反馈
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 5
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 5
 
 
  109:Module/motor/dm_drv.c **** 	motor->para.pos = uint_to_float(motor->para.p_int, P_MIN, P_MAX, 16); // (-12.5,12.5)
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  165              		.thumb
  166              		.thumb_func
  168              	uint_to_float:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 6
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 6
 
 
  169              	.LVL6:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  103:Module/motor/dm_drv.c **** 	motor->para.id = (rx_data[0])&0x0F;                                 //电机id
  216              		.loc 1 103 1 is_stmt 1 view -0
  217              		.cfi_startproc
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 7
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 7
 
 
  218              		@ args = 0, pretend = 0, frame = 0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  107:Module/motor/dm_drv.c **** 	motor->para.t_int=((rx_data[4]&0xF)<<8)|rx_data[5];					//转矩反馈
  257              		.loc 1 107 28 is_stmt 0 view .LVU82
  258 001e CB78     		ldrb	r3, [r1, #3]	@ zero_extendqisi2
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 8
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 8
 
 
  107:Module/motor/dm_drv.c **** 	motor->para.t_int=((rx_data[4]&0xF)<<8)|rx_data[5];					//转矩反馈
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  297              	.LVL13:
  110:Module/motor/dm_drv.c **** 	motor->para.tor = uint_to_float(motor->para.t_int, T_MIN, T_MAX, 12);  // (-18.0,18.0)
  298              		.loc 1 110 18 discriminator 1 view .LVU99
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 9
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 9
 
 
  299 005a 84ED090A 		vstr.32	s0, [r4, #36]
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  134:Module/motor/dm_drv.c **** 
  135:Module/motor/dm_drv.c **** 
  136:Module/motor/dm_drv.c **** void enable_motor_mode(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id)
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 10
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 10
 
 
  137:Module/motor/dm_drv.c **** {
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  384 0026 8DF80730 		strb	r3, [sp, #7]
  149:Module/motor/dm_drv.c **** 	
  150:Module/motor/dm_drv.c **** 	canx_send_data(hcan, id, data, 8);
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 11
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 11
 
 
  385              		.loc 1 150 2 is_stmt 1 view .LVU134
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  433              		.loc 1 11 33 is_stmt 0 view .LVU144
  434 0010 91F90010 		ldrsb	r1, [r1]
  435              	.LVL20:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 12
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 12
 
 
   11:Module/motor/dm_drv.c **** 			break;
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  479              		.thumb
  480              		.thumb_func
  482              	disable_motor_mode:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 13
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 13
 
 
  483              	.LVL28:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  523 0020 8DF80630 		strb	r3, [sp, #6]
  166:Module/motor/dm_drv.c **** 	data[7] = 0xFD;
  524              		.loc 1 166 2 is_stmt 1 view .LVU176
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 14
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 14
 
 
  525              		.loc 1 166 10 is_stmt 0 view .LVU177
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  573 000c 022B     		cmp	r3, #2
  574 000e 12D0     		beq	.L18
  575 0010 2BB9     		cbnz	r3, .L19
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 15
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 15
 
 
   28:Module/motor/dm_drv.c **** 			break;
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
   35:Module/motor/dm_drv.c **** 	}	
  617              		.loc 1 35 4 is_stmt 1 view .LVU200
  618 0044 EBE7     		b	.L19
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 16
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 16
 
 
  619              		.cfi_endproc
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  663              		.loc 1 181 10 is_stmt 0 view .LVU215
  664 0018 8DF80430 		strb	r3, [sp, #4]
  182:Module/motor/dm_drv.c **** 	data[5] = 0xFF;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 17
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 17
 
 
  665              		.loc 1 182 2 is_stmt 1 view .LVU216
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  712 0002 83B0     		sub	sp, sp, #12
  713              	.LCFI13:
  714              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 18
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 18
 
 
  192:Module/motor/dm_drv.c **** 	uint8_t data[8];
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  755              		.loc 1 205 1 view .LVU250
  756 0034 03B0     		add	sp, sp, #12
  757              	.LCFI14:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 19
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 19
 
 
  758              		.cfi_def_cfa_offset 4
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  804              		.loc 1 99 1 is_stmt 0 view .LVU260
  805 001c 08BD     		pop	{r3, pc}
  806              	.LVL53:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 20
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 20
 
 
  807              	.L26:
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  850              		.loc 1 209 1 is_stmt 0 view .LVU271
  851 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
  852              	.LCFI16:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 21
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 21
 
 
  853              		.cfi_def_cfa_offset 36
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  901              		.loc 1 215 2 is_stmt 1 view .LVU282
  902              		.loc 1 215 12 is_stmt 0 view .LVU283
  903 0032 0C20     		movs	r0, #12
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 22
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 22
 
 
  904 0034 B3EE0E1A 		vmov.f32	s2, #3.0e+1
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  953 0092 8DF808B0 		strb	fp, [sp, #8]
  221:Module/motor/dm_drv.c **** 	data[1] = pos_tmp;
  954              		.loc 1 221 2 is_stmt 1 view .LVU297
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 23
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 23
 
 
  955              		.loc 1 221 10 is_stmt 0 view .LVU298
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  1000              	.LCFI19:
  1001              		.cfi_def_cfa_offset 52
  1002              	.LVL80:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 24
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 24
 
 
  1003              		.loc 1 230 1 view .LVU319
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  238:Module/motor/dm_drv.c **** 	
  239:Module/motor/dm_drv.c **** 	id = motor_id + POS_MODE;
  1052              		.loc 1 239 2 view .LVU327
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 25
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 25
 
 
  1053              		.loc 1 239 5 is_stmt 0 view .LVU328
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  1093 004c 0823     		movs	r3, #8
  1094 004e 0DEB0302 		add	r2, sp, r3
  1095 0052 89B2     		uxth	r1, r1
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 26
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 26
 
 
  1096              	.LVL85:
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  264:Module/motor/dm_drv.c **** 	vbuf=(uint8_t*)&vel;
  1142              		.loc 1 264 2 is_stmt 1 view .LVU361
  265:Module/motor/dm_drv.c **** 	
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 27
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 27
 
 
  266:Module/motor/dm_drv.c **** 	data[0] = *vbuf;
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  1191              		@ frame_needed = 0, uses_anonymous_args = 0
   42:Module/motor/dm_drv.c **** 	switch(motor->ctrl.mode)
  1192              		.loc 1 42 1 is_stmt 0 view .LVU376
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 28
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 28
 
 
  1193 0000 08B5     		push	{r3, lr}
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
   49:Module/motor/dm_drv.c **** 			break;
  1235              		.loc 1 49 4 view .LVU389
  1236 003e FFF7FEFF 		bl	pos_speed_ctrl
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 29
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 29
 
 
  1237              	.LVL97:
@@ -1718,44 +1718,44 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 1
  1265              		.file 7 "Bsp/bsp_can.h"
  1266              		.file 8 "Module/motor/dm_drv.h"
  1267              		.file 9 "driver/can_driver.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s 			page 30
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s 			page 30
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 dm_drv.c
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:21     .text.dm4310_set:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:27     .text.dm4310_set:00000000 dm4310_set
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:66     .text.dm4310_clear_para:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:72     .text.dm4310_clear_para:00000000 dm4310_clear_para
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:117    .text.float_to_uint:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:123    .text.float_to_uint:00000000 float_to_uint
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:162    .text.uint_to_float:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:168    .text.uint_to_float:00000000 uint_to_float
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:207    .text.dm4310_fbdata:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:213    .text.dm4310_fbdata:00000000 dm4310_fbdata
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:333    .text.enable_motor_mode:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:339    .text.enable_motor_mode:00000000 enable_motor_mode
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:404    .text.dm4310_enable:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:410    .text.dm4310_enable:00000000 dm4310_enable
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:476    .text.disable_motor_mode:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:482    .text.disable_motor_mode:00000000 disable_motor_mode
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:547    .text.dm4310_disable:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:553    .text.dm4310_disable:00000000 dm4310_disable
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:623    .text.save_pos_zero:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:629    .text.save_pos_zero:00000000 save_pos_zero
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:694    .text.clear_err:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:700    .text.clear_err:00000000 clear_err
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:765    .text.dm4310_clear_err:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:771    .text.dm4310_clear_err:00000000 dm4310_clear_err
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:837    .text.mit_ctrl:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:843    .text.mit_ctrl:00000000 mit_ctrl
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:1020   .text.mit_ctrl:000000e0 $d
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:1026   .text.pos_speed_ctrl:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:1032   .text.pos_speed_ctrl:00000000 pos_speed_ctrl
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:1113   .text.speed_ctrl:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:1119   .text.speed_ctrl:00000000 speed_ctrl
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:1179   .text.dm4310_ctrl_send:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccMoWNBU.s:1185   .text.dm4310_ctrl_send:00000000 dm4310_ctrl_send
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:21     .text.dm4310_set:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:27     .text.dm4310_set:00000000 dm4310_set
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:66     .text.dm4310_clear_para:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:72     .text.dm4310_clear_para:00000000 dm4310_clear_para
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:117    .text.float_to_uint:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:123    .text.float_to_uint:00000000 float_to_uint
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:162    .text.uint_to_float:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:168    .text.uint_to_float:00000000 uint_to_float
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:207    .text.dm4310_fbdata:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:213    .text.dm4310_fbdata:00000000 dm4310_fbdata
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:333    .text.enable_motor_mode:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:339    .text.enable_motor_mode:00000000 enable_motor_mode
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:404    .text.dm4310_enable:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:410    .text.dm4310_enable:00000000 dm4310_enable
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:476    .text.disable_motor_mode:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:482    .text.disable_motor_mode:00000000 disable_motor_mode
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:547    .text.dm4310_disable:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:553    .text.dm4310_disable:00000000 dm4310_disable
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:623    .text.save_pos_zero:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:629    .text.save_pos_zero:00000000 save_pos_zero
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:694    .text.clear_err:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:700    .text.clear_err:00000000 clear_err
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:765    .text.dm4310_clear_err:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:771    .text.dm4310_clear_err:00000000 dm4310_clear_err
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:837    .text.mit_ctrl:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:843    .text.mit_ctrl:00000000 mit_ctrl
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:1020   .text.mit_ctrl:000000e0 $d
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:1026   .text.pos_speed_ctrl:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:1032   .text.pos_speed_ctrl:00000000 pos_speed_ctrl
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:1113   .text.speed_ctrl:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:1119   .text.speed_ctrl:00000000 speed_ctrl
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:1179   .text.dm4310_ctrl_send:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccsvjUWE.s:1185   .text.dm4310_ctrl_send:00000000 dm4310_ctrl_send
 
 UNDEFINED SYMBOLS
 canx_send_data

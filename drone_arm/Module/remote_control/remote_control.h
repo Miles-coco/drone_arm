@@ -86,6 +86,8 @@ typedef struct __packed
     uint8_t sw4;
 } rc_info_t;
 
+bool remote_control_active(void);
+
 extern void MX_USART3_UART_Init(void);
 
 extern uint16_t channels[18];

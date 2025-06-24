@@ -78,12 +78,14 @@ D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-
                               build/kinematic_solver.o (acosf)
 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_atan2.o)
                               build/kinematic_solver.o (atan2f)
-D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_fmod.o)
-                              build/kinematic_solver.o (fmodf)
 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
                               build/kinematic_solver.o (sqrtf)
+D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
+                              build/arm_control.o (cosf)
 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fabs.o)
                               D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_acos.o) (fabsf)
+D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
+                              build/arm_control.o (sinf)
 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_nan.o)
                               D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_acos.o) (nanf)
 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fmax.o)
@@ -94,14 +96,24 @@ D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-
                               D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fmax.o) (__fpclassifyf)
 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_sqrt.o)
                               D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o) (__ieee754_sqrtf)
+D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
+                              D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o) (__kernel_cosf)
+D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
+                              D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o) (__kernel_sinf)
 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_acos.o)
                               D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_acos.o) (__ieee754_acosf)
 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
                               D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_atan2.o) (__ieee754_atan2f)
-D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_fmod.o)
-                              D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_fmod.o) (__ieee754_fmodf)
+D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+                              D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o) (__ieee754_rem_pio2f)
 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
                               D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o) (atanf)
+D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+                              D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o) (__kernel_rem_pio2f)
+D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
+                              D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o) (scalbnf)
+D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
+                              D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o) (floorf)
 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(close.o)
                               D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-closer.o) (_close)
 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(fstat.o)
@@ -846,6 +858,8 @@ Discarded input sections
                 0x00000000       0x26 build/remote_control.o
  .text.USART3_IRQHandler
                 0x00000000       0xe4 build/remote_control.o
+ .text.remote_control_active
+                0x00000000        0x4 build/remote_control.o
  .bss.this_time_rx_len.0
                 0x00000000        0x2 build/remote_control.o
  .bss.rc_ctrl1  0x00000000       0x10 build/remote_control.o
@@ -853,16 +867,16 @@ Discarded input sections
  .bss.channels  0x00000000       0x24 build/remote_control.o
  .bss.sbus_rx_buf
                 0x00000000       0x64 build/remote_control.o
- .debug_info    0x00000000      0xbad build/remote_control.o
- .debug_abbrev  0x00000000      0x297 build/remote_control.o
+ .debug_info    0x00000000      0xbcf build/remote_control.o
+ .debug_abbrev  0x00000000      0x2b3 build/remote_control.o
  .debug_loc     0x00000000      0x3ac build/remote_control.o
  .debug_aranges
-                0x00000000       0x58 build/remote_control.o
- .debug_ranges  0x00000000       0x48 build/remote_control.o
- .debug_line    0x00000000      0x755 build/remote_control.o
- .debug_str     0x00000000      0x77f build/remote_control.o
+                0x00000000       0x60 build/remote_control.o
+ .debug_ranges  0x00000000       0x50 build/remote_control.o
+ .debug_line    0x00000000      0x76e build/remote_control.o
+ .debug_str     0x00000000      0x79b build/remote_control.o
  .comment       0x00000000       0x13 build/remote_control.o
- .debug_frame   0x00000000       0xe0 build/remote_control.o
+ .debug_frame   0x00000000       0xf0 build/remote_control.o
  .ARM.attributes
                 0x00000000       0x34 build/remote_control.o
  .text          0x00000000        0x0 build/scheduler.o
@@ -913,22 +927,18 @@ Discarded input sections
  .text          0x00000000        0x0 build/kinematic_solver.o
  .data          0x00000000        0x0 build/kinematic_solver.o
  .bss           0x00000000        0x0 build/kinematic_solver.o
- .text.normalize_angle
-                0x00000000       0x24 build/kinematic_solver.o
- .text.within_limits
-                0x00000000       0x60 build/kinematic_solver.o
  .text.IK_Solve
-                0x00000000      0x1c4 build/kinematic_solver.o
- .debug_info    0x00000000      0x5e7 build/kinematic_solver.o
- .debug_abbrev  0x00000000      0x211 build/kinematic_solver.o
- .debug_loc     0x00000000      0x7fa build/kinematic_solver.o
+                0x00000000      0x1a4 build/kinematic_solver.o
+ .debug_info    0x00000000      0x4b7 build/kinematic_solver.o
+ .debug_abbrev  0x00000000      0x1f5 build/kinematic_solver.o
+ .debug_loc     0x00000000      0x468 build/kinematic_solver.o
  .debug_aranges
-                0x00000000       0x30 build/kinematic_solver.o
- .debug_ranges  0x00000000       0x38 build/kinematic_solver.o
- .debug_line    0x00000000      0x311 build/kinematic_solver.o
- .debug_str     0x00000000      0x35a build/kinematic_solver.o
+                0x00000000       0x20 build/kinematic_solver.o
+ .debug_ranges  0x00000000       0x28 build/kinematic_solver.o
+ .debug_line    0x00000000      0x24a build/kinematic_solver.o
+ .debug_str     0x00000000      0x330 build/kinematic_solver.o
  .comment       0x00000000       0x13 build/kinematic_solver.o
- .debug_frame   0x00000000       0x9c build/kinematic_solver.o
+ .debug_frame   0x00000000       0x58 build/kinematic_solver.o
  .ARM.attributes
                 0x00000000       0x34 build/kinematic_solver.o
  .text          0x00000000        0x0 build/coordinate_mapping.o
@@ -944,14 +954,14 @@ Discarded input sections
                 0x00000000        0x2 build/coordinate_mapping.o
  .data.workspace_config
                 0x00000000       0x14 build/coordinate_mapping.o
- .debug_info    0x00000000      0x3c3 build/coordinate_mapping.o
+ .debug_info    0x00000000      0x3ca build/coordinate_mapping.o
  .debug_abbrev  0x00000000      0x1b3 build/coordinate_mapping.o
  .debug_loc     0x00000000      0x144 build/coordinate_mapping.o
  .debug_aranges
                 0x00000000       0x30 build/coordinate_mapping.o
  .debug_ranges  0x00000000       0x20 build/coordinate_mapping.o
  .debug_line    0x00000000      0x2b5 build/coordinate_mapping.o
- .debug_str     0x00000000      0x2d0 build/coordinate_mapping.o
+ .debug_str     0x00000000      0x2d6 build/coordinate_mapping.o
  .comment       0x00000000       0x13 build/coordinate_mapping.o
  .debug_frame   0x00000000       0x80 build/coordinate_mapping.o
  .ARM.attributes
@@ -962,33 +972,35 @@ Discarded input sections
  .text.Smooth_Angle_Transition
                 0x00000000       0xc0 build/arm_control.o
  .text.ArmControl_Init
-                0x00000000       0x28 build/arm_control.o
+                0x00000000       0x24 build/arm_control.o
  .text.Set_Target_Position
-                0x00000000       0x28 build/arm_control.o
- .text.ArmControl_Update
-                0x00000000       0x6c build/arm_control.o
+                0x00000000       0x88 build/arm_control.o
  .text.Get_Arm_State
                 0x00000000        0xc build/arm_control.o
+ .text.Get_Current_Position
+                0x00000000       0x84 build/arm_control.o
+ .text.ArmControl_Update
+                0x00000000       0xec build/arm_control.o
+ .data.target_angles
+                0x00000000        0xc build/arm_control.o
  .data.current_angles
-                0x00000000        0x8 build/arm_control.o
+                0x00000000        0xc build/arm_control.o
  .data.current_target
                 0x00000000        0x8 build/arm_control.o
  .bss.arm_state
                 0x00000000        0x1 build/arm_control.o
- .data.workspace_config
-                0x00000000       0x14 build/arm_control.o
  .rodata.arm_config
                 0x00000000       0x18 build/arm_control.o
- .debug_info    0x00000000      0x723 build/arm_control.o
- .debug_abbrev  0x00000000      0x209 build/arm_control.o
- .debug_loc     0x00000000       0xd6 build/arm_control.o
+ .debug_info    0x00000000      0x95d build/arm_control.o
+ .debug_abbrev  0x00000000      0x257 build/arm_control.o
+ .debug_loc     0x00000000      0x1ee build/arm_control.o
  .debug_aranges
-                0x00000000       0x40 build/arm_control.o
- .debug_ranges  0x00000000       0x30 build/arm_control.o
- .debug_line    0x00000000      0x2db build/arm_control.o
- .debug_str     0x00000000      0x45a build/arm_control.o
+                0x00000000       0x48 build/arm_control.o
+ .debug_ranges  0x00000000       0x38 build/arm_control.o
+ .debug_line    0x00000000      0x437 build/arm_control.o
+ .debug_str     0x00000000      0x4e9 build/arm_control.o
  .comment       0x00000000       0x13 build/arm_control.o
- .debug_frame   0x00000000       0x78 build/arm_control.o
+ .debug_frame   0x00000000       0xd0 build/arm_control.o
  .ARM.attributes
                 0x00000000       0x34 build/arm_control.o
  .text          0x00000000        0x0 build/can_driver.o
@@ -1602,14 +1614,6 @@ Discarded input sections
  .debug_frame   0x00000000       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_atan2.o)
  .ARM.attributes
                 0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_atan2.o)
- .text          0x00000000       0x48 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_fmod.o)
- .data          0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_fmod.o)
- .bss           0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_fmod.o)
- .debug_loclists
-                0x00000000       0x63 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_fmod.o)
- .debug_frame   0x00000000       0x44 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_fmod.o)
- .ARM.attributes
-                0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_fmod.o)
  .text          0x00000000       0x44 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
  .data          0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
  .bss           0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
@@ -1618,6 +1622,16 @@ Discarded input sections
  .debug_frame   0x00000000       0x44 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
  .ARM.attributes
                 0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
+ .text          0x00000000       0x70 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
+ .data          0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
+ .bss           0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
+ .debug_loclists
+                0x00000000       0x65 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
+ .debug_rnglists
+                0x00000000       0x13 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
+ .debug_frame   0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
+ .ARM.attributes
+                0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
  .text          0x00000000       0x10 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fabs.o)
  .data          0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fabs.o)
  .bss           0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fabs.o)
@@ -1628,6 +1642,16 @@ Discarded input sections
  .debug_frame   0x00000000       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fabs.o)
  .ARM.attributes
                 0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fabs.o)
+ .text          0x00000000       0x74 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
+ .data          0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
+ .bss           0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
+ .debug_loclists
+                0x00000000       0x65 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
+ .debug_rnglists
+                0x00000000       0x13 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
+ .debug_frame   0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
+ .ARM.attributes
+                0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
  .text          0x00000000        0xc D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_nan.o)
  .data          0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_nan.o)
  .bss           0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_nan.o)
@@ -1670,6 +1694,26 @@ Discarded input sections
  .debug_frame   0x00000000       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_sqrt.o)
  .ARM.attributes
                 0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_sqrt.o)
+ .text          0x00000000      0x104 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
+ .data          0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
+ .bss           0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
+ .debug_loclists
+                0x00000000      0x168 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
+ .debug_rnglists
+                0x00000000       0x14 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
+ .debug_frame   0x00000000       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
+ .ARM.attributes
+                0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
+ .text          0x00000000       0x90 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
+ .data          0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
+ .bss           0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
+ .debug_loclists
+                0x00000000       0xcd D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
+ .debug_rnglists
+                0x00000000       0x14 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
+ .debug_frame   0x00000000       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
+ .ARM.attributes
+                0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
  .text          0x00000000      0x244 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_acos.o)
  .data          0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_acos.o)
  .bss           0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_acos.o)
@@ -1691,17 +1735,17 @@ Discarded input sections
  .debug_frame   0x00000000       0x44 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
  .ARM.attributes
                 0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
- .text          0x00000000      0x140 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_fmod.o)
- .data          0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_fmod.o)
- .bss           0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_fmod.o)
- .rodata        0x00000000        0x8 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_fmod.o)
+ .text          0x00000000      0x260 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+ .data          0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+ .bss           0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+ .rodata        0x00000000      0x398 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
  .debug_loclists
-                0x00000000      0x45f D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_fmod.o)
+                0x00000000      0x392 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
  .debug_rnglists
-                0x00000000       0x2c D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_fmod.o)
- .debug_frame   0x00000000       0x3c D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_fmod.o)
+                0x00000000       0x28 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+ .debug_frame   0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
  .ARM.attributes
-                0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_fmod.o)
+                0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
  .text          0x00000000      0x1a0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
  .data          0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
  .bss           0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
@@ -1713,6 +1757,35 @@ Discarded input sections
  .debug_frame   0x00000000       0x2c D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
  .ARM.attributes
                 0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
+ .text          0x00000000      0x63c D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+ .data          0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+ .bss           0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+ .rodata        0x00000000       0x38 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+ .debug_loclists
+                0x00000000      0xa3d D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+ .debug_frame   0x00000000       0x5c D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+ .ARM.attributes
+                0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+ .text          0x00000000       0xe4 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
+ .data          0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
+ .bss           0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
+ .debug_loclists
+                0x00000000      0x21d D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
+ .debug_rnglists
+                0x00000000       0x22 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
+ .debug_frame   0x00000000       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
+ .ARM.attributes
+                0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
+ .text          0x00000000       0x94 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
+ .data          0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
+ .bss           0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
+ .debug_loclists
+                0x00000000      0x132 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
+ .debug_rnglists
+                0x00000000       0x13 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
+ .debug_frame   0x00000000       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
+ .ARM.attributes
+                0x00000000       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
  .text          0x00000000       0x10 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(close.o)
  .data          0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(close.o)
  .bss           0x00000000        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libnosys.a(close.o)
@@ -2813,6 +2886,7 @@ FMPI2C1_ER_IRQHandler                             build/startup_stm32f446xx.o
 FMPI2C1_EV_IRQHandler                             build/startup_stm32f446xx.o
 FPU_IRQHandler                                    build/startup_stm32f446xx.o
 Get_Arm_State                                     build/arm_control.o
+Get_Current_Position                              build/arm_control.o
 HAL_CAN_AbortTxRequest                            build/stm32f4xx_hal_can.o
 HAL_CAN_ActivateNotification                      build/stm32f4xx_hal_can.o
                                                   build/bsp_can.o
@@ -3116,6 +3190,7 @@ MX_GPIO_Init                                      build/gpio.o
 MX_USART3_UART_Init                               build/usart.o
                                                   build/main.o
 Map_To_Cartesian                                  build/coordinate_mapping.o
+                                                  build/arm_control.o
 Mapping_Init                                      build/coordinate_mapping.o
                                                   build/arm_control.o
 MemManage_Handler                                 build/stm32f4xx_it.o
@@ -3205,7 +3280,6 @@ __deregister_frame_info                           D:/enviroment/msys2/mingw64/bi
 __dso_handle                                      D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
 __errno                                           D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-errno.o)
                                                   D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
-                                                  D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_fmod.o)
                                                   D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_acos.o)
 __fini_array_end                                  D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fini.o)
 __fini_array_start                                D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fini.o)
@@ -3218,13 +3292,22 @@ __ieee754_acosf                                   D:/enviroment/msys2/mingw64/bi
                                                   D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_acos.o)
 __ieee754_atan2f                                  D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
                                                   D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_atan2.o)
-__ieee754_fmodf                                   D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_fmod.o)
-                                                  D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_fmod.o)
+__ieee754_rem_pio2f                               D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+                                                  D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
+                                                  D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
 __ieee754_sqrtf                                   D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_sqrt.o)
                                                   D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_acos.o)
                                                   D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
 __init_array_end                                  D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
 __init_array_start                                D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+__kernel_cosf                                     D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_cos.o)
+                                                  D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
+                                                  D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
+__kernel_rem_pio2f                                D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
+                                                  D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
+__kernel_sinf                                     D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_sin.o)
+                                                  D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
+                                                  D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
 __libc_fini_array                                 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fini.o)
                                                   D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
 __libc_init_array                                 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
@@ -3452,6 +3535,8 @@ canx_send_data                                    build/can_driver.o
                                                   build/dm_drv.o
 channels                                          build/remote_control.o
 clear_err                                         build/dm_drv.o
+cosf                                              D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_cos.o)
+                                                  build/arm_control.o
 create_task                                       build/scheduler.o
 ctrl_clear_err                                    build/dm_ctrl.o
 ctrl_clear_para                                   build/dm_ctrl.o
@@ -3500,16 +3585,19 @@ exit                                              D:/enviroment/msys2/mingw64/bi
                                                   D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
 fabsf                                             D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fabs.o)
                                                   D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_atan.o)
+                                                  D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_rem_pio2.o)
                                                   D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-ef_atan2.o)
                                                   D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_acos.o)
 fflush                                            D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-fflush.o)
 float_to_uint                                     build/dm_drv.o
+floorf                                            D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_floor.o)
+                                                  D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
 fmaxf                                             D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fmax.o)
+                                                  build/arm_control.o
                                                   build/coordinate_mapping.o
 fminf                                             D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fmin.o)
+                                                  build/arm_control.o
                                                   build/coordinate_mapping.o
-fmodf                                             D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_fmod.o)
-                                                  build/kinematic_solver.o
 g_pfnVectors                                      build/startup_stm32f446xx.o
 get_channel_mapped_value                          build/remote_control.o
 get_channel_raw_value                             build/remote_control.o
@@ -3566,16 +3654,23 @@ puts                                              D:/enviroment/msys2/mingw64/bi
                                                   build/scheduler.o
 rc_ctrl                                           build/remote_control.o
 rc_ctrl1                                          build/remote_control.o
+remote_control_active                             build/remote_control.o
+                                                  build/arm_control.o
 remote_control_init                               build/remote_control.o
 run_queue                                         build/scheduler.o
 save_pos_zero                                     build/dm_drv.o
 sbus_to_rc                                        build/remote_control.o
+scalbnf                                           D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_scalbn.o)
+                                                  D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-kf_rem_pio2.o)
 scheduler_dump_info                               build/scheduler.o
 scheduler_init                                    build/scheduler.o
 scheduler_run                                     build/scheduler.o
+sinf                                              D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_sin.o)
+                                                  build/arm_control.o
 software_init_hook                                D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
 speed_ctrl                                        build/dm_drv.o
 sqrtf                                             D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-wf_sqrt.o)
+                                                  build/arm_control.o
                                                   build/kinematic_solver.o
 sys_time                                          build/scheduler.o
 task_num                                          build/scheduler.o
@@ -3589,3 +3684,4 @@ uwTickPrio                                        build/stm32f4xx_hal.o
                                                   build/stm32f4xx_hal_rcc.o
 vfiprintf                                         D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
 vfprintf                                          D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+workspace_config                                  build/arm_control.o

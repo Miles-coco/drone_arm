@@ -10,5 +10,4 @@ void MCU_init(void)
     remote_control_init();
     can_driver_init();
     dm4310_motor_init();
-
 }

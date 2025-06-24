@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccitnp3t.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 1
   27:Module/coordinate/coordinate_mapping.c **** void Mapping_Init(WorkspaceConfig* config) {
   30              		.loc 1 27 44 view -0
   31              		.cfi_startproc
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccitnp3t.s 			page 2
 
 
   32              		@ args = 0, pretend = 0, frame = 0
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 1
   81              		.cfi_startproc
   82              		@ args = 0, pretend = 0, frame = 0
   83              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccitnp3t.s 			page 3
 
 
   84              		@ link register save eliminated.
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 1
  134 0008 0023     		movs	r3, #0
  135 000a 0293     		str	r3, [sp, #8]	@ float
  136 000c 0393     		str	r3, [sp, #12]	@ float
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccitnp3t.s 			page 4
 
 
   40:Module/coordinate/coordinate_mapping.c ****     
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 1
  171              		.loc 1 59 20 view .LVU32
  172 0046 B8EEC77A 		vcvt.f32.s32	s14, s14
  173              		.loc 1 59 44 view .LVU33
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 5
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccitnp3t.s 			page 5
 
 
  174 004a 27EE067A 		vmul.f32	s14, s14, s12
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 1
  215              		.loc 1 72 37 is_stmt 0 view .LVU50
  216 0090 93ED03AA 		vldr.32	s20, [r3, #12]
  217              		.loc 1 72 62 view .LVU51
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 6
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccitnp3t.s 			page 6
 
 
  218 0094 93ED029A 		vldr.32	s18, [r3, #8]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 1
  263 00e4 7AEE680A 		vsub.f32	s1, s20, s17
  264 00e8 B0EE480A 		vmov.f32	s0, s16
  265 00ec FFF7FEFF 		bl	fminf
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 7
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccitnp3t.s 			page 7
 
 
  266              	.LVL16:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 1
  321              	workspace_config:
  322 0000 9A9999BE 		.word	-1097229926
  323 0004 9A99993E 		.word	1050253722
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 8
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccitnp3t.s 			page 8
 
 
  324 0008 CDCCCC3D 		.word	1036831949
@@ -432,24 +432,24 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 1
  332              		.file 5 "Module/coordinate/coordinate_mapping.h"
  333              		.file 6 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/math.h"
  334              		.file 7 "Module/remote_control/remote_control.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s 			page 9
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccitnp3t.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 coordinate_mapping.c
-C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:21     .text.Mapping_Init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:27     .text.Mapping_Init:00000000 Mapping_Init
-C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:66     .text.Mapping_Init:0000001c $d
-C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:321    .data.workspace_config:00000000 workspace_config
-C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:71     .text.Set_Stick_Channels:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:77     .text.Set_Stick_Channels:00000000 Set_Stick_Channels
-C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:97     .text.Set_Stick_Channels:00000008 $d
-C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:314    .data.stick_config:00000000 stick_config
-C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:102    .text.Map_To_Cartesian:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:108    .text.Map_To_Cartesian:00000000 Map_To_Cartesian
-C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:302    .text.Map_To_Cartesian:00000118 $d
-C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:311    .data.stick_config:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccU0e2iW.s:318    .data.workspace_config:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccitnp3t.s:21     .text.Mapping_Init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccitnp3t.s:27     .text.Mapping_Init:00000000 Mapping_Init
+C:\Users\30514\AppData\Local\Temp\ccitnp3t.s:66     .text.Mapping_Init:0000001c $d
+C:\Users\30514\AppData\Local\Temp\ccitnp3t.s:321    .data.workspace_config:00000000 workspace_config
+C:\Users\30514\AppData\Local\Temp\ccitnp3t.s:71     .text.Set_Stick_Channels:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccitnp3t.s:77     .text.Set_Stick_Channels:00000000 Set_Stick_Channels
+C:\Users\30514\AppData\Local\Temp\ccitnp3t.s:97     .text.Set_Stick_Channels:00000008 $d
+C:\Users\30514\AppData\Local\Temp\ccitnp3t.s:314    .data.stick_config:00000000 stick_config
+C:\Users\30514\AppData\Local\Temp\ccitnp3t.s:102    .text.Map_To_Cartesian:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccitnp3t.s:108    .text.Map_To_Cartesian:00000000 Map_To_Cartesian
+C:\Users\30514\AppData\Local\Temp\ccitnp3t.s:302    .text.Map_To_Cartesian:00000118 $d
+C:\Users\30514\AppData\Local\Temp\ccitnp3t.s:311    .data.stick_config:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccitnp3t.s:318    .data.workspace_config:00000000 $d
 
 UNDEFINED SYMBOLS
 get_channel_raw_value

@@ -3,6 +3,10 @@
         "cstdint": "c",
         "dm_ctrl.h": "c",
         "can_driver.h": "c",
-        "key_module.h": "c"
+        "key_module.h": "c",
+        "arm_control.h": "c",
+        "kinematic_solver.h": "c",
+        "remote_control.h": "c",
+        "coordinate_mapping.h": "c"
     }
 }

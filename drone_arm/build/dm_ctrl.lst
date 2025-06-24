@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqmunZh.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 1
   37              		.cfi_offset 4, -12
   38              		.cfi_offset 5, -8
   39              		.cfi_offset 14, -4
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqmunZh.s 			page 2
 
 
   20:Module/motor/dm_ctrl.c **** 	// 初始化Motor1和Motor2的电机结构
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 1
   75              		.align	1
   76              		.global	ctrl_enable
   77              		.syntax unified
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqmunZh.s 			page 3
 
 
   78              		.thumb
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 1
  109              		.loc 1 63 4 view .LVU17
   64:Module/motor/dm_ctrl.c **** 		//case 3:
   65:Module/motor/dm_ctrl.c **** 			// 启用Motor3的电机控制
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqmunZh.s 			page 4
 
 
   66:Module/motor/dm_ctrl.c **** 		//	motor[Motor3].start_flag = 1;
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 1
  146              		.cfi_startproc
  147              		@ args = 0, pretend = 0, frame = 0
  148              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 5
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqmunZh.s 			page 5
 
 
  149 0000 08B5     		push	{r3, lr}
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 1
  181 0028 0448     		ldr	r0, .L17+12
  182 002a FFF7FEFF 		bl	dm4310_disable
  183              	.LVL5:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 6
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqmunZh.s 			page 6
 
 
   88:Module/motor/dm_ctrl.c **** 		case 2:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 1
  117:Module/motor/dm_ctrl.c **** 			break;
  118:Module/motor/dm_ctrl.c **** 		case 2:
  119:Module/motor/dm_ctrl.c **** 			// 设置Motor2的电机参数
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 7
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqmunZh.s 			page 7
 
 
  120:Module/motor/dm_ctrl.c **** 			dm4310_set(&motor[Motor2]);
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 1
  258              		.cfi_startproc
  259              		@ args = 0, pretend = 0, frame = 0
  260              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 8
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqmunZh.s 			page 8
 
 
  261 0000 08B5     		push	{r3, lr}
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 1
  298              		.section	.text.ctrl_clear_err,"ax",%progbits
  299              		.align	1
  300              		.global	ctrl_clear_err
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 9
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqmunZh.s 			page 9
 
 
  301              		.syntax unified
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 1
  329              		.loc 1 181 1 is_stmt 0 view .LVU56
  330 0018 03E0     		b	.L33
  331              	.L34:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 10
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqmunZh.s 			page 10
 
 
  170:Module/motor/dm_ctrl.c **** 			break;
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 1
  374 000a 06D0     		beq	.L41
  375 000c 022B     		cmp	r3, #2
  376 000e 08D1     		bne	.L40
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 11
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqmunZh.s 			page 11
 
 
  194:Module/motor/dm_ctrl.c **** 	{
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 1
  210:Module/motor/dm_ctrl.c **** ************************************************************************
  211:Module/motor/dm_ctrl.c **** * @brief:      	can1_rx_callback: CAN1接收回调函数
  212:Module/motor/dm_ctrl.c **** * @param:      	void
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 12
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqmunZh.s 			page 12
 
 
  213:Module/motor/dm_ctrl.c **** * @retval:     	void
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 1
  451 002c 01A9     		add	r1, sp, #4
  452 002e 0648     		ldr	r0, .L52+4
  453 0030 FFF7FEFF 		bl	dm4310_fbdata
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 13
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqmunZh.s 			page 13
 
 
  454              	.LVL15:
@@ -778,45 +778,45 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 1
  502              		.file 8 "Core/Inc/can.h"
  503              		.file 9 "Bsp/bsp_can.h"
  504              		.file 10 "Module/motor/dm_drv.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 14
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqmunZh.s 			page 14
 
 
  505              		.file 11 "Module/motor/dm_ctrl.h"
  506              		.file 12 "driver/can_driver.h"
  507              		.file 13 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/string.h"
  508              		.file 14 "<built-in>"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cc83wd8q.s 			page 15
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqmunZh.s 			page 15
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 dm_ctrl.c
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:21     .text.dm4310_motor_init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:27     .text.dm4310_motor_init:00000000 dm4310_motor_init
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:70     .text.dm4310_motor_init:00000024 $d
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:492    .bss.motor:00000000 motor
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:75     .text.ctrl_enable:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:81     .text.ctrl_enable:00000000 ctrl_enable
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:129    .text.ctrl_enable:00000030 $d
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:485    .data.motor_id:00000000 motor_id
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:137    .text.ctrl_disable:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:143    .text.ctrl_disable:00000000 ctrl_disable
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:191    .text.ctrl_disable:00000030 $d
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:199    .text.ctrl_set:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:205    .text.ctrl_set:00000000 ctrl_set
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:242    .text.ctrl_set:00000020 $d
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:249    .text.ctrl_clear_para:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:255    .text.ctrl_clear_para:00000000 ctrl_clear_para
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:292    .text.ctrl_clear_para:00000020 $d
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:299    .text.ctrl_clear_err:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:305    .text.ctrl_clear_err:00000000 ctrl_clear_err
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:344    .text.ctrl_clear_err:00000024 $d
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:353    .text.ctrl_send:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:359    .text.ctrl_send:00000000 ctrl_send
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:398    .text.ctrl_send:00000024 $d
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:407    .text.can1_rx_callback:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:413    .text.can1_rx_callback:00000000 can1_rx_callback
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:475    .text.can1_rx_callback:00000044 $d
-C:\Users\30514\AppData\Local\Temp\cc83wd8q.s:489    .bss.motor:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:21     .text.dm4310_motor_init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:27     .text.dm4310_motor_init:00000000 dm4310_motor_init
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:70     .text.dm4310_motor_init:00000024 $d
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:492    .bss.motor:00000000 motor
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:75     .text.ctrl_enable:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:81     .text.ctrl_enable:00000000 ctrl_enable
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:129    .text.ctrl_enable:00000030 $d
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:485    .data.motor_id:00000000 motor_id
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:137    .text.ctrl_disable:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:143    .text.ctrl_disable:00000000 ctrl_disable
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:191    .text.ctrl_disable:00000030 $d
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:199    .text.ctrl_set:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:205    .text.ctrl_set:00000000 ctrl_set
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:242    .text.ctrl_set:00000020 $d
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:249    .text.ctrl_clear_para:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:255    .text.ctrl_clear_para:00000000 ctrl_clear_para
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:292    .text.ctrl_clear_para:00000020 $d
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:299    .text.ctrl_clear_err:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:305    .text.ctrl_clear_err:00000000 ctrl_clear_err
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:344    .text.ctrl_clear_err:00000024 $d
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:353    .text.ctrl_send:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:359    .text.ctrl_send:00000000 ctrl_send
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:398    .text.ctrl_send:00000024 $d
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:407    .text.can1_rx_callback:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:413    .text.can1_rx_callback:00000000 can1_rx_callback
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:475    .text.can1_rx_callback:00000044 $d
+C:\Users\30514\AppData\Local\Temp\ccqmunZh.s:489    .bss.motor:00000000 $d
 
 UNDEFINED SYMBOLS
 memset

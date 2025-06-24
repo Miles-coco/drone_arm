@@ -11,6 +11,7 @@ typedef struct
 {
     float theta1;//电机1角度
     float theta2;//电机2角度
+    bool valid;//解是否有效
 } JointAngles;
 
 typedef struct 
@@ -23,8 +24,6 @@ typedef struct
 
 
 //逆运动学求解接口
-int IK_Solve(point2D target,float L1,float L2,const JointLimits* limits,JointAngles* angles);
-static float normalize_angle(float angle);
-static bool within_limits(float angle, float min, float max);
+JointAngles IK_Solve(point2D target,float L1,float L2,const JointLimits* limits);
 
 #endif // 1

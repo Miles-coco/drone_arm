@@ -297,3 +297,10 @@ void USART3_IRQHandler(void)
         }
     }
 }
+
+bool remote_control_active(void) 
+{
+    // 简单实现：总是返回true
+    // 实际应用中应根据遥控器信号状态判断
+    return true;
+}

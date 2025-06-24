@@ -3,39 +3,48 @@
 #include "Remote_Control.h"
 
 // 默认工作空间配置
-static WorkspaceConfig workspace_config = {
+static WorkspaceConfig workspace_config = 
+{
     .x_min = -0.3f,
     .x_max = 0.3f,
     .y_min = 0.1f,
     .y_max = 0.5f,
-    .safety_margin = 0.02f
+    .safety_margin = 0.02f //安全边界
 };
 
 // 默认摇杆通道配置
-static StickChannelConfig stick_config = {
+static StickChannelConfig stick_config = 
+{
     .x_channel = 0, // 默认通道0控制X轴
     .y_channel = 1  // 默认通道1控制Y轴
 };
 
 // 映射曲线平滑函数
-static float smooth_curve(float value) {
+static float smooth_curve(float value) 
+{
     // 使用Sigmoid函数实现平滑过渡
     const float k = 3.0f; // 调整曲线陡峭程度
     return (2.0f / (1.0f + expf(-k * value))) - 1.0f;
 }
 
-void Mapping_Init(WorkspaceConfig* config) {
+//映射初始化函数
+void Mapping_Init(WorkspaceConfig* config) 
+{
     if (config != NULL) {
         workspace_config = *config;
     }
 }
 
-void Set_Stick_Channels(uint8_t x_ch, uint8_t y_ch) {
+//用于配置映射到x,y的遥控器通道
+void Set_Stick_Channels(uint8_t x_ch, uint8_t y_ch) 
+{
     stick_config.x_channel = x_ch;
     stick_config.y_channel = y_ch;
 }
 
-point2D Map_To_Cartesian(void) {
+//将遥控器的原始值映射到工作空间
+point2D Map_To_Cartesian(void) 
+{
     point2D result = {0, 0};
     
     // 获取摇杆原始值
@@ -58,7 +67,7 @@ point2D Map_To_Cartesian(void) {
     float norm_x = (float)(ch_x - RAW_MIN) / (RAW_MAX - RAW_MIN) * 2.0f - 1.0f;
     float norm_y = (float)(ch_y - RAW_MIN) / (RAW_MAX - RAW_MIN) * 2.0f - 1.0f;
     
-    // 应用死区处理（避免摇杆微动）
+    // 应用死区处理（消除摇杆中心的微小偏移）
     const float deadzone = 0.05f; // 5%死区
     if (fabsf(norm_x) < deadzone) norm_x = 0.0f;
     if (fabsf(norm_y) < deadzone) norm_y = 0.0f;
