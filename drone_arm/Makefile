@@ -69,7 +69,7 @@ Module/kinematic/kinematic_solver.c \
 Module/coordinate/coordinate_mapping.c \
 Module/arm_control/arm_control.c \
 Module/config/mcu_config.c \
-driver/can_driver.c 
+driver/can_driver.c \
 
 # ASM sources
 ASM_SOURCES =  \

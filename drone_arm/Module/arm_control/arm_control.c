@@ -16,13 +16,13 @@
 
 // 机械臂参数配置
 static const ArmConfig arm_config = {
-    .L1 = 0.15f,
-    .L2 = 0.15f,
+    .L1 = 0.17f,
+    .L2 = 0.231f,
     .limits = {
-        .min_theta1 = 0.0f,
-        .max_theta1 = M_PI,
-        .min_theta2 = 0.0f,
-        .max_theta2 = M_PI
+        .min_theta1 = -110.0f/180.0f*M_PI,
+        .max_theta1 = -20.0f/180.0f*M_PI,
+        .min_theta2 = -130.0f/180.0f*M_PI,
+        .max_theta2 = -30.0f/180.0f*M_PI
     }
 };
 
@@ -47,7 +47,7 @@ void ArmControl_Init(void) {
     dm4310_motor_init();
     
     // 启用电机控制
-    ctrl_enable();
+    ctrl_enable(ALL_MOTORS);
     
     // 设置初始状态
     arm_state = ARM_IDLE;
@@ -153,7 +153,7 @@ void ArmControl_Update(void)
     dm4310_set(&motor[Motor2]);
     
     // 发送控制命令
-    ctrl_send();
+    ctrl_send(ALL_MOTORS);
     
     // 检查是否到达目标
     if (arm_state == ARM_MOVING) {

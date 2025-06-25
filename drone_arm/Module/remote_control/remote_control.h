@@ -86,8 +86,6 @@ typedef struct __packed
     uint8_t sw4;
 } rc_info_t;
 
-bool remote_control_active(void);
-
 extern void MX_USART3_UART_Init(void);
 
 extern uint16_t channels[18];
@@ -99,6 +97,6 @@ void remote_control_init(void);
 int16_t get_channel_raw_value(uint8_t ch_num);
 int16_t get_channel_mapped_value(uint8_t ch_num,int16_t min,int16_t max);
 RC_ctrl_t get_remote_control_data(void);
-__weak void USART3_IRQHandler(void); 
+bool remote_control_active(void);
 
 #endif

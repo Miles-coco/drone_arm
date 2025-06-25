@@ -29,7 +29,7 @@ void task_2ms(void)
 
 void task_5ms(void)
 {
-	ctrl_send();
+	ctrl_send(ALL_MOTORS);
 }
 
 void task_10ms(void)

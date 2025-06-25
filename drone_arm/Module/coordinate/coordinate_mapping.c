@@ -5,11 +5,11 @@
 // 默认工作空间配置
 WorkspaceConfig workspace_config = 
 {
-    .x_min = -0.3f,
-    .x_max = 0.3f,
-    .y_min = 0.1f,
-    .y_max = 0.5f,
-    .safety_margin = 0.02f //安全边界
+    .x_min = 0.04f,
+    .x_max = 0.12f,
+    .y_min = -0.18f,
+    .y_max = -0.07f,
+    .safety_margin = 0.01f //安全边界
 };
 
 // 默认摇杆通道配置

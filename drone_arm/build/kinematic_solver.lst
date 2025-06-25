@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczRjt7T.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s 			page 1
   39              		.cfi_offset 5, -8
   40              		.cfi_offset 14, -4
   41 0002 2DED068B 		vpush.64	{d8, d9, d10}
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczRjt7T.s 			page 2
 
 
   42              	.LCFI1:
@@ -73,33 +73,33 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s 			page 1
   51              	.LCFI2:
   52              		.cfi_def_cfa_offset 48
   53 0008 0446     		mov	r4, r0
-  54 000a 8DED000A 		vstr.32	s0, [sp]
-  55 000e CDED010A 		vstr.32	s1, [sp, #4]
-  18:Module/kinematic/kinematic_solver.c ****     JointAngles result = {.theta1 = 0.0f, .theta2 = 0.0f, .valid = false};
-  56              		.loc 1 18 5 is_stmt 1 view .LVU2
-  57              		.loc 1 18 17 is_stmt 0 view .LVU3
-  58 0012 0023     		movs	r3, #0
-  59 0014 0360     		str	r3, [r0]	@ float
-  60 0016 4360     		str	r3, [r0, #4]	@ float
-  61 0018 0023     		movs	r3, #0
-  62 001a 0372     		strb	r3, [r0, #8]
+  54 000a 0D46     		mov	r5, r1
+  55 000c 8DED000A 		vstr.32	s0, [sp]
+  56 0010 CDED010A 		vstr.32	s1, [sp, #4]
+  18:Module/kinematic/kinematic_solver.c ****     JointAngles result = {.theta1 = -65.0f/180.0f*M_PI, .theta2 = -80.0f/180.0f*M_PI, .valid = fals
+  57              		.loc 1 18 5 is_stmt 1 view .LVU2
+  58              		.loc 1 18 17 is_stmt 0 view .LVU3
+  59 0014 594B     		ldr	r3, .L18
+  60 0016 93E80700 		ldm	r3, {r0, r1, r2}
+  61              	.LVL1:
+  62              		.loc 1 18 17 view .LVU4
+  63 001a 84E80700 		stm	r4, {r0, r1, r2}
   19:Module/kinematic/kinematic_solver.c ****     
   20:Module/kinematic/kinematic_solver.c ****     // 检查有效输入
   21:Module/kinematic/kinematic_solver.c ****     if (L1 <= 0.001f || L2 <= 0.001f) {
-  63              		.loc 1 21 5 is_stmt 1 view .LVU4
-  64              		.loc 1 21 8 is_stmt 0 view .LVU5
-  65 001c DFED577A 		vldr.32	s15, .L18
-  66 0020 B4EEE71A 		vcmpe.f32	s2, s15
-  67 0024 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-  68 0028 09D9     		bls	.L1
-  69 002a B0EE418A 		vmov.f32	s16, s2
-  70 002e F0EE618A 		vmov.f32	s17, s3
-  71 0032 0D46     		mov	r5, r1
-  72              		.loc 1 21 22 discriminator 1 view .LVU6
+  64              		.loc 1 21 5 is_stmt 1 view .LVU5
+  65              		.loc 1 21 8 is_stmt 0 view .LVU6
+  66 001e DFED587A 		vldr.32	s15, .L18+4
+  67 0022 B4EEE71A 		vcmpe.f32	s2, s15
+  68 0026 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  69 002a 08D9     		bls	.L1
+  70 002c B0EE418A 		vmov.f32	s16, s2
+  71 0030 F0EE618A 		vmov.f32	s17, s3
+  72              		.loc 1 21 22 discriminator 1 view .LVU7
   73 0034 F4EEE71A 		vcmpe.f32	s3, s15
   74 0038 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
   75 003c 04D8     		bhi	.L16
-  76              	.LVL1:
+  76              	.LVL2:
   77              	.L1:
   22:Module/kinematic/kinematic_solver.c ****         return result; // 无效连杆长度
   23:Module/kinematic/kinematic_solver.c ****     }
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s 			page 1
   36:Module/kinematic/kinematic_solver.c ****     if (R < minR - 0.001f || R > maxR + 0.001f) {
   37:Module/kinematic/kinematic_solver.c ****         return result; // 超出工作空间
   38:Module/kinematic/kinematic_solver.c ****     }
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczRjt7T.s 			page 3
 
 
   39:Module/kinematic/kinematic_solver.c ****     
@@ -167,7 +167,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s 			page 1
   82:Module/kinematic/kinematic_solver.c ****     
   83:Module/kinematic/kinematic_solver.c ****     return result;
   84:Module/kinematic/kinematic_solver.c **** }...
-  78              		.loc 1 84 1 view .LVU7
+  78              		.loc 1 84 1 view .LVU8
   79 003e 2046     		mov	r0, r4
   80 0040 03B0     		add	sp, sp, #12
   81              	.LCFI3:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s 			page 1
   86              	.LCFI4:
   87              		.cfi_restore 84
   88              		.cfi_restore 85
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s 			page 4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczRjt7T.s 			page 4
 
 
   89              		.cfi_restore 82
@@ -187,319 +187,329 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s 			page 1
   92              		.cfi_restore 81
   93              		.cfi_def_cfa_offset 12
   94 0046 30BD     		pop	{r4, r5, pc}
-  95              	.LVL2:
+  95              	.LVL3:
   96              	.L16:
   97              	.LCFI5:
   98              		.cfi_restore_state
   25:Module/kinematic/kinematic_solver.c ****     float x = target.x;
-  99              		.loc 1 25 5 is_stmt 1 view .LVU8
+  99              		.loc 1 25 5 is_stmt 1 view .LVU9
   25:Module/kinematic/kinematic_solver.c ****     float x = target.x;
- 100              		.loc 1 25 11 is_stmt 0 view .LVU9
+ 100              		.loc 1 25 11 is_stmt 0 view .LVU10
  101 0048 B0EE40AA 		vmov.f32	s20, s0
- 102              	.LVL3:
+ 102              	.LVL4:
   26:Module/kinematic/kinematic_solver.c ****     float y = target.y;
- 103              		.loc 1 26 5 is_stmt 1 view .LVU10
+ 103              		.loc 1 26 5 is_stmt 1 view .LVU11
   26:Module/kinematic/kinematic_solver.c ****     float y = target.y;
- 104              		.loc 1 26 11 is_stmt 0 view .LVU11
+ 104              		.loc 1 26 11 is_stmt 0 view .LVU12
  105 004c F0EE609A 		vmov.f32	s19, s1
- 106              	.LVL4:
+ 106              	.LVL5:
   29:Module/kinematic/kinematic_solver.c ****     float R;
- 107              		.loc 1 29 5 is_stmt 1 view .LVU12
+ 107              		.loc 1 29 5 is_stmt 1 view .LVU13
   30:Module/kinematic/kinematic_solver.c ****     R = sqrtf(x*x + y*y);
- 108              		.loc 1 30 5 view .LVU13
+ 108              		.loc 1 30 5 view .LVU14
   30:Module/kinematic/kinematic_solver.c ****     R = sqrtf(x*x + y*y);
- 109              		.loc 1 30 16 is_stmt 0 view .LVU14
+ 109              		.loc 1 30 16 is_stmt 0 view .LVU15
  110 0050 20EE000A 		vmul.f32	s0, s0, s0
   30:Module/kinematic/kinematic_solver.c ****     R = sqrtf(x*x + y*y);
- 111              		.loc 1 30 22 view .LVU15
+ 111              		.loc 1 30 22 view .LVU16
  112 0054 60EEA07A 		vmul.f32	s15, s1, s1
   30:Module/kinematic/kinematic_solver.c ****     R = sqrtf(x*x + y*y);
- 113              		.loc 1 30 9 view .LVU16
+ 113              		.loc 1 30 9 view .LVU17
  114 0058 30EE270A 		vadd.f32	s0, s0, s15
  115 005c FFF7FEFF 		bl	sqrtf
- 116              	.LVL5:
+ 116              	.LVL6:
   30:Module/kinematic/kinematic_solver.c ****     R = sqrtf(x*x + y*y);
- 117              		.loc 1 30 9 view .LVU17
+ 117              		.loc 1 30 9 view .LVU18
  118 0060 B0EE409A 		vmov.f32	s18, s0
- 119              	.LVL6:
+ 119              	.LVL7:
   33:Module/kinematic/kinematic_solver.c ****     float minR = fabsf(L1 - L2);
- 120              		.loc 1 33 5 is_stmt 1 view .LVU18
+ 120              		.loc 1 33 5 is_stmt 1 view .LVU19
   33:Module/kinematic/kinematic_solver.c ****     float minR = fabsf(L1 - L2);
- 121              		.loc 1 33 27 is_stmt 0 view .LVU19
+ 121              		.loc 1 33 27 is_stmt 0 view .LVU20
  122 0064 78EE687A 		vsub.f32	s15, s16, s17
   33:Module/kinematic/kinematic_solver.c ****     float minR = fabsf(L1 - L2);
- 123              		.loc 1 33 11 view .LVU20
+ 123              		.loc 1 33 11 view .LVU21
  124 0068 F0EEE77A 		vabs.f32	s15, s15
- 125              	.LVL7:
+ 125              	.LVL8:
   34:Module/kinematic/kinematic_solver.c ****     float maxR = L1 + L2;
- 126              		.loc 1 34 5 is_stmt 1 view .LVU21
+ 126              		.loc 1 34 5 is_stmt 1 view .LVU22
   34:Module/kinematic/kinematic_solver.c ****     float maxR = L1 + L2;
- 127              		.loc 1 34 11 is_stmt 0 view .LVU22
+ 127              		.loc 1 34 11 is_stmt 0 view .LVU23
  128 006c 38EE287A 		vadd.f32	s14, s16, s17
- 129              	.LVL8:
+ 129              	.LVL9:
   36:Module/kinematic/kinematic_solver.c ****     if (R < minR - 0.001f || R > maxR + 0.001f) {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s 			page 5
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczRjt7T.s 			page 5
 
 
- 130              		.loc 1 36 5 is_stmt 1 view .LVU23
+ 130              		.loc 1 36 5 is_stmt 1 view .LVU24
   36:Module/kinematic/kinematic_solver.c ****     if (R < minR - 0.001f || R > maxR + 0.001f) {
- 131              		.loc 1 36 18 is_stmt 0 view .LVU24
- 132 0070 DFED426A 		vldr.32	s13, .L18
+ 131              		.loc 1 36 18 is_stmt 0 view .LVU25
+ 132 0070 DFED436A 		vldr.32	s13, .L18+4
  133 0074 77EEE67A 		vsub.f32	s15, s15, s13
- 134              	.LVL9:
+ 134              	.LVL10:
   36:Module/kinematic/kinematic_solver.c ****     if (R < minR - 0.001f || R > maxR + 0.001f) {
- 135              		.loc 1 36 8 view .LVU25
+ 135              		.loc 1 36 8 view .LVU26
  136 0078 F4EEC07A 		vcmpe.f32	s15, s0
  137 007c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  138 0080 DDDC     		bgt	.L1
   36:Module/kinematic/kinematic_solver.c ****     if (R < minR - 0.001f || R > maxR + 0.001f) {
- 139              		.loc 1 36 39 discriminator 1 view .LVU26
+ 139              		.loc 1 36 39 discriminator 1 view .LVU27
  140 0082 37EE267A 		vadd.f32	s14, s14, s13
- 141              	.LVL10:
+ 141              	.LVL11:
   36:Module/kinematic/kinematic_solver.c ****     if (R < minR - 0.001f || R > maxR + 0.001f) {
- 142              		.loc 1 36 27 discriminator 1 view .LVU27
+ 142              		.loc 1 36 27 discriminator 1 view .LVU28
  143 0086 B4EEC07A 		vcmpe.f32	s14, s0
  144 008a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  145 008e D6D4     		bmi	.L1
   41:Module/kinematic/kinematic_solver.c ****     float alpha = atan2f(y, x);
- 146              		.loc 1 41 5 is_stmt 1 view .LVU28
+ 146              		.loc 1 41 5 is_stmt 1 view .LVU29
   41:Module/kinematic/kinematic_solver.c ****     float alpha = atan2f(y, x);
- 147              		.loc 1 41 19 is_stmt 0 view .LVU29
+ 147              		.loc 1 41 19 is_stmt 0 view .LVU30
  148 0090 F0EE4A0A 		vmov.f32	s1, s20
  149 0094 B0EE690A 		vmov.f32	s0, s19
- 150              	.LVL11:
+ 150              	.LVL12:
   41:Module/kinematic/kinematic_solver.c ****     float alpha = atan2f(y, x);
- 151              		.loc 1 41 19 view .LVU30
+ 151              		.loc 1 41 19 view .LVU31
  152 0098 FFF7FEFF 		bl	atan2f
- 153              	.LVL12:
+ 153              	.LVL13:
  154 009c F0EE40AA 		vmov.f32	s21, s0
- 155              	.LVL13:
+ 155              	.LVL14:
   44:Module/kinematic/kinematic_solver.c ****     float cos_beta = (L1 * L1 + R * R - L2 * L2) / (2.0f * L1 * R);
- 156              		.loc 1 44 5 is_stmt 1 view .LVU31
+ 156              		.loc 1 44 5 is_stmt 1 view .LVU32
   44:Module/kinematic/kinematic_solver.c ****     float cos_beta = (L1 * L1 + R * R - L2 * L2) / (2.0f * L1 * R);
- 157              		.loc 1 44 26 is_stmt 0 view .LVU32
+ 157              		.loc 1 44 26 is_stmt 0 view .LVU33
  158 00a0 68EE087A 		vmul.f32	s15, s16, s16
   44:Module/kinematic/kinematic_solver.c ****     float cos_beta = (L1 * L1 + R * R - L2 * L2) / (2.0f * L1 * R);
- 159              		.loc 1 44 35 view .LVU33
+ 159              		.loc 1 44 35 view .LVU34
  160 00a4 29EE097A 		vmul.f32	s14, s18, s18
   44:Module/kinematic/kinematic_solver.c ****     float cos_beta = (L1 * L1 + R * R - L2 * L2) / (2.0f * L1 * R);
- 161              		.loc 1 44 31 view .LVU34
+ 161              		.loc 1 44 31 view .LVU35
  162 00a8 77EE877A 		vadd.f32	s15, s15, s14
   44:Module/kinematic/kinematic_solver.c ****     float cos_beta = (L1 * L1 + R * R - L2 * L2) / (2.0f * L1 * R);
- 163              		.loc 1 44 44 view .LVU35
+ 163              		.loc 1 44 44 view .LVU36
  164 00ac 28EEA87A 		vmul.f32	s14, s17, s17
   44:Module/kinematic/kinematic_solver.c ****     float cos_beta = (L1 * L1 + R * R - L2 * L2) / (2.0f * L1 * R);
- 165              		.loc 1 44 39 view .LVU36
+ 165              		.loc 1 44 39 view .LVU37
  166 00b0 77EEC77A 		vsub.f32	s15, s15, s14
   44:Module/kinematic/kinematic_solver.c ****     float cos_beta = (L1 * L1 + R * R - L2 * L2) / (2.0f * L1 * R);
- 167              		.loc 1 44 58 view .LVU37
+ 167              		.loc 1 44 58 view .LVU38
  168 00b4 38EE087A 		vadd.f32	s14, s16, s16
   44:Module/kinematic/kinematic_solver.c ****     float cos_beta = (L1 * L1 + R * R - L2 * L2) / (2.0f * L1 * R);
- 169              		.loc 1 44 63 view .LVU38
+ 169              		.loc 1 44 63 view .LVU39
  170 00b8 27EE097A 		vmul.f32	s14, s14, s18
   44:Module/kinematic/kinematic_solver.c ****     float cos_beta = (L1 * L1 + R * R - L2 * L2) / (2.0f * L1 * R);
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s 			page 6
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczRjt7T.s 			page 6
 
 
- 171              		.loc 1 44 11 view .LVU39
+ 171              		.loc 1 44 11 view .LVU40
  172 00bc 87EE870A 		vdiv.f32	s0, s15, s14
- 173              	.LVL14:
+ 173              	.LVL15:
   47:Module/kinematic/kinematic_solver.c ****     if (cos_beta > 1.0f) cos_beta = 1.0f;
- 174              		.loc 1 47 5 is_stmt 1 view .LVU40
+ 174              		.loc 1 47 5 is_stmt 1 view .LVU41
   47:Module/kinematic/kinematic_solver.c ****     if (cos_beta > 1.0f) cos_beta = 1.0f;
- 175              		.loc 1 47 8 is_stmt 0 view .LVU41
+ 175              		.loc 1 47 8 is_stmt 0 view .LVU42
  176 00c0 F7EE007A 		vmov.f32	s15, #1.0e+0
  177 00c4 B4EEE70A 		vcmpe.f32	s0, s15
  178 00c8 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  179 00cc 4BDD     		ble	.L17
   47:Module/kinematic/kinematic_solver.c ****     if (cos_beta > 1.0f) cos_beta = 1.0f;
- 180              		.loc 1 47 35 discriminator 1 view .LVU42
+ 180              		.loc 1 47 35 discriminator 1 view .LVU43
  181 00ce B7EE000A 		vmov.f32	s0, #1.0e+0
- 182              	.LVL15:
+ 182              	.LVL16:
  183              	.L3:
   51:Module/kinematic/kinematic_solver.c ****     float beta = acosf(cos_beta);
- 184              		.loc 1 51 5 is_stmt 1 view .LVU43
+ 184              		.loc 1 51 5 is_stmt 1 view .LVU44
   51:Module/kinematic/kinematic_solver.c ****     float beta = acosf(cos_beta);
- 185              		.loc 1 51 18 is_stmt 0 view .LVU44
+ 185              		.loc 1 51 18 is_stmt 0 view .LVU45
  186 00d2 FFF7FEFF 		bl	acosf
- 187              	.LVL16:
+ 187              	.LVL17:
   54:Module/kinematic/kinematic_solver.c ****     float theta1 = alpha + beta;
- 188              		.loc 1 54 5 is_stmt 1 view .LVU45
+ 188              		.loc 1 54 5 is_stmt 1 view .LVU46
   54:Module/kinematic/kinematic_solver.c ****     float theta1 = alpha + beta;
- 189              		.loc 1 54 11 is_stmt 0 view .LVU46
+ 189              		.loc 1 54 11 is_stmt 0 view .LVU47
  190 00d6 7AEE80AA 		vadd.f32	s21, s21, s0
- 191              	.LVL17:
+ 191              	.LVL18:
   57:Module/kinematic/kinematic_solver.c ****     float sin_theta1 = sinf(theta1);
- 192              		.loc 1 57 5 is_stmt 1 view .LVU47
+ 192              		.loc 1 57 5 is_stmt 1 view .LVU48
   57:Module/kinematic/kinematic_solver.c ****     float sin_theta1 = sinf(theta1);
- 193              		.loc 1 57 24 is_stmt 0 view .LVU48
+ 193              		.loc 1 57 24 is_stmt 0 view .LVU49
  194 00da B0EE6A0A 		vmov.f32	s0, s21
- 195              	.LVL18:
+ 195              	.LVL19:
   57:Module/kinematic/kinematic_solver.c ****     float sin_theta1 = sinf(theta1);
- 196              		.loc 1 57 24 view .LVU49
+ 196              		.loc 1 57 24 view .LVU50
  197 00de FFF7FEFF 		bl	sinf
- 198              	.LVL19:
+ 198              	.LVL20:
  199 00e2 B0EE409A 		vmov.f32	s18, s0
- 200              	.LVL20:
+ 200              	.LVL21:
   58:Module/kinematic/kinematic_solver.c ****     float cos_theta1 = cosf(theta1);
- 201              		.loc 1 58 5 is_stmt 1 view .LVU50
+ 201              		.loc 1 58 5 is_stmt 1 view .LVU51
   58:Module/kinematic/kinematic_solver.c ****     float cos_theta1 = cosf(theta1);
- 202              		.loc 1 58 24 is_stmt 0 view .LVU51
+ 202              		.loc 1 58 24 is_stmt 0 view .LVU52
  203 00e6 B0EE6A0A 		vmov.f32	s0, s21
- 204              	.LVL21:
+ 204              	.LVL22:
   58:Module/kinematic/kinematic_solver.c ****     float cos_theta1 = cosf(theta1);
- 205              		.loc 1 58 24 view .LVU52
+ 205              		.loc 1 58 24 view .LVU53
  206 00ea FFF7FEFF 		bl	cosf
- 207              	.LVL22:
+ 207              	.LVL23:
   61:Module/kinematic/kinematic_solver.c ****     float sin_theta2 = (L1 * sin_theta1 - x) / L2;
- 208              		.loc 1 61 5 is_stmt 1 view .LVU53
+ 208              		.loc 1 61 5 is_stmt 1 view .LVU54
   61:Module/kinematic/kinematic_solver.c ****     float sin_theta2 = (L1 * sin_theta1 - x) / L2;
- 209              		.loc 1 61 28 is_stmt 0 view .LVU54
+ 209              		.loc 1 61 28 is_stmt 0 view .LVU55
  210 00ee 28EE099A 		vmul.f32	s18, s16, s18
- 211              	.LVL23:
+ 211              	.LVL24:
   61:Module/kinematic/kinematic_solver.c ****     float sin_theta2 = (L1 * sin_theta1 - x) / L2;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s 			page 7
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczRjt7T.s 			page 7
 
 
- 212              		.loc 1 61 41 view .LVU55
+ 212              		.loc 1 61 41 view .LVU56
  213 00f2 39EE4A9A 		vsub.f32	s18, s18, s20
- 214              	.LVL24:
+ 214              	.LVL25:
   62:Module/kinematic/kinematic_solver.c ****     float cos_theta2 = (L1 * cos_theta1 + y) / L2;
- 215              		.loc 1 62 5 is_stmt 1 view .LVU56
+ 215              		.loc 1 62 5 is_stmt 1 view .LVU57
   62:Module/kinematic/kinematic_solver.c ****     float cos_theta2 = (L1 * cos_theta1 + y) / L2;
- 216              		.loc 1 62 28 is_stmt 0 view .LVU57
+ 216              		.loc 1 62 28 is_stmt 0 view .LVU58
  217 00f6 68EE000A 		vmul.f32	s1, s16, s0
   62:Module/kinematic/kinematic_solver.c ****     float cos_theta2 = (L1 * cos_theta1 + y) / L2;
- 218              		.loc 1 62 41 view .LVU58
+ 218              		.loc 1 62 41 view .LVU59
  219 00fa 70EEA90A 		vadd.f32	s1, s1, s19
- 220              	.LVL25:
+ 220              	.LVL26:
   65:Module/kinematic/kinematic_solver.c ****     float theta2 = atan2f(sin_theta2, cos_theta2);
- 221              		.loc 1 65 5 is_stmt 1 view .LVU59
+ 221              		.loc 1 65 5 is_stmt 1 view .LVU60
   65:Module/kinematic/kinematic_solver.c ****     float theta2 = atan2f(sin_theta2, cos_theta2);
- 222              		.loc 1 65 20 is_stmt 0 view .LVU60
+ 222              		.loc 1 65 20 is_stmt 0 view .LVU61
  223 00fe C0EEA80A 		vdiv.f32	s1, s1, s17
- 224              	.LVL26:
+ 224              	.LVL27:
   65:Module/kinematic/kinematic_solver.c ****     float theta2 = atan2f(sin_theta2, cos_theta2);
- 225              		.loc 1 65 20 view .LVU61
+ 225              		.loc 1 65 20 view .LVU62
  226 0102 89EE280A 		vdiv.f32	s0, s18, s17
- 227              	.LVL27:
+ 227              	.LVL28:
   65:Module/kinematic/kinematic_solver.c ****     float theta2 = atan2f(sin_theta2, cos_theta2);
- 228              		.loc 1 65 20 view .LVU62
+ 228              		.loc 1 65 20 view .LVU63
  229 0106 FFF7FEFF 		bl	atan2f
- 230              	.LVL28:
+ 230              	.LVL29:
   68:Module/kinematic/kinematic_solver.c ****     const float angle_tolerance = 0.001f;
- 231              		.loc 1 68 5 is_stmt 1 view .LVU63
+ 231              		.loc 1 68 5 is_stmt 1 view .LVU64
   69:Module/kinematic/kinematic_solver.c ****     if (theta1 < theta2 - angle_tolerance) {
- 232              		.loc 1 69 5 view .LVU64
+ 232              		.loc 1 69 5 view .LVU65
   69:Module/kinematic/kinematic_solver.c ****     if (theta1 < theta2 - angle_tolerance) {
- 233              		.loc 1 69 25 is_stmt 0 view .LVU65
- 234 010a DFED1C7A 		vldr.32	s15, .L18
+ 233              		.loc 1 69 25 is_stmt 0 view .LVU66
+ 234 010a DFED1D7A 		vldr.32	s15, .L18+4
  235 010e 70EE677A 		vsub.f32	s15, s0, s15
   69:Module/kinematic/kinematic_solver.c ****     if (theta1 < theta2 - angle_tolerance) {
- 236              		.loc 1 69 8 view .LVU66
+ 236              		.loc 1 69 8 view .LVU67
  237 0112 F4EEEA7A 		vcmpe.f32	s15, s21
  238 0116 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  239 011a 90DC     		bgt	.L1
   74:Module/kinematic/kinematic_solver.c ****     bool valid = (theta1 >= limits->min_theta1 && theta1 <= limits->max_theta1) &&
- 240              		.loc 1 74 5 is_stmt 1 view .LVU67
+ 240              		.loc 1 74 5 is_stmt 1 view .LVU68
   74:Module/kinematic/kinematic_solver.c ****     bool valid = (theta1 >= limits->min_theta1 && theta1 <= limits->max_theta1) &&
- 241              		.loc 1 74 35 is_stmt 0 view .LVU68
+ 241              		.loc 1 74 35 is_stmt 0 view .LVU69
  242 011c D5ED007A 		vldr.32	s15, [r5]
   74:Module/kinematic/kinematic_solver.c ****     bool valid = (theta1 >= limits->min_theta1 && theta1 <= limits->max_theta1) &&
- 243              		.loc 1 74 81 view .LVU69
+ 243              		.loc 1 74 81 view .LVU70
  244 0120 F4EEEA7A 		vcmpe.f32	s15, s21
  245 0124 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  246 0128 89D8     		bhi	.L1
   74:Module/kinematic/kinematic_solver.c ****     bool valid = (theta1 >= limits->min_theta1 && theta1 <= limits->max_theta1) &&
- 247              		.loc 1 74 67 discriminator 1 view .LVU70
+ 247              		.loc 1 74 67 discriminator 1 view .LVU71
  248 012a D5ED017A 		vldr.32	s15, [r5, #4]
   74:Module/kinematic/kinematic_solver.c ****     bool valid = (theta1 >= limits->min_theta1 && theta1 <= limits->max_theta1) &&
- 249              		.loc 1 74 48 discriminator 1 view .LVU71
+ 249              		.loc 1 74 48 discriminator 1 view .LVU72
  250 012e F4EEEA7A 		vcmpe.f32	s15, s21
  251 0132 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  252 0136 82DB     		blt	.L1
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s 			page 8
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczRjt7T.s 			page 8
 
 
   75:Module/kinematic/kinematic_solver.c ****                  (theta2 >= limits->min_theta2 && theta2 <= limits->max_theta2);
- 253              		.loc 1 75 35 view .LVU72
+ 253              		.loc 1 75 35 view .LVU73
  254 0138 D5ED027A 		vldr.32	s15, [r5, #8]
   74:Module/kinematic/kinematic_solver.c ****     bool valid = (theta1 >= limits->min_theta1 && theta1 <= limits->max_theta1) &&
- 255              		.loc 1 74 81 discriminator 3 view .LVU73
+ 255              		.loc 1 74 81 discriminator 3 view .LVU74
  256 013c F4EEC07A 		vcmpe.f32	s15, s0
  257 0140 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  258 0144 3FF67BAF 		bhi	.L1
   75:Module/kinematic/kinematic_solver.c ****                  (theta2 >= limits->min_theta2 && theta2 <= limits->max_theta2);
- 259              		.loc 1 75 67 view .LVU74
+ 259              		.loc 1 75 67 view .LVU75
  260 0148 D5ED037A 		vldr.32	s15, [r5, #12]
   75:Module/kinematic/kinematic_solver.c ****                  (theta2 >= limits->min_theta2 && theta2 <= limits->max_theta2);
- 261              		.loc 1 75 48 view .LVU75
+ 261              		.loc 1 75 48 view .LVU76
  262 014c F4EEC07A 		vcmpe.f32	s15, s0
  263 0150 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  264 0154 FFF673AF 		blt	.L1
- 265              	.LVL29:
+ 265              	.LVL30:
   77:Module/kinematic/kinematic_solver.c ****     if (valid) {
- 266              		.loc 1 77 5 is_stmt 1 view .LVU76
+ 266              		.loc 1 77 5 is_stmt 1 view .LVU77
   78:Module/kinematic/kinematic_solver.c ****         result.theta1 = theta1;
- 267              		.loc 1 78 9 view .LVU77
+ 267              		.loc 1 78 9 view .LVU78
   78:Module/kinematic/kinematic_solver.c ****         result.theta1 = theta1;
- 268              		.loc 1 78 23 is_stmt 0 view .LVU78
+ 268              		.loc 1 78 23 is_stmt 0 view .LVU79
  269 0158 C4ED00AA 		vstr.32	s21, [r4]
   79:Module/kinematic/kinematic_solver.c ****         result.theta2 = theta2;
- 270              		.loc 1 79 9 is_stmt 1 view .LVU79
+ 270              		.loc 1 79 9 is_stmt 1 view .LVU80
   79:Module/kinematic/kinematic_solver.c ****         result.theta2 = theta2;
- 271              		.loc 1 79 23 is_stmt 0 view .LVU80
+ 271              		.loc 1 79 23 is_stmt 0 view .LVU81
  272 015c 84ED010A 		vstr.32	s0, [r4, #4]
   80:Module/kinematic/kinematic_solver.c ****         result.valid = true;
- 273              		.loc 1 80 9 is_stmt 1 view .LVU81
+ 273              		.loc 1 80 9 is_stmt 1 view .LVU82
   80:Module/kinematic/kinematic_solver.c ****         result.valid = true;
- 274              		.loc 1 80 22 is_stmt 0 view .LVU82
+ 274              		.loc 1 80 22 is_stmt 0 view .LVU83
  275 0160 0123     		movs	r3, #1
  276 0162 2372     		strb	r3, [r4, #8]
- 277              	.LVL30:
+ 277              	.LVL31:
   83:Module/kinematic/kinematic_solver.c ****     return result;
- 278              		.loc 1 83 5 is_stmt 1 view .LVU83
+ 278              		.loc 1 83 5 is_stmt 1 view .LVU84
   83:Module/kinematic/kinematic_solver.c ****     return result;
- 279              		.loc 1 83 12 is_stmt 0 view .LVU84
+ 279              		.loc 1 83 12 is_stmt 0 view .LVU85
  280 0164 6BE7     		b	.L1
- 281              	.LVL31:
+ 281              	.LVL32:
  282              	.L17:
   48:Module/kinematic/kinematic_solver.c ****     if (cos_beta < -1.0f) cos_beta = -1.0f;
- 283              		.loc 1 48 5 is_stmt 1 view .LVU85
+ 283              		.loc 1 48 5 is_stmt 1 view .LVU86
   48:Module/kinematic/kinematic_solver.c ****     if (cos_beta < -1.0f) cos_beta = -1.0f;
- 284              		.loc 1 48 8 is_stmt 0 view .LVU86
+ 284              		.loc 1 48 8 is_stmt 0 view .LVU87
  285 0166 FFEE007A 		vmov.f32	s15, #-1.0e+0
  286 016a B4EEE70A 		vcmpe.f32	s0, s15
  287 016e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  288 0172 AED5     		bpl	.L3
   48:Module/kinematic/kinematic_solver.c ****     if (cos_beta < -1.0f) cos_beta = -1.0f;
- 289              		.loc 1 48 36 discriminator 1 view .LVU87
+ 289              		.loc 1 48 36 discriminator 1 view .LVU88
  290 0174 BFEE000A 		vmov.f32	s0, #-1.0e+0
- 291              	.LVL32:
+ 291              	.LVL33:
   48:Module/kinematic/kinematic_solver.c ****     if (cos_beta < -1.0f) cos_beta = -1.0f;
- 292              		.loc 1 48 36 discriminator 1 view .LVU88
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s 			page 9
+ 292              		.loc 1 48 36 discriminator 1 view .LVU89
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczRjt7T.s 			page 9
 
 
  293 0178 ABE7     		b	.L3
  294              	.L19:
  295 017a 00BF     		.align	2
  296              	.L18:
- 297 017c 6F12833A 		.word	981668463
- 298              		.cfi_endproc
- 299              	.LFE0:
- 301              		.text
- 302              	.Letext0:
- 303              		.file 2 "Module/kinematic/kinematic_solver.h"
- 304              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/math.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s 			page 10
+ 297 017c 00000000 		.word	.LANCHOR0
+ 298 0180 6F12833A 		.word	981668463
+ 299              		.cfi_endproc
+ 300              	.LFE0:
+ 302              		.section	.rodata
+ 303              		.align	2
+ 304              		.set	.LANCHOR0,. + 0
+ 305              	.LC0:
+ 306 0000 1E3691BF 		.word	-1081002466
+ 307 0004 C2B8B2BF 		.word	-1078806334
+ 308 0008 00       		.byte	0
+ 309 0009 000000   		.space	3
+ 310              		.text
+ 311              	.Letext0:
+ 312              		.file 2 "Module/kinematic/kinematic_solver.h"
+ 313              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/math.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczRjt7T.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 kinematic_solver.c
-C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s:21     .text.IK_Solve:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s:27     .text.IK_Solve:00000000 IK_Solve
-C:\Users\30514\AppData\Local\Temp\ccJeqsLj.s:297    .text.IK_Solve:0000017c $d
+C:\Users\30514\AppData\Local\Temp\cczRjt7T.s:21     .text.IK_Solve:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cczRjt7T.s:27     .text.IK_Solve:00000000 IK_Solve
+C:\Users\30514\AppData\Local\Temp\cczRjt7T.s:297    .text.IK_Solve:0000017c $d
+C:\Users\30514\AppData\Local\Temp\cczRjt7T.s:303    .rodata:00000000 $d
 
 UNDEFINED SYMBOLS
 sqrtf

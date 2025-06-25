@@ -3,12 +3,19 @@
 #include "main.h"
 #include "dm_drv.h"
 
-extern int8_t motor_id;
+// 定义位掩码用于选择多个电机
+#define MOTOR1_BIT (1 << Motor1)
+#define MOTOR2_BIT (1 << Motor2)
+// #define MOTOR3_BIT (1 << Motor3)
+
+// 宏定义同时控制两个电机
+#define ALL_MOTORS (MOTOR1_BIT | MOTOR2_BIT)
+
 
 typedef enum
 {
-	Motor1,
-	Motor2,
+	Motor1, //值为0
+	Motor2, //值为1
 	//Motor3,
 	num
 } motor_num;
@@ -16,14 +23,12 @@ typedef enum
 extern motor_t motor[num];
 
 void dm4310_motor_init(void);
-void ctrl_enable(void);
-void ctrl_disable(void);
-void ctrl_set(void);
-void ctrl_clear_para(void);
-void ctrl_clear_err(void);
-void ctrl_add(void);
-void ctrl_minus(void);
-void ctrl_send(void);
+void ctrl_enable(uint32_t motor_mask);
+void ctrl_disable(uint32_t motor_mask);
+void ctrl_set(uint32_t motor_mask);
+void ctrl_clear_para(uint32_t motor_mask);
+void ctrl_clear_err(uint32_t motor_mask);
+void ctrl_send(uint32_t motor_mask);
 
 #endif /* __DM4310_CTRL_H__ */
 

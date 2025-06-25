@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccrutLtG.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -34,20 +34,19 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 1
    4:Module/motor/dm_ctrl.c **** #include "string.h"
    5:Module/motor/dm_ctrl.c **** 
    6:Module/motor/dm_ctrl.c **** motor_t motor[num];
-   7:Module/motor/dm_ctrl.c **** int8_t motor_id = 1;
-   8:Module/motor/dm_ctrl.c **** 
-   9:Module/motor/dm_ctrl.c **** /**
-  10:Module/motor/dm_ctrl.c **** ************************************************************************
-  11:Module/motor/dm_ctrl.c **** * @brief:      	dm4310_motor_init: DM4310电机初始化函数
-  12:Module/motor/dm_ctrl.c **** * @param:      	void
-  13:Module/motor/dm_ctrl.c **** * @retval:     	void
-  14:Module/motor/dm_ctrl.c **** * @details:    	初始化三个DM4310型号的电机，设置默认参数和控制模式。
-  15:Module/motor/dm_ctrl.c **** *               分别初始化Motor1和Motor2，设置ID、控制模式和命令模式等信息。
-  16:Module/motor/dm_ctrl.c **** ************************************************************************
-  17:Module/motor/dm_ctrl.c **** **/
-  18:Module/motor/dm_ctrl.c **** void dm4310_motor_init(void)
-  19:Module/motor/dm_ctrl.c **** {
-  29              		.loc 1 19 1 view -0
+   7:Module/motor/dm_ctrl.c **** 
+   8:Module/motor/dm_ctrl.c **** /**
+   9:Module/motor/dm_ctrl.c **** ************************************************************************
+  10:Module/motor/dm_ctrl.c **** * @brief:      	dm4310_motor_init: DM4310电机初始化函数
+  11:Module/motor/dm_ctrl.c **** * @param:      	void
+  12:Module/motor/dm_ctrl.c **** * @retval:     	void
+  13:Module/motor/dm_ctrl.c **** * @details:    	初始化三个DM4310型号的电机，设置默认参数和控制模式。
+  14:Module/motor/dm_ctrl.c **** *               分别初始化Motor1和Motor2，设置ID、控制模式和命令模式等信息。
+  15:Module/motor/dm_ctrl.c **** ************************************************************************
+  16:Module/motor/dm_ctrl.c **** **/
+  17:Module/motor/dm_ctrl.c **** void dm4310_motor_init(void)
+  18:Module/motor/dm_ctrl.c **** {
+  29              		.loc 1 18 1 view -0
   30              		.cfi_startproc
   31              		@ args = 0, pretend = 0, frame = 0
   32              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -58,771 +57,796 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 1
   37              		.cfi_offset 4, -12
   38              		.cfi_offset 5, -8
   39              		.cfi_offset 14, -4
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 2
+  19:Module/motor/dm_ctrl.c **** 	// 初始化Motor1和Motor2的电机结构
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccrutLtG.s 			page 2
 
 
-  20:Module/motor/dm_ctrl.c **** 	// 初始化Motor1和Motor2的电机结构
-  21:Module/motor/dm_ctrl.c **** 	memset(&motor[Motor1], 0, sizeof(motor[Motor1]));
-  40              		.loc 1 21 2 view .LVU1
-  41 0002 084C     		ldr	r4, .L3
+  20:Module/motor/dm_ctrl.c **** 	memset(&motor[Motor1], 0, sizeof(motor[Motor1]));
+  40              		.loc 1 20 2 view .LVU1
+  41 0002 0D4C     		ldr	r4, .L3
   42 0004 6C25     		movs	r5, #108
   43 0006 2A46     		mov	r2, r5
   44 0008 0021     		movs	r1, #0
   45 000a 2046     		mov	r0, r4
   46 000c FFF7FEFF 		bl	memset
   47              	.LVL0:
-  22:Module/motor/dm_ctrl.c **** 	memset(&motor[Motor2], 0, sizeof(motor[Motor2]));
-  48              		.loc 1 22 2 view .LVU2
+  21:Module/motor/dm_ctrl.c **** 	memset(&motor[Motor2], 0, sizeof(motor[Motor2]));
+  48              		.loc 1 21 2 view .LVU2
   49 0010 2A46     		mov	r2, r5
   50 0012 0021     		movs	r1, #0
   51 0014 6019     		adds	r0, r4, r5
   52 0016 FFF7FEFF 		bl	memset
   53              	.LVL1:
-  23:Module/motor/dm_ctrl.c **** 	//memset(&motor[Motor3], 0, sizeof(motor[Motor2]));
-  24:Module/motor/dm_ctrl.c **** 
-  25:Module/motor/dm_ctrl.c **** 	// 设置Motor1的电机信息
-  26:Module/motor/dm_ctrl.c **** 	motor[Motor1].id = 1;
-  54              		.loc 1 26 2 view .LVU3
-  55              		.loc 1 26 19 is_stmt 0 view .LVU4
+  22:Module/motor/dm_ctrl.c **** 	//memset(&motor[Motor3], 0, sizeof(motor[Motor2]));
+  23:Module/motor/dm_ctrl.c **** 
+  24:Module/motor/dm_ctrl.c **** 	// 设置Motor1的电机信息
+  25:Module/motor/dm_ctrl.c **** 	motor[Motor1].id = 1;
+  54              		.loc 1 25 2 view .LVU3
+  55              		.loc 1 25 19 is_stmt 0 view .LVU4
   56 001a 0123     		movs	r3, #1
   57 001c 2370     		strb	r3, [r4]
-  27:Module/motor/dm_ctrl.c **** 	motor[Motor1].ctrl.mode = 0;		// 0: MIT模式   1: 位置速度模式   2: 速度模式
-  58              		.loc 1 27 2 is_stmt 1 view .LVU5
-  28:Module/motor/dm_ctrl.c **** 	motor[Motor1].cmd.mode = 0;
-  59              		.loc 1 28 2 view .LVU6
-  29:Module/motor/dm_ctrl.c **** 
-  30:Module/motor/dm_ctrl.c **** 	// 设置Motor2的电机信息
-  31:Module/motor/dm_ctrl.c **** 	motor[Motor2].id = 1;
-  60              		.loc 1 31 2 view .LVU7
-  61              		.loc 1 31 19 is_stmt 0 view .LVU8
-  62 001e 84F86C30 		strb	r3, [r4, #108]
-  32:Module/motor/dm_ctrl.c **** 	motor[Motor2].ctrl.mode = 0;
-  63              		.loc 1 32 2 is_stmt 1 view .LVU9
-  33:Module/motor/dm_ctrl.c **** 	motor[Motor2].cmd.mode = 0;
-  64              		.loc 1 33 2 view .LVU10
-  34:Module/motor/dm_ctrl.c **** 	
-  35:Module/motor/dm_ctrl.c **** 	// 设置Motor3的电机信息
-  36:Module/motor/dm_ctrl.c **** 	//motor[Motor3].id = 2;
-  37:Module/motor/dm_ctrl.c **** 	//motor[Motor3].ctrl.mode = 2;
-  38:Module/motor/dm_ctrl.c **** 	//motor[Motor3].cmd.mode = 2;
-  39:Module/motor/dm_ctrl.c **** }
-  65              		.loc 1 39 1 is_stmt 0 view .LVU11
-  66 0022 38BD     		pop	{r3, r4, r5, pc}
-  67              	.L4:
-  68              		.align	2
-  69              	.L3:
-  70 0024 00000000 		.word	motor
-  71              		.cfi_endproc
-  72              	.LFE134:
-  74              		.section	.text.ctrl_enable,"ax",%progbits
-  75              		.align	1
-  76              		.global	ctrl_enable
-  77              		.syntax unified
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 3
+  26:Module/motor/dm_ctrl.c **** 	motor[Motor1].ctrl.mode = 2;		// 0: MIT模式   1: 位置速度模式   2: 速度模式
+  58              		.loc 1 26 2 is_stmt 1 view .LVU5
+  59              		.loc 1 26 26 is_stmt 0 view .LVU6
+  60 001e 0223     		movs	r3, #2
+  61 0020 84F83C30 		strb	r3, [r4, #60]
+  27:Module/motor/dm_ctrl.c **** 	motor[Motor1].cmd.mode = 2;
+  62              		.loc 1 27 2 is_stmt 1 view .LVU7
+  63              		.loc 1 27 25 is_stmt 0 view .LVU8
+  64 0024 84F85430 		strb	r3, [r4, #84]
+  28:Module/motor/dm_ctrl.c **** 
+  29:Module/motor/dm_ctrl.c **** 	// 设置Motor2的电机信息
+  30:Module/motor/dm_ctrl.c **** 	motor[Motor2].id = 3;
+  65              		.loc 1 30 2 is_stmt 1 view .LVU9
+  66              		.loc 1 30 19 is_stmt 0 view .LVU10
+  67 0028 0322     		movs	r2, #3
+  68 002a 84F86C20 		strb	r2, [r4, #108]
+  31:Module/motor/dm_ctrl.c **** 	motor[Motor2].ctrl.mode = 2;
+  69              		.loc 1 31 2 is_stmt 1 view .LVU11
+  70              		.loc 1 31 26 is_stmt 0 view .LVU12
+  71 002e 84F8A830 		strb	r3, [r4, #168]
+  32:Module/motor/dm_ctrl.c **** 	motor[Motor2].cmd.mode = 2;
+  72              		.loc 1 32 2 is_stmt 1 view .LVU13
+  73              		.loc 1 32 25 is_stmt 0 view .LVU14
+  74 0032 84F8C030 		strb	r3, [r4, #192]
+  33:Module/motor/dm_ctrl.c **** 	
+  34:Module/motor/dm_ctrl.c **** 	// 设置Motor3的电机信息
+  35:Module/motor/dm_ctrl.c **** 	//motor[Motor3].id = 2;
+  36:Module/motor/dm_ctrl.c **** 	//motor[Motor3].ctrl.mode = 2;
+  37:Module/motor/dm_ctrl.c **** 	//motor[Motor3].cmd.mode = 2;
+  38:Module/motor/dm_ctrl.c **** }
+  75              		.loc 1 38 1 view .LVU15
+  76 0036 38BD     		pop	{r3, r4, r5, pc}
+  77              	.L4:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccrutLtG.s 			page 3
 
 
-  78              		.thumb
-  79              		.thumb_func
-  81              	ctrl_enable:
-  82              	.LFB135:
-  40:Module/motor/dm_ctrl.c **** 
-  41:Module/motor/dm_ctrl.c **** /**
-  42:Module/motor/dm_ctrl.c **** ************************************************************************
-  43:Module/motor/dm_ctrl.c **** * @brief:      	ctrl_enable: 启用电机控制函数
-  44:Module/motor/dm_ctrl.c **** * @param:      	void
-  45:Module/motor/dm_ctrl.c **** * @retval:     	void
-  46:Module/motor/dm_ctrl.c **** * @details:    	根据当前电机ID（motor_id），启用对应的电机控制。
-  47:Module/motor/dm_ctrl.c **** *               设置指定电机的启动标志，并调用dm4310_enable函数启用电机。
-  48:Module/motor/dm_ctrl.c **** ************************************************************************
-  49:Module/motor/dm_ctrl.c **** **/
-  50:Module/motor/dm_ctrl.c **** void ctrl_enable(void)
-  51:Module/motor/dm_ctrl.c **** {
-  83              		.loc 1 51 1 is_stmt 1 view -0
-  84              		.cfi_startproc
-  85              		@ args = 0, pretend = 0, frame = 0
-  86              		@ frame_needed = 0, uses_anonymous_args = 0
-  87 0000 08B5     		push	{r3, lr}
-  88              	.LCFI1:
-  89              		.cfi_def_cfa_offset 8
-  90              		.cfi_offset 3, -8
-  91              		.cfi_offset 14, -4
-  52:Module/motor/dm_ctrl.c **** 	switch(motor_id)
-  92              		.loc 1 52 2 view .LVU13
-  93 0002 0B4B     		ldr	r3, .L10
-  94 0004 93F90030 		ldrsb	r3, [r3]
-  95 0008 012B     		cmp	r3, #1
-  96 000a 0AD0     		beq	.L6
-  97 000c 022B     		cmp	r3, #2
-  98 000e 0ED1     		bne	.L5
-  53:Module/motor/dm_ctrl.c **** 	{
-  54:Module/motor/dm_ctrl.c **** 		case 1:
-  55:Module/motor/dm_ctrl.c **** 			// 启用Motor1的电机控制
-  56:Module/motor/dm_ctrl.c **** 			motor[Motor1].start_flag = 1;
-  57:Module/motor/dm_ctrl.c **** 			dm4310_enable(&hcan1, &motor[Motor1]);
-  58:Module/motor/dm_ctrl.c **** 			break;
-  59:Module/motor/dm_ctrl.c **** 		case 2:
-  60:Module/motor/dm_ctrl.c **** 			// 启用Motor2的电机控制
-  61:Module/motor/dm_ctrl.c **** 			motor[Motor2].start_flag = 1;
-  99              		.loc 1 61 4 view .LVU14
- 100              		.loc 1 61 29 is_stmt 0 view .LVU15
- 101 0010 0849     		ldr	r1, .L10+4
- 102 0012 0123     		movs	r3, #1
- 103 0014 81F86D30 		strb	r3, [r1, #109]
-  62:Module/motor/dm_ctrl.c **** 			dm4310_enable(&hcan2, &motor[Motor2]);
- 104              		.loc 1 62 4 is_stmt 1 view .LVU16
- 105 0018 6C31     		adds	r1, r1, #108
- 106 001a 0748     		ldr	r0, .L10+8
- 107 001c FFF7FEFF 		bl	dm4310_enable
- 108              	.LVL2:
-  63:Module/motor/dm_ctrl.c **** 			break;
- 109              		.loc 1 63 4 view .LVU17
-  64:Module/motor/dm_ctrl.c **** 		//case 3:
-  65:Module/motor/dm_ctrl.c **** 			// 启用Motor3的电机控制
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 4
+  78              		.align	2
+  79              	.L3:
+  80 0038 00000000 		.word	motor
+  81              		.cfi_endproc
+  82              	.LFE134:
+  84              		.section	.text.ctrl_enable,"ax",%progbits
+  85              		.align	1
+  86              		.global	ctrl_enable
+  87              		.syntax unified
+  88              		.thumb
+  89              		.thumb_func
+  91              	ctrl_enable:
+  92              	.LVL2:
+  93              	.LFB135:
+  39:Module/motor/dm_ctrl.c **** 
+  40:Module/motor/dm_ctrl.c **** /**
+  41:Module/motor/dm_ctrl.c **** ************************************************************************
+  42:Module/motor/dm_ctrl.c **** * @brief:      	ctrl_enable: 启用电机控制函数
+  43:Module/motor/dm_ctrl.c **** * @param:      	void
+  44:Module/motor/dm_ctrl.c **** * @retval:     	void
+  45:Module/motor/dm_ctrl.c **** * @details:    	根据当前电机ID（motor_id），启用对应的电机控制。
+  46:Module/motor/dm_ctrl.c **** *               设置指定电机的启动标志，并调用dm4310_enable函数启用电机。
+  47:Module/motor/dm_ctrl.c **** ************************************************************************
+  48:Module/motor/dm_ctrl.c **** **/
+  49:Module/motor/dm_ctrl.c **** void ctrl_enable(uint32_t motor_mask)
+  50:Module/motor/dm_ctrl.c **** {
+  94              		.loc 1 50 1 is_stmt 1 view -0
+  95              		.cfi_startproc
+  96              		@ args = 0, pretend = 0, frame = 0
+  97              		@ frame_needed = 0, uses_anonymous_args = 0
+  98              		.loc 1 50 1 is_stmt 0 view .LVU17
+  99 0000 10B5     		push	{r4, lr}
+ 100              	.LCFI1:
+ 101              		.cfi_def_cfa_offset 8
+ 102              		.cfi_offset 4, -8
+ 103              		.cfi_offset 14, -4
+ 104 0002 0446     		mov	r4, r0
+  51:Module/motor/dm_ctrl.c ****     if (motor_mask & MOTOR1_BIT) 
+ 105              		.loc 1 51 5 is_stmt 1 view .LVU18
+ 106              		.loc 1 51 8 is_stmt 0 view .LVU19
+ 107 0004 10F0010F 		tst	r0, #1
+ 108 0008 03D1     		bne	.L9
+ 109              	.LVL3:
+ 110              	.L6:
+  52:Module/motor/dm_ctrl.c **** 	{
+  53:Module/motor/dm_ctrl.c ****         motor[Motor1].start_flag = 1;
+  54:Module/motor/dm_ctrl.c ****         dm4310_enable(&hcan1, &motor[Motor1]);
+  55:Module/motor/dm_ctrl.c ****     }
+  56:Module/motor/dm_ctrl.c ****     
+  57:Module/motor/dm_ctrl.c ****     if (motor_mask & MOTOR2_BIT) 
+ 111              		.loc 1 57 5 is_stmt 1 view .LVU20
+ 112              		.loc 1 57 8 is_stmt 0 view .LVU21
+ 113 000a 14F0020F 		tst	r4, #2
+ 114 000e 07D1     		bne	.L10
+ 115              	.L5:
+  58:Module/motor/dm_ctrl.c **** 	{
+  59:Module/motor/dm_ctrl.c ****         motor[Motor2].start_flag = 1;
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccrutLtG.s 			page 4
 
 
-  66:Module/motor/dm_ctrl.c **** 		//	motor[Motor3].start_flag = 1;
-  67:Module/motor/dm_ctrl.c **** 		//	dm4310_enable(&hcan1, &motor[Motor3]);
-  68:Module/motor/dm_ctrl.c **** 		//	break;
-  69:Module/motor/dm_ctrl.c **** 	}
-  70:Module/motor/dm_ctrl.c **** }
- 110              		.loc 1 70 1 is_stmt 0 view .LVU18
- 111 0020 05E0     		b	.L5
- 112              	.L6:
-  56:Module/motor/dm_ctrl.c **** 			dm4310_enable(&hcan1, &motor[Motor1]);
- 113              		.loc 1 56 4 is_stmt 1 view .LVU19
-  56:Module/motor/dm_ctrl.c **** 			dm4310_enable(&hcan1, &motor[Motor1]);
- 114              		.loc 1 56 29 is_stmt 0 view .LVU20
- 115 0022 0449     		ldr	r1, .L10+4
- 116 0024 0123     		movs	r3, #1
- 117 0026 4B70     		strb	r3, [r1, #1]
-  57:Module/motor/dm_ctrl.c **** 			break;
- 118              		.loc 1 57 4 is_stmt 1 view .LVU21
- 119 0028 0448     		ldr	r0, .L10+12
- 120 002a FFF7FEFF 		bl	dm4310_enable
- 121              	.LVL3:
-  58:Module/motor/dm_ctrl.c **** 		case 2:
- 122              		.loc 1 58 4 view .LVU22
- 123              	.L5:
- 124              		.loc 1 70 1 is_stmt 0 view .LVU23
- 125 002e 08BD     		pop	{r3, pc}
- 126              	.L11:
- 127              		.align	2
- 128              	.L10:
- 129 0030 00000000 		.word	motor_id
- 130 0034 00000000 		.word	motor
- 131 0038 00000000 		.word	hcan2
- 132 003c 00000000 		.word	hcan1
- 133              		.cfi_endproc
- 134              	.LFE135:
- 136              		.section	.text.ctrl_disable,"ax",%progbits
- 137              		.align	1
- 138              		.global	ctrl_disable
- 139              		.syntax unified
- 140              		.thumb
- 141              		.thumb_func
- 143              	ctrl_disable:
- 144              	.LFB136:
-  71:Module/motor/dm_ctrl.c **** /**
-  72:Module/motor/dm_ctrl.c **** ************************************************************************
-  73:Module/motor/dm_ctrl.c **** * @brief:      	ctrl_disable: 禁用电机控制函数
-  74:Module/motor/dm_ctrl.c **** * @param:      	void
-  75:Module/motor/dm_ctrl.c **** * @retval:     	void
-  76:Module/motor/dm_ctrl.c **** * @details:    	根据当前电机ID（motor_id），禁用对应的电机控制。
-  77:Module/motor/dm_ctrl.c **** *               设置指定电机的启动标志为0，并调用dm4310_disable函数禁用电机�
-  78:Module/motor/dm_ctrl.c **** ************************************************************************
-  79:Module/motor/dm_ctrl.c **** **/
-  80:Module/motor/dm_ctrl.c **** void ctrl_disable(void)
-  81:Module/motor/dm_ctrl.c **** {
- 145              		.loc 1 81 1 is_stmt 1 view -0
- 146              		.cfi_startproc
- 147              		@ args = 0, pretend = 0, frame = 0
- 148              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 5
+  60:Module/motor/dm_ctrl.c ****         dm4310_enable(&hcan2, &motor[Motor2]);
+  61:Module/motor/dm_ctrl.c ****     }
+  62:Module/motor/dm_ctrl.c **** }
+ 116              		.loc 1 62 1 view .LVU22
+ 117 0010 10BD     		pop	{r4, pc}
+ 118              	.LVL4:
+ 119              	.L9:
+  53:Module/motor/dm_ctrl.c ****         dm4310_enable(&hcan1, &motor[Motor1]);
+ 120              		.loc 1 53 9 is_stmt 1 view .LVU23
+  53:Module/motor/dm_ctrl.c ****         dm4310_enable(&hcan1, &motor[Motor1]);
+ 121              		.loc 1 53 34 is_stmt 0 view .LVU24
+ 122 0012 0849     		ldr	r1, .L11
+ 123 0014 0123     		movs	r3, #1
+ 124 0016 4B70     		strb	r3, [r1, #1]
+  54:Module/motor/dm_ctrl.c ****     }
+ 125              		.loc 1 54 9 is_stmt 1 view .LVU25
+ 126 0018 0748     		ldr	r0, .L11+4
+ 127              	.LVL5:
+  54:Module/motor/dm_ctrl.c ****     }
+ 128              		.loc 1 54 9 is_stmt 0 view .LVU26
+ 129 001a FFF7FEFF 		bl	dm4310_enable
+ 130              	.LVL6:
+ 131 001e F4E7     		b	.L6
+ 132              	.L10:
+  59:Module/motor/dm_ctrl.c ****         dm4310_enable(&hcan2, &motor[Motor2]);
+ 133              		.loc 1 59 9 is_stmt 1 view .LVU27
+  59:Module/motor/dm_ctrl.c ****         dm4310_enable(&hcan2, &motor[Motor2]);
+ 134              		.loc 1 59 34 is_stmt 0 view .LVU28
+ 135 0020 0449     		ldr	r1, .L11
+ 136 0022 0123     		movs	r3, #1
+ 137 0024 81F86D30 		strb	r3, [r1, #109]
+  60:Module/motor/dm_ctrl.c ****     }
+ 138              		.loc 1 60 9 is_stmt 1 view .LVU29
+ 139 0028 6C31     		adds	r1, r1, #108
+ 140 002a 0448     		ldr	r0, .L11+8
+ 141 002c FFF7FEFF 		bl	dm4310_enable
+ 142              	.LVL7:
+ 143              		.loc 1 62 1 is_stmt 0 view .LVU30
+ 144 0030 EEE7     		b	.L5
+ 145              	.L12:
+ 146 0032 00BF     		.align	2
+ 147              	.L11:
+ 148 0034 00000000 		.word	motor
+ 149 0038 00000000 		.word	hcan1
+ 150 003c 00000000 		.word	hcan2
+ 151              		.cfi_endproc
+ 152              	.LFE135:
+ 154              		.section	.text.ctrl_disable,"ax",%progbits
+ 155              		.align	1
+ 156              		.global	ctrl_disable
+ 157              		.syntax unified
+ 158              		.thumb
+ 159              		.thumb_func
+ 161              	ctrl_disable:
+ 162              	.LVL8:
+ 163              	.LFB136:
+  63:Module/motor/dm_ctrl.c **** /**
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccrutLtG.s 			page 5
 
 
- 149 0000 08B5     		push	{r3, lr}
- 150              	.LCFI2:
- 151              		.cfi_def_cfa_offset 8
- 152              		.cfi_offset 3, -8
- 153              		.cfi_offset 14, -4
-  82:Module/motor/dm_ctrl.c **** 	switch(motor_id)
- 154              		.loc 1 82 2 view .LVU25
- 155 0002 0B4B     		ldr	r3, .L17
- 156 0004 93F90030 		ldrsb	r3, [r3]
- 157 0008 012B     		cmp	r3, #1
- 158 000a 0AD0     		beq	.L13
- 159 000c 022B     		cmp	r3, #2
- 160 000e 0ED1     		bne	.L12
-  83:Module/motor/dm_ctrl.c **** 	{
-  84:Module/motor/dm_ctrl.c **** 		case 1:
-  85:Module/motor/dm_ctrl.c **** 			// 禁用Motor1的电机控制
-  86:Module/motor/dm_ctrl.c **** 			motor[Motor1].start_flag = 0;
-  87:Module/motor/dm_ctrl.c **** 			dm4310_disable(&hcan1, &motor[Motor1]);
-  88:Module/motor/dm_ctrl.c **** 			break;
-  89:Module/motor/dm_ctrl.c **** 		case 2:
-  90:Module/motor/dm_ctrl.c **** 			// 禁用Motor2的电机控制
-  91:Module/motor/dm_ctrl.c **** 			motor[Motor2].start_flag = 0;
- 161              		.loc 1 91 4 view .LVU26
- 162              		.loc 1 91 29 is_stmt 0 view .LVU27
- 163 0010 0849     		ldr	r1, .L17+4
- 164 0012 0023     		movs	r3, #0
- 165 0014 81F86D30 		strb	r3, [r1, #109]
-  92:Module/motor/dm_ctrl.c **** 			dm4310_disable(&hcan2, &motor[Motor2]);
- 166              		.loc 1 92 4 is_stmt 1 view .LVU28
- 167 0018 6C31     		adds	r1, r1, #108
- 168 001a 0748     		ldr	r0, .L17+8
- 169 001c FFF7FEFF 		bl	dm4310_disable
- 170              	.LVL4:
-  93:Module/motor/dm_ctrl.c **** 			break;
- 171              		.loc 1 93 4 view .LVU29
-  94:Module/motor/dm_ctrl.c **** 		//case 3:
-  95:Module/motor/dm_ctrl.c **** 			// 禁用Motor2的电机控制
-  96:Module/motor/dm_ctrl.c **** 		//	motor[Motor3].start_flag = 0;
-  97:Module/motor/dm_ctrl.c **** 		//	dm4310_disable(&hcan1, &motor[Motor3]);
-  98:Module/motor/dm_ctrl.c **** 		//	break;
-  99:Module/motor/dm_ctrl.c **** 	}
- 100:Module/motor/dm_ctrl.c **** }
- 172              		.loc 1 100 1 is_stmt 0 view .LVU30
- 173 0020 05E0     		b	.L12
- 174              	.L13:
-  86:Module/motor/dm_ctrl.c **** 			dm4310_disable(&hcan1, &motor[Motor1]);
- 175              		.loc 1 86 4 is_stmt 1 view .LVU31
-  86:Module/motor/dm_ctrl.c **** 			dm4310_disable(&hcan1, &motor[Motor1]);
- 176              		.loc 1 86 29 is_stmt 0 view .LVU32
- 177 0022 0449     		ldr	r1, .L17+4
- 178 0024 0023     		movs	r3, #0
- 179 0026 4B70     		strb	r3, [r1, #1]
-  87:Module/motor/dm_ctrl.c **** 			break;
- 180              		.loc 1 87 4 is_stmt 1 view .LVU33
- 181 0028 0448     		ldr	r0, .L17+12
- 182 002a FFF7FEFF 		bl	dm4310_disable
- 183              	.LVL5:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 6
+  64:Module/motor/dm_ctrl.c **** ************************************************************************
+  65:Module/motor/dm_ctrl.c **** * @brief:      	ctrl_disable: 禁用电机控制函数
+  66:Module/motor/dm_ctrl.c **** * @param:      	void
+  67:Module/motor/dm_ctrl.c **** * @retval:     	void
+  68:Module/motor/dm_ctrl.c **** * @details:    	根据当前电机ID（motor_id），禁用对应的电机控制。
+  69:Module/motor/dm_ctrl.c **** *               设置指定电机的启动标志为0，并调用dm4310_disable函数禁用电机�
+  70:Module/motor/dm_ctrl.c **** ************************************************************************
+  71:Module/motor/dm_ctrl.c **** **/
+  72:Module/motor/dm_ctrl.c **** void ctrl_disable(uint32_t motor_mask)
+  73:Module/motor/dm_ctrl.c **** {
+ 164              		.loc 1 73 1 is_stmt 1 view -0
+ 165              		.cfi_startproc
+ 166              		@ args = 0, pretend = 0, frame = 0
+ 167              		@ frame_needed = 0, uses_anonymous_args = 0
+ 168              		.loc 1 73 1 is_stmt 0 view .LVU32
+ 169 0000 10B5     		push	{r4, lr}
+ 170              	.LCFI2:
+ 171              		.cfi_def_cfa_offset 8
+ 172              		.cfi_offset 4, -8
+ 173              		.cfi_offset 14, -4
+ 174 0002 0446     		mov	r4, r0
+  74:Module/motor/dm_ctrl.c ****     if (motor_mask & MOTOR1_BIT) 
+ 175              		.loc 1 74 5 is_stmt 1 view .LVU33
+ 176              		.loc 1 74 8 is_stmt 0 view .LVU34
+ 177 0004 10F0010F 		tst	r0, #1
+ 178 0008 03D1     		bne	.L17
+ 179              	.LVL9:
+ 180              	.L14:
+  75:Module/motor/dm_ctrl.c **** 	{
+  76:Module/motor/dm_ctrl.c ****         motor[Motor1].start_flag = 0;
+  77:Module/motor/dm_ctrl.c ****         dm4310_disable(&hcan1, &motor[Motor1]);
+  78:Module/motor/dm_ctrl.c ****     }
+  79:Module/motor/dm_ctrl.c ****     
+  80:Module/motor/dm_ctrl.c ****     if (motor_mask & MOTOR2_BIT) 
+ 181              		.loc 1 80 5 is_stmt 1 view .LVU35
+ 182              		.loc 1 80 8 is_stmt 0 view .LVU36
+ 183 000a 14F0020F 		tst	r4, #2
+ 184 000e 07D1     		bne	.L18
+ 185              	.L13:
+  81:Module/motor/dm_ctrl.c **** 	{
+  82:Module/motor/dm_ctrl.c ****         motor[Motor2].start_flag = 0;
+  83:Module/motor/dm_ctrl.c ****         dm4310_disable(&hcan2, &motor[Motor2]);
+  84:Module/motor/dm_ctrl.c ****     }
+  85:Module/motor/dm_ctrl.c **** }
+ 186              		.loc 1 85 1 view .LVU37
+ 187 0010 10BD     		pop	{r4, pc}
+ 188              	.LVL10:
+ 189              	.L17:
+  76:Module/motor/dm_ctrl.c ****         dm4310_disable(&hcan1, &motor[Motor1]);
+ 190              		.loc 1 76 9 is_stmt 1 view .LVU38
+  76:Module/motor/dm_ctrl.c ****         dm4310_disable(&hcan1, &motor[Motor1]);
+ 191              		.loc 1 76 34 is_stmt 0 view .LVU39
+ 192 0012 0849     		ldr	r1, .L19
+ 193 0014 0023     		movs	r3, #0
+ 194 0016 4B70     		strb	r3, [r1, #1]
+  77:Module/motor/dm_ctrl.c ****     }
+ 195              		.loc 1 77 9 is_stmt 1 view .LVU40
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccrutLtG.s 			page 6
 
 
-  88:Module/motor/dm_ctrl.c **** 		case 2:
- 184              		.loc 1 88 4 view .LVU34
- 185              	.L12:
- 186              		.loc 1 100 1 is_stmt 0 view .LVU35
- 187 002e 08BD     		pop	{r3, pc}
- 188              	.L18:
- 189              		.align	2
- 190              	.L17:
- 191 0030 00000000 		.word	motor_id
- 192 0034 00000000 		.word	motor
- 193 0038 00000000 		.word	hcan2
- 194 003c 00000000 		.word	hcan1
- 195              		.cfi_endproc
- 196              	.LFE136:
- 198              		.section	.text.ctrl_set,"ax",%progbits
- 199              		.align	1
- 200              		.global	ctrl_set
- 201              		.syntax unified
- 202              		.thumb
- 203              		.thumb_func
- 205              	ctrl_set:
- 206              	.LFB137:
- 101:Module/motor/dm_ctrl.c **** /**
- 102:Module/motor/dm_ctrl.c **** ************************************************************************
- 103:Module/motor/dm_ctrl.c **** * @brief:      	ctrl_set: 设置电机参数函数
- 104:Module/motor/dm_ctrl.c **** * @param:      	void
- 105:Module/motor/dm_ctrl.c **** * @retval:     	void
- 106:Module/motor/dm_ctrl.c **** * @details:    	根据当前电机ID（motor_id），设置对应电机的参数。
- 107:Module/motor/dm_ctrl.c **** *               调用dm4310_set函数设置指定电机的参数，以响应外部命令。
+ 196 0018 0748     		ldr	r0, .L19+4
+ 197              	.LVL11:
+  77:Module/motor/dm_ctrl.c ****     }
+ 198              		.loc 1 77 9 is_stmt 0 view .LVU41
+ 199 001a FFF7FEFF 		bl	dm4310_disable
+ 200              	.LVL12:
+ 201 001e F4E7     		b	.L14
+ 202              	.L18:
+  82:Module/motor/dm_ctrl.c ****         dm4310_disable(&hcan2, &motor[Motor2]);
+ 203              		.loc 1 82 9 is_stmt 1 view .LVU42
+  82:Module/motor/dm_ctrl.c ****         dm4310_disable(&hcan2, &motor[Motor2]);
+ 204              		.loc 1 82 34 is_stmt 0 view .LVU43
+ 205 0020 0449     		ldr	r1, .L19
+ 206 0022 0023     		movs	r3, #0
+ 207 0024 81F86D30 		strb	r3, [r1, #109]
+  83:Module/motor/dm_ctrl.c ****     }
+ 208              		.loc 1 83 9 is_stmt 1 view .LVU44
+ 209 0028 6C31     		adds	r1, r1, #108
+ 210 002a 0448     		ldr	r0, .L19+8
+ 211 002c FFF7FEFF 		bl	dm4310_disable
+ 212              	.LVL13:
+ 213              		.loc 1 85 1 is_stmt 0 view .LVU45
+ 214 0030 EEE7     		b	.L13
+ 215              	.L20:
+ 216 0032 00BF     		.align	2
+ 217              	.L19:
+ 218 0034 00000000 		.word	motor
+ 219 0038 00000000 		.word	hcan1
+ 220 003c 00000000 		.word	hcan2
+ 221              		.cfi_endproc
+ 222              	.LFE136:
+ 224              		.section	.text.ctrl_set,"ax",%progbits
+ 225              		.align	1
+ 226              		.global	ctrl_set
+ 227              		.syntax unified
+ 228              		.thumb
+ 229              		.thumb_func
+ 231              	ctrl_set:
+ 232              	.LVL14:
+ 233              	.LFB137:
+  86:Module/motor/dm_ctrl.c **** /**
+  87:Module/motor/dm_ctrl.c **** ************************************************************************
+  88:Module/motor/dm_ctrl.c **** * @brief:      	ctrl_set: 设置电机参数函数
+  89:Module/motor/dm_ctrl.c **** * @param:      	void
+  90:Module/motor/dm_ctrl.c **** * @retval:     	void
+  91:Module/motor/dm_ctrl.c **** * @details:    	根据当前电机ID（motor_id），设置对应电机的参数。
+  92:Module/motor/dm_ctrl.c **** *               调用dm4310_set函数设置指定电机的参数，以响应外部命令。
+  93:Module/motor/dm_ctrl.c **** ************************************************************************
+  94:Module/motor/dm_ctrl.c **** **/
+  95:Module/motor/dm_ctrl.c **** void ctrl_set(uint32_t motor_mask)
+  96:Module/motor/dm_ctrl.c **** {
+ 234              		.loc 1 96 1 is_stmt 1 view -0
+ 235              		.cfi_startproc
+ 236              		@ args = 0, pretend = 0, frame = 0
+ 237              		@ frame_needed = 0, uses_anonymous_args = 0
+ 238              		.loc 1 96 1 is_stmt 0 view .LVU47
+ 239 0000 10B5     		push	{r4, lr}
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccrutLtG.s 			page 7
+
+
+ 240              	.LCFI3:
+ 241              		.cfi_def_cfa_offset 8
+ 242              		.cfi_offset 4, -8
+ 243              		.cfi_offset 14, -4
+ 244 0002 0446     		mov	r4, r0
+  97:Module/motor/dm_ctrl.c ****     if (motor_mask & MOTOR1_BIT) 
+ 245              		.loc 1 97 5 is_stmt 1 view .LVU48
+ 246              		.loc 1 97 8 is_stmt 0 view .LVU49
+ 247 0004 10F0010F 		tst	r0, #1
+ 248 0008 03D1     		bne	.L25
+ 249              	.LVL15:
+ 250              	.L22:
+  98:Module/motor/dm_ctrl.c **** 	{
+  99:Module/motor/dm_ctrl.c ****         dm4310_set(&motor[Motor1]);
+ 100:Module/motor/dm_ctrl.c ****     }
+ 101:Module/motor/dm_ctrl.c ****     
+ 102:Module/motor/dm_ctrl.c ****     if (motor_mask & MOTOR2_BIT) 
+ 251              		.loc 1 102 5 is_stmt 1 view .LVU50
+ 252              		.loc 1 102 8 is_stmt 0 view .LVU51
+ 253 000a 14F0020F 		tst	r4, #2
+ 254 000e 04D1     		bne	.L26
+ 255              	.L21:
+ 103:Module/motor/dm_ctrl.c **** 	{
+ 104:Module/motor/dm_ctrl.c ****         dm4310_set(&motor[Motor2]);
+ 105:Module/motor/dm_ctrl.c ****     }
+ 106:Module/motor/dm_ctrl.c **** }
+ 256              		.loc 1 106 1 view .LVU52
+ 257 0010 10BD     		pop	{r4, pc}
+ 258              	.LVL16:
+ 259              	.L25:
+  99:Module/motor/dm_ctrl.c ****     }
+ 260              		.loc 1 99 9 is_stmt 1 view .LVU53
+ 261 0012 0448     		ldr	r0, .L27
+ 262              	.LVL17:
+  99:Module/motor/dm_ctrl.c ****     }
+ 263              		.loc 1 99 9 is_stmt 0 view .LVU54
+ 264 0014 FFF7FEFF 		bl	dm4310_set
+ 265              	.LVL18:
+ 266 0018 F7E7     		b	.L22
+ 267              	.L26:
+ 104:Module/motor/dm_ctrl.c ****     }
+ 268              		.loc 1 104 9 is_stmt 1 view .LVU55
+ 269 001a 0348     		ldr	r0, .L27+4
+ 270 001c FFF7FEFF 		bl	dm4310_set
+ 271              	.LVL19:
+ 272              		.loc 1 106 1 is_stmt 0 view .LVU56
+ 273 0020 F6E7     		b	.L21
+ 274              	.L28:
+ 275 0022 00BF     		.align	2
+ 276              	.L27:
+ 277 0024 00000000 		.word	motor
+ 278 0028 6C000000 		.word	motor+108
+ 279              		.cfi_endproc
+ 280              	.LFE137:
+ 282              		.section	.text.ctrl_clear_para,"ax",%progbits
+ 283              		.align	1
+ 284              		.global	ctrl_clear_para
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccrutLtG.s 			page 8
+
+
+ 285              		.syntax unified
+ 286              		.thumb
+ 287              		.thumb_func
+ 289              	ctrl_clear_para:
+ 290              	.LVL20:
+ 291              	.LFB138:
+ 107:Module/motor/dm_ctrl.c **** /**
  108:Module/motor/dm_ctrl.c **** ************************************************************************
- 109:Module/motor/dm_ctrl.c **** **/
- 110:Module/motor/dm_ctrl.c **** void ctrl_set(void)
- 111:Module/motor/dm_ctrl.c **** {
- 207              		.loc 1 111 1 is_stmt 1 view -0
- 208              		.cfi_startproc
- 209              		@ args = 0, pretend = 0, frame = 0
- 210              		@ frame_needed = 0, uses_anonymous_args = 0
- 211 0000 08B5     		push	{r3, lr}
- 212              	.LCFI3:
- 213              		.cfi_def_cfa_offset 8
- 214              		.cfi_offset 3, -8
- 215              		.cfi_offset 14, -4
- 112:Module/motor/dm_ctrl.c **** 	switch(motor_id)
- 216              		.loc 1 112 2 view .LVU37
- 217 0002 074B     		ldr	r3, .L24
- 218 0004 93F90030 		ldrsb	r3, [r3]
- 219 0008 012B     		cmp	r3, #1
- 220 000a 05D0     		beq	.L20
- 221 000c 022B     		cmp	r3, #2
- 222 000e 06D1     		bne	.L19
- 113:Module/motor/dm_ctrl.c **** 	{
- 114:Module/motor/dm_ctrl.c **** 		case 1:
- 115:Module/motor/dm_ctrl.c **** 			// 设置Motor1的电机参数
- 116:Module/motor/dm_ctrl.c **** 			dm4310_set(&motor[Motor1]);
- 117:Module/motor/dm_ctrl.c **** 			break;
- 118:Module/motor/dm_ctrl.c **** 		case 2:
- 119:Module/motor/dm_ctrl.c **** 			// 设置Motor2的电机参数
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 7
-
-
- 120:Module/motor/dm_ctrl.c **** 			dm4310_set(&motor[Motor2]);
- 223              		.loc 1 120 4 view .LVU38
- 224 0010 0448     		ldr	r0, .L24+4
- 225 0012 FFF7FEFF 		bl	dm4310_set
- 226              	.LVL6:
- 121:Module/motor/dm_ctrl.c **** 			break;
- 227              		.loc 1 121 4 view .LVU39
- 122:Module/motor/dm_ctrl.c **** 		//case 3:
- 123:Module/motor/dm_ctrl.c **** 			// 设置Motor3的电机参数
- 124:Module/motor/dm_ctrl.c **** 		//	dm4310_set(&motor[Motor3]);
- 125:Module/motor/dm_ctrl.c **** 		//	break;
- 126:Module/motor/dm_ctrl.c **** 	}
+ 109:Module/motor/dm_ctrl.c **** * @brief:      	ctrl_clear_para: 清除电机参数函数
+ 110:Module/motor/dm_ctrl.c **** * @param:      	void
+ 111:Module/motor/dm_ctrl.c **** * @retval:     	void
+ 112:Module/motor/dm_ctrl.c **** * @details:    	根据当前电机ID（motor_id），清除对应电机的参数。
+ 113:Module/motor/dm_ctrl.c **** *               调用dm4310_clear函数清除指定电机的参数，以响应外部命令。
+ 114:Module/motor/dm_ctrl.c **** ************************************************************************
+ 115:Module/motor/dm_ctrl.c **** **/
+ 116:Module/motor/dm_ctrl.c **** void ctrl_clear_para(uint32_t motor_mask)
+ 117:Module/motor/dm_ctrl.c **** {
+ 292              		.loc 1 117 1 is_stmt 1 view -0
+ 293              		.cfi_startproc
+ 294              		@ args = 0, pretend = 0, frame = 0
+ 295              		@ frame_needed = 0, uses_anonymous_args = 0
+ 296              		.loc 1 117 1 is_stmt 0 view .LVU58
+ 297 0000 10B5     		push	{r4, lr}
+ 298              	.LCFI4:
+ 299              		.cfi_def_cfa_offset 8
+ 300              		.cfi_offset 4, -8
+ 301              		.cfi_offset 14, -4
+ 302 0002 0446     		mov	r4, r0
+ 118:Module/motor/dm_ctrl.c ****     if (motor_mask & MOTOR1_BIT) 
+ 303              		.loc 1 118 5 is_stmt 1 view .LVU59
+ 304              		.loc 1 118 8 is_stmt 0 view .LVU60
+ 305 0004 10F0010F 		tst	r0, #1
+ 306 0008 03D1     		bne	.L33
+ 307              	.LVL21:
+ 308              	.L30:
+ 119:Module/motor/dm_ctrl.c **** 	{
+ 120:Module/motor/dm_ctrl.c ****         dm4310_clear_para(&motor[Motor1]);
+ 121:Module/motor/dm_ctrl.c ****     }
+ 122:Module/motor/dm_ctrl.c ****     
+ 123:Module/motor/dm_ctrl.c ****     if (motor_mask & MOTOR2_BIT) 
+ 309              		.loc 1 123 5 is_stmt 1 view .LVU61
+ 310              		.loc 1 123 8 is_stmt 0 view .LVU62
+ 311 000a 14F0020F 		tst	r4, #2
+ 312 000e 04D1     		bne	.L34
+ 313              	.L29:
+ 124:Module/motor/dm_ctrl.c **** 	{
+ 125:Module/motor/dm_ctrl.c ****         dm4310_clear_para(&motor[Motor2]);
+ 126:Module/motor/dm_ctrl.c ****     }
  127:Module/motor/dm_ctrl.c **** }
- 228              		.loc 1 127 1 is_stmt 0 view .LVU40
- 229 0016 02E0     		b	.L19
- 230              	.L20:
- 116:Module/motor/dm_ctrl.c **** 			break;
- 231              		.loc 1 116 4 is_stmt 1 view .LVU41
- 232 0018 0348     		ldr	r0, .L24+8
- 233 001a FFF7FEFF 		bl	dm4310_set
- 234              	.LVL7:
- 117:Module/motor/dm_ctrl.c **** 		case 2:
- 235              		.loc 1 117 4 view .LVU42
- 236              	.L19:
- 237              		.loc 1 127 1 is_stmt 0 view .LVU43
- 238 001e 08BD     		pop	{r3, pc}
- 239              	.L25:
- 240              		.align	2
- 241              	.L24:
- 242 0020 00000000 		.word	motor_id
- 243 0024 6C000000 		.word	motor+108
- 244 0028 00000000 		.word	motor
- 245              		.cfi_endproc
- 246              	.LFE137:
- 248              		.section	.text.ctrl_clear_para,"ax",%progbits
- 249              		.align	1
- 250              		.global	ctrl_clear_para
- 251              		.syntax unified
- 252              		.thumb
- 253              		.thumb_func
- 255              	ctrl_clear_para:
- 256              	.LFB138:
+ 314              		.loc 1 127 1 view .LVU63
+ 315 0010 10BD     		pop	{r4, pc}
+ 316              	.LVL22:
+ 317              	.L33:
+ 120:Module/motor/dm_ctrl.c ****     }
+ 318              		.loc 1 120 9 is_stmt 1 view .LVU64
+ 319 0012 0448     		ldr	r0, .L35
+ 320              	.LVL23:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccrutLtG.s 			page 9
+
+
+ 120:Module/motor/dm_ctrl.c ****     }
+ 321              		.loc 1 120 9 is_stmt 0 view .LVU65
+ 322 0014 FFF7FEFF 		bl	dm4310_clear_para
+ 323              	.LVL24:
+ 324 0018 F7E7     		b	.L30
+ 325              	.L34:
+ 125:Module/motor/dm_ctrl.c ****     }
+ 326              		.loc 1 125 9 is_stmt 1 view .LVU66
+ 327 001a 0348     		ldr	r0, .L35+4
+ 328 001c FFF7FEFF 		bl	dm4310_clear_para
+ 329              	.LVL25:
+ 330              		.loc 1 127 1 is_stmt 0 view .LVU67
+ 331 0020 F6E7     		b	.L29
+ 332              	.L36:
+ 333 0022 00BF     		.align	2
+ 334              	.L35:
+ 335 0024 00000000 		.word	motor
+ 336 0028 6C000000 		.word	motor+108
+ 337              		.cfi_endproc
+ 338              	.LFE138:
+ 340              		.section	.text.ctrl_clear_err,"ax",%progbits
+ 341              		.align	1
+ 342              		.global	ctrl_clear_err
+ 343              		.syntax unified
+ 344              		.thumb
+ 345              		.thumb_func
+ 347              	ctrl_clear_err:
+ 348              	.LVL26:
+ 349              	.LFB139:
  128:Module/motor/dm_ctrl.c **** /**
  129:Module/motor/dm_ctrl.c **** ************************************************************************
- 130:Module/motor/dm_ctrl.c **** * @brief:      	ctrl_clear_para: 清除电机参数函数
+ 130:Module/motor/dm_ctrl.c **** * @brief:      	ctrl_clear_err: 清除电机错误信息
  131:Module/motor/dm_ctrl.c **** * @param:      	void
  132:Module/motor/dm_ctrl.c **** * @retval:     	void
  133:Module/motor/dm_ctrl.c **** * @details:    	根据当前电机ID（motor_id），清除对应电机的参数。
  134:Module/motor/dm_ctrl.c **** *               调用dm4310_clear函数清除指定电机的参数，以响应外部命令。
  135:Module/motor/dm_ctrl.c **** ************************************************************************
  136:Module/motor/dm_ctrl.c **** **/
- 137:Module/motor/dm_ctrl.c **** void ctrl_clear_para(void)
+ 137:Module/motor/dm_ctrl.c **** void ctrl_clear_err(uint32_t motor_mask)
  138:Module/motor/dm_ctrl.c **** {
- 257              		.loc 1 138 1 is_stmt 1 view -0
- 258              		.cfi_startproc
- 259              		@ args = 0, pretend = 0, frame = 0
- 260              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 8
+ 350              		.loc 1 138 1 is_stmt 1 view -0
+ 351              		.cfi_startproc
+ 352              		@ args = 0, pretend = 0, frame = 0
+ 353              		@ frame_needed = 0, uses_anonymous_args = 0
+ 354              		.loc 1 138 1 is_stmt 0 view .LVU69
+ 355 0000 10B5     		push	{r4, lr}
+ 356              	.LCFI5:
+ 357              		.cfi_def_cfa_offset 8
+ 358              		.cfi_offset 4, -8
+ 359              		.cfi_offset 14, -4
+ 360 0002 0446     		mov	r4, r0
+ 139:Module/motor/dm_ctrl.c ****     if (motor_mask & MOTOR1_BIT) 
+ 361              		.loc 1 139 5 is_stmt 1 view .LVU70
+ 362              		.loc 1 139 8 is_stmt 0 view .LVU71
+ 363 0004 10F0010F 		tst	r0, #1
+ 364 0008 03D1     		bne	.L41
+ 365              	.LVL27:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccrutLtG.s 			page 10
 
 
- 261 0000 08B5     		push	{r3, lr}
- 262              	.LCFI4:
- 263              		.cfi_def_cfa_offset 8
- 264              		.cfi_offset 3, -8
- 265              		.cfi_offset 14, -4
- 139:Module/motor/dm_ctrl.c **** 	switch(motor_id)
- 266              		.loc 1 139 2 view .LVU45
- 267 0002 074B     		ldr	r3, .L31
- 268 0004 93F90030 		ldrsb	r3, [r3]
- 269 0008 012B     		cmp	r3, #1
- 270 000a 05D0     		beq	.L27
- 271 000c 022B     		cmp	r3, #2
- 272 000e 06D1     		bne	.L26
+ 366              	.L38:
  140:Module/motor/dm_ctrl.c **** 	{
- 141:Module/motor/dm_ctrl.c **** 		case 1:
- 142:Module/motor/dm_ctrl.c **** 			// 清除Motor1的电机参数
- 143:Module/motor/dm_ctrl.c **** 			dm4310_clear_para(&motor[Motor1]);
- 144:Module/motor/dm_ctrl.c **** 			break;
- 145:Module/motor/dm_ctrl.c **** 		case 2:
- 146:Module/motor/dm_ctrl.c **** 			// 清除Motor2的电机参数
- 147:Module/motor/dm_ctrl.c **** 			dm4310_clear_para(&motor[Motor2]);
- 273              		.loc 1 147 4 view .LVU46
- 274 0010 0448     		ldr	r0, .L31+4
- 275 0012 FFF7FEFF 		bl	dm4310_clear_para
- 276              	.LVL8:
- 148:Module/motor/dm_ctrl.c **** 			break;
- 277              		.loc 1 148 4 view .LVU47
- 149:Module/motor/dm_ctrl.c **** 		//case 3:
- 150:Module/motor/dm_ctrl.c **** 			// 清除Motor2的电机参数
- 151:Module/motor/dm_ctrl.c **** 		//	dm4310_clear_para(&motor[Motor3]);
- 152:Module/motor/dm_ctrl.c **** 		//	break;
- 153:Module/motor/dm_ctrl.c **** 	}
- 154:Module/motor/dm_ctrl.c **** }
- 278              		.loc 1 154 1 is_stmt 0 view .LVU48
- 279 0016 02E0     		b	.L26
- 280              	.L27:
- 143:Module/motor/dm_ctrl.c **** 			break;
- 281              		.loc 1 143 4 is_stmt 1 view .LVU49
- 282 0018 0348     		ldr	r0, .L31+8
- 283 001a FFF7FEFF 		bl	dm4310_clear_para
- 284              	.LVL9:
- 144:Module/motor/dm_ctrl.c **** 		case 2:
- 285              		.loc 1 144 4 view .LVU50
- 286              	.L26:
- 287              		.loc 1 154 1 is_stmt 0 view .LVU51
- 288 001e 08BD     		pop	{r3, pc}
- 289              	.L32:
- 290              		.align	2
- 291              	.L31:
- 292 0020 00000000 		.word	motor_id
- 293 0024 6C000000 		.word	motor+108
- 294 0028 00000000 		.word	motor
- 295              		.cfi_endproc
- 296              	.LFE138:
- 298              		.section	.text.ctrl_clear_err,"ax",%progbits
- 299              		.align	1
- 300              		.global	ctrl_clear_err
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 9
+ 141:Module/motor/dm_ctrl.c ****         dm4310_clear_err(&hcan1, &motor[Motor1]);
+ 142:Module/motor/dm_ctrl.c ****     }
+ 143:Module/motor/dm_ctrl.c ****     
+ 144:Module/motor/dm_ctrl.c ****     if (motor_mask & MOTOR2_BIT) 
+ 367              		.loc 1 144 5 is_stmt 1 view .LVU72
+ 368              		.loc 1 144 8 is_stmt 0 view .LVU73
+ 369 000a 14F0020F 		tst	r4, #2
+ 370 000e 05D1     		bne	.L42
+ 371              	.L37:
+ 145:Module/motor/dm_ctrl.c **** 	{
+ 146:Module/motor/dm_ctrl.c ****         dm4310_clear_err(&hcan2, &motor[Motor2]);
+ 147:Module/motor/dm_ctrl.c ****     }
+ 148:Module/motor/dm_ctrl.c **** }
+ 372              		.loc 1 148 1 view .LVU74
+ 373 0010 10BD     		pop	{r4, pc}
+ 374              	.LVL28:
+ 375              	.L41:
+ 141:Module/motor/dm_ctrl.c ****     }
+ 376              		.loc 1 141 9 is_stmt 1 view .LVU75
+ 377 0012 0549     		ldr	r1, .L43
+ 378 0014 0548     		ldr	r0, .L43+4
+ 379              	.LVL29:
+ 141:Module/motor/dm_ctrl.c ****     }
+ 380              		.loc 1 141 9 is_stmt 0 view .LVU76
+ 381 0016 FFF7FEFF 		bl	dm4310_clear_err
+ 382              	.LVL30:
+ 383 001a F6E7     		b	.L38
+ 384              	.L42:
+ 146:Module/motor/dm_ctrl.c ****     }
+ 385              		.loc 1 146 9 is_stmt 1 view .LVU77
+ 386 001c 0449     		ldr	r1, .L43+8
+ 387 001e 0548     		ldr	r0, .L43+12
+ 388 0020 FFF7FEFF 		bl	dm4310_clear_err
+ 389              	.LVL31:
+ 390              		.loc 1 148 1 is_stmt 0 view .LVU78
+ 391 0024 F4E7     		b	.L37
+ 392              	.L44:
+ 393 0026 00BF     		.align	2
+ 394              	.L43:
+ 395 0028 00000000 		.word	motor
+ 396 002c 00000000 		.word	hcan1
+ 397 0030 6C000000 		.word	motor+108
+ 398 0034 00000000 		.word	hcan2
+ 399              		.cfi_endproc
+ 400              	.LFE139:
+ 402              		.section	.text.ctrl_send,"ax",%progbits
+ 403              		.align	1
+ 404              		.global	ctrl_send
+ 405              		.syntax unified
+ 406              		.thumb
+ 407              		.thumb_func
+ 409              	ctrl_send:
+ 410              	.LVL32:
+ 411              	.LFB140:
+ 149:Module/motor/dm_ctrl.c **** /**
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccrutLtG.s 			page 11
 
 
- 301              		.syntax unified
- 302              		.thumb
- 303              		.thumb_func
- 305              	ctrl_clear_err:
- 306              	.LFB139:
- 155:Module/motor/dm_ctrl.c **** /**
+ 150:Module/motor/dm_ctrl.c **** ************************************************************************
+ 151:Module/motor/dm_ctrl.c **** * @brief:      	ctrl_send: 发送电机控制命令函数
+ 152:Module/motor/dm_ctrl.c **** * @param:      	void
+ 153:Module/motor/dm_ctrl.c **** * @retval:     	void
+ 154:Module/motor/dm_ctrl.c **** * @details:    	根据当前电机ID（motor_id），向对应电机发送控制命令。
+ 155:Module/motor/dm_ctrl.c **** *               调用dm4310_ctrl_send函数向指定电机发送控制命令，以响应外部命�
  156:Module/motor/dm_ctrl.c **** ************************************************************************
- 157:Module/motor/dm_ctrl.c **** * @brief:      	ctrl_clear_err: 清除电机错误信息
- 158:Module/motor/dm_ctrl.c **** * @param:      	void
- 159:Module/motor/dm_ctrl.c **** * @retval:     	void
- 160:Module/motor/dm_ctrl.c **** * @details:    	根据当前电机ID（motor_id），清除对应电机的参数。
- 161:Module/motor/dm_ctrl.c **** *               调用dm4310_clear函数清除指定电机的参数，以响应外部命令。
- 162:Module/motor/dm_ctrl.c **** ************************************************************************
- 163:Module/motor/dm_ctrl.c **** **/
- 164:Module/motor/dm_ctrl.c **** void ctrl_clear_err(void)
- 165:Module/motor/dm_ctrl.c **** {
- 307              		.loc 1 165 1 is_stmt 1 view -0
- 308              		.cfi_startproc
- 309              		@ args = 0, pretend = 0, frame = 0
- 310              		@ frame_needed = 0, uses_anonymous_args = 0
- 311 0000 08B5     		push	{r3, lr}
- 312              	.LCFI5:
- 313              		.cfi_def_cfa_offset 8
- 314              		.cfi_offset 3, -8
- 315              		.cfi_offset 14, -4
- 166:Module/motor/dm_ctrl.c **** 	switch(motor_id)
- 316              		.loc 1 166 2 view .LVU53
- 317 0002 084B     		ldr	r3, .L38
- 318 0004 93F90030 		ldrsb	r3, [r3]
- 319 0008 012B     		cmp	r3, #1
- 320 000a 06D0     		beq	.L34
- 321 000c 022B     		cmp	r3, #2
- 322 000e 08D1     		bne	.L33
- 167:Module/motor/dm_ctrl.c **** 	{
- 168:Module/motor/dm_ctrl.c **** 		case 1:
- 169:Module/motor/dm_ctrl.c **** 			// 清除Motor1的电机错误参数
- 170:Module/motor/dm_ctrl.c **** 			dm4310_clear_err(&hcan1, &motor[Motor1]);
- 171:Module/motor/dm_ctrl.c **** 			break;
- 172:Module/motor/dm_ctrl.c **** 		case 2:
- 173:Module/motor/dm_ctrl.c **** 			// 清除Motor2的电机错误参数
- 174:Module/motor/dm_ctrl.c **** 			dm4310_clear_err(&hcan2, &motor[Motor2]);
- 323              		.loc 1 174 4 view .LVU54
- 324 0010 0549     		ldr	r1, .L38+4
- 325 0012 0648     		ldr	r0, .L38+8
- 326 0014 FFF7FEFF 		bl	dm4310_clear_err
- 327              	.LVL10:
- 175:Module/motor/dm_ctrl.c **** 			break;
- 328              		.loc 1 175 4 view .LVU55
- 176:Module/motor/dm_ctrl.c **** 		//case 3:
- 177:Module/motor/dm_ctrl.c **** 			// 清除Motor3的电机错误参数
- 178:Module/motor/dm_ctrl.c **** 		//	dm4310_clear_err(&hcan1, &motor[Motor3]);
- 179:Module/motor/dm_ctrl.c **** 		//	break;
- 180:Module/motor/dm_ctrl.c **** 	}
- 181:Module/motor/dm_ctrl.c **** }
- 329              		.loc 1 181 1 is_stmt 0 view .LVU56
- 330 0018 03E0     		b	.L33
- 331              	.L34:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 10
+ 157:Module/motor/dm_ctrl.c **** **/
+ 158:Module/motor/dm_ctrl.c **** void ctrl_send(uint32_t motor_mask)
+ 159:Module/motor/dm_ctrl.c **** {
+ 412              		.loc 1 159 1 is_stmt 1 view -0
+ 413              		.cfi_startproc
+ 414              		@ args = 0, pretend = 0, frame = 0
+ 415              		@ frame_needed = 0, uses_anonymous_args = 0
+ 416              		.loc 1 159 1 is_stmt 0 view .LVU80
+ 417 0000 10B5     		push	{r4, lr}
+ 418              	.LCFI6:
+ 419              		.cfi_def_cfa_offset 8
+ 420              		.cfi_offset 4, -8
+ 421              		.cfi_offset 14, -4
+ 422 0002 0446     		mov	r4, r0
+ 160:Module/motor/dm_ctrl.c ****     if (motor_mask & MOTOR1_BIT) 
+ 423              		.loc 1 160 5 is_stmt 1 view .LVU81
+ 424              		.loc 1 160 8 is_stmt 0 view .LVU82
+ 425 0004 10F0010F 		tst	r0, #1
+ 426 0008 03D1     		bne	.L49
+ 427              	.LVL33:
+ 428              	.L46:
+ 161:Module/motor/dm_ctrl.c **** 	{
+ 162:Module/motor/dm_ctrl.c ****         dm4310_ctrl_send(&hcan1, &motor[Motor1]);
+ 163:Module/motor/dm_ctrl.c ****     }
+ 164:Module/motor/dm_ctrl.c ****     
+ 165:Module/motor/dm_ctrl.c ****     if (motor_mask & MOTOR2_BIT) 
+ 429              		.loc 1 165 5 is_stmt 1 view .LVU83
+ 430              		.loc 1 165 8 is_stmt 0 view .LVU84
+ 431 000a 14F0020F 		tst	r4, #2
+ 432 000e 05D1     		bne	.L50
+ 433              	.L45:
+ 166:Module/motor/dm_ctrl.c **** 	{
+ 167:Module/motor/dm_ctrl.c ****         dm4310_ctrl_send(&hcan2, &motor[Motor2]);
+ 168:Module/motor/dm_ctrl.c ****     }
+ 169:Module/motor/dm_ctrl.c **** }
+ 434              		.loc 1 169 1 view .LVU85
+ 435 0010 10BD     		pop	{r4, pc}
+ 436              	.LVL34:
+ 437              	.L49:
+ 162:Module/motor/dm_ctrl.c ****     }
+ 438              		.loc 1 162 9 is_stmt 1 view .LVU86
+ 439 0012 0549     		ldr	r1, .L51
+ 440 0014 0548     		ldr	r0, .L51+4
+ 441              	.LVL35:
+ 162:Module/motor/dm_ctrl.c ****     }
+ 442              		.loc 1 162 9 is_stmt 0 view .LVU87
+ 443 0016 FFF7FEFF 		bl	dm4310_ctrl_send
+ 444              	.LVL36:
+ 445 001a F6E7     		b	.L46
+ 446              	.L50:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccrutLtG.s 			page 12
 
 
- 170:Module/motor/dm_ctrl.c **** 			break;
- 332              		.loc 1 170 4 is_stmt 1 view .LVU57
- 333 001a 0549     		ldr	r1, .L38+12
- 334 001c 0548     		ldr	r0, .L38+16
- 335 001e FFF7FEFF 		bl	dm4310_clear_err
- 336              	.LVL11:
- 171:Module/motor/dm_ctrl.c **** 		case 2:
- 337              		.loc 1 171 4 view .LVU58
- 338              	.L33:
- 339              		.loc 1 181 1 is_stmt 0 view .LVU59
- 340 0022 08BD     		pop	{r3, pc}
- 341              	.L39:
- 342              		.align	2
- 343              	.L38:
- 344 0024 00000000 		.word	motor_id
- 345 0028 6C000000 		.word	motor+108
- 346 002c 00000000 		.word	hcan2
- 347 0030 00000000 		.word	motor
- 348 0034 00000000 		.word	hcan1
- 349              		.cfi_endproc
- 350              	.LFE139:
- 352              		.section	.text.ctrl_send,"ax",%progbits
- 353              		.align	1
- 354              		.global	ctrl_send
- 355              		.syntax unified
- 356              		.thumb
- 357              		.thumb_func
- 359              	ctrl_send:
- 360              	.LFB140:
- 182:Module/motor/dm_ctrl.c **** /**
- 183:Module/motor/dm_ctrl.c **** ************************************************************************
- 184:Module/motor/dm_ctrl.c **** * @brief:      	ctrl_send: 发送电机控制命令函数
- 185:Module/motor/dm_ctrl.c **** * @param:      	void
- 186:Module/motor/dm_ctrl.c **** * @retval:     	void
- 187:Module/motor/dm_ctrl.c **** * @details:    	根据当前电机ID（motor_id），向对应电机发送控制命令。
- 188:Module/motor/dm_ctrl.c **** *               调用dm4310_ctrl_send函数向指定电机发送控制命令，以响应外部命�
- 189:Module/motor/dm_ctrl.c **** ************************************************************************
- 190:Module/motor/dm_ctrl.c **** **/
- 191:Module/motor/dm_ctrl.c **** void ctrl_send(void)
- 192:Module/motor/dm_ctrl.c **** {
- 361              		.loc 1 192 1 is_stmt 1 view -0
- 362              		.cfi_startproc
- 363              		@ args = 0, pretend = 0, frame = 0
- 364              		@ frame_needed = 0, uses_anonymous_args = 0
- 365 0000 08B5     		push	{r3, lr}
- 366              	.LCFI6:
- 367              		.cfi_def_cfa_offset 8
- 368              		.cfi_offset 3, -8
- 369              		.cfi_offset 14, -4
- 193:Module/motor/dm_ctrl.c **** 	switch(motor_id)
- 370              		.loc 1 193 2 view .LVU61
- 371 0002 084B     		ldr	r3, .L45
- 372 0004 93F90030 		ldrsb	r3, [r3]
- 373 0008 012B     		cmp	r3, #1
- 374 000a 06D0     		beq	.L41
- 375 000c 022B     		cmp	r3, #2
- 376 000e 08D1     		bne	.L40
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 11
+ 167:Module/motor/dm_ctrl.c ****     }
+ 447              		.loc 1 167 9 is_stmt 1 view .LVU88
+ 448 001c 0449     		ldr	r1, .L51+8
+ 449 001e 0548     		ldr	r0, .L51+12
+ 450 0020 FFF7FEFF 		bl	dm4310_ctrl_send
+ 451              	.LVL37:
+ 452              		.loc 1 169 1 is_stmt 0 view .LVU89
+ 453 0024 F4E7     		b	.L45
+ 454              	.L52:
+ 455 0026 00BF     		.align	2
+ 456              	.L51:
+ 457 0028 00000000 		.word	motor
+ 458 002c 00000000 		.word	hcan1
+ 459 0030 6C000000 		.word	motor+108
+ 460 0034 00000000 		.word	hcan2
+ 461              		.cfi_endproc
+ 462              	.LFE140:
+ 464              		.section	.text.can1_rx_callback,"ax",%progbits
+ 465              		.align	1
+ 466              		.global	can1_rx_callback
+ 467              		.syntax unified
+ 468              		.thumb
+ 469              		.thumb_func
+ 471              	can1_rx_callback:
+ 472              	.LFB141:
+ 170:Module/motor/dm_ctrl.c **** /**
+ 171:Module/motor/dm_ctrl.c **** ************************************************************************
+ 172:Module/motor/dm_ctrl.c **** * @brief:      	can1_rx_callback: CAN1接收回调函数
+ 173:Module/motor/dm_ctrl.c **** * @param:      	void
+ 174:Module/motor/dm_ctrl.c **** * @retval:     	void
+ 175:Module/motor/dm_ctrl.c **** * @details:    	处理CAN1接收中断回调，根据接收到的ID和数据，执行相应的处�
+ 176:Module/motor/dm_ctrl.c **** *               当接收到ID为0时，调用dm4310_fbdata函数更新Motor的反馈数据。
+ 177:Module/motor/dm_ctrl.c **** ************************************************************************
+ 178:Module/motor/dm_ctrl.c **** **/
+ 179:Module/motor/dm_ctrl.c **** void can1_rx_callback(void)
+ 180:Module/motor/dm_ctrl.c **** {
+ 473              		.loc 1 180 1 is_stmt 1 view -0
+ 474              		.cfi_startproc
+ 475              		@ args = 0, pretend = 0, frame = 16
+ 476              		@ frame_needed = 0, uses_anonymous_args = 0
+ 477 0000 00B5     		push	{lr}
+ 478              	.LCFI7:
+ 479              		.cfi_def_cfa_offset 4
+ 480              		.cfi_offset 14, -4
+ 481 0002 85B0     		sub	sp, sp, #20
+ 482              	.LCFI8:
+ 483              		.cfi_def_cfa_offset 24
+ 181:Module/motor/dm_ctrl.c **** 	uint16_t rec_id;
+ 484              		.loc 1 181 2 view .LVU91
+ 182:Module/motor/dm_ctrl.c **** 	uint8_t rx_data[8] = {0};
+ 485              		.loc 1 182 2 view .LVU92
+ 486              		.loc 1 182 10 is_stmt 0 view .LVU93
+ 487 0004 0023     		movs	r3, #0
+ 488 0006 0193     		str	r3, [sp, #4]
+ 489 0008 0293     		str	r3, [sp, #8]
+ 183:Module/motor/dm_ctrl.c **** 	canx_receive_data(&hcan1, &rec_id, rx_data);
+ 490              		.loc 1 183 2 is_stmt 1 view .LVU94
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccrutLtG.s 			page 13
 
 
- 194:Module/motor/dm_ctrl.c **** 	{
- 195:Module/motor/dm_ctrl.c **** 		case 1:
- 196:Module/motor/dm_ctrl.c **** 			 // 向Motor1发送控制命令
- 197:Module/motor/dm_ctrl.c **** 			dm4310_ctrl_send(&hcan1, &motor[Motor1]);
- 198:Module/motor/dm_ctrl.c **** 			break;
- 199:Module/motor/dm_ctrl.c **** 		case 2:
- 200:Module/motor/dm_ctrl.c **** 			 // 向Motor2发送控制命令
- 201:Module/motor/dm_ctrl.c **** 			dm4310_ctrl_send(&hcan2, &motor[Motor2]);
- 377              		.loc 1 201 4 view .LVU62
- 378 0010 0549     		ldr	r1, .L45+4
- 379 0012 0648     		ldr	r0, .L45+8
- 380 0014 FFF7FEFF 		bl	dm4310_ctrl_send
- 381              	.LVL12:
- 202:Module/motor/dm_ctrl.c **** 			break;
- 382              		.loc 1 202 4 view .LVU63
- 203:Module/motor/dm_ctrl.c **** 		//case 3:
- 204:Module/motor/dm_ctrl.c **** 			 // 向Motor3发送控制命令
- 205:Module/motor/dm_ctrl.c **** 		//	dm4310_ctrl_send(&hcan1, &motor[Motor3]);
- 206:Module/motor/dm_ctrl.c **** 		//	break;
- 207:Module/motor/dm_ctrl.c **** 	}
- 208:Module/motor/dm_ctrl.c **** }
- 383              		.loc 1 208 1 is_stmt 0 view .LVU64
- 384 0018 03E0     		b	.L40
- 385              	.L41:
- 197:Module/motor/dm_ctrl.c **** 			break;
- 386              		.loc 1 197 4 is_stmt 1 view .LVU65
- 387 001a 0549     		ldr	r1, .L45+12
- 388 001c 0548     		ldr	r0, .L45+16
- 389 001e FFF7FEFF 		bl	dm4310_ctrl_send
- 390              	.LVL13:
- 198:Module/motor/dm_ctrl.c **** 		case 2:
- 391              		.loc 1 198 4 view .LVU66
- 392              	.L40:
- 393              		.loc 1 208 1 is_stmt 0 view .LVU67
- 394 0022 08BD     		pop	{r3, pc}
- 395              	.L46:
- 396              		.align	2
- 397              	.L45:
- 398 0024 00000000 		.word	motor_id
- 399 0028 6C000000 		.word	motor+108
- 400 002c 00000000 		.word	hcan2
- 401 0030 00000000 		.word	motor
- 402 0034 00000000 		.word	hcan1
- 403              		.cfi_endproc
- 404              	.LFE140:
- 406              		.section	.text.can1_rx_callback,"ax",%progbits
- 407              		.align	1
- 408              		.global	can1_rx_callback
- 409              		.syntax unified
- 410              		.thumb
- 411              		.thumb_func
- 413              	can1_rx_callback:
- 414              	.LFB141:
- 209:Module/motor/dm_ctrl.c **** /**
- 210:Module/motor/dm_ctrl.c **** ************************************************************************
- 211:Module/motor/dm_ctrl.c **** * @brief:      	can1_rx_callback: CAN1接收回调函数
- 212:Module/motor/dm_ctrl.c **** * @param:      	void
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 12
+ 491 000a 01AA     		add	r2, sp, #4
+ 492 000c 0DF10E01 		add	r1, sp, #14
+ 493 0010 0C48     		ldr	r0, .L58
+ 494 0012 FFF7FEFF 		bl	canx_receive_data
+ 495              	.LVL38:
+ 184:Module/motor/dm_ctrl.c **** 	switch (rec_id)
+ 496              		.loc 1 184 2 view .LVU95
+ 497 0016 BDF80E30 		ldrh	r3, [sp, #14]
+ 498 001a 83B9     		cbnz	r3, .L53
+ 185:Module/motor/dm_ctrl.c **** 	{
+ 186:Module/motor/dm_ctrl.c ****  		case 0: 
+ 187:Module/motor/dm_ctrl.c **** 			{
+ 188:Module/motor/dm_ctrl.c **** 				switch ((rx_data[0])&0x0F)
+ 499              		.loc 1 188 5 view .LVU96
+ 500              		.loc 1 188 21 is_stmt 0 view .LVU97
+ 501 001c 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
+ 502 0020 03F00F03 		and	r3, r3, #15
+ 503              		.loc 1 188 5 view .LVU98
+ 504 0024 012B     		cmp	r3, #1
+ 505 0026 06D0     		beq	.L55
+ 506 0028 032B     		cmp	r3, #3
+ 507 002a 08D1     		bne	.L53
+ 189:Module/motor/dm_ctrl.c **** 				{
+ 190:Module/motor/dm_ctrl.c **** 					case 1: dm4310_fbdata(&motor[Motor1], rx_data); break;
+ 191:Module/motor/dm_ctrl.c **** 					case 3: dm4310_fbdata(&motor[Motor2], rx_data); break;
+ 508              		.loc 1 191 14 is_stmt 1 view .LVU99
+ 509 002c 01A9     		add	r1, sp, #4
+ 510 002e 0648     		ldr	r0, .L58+4
+ 511 0030 FFF7FEFF 		bl	dm4310_fbdata
+ 512              	.LVL39:
+ 513              		.loc 1 191 54 discriminator 1 view .LVU100
+ 192:Module/motor/dm_ctrl.c **** 				}
+ 193:Module/motor/dm_ctrl.c **** 				
+ 194:Module/motor/dm_ctrl.c **** 			} break;
+ 195:Module/motor/dm_ctrl.c **** 	}
+ 196:Module/motor/dm_ctrl.c **** }
+ 514              		.loc 1 196 1 is_stmt 0 view .LVU101
+ 515 0034 03E0     		b	.L53
+ 516              	.L55:
+ 190:Module/motor/dm_ctrl.c **** 					case 3: dm4310_fbdata(&motor[Motor2], rx_data); break;
+ 517              		.loc 1 190 14 is_stmt 1 view .LVU102
+ 518 0036 01A9     		add	r1, sp, #4
+ 519 0038 0448     		ldr	r0, .L58+8
+ 520 003a FFF7FEFF 		bl	dm4310_fbdata
+ 521              	.LVL40:
+ 190:Module/motor/dm_ctrl.c **** 					case 3: dm4310_fbdata(&motor[Motor2], rx_data); break;
+ 522              		.loc 1 190 54 discriminator 1 view .LVU103
+ 523              	.L53:
+ 524              		.loc 1 196 1 is_stmt 0 view .LVU104
+ 525 003e 05B0     		add	sp, sp, #20
+ 526              	.LCFI9:
+ 527              		.cfi_def_cfa_offset 4
+ 528              		@ sp needed
+ 529 0040 5DF804FB 		ldr	pc, [sp], #4
+ 530              	.L59:
+ 531              		.align	2
+ 532              	.L58:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccrutLtG.s 			page 14
 
 
- 213:Module/motor/dm_ctrl.c **** * @retval:     	void
- 214:Module/motor/dm_ctrl.c **** * @details:    	处理CAN1接收中断回调，根据接收到的ID和数据，执行相应的处�
- 215:Module/motor/dm_ctrl.c **** *               当接收到ID为0时，调用dm4310_fbdata函数更新Motor的反馈数据。
- 216:Module/motor/dm_ctrl.c **** ************************************************************************
- 217:Module/motor/dm_ctrl.c **** **/
- 218:Module/motor/dm_ctrl.c **** void can1_rx_callback(void)
- 219:Module/motor/dm_ctrl.c **** {
- 415              		.loc 1 219 1 is_stmt 1 view -0
- 416              		.cfi_startproc
- 417              		@ args = 0, pretend = 0, frame = 16
- 418              		@ frame_needed = 0, uses_anonymous_args = 0
- 419 0000 00B5     		push	{lr}
- 420              	.LCFI7:
- 421              		.cfi_def_cfa_offset 4
- 422              		.cfi_offset 14, -4
- 423 0002 85B0     		sub	sp, sp, #20
- 424              	.LCFI8:
- 425              		.cfi_def_cfa_offset 24
- 220:Module/motor/dm_ctrl.c **** 	uint16_t rec_id;
- 426              		.loc 1 220 2 view .LVU69
- 221:Module/motor/dm_ctrl.c **** 	uint8_t rx_data[8] = {0};
- 427              		.loc 1 221 2 view .LVU70
- 428              		.loc 1 221 10 is_stmt 0 view .LVU71
- 429 0004 0023     		movs	r3, #0
- 430 0006 0193     		str	r3, [sp, #4]
- 431 0008 0293     		str	r3, [sp, #8]
- 222:Module/motor/dm_ctrl.c **** 	canx_receive_data(&hcan1, &rec_id, rx_data);
- 432              		.loc 1 222 2 is_stmt 1 view .LVU72
- 433 000a 01AA     		add	r2, sp, #4
- 434 000c 0DF10E01 		add	r1, sp, #14
- 435 0010 0C48     		ldr	r0, .L52
- 436 0012 FFF7FEFF 		bl	canx_receive_data
- 437              	.LVL14:
- 223:Module/motor/dm_ctrl.c **** 	switch (rec_id)
- 438              		.loc 1 223 2 view .LVU73
- 439 0016 BDF80E30 		ldrh	r3, [sp, #14]
- 440 001a 83B9     		cbnz	r3, .L47
- 224:Module/motor/dm_ctrl.c **** 	{
- 225:Module/motor/dm_ctrl.c ****  		case 0: 
- 226:Module/motor/dm_ctrl.c **** 			{
- 227:Module/motor/dm_ctrl.c **** 				switch ((rx_data[0])&0x0F)
- 441              		.loc 1 227 5 view .LVU74
- 442              		.loc 1 227 21 is_stmt 0 view .LVU75
- 443 001c 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
- 444 0020 03F00F03 		and	r3, r3, #15
- 445              		.loc 1 227 5 view .LVU76
- 446 0024 0B2B     		cmp	r3, #11
- 447 0026 06D0     		beq	.L49
- 448 0028 0C2B     		cmp	r3, #12
- 449 002a 08D1     		bne	.L47
- 228:Module/motor/dm_ctrl.c **** 				{
- 229:Module/motor/dm_ctrl.c **** 					case 11: dm4310_fbdata(&motor[Motor1], rx_data); break;
- 230:Module/motor/dm_ctrl.c **** 					case 12: dm4310_fbdata(&motor[Motor2], rx_data); break;
- 450              		.loc 1 230 15 is_stmt 1 view .LVU77
- 451 002c 01A9     		add	r1, sp, #4
- 452 002e 0648     		ldr	r0, .L52+4
- 453 0030 FFF7FEFF 		bl	dm4310_fbdata
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 13
-
-
- 454              	.LVL15:
- 455              		.loc 1 230 55 discriminator 1 view .LVU78
- 231:Module/motor/dm_ctrl.c **** 				}
- 232:Module/motor/dm_ctrl.c **** 				
- 233:Module/motor/dm_ctrl.c **** 			} break;
- 234:Module/motor/dm_ctrl.c **** 	}
- 235:Module/motor/dm_ctrl.c **** }
- 456              		.loc 1 235 1 is_stmt 0 view .LVU79
- 457 0034 03E0     		b	.L47
- 458              	.L49:
- 229:Module/motor/dm_ctrl.c **** 					case 12: dm4310_fbdata(&motor[Motor2], rx_data); break;
- 459              		.loc 1 229 15 is_stmt 1 view .LVU80
- 460 0036 01A9     		add	r1, sp, #4
- 461 0038 0448     		ldr	r0, .L52+8
- 462 003a FFF7FEFF 		bl	dm4310_fbdata
- 463              	.LVL16:
- 229:Module/motor/dm_ctrl.c **** 					case 12: dm4310_fbdata(&motor[Motor2], rx_data); break;
- 464              		.loc 1 229 55 discriminator 1 view .LVU81
- 465              	.L47:
- 466              		.loc 1 235 1 is_stmt 0 view .LVU82
- 467 003e 05B0     		add	sp, sp, #20
- 468              	.LCFI9:
- 469              		.cfi_def_cfa_offset 4
- 470              		@ sp needed
- 471 0040 5DF804FB 		ldr	pc, [sp], #4
- 472              	.L53:
- 473              		.align	2
- 474              	.L52:
- 475 0044 00000000 		.word	hcan1
- 476 0048 6C000000 		.word	motor+108
- 477 004c 00000000 		.word	motor
- 478              		.cfi_endproc
- 479              	.LFE141:
- 481              		.global	motor_id
- 482              		.section	.data.motor_id,"aw"
- 485              	motor_id:
- 486 0000 01       		.byte	1
- 487              		.global	motor
- 488              		.section	.bss.motor,"aw",%nobits
- 489              		.align	2
- 492              	motor:
- 493 0000 00000000 		.space	216
- 493      00000000 
- 493      00000000 
- 493      00000000 
- 493      00000000 
- 494              		.text
- 495              	.Letext0:
- 496              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
- 497              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
- 498              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
- 499              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 500              		.file 6 "D:/enviroment/msys2/mingw64/lib/gcc/arm-none-eabi/13.3.0/include/stddef.h"
- 501              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
- 502              		.file 8 "Core/Inc/can.h"
- 503              		.file 9 "Bsp/bsp_can.h"
- 504              		.file 10 "Module/motor/dm_drv.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 14
-
-
- 505              		.file 11 "Module/motor/dm_ctrl.h"
- 506              		.file 12 "driver/can_driver.h"
- 507              		.file 13 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/string.h"
- 508              		.file 14 "<built-in>"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s 			page 15
+ 533 0044 00000000 		.word	hcan1
+ 534 0048 6C000000 		.word	motor+108
+ 535 004c 00000000 		.word	motor
+ 536              		.cfi_endproc
+ 537              	.LFE141:
+ 539              		.global	motor
+ 540              		.section	.bss.motor,"aw",%nobits
+ 541              		.align	2
+ 544              	motor:
+ 545 0000 00000000 		.space	216
+ 545      00000000 
+ 545      00000000 
+ 545      00000000 
+ 545      00000000 
+ 546              		.text
+ 547              	.Letext0:
+ 548              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 549              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 550              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 551              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 552              		.file 6 "D:/enviroment/msys2/mingw64/lib/gcc/arm-none-eabi/13.3.0/include/stddef.h"
+ 553              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 554              		.file 8 "Core/Inc/can.h"
+ 555              		.file 9 "Bsp/bsp_can.h"
+ 556              		.file 10 "Module/motor/dm_drv.h"
+ 557              		.file 11 "Module/motor/dm_ctrl.h"
+ 558              		.file 12 "driver/can_driver.h"
+ 559              		.file 13 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/string.h"
+ 560              		.file 14 "<built-in>"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccrutLtG.s 			page 15
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 dm_ctrl.c
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:21     .text.dm4310_motor_init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:27     .text.dm4310_motor_init:00000000 dm4310_motor_init
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:70     .text.dm4310_motor_init:00000024 $d
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:492    .bss.motor:00000000 motor
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:75     .text.ctrl_enable:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:81     .text.ctrl_enable:00000000 ctrl_enable
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:129    .text.ctrl_enable:00000030 $d
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:485    .data.motor_id:00000000 motor_id
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:137    .text.ctrl_disable:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:143    .text.ctrl_disable:00000000 ctrl_disable
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:191    .text.ctrl_disable:00000030 $d
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:199    .text.ctrl_set:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:205    .text.ctrl_set:00000000 ctrl_set
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:242    .text.ctrl_set:00000020 $d
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:249    .text.ctrl_clear_para:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:255    .text.ctrl_clear_para:00000000 ctrl_clear_para
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:292    .text.ctrl_clear_para:00000020 $d
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:299    .text.ctrl_clear_err:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:305    .text.ctrl_clear_err:00000000 ctrl_clear_err
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:344    .text.ctrl_clear_err:00000024 $d
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:353    .text.ctrl_send:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:359    .text.ctrl_send:00000000 ctrl_send
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:398    .text.ctrl_send:00000024 $d
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:407    .text.can1_rx_callback:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:413    .text.can1_rx_callback:00000000 can1_rx_callback
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:475    .text.can1_rx_callback:00000044 $d
-C:\Users\30514\AppData\Local\Temp\ccpFKGyt.s:489    .bss.motor:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:21     .text.dm4310_motor_init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:27     .text.dm4310_motor_init:00000000 dm4310_motor_init
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:80     .text.dm4310_motor_init:00000038 $d
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:544    .bss.motor:00000000 motor
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:85     .text.ctrl_enable:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:91     .text.ctrl_enable:00000000 ctrl_enable
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:148    .text.ctrl_enable:00000034 $d
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:155    .text.ctrl_disable:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:161    .text.ctrl_disable:00000000 ctrl_disable
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:218    .text.ctrl_disable:00000034 $d
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:225    .text.ctrl_set:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:231    .text.ctrl_set:00000000 ctrl_set
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:277    .text.ctrl_set:00000024 $d
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:283    .text.ctrl_clear_para:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:289    .text.ctrl_clear_para:00000000 ctrl_clear_para
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:335    .text.ctrl_clear_para:00000024 $d
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:341    .text.ctrl_clear_err:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:347    .text.ctrl_clear_err:00000000 ctrl_clear_err
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:395    .text.ctrl_clear_err:00000028 $d
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:403    .text.ctrl_send:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:409    .text.ctrl_send:00000000 ctrl_send
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:457    .text.ctrl_send:00000028 $d
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:465    .text.can1_rx_callback:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:471    .text.can1_rx_callback:00000000 can1_rx_callback
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:533    .text.can1_rx_callback:00000044 $d
+C:\Users\30514\AppData\Local\Temp\ccrutLtG.s:541    .bss.motor:00000000 $d
 
 UNDEFINED SYMBOLS
 memset
 dm4310_enable
-hcan2
 hcan1
+hcan2
 dm4310_disable
 dm4310_set
 dm4310_clear_para

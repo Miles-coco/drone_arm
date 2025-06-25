@@ -15,7 +15,7 @@
 // 逆运动学求解函数
 JointAngles IK_Solve(point2D target, float L1, float L2, const JointLimits* limits) 
 {
-    JointAngles result = {.theta1 = 0.0f, .theta2 = 0.0f, .valid = false};
+    JointAngles result = {.theta1 = -65.0f/180.0f*M_PI, .theta2 = -80.0f/180.0f*M_PI, .valid = false};
     
     // 检查有效输入
     if (L1 <= 0.001f || L2 <= 0.001f) {

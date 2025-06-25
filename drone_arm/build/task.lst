@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cca9cvz0.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cca9cvz0.s 			page 1
   23:Module/task/task.c **** }
   34              		.loc 1 23 1 view .LVU1
   35 0000 7047     		bx	lr
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cca9cvz0.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s 			page 2
 
 
   36              		.cfi_endproc
@@ -88,129 +88,130 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cca9cvz0.s 			page 1
   54              		.cfi_def_cfa_offset 8
   55              		.cfi_offset 3, -8
   56              		.cfi_offset 14, -4
-  32:Module/task/task.c **** 	ctrl_send();
+  32:Module/task/task.c **** 	ctrl_send(ALL_MOTORS);
   57              		.loc 1 32 2 view .LVU3
-  58 0002 FFF7FEFF 		bl	ctrl_send
-  59              	.LVL0:
+  58 0002 0320     		movs	r0, #3
+  59 0004 FFF7FEFF 		bl	ctrl_send
+  60              	.LVL0:
   33:Module/task/task.c **** }
-  60              		.loc 1 33 1 is_stmt 0 view .LVU4
-  61 0006 08BD     		pop	{r3, pc}
-  62              		.cfi_endproc
-  63              	.LFE137:
-  65              		.section	.text.task_10ms,"ax",%progbits
-  66              		.align	1
-  67              		.global	task_10ms
-  68              		.syntax unified
-  69              		.thumb
-  70              		.thumb_func
-  72              	task_10ms:
-  73              	.LFB138:
+  61              		.loc 1 33 1 is_stmt 0 view .LVU4
+  62 0008 08BD     		pop	{r3, pc}
+  63              		.cfi_endproc
+  64              	.LFE137:
+  66              		.section	.text.task_10ms,"ax",%progbits
+  67              		.align	1
+  68              		.global	task_10ms
+  69              		.syntax unified
+  70              		.thumb
+  71              		.thumb_func
+  73              	task_10ms:
+  74              	.LFB138:
   34:Module/task/task.c **** 
   35:Module/task/task.c **** void task_10ms(void)
   36:Module/task/task.c **** {
-  74              		.loc 1 36 1 is_stmt 1 view -0
-  75              		.cfi_startproc
-  76              		@ args = 0, pretend = 0, frame = 0
-  77              		@ frame_needed = 0, uses_anonymous_args = 0
-  78 0000 08B5     		push	{r3, lr}
-  79              	.LCFI1:
-  80              		.cfi_def_cfa_offset 8
-  81              		.cfi_offset 3, -8
-  82              		.cfi_offset 14, -4
+  75              		.loc 1 36 1 is_stmt 1 view -0
+  76              		.cfi_startproc
+  77              		@ args = 0, pretend = 0, frame = 0
+  78              		@ frame_needed = 0, uses_anonymous_args = 0
+  79 0000 08B5     		push	{r3, lr}
+  80              	.LCFI1:
+  81              		.cfi_def_cfa_offset 8
+  82              		.cfi_offset 3, -8
+  83              		.cfi_offset 14, -4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s 			page 3
+
+
   37:Module/task/task.c **** 	ArmControl_Update();
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cca9cvz0.s 			page 3
-
-
-  83              		.loc 1 37 2 view .LVU6
-  84 0002 FFF7FEFF 		bl	ArmControl_Update
-  85              	.LVL1:
+  84              		.loc 1 37 2 view .LVU6
+  85 0002 FFF7FEFF 		bl	ArmControl_Update
+  86              	.LVL1:
   38:Module/task/task.c **** }
-  86              		.loc 1 38 1 is_stmt 0 view .LVU7
-  87 0006 08BD     		pop	{r3, pc}
-  88              		.cfi_endproc
-  89              	.LFE138:
-  91              		.section	.text.task_100ms,"ax",%progbits
-  92              		.align	1
-  93              		.global	task_100ms
-  94              		.syntax unified
-  95              		.thumb
-  96              		.thumb_func
-  98              	task_100ms:
-  99              	.LFB139:
+  87              		.loc 1 38 1 is_stmt 0 view .LVU7
+  88 0006 08BD     		pop	{r3, pc}
+  89              		.cfi_endproc
+  90              	.LFE138:
+  92              		.section	.text.task_100ms,"ax",%progbits
+  93              		.align	1
+  94              		.global	task_100ms
+  95              		.syntax unified
+  96              		.thumb
+  97              		.thumb_func
+  99              	task_100ms:
+ 100              	.LFB139:
   39:Module/task/task.c **** 
   40:Module/task/task.c **** void task_100ms(void)
   41:Module/task/task.c **** {
- 100              		.loc 1 41 1 is_stmt 1 view -0
- 101              		.cfi_startproc
- 102              		@ args = 0, pretend = 0, frame = 24
- 103              		@ frame_needed = 0, uses_anonymous_args = 0
+ 101              		.loc 1 41 1 is_stmt 1 view -0
+ 102              		.cfi_startproc
+ 103              		@ args = 0, pretend = 0, frame = 24
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
   42:Module/task/task.c **** 	// 调试信息输出
   43:Module/task/task.c ****     static uint8_t count = 0;
- 104              		.loc 1 43 5 view .LVU9
+ 105              		.loc 1 43 5 view .LVU9
   44:Module/task/task.c ****     
   45:Module/task/task.c ****     if(count++ >= 10) 
- 105              		.loc 1 45 5 view .LVU10
- 106              		.loc 1 45 13 is_stmt 0 view .LVU11
- 107 0000 0D4A     		ldr	r2, .L13
- 108 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 109 0004 591C     		adds	r1, r3, #1
- 110 0006 1170     		strb	r1, [r2]
- 111              		.loc 1 45 7 view .LVU12
- 112 0008 092B     		cmp	r3, #9
- 113 000a 00D8     		bhi	.L12
- 114 000c 7047     		bx	lr
- 115              	.L12:
+ 106              		.loc 1 45 5 view .LVU10
+ 107              		.loc 1 45 13 is_stmt 0 view .LVU11
+ 108 0000 0D4A     		ldr	r2, .L13
+ 109 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 110 0004 591C     		adds	r1, r3, #1
+ 111 0006 1170     		strb	r1, [r2]
+ 112              		.loc 1 45 7 view .LVU12
+ 113 0008 092B     		cmp	r3, #9
+ 114 000a 00D8     		bhi	.L12
+ 115 000c 7047     		bx	lr
+ 116              	.L12:
   41:Module/task/task.c **** 	// 调试信息输出
- 116              		.loc 1 41 1 view .LVU13
- 117 000e 10B5     		push	{r4, lr}
- 118              	.LCFI2:
- 119              		.cfi_def_cfa_offset 8
- 120              		.cfi_offset 4, -8
- 121              		.cfi_offset 14, -4
- 122 0010 86B0     		sub	sp, sp, #24
- 123              	.LCFI3:
- 124              		.cfi_def_cfa_offset 32
- 125              	.LBB2:
+ 117              		.loc 1 41 1 view .LVU13
+ 118 000e 10B5     		push	{r4, lr}
+ 119              	.LCFI2:
+ 120              		.cfi_def_cfa_offset 8
+ 121              		.cfi_offset 4, -8
+ 122              		.cfi_offset 14, -4
+ 123 0010 86B0     		sub	sp, sp, #24
+ 124              	.LCFI3:
+ 125              		.cfi_def_cfa_offset 32
+ 126              	.LBB2:
   46:Module/task/task.c **** 	{ // 每秒输出一次
   47:Module/task/task.c ****         count = 0;
- 126              		.loc 1 47 9 is_stmt 1 view .LVU14
- 127              		.loc 1 47 15 is_stmt 0 view .LVU15
- 128 0012 0024     		movs	r4, #0
- 129 0014 1470     		strb	r4, [r2]
+ 127              		.loc 1 47 9 is_stmt 1 view .LVU14
+ 128              		.loc 1 47 15 is_stmt 0 view .LVU15
+ 129 0012 0024     		movs	r4, #0
+ 130 0014 1470     		strb	r4, [r2]
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s 			page 4
+
+
   48:Module/task/task.c ****         
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cca9cvz0.s 			page 4
-
-
   49:Module/task/task.c ****         // 获取当前位置
   50:Module/task/task.c ****         point2D current_pos = Get_Current_Position();
- 130              		.loc 1 50 9 is_stmt 1 view .LVU16
- 131              		.loc 1 50 31 is_stmt 0 view .LVU17
- 132 0016 FFF7FEFF 		bl	Get_Current_Position
- 133              	.LVL2:
- 134 001a 8DED010A 		vstr.32	s0, [sp, #4]
- 135 001e CDED020A 		vstr.32	s1, [sp, #8]
+ 131              		.loc 1 50 9 is_stmt 1 view .LVU16
+ 132              		.loc 1 50 31 is_stmt 0 view .LVU17
+ 133 0016 FFF7FEFF 		bl	Get_Current_Position
+ 134              	.LVL2:
+ 135 001a 8DED010A 		vstr.32	s0, [sp, #4]
+ 136 001e CDED020A 		vstr.32	s1, [sp, #8]
   51:Module/task/task.c ****         
   52:Module/task/task.c ****         // 获取关节角度
   53:Module/task/task.c ****         JointAngles angles = {0};
- 136              		.loc 1 53 9 is_stmt 1 view .LVU18
- 137              		.loc 1 53 21 is_stmt 0 view .LVU19
- 138 0022 0394     		str	r4, [sp, #12]
- 139 0024 0494     		str	r4, [sp, #16]
- 140 0026 0594     		str	r4, [sp, #20]
+ 137              		.loc 1 53 9 is_stmt 1 view .LVU18
+ 138              		.loc 1 53 21 is_stmt 0 view .LVU19
+ 139 0022 0394     		str	r4, [sp, #12]
+ 140 0024 0494     		str	r4, [sp, #16]
+ 141 0026 0594     		str	r4, [sp, #20]
   54:Module/task/task.c ****         angles.theta1 = motor[Motor1].para.pos; // 假设存储的是弧度
- 141              		.loc 1 54 9 is_stmt 1 view .LVU20
- 142              		.loc 1 54 43 is_stmt 0 view .LVU21
- 143 0028 044B     		ldr	r3, .L13+4
- 144 002a 1A6A     		ldr	r2, [r3, #32]	@ float
- 145              		.loc 1 54 23 view .LVU22
- 146 002c 0392     		str	r2, [sp, #12]	@ float
+ 142              		.loc 1 54 9 is_stmt 1 view .LVU20
+ 143              		.loc 1 54 43 is_stmt 0 view .LVU21
+ 144 0028 044B     		ldr	r3, .L13+4
+ 145 002a 1A6A     		ldr	r2, [r3, #32]	@ float
+ 146              		.loc 1 54 23 view .LVU22
+ 147 002c 0392     		str	r2, [sp, #12]	@ float
   55:Module/task/task.c ****         angles.theta2 = motor[Motor2].para.pos;
- 147              		.loc 1 55 9 is_stmt 1 view .LVU23
- 148              		.loc 1 55 43 is_stmt 0 view .LVU24
- 149 002e D3F88C30 		ldr	r3, [r3, #140]	@ float
- 150              		.loc 1 55 23 view .LVU25
- 151 0032 0493     		str	r3, [sp, #16]	@ float
- 152              	.LBE2:
+ 148              		.loc 1 55 9 is_stmt 1 view .LVU23
+ 149              		.loc 1 55 43 is_stmt 0 view .LVU24
+ 150 002e D3F88C30 		ldr	r3, [r3, #140]	@ float
+ 151              		.loc 1 55 23 view .LVU25
+ 152 0032 0493     		str	r3, [sp, #16]	@ float
+ 153              	.LBE2:
   56:Module/task/task.c ****         
   57:Module/task/task.c ****         // 实际系统中通过串口输出
   58:Module/task/task.c ****         /*
@@ -221,198 +222,198 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cca9cvz0.s 			page 1
   63:Module/task/task.c ****         */
   64:Module/task/task.c ****     }
   65:Module/task/task.c **** }
- 153              		.loc 1 65 1 view .LVU26
- 154 0034 06B0     		add	sp, sp, #24
- 155              	.LCFI4:
- 156              		.cfi_def_cfa_offset 8
- 157              		@ sp needed
- 158 0036 10BD     		pop	{r4, pc}
- 159              	.L14:
- 160              		.align	2
- 161              	.L13:
- 162 0038 00000000 		.word	count.0
- 163 003c 00000000 		.word	motor
- 164              		.cfi_endproc
- 165              	.LFE139:
- 167              		.section	.rodata.task_init.str1.4,"aMS",%progbits,1
- 168              		.align	2
- 169              	.LC0:
- 170 0000 316D7320 		.ascii	"1ms Fast Loop\000"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cca9cvz0.s 			page 5
+ 154              		.loc 1 65 1 view .LVU26
+ 155 0034 06B0     		add	sp, sp, #24
+ 156              	.LCFI4:
+ 157              		.cfi_def_cfa_offset 8
+ 158              		@ sp needed
+ 159 0036 10BD     		pop	{r4, pc}
+ 160              	.L14:
+ 161              		.align	2
+ 162              	.L13:
+ 163 0038 00000000 		.word	count.0
+ 164 003c 00000000 		.word	motor
+ 165              		.cfi_endproc
+ 166              	.LFE139:
+ 168              		.section	.rodata.task_init.str1.4,"aMS",%progbits,1
+ 169              		.align	2
+ 170              	.LC0:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s 			page 5
 
 
- 170      46617374 
- 170      204C6F6F 
- 170      7000
- 171 000e 0000     		.align	2
- 172              	.LC1:
- 173 0010 356D7320 		.ascii	"5ms Control Loop\000"
- 173      436F6E74 
- 173      726F6C20 
- 173      4C6F6F70 
- 173      00
- 174 0021 000000   		.align	2
- 175              	.LC2:
- 176 0024 31306D73 		.ascii	"10ms Arm Update\000"
- 176      2041726D 
- 176      20557064 
- 176      61746500 
- 177              		.align	2
- 178              	.LC3:
- 179 0034 3130306D 		.ascii	"100ms Debug Output\000"
- 179      73204465 
- 179      62756720 
- 179      4F757470 
- 179      757400
- 180              		.section	.text.task_init,"ax",%progbits
- 181              		.align	1
- 182              		.global	task_init
- 183              		.syntax unified
- 184              		.thumb
- 185              		.thumb_func
- 187              	task_init:
- 188              	.LFB134:
+ 171 0000 316D7320 		.ascii	"1ms Fast Loop\000"
+ 171      46617374 
+ 171      204C6F6F 
+ 171      7000
+ 172 000e 0000     		.align	2
+ 173              	.LC1:
+ 174 0010 356D7320 		.ascii	"5ms Control Loop\000"
+ 174      436F6E74 
+ 174      726F6C20 
+ 174      4C6F6F70 
+ 174      00
+ 175 0021 000000   		.align	2
+ 176              	.LC2:
+ 177 0024 31306D73 		.ascii	"10ms Arm Update\000"
+ 177      2041726D 
+ 177      20557064 
+ 177      61746500 
+ 178              		.align	2
+ 179              	.LC3:
+ 180 0034 3130306D 		.ascii	"100ms Debug Output\000"
+ 180      73204465 
+ 180      62756720 
+ 180      4F757470 
+ 180      757400
+ 181              		.section	.text.task_init,"ax",%progbits
+ 182              		.align	1
+ 183              		.global	task_init
+ 184              		.syntax unified
+ 185              		.thumb
+ 186              		.thumb_func
+ 188              	task_init:
+ 189              	.LFB134:
    9:Module/task/task.c **** 	//初始化调度器
- 189              		.loc 1 9 1 is_stmt 1 view -0
- 190              		.cfi_startproc
- 191              		@ args = 0, pretend = 0, frame = 0
- 192              		@ frame_needed = 0, uses_anonymous_args = 0
- 193 0000 08B5     		push	{r3, lr}
- 194              	.LCFI5:
- 195              		.cfi_def_cfa_offset 8
- 196              		.cfi_offset 3, -8
- 197              		.cfi_offset 14, -4
+ 190              		.loc 1 9 1 is_stmt 1 view -0
+ 191              		.cfi_startproc
+ 192              		@ args = 0, pretend = 0, frame = 0
+ 193              		@ frame_needed = 0, uses_anonymous_args = 0
+ 194 0000 08B5     		push	{r3, lr}
+ 195              	.LCFI5:
+ 196              		.cfi_def_cfa_offset 8
+ 197              		.cfi_offset 3, -8
+ 198              		.cfi_offset 14, -4
   11:Module/task/task.c **** 
- 198              		.loc 1 11 2 view .LVU28
- 199 0002 FFF7FEFF 		bl	scheduler_init
- 200              	.LVL3:
+ 199              		.loc 1 11 2 view .LVU28
+ 200 0002 FFF7FEFF 		bl	scheduler_init
+ 201              	.LVL3:
   14:Module/task/task.c ****     create_task(task_5ms, 5, "5ms Control Loop");
- 201              		.loc 1 14 5 view .LVU29
- 202 0006 0A4A     		ldr	r2, .L17
- 203 0008 0121     		movs	r1, #1
- 204 000a 0A48     		ldr	r0, .L17+4
- 205 000c FFF7FEFF 		bl	create_task
- 206              	.LVL4:
+ 202              		.loc 1 14 5 view .LVU29
+ 203 0006 0A4A     		ldr	r2, .L17
+ 204 0008 0121     		movs	r1, #1
+ 205 000a 0A48     		ldr	r0, .L17+4
+ 206 000c FFF7FEFF 		bl	create_task
+ 207              	.LVL4:
   15:Module/task/task.c ****     create_task(task_10ms, 10, "10ms Arm Update");
- 207              		.loc 1 15 5 view .LVU30
- 208 0010 094A     		ldr	r2, .L17+8
- 209 0012 0521     		movs	r1, #5
- 210 0014 0948     		ldr	r0, .L17+12
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cca9cvz0.s 			page 6
+ 208              		.loc 1 15 5 view .LVU30
+ 209 0010 094A     		ldr	r2, .L17+8
+ 210 0012 0521     		movs	r1, #5
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s 			page 6
 
 
- 211 0016 FFF7FEFF 		bl	create_task
- 212              	.LVL5:
+ 211 0014 0948     		ldr	r0, .L17+12
+ 212 0016 FFF7FEFF 		bl	create_task
+ 213              	.LVL5:
   16:Module/task/task.c ****     create_task(task_100ms, 100, "100ms Debug Output");
- 213              		.loc 1 16 5 view .LVU31
- 214 001a 094A     		ldr	r2, .L17+16
- 215 001c 0A21     		movs	r1, #10
- 216 001e 0948     		ldr	r0, .L17+20
- 217 0020 FFF7FEFF 		bl	create_task
- 218              	.LVL6:
+ 214              		.loc 1 16 5 view .LVU31
+ 215 001a 094A     		ldr	r2, .L17+16
+ 216 001c 0A21     		movs	r1, #10
+ 217 001e 0948     		ldr	r0, .L17+20
+ 218 0020 FFF7FEFF 		bl	create_task
+ 219              	.LVL6:
   17:Module/task/task.c **** }
- 219              		.loc 1 17 5 view .LVU32
- 220 0024 084A     		ldr	r2, .L17+24
- 221 0026 6421     		movs	r1, #100
- 222 0028 0848     		ldr	r0, .L17+28
- 223 002a FFF7FEFF 		bl	create_task
- 224              	.LVL7:
+ 220              		.loc 1 17 5 view .LVU32
+ 221 0024 084A     		ldr	r2, .L17+24
+ 222 0026 6421     		movs	r1, #100
+ 223 0028 0848     		ldr	r0, .L17+28
+ 224 002a FFF7FEFF 		bl	create_task
+ 225              	.LVL7:
   18:Module/task/task.c **** 
- 225              		.loc 1 18 1 is_stmt 0 view .LVU33
- 226 002e 08BD     		pop	{r3, pc}
- 227              	.L18:
- 228              		.align	2
- 229              	.L17:
- 230 0030 00000000 		.word	.LC0
- 231 0034 00000000 		.word	task_1ms
- 232 0038 10000000 		.word	.LC1
- 233 003c 00000000 		.word	task_5ms
- 234 0040 24000000 		.word	.LC2
- 235 0044 00000000 		.word	task_10ms
- 236 0048 34000000 		.word	.LC3
- 237 004c 00000000 		.word	task_100ms
- 238              		.cfi_endproc
- 239              	.LFE134:
- 241              		.section	.text.task_2ms,"ax",%progbits
- 242              		.align	1
- 243              		.global	task_2ms
- 244              		.syntax unified
- 245              		.thumb
- 246              		.thumb_func
- 248              	task_2ms:
- 249              	.LFB136:
+ 226              		.loc 1 18 1 is_stmt 0 view .LVU33
+ 227 002e 08BD     		pop	{r3, pc}
+ 228              	.L18:
+ 229              		.align	2
+ 230              	.L17:
+ 231 0030 00000000 		.word	.LC0
+ 232 0034 00000000 		.word	task_1ms
+ 233 0038 10000000 		.word	.LC1
+ 234 003c 00000000 		.word	task_5ms
+ 235 0040 24000000 		.word	.LC2
+ 236 0044 00000000 		.word	task_10ms
+ 237 0048 34000000 		.word	.LC3
+ 238 004c 00000000 		.word	task_100ms
+ 239              		.cfi_endproc
+ 240              	.LFE134:
+ 242              		.section	.text.task_2ms,"ax",%progbits
+ 243              		.align	1
+ 244              		.global	task_2ms
+ 245              		.syntax unified
+ 246              		.thumb
+ 247              		.thumb_func
+ 249              	task_2ms:
+ 250              	.LFB136:
   26:Module/task/task.c **** 
- 250              		.loc 1 26 1 is_stmt 1 view -0
- 251              		.cfi_startproc
- 252              		@ args = 0, pretend = 0, frame = 0
- 253              		@ frame_needed = 0, uses_anonymous_args = 0
- 254              		@ link register save eliminated.
+ 251              		.loc 1 26 1 is_stmt 1 view -0
+ 252              		.cfi_startproc
+ 253              		@ args = 0, pretend = 0, frame = 0
+ 254              		@ frame_needed = 0, uses_anonymous_args = 0
+ 255              		@ link register save eliminated.
   28:Module/task/task.c **** 
- 255              		.loc 1 28 1 view .LVU35
- 256 0000 7047     		bx	lr
- 257              		.cfi_endproc
- 258              	.LFE136:
- 260              		.section	.text.task_500ms,"ax",%progbits
- 261              		.align	1
- 262              		.global	task_500ms
- 263              		.syntax unified
- 264              		.thumb
- 265              		.thumb_func
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cca9cvz0.s 			page 7
+ 256              		.loc 1 28 1 view .LVU35
+ 257 0000 7047     		bx	lr
+ 258              		.cfi_endproc
+ 259              	.LFE136:
+ 261              		.section	.text.task_500ms,"ax",%progbits
+ 262              		.align	1
+ 263              		.global	task_500ms
+ 264              		.syntax unified
+ 265              		.thumb
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s 			page 7
 
 
- 267              	task_500ms:
- 268              	.LFB140:
+ 266              		.thumb_func
+ 268              	task_500ms:
+ 269              	.LFB140:
   66:Module/task/task.c **** 
   67:Module/task/task.c **** void task_500ms(void)
   68:Module/task/task.c **** {
- 269              		.loc 1 68 1 view -0
- 270              		.cfi_startproc
- 271              		@ args = 0, pretend = 0, frame = 0
- 272              		@ frame_needed = 0, uses_anonymous_args = 0
- 273              		@ link register save eliminated.
+ 270              		.loc 1 68 1 view -0
+ 271              		.cfi_startproc
+ 272              		@ args = 0, pretend = 0, frame = 0
+ 273              		@ frame_needed = 0, uses_anonymous_args = 0
+ 274              		@ link register save eliminated.
   69:Module/task/task.c **** 
   70:Module/task/task.c **** }
- 274              		.loc 1 70 1 view .LVU37
- 275 0000 7047     		bx	lr
- 276              		.cfi_endproc
- 277              	.LFE140:
- 279              		.section	.bss.count.0,"aw",%nobits
- 282              	count.0:
- 283 0000 00       		.space	1
- 284              		.text
- 285              	.Letext0:
- 286              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
- 287              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
- 288              		.file 4 "Module/motor/dm_drv.h"
- 289              		.file 5 "Module/kinematic/kinematic_solver.h"
- 290              		.file 6 "Module/arm_control/arm_control.h"
- 291              		.file 7 "Module/motor/dm_ctrl.h"
- 292              		.file 8 "Module/scheduler/scheduler.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cca9cvz0.s 			page 8
+ 275              		.loc 1 70 1 view .LVU37
+ 276 0000 7047     		bx	lr
+ 277              		.cfi_endproc
+ 278              	.LFE140:
+ 280              		.section	.bss.count.0,"aw",%nobits
+ 283              	count.0:
+ 284 0000 00       		.space	1
+ 285              		.text
+ 286              	.Letext0:
+ 287              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 288              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 289              		.file 4 "Module/motor/dm_drv.h"
+ 290              		.file 5 "Module/kinematic/kinematic_solver.h"
+ 291              		.file 6 "Module/arm_control/arm_control.h"
+ 292              		.file 7 "Module/scheduler/scheduler.h"
+ 293              		.file 8 "Module/motor/dm_ctrl.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 task.c
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:21     .text.task_1ms:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:27     .text.task_1ms:00000000 task_1ms
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:40     .text.task_5ms:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:46     .text.task_5ms:00000000 task_5ms
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:66     .text.task_10ms:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:72     .text.task_10ms:00000000 task_10ms
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:92     .text.task_100ms:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:98     .text.task_100ms:00000000 task_100ms
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:162    .text.task_100ms:00000038 $d
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:282    .bss.count.0:00000000 count.0
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:168    .rodata.task_init.str1.4:00000000 $d
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:181    .text.task_init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:187    .text.task_init:00000000 task_init
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:230    .text.task_init:00000030 $d
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:242    .text.task_2ms:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:248    .text.task_2ms:00000000 task_2ms
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:261    .text.task_500ms:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:267    .text.task_500ms:00000000 task_500ms
-C:\Users\30514\AppData\Local\Temp\cca9cvz0.s:283    .bss.count.0:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:21     .text.task_1ms:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:27     .text.task_1ms:00000000 task_1ms
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:40     .text.task_5ms:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:46     .text.task_5ms:00000000 task_5ms
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:67     .text.task_10ms:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:73     .text.task_10ms:00000000 task_10ms
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:93     .text.task_100ms:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:99     .text.task_100ms:00000000 task_100ms
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:163    .text.task_100ms:00000038 $d
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:283    .bss.count.0:00000000 count.0
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:169    .rodata.task_init.str1.4:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:182    .text.task_init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:188    .text.task_init:00000000 task_init
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:231    .text.task_init:00000030 $d
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:243    .text.task_2ms:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:249    .text.task_2ms:00000000 task_2ms
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:262    .text.task_500ms:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:268    .text.task_500ms:00000000 task_500ms
+C:\Users\30514\AppData\Local\Temp\ccvtJF2o.s:284    .bss.count.0:00000000 $d
 
 UNDEFINED SYMBOLS
 ctrl_send

@@ -171,7 +171,7 @@ void Sbus_Data_Count(rc_info_t *rc, uint8_t *sbusData)
 
 }
 
-//获取指定通道原始值
+//获取指定通道解析后的值
 int16_t get_channel_raw_value(uint8_t ch_num)
 {
     if(ch_num > 4) return 0;//只支持0-4通道
@@ -215,7 +215,7 @@ int16_t get_channel_mapped_value(uint8_t ch_num,int16_t min,int16_t max)
 
 
 //中断处理逻辑
-void USART3_IRQHandler(void)
+void USART3_IRQHandler()
 {
     
     if(huart3.Instance->SR & UART_FLAG_RXNE)//接收数据寄存器非空,即缓冲区内接收到了数据还没被读取
@@ -298,9 +298,7 @@ void USART3_IRQHandler(void)
     }
 }
 
-bool remote_control_active(void) 
+bool remote_control_active(void)
 {
-    // 简单实现：总是返回true
-    // 实际应用中应根据遥控器信号状态判断
     return true;
 }
