@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
   29:Module/arm_control/arm_control.c **** // 声明外部工作空间配置（在coordinate_mapping.c中定义）
   30:Module/arm_control/arm_control.c **** extern WorkspaceConfig workspace_config;
   31:Module/arm_control/arm_control.c **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 2
 
 
   32:Module/arm_control/arm_control.c **** // 当前状态
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
   34              	.LVL0:
   80:Module/arm_control/arm_control.c ****     
   81:Module/arm_control/arm_control.c ****     // 检查θ1步进
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 3
 
 
   82:Module/arm_control/arm_control.c ****     float delta1 = target_angles.theta1 - current_angles.theta1;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
   77              	.LVL3:
   94:Module/arm_control/arm_control.c ****     if (fabsf(delta2) > MAX_ANGLE_STEP) 
   78              		.loc 1 94 5 is_stmt 1 view .LVU17
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 4
 
 
   79              		.loc 1 94 9 is_stmt 0 view .LVU18
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
   89:Module/arm_control/arm_control.c ****     }
  119              		.loc 1 89 9 is_stmt 1 view .LVU29
   89:Module/arm_control/arm_control.c ****     }
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 5
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 5
 
 
  120              		.loc 1 89 31 is_stmt 0 view .LVU30
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
  170              		.loc 1 47 5 view .LVU36
  171 0010 FFF7FEFF 		bl	dm4310_motor_init
  172              	.LVL8:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 6
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 6
 
 
   50:Module/arm_control/arm_control.c ****     
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
  222 0010 02AD     		add	r5, sp, #8
  223 0012 6B46     		mov	r3, sp
  224 0014 93E80300 		ldm	r3, {r0, r1}
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 7
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 7
 
 
  225 0018 85E80300 		stm	r5, {r0, r1}
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
  264 0064 95E80300 		ldm	r5, {r0, r1}
  265 0068 83E80300 		stm	r3, {r0, r1}
   73:Module/arm_control/arm_control.c **** }
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 8
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 8
 
 
  266              		.loc 1 73 5 is_stmt 1 view .LVU59
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
  129:Module/arm_control/arm_control.c ****                                     arm_config.L2, 
  130:Module/arm_control/arm_control.c ****                                     &arm_config.limits);
  131:Module/arm_control/arm_control.c ****     
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 9
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 9
 
 
  132:Module/arm_control/arm_control.c ****     if (!solution.valid) {
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
  306              		.loc 1 179 1 is_stmt 0 view .LVU64
  307 0000 014B     		ldr	r3, .L30
  308 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 10
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 10
 
 
  309 0004 7047     		bx	lr
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
  355              		.loc 1 189 34 is_stmt 0 view .LVU72
  356 0012 B0EE690A 		vmov.f32	s0, s19
  357 0016 FFF7FEFF 		bl	sinf
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 11
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 11
 
 
  358              	.LVL16:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
  408              		.cfi_restore 80
  409              		.cfi_restore 81
  410              		.cfi_def_cfa_offset 4
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 12
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 12
 
 
  411              	.LVL20:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
  461              	.LVL21:
  132:Module/arm_control/arm_control.c ****     if (!solution.valid) {
  462              		.loc 1 132 5 is_stmt 1 view .LVU95
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 13
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 13
 
 
  132:Module/arm_control/arm_control.c ****     if (!solution.valid) {
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
  504              	.L40:
  139:Module/arm_control/arm_control.c ****     target_angles = solution;
  505              		.loc 1 139 5 view .LVU109
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 14
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 14
 
 
  139:Module/arm_control/arm_control.c ****     target_angles = solution;
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
  545 0086 D3D1     		bne	.L36
  546              	.LBB3:
  161:Module/arm_control/arm_control.c ****         point2D current_position = Get_Current_Position();
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 15
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 15
 
 
  547              		.loc 1 161 9 is_stmt 1 view .LVU125
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
  586 00c6 0022     		movs	r2, #0
  587 00c8 1A70     		strb	r2, [r3]
  588 00ca B1E7     		b	.L36
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 16
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 16
 
 
  589              	.L49:
@@ -958,42 +958,42 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 1
  654              		.file 8 "Module/motor/dm_ctrl.h"
  655              		.file 9 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/math.h"
  656              		.file 10 "Module/remote_control/remote_control.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 17
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 17
 
 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s 			page 18
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 18
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 arm_control.c
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:21     .text.Smooth_Angle_Transition:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:26     .text.Smooth_Angle_Transition:00000000 Smooth_Angle_Transition
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:134    .text.Smooth_Angle_Transition:000000a8 $d
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:609    .data.target_angles:00000000 target_angles
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:618    .data.current_angles:00000000 current_angles
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:633    .bss.arm_state:00000000 arm_state
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:144    .text.ArmControl_Init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:150    .text.ArmControl_Init:00000000 ArmControl_Init
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:187    .text.ArmControl_Init:00000024 $d
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:192    .text.Set_Target_Position:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:198    .text.Set_Target_Position:00000000 Set_Target_Position
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:285    .text.Set_Target_Position:0000007c $d
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:627    .data.current_target:00000000 current_target
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:292    .text.Get_Arm_State:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:298    .text.Get_Arm_State:00000000 Get_Arm_State
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:313    .text.Get_Arm_State:00000008 $d
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:318    .text.Get_Current_Position:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:324    .text.Get_Current_Position:00000000 Get_Current_Position
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:417    .text.Get_Current_Position:0000007c $d
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:425    .text.ArmControl_Update:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:431    .text.ArmControl_Update:00000000 ArmControl_Update
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:592    .text.ArmControl_Update:000000cc $d
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:639    .rodata.arm_config:00000000 arm_config
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:606    .data.target_angles:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:615    .data.current_angles:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:624    .data.current_target:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:634    .bss.arm_state:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccSGTSjD.s:636    .rodata.arm_config:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:21     .text.Smooth_Angle_Transition:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:26     .text.Smooth_Angle_Transition:00000000 Smooth_Angle_Transition
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:134    .text.Smooth_Angle_Transition:000000a8 $d
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:609    .data.target_angles:00000000 target_angles
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:618    .data.current_angles:00000000 current_angles
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:633    .bss.arm_state:00000000 arm_state
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:144    .text.ArmControl_Init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:150    .text.ArmControl_Init:00000000 ArmControl_Init
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:187    .text.ArmControl_Init:00000024 $d
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:192    .text.Set_Target_Position:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:198    .text.Set_Target_Position:00000000 Set_Target_Position
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:285    .text.Set_Target_Position:0000007c $d
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:627    .data.current_target:00000000 current_target
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:292    .text.Get_Arm_State:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:298    .text.Get_Arm_State:00000000 Get_Arm_State
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:313    .text.Get_Arm_State:00000008 $d
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:318    .text.Get_Current_Position:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:324    .text.Get_Current_Position:00000000 Get_Current_Position
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:417    .text.Get_Current_Position:0000007c $d
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:425    .text.ArmControl_Update:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:431    .text.ArmControl_Update:00000000 ArmControl_Update
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:592    .text.ArmControl_Update:000000cc $d
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:639    .rodata.arm_config:00000000 arm_config
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:606    .data.target_angles:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:615    .data.current_angles:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:624    .data.current_target:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:634    .bss.arm_state:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:636    .rodata.arm_config:00000000 $d
 
 UNDEFINED SYMBOLS
 Mapping_Init
