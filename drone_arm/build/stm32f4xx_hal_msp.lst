@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccTwOfff.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccppOMus.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -12,7 +12,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccTwOfff.s 			page 1
    9              		.eabi_attribute 24, 1
   10              		.eabi_attribute 25, 1
   11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 30, 6
   13              		.eabi_attribute 34, 1
   14              		.eabi_attribute 18, 4
   15              		.file	"stm32f4xx_hal_msp.c"
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccTwOfff.s 			page 1
   28:Core/Src/stm32f4xx_hal_msp.c **** /* USER CODE BEGIN TD */
   29:Core/Src/stm32f4xx_hal_msp.c **** 
   30:Core/Src/stm32f4xx_hal_msp.c **** /* USER CODE END TD */
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccTwOfff.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccppOMus.s 			page 2
 
 
   31:Core/Src/stm32f4xx_hal_msp.c **** 
@@ -95,58 +95,61 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccTwOfff.s 			page 1
   62:Core/Src/stm32f4xx_hal_msp.c ****   */
   63:Core/Src/stm32f4xx_hal_msp.c **** void HAL_MspInit(void)
   64:Core/Src/stm32f4xx_hal_msp.c **** {
-  29              		.loc 1 64 1 view -0
+  29              		.loc 1 64 1
   30              		.cfi_startproc
   31              		@ args = 0, pretend = 0, frame = 8
-  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ frame_needed = 1, uses_anonymous_args = 0
   33              		@ link register save eliminated.
-  34 0000 82B0     		sub	sp, sp, #8
+  34 0000 80B4     		push	{r7}
   35              	.LCFI0:
-  36              		.cfi_def_cfa_offset 8
+  36              		.cfi_def_cfa_offset 4
+  37              		.cfi_offset 7, -4
+  38 0002 83B0     		sub	sp, sp, #12
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 16
+  41 0004 00AF     		add	r7, sp, #0
+  42              	.LCFI2:
+  43              		.cfi_def_cfa_register 7
+  44              	.LBB2:
   65:Core/Src/stm32f4xx_hal_msp.c **** 
   66:Core/Src/stm32f4xx_hal_msp.c ****   /* USER CODE BEGIN MspInit 0 */
   67:Core/Src/stm32f4xx_hal_msp.c **** 
   68:Core/Src/stm32f4xx_hal_msp.c ****   /* USER CODE END MspInit 0 */
   69:Core/Src/stm32f4xx_hal_msp.c **** 
   70:Core/Src/stm32f4xx_hal_msp.c ****   __HAL_RCC_SYSCFG_CLK_ENABLE();
-  37              		.loc 1 70 3 view .LVU1
-  38              	.LBB2:
-  39              		.loc 1 70 3 view .LVU2
-  40 0002 0021     		movs	r1, #0
-  41 0004 0091     		str	r1, [sp]
-  42              		.loc 1 70 3 view .LVU3
-  43 0006 0B4B     		ldr	r3, .L3
-  44 0008 5A6C     		ldr	r2, [r3, #68]
-  45 000a 42F48042 		orr	r2, r2, #16384
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccTwOfff.s 			page 3
+  45              		.loc 1 70 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccppOMus.s 			page 3
 
 
-  46 000e 5A64     		str	r2, [r3, #68]
-  47              		.loc 1 70 3 view .LVU4
-  48 0010 5A6C     		ldr	r2, [r3, #68]
-  49 0012 02F48042 		and	r2, r2, #16384
-  50 0016 0092     		str	r2, [sp]
-  51              		.loc 1 70 3 view .LVU5
-  52 0018 009A     		ldr	r2, [sp]
-  53              	.LBE2:
-  54              		.loc 1 70 3 view .LVU6
+  46 0006 0023     		movs	r3, #0
+  47 0008 7B60     		str	r3, [r7, #4]
+  48 000a 104B     		ldr	r3, .L2
+  49 000c 5B6C     		ldr	r3, [r3, #68]
+  50 000e 0F4A     		ldr	r2, .L2
+  51 0010 43F48043 		orr	r3, r3, #16384
+  52 0014 5364     		str	r3, [r2, #68]
+  53 0016 0D4B     		ldr	r3, .L2
+  54 0018 5B6C     		ldr	r3, [r3, #68]
+  55 001a 03F48043 		and	r3, r3, #16384
+  56 001e 7B60     		str	r3, [r7, #4]
+  57 0020 7B68     		ldr	r3, [r7, #4]
+  58              	.LBE2:
+  59              	.LBB3:
   71:Core/Src/stm32f4xx_hal_msp.c ****   __HAL_RCC_PWR_CLK_ENABLE();
-  55              		.loc 1 71 3 view .LVU7
-  56              	.LBB3:
-  57              		.loc 1 71 3 view .LVU8
-  58 001a 0191     		str	r1, [sp, #4]
-  59              		.loc 1 71 3 view .LVU9
-  60 001c 1A6C     		ldr	r2, [r3, #64]
-  61 001e 42F08052 		orr	r2, r2, #268435456
-  62 0022 1A64     		str	r2, [r3, #64]
-  63              		.loc 1 71 3 view .LVU10
-  64 0024 1B6C     		ldr	r3, [r3, #64]
-  65 0026 03F08053 		and	r3, r3, #268435456
-  66 002a 0193     		str	r3, [sp, #4]
-  67              		.loc 1 71 3 view .LVU11
-  68 002c 019B     		ldr	r3, [sp, #4]
-  69              	.LBE3:
-  70              		.loc 1 71 3 view .LVU12
+  60              		.loc 1 71 3
+  61 0022 0023     		movs	r3, #0
+  62 0024 3B60     		str	r3, [r7]
+  63 0026 094B     		ldr	r3, .L2
+  64 0028 1B6C     		ldr	r3, [r3, #64]
+  65 002a 084A     		ldr	r2, .L2
+  66 002c 43F08053 		orr	r3, r3, #268435456
+  67 0030 1364     		str	r3, [r2, #64]
+  68 0032 064B     		ldr	r3, .L2
+  69 0034 1B6C     		ldr	r3, [r3, #64]
+  70 0036 03F08053 		and	r3, r3, #268435456
+  71 003a 3B60     		str	r3, [r7]
+  72 003c 3B68     		ldr	r3, [r7]
+  73              	.LBE3:
   72:Core/Src/stm32f4xx_hal_msp.c **** 
   73:Core/Src/stm32f4xx_hal_msp.c ****   /* System interrupt init*/
   74:Core/Src/stm32f4xx_hal_msp.c **** 
@@ -154,30 +157,79 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccTwOfff.s 			page 1
   76:Core/Src/stm32f4xx_hal_msp.c **** 
   77:Core/Src/stm32f4xx_hal_msp.c ****   /* USER CODE END MspInit 1 */
   78:Core/Src/stm32f4xx_hal_msp.c **** }
-  71              		.loc 1 78 1 is_stmt 0 view .LVU13
-  72 002e 02B0     		add	sp, sp, #8
-  73              	.LCFI1:
-  74              		.cfi_def_cfa_offset 0
-  75              		@ sp needed
-  76 0030 7047     		bx	lr
-  77              	.L4:
-  78 0032 00BF     		.align	2
-  79              	.L3:
-  80 0034 00380240 		.word	1073887232
-  81              		.cfi_endproc
-  82              	.LFE134:
-  84              		.text
-  85              	.Letext0:
-  86              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
-  87              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
-  88              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccTwOfff.s 			page 4
+  74              		.loc 1 78 1
+  75 003e 00BF     		nop
+  76 0040 0C37     		adds	r7, r7, #12
+  77              	.LCFI3:
+  78              		.cfi_def_cfa_offset 4
+  79 0042 BD46     		mov	sp, r7
+  80              	.LCFI4:
+  81              		.cfi_def_cfa_register 13
+  82              		@ sp needed
+  83 0044 5DF8047B 		ldr	r7, [sp], #4
+  84              	.LCFI5:
+  85              		.cfi_restore 7
+  86              		.cfi_def_cfa_offset 0
+  87 0048 7047     		bx	lr
+  88              	.L3:
+  89 004a 00BF     		.align	2
+  90              	.L2:
+  91 004c 00380240 		.word	1073887232
+  92              		.cfi_endproc
+  93              	.LFE134:
+  95              		.text
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccppOMus.s 			page 4
+
+
+  96              	.Letext0:
+  97              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
+  98              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
+  99              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccppOMus.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_hal_msp.c
-C:\Users\30514\AppData\Local\Temp\ccTwOfff.s:21     .text.HAL_MspInit:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccTwOfff.s:27     .text.HAL_MspInit:00000000 HAL_MspInit
-C:\Users\30514\AppData\Local\Temp\ccTwOfff.s:80     .text.HAL_MspInit:00000034 $d
+C:\Users\30514\AppData\Local\Temp\ccppOMus.s:21     .text.HAL_MspInit:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccppOMus.s:27     .text.HAL_MspInit:00000000 HAL_MspInit
+C:\Users\30514\AppData\Local\Temp\ccppOMus.s:91     .text.HAL_MspInit:0000004c $d
+                           .group:00000000 wm4.0.3e68c699c40fadf7e6c1e499de837233
+                           .group:00000000 wm4.stm32f4xx_hal_conf.h.25.a9a6e27d8b41172b5af7d7631d763ee0
+                           .group:00000000 wm4.stm32f4xx.h.38.63e3ea23bd63a94457417730025259b6
+                           .group:00000000 wm4.stm32f446xx.h.34.dd43cebd7192f96bce7a5ff975201274
+                           .group:00000000 wm4._newlib_version.h.4.0eb654b64686e2bd29646258853f6c22
+                           .group:00000000 wm4.features.h.33.d554620bb17bd3b714c3fb5c268772bc
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.cmsis_version.h.32.0ac195c83bb4537824e6ad1c47474b79
+                           .group:00000000 wm4.core_cm4.h.66.e4ff136c4a17abc46741866f64f8e729
+                           .group:00000000 wm4.cmsis_gcc.h.26.498d0ad17a45fc9ef20fdc01caf02259
+                           .group:00000000 wm4.core_cm4.h.174.62be9b4588d49bed18171771001331df
+                           .group:00000000 wm4.mpu_armv7.h.32.83326921a797fa9d6f70449916b4b839
+                           .group:00000000 wm4.stm32f446xx.h.917.13927c85cbbf4787955bc4173c54fa12
+                           .group:00000000 wm4.stm32f4xx.h.195.a4b8bf80f37cc96981498656ffe5f588
+                           .group:00000000 wm4.stm32_hal_legacy.h.22.8b7d303dc46a0b7ac6d3edf19ce2608d
+                           .group:00000000 wm4.stddef.h.39.0dc9006b34572d4d9cae4c8b422c4971
+                           .group:00000000 wm4.stm32f4xx_hal_def.h.58.3cb484e92e5ccf2e55312a4714e27917
+                           .group:00000000 wm4.stm32f4xx_hal_rcc_ex.h.20.9b6e314009d4800dd71c0ec1c264a1ea
+                           .group:00000000 wm4.stm32f4xx_hal_rcc.h.106.0887cf5d985ae88e345b0aed0ceb4729
+                           .group:00000000 wm4.stm32f4xx_hal_gpio.h.21.22da6a14b6049d6ac156577be74df1d7
+                           .group:00000000 wm4.stm32f4xx_hal_gpio_ex.h.21.33ea7ea24fd170b1d3dce3d23330c9d3
+                           .group:00000000 wm4.stm32f4xx_hal_gpio.h.254.d7e07832f748fe8bcb575db0b8373592
+                           .group:00000000 wm4.stm32f4xx_hal_exti.h.21.4fc7f37c3cc97fb821b368ede79414b6
+                           .group:00000000 wm4.stm32f4xx_hal_dma.h.21.8e4b1421c914345c23be719e5e528779
+                           .group:00000000 wm4.stm32f4xx_hal_dma.h.720.ac2d7eef74792e4026acc4d2923c5da4
+                           .group:00000000 wm4.stm32f4xx_hal_cortex.h.20.03673e4f79386680bf73ba399c19306b
+                           .group:00000000 wm4.stm32f4xx_hal_can.h.21.4b16c8dedf31ba328482231f811a7e65
+                           .group:00000000 wm4.stm32f4xx_hal_flash.h.20.2f1e0d1b7010b3a81a7980aaf712e7e5
+                           .group:00000000 wm4.stm32f4xx_hal_flash_ex.h.20.77cb3e5c0f1e426426a4cbc884a1eed8
+                           .group:00000000 wm4.stm32f4xx_hal_flash.h.361.23bc19b9eac79b0956d913651841ede8
+                           .group:00000000 wm4.stm32f4xx_hal_pwr.h.20.1905a0783a9c83adefd7df0c4b501e40
+                           .group:00000000 wm4.stm32f4xx_hal_pwr_ex.h.20.9786dbd699c850465fa7b77273740267
+                           .group:00000000 wm4.stm32f4xx_hal_pwr.h.338.debc0a4a62ba54688e63ab53dd99c4ea
+                           .group:00000000 wm4.stm32f4xx_hal_uart.h.21.ba8e24dd05c77faac3f3d48472e636ba
+                           .group:00000000 wm4.stm32f4xx_hal.h.71.02372bc31d47d29d3f67fbfe1429649e
 
 NO UNDEFINED SYMBOLS

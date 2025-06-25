@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cctGu2Ff.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccughRVS.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -12,7 +12,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cctGu2Ff.s 			page 1
    9              		.eabi_attribute 24, 1
   10              		.eabi_attribute 25, 1
   11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 30, 6
   13              		.eabi_attribute 34, 1
   14              		.eabi_attribute 18, 4
   15              		.file	"gpio.c"
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cctGu2Ff.s 			page 1
   28:Core/Src/gpio.c **** /*----------------------------------------------------------------------------*/
   29:Core/Src/gpio.c **** /* Configure GPIO                                                             */
   30:Core/Src/gpio.c **** /*----------------------------------------------------------------------------*/
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cctGu2Ff.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccughRVS.s 			page 2
 
 
   31:Core/Src/gpio.c **** /* USER CODE BEGIN 1 */
@@ -74,115 +74,165 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cctGu2Ff.s 			page 1
   41:Core/Src/gpio.c **** */
   42:Core/Src/gpio.c **** void MX_GPIO_Init(void)
   43:Core/Src/gpio.c **** {
-  29              		.loc 1 43 1 view -0
+  29              		.loc 1 43 1
   30              		.cfi_startproc
   31              		@ args = 0, pretend = 0, frame = 16
-  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ frame_needed = 1, uses_anonymous_args = 0
   33              		@ link register save eliminated.
-  34 0000 84B0     		sub	sp, sp, #16
+  34 0000 80B4     		push	{r7}
   35              	.LCFI0:
-  36              		.cfi_def_cfa_offset 16
+  36              		.cfi_def_cfa_offset 4
+  37              		.cfi_offset 7, -4
+  38 0002 85B0     		sub	sp, sp, #20
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 24
+  41 0004 00AF     		add	r7, sp, #0
+  42              	.LCFI2:
+  43              		.cfi_def_cfa_register 7
+  44              	.LBB2:
   44:Core/Src/gpio.c **** 
   45:Core/Src/gpio.c ****   /* GPIO Ports Clock Enable */
   46:Core/Src/gpio.c ****   __HAL_RCC_GPIOH_CLK_ENABLE();
-  37              		.loc 1 46 3 view .LVU1
-  38              	.LBB2:
-  39              		.loc 1 46 3 view .LVU2
-  40 0002 0022     		movs	r2, #0
-  41 0004 0092     		str	r2, [sp]
-  42              		.loc 1 46 3 view .LVU3
-  43 0006 154B     		ldr	r3, .L3
-  44 0008 196B     		ldr	r1, [r3, #48]
-  45 000a 41F08001 		orr	r1, r1, #128
-  46 000e 1963     		str	r1, [r3, #48]
-  47              		.loc 1 46 3 view .LVU4
-  48 0010 196B     		ldr	r1, [r3, #48]
-  49 0012 01F08001 		and	r1, r1, #128
-  50 0016 0091     		str	r1, [sp]
-  51              		.loc 1 46 3 view .LVU5
-  52 0018 0099     		ldr	r1, [sp]
-  53              	.LBE2:
-  54              		.loc 1 46 3 view .LVU6
+  45              		.loc 1 46 3
+  46 0006 0023     		movs	r3, #0
+  47 0008 FB60     		str	r3, [r7, #12]
+  48 000a 1E4B     		ldr	r3, .L2
+  49 000c 1B6B     		ldr	r3, [r3, #48]
+  50 000e 1D4A     		ldr	r2, .L2
+  51 0010 43F08003 		orr	r3, r3, #128
+  52 0014 1363     		str	r3, [r2, #48]
+  53 0016 1B4B     		ldr	r3, .L2
+  54 0018 1B6B     		ldr	r3, [r3, #48]
+  55 001a 03F08003 		and	r3, r3, #128
+  56 001e FB60     		str	r3, [r7, #12]
+  57 0020 FB68     		ldr	r3, [r7, #12]
+  58              	.LBE2:
+  59              	.LBB3:
   47:Core/Src/gpio.c ****   __HAL_RCC_GPIOC_CLK_ENABLE();
-  55              		.loc 1 47 3 view .LVU7
-  56              	.LBB3:
-  57              		.loc 1 47 3 view .LVU8
-  58 001a 0192     		str	r2, [sp, #4]
-  59              		.loc 1 47 3 view .LVU9
-  60 001c 196B     		ldr	r1, [r3, #48]
-  61 001e 41F00401 		orr	r1, r1, #4
-  62 0022 1963     		str	r1, [r3, #48]
-  63              		.loc 1 47 3 view .LVU10
-  64 0024 196B     		ldr	r1, [r3, #48]
-  65 0026 01F00401 		and	r1, r1, #4
-  66 002a 0191     		str	r1, [sp, #4]
-  67              		.loc 1 47 3 view .LVU11
-  68 002c 0199     		ldr	r1, [sp, #4]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cctGu2Ff.s 			page 3
+  60              		.loc 1 47 3
+  61 0022 0023     		movs	r3, #0
+  62 0024 BB60     		str	r3, [r7, #8]
+  63 0026 174B     		ldr	r3, .L2
+  64 0028 1B6B     		ldr	r3, [r3, #48]
+  65 002a 164A     		ldr	r2, .L2
+  66 002c 43F00403 		orr	r3, r3, #4
+  67 0030 1363     		str	r3, [r2, #48]
+  68 0032 144B     		ldr	r3, .L2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccughRVS.s 			page 3
 
 
-  69              	.LBE3:
-  70              		.loc 1 47 3 view .LVU12
+  69 0034 1B6B     		ldr	r3, [r3, #48]
+  70 0036 03F00403 		and	r3, r3, #4
+  71 003a BB60     		str	r3, [r7, #8]
+  72 003c BB68     		ldr	r3, [r7, #8]
+  73              	.LBE3:
+  74              	.LBB4:
   48:Core/Src/gpio.c ****   __HAL_RCC_GPIOB_CLK_ENABLE();
-  71              		.loc 1 48 3 view .LVU13
-  72              	.LBB4:
-  73              		.loc 1 48 3 view .LVU14
-  74 002e 0292     		str	r2, [sp, #8]
-  75              		.loc 1 48 3 view .LVU15
-  76 0030 196B     		ldr	r1, [r3, #48]
-  77 0032 41F00201 		orr	r1, r1, #2
-  78 0036 1963     		str	r1, [r3, #48]
-  79              		.loc 1 48 3 view .LVU16
-  80 0038 196B     		ldr	r1, [r3, #48]
-  81 003a 01F00201 		and	r1, r1, #2
-  82 003e 0291     		str	r1, [sp, #8]
-  83              		.loc 1 48 3 view .LVU17
-  84 0040 0299     		ldr	r1, [sp, #8]
-  85              	.LBE4:
-  86              		.loc 1 48 3 view .LVU18
+  75              		.loc 1 48 3
+  76 003e 0023     		movs	r3, #0
+  77 0040 7B60     		str	r3, [r7, #4]
+  78 0042 104B     		ldr	r3, .L2
+  79 0044 1B6B     		ldr	r3, [r3, #48]
+  80 0046 0F4A     		ldr	r2, .L2
+  81 0048 43F00203 		orr	r3, r3, #2
+  82 004c 1363     		str	r3, [r2, #48]
+  83 004e 0D4B     		ldr	r3, .L2
+  84 0050 1B6B     		ldr	r3, [r3, #48]
+  85 0052 03F00203 		and	r3, r3, #2
+  86 0056 7B60     		str	r3, [r7, #4]
+  87 0058 7B68     		ldr	r3, [r7, #4]
+  88              	.LBE4:
+  89              	.LBB5:
   49:Core/Src/gpio.c ****   __HAL_RCC_GPIOA_CLK_ENABLE();
-  87              		.loc 1 49 3 view .LVU19
-  88              	.LBB5:
-  89              		.loc 1 49 3 view .LVU20
-  90 0042 0392     		str	r2, [sp, #12]
-  91              		.loc 1 49 3 view .LVU21
-  92 0044 1A6B     		ldr	r2, [r3, #48]
-  93 0046 42F00102 		orr	r2, r2, #1
-  94 004a 1A63     		str	r2, [r3, #48]
-  95              		.loc 1 49 3 view .LVU22
-  96 004c 1B6B     		ldr	r3, [r3, #48]
-  97 004e 03F00103 		and	r3, r3, #1
-  98 0052 0393     		str	r3, [sp, #12]
-  99              		.loc 1 49 3 view .LVU23
- 100 0054 039B     		ldr	r3, [sp, #12]
- 101              	.LBE5:
- 102              		.loc 1 49 3 view .LVU24
+  90              		.loc 1 49 3
+  91 005a 0023     		movs	r3, #0
+  92 005c 3B60     		str	r3, [r7]
+  93 005e 094B     		ldr	r3, .L2
+  94 0060 1B6B     		ldr	r3, [r3, #48]
+  95 0062 084A     		ldr	r2, .L2
+  96 0064 43F00103 		orr	r3, r3, #1
+  97 0068 1363     		str	r3, [r2, #48]
+  98 006a 064B     		ldr	r3, .L2
+  99 006c 1B6B     		ldr	r3, [r3, #48]
+ 100 006e 03F00103 		and	r3, r3, #1
+ 101 0072 3B60     		str	r3, [r7]
+ 102 0074 3B68     		ldr	r3, [r7]
+ 103              	.LBE5:
   50:Core/Src/gpio.c **** 
   51:Core/Src/gpio.c **** }
- 103              		.loc 1 51 1 is_stmt 0 view .LVU25
- 104 0056 04B0     		add	sp, sp, #16
- 105              	.LCFI1:
- 106              		.cfi_def_cfa_offset 0
- 107              		@ sp needed
- 108 0058 7047     		bx	lr
- 109              	.L4:
- 110 005a 00BF     		.align	2
- 111              	.L3:
- 112 005c 00380240 		.word	1073887232
- 113              		.cfi_endproc
- 114              	.LFE134:
- 116              		.text
- 117              	.Letext0:
- 118              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
- 119              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
- 120              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cctGu2Ff.s 			page 4
+ 104              		.loc 1 51 1
+ 105 0076 00BF     		nop
+ 106 0078 1437     		adds	r7, r7, #20
+ 107              	.LCFI3:
+ 108              		.cfi_def_cfa_offset 4
+ 109 007a BD46     		mov	sp, r7
+ 110              	.LCFI4:
+ 111              		.cfi_def_cfa_register 13
+ 112              		@ sp needed
+ 113 007c 5DF8047B 		ldr	r7, [sp], #4
+ 114              	.LCFI5:
+ 115              		.cfi_restore 7
+ 116              		.cfi_def_cfa_offset 0
+ 117 0080 7047     		bx	lr
+ 118              	.L3:
+ 119 0082 00BF     		.align	2
+ 120              	.L2:
+ 121 0084 00380240 		.word	1073887232
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccughRVS.s 			page 4
+
+
+ 122              		.cfi_endproc
+ 123              	.LFE134:
+ 125              		.text
+ 126              	.Letext0:
+ 127              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 128              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 129              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccughRVS.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gpio.c
-C:\Users\30514\AppData\Local\Temp\cctGu2Ff.s:21     .text.MX_GPIO_Init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cctGu2Ff.s:27     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
-C:\Users\30514\AppData\Local\Temp\cctGu2Ff.s:112    .text.MX_GPIO_Init:0000005c $d
+C:\Users\30514\AppData\Local\Temp\ccughRVS.s:21     .text.MX_GPIO_Init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccughRVS.s:27     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+C:\Users\30514\AppData\Local\Temp\ccughRVS.s:121    .text.MX_GPIO_Init:00000084 $d
+                           .group:00000000 wm4.0.3e68c699c40fadf7e6c1e499de837233
+                           .group:00000000 wm4.stm32f4xx_hal_conf.h.25.a9a6e27d8b41172b5af7d7631d763ee0
+                           .group:00000000 wm4.stm32f4xx.h.38.63e3ea23bd63a94457417730025259b6
+                           .group:00000000 wm4.stm32f446xx.h.34.dd43cebd7192f96bce7a5ff975201274
+                           .group:00000000 wm4._newlib_version.h.4.0eb654b64686e2bd29646258853f6c22
+                           .group:00000000 wm4.features.h.33.d554620bb17bd3b714c3fb5c268772bc
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.cmsis_version.h.32.0ac195c83bb4537824e6ad1c47474b79
+                           .group:00000000 wm4.core_cm4.h.66.e4ff136c4a17abc46741866f64f8e729
+                           .group:00000000 wm4.cmsis_gcc.h.26.498d0ad17a45fc9ef20fdc01caf02259
+                           .group:00000000 wm4.core_cm4.h.174.62be9b4588d49bed18171771001331df
+                           .group:00000000 wm4.mpu_armv7.h.32.83326921a797fa9d6f70449916b4b839
+                           .group:00000000 wm4.stm32f446xx.h.917.13927c85cbbf4787955bc4173c54fa12
+                           .group:00000000 wm4.stm32f4xx.h.195.a4b8bf80f37cc96981498656ffe5f588
+                           .group:00000000 wm4.stm32_hal_legacy.h.22.8b7d303dc46a0b7ac6d3edf19ce2608d
+                           .group:00000000 wm4.stddef.h.39.0dc9006b34572d4d9cae4c8b422c4971
+                           .group:00000000 wm4.stm32f4xx_hal_def.h.58.3cb484e92e5ccf2e55312a4714e27917
+                           .group:00000000 wm4.stm32f4xx_hal_rcc_ex.h.20.9b6e314009d4800dd71c0ec1c264a1ea
+                           .group:00000000 wm4.stm32f4xx_hal_rcc.h.106.0887cf5d985ae88e345b0aed0ceb4729
+                           .group:00000000 wm4.stm32f4xx_hal_gpio.h.21.22da6a14b6049d6ac156577be74df1d7
+                           .group:00000000 wm4.stm32f4xx_hal_gpio_ex.h.21.33ea7ea24fd170b1d3dce3d23330c9d3
+                           .group:00000000 wm4.stm32f4xx_hal_gpio.h.254.d7e07832f748fe8bcb575db0b8373592
+                           .group:00000000 wm4.stm32f4xx_hal_exti.h.21.4fc7f37c3cc97fb821b368ede79414b6
+                           .group:00000000 wm4.stm32f4xx_hal_dma.h.21.8e4b1421c914345c23be719e5e528779
+                           .group:00000000 wm4.stm32f4xx_hal_dma.h.720.ac2d7eef74792e4026acc4d2923c5da4
+                           .group:00000000 wm4.stm32f4xx_hal_cortex.h.20.03673e4f79386680bf73ba399c19306b
+                           .group:00000000 wm4.stm32f4xx_hal_can.h.21.4b16c8dedf31ba328482231f811a7e65
+                           .group:00000000 wm4.stm32f4xx_hal_flash.h.20.2f1e0d1b7010b3a81a7980aaf712e7e5
+                           .group:00000000 wm4.stm32f4xx_hal_flash_ex.h.20.77cb3e5c0f1e426426a4cbc884a1eed8
+                           .group:00000000 wm4.stm32f4xx_hal_flash.h.361.23bc19b9eac79b0956d913651841ede8
+                           .group:00000000 wm4.stm32f4xx_hal_pwr.h.20.1905a0783a9c83adefd7df0c4b501e40
+                           .group:00000000 wm4.stm32f4xx_hal_pwr_ex.h.20.9786dbd699c850465fa7b77273740267
+                           .group:00000000 wm4.stm32f4xx_hal_pwr.h.338.debc0a4a62ba54688e63ab53dd99c4ea
+                           .group:00000000 wm4.stm32f4xx_hal_uart.h.21.ba8e24dd05c77faac3f3d48472e636ba
+                           .group:00000000 wm4.stm32f4xx_hal.h.71.02372bc31d47d29d3f67fbfe1429649e
 
 NO UNDEFINED SYMBOLS

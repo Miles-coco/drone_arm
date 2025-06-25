@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBQq9Da.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdQxHBc.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -12,7 +12,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBQq9Da.s 			page 1
    9              		.eabi_attribute 24, 1
   10              		.eabi_attribute 25, 1
   11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 30, 6
   13              		.eabi_attribute 34, 1
   14              		.eabi_attribute 18, 4
   15              		.file	"mcu_config.c"
@@ -37,37 +37,37 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBQq9Da.s 			page 1
    7:Module/config/mcu_config.c **** 
    8:Module/config/mcu_config.c **** void MCU_Init(void)
    9:Module/config/mcu_config.c **** {
-  29              		.loc 1 9 1 view -0
+  29              		.loc 1 9 1
   30              		.cfi_startproc
   31              		@ args = 0, pretend = 0, frame = 0
-  32              		@ frame_needed = 0, uses_anonymous_args = 0
-  33 0000 08B5     		push	{r3, lr}
+  32              		@ frame_needed = 1, uses_anonymous_args = 0
+  33 0000 80B5     		push	{r7, lr}
   34              	.LCFI0:
   35              		.cfi_def_cfa_offset 8
-  36              		.cfi_offset 3, -8
+  36              		.cfi_offset 7, -8
   37              		.cfi_offset 14, -4
+  38 0002 00AF     		add	r7, sp, #0
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_register 7
   10:Module/config/mcu_config.c ****     task_init();
-  38              		.loc 1 10 5 view .LVU1
-  39 0002 FFF7FEFF 		bl	task_init
-  40              	.LVL0:
+  41              		.loc 1 10 5
+  42 0004 FFF7FEFF 		bl	task_init
   11:Module/config/mcu_config.c ****     remote_control_init();
-  41              		.loc 1 11 5 view .LVU2
-  42 0006 FFF7FEFF 		bl	remote_control_init
-  43              	.LVL1:
+  43              		.loc 1 11 5
+  44 0008 FFF7FEFF 		bl	remote_control_init
   12:Module/config/mcu_config.c ****     can_driver_init();
-  44              		.loc 1 12 5 view .LVU3
-  45 000a FFF7FEFF 		bl	can_driver_init
-  46              	.LVL2:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBQq9Da.s 			page 2
+  45              		.loc 1 12 5
+  46 000c FFF7FEFF 		bl	can_driver_init
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdQxHBc.s 			page 2
 
 
   13:Module/config/mcu_config.c ****     ArmControl_Init();
-  47              		.loc 1 13 5 view .LVU4
-  48 000e FFF7FEFF 		bl	ArmControl_Init
-  49              	.LVL3:
+  47              		.loc 1 13 5
+  48 0010 FFF7FEFF 		bl	ArmControl_Init
   14:Module/config/mcu_config.c **** }...
-  50              		.loc 1 14 1 is_stmt 0 view .LVU5
-  51 0012 08BD     		pop	{r3, pc}
+  49              		.loc 1 14 1
+  50 0014 00BF     		nop
+  51 0016 80BD     		pop	{r7, pc}
   52              		.cfi_endproc
   53              	.LFE134:
   55              		.text
@@ -76,13 +76,57 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBQq9Da.s 			page 1
   58              		.file 3 "driver/can_driver.h"
   59              		.file 4 "Module/remote_control/remote_control.h"
   60              		.file 5 "Module/task/task.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBQq9Da.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdQxHBc.s 			page 3
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 mcu_config.c
-C:\Users\30514\AppData\Local\Temp\ccBQq9Da.s:21     .text.MCU_Init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccBQq9Da.s:27     .text.MCU_Init:00000000 MCU_Init
+C:\Users\30514\AppData\Local\Temp\ccdQxHBc.s:21     .text.MCU_Init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccdQxHBc.s:27     .text.MCU_Init:00000000 MCU_Init
+                           .group:00000000 wm4.0.3e68c699c40fadf7e6c1e499de837233
+                           .group:00000000 wm4.stm32f4xx_hal_conf.h.25.a9a6e27d8b41172b5af7d7631d763ee0
+                           .group:00000000 wm4.stm32f4xx.h.38.63e3ea23bd63a94457417730025259b6
+                           .group:00000000 wm4.stm32f446xx.h.34.dd43cebd7192f96bce7a5ff975201274
+                           .group:00000000 wm4._newlib_version.h.4.0eb654b64686e2bd29646258853f6c22
+                           .group:00000000 wm4.features.h.33.d554620bb17bd3b714c3fb5c268772bc
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.cmsis_version.h.32.0ac195c83bb4537824e6ad1c47474b79
+                           .group:00000000 wm4.core_cm4.h.66.e4ff136c4a17abc46741866f64f8e729
+                           .group:00000000 wm4.cmsis_gcc.h.26.498d0ad17a45fc9ef20fdc01caf02259
+                           .group:00000000 wm4.core_cm4.h.174.62be9b4588d49bed18171771001331df
+                           .group:00000000 wm4.mpu_armv7.h.32.83326921a797fa9d6f70449916b4b839
+                           .group:00000000 wm4.stm32f446xx.h.917.13927c85cbbf4787955bc4173c54fa12
+                           .group:00000000 wm4.stm32f4xx.h.195.a4b8bf80f37cc96981498656ffe5f588
+                           .group:00000000 wm4.stm32_hal_legacy.h.22.8b7d303dc46a0b7ac6d3edf19ce2608d
+                           .group:00000000 wm4.stddef.h.39.0dc9006b34572d4d9cae4c8b422c4971
+                           .group:00000000 wm4.stm32f4xx_hal_def.h.58.3cb484e92e5ccf2e55312a4714e27917
+                           .group:00000000 wm4.stm32f4xx_hal_rcc_ex.h.20.9b6e314009d4800dd71c0ec1c264a1ea
+                           .group:00000000 wm4.stm32f4xx_hal_rcc.h.106.0887cf5d985ae88e345b0aed0ceb4729
+                           .group:00000000 wm4.stm32f4xx_hal_gpio.h.21.22da6a14b6049d6ac156577be74df1d7
+                           .group:00000000 wm4.stm32f4xx_hal_gpio_ex.h.21.33ea7ea24fd170b1d3dce3d23330c9d3
+                           .group:00000000 wm4.stm32f4xx_hal_gpio.h.254.d7e07832f748fe8bcb575db0b8373592
+                           .group:00000000 wm4.stm32f4xx_hal_exti.h.21.4fc7f37c3cc97fb821b368ede79414b6
+                           .group:00000000 wm4.stm32f4xx_hal_dma.h.21.8e4b1421c914345c23be719e5e528779
+                           .group:00000000 wm4.stm32f4xx_hal_dma.h.720.ac2d7eef74792e4026acc4d2923c5da4
+                           .group:00000000 wm4.stm32f4xx_hal_cortex.h.20.03673e4f79386680bf73ba399c19306b
+                           .group:00000000 wm4.stm32f4xx_hal_can.h.21.4b16c8dedf31ba328482231f811a7e65
+                           .group:00000000 wm4.stm32f4xx_hal_flash.h.20.2f1e0d1b7010b3a81a7980aaf712e7e5
+                           .group:00000000 wm4.stm32f4xx_hal_flash_ex.h.20.77cb3e5c0f1e426426a4cbc884a1eed8
+                           .group:00000000 wm4.stm32f4xx_hal_flash.h.361.23bc19b9eac79b0956d913651841ede8
+                           .group:00000000 wm4.stm32f4xx_hal_pwr.h.20.1905a0783a9c83adefd7df0c4b501e40
+                           .group:00000000 wm4.stm32f4xx_hal_pwr_ex.h.20.9786dbd699c850465fa7b77273740267
+                           .group:00000000 wm4.stm32f4xx_hal_pwr.h.338.debc0a4a62ba54688e63ab53dd99c4ea
+                           .group:00000000 wm4.stm32f4xx_hal_uart.h.21.ba8e24dd05c77faac3f3d48472e636ba
+                           .group:00000000 wm4.stm32f4xx_hal.h.71.02372bc31d47d29d3f67fbfe1429649e
+                           .group:00000000 wm4.can_driver.h.7.fc481f2a7d74537943d77eaf4fae2a89
+                           .group:00000000 wm4.dm_drv.h.2.164616a3c14c5eba86a5356bad76ec61
+                           .group:00000000 wm4.dm_ctrl.h.7.f5e8660fa386af2caaf9fd826f00c559
+                           .group:00000000 wm4.remote_control.h.2.d5ede23e17e0664e5394033a072c4472
+                           .group:00000000 wm4.stdbool.h.29.c08aa3eec75cf5b9b5003883f43253f0
+                           .group:00000000 wm4.remote_control.h.15.dad157441a7369e14747acc4dfbe8b08
 
 UNDEFINED SYMBOLS
 task_init

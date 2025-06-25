@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -12,7 +12,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 1
    9              		.eabi_attribute 24, 1
   10              		.eabi_attribute 25, 1
   11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 30, 6
   13              		.eabi_attribute 34, 1
   14              		.eabi_attribute 18, 4
   15              		.file	"arm_control.c"
@@ -20,13 +20,48 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 1
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
   19              		.file 1 "Module/arm_control/arm_control.c"
-  20              		.section	.text.Smooth_Angle_Transition,"ax",%progbits
-  21              		.align	1
-  22              		.syntax unified
-  23              		.thumb
-  24              		.thumb_func
-  26              	Smooth_Angle_Transition:
-  27              	.LFB136:
+  20              		.section	.rodata.arm_config,"a"
+  21              		.align	2
+  24              	arm_config:
+  25 0000 7B142E3E 		.word	1043207291
+  26 0004 448B6C3E 		.word	1047300932
+  27 0008 0BBEF5BF 		.word	-1074414069
+  28 000c C2B8B2BE 		.word	-1095583550
+  29 0010 1E3611C0 		.word	-1072613858
+  30 0014 920A06BF 		.word	-1090123118
+  31              		.section	.bss.arm_state,"aw",%nobits
+  34              	arm_state:
+  35 0000 00       		.space	1
+  36              		.section	.data.current_target,"aw"
+  37              		.align	2
+  40              	current_target:
+  41 0000 00000000 		.word	0
+  42 0004 CDCC4C3E 		.word	1045220557
+  43              		.section	.data.current_angles,"aw"
+  44              		.align	2
+  47              	current_angles:
+  48 0000 DB0F493F 		.word	1061752795
+  49 0004 DB0FC93F 		.word	1070141403
+  50 0008 01       		.byte	1
+  51 0009 000000   		.space	3
+  52              		.section	.data.target_angles,"aw"
+  53              		.align	2
+  56              	target_angles:
+  57 0000 DB0F493F 		.word	1061752795
+  58 0004 DB0FC93F 		.word	1070141403
+  59 0008 01       		.byte	1
+  60 0009 000000   		.space	3
+  61              		.section	.text.ArmControl_Init,"ax",%progbits
+  62              		.align	1
+  63              		.global	ArmControl_Init
+  64              		.syntax unified
+  65              		.thumb
+  66              		.thumb_func
+  68              	ArmControl_Init:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 2
+
+
+  69              	.LFB134:
    1:Module/arm_control/arm_control.c **** #include "arm_control.h"
    2:Module/arm_control/arm_control.c **** #include "main.h"
    3:Module/arm_control/arm_control.c **** #include "math.h"
@@ -58,9 +93,6 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 1
   29:Module/arm_control/arm_control.c **** // 声明外部工作空间配置（在coordinate_mapping.c中定义）
   30:Module/arm_control/arm_control.c **** extern WorkspaceConfig workspace_config;
   31:Module/arm_control/arm_control.c **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 2
-
-
   32:Module/arm_control/arm_control.c **** // 当前状态
   33:Module/arm_control/arm_control.c **** static ArmState arm_state = ARM_IDLE;
   34:Module/arm_control/arm_control.c **** static point2D current_target = {0, 0.2f}; // 默认位置
@@ -69,931 +101,973 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 1
   37:Module/arm_control/arm_control.c **** 
   38:Module/arm_control/arm_control.c **** // 初始化函数
   39:Module/arm_control/arm_control.c **** void ArmControl_Init(void) {
+  70              		.loc 1 39 28
+  71              		.cfi_startproc
+  72              		@ args = 0, pretend = 0, frame = 0
+  73              		@ frame_needed = 1, uses_anonymous_args = 0
+  74 0000 80B5     		push	{r7, lr}
+  75              	.LCFI0:
+  76              		.cfi_def_cfa_offset 8
+  77              		.cfi_offset 7, -8
+  78              		.cfi_offset 14, -4
+  79 0002 00AF     		add	r7, sp, #0
+  80              	.LCFI1:
+  81              		.cfi_def_cfa_register 7
   40:Module/arm_control/arm_control.c ****     // 初始化工作空间映射（使用默认配置）（在coordinate_mapping.c中定义）
   41:Module/arm_control/arm_control.c ****     Mapping_Init(NULL);
+  82              		.loc 1 41 5
+  83 0004 0020     		movs	r0, #0
+  84 0006 FFF7FEFF 		bl	Mapping_Init
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 3
+
+
   42:Module/arm_control/arm_control.c ****     
   43:Module/arm_control/arm_control.c ****     // 设置摇杆通道（使用默认配置）
-  44:Module/arm_control/arm_control.c ****     Set_Stick_Channels(0, 1);
+  44:Module/arm_control/arm_control.c ****     Set_Stick_Channels(1, 2);
+  85              		.loc 1 44 5
+  86 000a 0221     		movs	r1, #2
+  87 000c 0120     		movs	r0, #1
+  88 000e FFF7FEFF 		bl	Set_Stick_Channels
   45:Module/arm_control/arm_control.c ****     
   46:Module/arm_control/arm_control.c ****     // 初始化电机
   47:Module/arm_control/arm_control.c ****     dm4310_motor_init();
+  89              		.loc 1 47 5
+  90 0012 FFF7FEFF 		bl	dm4310_motor_init
   48:Module/arm_control/arm_control.c ****     
   49:Module/arm_control/arm_control.c ****     // 启用电机控制
   50:Module/arm_control/arm_control.c ****     ctrl_enable(ALL_MOTORS);
+  91              		.loc 1 50 5
+  92 0016 0320     		movs	r0, #3
+  93 0018 FFF7FEFF 		bl	ctrl_enable
   51:Module/arm_control/arm_control.c ****     
   52:Module/arm_control/arm_control.c ****     // 设置初始状态
   53:Module/arm_control/arm_control.c ****     arm_state = ARM_IDLE;
+  94              		.loc 1 53 15
+  95 001c 024B     		ldr	r3, .L2
+  96 001e 0022     		movs	r2, #0
+  97 0020 1A70     		strb	r2, [r3]
   54:Module/arm_control/arm_control.c **** }
+  98              		.loc 1 54 1
+  99 0022 00BF     		nop
+ 100 0024 80BD     		pop	{r7, pc}
+ 101              	.L3:
+ 102 0026 00BF     		.align	2
+ 103              	.L2:
+ 104 0028 00000000 		.word	arm_state
+ 105              		.cfi_endproc
+ 106              	.LFE134:
+ 108              		.section	.text.Set_Target_Position,"ax",%progbits
+ 109              		.align	1
+ 110              		.global	Set_Target_Position
+ 111              		.syntax unified
+ 112              		.thumb
+ 113              		.thumb_func
+ 115              	Set_Target_Position:
+ 116              	.LFB135:
   55:Module/arm_control/arm_control.c **** 
   56:Module/arm_control/arm_control.c **** // 设置目标位置
   57:Module/arm_control/arm_control.c **** void Set_Target_Position(point2D target) 
   58:Module/arm_control/arm_control.c **** {
+ 117              		.loc 1 58 1
+ 118              		.cfi_startproc
+ 119              		@ args = 0, pretend = 0, frame = 16
+ 120              		@ frame_needed = 1, uses_anonymous_args = 0
+ 121 0000 80B5     		push	{r7, lr}
+ 122              	.LCFI2:
+ 123              		.cfi_def_cfa_offset 8
+ 124              		.cfi_offset 7, -8
+ 125              		.cfi_offset 14, -4
+ 126 0002 84B0     		sub	sp, sp, #16
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 4
+
+
+ 127              	.LCFI3:
+ 128              		.cfi_def_cfa_offset 24
+ 129 0004 00AF     		add	r7, sp, #0
+ 130              	.LCFI4:
+ 131              		.cfi_def_cfa_register 7
+ 132 0006 B0EE407A 		vmov.f32	s14, s0
+ 133 000a F0EE607A 		vmov.f32	s15, s1
+ 134 000e 87ED007A 		vstr.32	s14, [r7]
+ 135 0012 C7ED017A 		vstr.32	s15, [r7, #4]
   59:Module/arm_control/arm_control.c ****     // 使用坐标映射模块验证目标点
   60:Module/arm_control/arm_control.c ****     point2D safe_target = target;
+ 136              		.loc 1 60 13
+ 137 0016 07F10803 		add	r3, r7, #8
+ 138 001a 3A46     		mov	r2, r7
+ 139 001c 92E80300 		ldm	r2, {r0, r1}
+ 140 0020 83E80300 		stm	r3, {r0, r1}
   61:Module/arm_control/arm_control.c ****     
   62:Module/arm_control/arm_control.c ****     // 应用安全边界
   63:Module/arm_control/arm_control.c ****     safe_target.x = fmaxf(fminf(safe_target.x, 
+ 141              		.loc 1 63 21
+ 142 0024 D7ED026A 		vldr.32	s13, [r7, #8]
   64:Module/arm_control/arm_control.c ****                                 workspace_config.x_max - workspace_config.safety_margin), 
+ 143              		.loc 1 64 49
+ 144 0028 2A4B     		ldr	r3, .L5
+ 145 002a 93ED017A 		vldr.32	s14, [r3, #4]
+ 146              		.loc 1 64 74
+ 147 002e 294B     		ldr	r3, .L5
+ 148 0030 D3ED047A 		vldr.32	s15, [r3, #16]
+  63:Module/arm_control/arm_control.c ****                                 workspace_config.x_max - workspace_config.safety_margin), 
+ 149              		.loc 1 63 21
+ 150 0034 77EE677A 		vsub.f32	s15, s14, s15
+ 151 0038 F0EE670A 		vmov.f32	s1, s15
+ 152 003c B0EE660A 		vmov.f32	s0, s13
+ 153 0040 FFF7FEFF 		bl	fminf
+ 154 0044 F0EE406A 		vmov.f32	s13, s0
   65:Module/arm_control/arm_control.c ****                           workspace_config.x_min + workspace_config.safety_margin);
+ 155              		.loc 1 65 43
+ 156 0048 224B     		ldr	r3, .L5
+ 157 004a 93ED007A 		vldr.32	s14, [r3]
+ 158              		.loc 1 65 68
+ 159 004e 214B     		ldr	r3, .L5
+ 160 0050 D3ED047A 		vldr.32	s15, [r3, #16]
+  63:Module/arm_control/arm_control.c ****                                 workspace_config.x_max - workspace_config.safety_margin), 
+ 161              		.loc 1 63 21
+ 162 0054 77EE277A 		vadd.f32	s15, s14, s15
+ 163 0058 F0EE670A 		vmov.f32	s1, s15
+ 164 005c B0EE660A 		vmov.f32	s0, s13
+ 165 0060 FFF7FEFF 		bl	fmaxf
+ 166 0064 F0EE407A 		vmov.f32	s15, s0
+  63:Module/arm_control/arm_control.c ****                                 workspace_config.x_max - workspace_config.safety_margin), 
+ 167              		.loc 1 63 19 discriminator 2
+ 168 0068 C7ED027A 		vstr.32	s15, [r7, #8]
   66:Module/arm_control/arm_control.c ****     
   67:Module/arm_control/arm_control.c ****     safe_target.y = fmaxf(fminf(safe_target.y, 
+ 169              		.loc 1 67 21
+ 170 006c D7ED036A 		vldr.32	s13, [r7, #12]
   68:Module/arm_control/arm_control.c ****                                 workspace_config.y_max - workspace_config.safety_margin), 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 5
+
+
+ 171              		.loc 1 68 49
+ 172 0070 184B     		ldr	r3, .L5
+ 173 0072 93ED037A 		vldr.32	s14, [r3, #12]
+ 174              		.loc 1 68 74
+ 175 0076 174B     		ldr	r3, .L5
+ 176 0078 D3ED047A 		vldr.32	s15, [r3, #16]
+  67:Module/arm_control/arm_control.c ****                                 workspace_config.y_max - workspace_config.safety_margin), 
+ 177              		.loc 1 67 21
+ 178 007c 77EE677A 		vsub.f32	s15, s14, s15
+ 179 0080 F0EE670A 		vmov.f32	s1, s15
+ 180 0084 B0EE660A 		vmov.f32	s0, s13
+ 181 0088 FFF7FEFF 		bl	fminf
+ 182 008c F0EE406A 		vmov.f32	s13, s0
   69:Module/arm_control/arm_control.c ****                           workspace_config.y_min + workspace_config.safety_margin);
+ 183              		.loc 1 69 43
+ 184 0090 104B     		ldr	r3, .L5
+ 185 0092 93ED027A 		vldr.32	s14, [r3, #8]
+ 186              		.loc 1 69 68
+ 187 0096 0F4B     		ldr	r3, .L5
+ 188 0098 D3ED047A 		vldr.32	s15, [r3, #16]
+  67:Module/arm_control/arm_control.c ****                                 workspace_config.y_max - workspace_config.safety_margin), 
+ 189              		.loc 1 67 21
+ 190 009c 77EE277A 		vadd.f32	s15, s14, s15
+ 191 00a0 F0EE670A 		vmov.f32	s1, s15
+ 192 00a4 B0EE660A 		vmov.f32	s0, s13
+ 193 00a8 FFF7FEFF 		bl	fmaxf
+ 194 00ac F0EE407A 		vmov.f32	s15, s0
+  67:Module/arm_control/arm_control.c ****                                 workspace_config.y_max - workspace_config.safety_margin), 
+ 195              		.loc 1 67 19 discriminator 2
+ 196 00b0 C7ED037A 		vstr.32	s15, [r7, #12]
   70:Module/arm_control/arm_control.c ****     
   71:Module/arm_control/arm_control.c ****     // 更新目标点
   72:Module/arm_control/arm_control.c ****     current_target = safe_target;
+ 197              		.loc 1 72 20
+ 198 00b4 084B     		ldr	r3, .L5+4
+ 199 00b6 1A46     		mov	r2, r3
+ 200 00b8 07F10803 		add	r3, r7, #8
+ 201 00bc 93E80300 		ldm	r3, {r0, r1}
+ 202 00c0 82E80300 		stm	r2, {r0, r1}
   73:Module/arm_control/arm_control.c ****     arm_state = ARM_MOVING;
+ 203              		.loc 1 73 15
+ 204 00c4 054B     		ldr	r3, .L5+8
+ 205 00c6 0122     		movs	r2, #1
+ 206 00c8 1A70     		strb	r2, [r3]
   74:Module/arm_control/arm_control.c **** }
+ 207              		.loc 1 74 1
+ 208 00ca 00BF     		nop
+ 209 00cc 1037     		adds	r7, r7, #16
+ 210              	.LCFI5:
+ 211              		.cfi_def_cfa_offset 8
+ 212 00ce BD46     		mov	sp, r7
+ 213              	.LCFI6:
+ 214              		.cfi_def_cfa_register 13
+ 215              		@ sp needed
+ 216 00d0 80BD     		pop	{r7, pc}
+ 217              	.L6:
+ 218 00d2 00BF     		.align	2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 6
+
+
+ 219              	.L5:
+ 220 00d4 00000000 		.word	workspace_config
+ 221 00d8 00000000 		.word	current_target
+ 222 00dc 00000000 		.word	arm_state
+ 223              		.cfi_endproc
+ 224              	.LFE135:
+ 226              		.section	.text.Smooth_Angle_Transition,"ax",%progbits
+ 227              		.align	1
+ 228              		.syntax unified
+ 229              		.thumb
+ 230              		.thumb_func
+ 232              	Smooth_Angle_Transition:
+ 233              	.LFB136:
   75:Module/arm_control/arm_control.c **** 
   76:Module/arm_control/arm_control.c **** // 平滑角度过渡
   77:Module/arm_control/arm_control.c **** static void Smooth_Angle_Transition(void) 
   78:Module/arm_control/arm_control.c **** {
-  28              		.loc 1 78 1 view -0
-  29              		.cfi_startproc
-  30              		@ args = 0, pretend = 0, frame = 0
-  31              		@ frame_needed = 0, uses_anonymous_args = 0
-  32              		@ link register save eliminated.
+ 234              		.loc 1 78 1
+ 235              		.cfi_startproc
+ 236              		@ args = 0, pretend = 0, frame = 16
+ 237              		@ frame_needed = 1, uses_anonymous_args = 0
+ 238 0000 80B5     		push	{r7, lr}
+ 239              	.LCFI7:
+ 240              		.cfi_def_cfa_offset 8
+ 241              		.cfi_offset 7, -8
+ 242              		.cfi_offset 14, -4
+ 243 0002 2DED028B 		vpush.64	{d8}
+ 244              	.LCFI8:
+ 245              		.cfi_def_cfa_offset 16
+ 246              		.cfi_offset 80, -16
+ 247              		.cfi_offset 81, -12
+ 248 0006 84B0     		sub	sp, sp, #16
+ 249              	.LCFI9:
+ 250              		.cfi_def_cfa_offset 32
+ 251 0008 00AF     		add	r7, sp, #0
+ 252              	.LCFI10:
+ 253              		.cfi_def_cfa_register 7
   79:Module/arm_control/arm_control.c ****     const float MAX_ANGLE_STEP = DEG_TO_RAD(5.0f);
-  33              		.loc 1 79 5 view .LVU1
-  34              	.LVL0:
+ 254              		.loc 1 79 17
+ 255 000a 3B4B     		ldr	r3, .L24
+ 256 000c FB60     		str	r3, [r7, #12]	@ float
   80:Module/arm_control/arm_control.c ****     
   81:Module/arm_control/arm_control.c ****     // 检查θ1步进
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 3
-
-
   82:Module/arm_control/arm_control.c ****     float delta1 = target_angles.theta1 - current_angles.theta1;
-  35              		.loc 1 82 5 view .LVU2
-  36              		.loc 1 82 33 is_stmt 0 view .LVU3
-  37 0000 294B     		ldr	r3, .L19
-  38 0002 D3ED006A 		vldr.32	s13, [r3]
-  39              		.loc 1 82 57 view .LVU4
-  40 0006 294B     		ldr	r3, .L19+4
-  41 0008 D3ED007A 		vldr.32	s15, [r3]
-  42              		.loc 1 82 11 view .LVU5
-  43 000c 36EEE76A 		vsub.f32	s12, s13, s15
-  44              	.LVL1:
+ 257              		.loc 1 82 33
+ 258 000e 3B4B     		ldr	r3, .L24+4
+ 259 0010 93ED007A 		vldr.32	s14, [r3]
+ 260              		.loc 1 82 57
+ 261 0014 3A4B     		ldr	r3, .L24+8
+ 262 0016 D3ED007A 		vldr.32	s15, [r3]
+ 263              		.loc 1 82 11
+ 264 001a 77EE677A 		vsub.f32	s15, s14, s15
+ 265 001e C7ED027A 		vstr.32	s15, [r7, #8]
   83:Module/arm_control/arm_control.c ****     if (fabsf(delta1) > MAX_ANGLE_STEP) 
-  45              		.loc 1 83 5 is_stmt 1 view .LVU6
-  46              		.loc 1 83 9 is_stmt 0 view .LVU7
-  47 0010 B0EEC67A 		vabs.f32	s14, s12
-  48              		.loc 1 83 8 view .LVU8
-  49 0014 DFED265A 		vldr.32	s11, .L19+8
-  50 0018 B4EEE57A 		vcmpe.f32	s14, s11
-  51 001c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-  52 0020 3ADD     		ble	.L17
+ 266              		.loc 1 83 9
+ 267 0022 D7ED027A 		vldr.32	s15, [r7, #8]
+ 268 0026 F0EEE77A 		vabs.f32	s15, s15
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 7
+
+
+ 269              		.loc 1 83 8
+ 270 002a 97ED037A 		vldr.32	s14, [r7, #12]
+ 271 002e B4EEE77A 		vcmpe.f32	s14, s15
+ 272 0032 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 273 0036 10D5     		bpl	.L21
   84:Module/arm_control/arm_control.c ****     {
   85:Module/arm_control/arm_control.c ****         current_angles.theta1 += copysignf(MAX_ANGLE_STEP, delta1);
-  53              		.loc 1 85 9 is_stmt 1 view .LVU9
-  54              		.loc 1 85 34 is_stmt 0 view .LVU10
-  55 0022 F0EE656A 		vmov.f32	s13, s11
-  56 0026 16EE103A 		vmov	r3, s12	@ int
-  57 002a 002B     		cmp	r3, #0
-  58 002c 01DA     		bge	.L4
-  59 002e DFED216A 		vldr.32	s13, .L19+12
-  60              	.L4:
-  61              		.loc 1 85 31 discriminator 1 view .LVU11
-  62 0032 77EEA67A 		vadd.f32	s15, s15, s13
-  63 0036 1D4B     		ldr	r3, .L19+4
-  64 0038 C3ED007A 		vstr.32	s15, [r3]
-  65              	.L5:
+ 274              		.loc 1 85 23
+ 275 0038 314B     		ldr	r3, .L24+8
+ 276 003a 93ED008A 		vldr.32	s16, [r3]
+ 277              		.loc 1 85 34
+ 278 003e D7ED020A 		vldr.32	s1, [r7, #8]
+ 279 0042 97ED030A 		vldr.32	s0, [r7, #12]
+ 280 0046 FFF7FEFF 		bl	copysignf
+ 281 004a F0EE407A 		vmov.f32	s15, s0
+ 282              		.loc 1 85 31 discriminator 1
+ 283 004e 78EE277A 		vadd.f32	s15, s16, s15
+ 284 0052 2B4B     		ldr	r3, .L24+8
+ 285 0054 C3ED007A 		vstr.32	s15, [r3]
+ 286 0058 03E0     		b	.L10
+ 287              	.L21:
   86:Module/arm_control/arm_control.c ****     } 
   87:Module/arm_control/arm_control.c ****     else 
   88:Module/arm_control/arm_control.c ****     {
   89:Module/arm_control/arm_control.c ****         current_angles.theta1 = target_angles.theta1;
+ 288              		.loc 1 89 46
+ 289 005a 284B     		ldr	r3, .L24+4
+ 290 005c 1B68     		ldr	r3, [r3]	@ float
+ 291              		.loc 1 89 31
+ 292 005e 284A     		ldr	r2, .L24+8
+ 293 0060 1360     		str	r3, [r2]	@ float
+ 294              	.L10:
   90:Module/arm_control/arm_control.c ****     }
   91:Module/arm_control/arm_control.c ****     
   92:Module/arm_control/arm_control.c ****     // 检查θ2步进
   93:Module/arm_control/arm_control.c ****     float delta2 = target_angles.theta2 - current_angles.theta2;
-  66              		.loc 1 93 5 is_stmt 1 view .LVU12
-  67              		.loc 1 93 33 is_stmt 0 view .LVU13
-  68 003c 1A4B     		ldr	r3, .L19
-  69 003e 93ED016A 		vldr.32	s12, [r3, #4]
-  70              	.LVL2:
-  71              		.loc 1 93 57 view .LVU14
-  72 0042 1A4B     		ldr	r3, .L19+4
-  73              		.loc 1 93 57 view .LVU15
-  74 0044 D3ED017A 		vldr.32	s15, [r3, #4]
-  75              		.loc 1 93 11 view .LVU16
-  76 0048 76EE675A 		vsub.f32	s11, s12, s15
-  77              	.LVL3:
+ 295              		.loc 1 93 33
+ 296 0062 264B     		ldr	r3, .L24+4
+ 297 0064 93ED017A 		vldr.32	s14, [r3, #4]
+ 298              		.loc 1 93 57
+ 299 0068 254B     		ldr	r3, .L24+8
+ 300 006a D3ED017A 		vldr.32	s15, [r3, #4]
+ 301              		.loc 1 93 11
+ 302 006e 77EE677A 		vsub.f32	s15, s14, s15
+ 303 0072 C7ED017A 		vstr.32	s15, [r7, #4]
   94:Module/arm_control/arm_control.c ****     if (fabsf(delta2) > MAX_ANGLE_STEP) 
-  78              		.loc 1 94 5 is_stmt 1 view .LVU17
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 4
-
-
-  79              		.loc 1 94 9 is_stmt 0 view .LVU18
-  80 004c F0EEE56A 		vabs.f32	s13, s11
-  81              		.loc 1 94 8 view .LVU19
-  82 0050 9FED175A 		vldr.32	s10, .L19+8
-  83 0054 F4EEC56A 		vcmpe.f32	s13, s10
-  84 0058 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-  85 005c 20DD     		ble	.L18
+ 304              		.loc 1 94 9
+ 305 0076 D7ED017A 		vldr.32	s15, [r7, #4]
+ 306 007a F0EEE77A 		vabs.f32	s15, s15
+ 307              		.loc 1 94 8
+ 308 007e 97ED037A 		vldr.32	s14, [r7, #12]
+ 309 0082 B4EEE77A 		vcmpe.f32	s14, s15
+ 310 0086 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 311 008a 10D5     		bpl	.L22
   95:Module/arm_control/arm_control.c ****     {
   96:Module/arm_control/arm_control.c ****         current_angles.theta2 += copysignf(MAX_ANGLE_STEP, delta2);
-  86              		.loc 1 96 9 is_stmt 1 view .LVU20
-  87              		.loc 1 96 34 is_stmt 0 view .LVU21
-  88 005e B0EE456A 		vmov.f32	s12, s10
-  89 0062 15EE903A 		vmov	r3, s11	@ int
-  90 0066 002B     		cmp	r3, #0
-  91 0068 01DA     		bge	.L8
-  92 006a 9FED126A 		vldr.32	s12, .L19+12
-  93              	.L8:
-  94              		.loc 1 96 31 discriminator 1 view .LVU22
-  95 006e 77EE867A 		vadd.f32	s15, s15, s12
-  96 0072 0E4B     		ldr	r3, .L19+4
-  97 0074 C3ED017A 		vstr.32	s15, [r3, #4]
-  98              	.L9:
+ 312              		.loc 1 96 23
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 8
+
+
+ 313 008c 1C4B     		ldr	r3, .L24+8
+ 314 008e 93ED018A 		vldr.32	s16, [r3, #4]
+ 315              		.loc 1 96 34
+ 316 0092 D7ED010A 		vldr.32	s1, [r7, #4]
+ 317 0096 97ED030A 		vldr.32	s0, [r7, #12]
+ 318 009a FFF7FEFF 		bl	copysignf
+ 319 009e F0EE407A 		vmov.f32	s15, s0
+ 320              		.loc 1 96 31 discriminator 1
+ 321 00a2 78EE277A 		vadd.f32	s15, s16, s15
+ 322 00a6 164B     		ldr	r3, .L24+8
+ 323 00a8 C3ED017A 		vstr.32	s15, [r3, #4]
+ 324 00ac 03E0     		b	.L13
+ 325              	.L22:
   97:Module/arm_control/arm_control.c ****     } 
   98:Module/arm_control/arm_control.c ****     else 
   99:Module/arm_control/arm_control.c ****     {
  100:Module/arm_control/arm_control.c ****         current_angles.theta2 = target_angles.theta2;
+ 326              		.loc 1 100 46
+ 327 00ae 134B     		ldr	r3, .L24+4
+ 328 00b0 5B68     		ldr	r3, [r3, #4]	@ float
+ 329              		.loc 1 100 31
+ 330 00b2 134A     		ldr	r2, .L24+8
+ 331 00b4 5360     		str	r3, [r2, #4]	@ float
+ 332              	.L13:
  101:Module/arm_control/arm_control.c ****     }
  102:Module/arm_control/arm_control.c ****     
  103:Module/arm_control/arm_control.c ****     // 检查是否到达目标
  104:Module/arm_control/arm_control.c ****     if (fabsf(delta1) < 0.001f && fabsf(delta2) < 0.001f) 
-  99              		.loc 1 104 5 is_stmt 1 view .LVU23
- 100              		.loc 1 104 8 is_stmt 0 view .LVU24
- 101 0078 DFED0F7A 		vldr.32	s15, .L19+16
- 102 007c B4EEE77A 		vcmpe.f32	s14, s15
- 103 0080 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 104 0084 07D5     		bpl	.L1
- 105              		.loc 1 104 32 discriminator 1 view .LVU25
- 106 0086 F4EEE76A 		vcmpe.f32	s13, s15
- 107 008a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 108 008e 02D5     		bpl	.L1
+ 333              		.loc 1 104 9
+ 334 00b6 D7ED027A 		vldr.32	s15, [r7, #8]
+ 335 00ba F0EEE77A 		vabs.f32	s15, s15
+ 336              		.loc 1 104 8
+ 337 00be 9FED117A 		vldr.32	s14, .L24+12
+ 338 00c2 F4EEC77A 		vcmpe.f32	s15, s14
+ 339 00c6 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 340 00ca 00D4     		bmi	.L19
  105:Module/arm_control/arm_control.c ****     {
  106:Module/arm_control/arm_control.c ****         arm_state = ARM_IDLE;
- 109              		.loc 1 106 9 is_stmt 1 view .LVU26
- 110              		.loc 1 106 19 is_stmt 0 view .LVU27
- 111 0090 0A4B     		ldr	r3, .L19+20
- 112 0092 0022     		movs	r2, #0
- 113 0094 1A70     		strb	r2, [r3]
- 114              	.L1:
  107:Module/arm_control/arm_control.c ****     }
  108:Module/arm_control/arm_control.c **** }
- 115              		.loc 1 108 1 view .LVU28
- 116 0096 7047     		bx	lr
- 117              	.LVL4:
- 118              	.L17:
-  89:Module/arm_control/arm_control.c ****     }
- 119              		.loc 1 89 9 is_stmt 1 view .LVU29
-  89:Module/arm_control/arm_control.c ****     }
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 5
+ 341              		.loc 1 108 1
+ 342 00cc 0EE0     		b	.L23
+ 343              	.L19:
+ 104:Module/arm_control/arm_control.c ****     {
+ 344              		.loc 1 104 35 discriminator 1
+ 345 00ce D7ED017A 		vldr.32	s15, [r7, #4]
+ 346 00d2 F0EEE77A 		vabs.f32	s15, s15
+ 104:Module/arm_control/arm_control.c ****     {
+ 347              		.loc 1 104 32 discriminator 1
+ 348 00d6 9FED0B7A 		vldr.32	s14, .L24+12
+ 349 00da F4EEC77A 		vcmpe.f32	s15, s14
+ 350 00de F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 351 00e2 00D4     		bmi	.L20
+ 352              		.loc 1 108 1
+ 353 00e4 02E0     		b	.L23
+ 354              	.L20:
+ 106:Module/arm_control/arm_control.c ****     }
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 9
 
 
- 120              		.loc 1 89 31 is_stmt 0 view .LVU30
- 121 0098 044B     		ldr	r3, .L19+4
- 122 009a C3ED006A 		vstr.32	s13, [r3]
- 123 009e CDE7     		b	.L5
- 124              	.LVL5:
- 125              	.L18:
- 100:Module/arm_control/arm_control.c ****     }
- 126              		.loc 1 100 9 is_stmt 1 view .LVU31
- 100:Module/arm_control/arm_control.c ****     }
- 127              		.loc 1 100 31 is_stmt 0 view .LVU32
- 128 00a0 024B     		ldr	r3, .L19+4
- 129 00a2 83ED016A 		vstr.32	s12, [r3, #4]
- 130 00a6 E7E7     		b	.L9
- 131              	.L20:
- 132              		.align	2
- 133              	.L19:
- 134 00a8 00000000 		.word	target_angles
- 135 00ac 00000000 		.word	current_angles
- 136 00b0 C2B8B23D 		.word	1035122882
- 137 00b4 C2B8B2BD 		.word	-1112360766
- 138 00b8 6F12833A 		.word	981668463
- 139 00bc 00000000 		.word	arm_state
- 140              		.cfi_endproc
- 141              	.LFE136:
- 143              		.section	.text.ArmControl_Init,"ax",%progbits
- 144              		.align	1
- 145              		.global	ArmControl_Init
- 146              		.syntax unified
- 147              		.thumb
- 148              		.thumb_func
- 150              	ArmControl_Init:
- 151              	.LFB134:
-  39:Module/arm_control/arm_control.c ****     // 初始化工作空间映射（使用默认配置）（在coordinate_mapping.c中定义）
- 152              		.loc 1 39 28 is_stmt 1 view -0
- 153              		.cfi_startproc
- 154              		@ args = 0, pretend = 0, frame = 0
- 155              		@ frame_needed = 0, uses_anonymous_args = 0
- 156 0000 08B5     		push	{r3, lr}
- 157              	.LCFI0:
- 158              		.cfi_def_cfa_offset 8
- 159              		.cfi_offset 3, -8
- 160              		.cfi_offset 14, -4
-  41:Module/arm_control/arm_control.c ****     
- 161              		.loc 1 41 5 view .LVU34
- 162 0002 0020     		movs	r0, #0
- 163 0004 FFF7FEFF 		bl	Mapping_Init
- 164              	.LVL6:
-  44:Module/arm_control/arm_control.c ****     
- 165              		.loc 1 44 5 view .LVU35
- 166 0008 0121     		movs	r1, #1
- 167 000a 0020     		movs	r0, #0
- 168 000c FFF7FEFF 		bl	Set_Stick_Channels
- 169              	.LVL7:
-  47:Module/arm_control/arm_control.c ****     
- 170              		.loc 1 47 5 view .LVU36
- 171 0010 FFF7FEFF 		bl	dm4310_motor_init
- 172              	.LVL8:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 6
-
-
-  50:Module/arm_control/arm_control.c ****     
- 173              		.loc 1 50 5 view .LVU37
- 174 0014 0320     		movs	r0, #3
- 175 0016 FFF7FEFF 		bl	ctrl_enable
- 176              	.LVL9:
-  53:Module/arm_control/arm_control.c **** }
- 177              		.loc 1 53 5 view .LVU38
-  53:Module/arm_control/arm_control.c **** }
- 178              		.loc 1 53 15 is_stmt 0 view .LVU39
- 179 001a 024B     		ldr	r3, .L23
- 180 001c 0022     		movs	r2, #0
- 181 001e 1A70     		strb	r2, [r3]
-  54:Module/arm_control/arm_control.c **** 
- 182              		.loc 1 54 1 view .LVU40
- 183 0020 08BD     		pop	{r3, pc}
- 184              	.L24:
- 185 0022 00BF     		.align	2
- 186              	.L23:
- 187 0024 00000000 		.word	arm_state
- 188              		.cfi_endproc
- 189              	.LFE134:
- 191              		.section	.text.Set_Target_Position,"ax",%progbits
- 192              		.align	1
- 193              		.global	Set_Target_Position
- 194              		.syntax unified
- 195              		.thumb
- 196              		.thumb_func
- 198              	Set_Target_Position:
- 199              	.LFB135:
-  58:Module/arm_control/arm_control.c ****     // 使用坐标映射模块验证目标点
- 200              		.loc 1 58 1 is_stmt 1 view -0
- 201              		.cfi_startproc
- 202              		@ args = 0, pretend = 0, frame = 16
- 203              		@ frame_needed = 0, uses_anonymous_args = 0
- 204 0000 30B5     		push	{r4, r5, lr}
- 205              	.LCFI1:
- 206              		.cfi_def_cfa_offset 12
- 207              		.cfi_offset 4, -12
- 208              		.cfi_offset 5, -8
- 209              		.cfi_offset 14, -4
- 210 0002 2DED028B 		vpush.64	{d8}
- 211              	.LCFI2:
- 212              		.cfi_def_cfa_offset 20
- 213              		.cfi_offset 80, -20
- 214              		.cfi_offset 81, -16
- 215 0006 85B0     		sub	sp, sp, #20
- 216              	.LCFI3:
- 217              		.cfi_def_cfa_offset 40
- 218 0008 8DED000A 		vstr.32	s0, [sp]
- 219 000c CDED010A 		vstr.32	s1, [sp, #4]
-  60:Module/arm_control/arm_control.c ****     
- 220              		.loc 1 60 5 view .LVU42
-  60:Module/arm_control/arm_control.c ****     
- 221              		.loc 1 60 13 is_stmt 0 view .LVU43
- 222 0010 02AD     		add	r5, sp, #8
- 223 0012 6B46     		mov	r3, sp
- 224 0014 93E80300 		ldm	r3, {r0, r1}
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 7
-
-
- 225 0018 85E80300 		stm	r5, {r0, r1}
-  63:Module/arm_control/arm_control.c ****                                 workspace_config.x_max - workspace_config.safety_margin), 
- 226              		.loc 1 63 5 is_stmt 1 view .LVU44
-  64:Module/arm_control/arm_control.c ****                           workspace_config.x_min + workspace_config.safety_margin);
- 227              		.loc 1 64 49 is_stmt 0 view .LVU45
- 228 001c 174C     		ldr	r4, .L27
- 229 001e D4ED010A 		vldr.32	s1, [r4, #4]
-  64:Module/arm_control/arm_control.c ****                           workspace_config.x_min + workspace_config.safety_margin);
- 230              		.loc 1 64 74 view .LVU46
- 231 0022 94ED048A 		vldr.32	s16, [r4, #16]
-  63:Module/arm_control/arm_control.c ****                                 workspace_config.x_max - workspace_config.safety_margin), 
- 232              		.loc 1 63 21 view .LVU47
- 233 0026 70EEC80A 		vsub.f32	s1, s1, s16
- 234 002a 9DED020A 		vldr.32	s0, [sp, #8]
- 235 002e FFF7FEFF 		bl	fminf
- 236              	.LVL10:
-  65:Module/arm_control/arm_control.c ****     
- 237              		.loc 1 65 43 view .LVU48
- 238 0032 D4ED000A 		vldr.32	s1, [r4]
-  63:Module/arm_control/arm_control.c ****                                 workspace_config.x_max - workspace_config.safety_margin), 
- 239              		.loc 1 63 21 view .LVU49
- 240 0036 78EE200A 		vadd.f32	s1, s16, s1
- 241 003a FFF7FEFF 		bl	fmaxf
- 242              	.LVL11:
-  63:Module/arm_control/arm_control.c ****                                 workspace_config.x_max - workspace_config.safety_margin), 
- 243              		.loc 1 63 19 discriminator 2 view .LVU50
- 244 003e 8DED020A 		vstr.32	s0, [sp, #8]
-  67:Module/arm_control/arm_control.c ****                                 workspace_config.y_max - workspace_config.safety_margin), 
- 245              		.loc 1 67 5 is_stmt 1 view .LVU51
-  68:Module/arm_control/arm_control.c ****                           workspace_config.y_min + workspace_config.safety_margin);
- 246              		.loc 1 68 49 is_stmt 0 view .LVU52
- 247 0042 D4ED030A 		vldr.32	s1, [r4, #12]
-  67:Module/arm_control/arm_control.c ****                                 workspace_config.y_max - workspace_config.safety_margin), 
- 248              		.loc 1 67 21 view .LVU53
- 249 0046 70EEC80A 		vsub.f32	s1, s1, s16
- 250 004a 9DED030A 		vldr.32	s0, [sp, #12]
- 251 004e FFF7FEFF 		bl	fminf
- 252              	.LVL12:
-  69:Module/arm_control/arm_control.c ****     
- 253              		.loc 1 69 43 view .LVU54
- 254 0052 D4ED020A 		vldr.32	s1, [r4, #8]
-  67:Module/arm_control/arm_control.c ****                                 workspace_config.y_max - workspace_config.safety_margin), 
- 255              		.loc 1 67 21 view .LVU55
- 256 0056 78EE200A 		vadd.f32	s1, s16, s1
- 257 005a FFF7FEFF 		bl	fmaxf
- 258              	.LVL13:
-  67:Module/arm_control/arm_control.c ****                                 workspace_config.y_max - workspace_config.safety_margin), 
- 259              		.loc 1 67 19 discriminator 2 view .LVU56
- 260 005e 8DED030A 		vstr.32	s0, [sp, #12]
-  72:Module/arm_control/arm_control.c ****     arm_state = ARM_MOVING;
- 261              		.loc 1 72 5 is_stmt 1 view .LVU57
-  72:Module/arm_control/arm_control.c ****     arm_state = ARM_MOVING;
- 262              		.loc 1 72 20 is_stmt 0 view .LVU58
- 263 0062 074B     		ldr	r3, .L27+4
- 264 0064 95E80300 		ldm	r5, {r0, r1}
- 265 0068 83E80300 		stm	r3, {r0, r1}
-  73:Module/arm_control/arm_control.c **** }
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 8
-
-
- 266              		.loc 1 73 5 is_stmt 1 view .LVU59
-  73:Module/arm_control/arm_control.c **** }
- 267              		.loc 1 73 15 is_stmt 0 view .LVU60
- 268 006c 054B     		ldr	r3, .L27+8
- 269 006e 0122     		movs	r2, #1
- 270 0070 1A70     		strb	r2, [r3]
-  74:Module/arm_control/arm_control.c **** 
- 271              		.loc 1 74 1 view .LVU61
- 272 0072 05B0     		add	sp, sp, #20
- 273              	.LCFI4:
- 274              		.cfi_def_cfa_offset 20
- 275              		@ sp needed
- 276 0074 BDEC028B 		vldm	sp!, {d8}
- 277              	.LCFI5:
- 278              		.cfi_restore 80
- 279              		.cfi_restore 81
- 280              		.cfi_def_cfa_offset 12
- 281 0078 30BD     		pop	{r4, r5, pc}
- 282              	.L28:
- 283 007a 00BF     		.align	2
- 284              	.L27:
- 285 007c 00000000 		.word	workspace_config
- 286 0080 00000000 		.word	current_target
- 287 0084 00000000 		.word	arm_state
- 288              		.cfi_endproc
- 289              	.LFE135:
- 291              		.section	.text.Get_Arm_State,"ax",%progbits
- 292              		.align	1
- 293              		.global	Get_Arm_State
- 294              		.syntax unified
- 295              		.thumb
- 296              		.thumb_func
- 298              	Get_Arm_State:
- 299              	.LFB138:
+ 355              		.loc 1 106 19
+ 356 00e6 084B     		ldr	r3, .L24+16
+ 357 00e8 0022     		movs	r2, #0
+ 358 00ea 1A70     		strb	r2, [r3]
+ 359              	.L23:
+ 360              		.loc 1 108 1
+ 361 00ec 00BF     		nop
+ 362 00ee 1037     		adds	r7, r7, #16
+ 363              	.LCFI11:
+ 364              		.cfi_def_cfa_offset 16
+ 365 00f0 BD46     		mov	sp, r7
+ 366              	.LCFI12:
+ 367              		.cfi_def_cfa_register 13
+ 368              		@ sp needed
+ 369 00f2 BDEC028B 		vldm	sp!, {d8}
+ 370              	.LCFI13:
+ 371              		.cfi_restore 80
+ 372              		.cfi_restore 81
+ 373              		.cfi_def_cfa_offset 8
+ 374 00f6 80BD     		pop	{r7, pc}
+ 375              	.L25:
+ 376              		.align	2
+ 377              	.L24:
+ 378 00f8 C2B8B23D 		.word	1035122882
+ 379 00fc 00000000 		.word	target_angles
+ 380 0100 00000000 		.word	current_angles
+ 381 0104 6F12833A 		.word	981668463
+ 382 0108 00000000 		.word	arm_state
+ 383              		.cfi_endproc
+ 384              	.LFE136:
+ 386              		.section	.text.ArmControl_Update,"ax",%progbits
+ 387              		.align	1
+ 388              		.global	ArmControl_Update
+ 389              		.syntax unified
+ 390              		.thumb
+ 391              		.thumb_func
+ 393              	ArmControl_Update:
+ 394              	.LFB137:
  109:Module/arm_control/arm_control.c **** 
  110:Module/arm_control/arm_control.c **** // 更新机械臂控制
  111:Module/arm_control/arm_control.c **** void ArmControl_Update(void) 
  112:Module/arm_control/arm_control.c **** {
+ 395              		.loc 1 112 1
+ 396              		.cfi_startproc
+ 397              		@ args = 0, pretend = 0, frame = 40
+ 398              		@ frame_needed = 1, uses_anonymous_args = 0
+ 399 0000 90B5     		push	{r4, r7, lr}
+ 400              	.LCFI14:
+ 401              		.cfi_def_cfa_offset 12
+ 402              		.cfi_offset 4, -12
+ 403              		.cfi_offset 7, -8
+ 404              		.cfi_offset 14, -4
+ 405 0002 8BB0     		sub	sp, sp, #44
+ 406              	.LCFI15:
+ 407              		.cfi_def_cfa_offset 56
+ 408 0004 00AF     		add	r7, sp, #0
+ 409              	.LCFI16:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 10
+
+
+ 410              		.cfi_def_cfa_register 7
  113:Module/arm_control/arm_control.c ****     // 空闲状态等待新目标
  114:Module/arm_control/arm_control.c ****     if (arm_state == ARM_IDLE) 
+ 411              		.loc 1 114 19
+ 412 0006 4E4B     		ldr	r3, .L37
+ 413 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 414              		.loc 1 114 8
+ 415 000a 002B     		cmp	r3, #0
+ 416 000c 1AD1     		bne	.L27
  115:Module/arm_control/arm_control.c ****     {
  116:Module/arm_control/arm_control.c ****         // 检查是否有遥控器输入
  117:Module/arm_control/arm_control.c ****         if (remote_control_active()) 
+ 417              		.loc 1 117 13
+ 418 000e FFF7FEFF 		bl	remote_control_active
+ 419 0012 0346     		mov	r3, r0
+ 420              		.loc 1 117 12 discriminator 1
+ 421 0014 002B     		cmp	r3, #0
+ 422 0016 00F08F80 		beq	.L36
+ 423              	.LBB2:
  118:Module/arm_control/arm_control.c ****         {
  119:Module/arm_control/arm_control.c ****             // 从遥控器获取新目标点
  120:Module/arm_control/arm_control.c ****             point2D new_target = Map_To_Cartesian();
+ 424              		.loc 1 120 34
+ 425 001a FFF7FEFF 		bl	Map_To_Cartesian
+ 426 001e B0EE407A 		vmov.f32	s14, s0
+ 427 0022 F0EE607A 		vmov.f32	s15, s1
+ 428 0026 87ED027A 		vstr.32	s14, [r7, #8]
+ 429 002a C7ED037A 		vstr.32	s15, [r7, #12]
  121:Module/arm_control/arm_control.c ****             Set_Target_Position(new_target);
+ 430              		.loc 1 121 13
+ 431 002e 97ED027A 		vldr.32	s14, [r7, #8]
+ 432 0032 D7ED037A 		vldr.32	s15, [r7, #12]
+ 433 0036 B0EE470A 		vmov.f32	s0, s14
+ 434 003a F0EE670A 		vmov.f32	s1, s15
+ 435 003e FFF7FEFF 		bl	Set_Target_Position
+ 436              	.LBE2:
  122:Module/arm_control/arm_control.c ****         }
  123:Module/arm_control/arm_control.c ****         return;
+ 437              		.loc 1 123 9
+ 438 0042 79E0     		b	.L36
+ 439              	.L27:
  124:Module/arm_control/arm_control.c ****     }
  125:Module/arm_control/arm_control.c ****     
  126:Module/arm_control/arm_control.c ****     // 1. 运动学求解
  127:Module/arm_control/arm_control.c ****     JointAngles solution = IK_Solve(current_target,  // 添加缺失的参数
  128:Module/arm_control/arm_control.c ****                                     arm_config.L1, 
+ 440              		.loc 1 128 47
+ 441 0044 DFED3F6A 		vldr.32	s13, .L37+4
  129:Module/arm_control/arm_control.c ****                                     arm_config.L2, 
+ 442              		.loc 1 129 47
+ 443 0048 9FED3F6A 		vldr.32	s12, .L37+8
+ 127:Module/arm_control/arm_control.c ****                                     arm_config.L1, 
+ 444              		.loc 1 127 28
+ 445 004c 07F11002 		add	r2, r7, #16
+ 446 0050 3E4B     		ldr	r3, .L37+12
+ 447 0052 93ED007A 		vldr.32	s14, [r3]
+ 448 0056 D3ED017A 		vldr.32	s15, [r3, #4]
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 11
+
+
+ 449 005a 3D49     		ldr	r1, .L37+16
+ 450 005c F0EE461A 		vmov.f32	s3, s12
+ 451 0060 B0EE661A 		vmov.f32	s2, s13
+ 452 0064 B0EE470A 		vmov.f32	s0, s14
+ 453 0068 F0EE670A 		vmov.f32	s1, s15
+ 454 006c 1046     		mov	r0, r2
+ 455 006e FFF7FEFF 		bl	IK_Solve
  130:Module/arm_control/arm_control.c ****                                     &arm_config.limits);
  131:Module/arm_control/arm_control.c ****     
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 9
-
-
  132:Module/arm_control/arm_control.c ****     if (!solution.valid) {
+ 456              		.loc 1 132 18
+ 457 0072 3B7E     		ldrb	r3, [r7, #24]	@ zero_extendqisi2
+ 458              		.loc 1 132 9
+ 459 0074 83F00103 		eor	r3, r3, #1
+ 460 0078 DBB2     		uxtb	r3, r3
+ 461              		.loc 1 132 8
+ 462 007a 002B     		cmp	r3, #0
+ 463 007c 03D0     		beq	.L30
  133:Module/arm_control/arm_control.c ****         // 无解情况处理
  134:Module/arm_control/arm_control.c ****         arm_state = ARM_ERROR;
+ 464              		.loc 1 134 19
+ 465 007e 304B     		ldr	r3, .L37
+ 466 0080 0222     		movs	r2, #2
+ 467 0082 1A70     		strb	r2, [r3]
  135:Module/arm_control/arm_control.c ****         return;
+ 468              		.loc 1 135 9
+ 469 0084 59E0     		b	.L26
+ 470              	.L30:
  136:Module/arm_control/arm_control.c ****     }
  137:Module/arm_control/arm_control.c ****     
  138:Module/arm_control/arm_control.c ****     // 更新目标角度
  139:Module/arm_control/arm_control.c ****     target_angles = solution;
+ 471              		.loc 1 139 19
+ 472 0086 334B     		ldr	r3, .L37+20
+ 473 0088 1C46     		mov	r4, r3
+ 474 008a 07F11003 		add	r3, r7, #16
+ 475 008e 93E80700 		ldm	r3, {r0, r1, r2}
+ 476 0092 84E80700 		stm	r4, {r0, r1, r2}
  140:Module/arm_control/arm_control.c ****     
  141:Module/arm_control/arm_control.c ****     // 2. 平滑角度过渡
  142:Module/arm_control/arm_control.c ****     Smooth_Angle_Transition();
+ 477              		.loc 1 142 5
+ 478 0096 FFF7FEFF 		bl	Smooth_Angle_Transition
  143:Module/arm_control/arm_control.c ****     
  144:Module/arm_control/arm_control.c ****     // 3. 设置电机角度
  145:Module/arm_control/arm_control.c ****     // 假设Motor1对应theta1，Motor2对应theta2
  146:Module/arm_control/arm_control.c ****     extern motor_t motor[num]; // 假设外部定义了motor数组
  147:Module/arm_control/arm_control.c ****     
  148:Module/arm_control/arm_control.c ****     motor[Motor1].cmd.pos_set = current_angles.theta1;
+ 479              		.loc 1 148 47
+ 480 009a 2F4B     		ldr	r3, .L37+24
+ 481 009c 1B68     		ldr	r3, [r3]	@ float
+ 482              		.loc 1 148 31
+ 483 009e 2F4A     		ldr	r2, .L37+28
+ 484 00a0 9365     		str	r3, [r2, #88]	@ float
  149:Module/arm_control/arm_control.c ****     motor[Motor2].cmd.pos_set = current_angles.theta2;
+ 485              		.loc 1 149 47
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 12
+
+
+ 486 00a2 2D4B     		ldr	r3, .L37+24
+ 487 00a4 5B68     		ldr	r3, [r3, #4]	@ float
+ 488              		.loc 1 149 31
+ 489 00a6 2D4A     		ldr	r2, .L37+28
+ 490 00a8 C2F8C430 		str	r3, [r2, #196]	@ float
  150:Module/arm_control/arm_control.c ****     
  151:Module/arm_control/arm_control.c ****     // 应用设置
  152:Module/arm_control/arm_control.c ****     dm4310_set(&motor[Motor1]);
+ 491              		.loc 1 152 5
+ 492 00ac 2B48     		ldr	r0, .L37+28
+ 493 00ae FFF7FEFF 		bl	dm4310_set
  153:Module/arm_control/arm_control.c ****     dm4310_set(&motor[Motor2]);
+ 494              		.loc 1 153 5
+ 495 00b2 2B48     		ldr	r0, .L37+32
+ 496 00b4 FFF7FEFF 		bl	dm4310_set
  154:Module/arm_control/arm_control.c ****     
  155:Module/arm_control/arm_control.c ****     // 发送控制命令
  156:Module/arm_control/arm_control.c ****     ctrl_send(ALL_MOTORS);
+ 497              		.loc 1 156 5
+ 498 00b8 0320     		movs	r0, #3
+ 499 00ba FFF7FEFF 		bl	ctrl_send
  157:Module/arm_control/arm_control.c ****     
  158:Module/arm_control/arm_control.c ****     // 检查是否到达目标
  159:Module/arm_control/arm_control.c ****     if (arm_state == ARM_MOVING) {
+ 500              		.loc 1 159 19
+ 501 00be 204B     		ldr	r3, .L37
+ 502 00c0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 503              		.loc 1 159 8
+ 504 00c2 012B     		cmp	r3, #1
+ 505 00c4 39D1     		bne	.L26
+ 506              	.LBB3:
  160:Module/arm_control/arm_control.c ****         // 获取当前位置
  161:Module/arm_control/arm_control.c ****         point2D current_position = Get_Current_Position();
+ 507              		.loc 1 161 36
+ 508 00c6 FFF7FEFF 		bl	Get_Current_Position
+ 509 00ca B0EE407A 		vmov.f32	s14, s0
+ 510 00ce F0EE607A 		vmov.f32	s15, s1
+ 511 00d2 87ED007A 		vstr.32	s14, [r7]
+ 512 00d6 C7ED017A 		vstr.32	s15, [r7, #4]
  162:Module/arm_control/arm_control.c ****         
  163:Module/arm_control/arm_control.c ****         // 计算当前位置与目标位置的距离
  164:Module/arm_control/arm_control.c ****         float dx = current_target.x - current_position.x;
+ 513              		.loc 1 164 34
+ 514 00da 1C4B     		ldr	r3, .L37+12
+ 515 00dc 93ED007A 		vldr.32	s14, [r3]
+ 516              		.loc 1 164 55
+ 517 00e0 D7ED007A 		vldr.32	s15, [r7]
+ 518              		.loc 1 164 15
+ 519 00e4 77EE677A 		vsub.f32	s15, s14, s15
+ 520 00e8 C7ED097A 		vstr.32	s15, [r7, #36]
  165:Module/arm_control/arm_control.c ****         float dy = current_target.y - current_position.y;
+ 521              		.loc 1 165 34
+ 522 00ec 174B     		ldr	r3, .L37+12
+ 523 00ee 93ED017A 		vldr.32	s14, [r3, #4]
+ 524              		.loc 1 165 55
+ 525 00f2 D7ED017A 		vldr.32	s15, [r7, #4]
+ 526              		.loc 1 165 15
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 13
+
+
+ 527 00f6 77EE677A 		vsub.f32	s15, s14, s15
+ 528 00fa C7ED087A 		vstr.32	s15, [r7, #32]
  166:Module/arm_control/arm_control.c ****         float distance = sqrtf(dx*dx + dy*dy);
+ 529              		.loc 1 166 34
+ 530 00fe D7ED097A 		vldr.32	s15, [r7, #36]
+ 531 0102 27EEA77A 		vmul.f32	s14, s15, s15
+ 532              		.loc 1 166 42
+ 533 0106 D7ED087A 		vldr.32	s15, [r7, #32]
+ 534 010a 67EEA77A 		vmul.f32	s15, s15, s15
+ 535              		.loc 1 166 26
+ 536 010e 77EE277A 		vadd.f32	s15, s14, s15
+ 537 0112 B0EE670A 		vmov.f32	s0, s15
+ 538 0116 FFF7FEFF 		bl	sqrtf
+ 539 011a 87ED070A 		vstr.32	s0, [r7, #28]
  167:Module/arm_control/arm_control.c ****         
  168:Module/arm_control/arm_control.c ****         // 如果接近目标，切换到空闲状态
  169:Module/arm_control/arm_control.c ****         if (distance < 0.005f) { // 5mm容差
+ 540              		.loc 1 169 12
+ 541 011e D7ED077A 		vldr.32	s15, [r7, #28]
+ 542 0122 9FED107A 		vldr.32	s14, .L37+36
+ 543 0126 F4EEC77A 		vcmpe.f32	s15, s14
+ 544 012a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 545 012e 04D5     		bpl	.L26
  170:Module/arm_control/arm_control.c ****             arm_state = ARM_IDLE;
+ 546              		.loc 1 170 23
+ 547 0130 034B     		ldr	r3, .L37
+ 548 0132 0022     		movs	r2, #0
+ 549 0134 1A70     		strb	r2, [r3]
+ 550 0136 00E0     		b	.L26
+ 551              	.L36:
+ 552              	.LBE3:
+ 123:Module/arm_control/arm_control.c ****     }
+ 553              		.loc 1 123 9
+ 554 0138 00BF     		nop
+ 555              	.L26:
  171:Module/arm_control/arm_control.c ****         }
  172:Module/arm_control/arm_control.c ****     }
  173:Module/arm_control/arm_control.c **** }
+ 556              		.loc 1 173 1
+ 557 013a 2C37     		adds	r7, r7, #44
+ 558              	.LCFI17:
+ 559              		.cfi_def_cfa_offset 12
+ 560 013c BD46     		mov	sp, r7
+ 561              	.LCFI18:
+ 562              		.cfi_def_cfa_register 13
+ 563              		@ sp needed
+ 564 013e 90BD     		pop	{r4, r7, pc}
+ 565              	.L38:
+ 566              		.align	2
+ 567              	.L37:
+ 568 0140 00000000 		.word	arm_state
+ 569 0144 7B142E3E 		.word	1043207291
+ 570 0148 448B6C3E 		.word	1047300932
+ 571 014c 00000000 		.word	current_target
+ 572 0150 08000000 		.word	arm_config+8
+ 573 0154 00000000 		.word	target_angles
+ 574 0158 00000000 		.word	current_angles
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 14
+
+
+ 575 015c 00000000 		.word	motor
+ 576 0160 6C000000 		.word	motor+108
+ 577 0164 0AD7A33B 		.word	1000593162
+ 578              		.cfi_endproc
+ 579              	.LFE137:
+ 581              		.section	.text.Get_Arm_State,"ax",%progbits
+ 582              		.align	1
+ 583              		.global	Get_Arm_State
+ 584              		.syntax unified
+ 585              		.thumb
+ 586              		.thumb_func
+ 588              	Get_Arm_State:
+ 589              	.LFB138:
  174:Module/arm_control/arm_control.c **** 
  175:Module/arm_control/arm_control.c **** // 获取当前机械臂状态
  176:Module/arm_control/arm_control.c **** ArmState Get_Arm_State(void) 
  177:Module/arm_control/arm_control.c **** {
- 300              		.loc 1 177 1 is_stmt 1 view -0
- 301              		.cfi_startproc
- 302              		@ args = 0, pretend = 0, frame = 0
- 303              		@ frame_needed = 0, uses_anonymous_args = 0
- 304              		@ link register save eliminated.
+ 590              		.loc 1 177 1
+ 591              		.cfi_startproc
+ 592              		@ args = 0, pretend = 0, frame = 0
+ 593              		@ frame_needed = 1, uses_anonymous_args = 0
+ 594              		@ link register save eliminated.
+ 595 0000 80B4     		push	{r7}
+ 596              	.LCFI19:
+ 597              		.cfi_def_cfa_offset 4
+ 598              		.cfi_offset 7, -4
+ 599 0002 00AF     		add	r7, sp, #0
+ 600              	.LCFI20:
+ 601              		.cfi_def_cfa_register 7
  178:Module/arm_control/arm_control.c ****     return arm_state;
- 305              		.loc 1 178 5 view .LVU63
+ 602              		.loc 1 178 12
+ 603 0004 034B     		ldr	r3, .L41
+ 604 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  179:Module/arm_control/arm_control.c **** }
- 306              		.loc 1 179 1 is_stmt 0 view .LVU64
- 307 0000 014B     		ldr	r3, .L30
- 308 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 10
+ 605              		.loc 1 179 1
+ 606 0008 1846     		mov	r0, r3
+ 607 000a BD46     		mov	sp, r7
+ 608              	.LCFI21:
+ 609              		.cfi_def_cfa_register 13
+ 610              		@ sp needed
+ 611 000c 5DF8047B 		ldr	r7, [sp], #4
+ 612              	.LCFI22:
+ 613              		.cfi_restore 7
+ 614              		.cfi_def_cfa_offset 0
+ 615 0010 7047     		bx	lr
+ 616              	.L42:
+ 617 0012 00BF     		.align	2
+ 618              	.L41:
+ 619 0014 00000000 		.word	arm_state
+ 620              		.cfi_endproc
+ 621              	.LFE138:
+ 623              		.section	.text.Get_Current_Position,"ax",%progbits
+ 624              		.align	1
+ 625              		.global	Get_Current_Position
+ 626              		.syntax unified
+ 627              		.thumb
+ 628              		.thumb_func
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 15
 
 
- 309 0004 7047     		bx	lr
- 310              	.L31:
- 311 0006 00BF     		.align	2
- 312              	.L30:
- 313 0008 00000000 		.word	arm_state
- 314              		.cfi_endproc
- 315              	.LFE138:
- 317              		.section	.text.Get_Current_Position,"ax",%progbits
- 318              		.align	1
- 319              		.global	Get_Current_Position
- 320              		.syntax unified
- 321              		.thumb
- 322              		.thumb_func
- 324              	Get_Current_Position:
- 325              	.LFB139:
+ 630              	Get_Current_Position:
+ 631              	.LFB139:
  180:Module/arm_control/arm_control.c **** 
  181:Module/arm_control/arm_control.c **** // 获取当前末端位置（前向运动学）
  182:Module/arm_control/arm_control.c **** point2D Get_Current_Position(void) 
  183:Module/arm_control/arm_control.c **** {
- 326              		.loc 1 183 1 is_stmt 1 view -0
- 327              		.cfi_startproc
- 328              		@ args = 0, pretend = 0, frame = 24
- 329              		@ frame_needed = 0, uses_anonymous_args = 0
- 330 0000 00B5     		push	{lr}
- 331              	.LCFI6:
- 332              		.cfi_def_cfa_offset 4
- 333              		.cfi_offset 14, -4
- 334 0002 2DED048B 		vpush.64	{d8, d9}
- 335              	.LCFI7:
- 336              		.cfi_def_cfa_offset 20
- 337              		.cfi_offset 80, -20
- 338              		.cfi_offset 81, -16
- 339              		.cfi_offset 82, -12
- 340              		.cfi_offset 83, -8
- 341 0006 87B0     		sub	sp, sp, #28
- 342              	.LCFI8:
- 343              		.cfi_def_cfa_offset 48
+ 632              		.loc 1 183 1
+ 633              		.cfi_startproc
+ 634              		@ args = 0, pretend = 0, frame = 32
+ 635              		@ frame_needed = 1, uses_anonymous_args = 0
+ 636 0000 80B5     		push	{r7, lr}
+ 637              	.LCFI23:
+ 638              		.cfi_def_cfa_offset 8
+ 639              		.cfi_offset 7, -8
+ 640              		.cfi_offset 14, -4
+ 641 0002 2DED028B 		vpush.64	{d8}
+ 642              	.LCFI24:
+ 643              		.cfi_def_cfa_offset 16
+ 644              		.cfi_offset 80, -16
+ 645              		.cfi_offset 81, -12
+ 646 0006 88B0     		sub	sp, sp, #32
+ 647              	.LCFI25:
+ 648              		.cfi_def_cfa_offset 48
+ 649 0008 00AF     		add	r7, sp, #0
+ 650              	.LCFI26:
+ 651              		.cfi_def_cfa_register 7
  184:Module/arm_control/arm_control.c ****     // 使用当前角度计算末端位置
  185:Module/arm_control/arm_control.c ****     float theta1 = current_angles.theta1;
- 344              		.loc 1 185 5 view .LVU66
- 345              		.loc 1 185 11 is_stmt 0 view .LVU67
- 346 0008 1C4B     		ldr	r3, .L34
- 347 000a D3ED009A 		vldr.32	s19, [r3]
- 348              	.LVL14:
+ 652              		.loc 1 185 11
+ 653 000a 274B     		ldr	r3, .L45
+ 654 000c 1B68     		ldr	r3, [r3]	@ float
+ 655 000e FB61     		str	r3, [r7, #28]	@ float
  186:Module/arm_control/arm_control.c ****     float theta2 = current_angles.theta2;
- 349              		.loc 1 186 5 is_stmt 1 view .LVU68
- 350              		.loc 1 186 11 is_stmt 0 view .LVU69
- 351 000e 93ED019A 		vldr.32	s18, [r3, #4]
- 352              	.LVL15:
+ 656              		.loc 1 186 11
+ 657 0010 254B     		ldr	r3, .L45
+ 658 0012 5B68     		ldr	r3, [r3, #4]	@ float
+ 659 0014 BB61     		str	r3, [r7, #24]	@ float
  187:Module/arm_control/arm_control.c ****     
  188:Module/arm_control/arm_control.c ****     point2D position;
- 353              		.loc 1 188 5 is_stmt 1 view .LVU70
  189:Module/arm_control/arm_control.c ****     position.x = arm_config.L1 * sinf(theta1) - arm_config.L2 * sinf(theta2);
- 354              		.loc 1 189 5 view .LVU71
- 355              		.loc 1 189 34 is_stmt 0 view .LVU72
- 356 0012 B0EE690A 		vmov.f32	s0, s19
- 357 0016 FFF7FEFF 		bl	sinf
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 11
+ 660              		.loc 1 189 28
+ 661 0016 9FED258A 		vldr.32	s16, .L45+4
+ 662              		.loc 1 189 34
+ 663 001a 97ED070A 		vldr.32	s0, [r7, #28]
+ 664 001e FFF7FEFF 		bl	sinf
+ 665 0022 F0EE407A 		vmov.f32	s15, s0
+ 666              		.loc 1 189 32 discriminator 1
+ 667 0026 28EE278A 		vmul.f32	s16, s16, s15
+ 668              		.loc 1 189 59 discriminator 1
+ 669 002a DFED218A 		vldr.32	s17, .L45+8
+ 670              		.loc 1 189 65 discriminator 1
+ 671 002e 97ED060A 		vldr.32	s0, [r7, #24]
+ 672 0032 FFF7FEFF 		bl	sinf
+ 673 0036 F0EE407A 		vmov.f32	s15, s0
+ 674              		.loc 1 189 63 discriminator 2
+ 675 003a 68EEA77A 		vmul.f32	s15, s17, s15
+ 676              		.loc 1 189 47 discriminator 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 16
 
 
- 358              	.LVL16:
- 359              		.loc 1 189 32 discriminator 1 view .LVU73
- 360 001a DFED197A 		vldr.32	s15, .L34+4
- 361 001e 20EE278A 		vmul.f32	s16, s0, s15
- 362              		.loc 1 189 65 discriminator 1 view .LVU74
- 363 0022 B0EE490A 		vmov.f32	s0, s18
- 364 0026 FFF7FEFF 		bl	sinf
- 365              	.LVL17:
- 366              		.loc 1 189 63 discriminator 2 view .LVU75
- 367 002a DFED168A 		vldr.32	s17, .L34+8
- 368 002e 20EE280A 		vmul.f32	s0, s0, s17
- 369              		.loc 1 189 47 discriminator 2 view .LVU76
- 370 0032 38EE408A 		vsub.f32	s16, s16, s0
- 371              		.loc 1 189 16 discriminator 2 view .LVU77
- 372 0036 8DED028A 		vstr.32	s16, [sp, #8]
+ 677 003e 78EE677A 		vsub.f32	s15, s16, s15
+ 678              		.loc 1 189 16 discriminator 2
+ 679 0042 C7ED027A 		vstr.32	s15, [r7, #8]
  190:Module/arm_control/arm_control.c ****     position.y = -arm_config.L1 * cosf(theta1) + arm_config.L2 * cosf(theta2);
- 373              		.loc 1 190 5 is_stmt 1 view .LVU78
- 374              		.loc 1 190 35 is_stmt 0 view .LVU79
- 375 003a B0EE690A 		vmov.f32	s0, s19
- 376 003e FFF7FEFF 		bl	cosf
- 377              	.LVL18:
- 378              		.loc 1 190 33 discriminator 1 view .LVU80
- 379 0042 DFED117A 		vldr.32	s15, .L34+12
- 380 0046 20EE278A 		vmul.f32	s16, s0, s15
- 381              		.loc 1 190 66 discriminator 1 view .LVU81
- 382 004a B0EE490A 		vmov.f32	s0, s18
- 383 004e FFF7FEFF 		bl	cosf
- 384              	.LVL19:
- 385              		.loc 1 190 64 discriminator 2 view .LVU82
- 386 0052 20EE280A 		vmul.f32	s0, s0, s17
- 387              		.loc 1 190 48 discriminator 2 view .LVU83
- 388 0056 38EE008A 		vadd.f32	s16, s16, s0
- 389              		.loc 1 190 16 discriminator 2 view .LVU84
- 390 005a 8DED038A 		vstr.32	s16, [sp, #12]
+ 680              		.loc 1 190 29
+ 681 0046 DFED197A 		vldr.32	s15, .L45+4
+ 682              		.loc 1 190 18
+ 683 004a B1EE678A 		vneg.f32	s16, s15
+ 684              		.loc 1 190 35
+ 685 004e 97ED070A 		vldr.32	s0, [r7, #28]
+ 686 0052 FFF7FEFF 		bl	cosf
+ 687 0056 F0EE407A 		vmov.f32	s15, s0
+ 688              		.loc 1 190 33 discriminator 1
+ 689 005a 28EE278A 		vmul.f32	s16, s16, s15
+ 690              		.loc 1 190 60 discriminator 1
+ 691 005e DFED148A 		vldr.32	s17, .L45+8
+ 692              		.loc 1 190 66 discriminator 1
+ 693 0062 97ED060A 		vldr.32	s0, [r7, #24]
+ 694 0066 FFF7FEFF 		bl	cosf
+ 695 006a F0EE407A 		vmov.f32	s15, s0
+ 696              		.loc 1 190 64 discriminator 2
+ 697 006e 68EEA77A 		vmul.f32	s15, s17, s15
+ 698              		.loc 1 190 48 discriminator 2
+ 699 0072 78EE277A 		vadd.f32	s15, s16, s15
+ 700              		.loc 1 190 16 discriminator 2
+ 701 0076 C7ED037A 		vstr.32	s15, [r7, #12]
  191:Module/arm_control/arm_control.c ****     
  192:Module/arm_control/arm_control.c ****     return position;
- 391              		.loc 1 192 5 is_stmt 1 view .LVU85
- 392              		.loc 1 192 12 is_stmt 0 view .LVU86
- 393 005e 02AB     		add	r3, sp, #8
- 394 0060 93E80300 		ldm	r3, {r0, r1}
- 395 0064 06AB     		add	r3, sp, #24
- 396 0066 03E90300 		stmdb	r3, {r0, r1}
+ 702              		.loc 1 192 12
+ 703 007a 07F11003 		add	r3, r7, #16
+ 704 007e 07F10802 		add	r2, r7, #8
+ 705 0082 92E80300 		ldm	r2, {r0, r1}
+ 706 0086 83E80300 		stm	r3, {r0, r1}
+ 707 008a 3A69     		ldr	r2, [r7, #16]	@ float
+ 708 008c 7B69     		ldr	r3, [r7, #20]	@ float
+ 709 008e 07EE102A 		vmov	s14, r2
+ 710 0092 07EE903A 		vmov	s15, r3
  193:Module/arm_control/arm_control.c **** }...
- 397              		.loc 1 193 1 view .LVU87
- 398 006a 9DED040A 		vldr.32	s0, [sp, #16]
- 399 006e DDED050A 		vldr.32	s1, [sp, #20]
- 400 0072 07B0     		add	sp, sp, #28
- 401              	.LCFI9:
- 402              		.cfi_def_cfa_offset 20
- 403              		@ sp needed
- 404 0074 BDEC048B 		vldm	sp!, {d8-d9}
- 405              	.LCFI10:
- 406              		.cfi_restore 82
- 407              		.cfi_restore 83
- 408              		.cfi_restore 80
- 409              		.cfi_restore 81
- 410              		.cfi_def_cfa_offset 4
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 12
+ 711              		.loc 1 193 1
+ 712 0096 B0EE470A 		vmov.f32	s0, s14
+ 713 009a F0EE670A 		vmov.f32	s1, s15
+ 714 009e 2037     		adds	r7, r7, #32
+ 715              	.LCFI27:
+ 716              		.cfi_def_cfa_offset 16
+ 717 00a0 BD46     		mov	sp, r7
+ 718              	.LCFI28:
+ 719              		.cfi_def_cfa_register 13
+ 720              		@ sp needed
+ 721 00a2 BDEC028B 		vldm	sp!, {d8}
+ 722              	.LCFI29:
+ 723              		.cfi_restore 80
+ 724              		.cfi_restore 81
+ 725              		.cfi_def_cfa_offset 8
+ 726 00a6 80BD     		pop	{r7, pc}
+ 727              	.L46:
+ 728              		.align	2
+ 729              	.L45:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 17
 
 
- 411              	.LVL20:
- 412              		.loc 1 193 1 view .LVU88
- 413 0078 5DF804FB 		ldr	pc, [sp], #4
- 414              	.L35:
- 415              		.align	2
- 416              	.L34:
- 417 007c 00000000 		.word	current_angles
- 418 0080 7B142E3E 		.word	1043207291
- 419 0084 448B6C3E 		.word	1047300932
- 420 0088 7B142EBE 		.word	-1104276357
- 421              		.cfi_endproc
- 422              	.LFE139:
- 424              		.section	.text.ArmControl_Update,"ax",%progbits
- 425              		.align	1
- 426              		.global	ArmControl_Update
- 427              		.syntax unified
- 428              		.thumb
- 429              		.thumb_func
- 431              	ArmControl_Update:
- 432              	.LFB137:
- 112:Module/arm_control/arm_control.c **** {
- 433              		.loc 1 112 1 is_stmt 1 view -0
- 434              		.cfi_startproc
- 435              		@ args = 0, pretend = 0, frame = 24
- 436              		@ frame_needed = 0, uses_anonymous_args = 0
- 437 0000 10B5     		push	{r4, lr}
- 438              	.LCFI11:
- 439              		.cfi_def_cfa_offset 8
- 440              		.cfi_offset 4, -8
- 441              		.cfi_offset 14, -4
- 442 0002 86B0     		sub	sp, sp, #24
- 443              	.LCFI12:
- 444              		.cfi_def_cfa_offset 32
- 114:Module/arm_control/arm_control.c ****     if (arm_state == ARM_IDLE) 
- 445              		.loc 1 114 5 view .LVU90
- 114:Module/arm_control/arm_control.c ****     if (arm_state == ARM_IDLE) 
- 446              		.loc 1 114 19 is_stmt 0 view .LVU91
- 447 0004 314B     		ldr	r3, .L48
- 448 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 114:Module/arm_control/arm_control.c ****     if (arm_state == ARM_IDLE) 
- 449              		.loc 1 114 8 view .LVU92
- 450 0008 A3B1     		cbz	r3, .L47
- 127:Module/arm_control/arm_control.c ****     JointAngles solution = IK_Solve(current_target,  // 添加缺失的参数
- 451              		.loc 1 127 5 is_stmt 1 view .LVU93
- 127:Module/arm_control/arm_control.c ****     JointAngles solution = IK_Solve(current_target,  // 添加缺失的参数
- 452              		.loc 1 127 28 is_stmt 0 view .LVU94
- 453 000a 314B     		ldr	r3, .L48+4
- 454 000c 3149     		ldr	r1, .L48+8
- 455 000e DFED321A 		vldr.32	s3, .L48+12
- 456 0012 9FED321A 		vldr.32	s2, .L48+16
- 457 0016 93ED000A 		vldr.32	s0, [r3]
- 458 001a D3ED010A 		vldr.32	s1, [r3, #4]
- 459 001e 03A8     		add	r0, sp, #12
- 460 0020 FFF7FEFF 		bl	IK_Solve
- 461              	.LVL21:
- 132:Module/arm_control/arm_control.c ****     if (!solution.valid) {
- 462              		.loc 1 132 5 is_stmt 1 view .LVU95
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 13
-
-
- 132:Module/arm_control/arm_control.c ****     if (!solution.valid) {
- 463              		.loc 1 132 18 is_stmt 0 view .LVU96
- 464 0024 9DF81430 		ldrb	r3, [sp, #20]	@ zero_extendqisi2
- 132:Module/arm_control/arm_control.c ****     if (!solution.valid) {
- 465              		.loc 1 132 8 view .LVU97
- 466 0028 8BB9     		cbnz	r3, .L40
- 134:Module/arm_control/arm_control.c ****         arm_state = ARM_ERROR;
- 467              		.loc 1 134 9 is_stmt 1 view .LVU98
- 134:Module/arm_control/arm_control.c ****         arm_state = ARM_ERROR;
- 468              		.loc 1 134 19 is_stmt 0 view .LVU99
- 469 002a 284B     		ldr	r3, .L48
- 470 002c 0222     		movs	r2, #2
- 471 002e 1A70     		strb	r2, [r3]
- 135:Module/arm_control/arm_control.c ****         return;
- 472              		.loc 1 135 9 is_stmt 1 view .LVU100
- 473              	.L36:
- 173:Module/arm_control/arm_control.c **** }
- 474              		.loc 1 173 1 is_stmt 0 view .LVU101
- 475 0030 06B0     		add	sp, sp, #24
- 476              	.LCFI13:
- 477              		.cfi_remember_state
- 478              		.cfi_def_cfa_offset 8
- 479              		@ sp needed
- 480 0032 10BD     		pop	{r4, pc}
- 481              	.L47:
- 482              	.LCFI14:
- 483              		.cfi_restore_state
- 117:Module/arm_control/arm_control.c ****         if (remote_control_active()) 
- 484              		.loc 1 117 9 is_stmt 1 view .LVU102
- 117:Module/arm_control/arm_control.c ****         if (remote_control_active()) 
- 485              		.loc 1 117 13 is_stmt 0 view .LVU103
- 486 0034 FFF7FEFF 		bl	remote_control_active
- 487              	.LVL22:
- 117:Module/arm_control/arm_control.c ****         if (remote_control_active()) 
- 488              		.loc 1 117 12 discriminator 1 view .LVU104
- 489 0038 0028     		cmp	r0, #0
- 490 003a F9D0     		beq	.L36
- 491              	.LBB2:
- 120:Module/arm_control/arm_control.c ****             point2D new_target = Map_To_Cartesian();
- 492              		.loc 1 120 13 is_stmt 1 view .LVU105
- 120:Module/arm_control/arm_control.c ****             point2D new_target = Map_To_Cartesian();
- 493              		.loc 1 120 34 is_stmt 0 view .LVU106
- 494 003c FFF7FEFF 		bl	Map_To_Cartesian
- 495              	.LVL23:
- 496 0040 8DED010A 		vstr.32	s0, [sp, #4]
- 497 0044 CDED020A 		vstr.32	s1, [sp, #8]
- 121:Module/arm_control/arm_control.c ****             Set_Target_Position(new_target);
- 498              		.loc 1 121 13 is_stmt 1 view .LVU107
- 499 0048 FFF7FEFF 		bl	Set_Target_Position
- 500              	.LVL24:
- 501              	.LBE2:
- 123:Module/arm_control/arm_control.c ****         return;
- 502              		.loc 1 123 9 view .LVU108
- 503 004c F0E7     		b	.L36
- 504              	.L40:
- 139:Module/arm_control/arm_control.c ****     target_angles = solution;
- 505              		.loc 1 139 5 view .LVU109
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 14
-
-
- 139:Module/arm_control/arm_control.c ****     target_angles = solution;
- 506              		.loc 1 139 19 is_stmt 0 view .LVU110
- 507 004e 244B     		ldr	r3, .L48+20
- 508 0050 06AA     		add	r2, sp, #24
- 509 0052 12E90700 		ldmdb	r2, {r0, r1, r2}
- 510 0056 83E80700 		stm	r3, {r0, r1, r2}
- 142:Module/arm_control/arm_control.c ****     Smooth_Angle_Transition();
- 511              		.loc 1 142 5 is_stmt 1 view .LVU111
- 512 005a FFF7FEFF 		bl	Smooth_Angle_Transition
- 513              	.LVL25:
- 146:Module/arm_control/arm_control.c ****     extern motor_t motor[num]; // 假设外部定义了motor数组
- 514              		.loc 1 146 5 view .LVU112
- 148:Module/arm_control/arm_control.c ****     motor[Motor1].cmd.pos_set = current_angles.theta1;
- 515              		.loc 1 148 5 view .LVU113
- 148:Module/arm_control/arm_control.c ****     motor[Motor1].cmd.pos_set = current_angles.theta1;
- 516              		.loc 1 148 47 is_stmt 0 view .LVU114
- 517 005e 214B     		ldr	r3, .L48+24
- 518 0060 1A68     		ldr	r2, [r3]	@ float
- 148:Module/arm_control/arm_control.c ****     motor[Motor1].cmd.pos_set = current_angles.theta1;
- 519              		.loc 1 148 31 view .LVU115
- 520 0062 214C     		ldr	r4, .L48+28
- 521 0064 A265     		str	r2, [r4, #88]	@ float
- 149:Module/arm_control/arm_control.c ****     motor[Motor2].cmd.pos_set = current_angles.theta2;
- 522              		.loc 1 149 5 is_stmt 1 view .LVU116
- 149:Module/arm_control/arm_control.c ****     motor[Motor2].cmd.pos_set = current_angles.theta2;
- 523              		.loc 1 149 47 is_stmt 0 view .LVU117
- 524 0066 5B68     		ldr	r3, [r3, #4]	@ float
- 149:Module/arm_control/arm_control.c ****     motor[Motor2].cmd.pos_set = current_angles.theta2;
- 525              		.loc 1 149 31 view .LVU118
- 526 0068 C4F8C430 		str	r3, [r4, #196]	@ float
- 152:Module/arm_control/arm_control.c ****     dm4310_set(&motor[Motor1]);
- 527              		.loc 1 152 5 is_stmt 1 view .LVU119
- 528 006c 2046     		mov	r0, r4
- 529 006e FFF7FEFF 		bl	dm4310_set
- 530              	.LVL26:
- 153:Module/arm_control/arm_control.c ****     dm4310_set(&motor[Motor2]);
- 531              		.loc 1 153 5 view .LVU120
- 532 0072 04F16C00 		add	r0, r4, #108
- 533 0076 FFF7FEFF 		bl	dm4310_set
- 534              	.LVL27:
- 156:Module/arm_control/arm_control.c ****     ctrl_send(ALL_MOTORS);
- 535              		.loc 1 156 5 view .LVU121
- 536 007a 0320     		movs	r0, #3
- 537 007c FFF7FEFF 		bl	ctrl_send
- 538              	.LVL28:
- 159:Module/arm_control/arm_control.c ****     if (arm_state == ARM_MOVING) {
- 539              		.loc 1 159 5 view .LVU122
- 159:Module/arm_control/arm_control.c ****     if (arm_state == ARM_MOVING) {
- 540              		.loc 1 159 19 is_stmt 0 view .LVU123
- 541 0080 124B     		ldr	r3, .L48
- 542 0082 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 159:Module/arm_control/arm_control.c ****     if (arm_state == ARM_MOVING) {
- 543              		.loc 1 159 8 view .LVU124
- 544 0084 012B     		cmp	r3, #1
- 545 0086 D3D1     		bne	.L36
- 546              	.LBB3:
- 161:Module/arm_control/arm_control.c ****         point2D current_position = Get_Current_Position();
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 15
-
-
- 547              		.loc 1 161 9 is_stmt 1 view .LVU125
- 161:Module/arm_control/arm_control.c ****         point2D current_position = Get_Current_Position();
- 548              		.loc 1 161 36 is_stmt 0 view .LVU126
- 549 0088 FFF7FEFF 		bl	Get_Current_Position
- 550              	.LVL29:
- 551 008c 8DED010A 		vstr.32	s0, [sp, #4]
- 552 0090 CDED020A 		vstr.32	s1, [sp, #8]
- 164:Module/arm_control/arm_control.c ****         float dx = current_target.x - current_position.x;
- 553              		.loc 1 164 9 is_stmt 1 view .LVU127
- 164:Module/arm_control/arm_control.c ****         float dx = current_target.x - current_position.x;
- 554              		.loc 1 164 34 is_stmt 0 view .LVU128
- 555 0094 0E4B     		ldr	r3, .L48+4
- 556 0096 D3ED007A 		vldr.32	s15, [r3]
- 164:Module/arm_control/arm_control.c ****         float dx = current_target.x - current_position.x;
- 557              		.loc 1 164 15 view .LVU129
- 558 009a 37EEC00A 		vsub.f32	s0, s15, s0
- 559              	.LVL30:
- 165:Module/arm_control/arm_control.c ****         float dy = current_target.y - current_position.y;
- 560              		.loc 1 165 9 is_stmt 1 view .LVU130
- 165:Module/arm_control/arm_control.c ****         float dy = current_target.y - current_position.y;
- 561              		.loc 1 165 34 is_stmt 0 view .LVU131
- 562 009e D3ED017A 		vldr.32	s15, [r3, #4]
- 165:Module/arm_control/arm_control.c ****         float dy = current_target.y - current_position.y;
- 563              		.loc 1 165 15 view .LVU132
- 564 00a2 77EEE07A 		vsub.f32	s15, s15, s1
- 565              	.LVL31:
- 166:Module/arm_control/arm_control.c ****         float distance = sqrtf(dx*dx + dy*dy);
- 566              		.loc 1 166 9 is_stmt 1 view .LVU133
- 166:Module/arm_control/arm_control.c ****         float distance = sqrtf(dx*dx + dy*dy);
- 567              		.loc 1 166 34 is_stmt 0 view .LVU134
- 568 00a6 20EE000A 		vmul.f32	s0, s0, s0
- 569              	.LVL32:
- 166:Module/arm_control/arm_control.c ****         float distance = sqrtf(dx*dx + dy*dy);
- 570              		.loc 1 166 42 view .LVU135
- 571 00aa 67EEA77A 		vmul.f32	s15, s15, s15
- 572              	.LVL33:
- 166:Module/arm_control/arm_control.c ****         float distance = sqrtf(dx*dx + dy*dy);
- 573              		.loc 1 166 26 view .LVU136
- 574 00ae 30EE270A 		vadd.f32	s0, s0, s15
- 575 00b2 FFF7FEFF 		bl	sqrtf
- 576              	.LVL34:
- 169:Module/arm_control/arm_control.c ****         if (distance < 0.005f) { // 5mm容差
- 577              		.loc 1 169 9 is_stmt 1 view .LVU137
- 169:Module/arm_control/arm_control.c ****         if (distance < 0.005f) { // 5mm容差
- 578              		.loc 1 169 12 is_stmt 0 view .LVU138
- 579 00b6 DFED0D7A 		vldr.32	s15, .L48+32
- 580 00ba B4EEE70A 		vcmpe.f32	s0, s15
- 581 00be F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 582 00c2 B5D5     		bpl	.L36
- 170:Module/arm_control/arm_control.c ****             arm_state = ARM_IDLE;
- 583              		.loc 1 170 13 is_stmt 1 view .LVU139
- 170:Module/arm_control/arm_control.c ****             arm_state = ARM_IDLE;
- 584              		.loc 1 170 23 is_stmt 0 view .LVU140
- 585 00c4 014B     		ldr	r3, .L48
- 586 00c6 0022     		movs	r2, #0
- 587 00c8 1A70     		strb	r2, [r3]
- 588 00ca B1E7     		b	.L36
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 16
-
-
- 589              	.L49:
- 590              		.align	2
- 591              	.L48:
- 592 00cc 00000000 		.word	arm_state
- 593 00d0 00000000 		.word	current_target
- 594 00d4 08000000 		.word	arm_config+8
- 595 00d8 448B6C3E 		.word	1047300932
- 596 00dc 7B142E3E 		.word	1043207291
- 597 00e0 00000000 		.word	target_angles
- 598 00e4 00000000 		.word	current_angles
- 599 00e8 00000000 		.word	motor
- 600 00ec 0AD7A33B 		.word	1000593162
- 601              	.LBE3:
- 602              		.cfi_endproc
- 603              	.LFE137:
- 605              		.section	.data.target_angles,"aw"
- 606              		.align	2
- 609              	target_angles:
- 610 0000 DB0F493F 		.word	1061752795
- 611 0004 DB0FC93F 		.word	1070141403
- 612 0008 01       		.byte	1
- 613 0009 000000   		.space	3
- 614              		.section	.data.current_angles,"aw"
- 615              		.align	2
- 618              	current_angles:
- 619 0000 DB0F493F 		.word	1061752795
- 620 0004 DB0FC93F 		.word	1070141403
- 621 0008 01       		.byte	1
- 622 0009 000000   		.space	3
- 623              		.section	.data.current_target,"aw"
- 624              		.align	2
- 627              	current_target:
- 628 0000 00000000 		.word	0
- 629 0004 CDCC4C3E 		.word	1045220557
- 630              		.section	.bss.arm_state,"aw",%nobits
- 633              	arm_state:
- 634 0000 00       		.space	1
- 635              		.section	.rodata.arm_config,"a"
- 636              		.align	2
- 639              	arm_config:
- 640 0000 7B142E3E 		.word	1043207291
- 641 0004 448B6C3E 		.word	1047300932
- 642 0008 0BBEF5BF 		.word	-1074414069
- 643 000c C2B8B2BE 		.word	-1095583550
- 644 0010 1E3611C0 		.word	-1072613858
- 645 0014 920A06BF 		.word	-1090123118
- 646              		.text
- 647              	.Letext0:
- 648              		.file 2 "Module/kinematic/kinematic_solver.h"
- 649              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
- 650              		.file 4 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
- 651              		.file 5 "Module/coordinate/coordinate_mapping.h"
- 652              		.file 6 "Module/arm_control/arm_control.h"
- 653              		.file 7 "Module/motor/dm_drv.h"
- 654              		.file 8 "Module/motor/dm_ctrl.h"
- 655              		.file 9 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/math.h"
- 656              		.file 10 "Module/remote_control/remote_control.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 17
-
-
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s 			page 18
+ 730 00a8 00000000 		.word	current_angles
+ 731 00ac 7B142E3E 		.word	1043207291
+ 732 00b0 448B6C3E 		.word	1047300932
+ 733              		.cfi_endproc
+ 734              	.LFE139:
+ 736              		.text
+ 737              	.Letext0:
+ 738              		.file 2 "Module/kinematic/kinematic_solver.h"
+ 739              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 740              		.file 4 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 741              		.file 5 "Module/coordinate/coordinate_mapping.h"
+ 742              		.file 6 "Module/arm_control/arm_control.h"
+ 743              		.file 7 "Module/motor/dm_drv.h"
+ 744              		.file 8 "Module/motor/dm_ctrl.h"
+ 745              		.file 9 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/math.h"
+ 746              		.file 10 "Module/remote_control/remote_control.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 18
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 arm_control.c
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:21     .text.Smooth_Angle_Transition:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:26     .text.Smooth_Angle_Transition:00000000 Smooth_Angle_Transition
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:134    .text.Smooth_Angle_Transition:000000a8 $d
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:609    .data.target_angles:00000000 target_angles
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:618    .data.current_angles:00000000 current_angles
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:633    .bss.arm_state:00000000 arm_state
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:144    .text.ArmControl_Init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:150    .text.ArmControl_Init:00000000 ArmControl_Init
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:187    .text.ArmControl_Init:00000024 $d
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:192    .text.Set_Target_Position:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:198    .text.Set_Target_Position:00000000 Set_Target_Position
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:285    .text.Set_Target_Position:0000007c $d
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:627    .data.current_target:00000000 current_target
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:292    .text.Get_Arm_State:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:298    .text.Get_Arm_State:00000000 Get_Arm_State
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:313    .text.Get_Arm_State:00000008 $d
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:318    .text.Get_Current_Position:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:324    .text.Get_Current_Position:00000000 Get_Current_Position
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:417    .text.Get_Current_Position:0000007c $d
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:425    .text.ArmControl_Update:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:431    .text.ArmControl_Update:00000000 ArmControl_Update
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:592    .text.ArmControl_Update:000000cc $d
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:639    .rodata.arm_config:00000000 arm_config
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:606    .data.target_angles:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:615    .data.current_angles:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:624    .data.current_target:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:634    .bss.arm_state:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccl2BTMC.s:636    .rodata.arm_config:00000000 $d
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:21     .rodata.arm_config:00000000 $d
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:24     .rodata.arm_config:00000000 arm_config
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:34     .bss.arm_state:00000000 arm_state
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:35     .bss.arm_state:00000000 $d
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:37     .data.current_target:00000000 $d
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:40     .data.current_target:00000000 current_target
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:44     .data.current_angles:00000000 $d
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:47     .data.current_angles:00000000 current_angles
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:53     .data.target_angles:00000000 $d
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:56     .data.target_angles:00000000 target_angles
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:62     .text.ArmControl_Init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:68     .text.ArmControl_Init:00000000 ArmControl_Init
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:104    .text.ArmControl_Init:00000028 $d
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:109    .text.Set_Target_Position:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:115    .text.Set_Target_Position:00000000 Set_Target_Position
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:220    .text.Set_Target_Position:000000d4 $d
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:227    .text.Smooth_Angle_Transition:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:232    .text.Smooth_Angle_Transition:00000000 Smooth_Angle_Transition
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:378    .text.Smooth_Angle_Transition:000000f8 $d
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:387    .text.ArmControl_Update:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:393    .text.ArmControl_Update:00000000 ArmControl_Update
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:630    .text.Get_Current_Position:00000000 Get_Current_Position
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:568    .text.ArmControl_Update:00000140 $d
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:582    .text.Get_Arm_State:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:588    .text.Get_Arm_State:00000000 Get_Arm_State
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:619    .text.Get_Arm_State:00000014 $d
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:624    .text.Get_Current_Position:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cczPSGz8.s:730    .text.Get_Current_Position:000000a8 $d
+                           .group:00000000 wm4.0.3e68c699c40fadf7e6c1e499de837233
+                           .group:00000000 wm4.stdbool.h.29.c08aa3eec75cf5b9b5003883f43253f0
+                           .group:00000000 wm4.remote_control.h.2.d5ede23e17e0664e5394033a072c4472
+                           .group:00000000 wm4.stm32f4xx_hal_conf.h.25.a9a6e27d8b41172b5af7d7631d763ee0
+                           .group:00000000 wm4.stm32f4xx.h.38.63e3ea23bd63a94457417730025259b6
+                           .group:00000000 wm4.stm32f446xx.h.34.dd43cebd7192f96bce7a5ff975201274
+                           .group:00000000 wm4._newlib_version.h.4.0eb654b64686e2bd29646258853f6c22
+                           .group:00000000 wm4.features.h.33.d554620bb17bd3b714c3fb5c268772bc
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.cmsis_version.h.32.0ac195c83bb4537824e6ad1c47474b79
+                           .group:00000000 wm4.core_cm4.h.66.e4ff136c4a17abc46741866f64f8e729
+                           .group:00000000 wm4.cmsis_gcc.h.26.498d0ad17a45fc9ef20fdc01caf02259
+                           .group:00000000 wm4.core_cm4.h.174.62be9b4588d49bed18171771001331df
+                           .group:00000000 wm4.mpu_armv7.h.32.83326921a797fa9d6f70449916b4b839
+                           .group:00000000 wm4.stm32f446xx.h.917.13927c85cbbf4787955bc4173c54fa12
+                           .group:00000000 wm4.stm32f4xx.h.195.a4b8bf80f37cc96981498656ffe5f588
+                           .group:00000000 wm4.stm32_hal_legacy.h.22.8b7d303dc46a0b7ac6d3edf19ce2608d
+                           .group:00000000 wm4.stddef.h.39.0dc9006b34572d4d9cae4c8b422c4971
+                           .group:00000000 wm4.stm32f4xx_hal_def.h.58.3cb484e92e5ccf2e55312a4714e27917
+                           .group:00000000 wm4.stm32f4xx_hal_rcc_ex.h.20.9b6e314009d4800dd71c0ec1c264a1ea
+                           .group:00000000 wm4.stm32f4xx_hal_rcc.h.106.0887cf5d985ae88e345b0aed0ceb4729
+                           .group:00000000 wm4.stm32f4xx_hal_gpio.h.21.22da6a14b6049d6ac156577be74df1d7
+                           .group:00000000 wm4.stm32f4xx_hal_gpio_ex.h.21.33ea7ea24fd170b1d3dce3d23330c9d3
+                           .group:00000000 wm4.stm32f4xx_hal_gpio.h.254.d7e07832f748fe8bcb575db0b8373592
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cczPSGz8.s 			page 19
+
+
+                           .group:00000000 wm4.stm32f4xx_hal_exti.h.21.4fc7f37c3cc97fb821b368ede79414b6
+                           .group:00000000 wm4.stm32f4xx_hal_dma.h.21.8e4b1421c914345c23be719e5e528779
+                           .group:00000000 wm4.stm32f4xx_hal_dma.h.720.ac2d7eef74792e4026acc4d2923c5da4
+                           .group:00000000 wm4.stm32f4xx_hal_cortex.h.20.03673e4f79386680bf73ba399c19306b
+                           .group:00000000 wm4.stm32f4xx_hal_can.h.21.4b16c8dedf31ba328482231f811a7e65
+                           .group:00000000 wm4.stm32f4xx_hal_flash.h.20.2f1e0d1b7010b3a81a7980aaf712e7e5
+                           .group:00000000 wm4.stm32f4xx_hal_flash_ex.h.20.77cb3e5c0f1e426426a4cbc884a1eed8
+                           .group:00000000 wm4.stm32f4xx_hal_flash.h.361.23bc19b9eac79b0956d913651841ede8
+                           .group:00000000 wm4.stm32f4xx_hal_pwr.h.20.1905a0783a9c83adefd7df0c4b501e40
+                           .group:00000000 wm4.stm32f4xx_hal_pwr_ex.h.20.9786dbd699c850465fa7b77273740267
+                           .group:00000000 wm4.stm32f4xx_hal_pwr.h.338.debc0a4a62ba54688e63ab53dd99c4ea
+                           .group:00000000 wm4.stm32f4xx_hal_uart.h.21.ba8e24dd05c77faac3f3d48472e636ba
+                           .group:00000000 wm4.stm32f4xx_hal.h.71.02372bc31d47d29d3f67fbfe1429649e
+                           .group:00000000 wm4.remote_control.h.15.dad157441a7369e14747acc4dfbe8b08
+                           .group:00000000 wm4.newlib.h.7.a37ffbe9e5aff74303f4e60b1cc1c01b
+                           .group:00000000 wm4.ieeefp.h.77.61a77db5804869b1dadd307a77cf78c9
+                           .group:00000000 wm4.config.h.224.10ee1ad185d877c6e334e6581faab44d
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.cdefs.h.49.70fc7af612f78ddcace70fdd90b5623b
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.158.6f8e08a347b1cff664332fa350bfceb3
+                           .group:00000000 wm4._types.h.127.3bdfe3ff8ea2d0985b03d9cbe93480e3
+                           .group:00000000 wm4.reent.h.18.25503cdc8b7e55dd0d6ea7b3e5af7a03
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.78.6b87466b04591b1f1cb88c14fdf2ba9e
+                           .group:00000000 wm4.math.h.13.47cfc34cae8a1153323939c4d32cf7c2
+                           .group:00000000 wm4.dm_drv.h.7.4abb37ead5777bb8720ed305654a152b
+                           .group:00000000 wm4.dm_ctrl.h.7.f5e8660fa386af2caaf9fd826f00c559
 
 UNDEFINED SYMBOLS
 Mapping_Init
@@ -1003,12 +1077,13 @@ ctrl_enable
 fminf
 fmaxf
 workspace_config
-sinf
-cosf
-IK_Solve
+copysignf
 remote_control_active
 Map_To_Cartesian
+IK_Solve
 dm4310_set
 ctrl_send
 sqrtf
 motor
+sinf
+cosf

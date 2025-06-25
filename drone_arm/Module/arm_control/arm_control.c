@@ -41,7 +41,7 @@ void ArmControl_Init(void) {
     Mapping_Init(NULL);
     
     // 设置摇杆通道（使用默认配置）
-    Set_Stick_Channels(0, 1);
+    Set_Stick_Channels(1, 2);
     
     // 初始化电机
     dm4310_motor_init();

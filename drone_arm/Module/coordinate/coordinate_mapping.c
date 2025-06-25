@@ -15,7 +15,7 @@ WorkspaceConfig workspace_config =
 // 默认摇杆通道配置
 static StickChannelConfig stick_config = 
 {
-    .x_channel = 0, // 默认通道0控制X轴
+    .x_channel = 2, // 默认通道2控制X轴
     .y_channel = 1  // 默认通道1控制Y轴
 };
 

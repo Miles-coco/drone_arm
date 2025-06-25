@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -12,7 +12,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
    9              		.eabi_attribute 24, 1
   10              		.eabi_attribute 25, 1
   11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 30, 6
   13              		.eabi_attribute 34, 1
   14              		.eabi_attribute 18, 4
   15              		.file	"stm32f4xx_hal_pwr.c"
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
   28:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
   29:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
   30:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /** @defgroup PWR PWR
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 2
 
 
   31:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief PWR HAL module driver
@@ -118,47 +118,69 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
   85:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
   86:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
   87:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief Deinitializes the HAL PWR peripheral registers to their default reset values.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 3
 
 
   88:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @retval None
   89:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
   90:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_DeInit(void)
   91:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
-  29              		.loc 1 91 1 view -0
+  29              		.loc 1 91 1
   30              		.cfi_startproc
   31              		@ args = 0, pretend = 0, frame = 0
-  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ frame_needed = 1, uses_anonymous_args = 0
   33              		@ link register save eliminated.
+  34 0000 80B4     		push	{r7}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 4
+  37              		.cfi_offset 7, -4
+  38 0002 00AF     		add	r7, sp, #0
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_register 7
   92:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   __HAL_RCC_PWR_FORCE_RESET();
-  34              		.loc 1 92 3 view .LVU1
-  35 0000 044B     		ldr	r3, .L2
-  36 0002 1A6A     		ldr	r2, [r3, #32]
-  37 0004 42F08052 		orr	r2, r2, #268435456
-  38 0008 1A62     		str	r2, [r3, #32]
+  41              		.loc 1 92 3
+  42 0004 084B     		ldr	r3, .L2
+  43 0006 1B6A     		ldr	r3, [r3, #32]
+  44 0008 074A     		ldr	r2, .L2
+  45 000a 43F08053 		orr	r3, r3, #268435456
+  46 000e 1362     		str	r3, [r2, #32]
   93:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   __HAL_RCC_PWR_RELEASE_RESET();
-  39              		.loc 1 93 3 view .LVU2
-  40 000a 1A6A     		ldr	r2, [r3, #32]
-  41 000c 22F08052 		bic	r2, r2, #268435456
-  42 0010 1A62     		str	r2, [r3, #32]
+  47              		.loc 1 93 3
+  48 0010 054B     		ldr	r3, .L2
+  49 0012 1B6A     		ldr	r3, [r3, #32]
+  50 0014 044A     		ldr	r2, .L2
+  51 0016 23F08053 		bic	r3, r3, #268435456
+  52 001a 1362     		str	r3, [r2, #32]
   94:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
-  43              		.loc 1 94 1 is_stmt 0 view .LVU3
-  44 0012 7047     		bx	lr
-  45              	.L3:
-  46              		.align	2
-  47              	.L2:
-  48 0014 00380240 		.word	1073887232
-  49              		.cfi_endproc
-  50              	.LFE134:
-  52              		.section	.text.HAL_PWR_EnableBkUpAccess,"ax",%progbits
-  53              		.align	1
-  54              		.global	HAL_PWR_EnableBkUpAccess
-  55              		.syntax unified
-  56              		.thumb
-  57              		.thumb_func
-  59              	HAL_PWR_EnableBkUpAccess:
-  60              	.LFB135:
+  53              		.loc 1 94 1
+  54 001c 00BF     		nop
+  55 001e BD46     		mov	sp, r7
+  56              	.LCFI2:
+  57              		.cfi_def_cfa_register 13
+  58              		@ sp needed
+  59 0020 5DF8047B 		ldr	r7, [sp], #4
+  60              	.LCFI3:
+  61              		.cfi_restore 7
+  62              		.cfi_def_cfa_offset 0
+  63 0024 7047     		bx	lr
+  64              	.L3:
+  65 0026 00BF     		.align	2
+  66              	.L2:
+  67 0028 00380240 		.word	1073887232
+  68              		.cfi_endproc
+  69              	.LFE134:
+  71              		.section	.text.HAL_PWR_EnableBkUpAccess,"ax",%progbits
+  72              		.align	1
+  73              		.global	HAL_PWR_EnableBkUpAccess
+  74              		.syntax unified
+  75              		.thumb
+  76              		.thumb_func
+  78              	HAL_PWR_EnableBkUpAccess:
+  79              	.LFB135:
   95:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 4
+
+
   96:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
   97:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief Enables access to the backup domain (RTC registers, RTC 
   98:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *         backup data registers and backup SRAM).
@@ -173,57 +195,70 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  107:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  108:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_EnableBkUpAccess(void)
  109:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
-  61              		.loc 1 109 1 is_stmt 1 view -0
-  62              		.cfi_startproc
-  63              		@ args = 0, pretend = 0, frame = 8
-  64              		@ frame_needed = 0, uses_anonymous_args = 0
-  65              		@ link register save eliminated.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 4
-
-
-  66 0000 82B0     		sub	sp, sp, #8
-  67              	.LCFI0:
-  68              		.cfi_def_cfa_offset 8
+  80              		.loc 1 109 1
+  81              		.cfi_startproc
+  82              		@ args = 0, pretend = 0, frame = 8
+  83              		@ frame_needed = 1, uses_anonymous_args = 0
+  84              		@ link register save eliminated.
+  85 0000 80B4     		push	{r7}
+  86              	.LCFI4:
+  87              		.cfi_def_cfa_offset 4
+  88              		.cfi_offset 7, -4
+  89 0002 83B0     		sub	sp, sp, #12
+  90              	.LCFI5:
+  91              		.cfi_def_cfa_offset 16
+  92 0004 00AF     		add	r7, sp, #0
+  93              	.LCFI6:
+  94              		.cfi_def_cfa_register 7
  110:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   __IO uint32_t dummyread;
-  69              		.loc 1 110 3 view .LVU5
  111:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *(__IO uint32_t *) CR_DBP_BB = (uint32_t)ENABLE;
-  70              		.loc 1 111 3 view .LVU6
-  71              		.loc 1 111 32 is_stmt 0 view .LVU7
-  72 0002 044B     		ldr	r3, .L6
-  73 0004 0122     		movs	r2, #1
-  74 0006 1A62     		str	r2, [r3, #32]
+  95              		.loc 1 111 3
+  96 0006 064B     		ldr	r3, .L5
+  97              		.loc 1 111 32
+  98 0008 0122     		movs	r2, #1
+  99 000a 1A60     		str	r2, [r3]
  112:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   dummyread = PWR->CR;
-  75              		.loc 1 112 3 is_stmt 1 view .LVU8
-  76              		.loc 1 112 18 is_stmt 0 view .LVU9
-  77 0008 034B     		ldr	r3, .L6+4
-  78 000a 1B68     		ldr	r3, [r3]
-  79              		.loc 1 112 13 view .LVU10
-  80 000c 0193     		str	r3, [sp, #4]
+ 100              		.loc 1 112 18
+ 101 000c 054B     		ldr	r3, .L5+4
+ 102 000e 1B68     		ldr	r3, [r3]
+ 103              		.loc 1 112 13
+ 104 0010 7B60     		str	r3, [r7, #4]
  113:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   UNUSED(dummyread);
-  81              		.loc 1 113 3 is_stmt 1 view .LVU11
-  82 000e 019B     		ldr	r3, [sp, #4]
+ 105              		.loc 1 113 3
+ 106 0012 7B68     		ldr	r3, [r7, #4]
  114:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
-  83              		.loc 1 114 1 is_stmt 0 view .LVU12
-  84 0010 02B0     		add	sp, sp, #8
-  85              	.LCFI1:
-  86              		.cfi_def_cfa_offset 0
-  87              		@ sp needed
-  88 0012 7047     		bx	lr
-  89              	.L7:
-  90              		.align	2
-  91              	.L6:
-  92 0014 00000E42 		.word	1108213760
-  93 0018 00700040 		.word	1073770496
-  94              		.cfi_endproc
-  95              	.LFE135:
-  97              		.section	.text.HAL_PWR_DisableBkUpAccess,"ax",%progbits
-  98              		.align	1
-  99              		.global	HAL_PWR_DisableBkUpAccess
- 100              		.syntax unified
- 101              		.thumb
- 102              		.thumb_func
- 104              	HAL_PWR_DisableBkUpAccess:
- 105              	.LFB136:
+ 107              		.loc 1 114 1
+ 108 0014 00BF     		nop
+ 109 0016 0C37     		adds	r7, r7, #12
+ 110              	.LCFI7:
+ 111              		.cfi_def_cfa_offset 4
+ 112 0018 BD46     		mov	sp, r7
+ 113              	.LCFI8:
+ 114              		.cfi_def_cfa_register 13
+ 115              		@ sp needed
+ 116 001a 5DF8047B 		ldr	r7, [sp], #4
+ 117              	.LCFI9:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 5
+
+
+ 118              		.cfi_restore 7
+ 119              		.cfi_def_cfa_offset 0
+ 120 001e 7047     		bx	lr
+ 121              	.L6:
+ 122              		.align	2
+ 123              	.L5:
+ 124 0020 20000E42 		.word	1108213792
+ 125 0024 00700040 		.word	1073770496
+ 126              		.cfi_endproc
+ 127              	.LFE135:
+ 129              		.section	.text.HAL_PWR_DisableBkUpAccess,"ax",%progbits
+ 130              		.align	1
+ 131              		.global	HAL_PWR_DisableBkUpAccess
+ 132              		.syntax unified
+ 133              		.thumb
+ 134              		.thumb_func
+ 136              	HAL_PWR_DisableBkUpAccess:
+ 137              	.LFB136:
  115:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  116:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
  117:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief Disables access to the backup domain (RTC registers, RTC 
@@ -238,59 +273,71 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  126:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @retval None
  127:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  128:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_DisableBkUpAccess(void)
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 5
-
-
  129:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
- 106              		.loc 1 129 1 is_stmt 1 view -0
- 107              		.cfi_startproc
- 108              		@ args = 0, pretend = 0, frame = 8
- 109              		@ frame_needed = 0, uses_anonymous_args = 0
- 110              		@ link register save eliminated.
- 111 0000 82B0     		sub	sp, sp, #8
- 112              	.LCFI2:
- 113              		.cfi_def_cfa_offset 8
+ 138              		.loc 1 129 1
+ 139              		.cfi_startproc
+ 140              		@ args = 0, pretend = 0, frame = 8
+ 141              		@ frame_needed = 1, uses_anonymous_args = 0
+ 142              		@ link register save eliminated.
+ 143 0000 80B4     		push	{r7}
+ 144              	.LCFI10:
+ 145              		.cfi_def_cfa_offset 4
+ 146              		.cfi_offset 7, -4
+ 147 0002 83B0     		sub	sp, sp, #12
+ 148              	.LCFI11:
+ 149              		.cfi_def_cfa_offset 16
+ 150 0004 00AF     		add	r7, sp, #0
+ 151              	.LCFI12:
+ 152              		.cfi_def_cfa_register 7
  130:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   __IO uint32_t dummyread;
- 114              		.loc 1 130 3 view .LVU14
  131:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *(__IO uint32_t *) CR_DBP_BB = (uint32_t)DISABLE;
- 115              		.loc 1 131 3 view .LVU15
- 116              		.loc 1 131 32 is_stmt 0 view .LVU16
- 117 0002 044B     		ldr	r3, .L10
- 118 0004 0022     		movs	r2, #0
- 119 0006 1A62     		str	r2, [r3, #32]
+ 153              		.loc 1 131 3
+ 154 0006 064B     		ldr	r3, .L8
+ 155              		.loc 1 131 32
+ 156 0008 0022     		movs	r2, #0
+ 157 000a 1A60     		str	r2, [r3]
  132:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   dummyread = PWR->CR;
- 120              		.loc 1 132 3 is_stmt 1 view .LVU17
- 121              		.loc 1 132 18 is_stmt 0 view .LVU18
- 122 0008 034B     		ldr	r3, .L10+4
- 123 000a 1B68     		ldr	r3, [r3]
- 124              		.loc 1 132 13 view .LVU19
- 125 000c 0193     		str	r3, [sp, #4]
+ 158              		.loc 1 132 18
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 6
+
+
+ 159 000c 054B     		ldr	r3, .L8+4
+ 160 000e 1B68     		ldr	r3, [r3]
+ 161              		.loc 1 132 13
+ 162 0010 7B60     		str	r3, [r7, #4]
  133:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   UNUSED(dummyread);
- 126              		.loc 1 133 3 is_stmt 1 view .LVU20
- 127 000e 019B     		ldr	r3, [sp, #4]
+ 163              		.loc 1 133 3
+ 164 0012 7B68     		ldr	r3, [r7, #4]
  134:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
- 128              		.loc 1 134 1 is_stmt 0 view .LVU21
- 129 0010 02B0     		add	sp, sp, #8
- 130              	.LCFI3:
- 131              		.cfi_def_cfa_offset 0
- 132              		@ sp needed
- 133 0012 7047     		bx	lr
- 134              	.L11:
- 135              		.align	2
- 136              	.L10:
- 137 0014 00000E42 		.word	1108213760
- 138 0018 00700040 		.word	1073770496
- 139              		.cfi_endproc
- 140              	.LFE136:
- 142              		.section	.text.HAL_PWR_ConfigPVD,"ax",%progbits
- 143              		.align	1
- 144              		.global	HAL_PWR_ConfigPVD
- 145              		.syntax unified
- 146              		.thumb
- 147              		.thumb_func
- 149              	HAL_PWR_ConfigPVD:
- 150              	.LVL0:
- 151              	.LFB137:
+ 165              		.loc 1 134 1
+ 166 0014 00BF     		nop
+ 167 0016 0C37     		adds	r7, r7, #12
+ 168              	.LCFI13:
+ 169              		.cfi_def_cfa_offset 4
+ 170 0018 BD46     		mov	sp, r7
+ 171              	.LCFI14:
+ 172              		.cfi_def_cfa_register 13
+ 173              		@ sp needed
+ 174 001a 5DF8047B 		ldr	r7, [sp], #4
+ 175              	.LCFI15:
+ 176              		.cfi_restore 7
+ 177              		.cfi_def_cfa_offset 0
+ 178 001e 7047     		bx	lr
+ 179              	.L9:
+ 180              		.align	2
+ 181              	.L8:
+ 182 0020 20000E42 		.word	1108213792
+ 183 0024 00700040 		.word	1073770496
+ 184              		.cfi_endproc
+ 185              	.LFE136:
+ 187              		.section	.text.HAL_PWR_ConfigPVD,"ax",%progbits
+ 188              		.align	1
+ 189              		.global	HAL_PWR_ConfigPVD
+ 190              		.syntax unified
+ 191              		.thumb
+ 192              		.thumb_func
+ 194              	HAL_PWR_ConfigPVD:
+ 195              	.LFB137:
  135:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  136:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
  137:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @}
@@ -298,9 +345,6 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  139:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  140:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /** @defgroup PWR_Exported_Functions_Group2 Peripheral Control functions 
  141:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *  @brief Low Power modes configuration functions 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 6
-
-
  142:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *
  143:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** @verbatim
  144:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
@@ -314,6 +358,9 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  152:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****       (+) The PVD is used to monitor the VDD power supply by comparing it to a 
  153:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****           threshold selected by the PVD Level (PLS[2:0] bits in the PWR_CR).
  154:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****       (+) A PVDO flag is available to indicate if VDD/VDDA is higher or lower 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 7
+
+
  155:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****           than the PVD threshold. This event is internally connected to the EXTI 
  156:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****           line16 and can generate an interrupt if enabled. This is done through
  157:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****           __HAL_PWR_PVD_EXTI_ENABLE_IT() macro.
@@ -358,9 +405,6 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****    *** Stop mode ***
  197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****    =================
  198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     [..]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 7
-
-
  199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****       In Stop mode, all clocks in the 1.2V domain are stopped, the PLL, the HSI,
  200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****       and the HSE RC oscillators are disabled. Internal SRAM and register contents 
  201:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****       are preserved.
@@ -374,6 +418,9 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  209:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****          The Stop mode is entered using the HAL_PWR_EnterSTOPMode(Regulator, STOPEntry) 
  210:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****              function with:
  211:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****        (++) Regulator:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 8
+
+
  212:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****         (+++) Main regulator ON.
  213:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****         (+++) Low Power regulator ON.
  214:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****        (++) STOPEntry:
@@ -418,9 +465,6 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  253:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****               configure the RTC to generate the RTC alarm using the HAL_RTC_SetAlarm_IT() function.
  254:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  255:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****         (++) To wake up from the Stop mode with an RTC Tamper or time stamp event, it 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 8
-
-
  256:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****              is necessary to configure the RTC to detect the tamper or time stamp event using the
  257:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****                 HAL_RTCEx_SetTimeStamp_IT() or HAL_RTCEx_SetTamper_IT() functions.
  258:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****                   
@@ -434,6 +478,9 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  266:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
  267:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief Configures the voltage threshold detected by the Power Voltage Detector(PVD).
  268:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @param sConfigPVD pointer to an PWR_PVDTypeDef structure that contains the configuration
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 9
+
+
  269:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *        information for the PVD.
  270:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @note Refer to the electrical characteristics of your device datasheet for
  271:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *         more details about the voltage threshold corresponding to each 
@@ -442,144 +489,189 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  274:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  275:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_ConfigPVD(PWR_PVDTypeDef *sConfigPVD)
  276:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
- 152              		.loc 1 276 1 is_stmt 1 view -0
- 153              		.cfi_startproc
- 154              		@ args = 0, pretend = 0, frame = 0
- 155              		@ frame_needed = 0, uses_anonymous_args = 0
- 156              		@ link register save eliminated.
+ 196              		.loc 1 276 1
+ 197              		.cfi_startproc
+ 198              		@ args = 0, pretend = 0, frame = 8
+ 199              		@ frame_needed = 1, uses_anonymous_args = 0
+ 200              		@ link register save eliminated.
+ 201 0000 80B4     		push	{r7}
+ 202              	.LCFI16:
+ 203              		.cfi_def_cfa_offset 4
+ 204              		.cfi_offset 7, -4
+ 205 0002 83B0     		sub	sp, sp, #12
+ 206              	.LCFI17:
+ 207              		.cfi_def_cfa_offset 16
+ 208 0004 00AF     		add	r7, sp, #0
+ 209              	.LCFI18:
+ 210              		.cfi_def_cfa_register 7
+ 211 0006 7860     		str	r0, [r7, #4]
  277:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Check the parameters */
  278:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   assert_param(IS_PWR_PVD_LEVEL(sConfigPVD->PVDLevel));
- 157              		.loc 1 278 3 view .LVU23
  279:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   assert_param(IS_PWR_PVD_MODE(sConfigPVD->Mode));
- 158              		.loc 1 279 3 view .LVU24
  280:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   
  281:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Set PLS[7:5] bits according to PVDLevel value */
  282:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   MODIFY_REG(PWR->CR, PWR_CR_PLS, sConfigPVD->PVDLevel);
- 159              		.loc 1 282 3 view .LVU25
- 160 0000 1E4A     		ldr	r2, .L17
- 161 0002 1368     		ldr	r3, [r2]
- 162 0004 23F0E003 		bic	r3, r3, #224
- 163 0008 0168     		ldr	r1, [r0]
- 164 000a 0B43     		orrs	r3, r3, r1
- 165 000c 1360     		str	r3, [r2]
+ 212              		.loc 1 282 3
+ 213 0008 2B4B     		ldr	r3, .L16
+ 214 000a 1B68     		ldr	r3, [r3]
+ 215 000c 23F0E002 		bic	r2, r3, #224
+ 216 0010 7B68     		ldr	r3, [r7, #4]
+ 217 0012 1B68     		ldr	r3, [r3]
+ 218 0014 2849     		ldr	r1, .L16
+ 219 0016 1343     		orrs	r3, r3, r2
+ 220 0018 0B60     		str	r3, [r1]
  283:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   
  284:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Clear any previous config. Keep it clear if no event or IT mode is selected */
  285:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   __HAL_PWR_PVD_EXTI_DISABLE_EVENT();
- 166              		.loc 1 285 3 view .LVU26
- 167 000e 1C4B     		ldr	r3, .L17+4
- 168 0010 5A68     		ldr	r2, [r3, #4]
- 169 0012 22F48032 		bic	r2, r2, #65536
- 170 0016 5A60     		str	r2, [r3, #4]
+ 221              		.loc 1 285 3
+ 222 001a 284B     		ldr	r3, .L16+4
+ 223 001c 5B68     		ldr	r3, [r3, #4]
+ 224 001e 274A     		ldr	r2, .L16+4
+ 225 0020 23F48033 		bic	r3, r3, #65536
+ 226 0024 5360     		str	r3, [r2, #4]
  286:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   __HAL_PWR_PVD_EXTI_DISABLE_IT();
- 171              		.loc 1 286 3 view .LVU27
- 172 0018 1A68     		ldr	r2, [r3]
- 173 001a 22F48032 		bic	r2, r2, #65536
- 174 001e 1A60     		str	r2, [r3]
+ 227              		.loc 1 286 3
+ 228 0026 254B     		ldr	r3, .L16+4
+ 229 0028 1B68     		ldr	r3, [r3]
+ 230 002a 244A     		ldr	r2, .L16+4
+ 231 002c 23F48033 		bic	r3, r3, #65536
+ 232 0030 1360     		str	r3, [r2]
  287:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   __HAL_PWR_PVD_EXTI_DISABLE_RISING_EDGE();
- 175              		.loc 1 287 3 view .LVU28
- 176 0020 9A68     		ldr	r2, [r3, #8]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 9
+ 233              		.loc 1 287 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 10
 
 
- 177 0022 22F48032 		bic	r2, r2, #65536
- 178 0026 9A60     		str	r2, [r3, #8]
+ 234 0032 224B     		ldr	r3, .L16+4
+ 235 0034 9B68     		ldr	r3, [r3, #8]
+ 236 0036 214A     		ldr	r2, .L16+4
+ 237 0038 23F48033 		bic	r3, r3, #65536
+ 238 003c 9360     		str	r3, [r2, #8]
  288:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   __HAL_PWR_PVD_EXTI_DISABLE_FALLING_EDGE(); 
- 179              		.loc 1 288 3 view .LVU29
- 180 0028 DA68     		ldr	r2, [r3, #12]
- 181 002a 22F48032 		bic	r2, r2, #65536
- 182 002e DA60     		str	r2, [r3, #12]
+ 239              		.loc 1 288 3
+ 240 003e 1F4B     		ldr	r3, .L16+4
+ 241 0040 DB68     		ldr	r3, [r3, #12]
+ 242 0042 1E4A     		ldr	r2, .L16+4
+ 243 0044 23F48033 		bic	r3, r3, #65536
+ 244 0048 D360     		str	r3, [r2, #12]
  289:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  290:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Configure interrupt mode */
  291:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   if((sConfigPVD->Mode & PVD_MODE_IT) == PVD_MODE_IT)
- 183              		.loc 1 291 3 view .LVU30
- 184              		.loc 1 291 17 is_stmt 0 view .LVU31
- 185 0030 4368     		ldr	r3, [r0, #4]
- 186              		.loc 1 291 5 view .LVU32
- 187 0032 13F4803F 		tst	r3, #65536
- 188 0036 04D0     		beq	.L13
+ 245              		.loc 1 291 17
+ 246 004a 7B68     		ldr	r3, [r7, #4]
+ 247 004c 5B68     		ldr	r3, [r3, #4]
+ 248              		.loc 1 291 24
+ 249 004e 03F48033 		and	r3, r3, #65536
+ 250              		.loc 1 291 5
+ 251 0052 002B     		cmp	r3, #0
+ 252 0054 05D0     		beq	.L11
  292:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   {
  293:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     __HAL_PWR_PVD_EXTI_ENABLE_IT();
- 189              		.loc 1 293 5 is_stmt 1 view .LVU33
- 190 0038 114A     		ldr	r2, .L17+4
- 191 003a 1368     		ldr	r3, [r2]
- 192 003c 43F48033 		orr	r3, r3, #65536
- 193 0040 1360     		str	r3, [r2]
- 194              	.L13:
+ 253              		.loc 1 293 5
+ 254 0056 194B     		ldr	r3, .L16+4
+ 255 0058 1B68     		ldr	r3, [r3]
+ 256 005a 184A     		ldr	r2, .L16+4
+ 257 005c 43F48033 		orr	r3, r3, #65536
+ 258 0060 1360     		str	r3, [r2]
+ 259              	.L11:
  294:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   }
  295:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   
  296:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Configure event mode */
  297:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   if((sConfigPVD->Mode & PVD_MODE_EVT) == PVD_MODE_EVT)
- 195              		.loc 1 297 3 view .LVU34
- 196              		.loc 1 297 17 is_stmt 0 view .LVU35
- 197 0042 4368     		ldr	r3, [r0, #4]
- 198              		.loc 1 297 5 view .LVU36
- 199 0044 13F4003F 		tst	r3, #131072
- 200 0048 04D0     		beq	.L14
+ 260              		.loc 1 297 17
+ 261 0062 7B68     		ldr	r3, [r7, #4]
+ 262 0064 5B68     		ldr	r3, [r3, #4]
+ 263              		.loc 1 297 24
+ 264 0066 03F40033 		and	r3, r3, #131072
+ 265              		.loc 1 297 5
+ 266 006a 002B     		cmp	r3, #0
+ 267 006c 05D0     		beq	.L12
  298:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   {
  299:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     __HAL_PWR_PVD_EXTI_ENABLE_EVENT();
- 201              		.loc 1 299 5 is_stmt 1 view .LVU37
- 202 004a 0D4A     		ldr	r2, .L17+4
- 203 004c 5368     		ldr	r3, [r2, #4]
- 204 004e 43F48033 		orr	r3, r3, #65536
- 205 0052 5360     		str	r3, [r2, #4]
- 206              	.L14:
+ 268              		.loc 1 299 5
+ 269 006e 134B     		ldr	r3, .L16+4
+ 270 0070 5B68     		ldr	r3, [r3, #4]
+ 271 0072 124A     		ldr	r2, .L16+4
+ 272 0074 43F48033 		orr	r3, r3, #65536
+ 273 0078 5360     		str	r3, [r2, #4]
+ 274              	.L12:
  300:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   }
  301:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   
  302:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Configure the edge */
  303:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   if((sConfigPVD->Mode & PVD_RISING_EDGE) == PVD_RISING_EDGE)
- 207              		.loc 1 303 3 view .LVU38
- 208              		.loc 1 303 17 is_stmt 0 view .LVU39
- 209 0054 4368     		ldr	r3, [r0, #4]
- 210              		.loc 1 303 5 view .LVU40
- 211 0056 13F0010F 		tst	r3, #1
- 212 005a 04D0     		beq	.L15
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 11
+
+
+ 275              		.loc 1 303 17
+ 276 007a 7B68     		ldr	r3, [r7, #4]
+ 277 007c 5B68     		ldr	r3, [r3, #4]
+ 278              		.loc 1 303 24
+ 279 007e 03F00103 		and	r3, r3, #1
+ 280              		.loc 1 303 5
+ 281 0082 002B     		cmp	r3, #0
+ 282 0084 05D0     		beq	.L13
  304:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   {
  305:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     __HAL_PWR_PVD_EXTI_ENABLE_RISING_EDGE();
- 213              		.loc 1 305 5 is_stmt 1 view .LVU41
- 214 005c 084A     		ldr	r2, .L17+4
- 215 005e 9368     		ldr	r3, [r2, #8]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 10
-
-
- 216 0060 43F48033 		orr	r3, r3, #65536
- 217 0064 9360     		str	r3, [r2, #8]
- 218              	.L15:
+ 283              		.loc 1 305 5
+ 284 0086 0D4B     		ldr	r3, .L16+4
+ 285 0088 9B68     		ldr	r3, [r3, #8]
+ 286 008a 0C4A     		ldr	r2, .L16+4
+ 287 008c 43F48033 		orr	r3, r3, #65536
+ 288 0090 9360     		str	r3, [r2, #8]
+ 289              	.L13:
  306:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   }
  307:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   
  308:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   if((sConfigPVD->Mode & PVD_FALLING_EDGE) == PVD_FALLING_EDGE)
- 219              		.loc 1 308 3 view .LVU42
- 220              		.loc 1 308 17 is_stmt 0 view .LVU43
- 221 0066 4368     		ldr	r3, [r0, #4]
- 222              		.loc 1 308 5 view .LVU44
- 223 0068 13F0020F 		tst	r3, #2
- 224 006c 04D0     		beq	.L12
+ 290              		.loc 1 308 17
+ 291 0092 7B68     		ldr	r3, [r7, #4]
+ 292 0094 5B68     		ldr	r3, [r3, #4]
+ 293              		.loc 1 308 24
+ 294 0096 03F00203 		and	r3, r3, #2
+ 295              		.loc 1 308 5
+ 296 009a 002B     		cmp	r3, #0
+ 297 009c 05D0     		beq	.L15
  309:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   {
  310:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     __HAL_PWR_PVD_EXTI_ENABLE_FALLING_EDGE();
- 225              		.loc 1 310 5 is_stmt 1 view .LVU45
- 226 006e 044A     		ldr	r2, .L17+4
- 227 0070 D368     		ldr	r3, [r2, #12]
- 228 0072 43F48033 		orr	r3, r3, #65536
- 229 0076 D360     		str	r3, [r2, #12]
- 230              	.L12:
+ 298              		.loc 1 310 5
+ 299 009e 074B     		ldr	r3, .L16+4
+ 300 00a0 DB68     		ldr	r3, [r3, #12]
+ 301 00a2 064A     		ldr	r2, .L16+4
+ 302 00a4 43F48033 		orr	r3, r3, #65536
+ 303 00a8 D360     		str	r3, [r2, #12]
+ 304              	.L15:
  311:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   }
  312:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
- 231              		.loc 1 312 1 is_stmt 0 view .LVU46
- 232 0078 7047     		bx	lr
- 233              	.L18:
- 234 007a 00BF     		.align	2
- 235              	.L17:
- 236 007c 00700040 		.word	1073770496
- 237 0080 003C0140 		.word	1073822720
- 238              		.cfi_endproc
- 239              	.LFE137:
- 241              		.section	.text.HAL_PWR_EnablePVD,"ax",%progbits
- 242              		.align	1
- 243              		.global	HAL_PWR_EnablePVD
- 244              		.syntax unified
- 245              		.thumb
- 246              		.thumb_func
- 248              	HAL_PWR_EnablePVD:
- 249              	.LFB138:
+ 305              		.loc 1 312 1
+ 306 00aa 00BF     		nop
+ 307 00ac 0C37     		adds	r7, r7, #12
+ 308              	.LCFI19:
+ 309              		.cfi_def_cfa_offset 4
+ 310 00ae BD46     		mov	sp, r7
+ 311              	.LCFI20:
+ 312              		.cfi_def_cfa_register 13
+ 313              		@ sp needed
+ 314 00b0 5DF8047B 		ldr	r7, [sp], #4
+ 315              	.LCFI21:
+ 316              		.cfi_restore 7
+ 317              		.cfi_def_cfa_offset 0
+ 318 00b4 7047     		bx	lr
+ 319              	.L17:
+ 320 00b6 00BF     		.align	2
+ 321              	.L16:
+ 322 00b8 00700040 		.word	1073770496
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 12
+
+
+ 323 00bc 003C0140 		.word	1073822720
+ 324              		.cfi_endproc
+ 325              	.LFE137:
+ 327              		.section	.text.HAL_PWR_EnablePVD,"ax",%progbits
+ 328              		.align	1
+ 329              		.global	HAL_PWR_EnablePVD
+ 330              		.syntax unified
+ 331              		.thumb
+ 332              		.thumb_func
+ 334              	HAL_PWR_EnablePVD:
+ 335              	.LFB138:
  313:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  314:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
  315:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief Enables the Power Voltage Detector(PVD).
@@ -587,37 +679,53 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  317:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  318:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_EnablePVD(void)
  319:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
- 250              		.loc 1 319 1 is_stmt 1 view -0
- 251              		.cfi_startproc
- 252              		@ args = 0, pretend = 0, frame = 0
- 253              		@ frame_needed = 0, uses_anonymous_args = 0
- 254              		@ link register save eliminated.
+ 336              		.loc 1 319 1
+ 337              		.cfi_startproc
+ 338              		@ args = 0, pretend = 0, frame = 0
+ 339              		@ frame_needed = 1, uses_anonymous_args = 0
+ 340              		@ link register save eliminated.
+ 341 0000 80B4     		push	{r7}
+ 342              	.LCFI22:
+ 343              		.cfi_def_cfa_offset 4
+ 344              		.cfi_offset 7, -4
+ 345 0002 00AF     		add	r7, sp, #0
+ 346              	.LCFI23:
+ 347              		.cfi_def_cfa_register 7
  320:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *(__IO uint32_t *) CR_PVDE_BB = (uint32_t)ENABLE;
- 255              		.loc 1 320 3 view .LVU48
- 256              		.loc 1 320 33 is_stmt 0 view .LVU49
- 257 0000 014B     		ldr	r3, .L20
- 258 0002 0122     		movs	r2, #1
- 259 0004 1A61     		str	r2, [r3, #16]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 11
-
-
+ 348              		.loc 1 320 3
+ 349 0004 034B     		ldr	r3, .L19
+ 350              		.loc 1 320 33
+ 351 0006 0122     		movs	r2, #1
+ 352 0008 1A60     		str	r2, [r3]
  321:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
- 260              		.loc 1 321 1 view .LVU50
- 261 0006 7047     		bx	lr
- 262              	.L21:
- 263              		.align	2
- 264              	.L20:
- 265 0008 00000E42 		.word	1108213760
- 266              		.cfi_endproc
- 267              	.LFE138:
- 269              		.section	.text.HAL_PWR_DisablePVD,"ax",%progbits
- 270              		.align	1
- 271              		.global	HAL_PWR_DisablePVD
- 272              		.syntax unified
- 273              		.thumb
- 274              		.thumb_func
- 276              	HAL_PWR_DisablePVD:
- 277              	.LFB139:
+ 353              		.loc 1 321 1
+ 354 000a 00BF     		nop
+ 355 000c BD46     		mov	sp, r7
+ 356              	.LCFI24:
+ 357              		.cfi_def_cfa_register 13
+ 358              		@ sp needed
+ 359 000e 5DF8047B 		ldr	r7, [sp], #4
+ 360              	.LCFI25:
+ 361              		.cfi_restore 7
+ 362              		.cfi_def_cfa_offset 0
+ 363 0012 7047     		bx	lr
+ 364              	.L20:
+ 365              		.align	2
+ 366              	.L19:
+ 367 0014 10000E42 		.word	1108213776
+ 368              		.cfi_endproc
+ 369              	.LFE138:
+ 371              		.section	.text.HAL_PWR_DisablePVD,"ax",%progbits
+ 372              		.align	1
+ 373              		.global	HAL_PWR_DisablePVD
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 13
+
+
+ 374              		.syntax unified
+ 375              		.thumb
+ 376              		.thumb_func
+ 378              	HAL_PWR_DisablePVD:
+ 379              	.LFB139:
  322:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  323:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
  324:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief Disables the Power Voltage Detector(PVD).
@@ -625,42 +733,57 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  326:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  327:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_DisablePVD(void)
  328:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
- 278              		.loc 1 328 1 is_stmt 1 view -0
- 279              		.cfi_startproc
- 280              		@ args = 0, pretend = 0, frame = 0
- 281              		@ frame_needed = 0, uses_anonymous_args = 0
- 282              		@ link register save eliminated.
+ 380              		.loc 1 328 1
+ 381              		.cfi_startproc
+ 382              		@ args = 0, pretend = 0, frame = 0
+ 383              		@ frame_needed = 1, uses_anonymous_args = 0
+ 384              		@ link register save eliminated.
+ 385 0000 80B4     		push	{r7}
+ 386              	.LCFI26:
+ 387              		.cfi_def_cfa_offset 4
+ 388              		.cfi_offset 7, -4
+ 389 0002 00AF     		add	r7, sp, #0
+ 390              	.LCFI27:
+ 391              		.cfi_def_cfa_register 7
  329:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *(__IO uint32_t *) CR_PVDE_BB = (uint32_t)DISABLE;
- 283              		.loc 1 329 3 view .LVU52
- 284              		.loc 1 329 33 is_stmt 0 view .LVU53
- 285 0000 014B     		ldr	r3, .L23
- 286 0002 0022     		movs	r2, #0
- 287 0004 1A61     		str	r2, [r3, #16]
+ 392              		.loc 1 329 3
+ 393 0004 034B     		ldr	r3, .L22
+ 394              		.loc 1 329 33
+ 395 0006 0022     		movs	r2, #0
+ 396 0008 1A60     		str	r2, [r3]
  330:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
- 288              		.loc 1 330 1 view .LVU54
- 289 0006 7047     		bx	lr
- 290              	.L24:
- 291              		.align	2
- 292              	.L23:
- 293 0008 00000E42 		.word	1108213760
- 294              		.cfi_endproc
- 295              	.LFE139:
- 297              		.section	.text.HAL_PWR_EnableWakeUpPin,"ax",%progbits
- 298              		.align	1
- 299              		.global	HAL_PWR_EnableWakeUpPin
- 300              		.syntax unified
- 301              		.thumb
- 302              		.thumb_func
- 304              	HAL_PWR_EnableWakeUpPin:
- 305              	.LVL1:
- 306              	.LFB140:
+ 397              		.loc 1 330 1
+ 398 000a 00BF     		nop
+ 399 000c BD46     		mov	sp, r7
+ 400              	.LCFI28:
+ 401              		.cfi_def_cfa_register 13
+ 402              		@ sp needed
+ 403 000e 5DF8047B 		ldr	r7, [sp], #4
+ 404              	.LCFI29:
+ 405              		.cfi_restore 7
+ 406              		.cfi_def_cfa_offset 0
+ 407 0012 7047     		bx	lr
+ 408              	.L23:
+ 409              		.align	2
+ 410              	.L22:
+ 411 0014 10000E42 		.word	1108213776
+ 412              		.cfi_endproc
+ 413              	.LFE139:
+ 415              		.section	.text.HAL_PWR_EnableWakeUpPin,"ax",%progbits
+ 416              		.align	1
+ 417              		.global	HAL_PWR_EnableWakeUpPin
+ 418              		.syntax unified
+ 419              		.thumb
+ 420              		.thumb_func
+ 422              	HAL_PWR_EnableWakeUpPin:
+ 423              	.LFB140:
  331:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 14
+
+
  332:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
  333:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief Enables the Wake-up PINx functionality.
  334:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @param WakeUpPinx Specifies the Power Wake-Up pin to enable.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 12
-
-
  335:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *         This parameter can be one of the following values:
  336:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *           @arg PWR_WAKEUP_PIN1
  337:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *           @arg PWR_WAKEUP_PIN2 available only on STM32F410xx/STM32F446xx/STM32F412xx/STM32F413x
@@ -669,40 +792,66 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  340:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  341:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_EnableWakeUpPin(uint32_t WakeUpPinx)
  342:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
- 307              		.loc 1 342 1 is_stmt 1 view -0
- 308              		.cfi_startproc
- 309              		@ args = 0, pretend = 0, frame = 0
- 310              		@ frame_needed = 0, uses_anonymous_args = 0
- 311              		@ link register save eliminated.
+ 424              		.loc 1 342 1
+ 425              		.cfi_startproc
+ 426              		@ args = 0, pretend = 0, frame = 8
+ 427              		@ frame_needed = 1, uses_anonymous_args = 0
+ 428              		@ link register save eliminated.
+ 429 0000 80B4     		push	{r7}
+ 430              	.LCFI30:
+ 431              		.cfi_def_cfa_offset 4
+ 432              		.cfi_offset 7, -4
+ 433 0002 83B0     		sub	sp, sp, #12
+ 434              	.LCFI31:
+ 435              		.cfi_def_cfa_offset 16
+ 436 0004 00AF     		add	r7, sp, #0
+ 437              	.LCFI32:
+ 438              		.cfi_def_cfa_register 7
+ 439 0006 7860     		str	r0, [r7, #4]
  343:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Check the parameter */
  344:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   assert_param(IS_PWR_WAKEUP_PIN(WakeUpPinx));
- 312              		.loc 1 344 3 view .LVU56
  345:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  346:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Enable the wake up pin */
  347:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   SET_BIT(PWR->CSR, WakeUpPinx);
- 313              		.loc 1 347 3 view .LVU57
- 314 0000 024A     		ldr	r2, .L26
- 315 0002 5368     		ldr	r3, [r2, #4]
- 316 0004 0343     		orrs	r3, r3, r0
- 317 0006 5360     		str	r3, [r2, #4]
+ 440              		.loc 1 347 3
+ 441 0008 054B     		ldr	r3, .L25
+ 442 000a 5A68     		ldr	r2, [r3, #4]
+ 443 000c 0449     		ldr	r1, .L25
+ 444 000e 7B68     		ldr	r3, [r7, #4]
+ 445 0010 1343     		orrs	r3, r3, r2
+ 446 0012 4B60     		str	r3, [r1, #4]
  348:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
- 318              		.loc 1 348 1 is_stmt 0 view .LVU58
- 319 0008 7047     		bx	lr
- 320              	.L27:
- 321 000a 00BF     		.align	2
- 322              	.L26:
- 323 000c 00700040 		.word	1073770496
- 324              		.cfi_endproc
- 325              	.LFE140:
- 327              		.section	.text.HAL_PWR_DisableWakeUpPin,"ax",%progbits
- 328              		.align	1
- 329              		.global	HAL_PWR_DisableWakeUpPin
- 330              		.syntax unified
- 331              		.thumb
- 332              		.thumb_func
- 334              	HAL_PWR_DisableWakeUpPin:
- 335              	.LVL2:
- 336              	.LFB141:
+ 447              		.loc 1 348 1
+ 448 0014 00BF     		nop
+ 449 0016 0C37     		adds	r7, r7, #12
+ 450              	.LCFI33:
+ 451              		.cfi_def_cfa_offset 4
+ 452 0018 BD46     		mov	sp, r7
+ 453              	.LCFI34:
+ 454              		.cfi_def_cfa_register 13
+ 455              		@ sp needed
+ 456 001a 5DF8047B 		ldr	r7, [sp], #4
+ 457              	.LCFI35:
+ 458              		.cfi_restore 7
+ 459              		.cfi_def_cfa_offset 0
+ 460 001e 7047     		bx	lr
+ 461              	.L26:
+ 462              		.align	2
+ 463              	.L25:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 15
+
+
+ 464 0020 00700040 		.word	1073770496
+ 465              		.cfi_endproc
+ 466              	.LFE140:
+ 468              		.section	.text.HAL_PWR_DisableWakeUpPin,"ax",%progbits
+ 469              		.align	1
+ 470              		.global	HAL_PWR_DisableWakeUpPin
+ 471              		.syntax unified
+ 472              		.thumb
+ 473              		.thumb_func
+ 475              	HAL_PWR_DisableWakeUpPin:
+ 476              	.LFB141:
  349:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  350:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
  351:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief Disables the Wake-up PINx functionality.
@@ -715,43 +864,67 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  358:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  359:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_DisableWakeUpPin(uint32_t WakeUpPinx)
  360:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
- 337              		.loc 1 360 1 is_stmt 1 view -0
- 338              		.cfi_startproc
- 339              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 13
-
-
- 340              		@ frame_needed = 0, uses_anonymous_args = 0
- 341              		@ link register save eliminated.
+ 477              		.loc 1 360 1
+ 478              		.cfi_startproc
+ 479              		@ args = 0, pretend = 0, frame = 8
+ 480              		@ frame_needed = 1, uses_anonymous_args = 0
+ 481              		@ link register save eliminated.
+ 482 0000 80B4     		push	{r7}
+ 483              	.LCFI36:
+ 484              		.cfi_def_cfa_offset 4
+ 485              		.cfi_offset 7, -4
+ 486 0002 83B0     		sub	sp, sp, #12
+ 487              	.LCFI37:
+ 488              		.cfi_def_cfa_offset 16
+ 489 0004 00AF     		add	r7, sp, #0
+ 490              	.LCFI38:
+ 491              		.cfi_def_cfa_register 7
+ 492 0006 7860     		str	r0, [r7, #4]
  361:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Check the parameter */
  362:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   assert_param(IS_PWR_WAKEUP_PIN(WakeUpPinx));  
- 342              		.loc 1 362 3 view .LVU60
  363:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  364:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Disable the wake up pin */
  365:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   CLEAR_BIT(PWR->CSR, WakeUpPinx);
- 343              		.loc 1 365 3 view .LVU61
- 344 0000 024A     		ldr	r2, .L29
- 345 0002 5368     		ldr	r3, [r2, #4]
- 346 0004 23EA0003 		bic	r3, r3, r0
- 347 0008 5360     		str	r3, [r2, #4]
+ 493              		.loc 1 365 3
+ 494 0008 064B     		ldr	r3, .L28
+ 495 000a 5A68     		ldr	r2, [r3, #4]
+ 496 000c 7B68     		ldr	r3, [r7, #4]
+ 497 000e DB43     		mvns	r3, r3
+ 498 0010 0449     		ldr	r1, .L28
+ 499 0012 1340     		ands	r3, r3, r2
+ 500 0014 4B60     		str	r3, [r1, #4]
  366:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
- 348              		.loc 1 366 1 is_stmt 0 view .LVU62
- 349 000a 7047     		bx	lr
- 350              	.L30:
- 351              		.align	2
- 352              	.L29:
- 353 000c 00700040 		.word	1073770496
- 354              		.cfi_endproc
- 355              	.LFE141:
- 357              		.section	.text.HAL_PWR_EnterSLEEPMode,"ax",%progbits
- 358              		.align	1
- 359              		.global	HAL_PWR_EnterSLEEPMode
- 360              		.syntax unified
- 361              		.thumb
- 362              		.thumb_func
- 364              	HAL_PWR_EnterSLEEPMode:
- 365              	.LVL3:
- 366              	.LFB142:
+ 501              		.loc 1 366 1
+ 502 0016 00BF     		nop
+ 503 0018 0C37     		adds	r7, r7, #12
+ 504              	.LCFI39:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 16
+
+
+ 505              		.cfi_def_cfa_offset 4
+ 506 001a BD46     		mov	sp, r7
+ 507              	.LCFI40:
+ 508              		.cfi_def_cfa_register 13
+ 509              		@ sp needed
+ 510 001c 5DF8047B 		ldr	r7, [sp], #4
+ 511              	.LCFI41:
+ 512              		.cfi_restore 7
+ 513              		.cfi_def_cfa_offset 0
+ 514 0020 7047     		bx	lr
+ 515              	.L29:
+ 516 0022 00BF     		.align	2
+ 517              	.L28:
+ 518 0024 00700040 		.word	1073770496
+ 519              		.cfi_endproc
+ 520              	.LFE141:
+ 522              		.section	.text.HAL_PWR_EnterSLEEPMode,"ax",%progbits
+ 523              		.align	1
+ 524              		.global	HAL_PWR_EnterSLEEPMode
+ 525              		.syntax unified
+ 526              		.thumb
+ 527              		.thumb_func
+ 529              	HAL_PWR_EnterSLEEPMode:
+ 530              	.LFB142:
  367:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   
  368:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
  369:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief Enters Sleep mode.
@@ -778,108 +951,138 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  390:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  391:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_EnterSLEEPMode(uint32_t Regulator, uint8_t SLEEPEntry)
  392:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 14
+ 531              		.loc 1 392 1
+ 532              		.cfi_startproc
+ 533              		@ args = 0, pretend = 0, frame = 8
+ 534              		@ frame_needed = 1, uses_anonymous_args = 0
+ 535              		@ link register save eliminated.
+ 536 0000 80B4     		push	{r7}
+ 537              	.LCFI42:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 17
 
 
- 367              		.loc 1 392 1 is_stmt 1 view -0
- 368              		.cfi_startproc
- 369              		@ args = 0, pretend = 0, frame = 0
- 370              		@ frame_needed = 0, uses_anonymous_args = 0
- 371              		@ link register save eliminated.
+ 538              		.cfi_def_cfa_offset 4
+ 539              		.cfi_offset 7, -4
+ 540 0002 83B0     		sub	sp, sp, #12
+ 541              	.LCFI43:
+ 542              		.cfi_def_cfa_offset 16
+ 543 0004 00AF     		add	r7, sp, #0
+ 544              	.LCFI44:
+ 545              		.cfi_def_cfa_register 7
+ 546 0006 7860     		str	r0, [r7, #4]
+ 547 0008 0B46     		mov	r3, r1
+ 548 000a FB70     		strb	r3, [r7, #3]
  393:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Prevent unused argument(s) compilation warning */
  394:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   UNUSED(Regulator);
- 372              		.loc 1 394 3 view .LVU64
  395:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  396:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Check the parameters */
  397:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   assert_param(IS_PWR_REGULATOR(Regulator));
- 373              		.loc 1 397 3 view .LVU65
  398:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   assert_param(IS_PWR_SLEEP_ENTRY(SLEEPEntry));
- 374              		.loc 1 398 3 view .LVU66
  399:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  400:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Clear SLEEPDEEP bit of Cortex System Control Register */
  401:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   CLEAR_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPDEEP_Msk));
- 375              		.loc 1 401 3 view .LVU67
- 376 0000 074A     		ldr	r2, .L36
- 377 0002 1369     		ldr	r3, [r2, #16]
- 378 0004 23F00403 		bic	r3, r3, #4
- 379 0008 1361     		str	r3, [r2, #16]
+ 549              		.loc 1 401 3
+ 550 000c 0B4B     		ldr	r3, .L35
+ 551 000e 1B69     		ldr	r3, [r3, #16]
+ 552 0010 0A4A     		ldr	r2, .L35
+ 553 0012 23F00403 		bic	r3, r3, #4
+ 554 0016 1361     		str	r3, [r2, #16]
  402:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  403:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Select SLEEP mode entry -------------------------------------------------*/
  404:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   if(SLEEPEntry == PWR_SLEEPENTRY_WFI)
- 380              		.loc 1 404 3 view .LVU68
- 381              		.loc 1 404 5 is_stmt 0 view .LVU69
- 382 000a 0129     		cmp	r1, #1
- 383 000c 05D0     		beq	.L35
+ 555              		.loc 1 404 5
+ 556 0018 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 557 001a 012B     		cmp	r3, #1
+ 558 001c 01D1     		bne	.L31
  405:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   {   
  406:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     /* Request Wait For Interrupt */
  407:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     __WFI();
+ 559              		.loc 1 407 5
+ 560              		.syntax unified
+ 561              	@ 407 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
+ 562 001e 30BF     		wfi
+ 563              	@ 0 "" 2
  408:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   }
  409:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   else
  410:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   {
  411:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     if(SLEEPEntry != PWR_SLEEPENTRY_WFE_NO_EVT_CLEAR)
- 384              		.loc 1 411 5 is_stmt 1 view .LVU70
- 385              		.loc 1 411 7 is_stmt 0 view .LVU71
- 386 000e 0329     		cmp	r1, #3
- 387 0010 01D0     		beq	.L34
  412:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     {
  413:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****       /* Clear all pending event */
  414:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****       __SEV();
- 388              		.loc 1 414 7 is_stmt 1 view .LVU72
- 389              		.syntax unified
- 390              	@ 414 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
- 391 0012 40BF     		sev
- 392              	@ 0 "" 2
  415:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****       __WFE();
- 393              		.loc 1 415 7 view .LVU73
- 394              	@ 415 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
- 395 0014 20BF     		wfe
- 396              	@ 0 "" 2
- 397              		.thumb
- 398              		.syntax unified
- 399              	.L34:
  416:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     }
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 15
-
-
  417:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  418:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     /* Request Wait For Event */
  419:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     __WFE();
- 400              		.loc 1 419 5 view .LVU74
- 401              		.syntax unified
- 402              	@ 419 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
- 403 0016 20BF     		wfe
- 404              	@ 0 "" 2
  420:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   }
  421:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
- 405              		.loc 1 421 1 is_stmt 0 view .LVU75
- 406              		.thumb
- 407              		.syntax unified
- 408 0018 7047     		bx	lr
- 409              	.L35:
- 407:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   }
- 410              		.loc 1 407 5 is_stmt 1 view .LVU76
- 411              		.syntax unified
- 412              	@ 407 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
- 413 001a 30BF     		wfi
- 414              	@ 0 "" 2
- 415              		.thumb
- 416              		.syntax unified
- 417 001c 7047     		bx	lr
- 418              	.L37:
- 419 001e 00BF     		.align	2
- 420              	.L36:
- 421 0020 00ED00E0 		.word	-536810240
- 422              		.cfi_endproc
- 423              	.LFE142:
- 425              		.section	.text.HAL_PWR_EnterSTOPMode,"ax",%progbits
- 426              		.align	1
- 427              		.global	HAL_PWR_EnterSTOPMode
- 428              		.syntax unified
- 429              		.thumb
- 430              		.thumb_func
- 432              	HAL_PWR_EnterSTOPMode:
- 433              	.LVL4:
- 434              	.LFB143:
+ 564              		.loc 1 421 1
+ 565              		.thumb
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 18
+
+
+ 566              		.syntax unified
+ 567 0020 05E0     		b	.L34
+ 568              	.L31:
+ 411:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     {
+ 569              		.loc 1 411 7
+ 570 0022 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 571 0024 032B     		cmp	r3, #3
+ 572 0026 01D0     		beq	.L33
+ 414:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****       __WFE();
+ 573              		.loc 1 414 7
+ 574              		.syntax unified
+ 575              	@ 414 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
+ 576 0028 40BF     		sev
+ 577              	@ 0 "" 2
+ 415:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     }
+ 578              		.loc 1 415 7
+ 579              	@ 415 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
+ 580 002a 20BF     		wfe
+ 581              	@ 0 "" 2
+ 582              		.thumb
+ 583              		.syntax unified
+ 584              	.L33:
+ 419:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   }
+ 585              		.loc 1 419 5
+ 586              		.syntax unified
+ 587              	@ 419 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
+ 588 002c 20BF     		wfe
+ 589              	@ 0 "" 2
+ 590              		.thumb
+ 591              		.syntax unified
+ 592              	.L34:
+ 593              		.loc 1 421 1
+ 594 002e 00BF     		nop
+ 595 0030 0C37     		adds	r7, r7, #12
+ 596              	.LCFI45:
+ 597              		.cfi_def_cfa_offset 4
+ 598 0032 BD46     		mov	sp, r7
+ 599              	.LCFI46:
+ 600              		.cfi_def_cfa_register 13
+ 601              		@ sp needed
+ 602 0034 5DF8047B 		ldr	r7, [sp], #4
+ 603              	.LCFI47:
+ 604              		.cfi_restore 7
+ 605              		.cfi_def_cfa_offset 0
+ 606 0038 7047     		bx	lr
+ 607              	.L36:
+ 608 003a 00BF     		.align	2
+ 609              	.L35:
+ 610 003c 00ED00E0 		.word	-536810240
+ 611              		.cfi_endproc
+ 612              	.LFE142:
+ 614              		.section	.text.HAL_PWR_EnterSTOPMode,"ax",%progbits
+ 615              		.align	1
+ 616              		.global	HAL_PWR_EnterSTOPMode
+ 617              		.syntax unified
+ 618              		.thumb
+ 619              		.thumb_func
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 19
+
+
+ 621              	HAL_PWR_EnterSTOPMode:
+ 622              	.LFB143:
  422:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  423:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
  424:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief Enters Stop mode. 
@@ -898,9 +1101,6 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  437:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *          This parameter can be one of the following values:
  438:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *            @arg PWR_STOPENTRY_WFI              : Enter Stop mode with WFI instruction 
  439:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *            @arg PWR_STOPENTRY_WFE              : Enter Stop mode with WFE instruction and
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 16
-
-
  440:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *                                                  clear of pending events before.
  441:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *            @arg PWR_STOPENTRY_WFE_NO_EVT_CLEAR : Enter STOP mode with WFE instruction and
  442:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *                                                  no clear of pending event before.
@@ -908,120 +1108,146 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  444:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  445:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_EnterSTOPMode(uint32_t Regulator, uint8_t STOPEntry)
  446:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
- 435              		.loc 1 446 1 view -0
- 436              		.cfi_startproc
- 437              		@ args = 0, pretend = 0, frame = 0
- 438              		@ frame_needed = 0, uses_anonymous_args = 0
- 439              		@ link register save eliminated.
+ 623              		.loc 1 446 1
+ 624              		.cfi_startproc
+ 625              		@ args = 0, pretend = 0, frame = 8
+ 626              		@ frame_needed = 1, uses_anonymous_args = 0
+ 627              		@ link register save eliminated.
+ 628 0000 80B4     		push	{r7}
+ 629              	.LCFI48:
+ 630              		.cfi_def_cfa_offset 4
+ 631              		.cfi_offset 7, -4
+ 632 0002 83B0     		sub	sp, sp, #12
+ 633              	.LCFI49:
+ 634              		.cfi_def_cfa_offset 16
+ 635 0004 00AF     		add	r7, sp, #0
+ 636              	.LCFI50:
+ 637              		.cfi_def_cfa_register 7
+ 638 0006 7860     		str	r0, [r7, #4]
+ 639 0008 0B46     		mov	r3, r1
+ 640 000a FB70     		strb	r3, [r7, #3]
  447:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Check the parameters */
  448:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   assert_param(IS_PWR_REGULATOR(Regulator));
- 440              		.loc 1 448 3 view .LVU78
  449:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   assert_param(IS_PWR_STOP_ENTRY(STOPEntry));
- 441              		.loc 1 449 3 view .LVU79
  450:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   
  451:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Select the regulator state in Stop mode: Set PDDS and LPDS bits according to PWR_Regulator val
  452:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   MODIFY_REG(PWR->CR, (PWR_CR_PDDS | PWR_CR_LPDS), Regulator);
- 442              		.loc 1 452 3 view .LVU80
- 443 0000 0C4A     		ldr	r2, .L43
- 444 0002 1368     		ldr	r3, [r2]
- 445 0004 23F00303 		bic	r3, r3, #3
- 446 0008 0343     		orrs	r3, r3, r0
- 447 000a 1360     		str	r3, [r2]
+ 641              		.loc 1 452 3
+ 642 000c 124B     		ldr	r3, .L41
+ 643 000e 1B68     		ldr	r3, [r3]
+ 644 0010 23F00302 		bic	r2, r3, #3
+ 645 0014 1049     		ldr	r1, .L41
+ 646 0016 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 20
+
+
+ 647 0018 1343     		orrs	r3, r3, r2
+ 648 001a 0B60     		str	r3, [r1]
  453:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   
  454:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Set SLEEPDEEP bit of Cortex System Control Register */
  455:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   SET_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPDEEP_Msk));
- 448              		.loc 1 455 3 view .LVU81
- 449 000c 0A4A     		ldr	r2, .L43+4
- 450 000e 1369     		ldr	r3, [r2, #16]
- 451 0010 43F00403 		orr	r3, r3, #4
- 452 0014 1361     		str	r3, [r2, #16]
+ 649              		.loc 1 455 3
+ 650 001c 0F4B     		ldr	r3, .L41+4
+ 651 001e 1B69     		ldr	r3, [r3, #16]
+ 652 0020 0E4A     		ldr	r2, .L41+4
+ 653 0022 43F00403 		orr	r3, r3, #4
+ 654 0026 1361     		str	r3, [r2, #16]
  456:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   
  457:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Select Stop mode entry --------------------------------------------------*/
  458:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   if(STOPEntry == PWR_STOPENTRY_WFI)
- 453              		.loc 1 458 3 view .LVU82
- 454              		.loc 1 458 5 is_stmt 0 view .LVU83
- 455 0016 0129     		cmp	r1, #1
- 456 0018 0AD0     		beq	.L42
+ 655              		.loc 1 458 5
+ 656 0028 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 657 002a 012B     		cmp	r3, #1
+ 658 002c 01D1     		bne	.L38
  459:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   {   
  460:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     /* Request Wait For Interrupt */
  461:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     __WFI();
+ 659              		.loc 1 461 5
+ 660              		.syntax unified
+ 661              	@ 461 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
+ 662 002e 30BF     		wfi
+ 663              	@ 0 "" 2
+ 664              		.thumb
+ 665              		.syntax unified
+ 666 0030 05E0     		b	.L39
+ 667              	.L38:
  462:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   }
  463:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   else
  464:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   {
  465:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     if(STOPEntry != PWR_STOPENTRY_WFE_NO_EVT_CLEAR)
- 457              		.loc 1 465 5 is_stmt 1 view .LVU84
- 458              		.loc 1 465 7 is_stmt 0 view .LVU85
- 459 001a 0329     		cmp	r1, #3
- 460 001c 01D0     		beq	.L41
+ 668              		.loc 1 465 7
+ 669 0032 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 670 0034 032B     		cmp	r3, #3
+ 671 0036 01D0     		beq	.L40
  466:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     {
  467:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****       /* Clear all pending event */
  468:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****       __SEV();
- 461              		.loc 1 468 7 is_stmt 1 view .LVU86
- 462              		.syntax unified
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 17
-
-
- 463              	@ 468 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
- 464 001e 40BF     		sev
- 465              	@ 0 "" 2
+ 672              		.loc 1 468 7
+ 673              		.syntax unified
+ 674              	@ 468 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
+ 675 0038 40BF     		sev
+ 676              	@ 0 "" 2
  469:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****       __WFE();
- 466              		.loc 1 469 7 view .LVU87
- 467              	@ 469 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
- 468 0020 20BF     		wfe
- 469              	@ 0 "" 2
- 470              		.thumb
- 471              		.syntax unified
- 472              	.L41:
+ 677              		.loc 1 469 7
+ 678              	@ 469 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
+ 679 003a 20BF     		wfe
+ 680              	@ 0 "" 2
+ 681              		.thumb
+ 682              		.syntax unified
+ 683              	.L40:
  470:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     }
  471:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     /* Request Wait For Event */
  472:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     __WFE();
- 473              		.loc 1 472 5 view .LVU88
- 474              		.syntax unified
- 475              	@ 472 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
- 476 0022 20BF     		wfe
- 477              	@ 0 "" 2
- 478              		.thumb
- 479              		.syntax unified
- 480              	.L40:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 21
+
+
+ 684              		.loc 1 472 5
+ 685              		.syntax unified
+ 686              	@ 472 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
+ 687 003c 20BF     		wfe
+ 688              	@ 0 "" 2
+ 689              		.thumb
+ 690              		.syntax unified
+ 691              	.L39:
  473:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   }
  474:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Reset SLEEPDEEP bit of Cortex System Control Register */
  475:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   CLEAR_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPDEEP_Msk));  
- 481              		.loc 1 475 3 view .LVU89
- 482 0024 044A     		ldr	r2, .L43+4
- 483 0026 1369     		ldr	r3, [r2, #16]
- 484 0028 23F00403 		bic	r3, r3, #4
- 485 002c 1361     		str	r3, [r2, #16]
+ 692              		.loc 1 475 3
+ 693 003e 074B     		ldr	r3, .L41+4
+ 694 0040 1B69     		ldr	r3, [r3, #16]
+ 695 0042 064A     		ldr	r2, .L41+4
+ 696 0044 23F00403 		bic	r3, r3, #4
+ 697 0048 1361     		str	r3, [r2, #16]
  476:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
- 486              		.loc 1 476 1 is_stmt 0 view .LVU90
- 487 002e 7047     		bx	lr
- 488              	.L42:
- 461:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   }
- 489              		.loc 1 461 5 is_stmt 1 view .LVU91
- 490              		.syntax unified
- 491              	@ 461 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
- 492 0030 30BF     		wfi
- 493              	@ 0 "" 2
- 494              		.thumb
- 495              		.syntax unified
- 496 0032 F7E7     		b	.L40
- 497              	.L44:
- 498              		.align	2
- 499              	.L43:
- 500 0034 00700040 		.word	1073770496
- 501 0038 00ED00E0 		.word	-536810240
- 502              		.cfi_endproc
- 503              	.LFE143:
- 505              		.section	.text.HAL_PWR_EnterSTANDBYMode,"ax",%progbits
- 506              		.align	1
- 507              		.global	HAL_PWR_EnterSTANDBYMode
- 508              		.syntax unified
- 509              		.thumb
- 510              		.thumb_func
- 512              	HAL_PWR_EnterSTANDBYMode:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 18
-
-
- 513              	.LFB144:
+ 698              		.loc 1 476 1
+ 699 004a 00BF     		nop
+ 700 004c 0C37     		adds	r7, r7, #12
+ 701              	.LCFI51:
+ 702              		.cfi_def_cfa_offset 4
+ 703 004e BD46     		mov	sp, r7
+ 704              	.LCFI52:
+ 705              		.cfi_def_cfa_register 13
+ 706              		@ sp needed
+ 707 0050 5DF8047B 		ldr	r7, [sp], #4
+ 708              	.LCFI53:
+ 709              		.cfi_restore 7
+ 710              		.cfi_def_cfa_offset 0
+ 711 0054 7047     		bx	lr
+ 712              	.L42:
+ 713 0056 00BF     		.align	2
+ 714              	.L41:
+ 715 0058 00700040 		.word	1073770496
+ 716 005c 00ED00E0 		.word	-536810240
+ 717              		.cfi_endproc
+ 718              	.LFE143:
+ 720              		.section	.text.HAL_PWR_EnterSTANDBYMode,"ax",%progbits
+ 721              		.align	1
+ 722              		.global	HAL_PWR_EnterSTANDBYMode
+ 723              		.syntax unified
+ 724              		.thumb
+ 725              		.thumb_func
+ 727              	HAL_PWR_EnterSTANDBYMode:
+ 728              	.LFB144:
  477:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  478:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
  479:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief Enters Standby mode.
@@ -1032,29 +1258,41 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  484:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *          - RTC_AF2 pin (PI8) if configured for tamper or time-stamp.  
  485:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *          - WKUP pin 1 (PA0) if enabled.       
  486:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @retval None
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 22
+
+
  487:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  488:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_EnterSTANDBYMode(void)
  489:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
- 514              		.loc 1 489 1 view -0
- 515              		.cfi_startproc
- 516              		@ args = 0, pretend = 0, frame = 0
- 517              		@ frame_needed = 0, uses_anonymous_args = 0
- 518              		@ link register save eliminated.
+ 729              		.loc 1 489 1
+ 730              		.cfi_startproc
+ 731              		@ args = 0, pretend = 0, frame = 0
+ 732              		@ frame_needed = 1, uses_anonymous_args = 0
+ 733              		@ link register save eliminated.
+ 734 0000 80B4     		push	{r7}
+ 735              	.LCFI54:
+ 736              		.cfi_def_cfa_offset 4
+ 737              		.cfi_offset 7, -4
+ 738 0002 00AF     		add	r7, sp, #0
+ 739              	.LCFI55:
+ 740              		.cfi_def_cfa_register 7
  490:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Select Standby mode */
  491:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   SET_BIT(PWR->CR, PWR_CR_PDDS);
- 519              		.loc 1 491 3 view .LVU93
- 520 0000 054A     		ldr	r2, .L46
- 521 0002 1368     		ldr	r3, [r2]
- 522 0004 43F00203 		orr	r3, r3, #2
- 523 0008 1360     		str	r3, [r2]
+ 741              		.loc 1 491 3
+ 742 0004 084B     		ldr	r3, .L44
+ 743 0006 1B68     		ldr	r3, [r3]
+ 744 0008 074A     		ldr	r2, .L44
+ 745 000a 43F00203 		orr	r3, r3, #2
+ 746 000e 1360     		str	r3, [r2]
  492:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  493:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Set SLEEPDEEP bit of Cortex System Control Register */
  494:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   SET_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPDEEP_Msk));
- 524              		.loc 1 494 3 view .LVU94
- 525 000a 044A     		ldr	r2, .L46+4
- 526 000c 1369     		ldr	r3, [r2, #16]
- 527 000e 43F00403 		orr	r3, r3, #4
- 528 0012 1361     		str	r3, [r2, #16]
+ 747              		.loc 1 494 3
+ 748 0010 064B     		ldr	r3, .L44+4
+ 749 0012 1B69     		ldr	r3, [r3, #16]
+ 750 0014 054A     		ldr	r2, .L44+4
+ 751 0016 43F00403 		orr	r3, r3, #4
+ 752 001a 1361     		str	r3, [r2, #16]
  495:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   
  496:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* This option is used to ensure that store operations are completed */
  497:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** #if defined ( __CC_ARM)
@@ -1062,34 +1300,43 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  499:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** #endif
  500:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Request Wait For Interrupt */
  501:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   __WFI();
- 529              		.loc 1 501 3 view .LVU95
- 530              		.syntax unified
- 531              	@ 501 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
- 532 0014 30BF     		wfi
- 533              	@ 0 "" 2
+ 753              		.loc 1 501 3
+ 754              		.syntax unified
+ 755              	@ 501 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
+ 756 001c 30BF     		wfi
+ 757              	@ 0 "" 2
  502:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
- 534              		.loc 1 502 1 is_stmt 0 view .LVU96
- 535              		.thumb
- 536              		.syntax unified
- 537 0016 7047     		bx	lr
- 538              	.L47:
- 539              		.align	2
- 540              	.L46:
- 541 0018 00700040 		.word	1073770496
- 542 001c 00ED00E0 		.word	-536810240
- 543              		.cfi_endproc
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 19
+ 758              		.loc 1 502 1
+ 759              		.thumb
+ 760              		.syntax unified
+ 761 001e 00BF     		nop
+ 762 0020 BD46     		mov	sp, r7
+ 763              	.LCFI56:
+ 764              		.cfi_def_cfa_register 13
+ 765              		@ sp needed
+ 766 0022 5DF8047B 		ldr	r7, [sp], #4
+ 767              	.LCFI57:
+ 768              		.cfi_restore 7
+ 769              		.cfi_def_cfa_offset 0
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 23
 
 
- 544              	.LFE144:
- 546              		.section	.text.HAL_PWR_PVDCallback,"ax",%progbits
- 547              		.align	1
- 548              		.weak	HAL_PWR_PVDCallback
- 549              		.syntax unified
- 550              		.thumb
- 551              		.thumb_func
- 553              	HAL_PWR_PVDCallback:
- 554              	.LFB146:
+ 770 0026 7047     		bx	lr
+ 771              	.L45:
+ 772              		.align	2
+ 773              	.L44:
+ 774 0028 00700040 		.word	1073770496
+ 775 002c 00ED00E0 		.word	-536810240
+ 776              		.cfi_endproc
+ 777              	.LFE144:
+ 779              		.section	.text.HAL_PWR_PVD_IRQHandler,"ax",%progbits
+ 780              		.align	1
+ 781              		.global	HAL_PWR_PVD_IRQHandler
+ 782              		.syntax unified
+ 783              		.thumb
+ 784              		.thumb_func
+ 786              	HAL_PWR_PVD_IRQHandler:
+ 787              	.LFB145:
  503:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  504:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
  505:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief This function handles the PWR PVD interrupt request.
@@ -1098,16 +1345,62 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  508:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  509:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_PVD_IRQHandler(void)
  510:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
+ 788              		.loc 1 510 1
+ 789              		.cfi_startproc
+ 790              		@ args = 0, pretend = 0, frame = 0
+ 791              		@ frame_needed = 1, uses_anonymous_args = 0
+ 792 0000 80B5     		push	{r7, lr}
+ 793              	.LCFI58:
+ 794              		.cfi_def_cfa_offset 8
+ 795              		.cfi_offset 7, -8
+ 796              		.cfi_offset 14, -4
+ 797 0002 00AF     		add	r7, sp, #0
+ 798              	.LCFI59:
+ 799              		.cfi_def_cfa_register 7
  511:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Check PWR Exti flag */
  512:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   if(__HAL_PWR_PVD_EXTI_GET_FLAG() != RESET)
+ 800              		.loc 1 512 6
+ 801 0004 064B     		ldr	r3, .L49
+ 802 0006 5B69     		ldr	r3, [r3, #20]
+ 803 0008 03F48033 		and	r3, r3, #65536
+ 804              		.loc 1 512 5
+ 805 000c 002B     		cmp	r3, #0
+ 806 000e 05D0     		beq	.L48
  513:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   {
  514:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     /* PWR PVD interrupt user callback */
  515:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     HAL_PWR_PVDCallback();
+ 807              		.loc 1 515 5
+ 808 0010 FFF7FEFF 		bl	HAL_PWR_PVDCallback
  516:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     
  517:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     /* Clear PWR Exti pending bit */
  518:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     __HAL_PWR_PVD_EXTI_CLEAR_FLAG();
+ 809              		.loc 1 518 5
+ 810 0014 024B     		ldr	r3, .L49
+ 811 0016 4FF48032 		mov	r2, #65536
+ 812 001a 5A61     		str	r2, [r3, #20]
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 24
+
+
+ 813              	.L48:
  519:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   }
  520:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
+ 814              		.loc 1 520 1
+ 815 001c 00BF     		nop
+ 816 001e 80BD     		pop	{r7, pc}
+ 817              	.L50:
+ 818              		.align	2
+ 819              	.L49:
+ 820 0020 003C0140 		.word	1073822720
+ 821              		.cfi_endproc
+ 822              	.LFE145:
+ 824              		.section	.text.HAL_PWR_PVDCallback,"ax",%progbits
+ 825              		.align	1
+ 826              		.weak	HAL_PWR_PVDCallback
+ 827              		.syntax unified
+ 828              		.thumb
+ 829              		.thumb_func
+ 831              	HAL_PWR_PVDCallback:
+ 832              	.LFB146:
  521:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  522:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
  523:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief  PWR PVD interrupt callback
@@ -1115,81 +1408,46 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  525:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  526:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** __weak void HAL_PWR_PVDCallback(void)
  527:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
- 555              		.loc 1 527 1 is_stmt 1 view -0
- 556              		.cfi_startproc
- 557              		@ args = 0, pretend = 0, frame = 0
- 558              		@ frame_needed = 0, uses_anonymous_args = 0
- 559              		@ link register save eliminated.
+ 833              		.loc 1 527 1
+ 834              		.cfi_startproc
+ 835              		@ args = 0, pretend = 0, frame = 0
+ 836              		@ frame_needed = 1, uses_anonymous_args = 0
+ 837              		@ link register save eliminated.
+ 838 0000 80B4     		push	{r7}
+ 839              	.LCFI60:
+ 840              		.cfi_def_cfa_offset 4
+ 841              		.cfi_offset 7, -4
+ 842 0002 00AF     		add	r7, sp, #0
+ 843              	.LCFI61:
+ 844              		.cfi_def_cfa_register 7
  528:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* NOTE : This function Should not be modified, when the callback is needed,
  529:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****             the HAL_PWR_PVDCallback could be implemented in the user file
  530:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****    */ 
  531:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
- 560              		.loc 1 531 1 view .LVU98
- 561 0000 7047     		bx	lr
- 562              		.cfi_endproc
- 563              	.LFE146:
- 565              		.section	.text.HAL_PWR_PVD_IRQHandler,"ax",%progbits
- 566              		.align	1
- 567              		.global	HAL_PWR_PVD_IRQHandler
- 568              		.syntax unified
- 569              		.thumb
- 570              		.thumb_func
- 572              	HAL_PWR_PVD_IRQHandler:
- 573              	.LFB145:
- 510:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Check PWR Exti flag */
- 574              		.loc 1 510 1 view -0
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 20
+ 845              		.loc 1 531 1
+ 846 0004 00BF     		nop
+ 847 0006 BD46     		mov	sp, r7
+ 848              	.LCFI62:
+ 849              		.cfi_def_cfa_register 13
+ 850              		@ sp needed
+ 851 0008 5DF8047B 		ldr	r7, [sp], #4
+ 852              	.LCFI63:
+ 853              		.cfi_restore 7
+ 854              		.cfi_def_cfa_offset 0
+ 855 000c 7047     		bx	lr
+ 856              		.cfi_endproc
+ 857              	.LFE146:
+ 859              		.section	.text.HAL_PWR_EnableSleepOnExit,"ax",%progbits
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 25
 
 
- 575              		.cfi_startproc
- 576              		@ args = 0, pretend = 0, frame = 0
- 577              		@ frame_needed = 0, uses_anonymous_args = 0
- 578 0000 08B5     		push	{r3, lr}
- 579              	.LCFI4:
- 580              		.cfi_def_cfa_offset 8
- 581              		.cfi_offset 3, -8
- 582              		.cfi_offset 14, -4
- 512:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   {
- 583              		.loc 1 512 3 view .LVU100
- 512:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   {
- 584              		.loc 1 512 6 is_stmt 0 view .LVU101
- 585 0002 064B     		ldr	r3, .L53
- 586 0004 5B69     		ldr	r3, [r3, #20]
- 512:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   {
- 587              		.loc 1 512 5 view .LVU102
- 588 0006 13F4803F 		tst	r3, #65536
- 589 000a 00D1     		bne	.L52
- 590              	.L49:
- 520:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
- 591              		.loc 1 520 1 view .LVU103
- 592 000c 08BD     		pop	{r3, pc}
- 593              	.L52:
- 515:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     
- 594              		.loc 1 515 5 is_stmt 1 view .LVU104
- 595 000e FFF7FEFF 		bl	HAL_PWR_PVDCallback
- 596              	.LVL5:
- 518:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   }
- 597              		.loc 1 518 5 view .LVU105
- 598 0012 024B     		ldr	r3, .L53
- 599 0014 4FF48032 		mov	r2, #65536
- 600 0018 5A61     		str	r2, [r3, #20]
- 520:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
- 601              		.loc 1 520 1 is_stmt 0 view .LVU106
- 602 001a F7E7     		b	.L49
- 603              	.L54:
- 604              		.align	2
- 605              	.L53:
- 606 001c 003C0140 		.word	1073822720
- 607              		.cfi_endproc
- 608              	.LFE145:
- 610              		.section	.text.HAL_PWR_EnableSleepOnExit,"ax",%progbits
- 611              		.align	1
- 612              		.global	HAL_PWR_EnableSleepOnExit
- 613              		.syntax unified
- 614              		.thumb
- 615              		.thumb_func
- 617              	HAL_PWR_EnableSleepOnExit:
- 618              	.LFB147:
+ 860              		.align	1
+ 861              		.global	HAL_PWR_EnableSleepOnExit
+ 862              		.syntax unified
+ 863              		.thumb
+ 864              		.thumb_func
+ 866              	HAL_PWR_EnableSleepOnExit:
+ 867              	.LFB147:
  532:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  533:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
  534:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief Indicates Sleep-On-Exit when returning from Handler mode to Thread mode. 
@@ -1198,41 +1456,58 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  537:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *       Setting this bit is useful when the processor is expected to run only on
  538:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *       interruptions handling.         
  539:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @retval None
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 21
-
-
  540:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  541:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_EnableSleepOnExit(void)
  542:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
- 619              		.loc 1 542 1 is_stmt 1 view -0
- 620              		.cfi_startproc
- 621              		@ args = 0, pretend = 0, frame = 0
- 622              		@ frame_needed = 0, uses_anonymous_args = 0
- 623              		@ link register save eliminated.
+ 868              		.loc 1 542 1
+ 869              		.cfi_startproc
+ 870              		@ args = 0, pretend = 0, frame = 0
+ 871              		@ frame_needed = 1, uses_anonymous_args = 0
+ 872              		@ link register save eliminated.
+ 873 0000 80B4     		push	{r7}
+ 874              	.LCFI64:
+ 875              		.cfi_def_cfa_offset 4
+ 876              		.cfi_offset 7, -4
+ 877 0002 00AF     		add	r7, sp, #0
+ 878              	.LCFI65:
+ 879              		.cfi_def_cfa_register 7
  543:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Set SLEEPONEXIT bit of Cortex System Control Register */
  544:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   SET_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPONEXIT_Msk));
- 624              		.loc 1 544 3 view .LVU108
- 625 0000 024A     		ldr	r2, .L56
- 626 0002 1369     		ldr	r3, [r2, #16]
- 627 0004 43F00203 		orr	r3, r3, #2
- 628 0008 1361     		str	r3, [r2, #16]
+ 880              		.loc 1 544 3
+ 881 0004 054B     		ldr	r3, .L53
+ 882 0006 1B69     		ldr	r3, [r3, #16]
+ 883 0008 044A     		ldr	r2, .L53
+ 884 000a 43F00203 		orr	r3, r3, #2
+ 885 000e 1361     		str	r3, [r2, #16]
  545:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
- 629              		.loc 1 545 1 is_stmt 0 view .LVU109
- 630 000a 7047     		bx	lr
- 631              	.L57:
- 632              		.align	2
- 633              	.L56:
- 634 000c 00ED00E0 		.word	-536810240
- 635              		.cfi_endproc
- 636              	.LFE147:
- 638              		.section	.text.HAL_PWR_DisableSleepOnExit,"ax",%progbits
- 639              		.align	1
- 640              		.global	HAL_PWR_DisableSleepOnExit
- 641              		.syntax unified
- 642              		.thumb
- 643              		.thumb_func
- 645              	HAL_PWR_DisableSleepOnExit:
- 646              	.LFB148:
+ 886              		.loc 1 545 1
+ 887 0010 00BF     		nop
+ 888 0012 BD46     		mov	sp, r7
+ 889              	.LCFI66:
+ 890              		.cfi_def_cfa_register 13
+ 891              		@ sp needed
+ 892 0014 5DF8047B 		ldr	r7, [sp], #4
+ 893              	.LCFI67:
+ 894              		.cfi_restore 7
+ 895              		.cfi_def_cfa_offset 0
+ 896 0018 7047     		bx	lr
+ 897              	.L54:
+ 898 001a 00BF     		.align	2
+ 899              	.L53:
+ 900 001c 00ED00E0 		.word	-536810240
+ 901              		.cfi_endproc
+ 902              	.LFE147:
+ 904              		.section	.text.HAL_PWR_DisableSleepOnExit,"ax",%progbits
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 26
+
+
+ 905              		.align	1
+ 906              		.global	HAL_PWR_DisableSleepOnExit
+ 907              		.syntax unified
+ 908              		.thumb
+ 909              		.thumb_func
+ 911              	HAL_PWR_DisableSleepOnExit:
+ 912              	.LFB148:
  546:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  547:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
  548:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief Disables Sleep-On-Exit feature when returning from Handler mode to Thread mode. 
@@ -1242,38 +1517,55 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  552:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  553:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_DisableSleepOnExit(void)
  554:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
- 647              		.loc 1 554 1 is_stmt 1 view -0
- 648              		.cfi_startproc
- 649              		@ args = 0, pretend = 0, frame = 0
- 650              		@ frame_needed = 0, uses_anonymous_args = 0
- 651              		@ link register save eliminated.
+ 913              		.loc 1 554 1
+ 914              		.cfi_startproc
+ 915              		@ args = 0, pretend = 0, frame = 0
+ 916              		@ frame_needed = 1, uses_anonymous_args = 0
+ 917              		@ link register save eliminated.
+ 918 0000 80B4     		push	{r7}
+ 919              	.LCFI68:
+ 920              		.cfi_def_cfa_offset 4
+ 921              		.cfi_offset 7, -4
+ 922 0002 00AF     		add	r7, sp, #0
+ 923              	.LCFI69:
+ 924              		.cfi_def_cfa_register 7
  555:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Clear SLEEPONEXIT bit of Cortex System Control Register */
  556:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   CLEAR_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPONEXIT_Msk));
- 652              		.loc 1 556 3 view .LVU111
- 653 0000 024A     		ldr	r2, .L59
- 654 0002 1369     		ldr	r3, [r2, #16]
- 655 0004 23F00203 		bic	r3, r3, #2
- 656 0008 1361     		str	r3, [r2, #16]
+ 925              		.loc 1 556 3
+ 926 0004 054B     		ldr	r3, .L56
+ 927 0006 1B69     		ldr	r3, [r3, #16]
+ 928 0008 044A     		ldr	r2, .L56
+ 929 000a 23F00203 		bic	r3, r3, #2
+ 930 000e 1361     		str	r3, [r2, #16]
  557:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
- 657              		.loc 1 557 1 is_stmt 0 view .LVU112
- 658 000a 7047     		bx	lr
- 659              	.L60:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 22
+ 931              		.loc 1 557 1
+ 932 0010 00BF     		nop
+ 933 0012 BD46     		mov	sp, r7
+ 934              	.LCFI70:
+ 935              		.cfi_def_cfa_register 13
+ 936              		@ sp needed
+ 937 0014 5DF8047B 		ldr	r7, [sp], #4
+ 938              	.LCFI71:
+ 939              		.cfi_restore 7
+ 940              		.cfi_def_cfa_offset 0
+ 941 0018 7047     		bx	lr
+ 942              	.L57:
+ 943 001a 00BF     		.align	2
+ 944              	.L56:
+ 945 001c 00ED00E0 		.word	-536810240
+ 946              		.cfi_endproc
+ 947              	.LFE148:
+ 949              		.section	.text.HAL_PWR_EnableSEVOnPend,"ax",%progbits
+ 950              		.align	1
+ 951              		.global	HAL_PWR_EnableSEVOnPend
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 27
 
 
- 660              		.align	2
- 661              	.L59:
- 662 000c 00ED00E0 		.word	-536810240
- 663              		.cfi_endproc
- 664              	.LFE148:
- 666              		.section	.text.HAL_PWR_EnableSEVOnPend,"ax",%progbits
- 667              		.align	1
- 668              		.global	HAL_PWR_EnableSEVOnPend
- 669              		.syntax unified
- 670              		.thumb
- 671              		.thumb_func
- 673              	HAL_PWR_EnableSEVOnPend:
- 674              	.LFB149:
+ 952              		.syntax unified
+ 953              		.thumb
+ 954              		.thumb_func
+ 956              	HAL_PWR_EnableSEVOnPend:
+ 957              	.LFB149:
  558:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  559:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
  560:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief Enables CORTEX M4 SEVONPEND bit. 
@@ -1283,130 +1575,208 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 1
  564:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  565:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_EnableSEVOnPend(void)
  566:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
- 675              		.loc 1 566 1 is_stmt 1 view -0
- 676              		.cfi_startproc
- 677              		@ args = 0, pretend = 0, frame = 0
- 678              		@ frame_needed = 0, uses_anonymous_args = 0
- 679              		@ link register save eliminated.
+ 958              		.loc 1 566 1
+ 959              		.cfi_startproc
+ 960              		@ args = 0, pretend = 0, frame = 0
+ 961              		@ frame_needed = 1, uses_anonymous_args = 0
+ 962              		@ link register save eliminated.
+ 963 0000 80B4     		push	{r7}
+ 964              	.LCFI72:
+ 965              		.cfi_def_cfa_offset 4
+ 966              		.cfi_offset 7, -4
+ 967 0002 00AF     		add	r7, sp, #0
+ 968              	.LCFI73:
+ 969              		.cfi_def_cfa_register 7
  567:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Set SEVONPEND bit of Cortex System Control Register */
  568:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   SET_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SEVONPEND_Msk));
- 680              		.loc 1 568 3 view .LVU114
- 681 0000 024A     		ldr	r2, .L62
- 682 0002 1369     		ldr	r3, [r2, #16]
- 683 0004 43F01003 		orr	r3, r3, #16
- 684 0008 1361     		str	r3, [r2, #16]
+ 970              		.loc 1 568 3
+ 971 0004 054B     		ldr	r3, .L59
+ 972 0006 1B69     		ldr	r3, [r3, #16]
+ 973 0008 044A     		ldr	r2, .L59
+ 974 000a 43F01003 		orr	r3, r3, #16
+ 975 000e 1361     		str	r3, [r2, #16]
  569:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
- 685              		.loc 1 569 1 is_stmt 0 view .LVU115
- 686 000a 7047     		bx	lr
- 687              	.L63:
- 688              		.align	2
- 689              	.L62:
- 690 000c 00ED00E0 		.word	-536810240
- 691              		.cfi_endproc
- 692              	.LFE149:
- 694              		.section	.text.HAL_PWR_DisableSEVOnPend,"ax",%progbits
- 695              		.align	1
- 696              		.global	HAL_PWR_DisableSEVOnPend
- 697              		.syntax unified
- 698              		.thumb
- 699              		.thumb_func
- 701              	HAL_PWR_DisableSEVOnPend:
- 702              	.LFB150:
+ 976              		.loc 1 569 1
+ 977 0010 00BF     		nop
+ 978 0012 BD46     		mov	sp, r7
+ 979              	.LCFI74:
+ 980              		.cfi_def_cfa_register 13
+ 981              		@ sp needed
+ 982 0014 5DF8047B 		ldr	r7, [sp], #4
+ 983              	.LCFI75:
+ 984              		.cfi_restore 7
+ 985              		.cfi_def_cfa_offset 0
+ 986 0018 7047     		bx	lr
+ 987              	.L60:
+ 988 001a 00BF     		.align	2
+ 989              	.L59:
+ 990 001c 00ED00E0 		.word	-536810240
+ 991              		.cfi_endproc
+ 992              	.LFE149:
+ 994              		.section	.text.HAL_PWR_DisableSEVOnPend,"ax",%progbits
+ 995              		.align	1
+ 996              		.global	HAL_PWR_DisableSEVOnPend
+ 997              		.syntax unified
+ 998              		.thumb
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 28
+
+
+ 999              		.thumb_func
+ 1001              	HAL_PWR_DisableSEVOnPend:
+ 1002              	.LFB150:
  570:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  571:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
  572:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief Disables CORTEX M4 SEVONPEND bit. 
  573:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @note Clears SEVONPEND bit of SCR register. When this bit is set, this causes 
  574:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *       WFE to wake up when an interrupt moves from inactive to pended.         
  575:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @retval None
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 23
-
-
  576:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  577:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_DisableSEVOnPend(void)
  578:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
- 703              		.loc 1 578 1 is_stmt 1 view -0
- 704              		.cfi_startproc
- 705              		@ args = 0, pretend = 0, frame = 0
- 706              		@ frame_needed = 0, uses_anonymous_args = 0
- 707              		@ link register save eliminated.
+ 1003              		.loc 1 578 1
+ 1004              		.cfi_startproc
+ 1005              		@ args = 0, pretend = 0, frame = 0
+ 1006              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1007              		@ link register save eliminated.
+ 1008 0000 80B4     		push	{r7}
+ 1009              	.LCFI76:
+ 1010              		.cfi_def_cfa_offset 4
+ 1011              		.cfi_offset 7, -4
+ 1012 0002 00AF     		add	r7, sp, #0
+ 1013              	.LCFI77:
+ 1014              		.cfi_def_cfa_register 7
  579:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Clear SEVONPEND bit of Cortex System Control Register */
  580:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   CLEAR_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SEVONPEND_Msk));
- 708              		.loc 1 580 3 view .LVU117
- 709 0000 024A     		ldr	r2, .L65
- 710 0002 1369     		ldr	r3, [r2, #16]
- 711 0004 23F01003 		bic	r3, r3, #16
- 712 0008 1361     		str	r3, [r2, #16]
+ 1015              		.loc 1 580 3
+ 1016 0004 054B     		ldr	r3, .L62
+ 1017 0006 1B69     		ldr	r3, [r3, #16]
+ 1018 0008 044A     		ldr	r2, .L62
+ 1019 000a 23F01003 		bic	r3, r3, #16
+ 1020 000e 1361     		str	r3, [r2, #16]
  581:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
- 713              		.loc 1 581 1 is_stmt 0 view .LVU118
- 714 000a 7047     		bx	lr
- 715              	.L66:
- 716              		.align	2
- 717              	.L65:
- 718 000c 00ED00E0 		.word	-536810240
- 719              		.cfi_endproc
- 720              	.LFE150:
- 722              		.text
- 723              	.Letext0:
- 724              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
- 725              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
- 726              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
- 727              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
- 728              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 729              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccken2Wi.s 			page 24
+ 1021              		.loc 1 581 1
+ 1022 0010 00BF     		nop
+ 1023 0012 BD46     		mov	sp, r7
+ 1024              	.LCFI78:
+ 1025              		.cfi_def_cfa_register 13
+ 1026              		@ sp needed
+ 1027 0014 5DF8047B 		ldr	r7, [sp], #4
+ 1028              	.LCFI79:
+ 1029              		.cfi_restore 7
+ 1030              		.cfi_def_cfa_offset 0
+ 1031 0018 7047     		bx	lr
+ 1032              	.L63:
+ 1033 001a 00BF     		.align	2
+ 1034              	.L62:
+ 1035 001c 00ED00E0 		.word	-536810240
+ 1036              		.cfi_endproc
+ 1037              	.LFE150:
+ 1039              		.text
+ 1040              	.Letext0:
+ 1041              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 1042              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 1043              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 1044              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 1045              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 29
+
+
+ 1046              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 30
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_hal_pwr.c
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:21     .text.HAL_PWR_DeInit:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:27     .text.HAL_PWR_DeInit:00000000 HAL_PWR_DeInit
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:48     .text.HAL_PWR_DeInit:00000014 $d
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:53     .text.HAL_PWR_EnableBkUpAccess:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:59     .text.HAL_PWR_EnableBkUpAccess:00000000 HAL_PWR_EnableBkUpAccess
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:92     .text.HAL_PWR_EnableBkUpAccess:00000014 $d
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:98     .text.HAL_PWR_DisableBkUpAccess:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:104    .text.HAL_PWR_DisableBkUpAccess:00000000 HAL_PWR_DisableBkUpAccess
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:137    .text.HAL_PWR_DisableBkUpAccess:00000014 $d
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:143    .text.HAL_PWR_ConfigPVD:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:149    .text.HAL_PWR_ConfigPVD:00000000 HAL_PWR_ConfigPVD
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:236    .text.HAL_PWR_ConfigPVD:0000007c $d
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:242    .text.HAL_PWR_EnablePVD:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:248    .text.HAL_PWR_EnablePVD:00000000 HAL_PWR_EnablePVD
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:265    .text.HAL_PWR_EnablePVD:00000008 $d
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:270    .text.HAL_PWR_DisablePVD:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:276    .text.HAL_PWR_DisablePVD:00000000 HAL_PWR_DisablePVD
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:293    .text.HAL_PWR_DisablePVD:00000008 $d
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:298    .text.HAL_PWR_EnableWakeUpPin:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:304    .text.HAL_PWR_EnableWakeUpPin:00000000 HAL_PWR_EnableWakeUpPin
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:323    .text.HAL_PWR_EnableWakeUpPin:0000000c $d
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:328    .text.HAL_PWR_DisableWakeUpPin:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:334    .text.HAL_PWR_DisableWakeUpPin:00000000 HAL_PWR_DisableWakeUpPin
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:353    .text.HAL_PWR_DisableWakeUpPin:0000000c $d
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:358    .text.HAL_PWR_EnterSLEEPMode:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:364    .text.HAL_PWR_EnterSLEEPMode:00000000 HAL_PWR_EnterSLEEPMode
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:421    .text.HAL_PWR_EnterSLEEPMode:00000020 $d
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:426    .text.HAL_PWR_EnterSTOPMode:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:432    .text.HAL_PWR_EnterSTOPMode:00000000 HAL_PWR_EnterSTOPMode
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:500    .text.HAL_PWR_EnterSTOPMode:00000034 $d
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:506    .text.HAL_PWR_EnterSTANDBYMode:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:512    .text.HAL_PWR_EnterSTANDBYMode:00000000 HAL_PWR_EnterSTANDBYMode
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:541    .text.HAL_PWR_EnterSTANDBYMode:00000018 $d
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:547    .text.HAL_PWR_PVDCallback:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:553    .text.HAL_PWR_PVDCallback:00000000 HAL_PWR_PVDCallback
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:566    .text.HAL_PWR_PVD_IRQHandler:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:572    .text.HAL_PWR_PVD_IRQHandler:00000000 HAL_PWR_PVD_IRQHandler
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:606    .text.HAL_PWR_PVD_IRQHandler:0000001c $d
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:611    .text.HAL_PWR_EnableSleepOnExit:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:617    .text.HAL_PWR_EnableSleepOnExit:00000000 HAL_PWR_EnableSleepOnExit
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:634    .text.HAL_PWR_EnableSleepOnExit:0000000c $d
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:639    .text.HAL_PWR_DisableSleepOnExit:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:645    .text.HAL_PWR_DisableSleepOnExit:00000000 HAL_PWR_DisableSleepOnExit
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:662    .text.HAL_PWR_DisableSleepOnExit:0000000c $d
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:667    .text.HAL_PWR_EnableSEVOnPend:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:673    .text.HAL_PWR_EnableSEVOnPend:00000000 HAL_PWR_EnableSEVOnPend
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:690    .text.HAL_PWR_EnableSEVOnPend:0000000c $d
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:695    .text.HAL_PWR_DisableSEVOnPend:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:701    .text.HAL_PWR_DisableSEVOnPend:00000000 HAL_PWR_DisableSEVOnPend
-C:\Users\30514\AppData\Local\Temp\ccken2Wi.s:718    .text.HAL_PWR_DisableSEVOnPend:0000000c $d
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:21     .text.HAL_PWR_DeInit:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:27     .text.HAL_PWR_DeInit:00000000 HAL_PWR_DeInit
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:67     .text.HAL_PWR_DeInit:00000028 $d
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:72     .text.HAL_PWR_EnableBkUpAccess:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:78     .text.HAL_PWR_EnableBkUpAccess:00000000 HAL_PWR_EnableBkUpAccess
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:124    .text.HAL_PWR_EnableBkUpAccess:00000020 $d
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:130    .text.HAL_PWR_DisableBkUpAccess:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:136    .text.HAL_PWR_DisableBkUpAccess:00000000 HAL_PWR_DisableBkUpAccess
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:182    .text.HAL_PWR_DisableBkUpAccess:00000020 $d
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:188    .text.HAL_PWR_ConfigPVD:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:194    .text.HAL_PWR_ConfigPVD:00000000 HAL_PWR_ConfigPVD
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:322    .text.HAL_PWR_ConfigPVD:000000b8 $d
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:328    .text.HAL_PWR_EnablePVD:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:334    .text.HAL_PWR_EnablePVD:00000000 HAL_PWR_EnablePVD
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:367    .text.HAL_PWR_EnablePVD:00000014 $d
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:372    .text.HAL_PWR_DisablePVD:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:378    .text.HAL_PWR_DisablePVD:00000000 HAL_PWR_DisablePVD
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:411    .text.HAL_PWR_DisablePVD:00000014 $d
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:416    .text.HAL_PWR_EnableWakeUpPin:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:422    .text.HAL_PWR_EnableWakeUpPin:00000000 HAL_PWR_EnableWakeUpPin
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:464    .text.HAL_PWR_EnableWakeUpPin:00000020 $d
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:469    .text.HAL_PWR_DisableWakeUpPin:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:475    .text.HAL_PWR_DisableWakeUpPin:00000000 HAL_PWR_DisableWakeUpPin
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:518    .text.HAL_PWR_DisableWakeUpPin:00000024 $d
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:523    .text.HAL_PWR_EnterSLEEPMode:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:529    .text.HAL_PWR_EnterSLEEPMode:00000000 HAL_PWR_EnterSLEEPMode
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:610    .text.HAL_PWR_EnterSLEEPMode:0000003c $d
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:615    .text.HAL_PWR_EnterSTOPMode:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:621    .text.HAL_PWR_EnterSTOPMode:00000000 HAL_PWR_EnterSTOPMode
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:715    .text.HAL_PWR_EnterSTOPMode:00000058 $d
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:721    .text.HAL_PWR_EnterSTANDBYMode:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:727    .text.HAL_PWR_EnterSTANDBYMode:00000000 HAL_PWR_EnterSTANDBYMode
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:774    .text.HAL_PWR_EnterSTANDBYMode:00000028 $d
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:780    .text.HAL_PWR_PVD_IRQHandler:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:786    .text.HAL_PWR_PVD_IRQHandler:00000000 HAL_PWR_PVD_IRQHandler
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:831    .text.HAL_PWR_PVDCallback:00000000 HAL_PWR_PVDCallback
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:820    .text.HAL_PWR_PVD_IRQHandler:00000020 $d
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:825    .text.HAL_PWR_PVDCallback:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:860    .text.HAL_PWR_EnableSleepOnExit:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:866    .text.HAL_PWR_EnableSleepOnExit:00000000 HAL_PWR_EnableSleepOnExit
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:900    .text.HAL_PWR_EnableSleepOnExit:0000001c $d
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:905    .text.HAL_PWR_DisableSleepOnExit:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:911    .text.HAL_PWR_DisableSleepOnExit:00000000 HAL_PWR_DisableSleepOnExit
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:945    .text.HAL_PWR_DisableSleepOnExit:0000001c $d
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:950    .text.HAL_PWR_EnableSEVOnPend:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:956    .text.HAL_PWR_EnableSEVOnPend:00000000 HAL_PWR_EnableSEVOnPend
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:990    .text.HAL_PWR_EnableSEVOnPend:0000001c $d
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:995    .text.HAL_PWR_DisableSEVOnPend:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:1001   .text.HAL_PWR_DisableSEVOnPend:00000000 HAL_PWR_DisableSEVOnPend
+C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s:1035   .text.HAL_PWR_DisableSEVOnPend:0000001c $d
+                           .group:00000000 wm4.0.3e68c699c40fadf7e6c1e499de837233
+                           .group:00000000 wm4.stm32f4xx_hal_conf.h.25.a9a6e27d8b41172b5af7d7631d763ee0
+                           .group:00000000 wm4.stm32f4xx.h.38.63e3ea23bd63a94457417730025259b6
+                           .group:00000000 wm4.stm32f446xx.h.34.dd43cebd7192f96bce7a5ff975201274
+                           .group:00000000 wm4._newlib_version.h.4.0eb654b64686e2bd29646258853f6c22
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccZKbsmM.s 			page 31
+
+
+                           .group:00000000 wm4.features.h.33.d554620bb17bd3b714c3fb5c268772bc
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.cmsis_version.h.32.0ac195c83bb4537824e6ad1c47474b79
+                           .group:00000000 wm4.core_cm4.h.66.e4ff136c4a17abc46741866f64f8e729
+                           .group:00000000 wm4.cmsis_gcc.h.26.498d0ad17a45fc9ef20fdc01caf02259
+                           .group:00000000 wm4.core_cm4.h.174.62be9b4588d49bed18171771001331df
+                           .group:00000000 wm4.mpu_armv7.h.32.83326921a797fa9d6f70449916b4b839
+                           .group:00000000 wm4.stm32f446xx.h.917.13927c85cbbf4787955bc4173c54fa12
+                           .group:00000000 wm4.stm32f4xx.h.195.a4b8bf80f37cc96981498656ffe5f588
+                           .group:00000000 wm4.stm32_hal_legacy.h.22.8b7d303dc46a0b7ac6d3edf19ce2608d
+                           .group:00000000 wm4.stddef.h.39.0dc9006b34572d4d9cae4c8b422c4971
+                           .group:00000000 wm4.stm32f4xx_hal_def.h.58.3cb484e92e5ccf2e55312a4714e27917
+                           .group:00000000 wm4.stm32f4xx_hal_rcc_ex.h.20.9b6e314009d4800dd71c0ec1c264a1ea
+                           .group:00000000 wm4.stm32f4xx_hal_rcc.h.106.0887cf5d985ae88e345b0aed0ceb4729
+                           .group:00000000 wm4.stm32f4xx_hal_gpio.h.21.22da6a14b6049d6ac156577be74df1d7
+                           .group:00000000 wm4.stm32f4xx_hal_gpio_ex.h.21.33ea7ea24fd170b1d3dce3d23330c9d3
+                           .group:00000000 wm4.stm32f4xx_hal_gpio.h.254.d7e07832f748fe8bcb575db0b8373592
+                           .group:00000000 wm4.stm32f4xx_hal_exti.h.21.4fc7f37c3cc97fb821b368ede79414b6
+                           .group:00000000 wm4.stm32f4xx_hal_dma.h.21.8e4b1421c914345c23be719e5e528779
+                           .group:00000000 wm4.stm32f4xx_hal_dma.h.720.ac2d7eef74792e4026acc4d2923c5da4
+                           .group:00000000 wm4.stm32f4xx_hal_cortex.h.20.03673e4f79386680bf73ba399c19306b
+                           .group:00000000 wm4.stm32f4xx_hal_can.h.21.4b16c8dedf31ba328482231f811a7e65
+                           .group:00000000 wm4.stm32f4xx_hal_flash.h.20.2f1e0d1b7010b3a81a7980aaf712e7e5
+                           .group:00000000 wm4.stm32f4xx_hal_flash_ex.h.20.77cb3e5c0f1e426426a4cbc884a1eed8
+                           .group:00000000 wm4.stm32f4xx_hal_flash.h.361.23bc19b9eac79b0956d913651841ede8
+                           .group:00000000 wm4.stm32f4xx_hal_pwr.h.20.1905a0783a9c83adefd7df0c4b501e40
+                           .group:00000000 wm4.stm32f4xx_hal_pwr_ex.h.20.9786dbd699c850465fa7b77273740267
+                           .group:00000000 wm4.stm32f4xx_hal_pwr.h.338.debc0a4a62ba54688e63ab53dd99c4ea
+                           .group:00000000 wm4.stm32f4xx_hal_uart.h.21.ba8e24dd05c77faac3f3d48472e636ba
+                           .group:00000000 wm4.stm32f4xx_hal.h.71.02372bc31d47d29d3f67fbfe1429649e
 
 NO UNDEFINED SYMBOLS

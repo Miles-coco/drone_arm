@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfV2trb.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -12,7 +12,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfV2trb.s 			page 1
    9              		.eabi_attribute 24, 1
   10              		.eabi_attribute 25, 1
   11              		.eabi_attribute 26, 1
-  12              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 30, 6
   13              		.eabi_attribute 34, 1
   14              		.eabi_attribute 18, 4
   15              		.file	"coordinate_mapping.c"
@@ -20,15 +20,27 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfV2trb.s 			page 1
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
   19              		.file 1 "Module/coordinate/coordinate_mapping.c"
-  20              		.section	.text.Mapping_Init,"ax",%progbits
-  21              		.align	1
-  22              		.global	Mapping_Init
-  23              		.syntax unified
-  24              		.thumb
-  25              		.thumb_func
-  27              	Mapping_Init:
-  28              	.LVL0:
-  29              	.LFB135:
+  20              		.global	workspace_config
+  21              		.section	.data.workspace_config,"aw"
+  22              		.align	2
+  25              	workspace_config:
+  26 0000 0AD7233D 		.word	1025758986
+  27 0004 8FC2F53D 		.word	1039516303
+  28 0008 EC5138BE 		.word	-1103605268
+  29 000c 295C8FBD 		.word	-1114678231
+  30 0010 0AD7233C 		.word	1008981770
+  31              		.section	.data.stick_config,"aw"
+  32              		.align	2
+  35              	stick_config:
+  36 0000 02       		.byte	2
+  37 0001 01       		.byte	1
+  38              		.section	.text.smooth_curve,"ax",%progbits
+  39              		.align	1
+  40              		.syntax unified
+  41              		.thumb
+  42              		.thumb_func
+  44              	smooth_curve:
+  45              	.LFB134:
    1:Module/coordinate/coordinate_mapping.c **** #include "coordinate_mapping.h"
    2:Module/coordinate/coordinate_mapping.c **** #include "math.h"
    3:Module/coordinate/coordinate_mapping.c **** #include "Remote_Control.h"
@@ -46,167 +58,269 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfV2trb.s 			page 1
   15:Module/coordinate/coordinate_mapping.c **** // 默认摇杆通道配置
   16:Module/coordinate/coordinate_mapping.c **** static StickChannelConfig stick_config = 
   17:Module/coordinate/coordinate_mapping.c **** {
-  18:Module/coordinate/coordinate_mapping.c ****     .x_channel = 0, // 默认通道0控制X轴
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s 			page 2
+
+
+  18:Module/coordinate/coordinate_mapping.c ****     .x_channel = 2, // 默认通道2控制X轴
   19:Module/coordinate/coordinate_mapping.c ****     .y_channel = 1  // 默认通道1控制Y轴
   20:Module/coordinate/coordinate_mapping.c **** };
   21:Module/coordinate/coordinate_mapping.c **** 
   22:Module/coordinate/coordinate_mapping.c **** // 映射曲线平滑函数
   23:Module/coordinate/coordinate_mapping.c **** static float smooth_curve(float value) 
   24:Module/coordinate/coordinate_mapping.c **** {
+  46              		.loc 1 24 1
+  47              		.cfi_startproc
+  48              		@ args = 0, pretend = 0, frame = 16
+  49              		@ frame_needed = 1, uses_anonymous_args = 0
+  50 0000 80B5     		push	{r7, lr}
+  51              	.LCFI0:
+  52              		.cfi_def_cfa_offset 8
+  53              		.cfi_offset 7, -8
+  54              		.cfi_offset 14, -4
+  55 0002 84B0     		sub	sp, sp, #16
+  56              	.LCFI1:
+  57              		.cfi_def_cfa_offset 24
+  58 0004 00AF     		add	r7, sp, #0
+  59              	.LCFI2:
+  60              		.cfi_def_cfa_register 7
+  61 0006 87ED010A 		vstr.32	s0, [r7, #4]
   25:Module/coordinate/coordinate_mapping.c ****     // 使用Sigmoid函数实现平滑过渡
   26:Module/coordinate/coordinate_mapping.c ****     const float k = 3.0f; // 调整曲线陡峭程度
+  62              		.loc 1 26 17
+  63 000a 104B     		ldr	r3, .L3
+  64 000c FB60     		str	r3, [r7, #12]	@ float
   27:Module/coordinate/coordinate_mapping.c ****     return (2.0f / (1.0f + expf(-k * value))) - 1.0f;
+  65              		.loc 1 27 33
+  66 000e D7ED037A 		vldr.32	s15, [r7, #12]
+  67 0012 B1EE677A 		vneg.f32	s14, s15
+  68              		.loc 1 27 28
+  69 0016 D7ED017A 		vldr.32	s15, [r7, #4]
+  70 001a 67EE277A 		vmul.f32	s15, s14, s15
+  71 001e B0EE670A 		vmov.f32	s0, s15
+  72 0022 FFF7FEFF 		bl	expf
+  73 0026 F0EE407A 		vmov.f32	s15, s0
+  74              		.loc 1 27 26 discriminator 1
+  75 002a B7EE007A 		vmov.f32	s14, #1.0e+0
+  76 002e 37EE877A 		vadd.f32	s14, s15, s14
+  77              		.loc 1 27 18 discriminator 1
+  78 0032 F0EE006A 		vmov.f32	s13, #2.0e+0
+  79 0036 C6EE877A 		vdiv.f32	s15, s13, s14
+  80              		.loc 1 27 47 discriminator 1
+  81 003a B7EE007A 		vmov.f32	s14, #1.0e+0
+  82 003e 77EEC77A 		vsub.f32	s15, s15, s14
   28:Module/coordinate/coordinate_mapping.c **** }
+  83              		.loc 1 28 1
+  84 0042 B0EE670A 		vmov.f32	s0, s15
+  85 0046 1037     		adds	r7, r7, #16
+  86              	.LCFI3:
+  87              		.cfi_def_cfa_offset 8
+  88 0048 BD46     		mov	sp, r7
+  89              	.LCFI4:
+  90              		.cfi_def_cfa_register 13
+  91              		@ sp needed
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s 			page 3
+
+
+  92 004a 80BD     		pop	{r7, pc}
+  93              	.L4:
+  94              		.align	2
+  95              	.L3:
+  96 004c 00004040 		.word	1077936128
+  97              		.cfi_endproc
+  98              	.LFE134:
+ 100              		.section	.text.Mapping_Init,"ax",%progbits
+ 101              		.align	1
+ 102              		.global	Mapping_Init
+ 103              		.syntax unified
+ 104              		.thumb
+ 105              		.thumb_func
+ 107              	Mapping_Init:
+ 108              	.LFB135:
   29:Module/coordinate/coordinate_mapping.c **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfV2trb.s 			page 2
-
-
   30:Module/coordinate/coordinate_mapping.c **** //映射初始化函数
   31:Module/coordinate/coordinate_mapping.c **** void Mapping_Init(WorkspaceConfig* config) 
   32:Module/coordinate/coordinate_mapping.c **** {
-  30              		.loc 1 32 1 view -0
-  31              		.cfi_startproc
-  32              		@ args = 0, pretend = 0, frame = 0
-  33              		@ frame_needed = 0, uses_anonymous_args = 0
-  34              		@ link register save eliminated.
+ 109              		.loc 1 32 1
+ 110              		.cfi_startproc
+ 111              		@ args = 0, pretend = 0, frame = 8
+ 112              		@ frame_needed = 1, uses_anonymous_args = 0
+ 113              		@ link register save eliminated.
+ 114 0000 B0B4     		push	{r4, r5, r7}
+ 115              	.LCFI5:
+ 116              		.cfi_def_cfa_offset 12
+ 117              		.cfi_offset 4, -12
+ 118              		.cfi_offset 5, -8
+ 119              		.cfi_offset 7, -4
+ 120 0002 83B0     		sub	sp, sp, #12
+ 121              	.LCFI6:
+ 122              		.cfi_def_cfa_offset 24
+ 123 0004 00AF     		add	r7, sp, #0
+ 124              	.LCFI7:
+ 125              		.cfi_def_cfa_register 7
+ 126 0006 7860     		str	r0, [r7, #4]
   33:Module/coordinate/coordinate_mapping.c ****     if (config != NULL) {
-  35              		.loc 1 33 5 view .LVU1
-  36              		.loc 1 33 8 is_stmt 0 view .LVU2
-  37 0000 58B1     		cbz	r0, .L4
-  32:Module/coordinate/coordinate_mapping.c ****     if (config != NULL) {
-  38              		.loc 1 32 1 view .LVU3
-  39 0002 10B4     		push	{r4}
-  40              	.LCFI0:
-  41              		.cfi_def_cfa_offset 4
-  42              		.cfi_offset 4, -4
-  43 0004 8446     		mov	ip, r0
+ 127              		.loc 1 33 8
+ 128 0008 7B68     		ldr	r3, [r7, #4]
+ 129 000a 002B     		cmp	r3, #0
+ 130 000c 07D0     		beq	.L7
   34:Module/coordinate/coordinate_mapping.c ****         workspace_config = *config;
-  44              		.loc 1 34 9 is_stmt 1 view .LVU4
-  45              		.loc 1 34 26 is_stmt 0 view .LVU5
-  46 0006 054C     		ldr	r4, .L7
-  47 0008 BCE80F00 		ldmia	ip!, {r0, r1, r2, r3}
-  48              	.LVL1:
-  49              		.loc 1 34 26 view .LVU6
-  50 000c 0FC4     		stmia	r4!, {r0, r1, r2, r3}
-  51 000e DCF80030 		ldr	r3, [ip]
-  52 0012 2360     		str	r3, [r4]
+ 131              		.loc 1 34 26
+ 132 000e 064A     		ldr	r2, .L8
+ 133 0010 7B68     		ldr	r3, [r7, #4]
+ 134 0012 1446     		mov	r4, r2
+ 135 0014 1D46     		mov	r5, r3
+ 136 0016 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 137 0018 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 138 001a 2B68     		ldr	r3, [r5]
+ 139 001c 2360     		str	r3, [r4]
+ 140              	.L7:
   35:Module/coordinate/coordinate_mapping.c ****     }
   36:Module/coordinate/coordinate_mapping.c **** }
-  53              		.loc 1 36 1 view .LVU7
-  54 0014 5DF8044B 		ldr	r4, [sp], #4
-  55              	.LCFI1:
-  56              		.cfi_restore 4
-  57              		.cfi_def_cfa_offset 0
-  58 0018 7047     		bx	lr
-  59              	.LVL2:
-  60              	.L4:
-  61              		.loc 1 36 1 view .LVU8
-  62 001a 7047     		bx	lr
-  63              	.L8:
-  64              		.align	2
-  65              	.L7:
-  66 001c 00000000 		.word	workspace_config
-  67              		.cfi_endproc
-  68              	.LFE135:
-  70              		.section	.text.Set_Stick_Channels,"ax",%progbits
-  71              		.align	1
-  72              		.global	Set_Stick_Channels
-  73              		.syntax unified
-  74              		.thumb
-  75              		.thumb_func
-  77              	Set_Stick_Channels:
-  78              	.LVL3:
-  79              	.LFB136:
+ 141              		.loc 1 36 1
+ 142 001e 00BF     		nop
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s 			page 4
+
+
+ 143 0020 0C37     		adds	r7, r7, #12
+ 144              	.LCFI8:
+ 145              		.cfi_def_cfa_offset 12
+ 146 0022 BD46     		mov	sp, r7
+ 147              	.LCFI9:
+ 148              		.cfi_def_cfa_register 13
+ 149              		@ sp needed
+ 150 0024 B0BC     		pop	{r4, r5, r7}
+ 151              	.LCFI10:
+ 152              		.cfi_restore 7
+ 153              		.cfi_restore 5
+ 154              		.cfi_restore 4
+ 155              		.cfi_def_cfa_offset 0
+ 156 0026 7047     		bx	lr
+ 157              	.L9:
+ 158              		.align	2
+ 159              	.L8:
+ 160 0028 00000000 		.word	workspace_config
+ 161              		.cfi_endproc
+ 162              	.LFE135:
+ 164              		.section	.text.Set_Stick_Channels,"ax",%progbits
+ 165              		.align	1
+ 166              		.global	Set_Stick_Channels
+ 167              		.syntax unified
+ 168              		.thumb
+ 169              		.thumb_func
+ 171              	Set_Stick_Channels:
+ 172              	.LFB136:
   37:Module/coordinate/coordinate_mapping.c **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfV2trb.s 			page 3
-
-
   38:Module/coordinate/coordinate_mapping.c **** //用于配置映射到x,y的遥控器通道
   39:Module/coordinate/coordinate_mapping.c **** void Set_Stick_Channels(uint8_t x_ch, uint8_t y_ch) 
   40:Module/coordinate/coordinate_mapping.c **** {
-  80              		.loc 1 40 1 is_stmt 1 view -0
-  81              		.cfi_startproc
-  82              		@ args = 0, pretend = 0, frame = 0
-  83              		@ frame_needed = 0, uses_anonymous_args = 0
-  84              		@ link register save eliminated.
+ 173              		.loc 1 40 1
+ 174              		.cfi_startproc
+ 175              		@ args = 0, pretend = 0, frame = 8
+ 176              		@ frame_needed = 1, uses_anonymous_args = 0
+ 177              		@ link register save eliminated.
+ 178 0000 80B4     		push	{r7}
+ 179              	.LCFI11:
+ 180              		.cfi_def_cfa_offset 4
+ 181              		.cfi_offset 7, -4
+ 182 0002 83B0     		sub	sp, sp, #12
+ 183              	.LCFI12:
+ 184              		.cfi_def_cfa_offset 16
+ 185 0004 00AF     		add	r7, sp, #0
+ 186              	.LCFI13:
+ 187              		.cfi_def_cfa_register 7
+ 188 0006 0346     		mov	r3, r0
+ 189 0008 0A46     		mov	r2, r1
+ 190 000a FB71     		strb	r3, [r7, #7]
+ 191 000c 1346     		mov	r3, r2
+ 192 000e BB71     		strb	r3, [r7, #6]
   41:Module/coordinate/coordinate_mapping.c ****     stick_config.x_channel = x_ch;
-  85              		.loc 1 41 5 view .LVU10
-  86              		.loc 1 41 28 is_stmt 0 view .LVU11
-  87 0000 014B     		ldr	r3, .L10
-  88 0002 1870     		strb	r0, [r3]
+ 193              		.loc 1 41 28
+ 194 0010 054A     		ldr	r2, .L11
+ 195 0012 FB79     		ldrb	r3, [r7, #7]
+ 196 0014 1370     		strb	r3, [r2]
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s 			page 5
+
+
   42:Module/coordinate/coordinate_mapping.c ****     stick_config.y_channel = y_ch;
-  89              		.loc 1 42 5 is_stmt 1 view .LVU12
-  90              		.loc 1 42 28 is_stmt 0 view .LVU13
-  91 0004 5970     		strb	r1, [r3, #1]
+ 197              		.loc 1 42 28
+ 198 0016 044A     		ldr	r2, .L11
+ 199 0018 BB79     		ldrb	r3, [r7, #6]
+ 200 001a 5370     		strb	r3, [r2, #1]
   43:Module/coordinate/coordinate_mapping.c **** }
-  92              		.loc 1 43 1 view .LVU14
-  93 0006 7047     		bx	lr
-  94              	.L11:
-  95              		.align	2
-  96              	.L10:
-  97 0008 00000000 		.word	stick_config
-  98              		.cfi_endproc
-  99              	.LFE136:
- 101              		.section	.text.Map_To_Cartesian,"ax",%progbits
- 102              		.align	1
- 103              		.global	Map_To_Cartesian
- 104              		.syntax unified
- 105              		.thumb
- 106              		.thumb_func
- 108              	Map_To_Cartesian:
- 109              	.LFB137:
+ 201              		.loc 1 43 1
+ 202 001c 00BF     		nop
+ 203 001e 0C37     		adds	r7, r7, #12
+ 204              	.LCFI14:
+ 205              		.cfi_def_cfa_offset 4
+ 206 0020 BD46     		mov	sp, r7
+ 207              	.LCFI15:
+ 208              		.cfi_def_cfa_register 13
+ 209              		@ sp needed
+ 210 0022 5DF8047B 		ldr	r7, [sp], #4
+ 211              	.LCFI16:
+ 212              		.cfi_restore 7
+ 213              		.cfi_def_cfa_offset 0
+ 214 0026 7047     		bx	lr
+ 215              	.L12:
+ 216              		.align	2
+ 217              	.L11:
+ 218 0028 00000000 		.word	stick_config
+ 219              		.cfi_endproc
+ 220              	.LFE136:
+ 222              		.section	.text.Map_To_Cartesian,"ax",%progbits
+ 223              		.align	1
+ 224              		.global	Map_To_Cartesian
+ 225              		.syntax unified
+ 226              		.thumb
+ 227              		.thumb_func
+ 229              	Map_To_Cartesian:
+ 230              	.LFB137:
   44:Module/coordinate/coordinate_mapping.c **** 
   45:Module/coordinate/coordinate_mapping.c **** //将遥控器的原始值映射到工作空间
   46:Module/coordinate/coordinate_mapping.c **** point2D Map_To_Cartesian(void) 
   47:Module/coordinate/coordinate_mapping.c **** {
- 110              		.loc 1 47 1 is_stmt 1 view -0
- 111              		.cfi_startproc
- 112              		@ args = 0, pretend = 0, frame = 24
- 113              		@ frame_needed = 0, uses_anonymous_args = 0
- 114 0000 30B5     		push	{r4, r5, lr}
- 115              	.LCFI2:
- 116              		.cfi_def_cfa_offset 12
- 117              		.cfi_offset 4, -12
- 118              		.cfi_offset 5, -8
- 119              		.cfi_offset 14, -4
- 120 0002 2DED068B 		vpush.64	{d8, d9, d10}
- 121              	.LCFI3:
- 122              		.cfi_def_cfa_offset 36
- 123              		.cfi_offset 80, -36
- 124              		.cfi_offset 81, -32
- 125              		.cfi_offset 82, -28
- 126              		.cfi_offset 83, -24
- 127              		.cfi_offset 84, -20
- 128              		.cfi_offset 85, -16
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfV2trb.s 			page 4
-
-
- 129 0006 87B0     		sub	sp, sp, #28
- 130              	.LCFI4:
- 131              		.cfi_def_cfa_offset 64
+ 231              		.loc 1 47 1
+ 232              		.cfi_startproc
+ 233              		@ args = 0, pretend = 0, frame = 56
+ 234              		@ frame_needed = 1, uses_anonymous_args = 0
+ 235 0000 80B5     		push	{r7, lr}
+ 236              	.LCFI17:
+ 237              		.cfi_def_cfa_offset 8
+ 238              		.cfi_offset 7, -8
+ 239              		.cfi_offset 14, -4
+ 240 0002 8EB0     		sub	sp, sp, #56
+ 241              	.LCFI18:
+ 242              		.cfi_def_cfa_offset 64
+ 243 0004 00AF     		add	r7, sp, #0
+ 244              	.LCFI19:
+ 245              		.cfi_def_cfa_register 7
   48:Module/coordinate/coordinate_mapping.c ****     point2D result = {0, 0};
- 132              		.loc 1 48 5 view .LVU16
- 133              		.loc 1 48 13 is_stmt 0 view .LVU17
- 134 0008 0023     		movs	r3, #0
- 135 000a 0293     		str	r3, [sp, #8]	@ float
- 136 000c 0393     		str	r3, [sp, #12]	@ float
+ 246              		.loc 1 48 13
+ 247 0006 4FF00003 		mov	r3, #0
+ 248 000a FB60     		str	r3, [r7, #12]	@ float
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s 			page 6
+
+
+ 249 000c 4FF00003 		mov	r3, #0
+ 250 0010 3B61     		str	r3, [r7, #16]	@ float
   49:Module/coordinate/coordinate_mapping.c ****     
   50:Module/coordinate/coordinate_mapping.c ****     // 获取摇杆原始值
   51:Module/coordinate/coordinate_mapping.c ****     int16_t ch_x = get_channel_raw_value(stick_config.x_channel);
- 137              		.loc 1 51 5 is_stmt 1 view .LVU18
- 138              		.loc 1 51 20 is_stmt 0 view .LVU19
- 139 000e 424D     		ldr	r5, .L18
- 140 0010 2878     		ldrb	r0, [r5]	@ zero_extendqisi2
- 141 0012 FFF7FEFF 		bl	get_channel_raw_value
- 142              	.LVL4:
- 143 0016 0446     		mov	r4, r0
- 144              	.LVL5:
+ 251              		.loc 1 51 20
+ 252 0012 824B     		ldr	r3, .L21
+ 253 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 254 0016 1846     		mov	r0, r3
+ 255 0018 FFF7FEFF 		bl	get_channel_raw_value
+ 256 001c 0346     		mov	r3, r0
+ 257 001e FB85     		strh	r3, [r7, #46]	@ movhi
   52:Module/coordinate/coordinate_mapping.c ****     int16_t ch_y = get_channel_raw_value(stick_config.y_channel);
- 145              		.loc 1 52 5 is_stmt 1 view .LVU20
- 146              		.loc 1 52 20 is_stmt 0 view .LVU21
- 147 0018 6878     		ldrb	r0, [r5, #1]	@ zero_extendqisi2
- 148 001a FFF7FEFF 		bl	get_channel_raw_value
- 149              	.LVL6:
+ 258              		.loc 1 52 20
+ 259 0020 7E4B     		ldr	r3, .L21
+ 260 0022 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 261 0024 1846     		mov	r0, r3
+ 262 0026 FFF7FEFF 		bl	get_channel_raw_value
+ 263 002a 0346     		mov	r3, r0
+ 264 002c BB85     		strh	r3, [r7, #44]	@ movhi
   53:Module/coordinate/coordinate_mapping.c ****     
   54:Module/coordinate/coordinate_mapping.c ****     // 确定原始值范围（根据遥控器类型）
   55:Module/coordinate/coordinate_mapping.c ****     #if defined(RC_PROTOCOL_DJI)
@@ -214,9 +328,13 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfV2trb.s 			page 1
   57:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MAX = 660;
   58:Module/coordinate/coordinate_mapping.c ****     #elif defined(RC_PROTOCOL_TDF)
   59:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MIN = -1024;
- 150              		.loc 1 59 9 is_stmt 1 view .LVU22
+ 265              		.loc 1 59 23
+ 266 002e 4FF47C43 		mov	r3, #64512
+ 267 0032 7B85     		strh	r3, [r7, #42]	@ movhi
   60:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MAX = 1024;
- 151              		.loc 1 60 9 view .LVU23
+ 268              		.loc 1 60 23
+ 269 0034 4FF48063 		mov	r3, #1024
+ 270 0038 3B85     		strh	r3, [r7, #40]	@ movhi
   61:Module/coordinate/coordinate_mapping.c ****     #else
   62:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MIN = -1000;
   63:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MAX = 1000;
@@ -224,68 +342,87 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfV2trb.s 			page 1
   65:Module/coordinate/coordinate_mapping.c ****     
   66:Module/coordinate/coordinate_mapping.c ****     // 归一化到[-1, 1]范围
   67:Module/coordinate/coordinate_mapping.c ****     float norm_x = (float)(ch_x - RAW_MIN) / (RAW_MAX - RAW_MIN) * 2.0f - 1.0f;
- 152              		.loc 1 67 5 view .LVU24
- 153              		.loc 1 67 33 is_stmt 0 view .LVU25
- 154 001e 04F58063 		add	r3, r4, #1024
- 155 0022 07EE903A 		vmov	s15, r3	@ int
- 156              		.loc 1 67 20 view .LVU26
- 157 0026 F8EEE77A 		vcvt.f32.s32	s15, s15
- 158              		.loc 1 67 44 view .LVU27
- 159 002a 9FED3C6A 		vldr.32	s12, .L18+4
- 160 002e 67EE867A 		vmul.f32	s15, s15, s12
- 161              		.loc 1 67 66 view .LVU28
- 162 0032 77EEA77A 		vadd.f32	s15, s15, s15
- 163              		.loc 1 67 11 view .LVU29
- 164 0036 F7EE006A 		vmov.f32	s13, #1.0e+0
- 165 003a 77EEE67A 		vsub.f32	s15, s15, s13
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfV2trb.s 			page 5
+ 271              		.loc 1 67 33
+ 272 003a B7F92E20 		ldrsh	r2, [r7, #46]
+ 273 003e B7F92A30 		ldrsh	r3, [r7, #42]
+ 274 0042 D31A     		subs	r3, r2, r3
+ 275              		.loc 1 67 20
+ 276 0044 07EE903A 		vmov	s15, r3	@ int
+ 277 0048 F8EEE76A 		vcvt.f32.s32	s13, s15
+ 278              		.loc 1 67 55
+ 279 004c B7F92820 		ldrsh	r2, [r7, #40]
+ 280 0050 B7F92A30 		ldrsh	r3, [r7, #42]
+ 281 0054 D31A     		subs	r3, r2, r3
+ 282              		.loc 1 67 44
+ 283 0056 07EE903A 		vmov	s15, r3	@ int
+ 284 005a B8EEE77A 		vcvt.f32.s32	s14, s15
+ 285 005e C6EE877A 		vdiv.f32	s15, s13, s14
+ 286              		.loc 1 67 66
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s 			page 7
 
 
- 166              	.LVL7:
+ 287 0062 77EEA77A 		vadd.f32	s15, s15, s15
+ 288              		.loc 1 67 11
+ 289 0066 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 290 006a 77EEC77A 		vsub.f32	s15, s15, s14
+ 291 006e C7ED0D7A 		vstr.32	s15, [r7, #52]
   68:Module/coordinate/coordinate_mapping.c ****     float norm_y = (float)(ch_y - RAW_MIN) / (RAW_MAX - RAW_MIN) * 2.0f - 1.0f;
- 167              		.loc 1 68 5 is_stmt 1 view .LVU30
- 168              		.loc 1 68 33 is_stmt 0 view .LVU31
- 169 003e 00F58063 		add	r3, r0, #1024
- 170 0042 07EE103A 		vmov	s14, r3	@ int
- 171              		.loc 1 68 20 view .LVU32
- 172 0046 B8EEC77A 		vcvt.f32.s32	s14, s14
- 173              		.loc 1 68 44 view .LVU33
- 174 004a 27EE067A 		vmul.f32	s14, s14, s12
- 175              		.loc 1 68 66 view .LVU34
- 176 004e 37EE077A 		vadd.f32	s14, s14, s14
- 177              		.loc 1 68 11 view .LVU35
- 178 0052 37EE667A 		vsub.f32	s14, s14, s13
- 179              	.LVL8:
+ 292              		.loc 1 68 33
+ 293 0072 B7F92C20 		ldrsh	r2, [r7, #44]
+ 294 0076 B7F92A30 		ldrsh	r3, [r7, #42]
+ 295 007a D31A     		subs	r3, r2, r3
+ 296              		.loc 1 68 20
+ 297 007c 07EE903A 		vmov	s15, r3	@ int
+ 298 0080 F8EEE76A 		vcvt.f32.s32	s13, s15
+ 299              		.loc 1 68 55
+ 300 0084 B7F92820 		ldrsh	r2, [r7, #40]
+ 301 0088 B7F92A30 		ldrsh	r3, [r7, #42]
+ 302 008c D31A     		subs	r3, r2, r3
+ 303              		.loc 1 68 44
+ 304 008e 07EE903A 		vmov	s15, r3	@ int
+ 305 0092 B8EEE77A 		vcvt.f32.s32	s14, s15
+ 306 0096 C6EE877A 		vdiv.f32	s15, s13, s14
+ 307              		.loc 1 68 66
+ 308 009a 77EEA77A 		vadd.f32	s15, s15, s15
+ 309              		.loc 1 68 11
+ 310 009e B7EE007A 		vmov.f32	s14, #1.0e+0
+ 311 00a2 77EEC77A 		vsub.f32	s15, s15, s14
+ 312 00a6 C7ED0C7A 		vstr.32	s15, [r7, #48]
   69:Module/coordinate/coordinate_mapping.c ****     
   70:Module/coordinate/coordinate_mapping.c ****     // 应用死区处理（消除摇杆中心的微小偏移）
   71:Module/coordinate/coordinate_mapping.c ****     const float deadzone = 0.05f; // 5%死区
- 180              		.loc 1 71 5 is_stmt 1 view .LVU36
+ 313              		.loc 1 71 17
+ 314 00aa 5D4B     		ldr	r3, .L21+4
+ 315 00ac 7B62     		str	r3, [r7, #36]	@ float
   72:Module/coordinate/coordinate_mapping.c ****     if (fabsf(norm_x) < deadzone) norm_x = 0.0f;
- 181              		.loc 1 72 5 view .LVU37
- 182              		.loc 1 72 9 is_stmt 0 view .LVU38
- 183 0056 B0EEE76A 		vabs.f32	s12, s15
- 184              		.loc 1 72 8 view .LVU39
- 185 005a DFED316A 		vldr.32	s13, .L18+8
- 186 005e B4EEE66A 		vcmpe.f32	s12, s13
- 187 0062 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 188 0066 01D5     		bpl	.L13
- 189              		.loc 1 72 42 discriminator 1 view .LVU40
- 190 0068 DFED2E7A 		vldr.32	s15, .L18+12
- 191              	.LVL9:
- 192              	.L13:
+ 316              		.loc 1 72 9
+ 317 00ae D7ED0D7A 		vldr.32	s15, [r7, #52]
+ 318 00b2 F0EEE77A 		vabs.f32	s15, s15
+ 319              		.loc 1 72 8
+ 320 00b6 97ED097A 		vldr.32	s14, [r7, #36]
+ 321 00ba B4EEE77A 		vcmpe.f32	s14, s15
+ 322 00be F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 323 00c2 02DD     		ble	.L14
+ 324              		.loc 1 72 42 discriminator 1
+ 325 00c4 4FF00003 		mov	r3, #0
+ 326 00c8 7B63     		str	r3, [r7, #52]	@ float
+ 327              	.L14:
   73:Module/coordinate/coordinate_mapping.c ****     if (fabsf(norm_y) < deadzone) norm_y = 0.0f;
- 193              		.loc 1 73 5 is_stmt 1 view .LVU41
- 194              		.loc 1 73 9 is_stmt 0 view .LVU42
- 195 006c F0EEC76A 		vabs.f32	s13, s14
- 196              		.loc 1 73 8 view .LVU43
- 197 0070 9FED2B6A 		vldr.32	s12, .L18+8
- 198 0074 F4EEC66A 		vcmpe.f32	s13, s12
- 199 0078 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 200 007c 01D5     		bpl	.L14
- 201              		.loc 1 73 42 discriminator 1 view .LVU44
- 202 007e 9FED297A 		vldr.32	s14, .L18+12
- 203              	.LVL10:
- 204              	.L14:
+ 328              		.loc 1 73 9
+ 329 00ca D7ED0C7A 		vldr.32	s15, [r7, #48]
+ 330 00ce F0EEE77A 		vabs.f32	s15, s15
+ 331              		.loc 1 73 8
+ 332 00d2 97ED097A 		vldr.32	s14, [r7, #36]
+ 333 00d6 B4EEE77A 		vcmpe.f32	s14, s15
+ 334 00da F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 335 00de 02DD     		ble	.L16
+ 336              		.loc 1 73 42 discriminator 1
+ 337 00e0 4FF00003 		mov	r3, #0
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s 			page 8
+
+
+ 338 00e4 3B63     		str	r3, [r7, #48]	@ float
+ 339              	.L16:
   74:Module/coordinate/coordinate_mapping.c ****     
   75:Module/coordinate/coordinate_mapping.c ****     // 应用平滑曲线（可选）
   76:Module/coordinate/coordinate_mapping.c ****     // norm_x = smooth_curve(norm_x);
@@ -293,175 +430,257 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfV2trb.s 			page 1
   78:Module/coordinate/coordinate_mapping.c ****     
   79:Module/coordinate/coordinate_mapping.c ****     // 计算范围比例
   80:Module/coordinate/coordinate_mapping.c ****     float range_x = workspace_config.x_max - workspace_config.x_min;
- 205              		.loc 1 80 5 is_stmt 1 view .LVU45
- 206              		.loc 1 80 37 is_stmt 0 view .LVU46
- 207 0082 294B     		ldr	r3, .L18+16
- 208 0084 D3ED010A 		vldr.32	s1, [r3, #4]
- 209              		.loc 1 80 62 view .LVU47
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfV2trb.s 			page 6
-
-
- 210 0088 D3ED009A 		vldr.32	s19, [r3]
- 211              		.loc 1 80 11 view .LVU48
- 212 008c 70EEE95A 		vsub.f32	s11, s1, s19
- 213              	.LVL11:
+ 340              		.loc 1 80 37
+ 341 00e6 4F4B     		ldr	r3, .L21+8
+ 342 00e8 93ED017A 		vldr.32	s14, [r3, #4]
+ 343              		.loc 1 80 62
+ 344 00ec 4D4B     		ldr	r3, .L21+8
+ 345 00ee D3ED007A 		vldr.32	s15, [r3]
+ 346              		.loc 1 80 11
+ 347 00f2 77EE677A 		vsub.f32	s15, s14, s15
+ 348 00f6 C7ED087A 		vstr.32	s15, [r7, #32]
   81:Module/coordinate/coordinate_mapping.c ****     float range_y = workspace_config.y_max - workspace_config.y_min;
- 214              		.loc 1 81 5 is_stmt 1 view .LVU49
- 215              		.loc 1 81 37 is_stmt 0 view .LVU50
- 216 0090 93ED03AA 		vldr.32	s20, [r3, #12]
- 217              		.loc 1 81 62 view .LVU51
- 218 0094 93ED029A 		vldr.32	s18, [r3, #8]
- 219              		.loc 1 81 11 view .LVU52
- 220 0098 3AEE496A 		vsub.f32	s12, s20, s18
- 221              	.LVL12:
+ 349              		.loc 1 81 37
+ 350 00fa 4A4B     		ldr	r3, .L21+8
+ 351 00fc 93ED037A 		vldr.32	s14, [r3, #12]
+ 352              		.loc 1 81 62
+ 353 0100 484B     		ldr	r3, .L21+8
+ 354 0102 D3ED027A 		vldr.32	s15, [r3, #8]
+ 355              		.loc 1 81 11
+ 356 0106 77EE677A 		vsub.f32	s15, s14, s15
+ 357 010a C7ED077A 		vstr.32	s15, [r7, #28]
   82:Module/coordinate/coordinate_mapping.c ****     
   83:Module/coordinate/coordinate_mapping.c ****     // 映射到实际工作空间
   84:Module/coordinate/coordinate_mapping.c ****     result.x = workspace_config.x_min + (norm_x + 1.0f) * 0.5f * range_x;
- 222              		.loc 1 84 5 is_stmt 1 view .LVU53
- 223              		.loc 1 84 49 is_stmt 0 view .LVU54
- 224 009c F7EE006A 		vmov.f32	s13, #1.0e+0
- 225 00a0 37EEA60A 		vadd.f32	s0, s15, s13
- 226              		.loc 1 84 57 view .LVU55
- 227 00a4 F6EE007A 		vmov.f32	s15, #5.0e-1
- 228              	.LVL13:
- 229              		.loc 1 84 57 view .LVU56
- 230 00a8 20EE270A 		vmul.f32	s0, s0, s15
- 231              		.loc 1 84 64 view .LVU57
- 232 00ac 20EE250A 		vmul.f32	s0, s0, s11
- 233              		.loc 1 84 39 view .LVU58
- 234 00b0 39EE800A 		vadd.f32	s0, s19, s0
- 235              		.loc 1 84 14 view .LVU59
- 236 00b4 8DED020A 		vstr.32	s0, [sp, #8]
+ 358              		.loc 1 84 32
+ 359 010e 454B     		ldr	r3, .L21+8
+ 360 0110 93ED007A 		vldr.32	s14, [r3]
+ 361              		.loc 1 84 49
+ 362 0114 D7ED0D7A 		vldr.32	s15, [r7, #52]
+ 363 0118 F7EE006A 		vmov.f32	s13, #1.0e+0
+ 364 011c 77EEA67A 		vadd.f32	s15, s15, s13
+ 365              		.loc 1 84 57
+ 366 0120 F6EE006A 		vmov.f32	s13, #5.0e-1
+ 367 0124 67EEA66A 		vmul.f32	s13, s15, s13
+ 368              		.loc 1 84 64
+ 369 0128 D7ED087A 		vldr.32	s15, [r7, #32]
+ 370 012c 66EEA77A 		vmul.f32	s15, s13, s15
+ 371              		.loc 1 84 39
+ 372 0130 77EE277A 		vadd.f32	s15, s14, s15
+ 373              		.loc 1 84 14
+ 374 0134 C7ED037A 		vstr.32	s15, [r7, #12]
   85:Module/coordinate/coordinate_mapping.c ****     result.y = workspace_config.y_min + (norm_y + 1.0f) * 0.5f * range_y;
- 237              		.loc 1 85 5 is_stmt 1 view .LVU60
- 238              		.loc 1 85 49 is_stmt 0 view .LVU61
- 239 00b8 37EE268A 		vadd.f32	s16, s14, s13
- 240              		.loc 1 85 57 view .LVU62
- 241 00bc 28EE278A 		vmul.f32	s16, s16, s15
- 242              		.loc 1 85 64 view .LVU63
- 243 00c0 28EE068A 		vmul.f32	s16, s16, s12
- 244              		.loc 1 85 39 view .LVU64
- 245 00c4 39EE088A 		vadd.f32	s16, s18, s16
- 246              		.loc 1 85 14 view .LVU65
- 247 00c8 8DED038A 		vstr.32	s16, [sp, #12]
+ 375              		.loc 1 85 32
+ 376 0138 3A4B     		ldr	r3, .L21+8
+ 377 013a 93ED027A 		vldr.32	s14, [r3, #8]
+ 378              		.loc 1 85 49
+ 379 013e D7ED0C7A 		vldr.32	s15, [r7, #48]
+ 380 0142 F7EE006A 		vmov.f32	s13, #1.0e+0
+ 381 0146 77EEA67A 		vadd.f32	s15, s15, s13
+ 382              		.loc 1 85 57
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s 			page 9
+
+
+ 383 014a F6EE006A 		vmov.f32	s13, #5.0e-1
+ 384 014e 67EEA66A 		vmul.f32	s13, s15, s13
+ 385              		.loc 1 85 64
+ 386 0152 D7ED077A 		vldr.32	s15, [r7, #28]
+ 387 0156 66EEA77A 		vmul.f32	s15, s13, s15
+ 388              		.loc 1 85 39
+ 389 015a 77EE277A 		vadd.f32	s15, s14, s15
+ 390              		.loc 1 85 14
+ 391 015e C7ED047A 		vstr.32	s15, [r7, #16]
   86:Module/coordinate/coordinate_mapping.c ****     
   87:Module/coordinate/coordinate_mapping.c ****     // 应用安全边界（确保不超出工作空间）
   88:Module/coordinate/coordinate_mapping.c ****     result.x = fmaxf(fminf(result.x, workspace_config.x_max - workspace_config.safety_margin), 
- 248              		.loc 1 88 5 is_stmt 1 view .LVU66
- 249              		.loc 1 88 79 is_stmt 0 view .LVU67
- 250 00cc D3ED048A 		vldr.32	s17, [r3, #16]
- 251              		.loc 1 88 16 view .LVU68
- 252 00d0 70EEE80A 		vsub.f32	s1, s1, s17
- 253 00d4 FFF7FEFF 		bl	fminf
- 254              	.LVL14:
- 255              		.loc 1 88 16 view .LVU69
- 256 00d8 79EEA80A 		vadd.f32	s1, s19, s17
- 257 00dc FFF7FEFF 		bl	fmaxf
- 258              	.LVL15:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfV2trb.s 			page 7
-
-
- 259              		.loc 1 88 14 discriminator 1 view .LVU70
- 260 00e0 8DED020A 		vstr.32	s0, [sp, #8]
+ 392              		.loc 1 88 16
+ 393 0162 D7ED036A 		vldr.32	s13, [r7, #12]
+ 394              		.loc 1 88 54
+ 395 0166 2F4B     		ldr	r3, .L21+8
+ 396 0168 93ED017A 		vldr.32	s14, [r3, #4]
+ 397              		.loc 1 88 79
+ 398 016c 2D4B     		ldr	r3, .L21+8
+ 399 016e D3ED047A 		vldr.32	s15, [r3, #16]
+ 400              		.loc 1 88 16
+ 401 0172 77EE677A 		vsub.f32	s15, s14, s15
+ 402 0176 F0EE670A 		vmov.f32	s1, s15
+ 403 017a B0EE660A 		vmov.f32	s0, s13
+ 404 017e FFF7FEFF 		bl	fminf
+ 405 0182 F0EE406A 		vmov.f32	s13, s0
   89:Module/coordinate/coordinate_mapping.c ****                      workspace_config.x_min + workspace_config.safety_margin);
+ 406              		.loc 1 89 38
+ 407 0186 274B     		ldr	r3, .L21+8
+ 408 0188 93ED007A 		vldr.32	s14, [r3]
+ 409              		.loc 1 89 63
+ 410 018c 254B     		ldr	r3, .L21+8
+ 411 018e D3ED047A 		vldr.32	s15, [r3, #16]
+  88:Module/coordinate/coordinate_mapping.c ****                      workspace_config.x_min + workspace_config.safety_margin);
+ 412              		.loc 1 88 16
+ 413 0192 77EE277A 		vadd.f32	s15, s14, s15
+ 414 0196 F0EE670A 		vmov.f32	s1, s15
+ 415 019a B0EE660A 		vmov.f32	s0, s13
+ 416 019e FFF7FEFF 		bl	fmaxf
+ 417 01a2 F0EE407A 		vmov.f32	s15, s0
+  88:Module/coordinate/coordinate_mapping.c ****                      workspace_config.x_min + workspace_config.safety_margin);
+ 418              		.loc 1 88 14 discriminator 2
+ 419 01a6 C7ED037A 		vstr.32	s15, [r7, #12]
   90:Module/coordinate/coordinate_mapping.c ****     result.y = fmaxf(fminf(result.y, workspace_config.y_max - workspace_config.safety_margin), 
- 261              		.loc 1 90 5 is_stmt 1 view .LVU71
- 262              		.loc 1 90 16 is_stmt 0 view .LVU72
- 263 00e4 7AEE680A 		vsub.f32	s1, s20, s17
- 264 00e8 B0EE480A 		vmov.f32	s0, s16
- 265 00ec FFF7FEFF 		bl	fminf
- 266              	.LVL16:
- 267 00f0 79EE280A 		vadd.f32	s1, s18, s17
- 268 00f4 FFF7FEFF 		bl	fmaxf
- 269              	.LVL17:
- 270              		.loc 1 90 14 discriminator 1 view .LVU73
- 271 00f8 8DED030A 		vstr.32	s0, [sp, #12]
+ 420              		.loc 1 90 16
+ 421 01aa D7ED046A 		vldr.32	s13, [r7, #16]
+ 422              		.loc 1 90 54
+ 423 01ae 1D4B     		ldr	r3, .L21+8
+ 424 01b0 93ED037A 		vldr.32	s14, [r3, #12]
+ 425              		.loc 1 90 79
+ 426 01b4 1B4B     		ldr	r3, .L21+8
+ 427 01b6 D3ED047A 		vldr.32	s15, [r3, #16]
+ 428              		.loc 1 90 16
+ 429 01ba 77EE677A 		vsub.f32	s15, s14, s15
+ 430 01be F0EE670A 		vmov.f32	s1, s15
+ 431 01c2 B0EE660A 		vmov.f32	s0, s13
+ 432 01c6 FFF7FEFF 		bl	fminf
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s 			page 10
+
+
+ 433 01ca F0EE406A 		vmov.f32	s13, s0
   91:Module/coordinate/coordinate_mapping.c ****                      workspace_config.y_min + workspace_config.safety_margin);
+ 434              		.loc 1 91 38
+ 435 01ce 154B     		ldr	r3, .L21+8
+ 436 01d0 93ED027A 		vldr.32	s14, [r3, #8]
+ 437              		.loc 1 91 63
+ 438 01d4 134B     		ldr	r3, .L21+8
+ 439 01d6 D3ED047A 		vldr.32	s15, [r3, #16]
+  90:Module/coordinate/coordinate_mapping.c ****     result.y = fmaxf(fminf(result.y, workspace_config.y_max - workspace_config.safety_margin), 
+ 440              		.loc 1 90 16
+ 441 01da 77EE277A 		vadd.f32	s15, s14, s15
+ 442 01de F0EE670A 		vmov.f32	s1, s15
+ 443 01e2 B0EE660A 		vmov.f32	s0, s13
+ 444 01e6 FFF7FEFF 		bl	fmaxf
+ 445 01ea F0EE407A 		vmov.f32	s15, s0
+  90:Module/coordinate/coordinate_mapping.c ****     result.y = fmaxf(fminf(result.y, workspace_config.y_max - workspace_config.safety_margin), 
+ 446              		.loc 1 90 14 discriminator 2
+ 447 01ee C7ED047A 		vstr.32	s15, [r7, #16]
   92:Module/coordinate/coordinate_mapping.c ****     
   93:Module/coordinate/coordinate_mapping.c ****     return result;
- 272              		.loc 1 93 5 is_stmt 1 view .LVU74
- 273              		.loc 1 93 12 is_stmt 0 view .LVU75
- 274 00fc 02AB     		add	r3, sp, #8
- 275 00fe 93E80300 		ldm	r3, {r0, r1}
- 276 0102 06AB     		add	r3, sp, #24
- 277 0104 03E90300 		stmdb	r3, {r0, r1}
+ 448              		.loc 1 93 12
+ 449 01f2 07F11403 		add	r3, r7, #20
+ 450 01f6 07F10C02 		add	r2, r7, #12
+ 451 01fa 92E80300 		ldm	r2, {r0, r1}
+ 452 01fe 83E80300 		stm	r3, {r0, r1}
+ 453 0202 7A69     		ldr	r2, [r7, #20]	@ float
+ 454 0204 BB69     		ldr	r3, [r7, #24]	@ float
+ 455 0206 07EE102A 		vmov	s14, r2
+ 456 020a 07EE903A 		vmov	s15, r3
   94:Module/coordinate/coordinate_mapping.c **** }...
- 278              		.loc 1 94 1 view .LVU76
- 279 0108 9DED040A 		vldr.32	s0, [sp, #16]
- 280 010c DDED050A 		vldr.32	s1, [sp, #20]
- 281 0110 07B0     		add	sp, sp, #28
- 282              	.LCFI5:
- 283              		.cfi_def_cfa_offset 36
- 284              		@ sp needed
- 285 0112 BDEC068B 		vldm	sp!, {d8-d10}
- 286              	.LCFI6:
- 287              		.cfi_restore 84
- 288              		.cfi_restore 85
- 289              		.cfi_restore 82
- 290              		.cfi_restore 83
- 291              		.cfi_restore 80
- 292              		.cfi_restore 81
- 293              		.cfi_def_cfa_offset 12
- 294              	.LVL18:
- 295              		.loc 1 94 1 view .LVU77
- 296 0116 30BD     		pop	{r4, r5, pc}
- 297              	.LVL19:
- 298              	.L19:
- 299              		.loc 1 94 1 view .LVU78
- 300              		.align	2
- 301              	.L18:
- 302 0118 00000000 		.word	stick_config
- 303 011c 0000003A 		.word	973078528
- 304 0120 CDCC4C3D 		.word	1028443341
- 305 0124 00000000 		.word	0
- 306 0128 00000000 		.word	workspace_config
- 307              		.cfi_endproc
- 308              	.LFE137:
- 310              		.section	.data.stick_config,"aw"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfV2trb.s 			page 8
+ 457              		.loc 1 94 1
+ 458 020e B0EE470A 		vmov.f32	s0, s14
+ 459 0212 F0EE670A 		vmov.f32	s1, s15
+ 460 0216 3837     		adds	r7, r7, #56
+ 461              	.LCFI20:
+ 462              		.cfi_def_cfa_offset 8
+ 463 0218 BD46     		mov	sp, r7
+ 464              	.LCFI21:
+ 465              		.cfi_def_cfa_register 13
+ 466              		@ sp needed
+ 467 021a 80BD     		pop	{r7, pc}
+ 468              	.L22:
+ 469              		.align	2
+ 470              	.L21:
+ 471 021c 00000000 		.word	stick_config
+ 472 0220 CDCC4C3D 		.word	1028443341
+ 473 0224 00000000 		.word	workspace_config
+ 474              		.cfi_endproc
+ 475              	.LFE137:
+ 477              		.text
+ 478              	.Letext0:
+ 479              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 480              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 481              		.file 4 "Module/kinematic/kinematic_solver.h"
+ 482              		.file 5 "Module/coordinate/coordinate_mapping.h"
+ 483              		.file 6 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/math.h"
+ 484              		.file 7 "Module/remote_control/remote_control.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s 			page 11
 
 
- 311              		.align	2
- 314              	stick_config:
- 315 0000 00       		.byte	0
- 316 0001 01       		.byte	1
- 317              		.global	workspace_config
- 318              		.section	.data.workspace_config,"aw"
- 319              		.align	2
- 322              	workspace_config:
- 323 0000 0AD7233D 		.word	1025758986
- 324 0004 8FC2F53D 		.word	1039516303
- 325 0008 EC5138BE 		.word	-1103605268
- 326 000c 295C8FBD 		.word	-1114678231
- 327 0010 0AD7233C 		.word	1008981770
- 328              		.text
- 329              	.Letext0:
- 330              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
- 331              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
- 332              		.file 4 "Module/kinematic/kinematic_solver.h"
- 333              		.file 5 "Module/coordinate/coordinate_mapping.h"
- 334              		.file 6 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/math.h"
- 335              		.file 7 "Module/remote_control/remote_control.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfV2trb.s 			page 9
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 coordinate_mapping.c
-C:\Users\30514\AppData\Local\Temp\ccfV2trb.s:21     .text.Mapping_Init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccfV2trb.s:27     .text.Mapping_Init:00000000 Mapping_Init
-C:\Users\30514\AppData\Local\Temp\ccfV2trb.s:66     .text.Mapping_Init:0000001c $d
-C:\Users\30514\AppData\Local\Temp\ccfV2trb.s:322    .data.workspace_config:00000000 workspace_config
-C:\Users\30514\AppData\Local\Temp\ccfV2trb.s:71     .text.Set_Stick_Channels:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccfV2trb.s:77     .text.Set_Stick_Channels:00000000 Set_Stick_Channels
-C:\Users\30514\AppData\Local\Temp\ccfV2trb.s:97     .text.Set_Stick_Channels:00000008 $d
-C:\Users\30514\AppData\Local\Temp\ccfV2trb.s:314    .data.stick_config:00000000 stick_config
-C:\Users\30514\AppData\Local\Temp\ccfV2trb.s:102    .text.Map_To_Cartesian:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccfV2trb.s:108    .text.Map_To_Cartesian:00000000 Map_To_Cartesian
-C:\Users\30514\AppData\Local\Temp\ccfV2trb.s:302    .text.Map_To_Cartesian:00000118 $d
-C:\Users\30514\AppData\Local\Temp\ccfV2trb.s:311    .data.stick_config:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccfV2trb.s:319    .data.workspace_config:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s:25     .data.workspace_config:00000000 workspace_config
+C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s:22     .data.workspace_config:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s:32     .data.stick_config:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s:35     .data.stick_config:00000000 stick_config
+C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s:39     .text.smooth_curve:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s:44     .text.smooth_curve:00000000 smooth_curve
+C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s:96     .text.smooth_curve:0000004c $d
+C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s:101    .text.Mapping_Init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s:107    .text.Mapping_Init:00000000 Mapping_Init
+C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s:160    .text.Mapping_Init:00000028 $d
+C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s:165    .text.Set_Stick_Channels:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s:171    .text.Set_Stick_Channels:00000000 Set_Stick_Channels
+C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s:218    .text.Set_Stick_Channels:00000028 $d
+C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s:223    .text.Map_To_Cartesian:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s:229    .text.Map_To_Cartesian:00000000 Map_To_Cartesian
+C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s:471    .text.Map_To_Cartesian:0000021c $d
+                           .group:00000000 wm4.0.3e68c699c40fadf7e6c1e499de837233
+                           .group:00000000 wm4.remote_control.h.2.d5ede23e17e0664e5394033a072c4472
+                           .group:00000000 wm4.stm32f4xx_hal_conf.h.25.a9a6e27d8b41172b5af7d7631d763ee0
+                           .group:00000000 wm4.stm32f4xx.h.38.63e3ea23bd63a94457417730025259b6
+                           .group:00000000 wm4.stm32f446xx.h.34.dd43cebd7192f96bce7a5ff975201274
+                           .group:00000000 wm4._newlib_version.h.4.0eb654b64686e2bd29646258853f6c22
+                           .group:00000000 wm4.features.h.33.d554620bb17bd3b714c3fb5c268772bc
+                           .group:00000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:00000000 wm4._intsup.h.10.48bafbb683905c4daa4565a85aeeb264
+                           .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
+                           .group:00000000 wm4.cmsis_version.h.32.0ac195c83bb4537824e6ad1c47474b79
+                           .group:00000000 wm4.core_cm4.h.66.e4ff136c4a17abc46741866f64f8e729
+                           .group:00000000 wm4.cmsis_gcc.h.26.498d0ad17a45fc9ef20fdc01caf02259
+                           .group:00000000 wm4.core_cm4.h.174.62be9b4588d49bed18171771001331df
+                           .group:00000000 wm4.mpu_armv7.h.32.83326921a797fa9d6f70449916b4b839
+                           .group:00000000 wm4.stm32f446xx.h.917.13927c85cbbf4787955bc4173c54fa12
+                           .group:00000000 wm4.stm32f4xx.h.195.a4b8bf80f37cc96981498656ffe5f588
+                           .group:00000000 wm4.stm32_hal_legacy.h.22.8b7d303dc46a0b7ac6d3edf19ce2608d
+                           .group:00000000 wm4.stddef.h.39.0dc9006b34572d4d9cae4c8b422c4971
+                           .group:00000000 wm4.stm32f4xx_hal_def.h.58.3cb484e92e5ccf2e55312a4714e27917
+                           .group:00000000 wm4.stm32f4xx_hal_rcc_ex.h.20.9b6e314009d4800dd71c0ec1c264a1ea
+                           .group:00000000 wm4.stm32f4xx_hal_rcc.h.106.0887cf5d985ae88e345b0aed0ceb4729
+                           .group:00000000 wm4.stm32f4xx_hal_gpio.h.21.22da6a14b6049d6ac156577be74df1d7
+                           .group:00000000 wm4.stm32f4xx_hal_gpio_ex.h.21.33ea7ea24fd170b1d3dce3d23330c9d3
+                           .group:00000000 wm4.stm32f4xx_hal_gpio.h.254.d7e07832f748fe8bcb575db0b8373592
+                           .group:00000000 wm4.stm32f4xx_hal_exti.h.21.4fc7f37c3cc97fb821b368ede79414b6
+                           .group:00000000 wm4.stm32f4xx_hal_dma.h.21.8e4b1421c914345c23be719e5e528779
+                           .group:00000000 wm4.stm32f4xx_hal_dma.h.720.ac2d7eef74792e4026acc4d2923c5da4
+                           .group:00000000 wm4.stm32f4xx_hal_cortex.h.20.03673e4f79386680bf73ba399c19306b
+                           .group:00000000 wm4.stm32f4xx_hal_can.h.21.4b16c8dedf31ba328482231f811a7e65
+                           .group:00000000 wm4.stm32f4xx_hal_flash.h.20.2f1e0d1b7010b3a81a7980aaf712e7e5
+                           .group:00000000 wm4.stm32f4xx_hal_flash_ex.h.20.77cb3e5c0f1e426426a4cbc884a1eed8
+                           .group:00000000 wm4.stm32f4xx_hal_flash.h.361.23bc19b9eac79b0956d913651841ede8
+                           .group:00000000 wm4.stm32f4xx_hal_pwr.h.20.1905a0783a9c83adefd7df0c4b501e40
+                           .group:00000000 wm4.stm32f4xx_hal_pwr_ex.h.20.9786dbd699c850465fa7b77273740267
+                           .group:00000000 wm4.stm32f4xx_hal_pwr.h.338.debc0a4a62ba54688e63ab53dd99c4ea
+                           .group:00000000 wm4.stm32f4xx_hal_uart.h.21.ba8e24dd05c77faac3f3d48472e636ba
+                           .group:00000000 wm4.stm32f4xx_hal.h.71.02372bc31d47d29d3f67fbfe1429649e
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBuLy3k.s 			page 13
+
+
+                           .group:00000000 wm4.stdbool.h.29.c08aa3eec75cf5b9b5003883f43253f0
+                           .group:00000000 wm4.remote_control.h.15.dad157441a7369e14747acc4dfbe8b08
+                           .group:00000000 wm4.newlib.h.7.a37ffbe9e5aff74303f4e60b1cc1c01b
+                           .group:00000000 wm4.ieeefp.h.77.61a77db5804869b1dadd307a77cf78c9
+                           .group:00000000 wm4.config.h.224.10ee1ad185d877c6e334e6581faab44d
+                           .group:00000000 wm4._ansi.h.31.de524f58584151836e90d8620a16f8e8
+                           .group:00000000 wm4.cdefs.h.49.70fc7af612f78ddcace70fdd90b5623b
+                           .group:00000000 wm4._types.h.20.dd0d04dca3800a0d2a6129b87f3adbb2
+                           .group:00000000 wm4.stddef.h.158.6f8e08a347b1cff664332fa350bfceb3
+                           .group:00000000 wm4._types.h.127.3bdfe3ff8ea2d0985b03d9cbe93480e3
+                           .group:00000000 wm4.reent.h.18.25503cdc8b7e55dd0d6ea7b3e5af7a03
+                           .group:00000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:00000000 wm4.reent.h.78.6b87466b04591b1f1cb88c14fdf2ba9e
+                           .group:00000000 wm4.math.h.13.47cfc34cae8a1153323939c4d32cf7c2
 
 UNDEFINED SYMBOLS
+expf
 get_channel_raw_value
 fminf
 fmaxf

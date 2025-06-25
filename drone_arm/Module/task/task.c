@@ -39,20 +39,11 @@ void task_10ms(void)
 
 void task_100ms(void)
 {
-	// 调试信息输出
-    static uint8_t count = 0;
-    
-    if(count++ >= 10) 
-	{ // 每秒输出一次
-        count = 0;
-        
+	// 调试信息输出    
         // 获取当前位置
         point2D current_pos = Get_Current_Position();
         
-        // 获取关节角度
-        JointAngles angles = {0};
-        angles.theta1 = motor[Motor1].para.pos; // 假设存储的是弧度
-        angles.theta2 = motor[Motor2].para.pos;
+        point2D mapped_pos = Map_To_Cartesian(); 
         
         // 实际系统中通过串口输出
         /*
@@ -61,7 +52,6 @@ void task_100ms(void)
         printf("Angles: Theta1=%.1f°, Theta2=%.1f°\n", 
                angles.theta1 * 180/M_PI, angles.theta2 * 180/M_PI);
         */
-    }
 }
 
 void task_500ms(void)

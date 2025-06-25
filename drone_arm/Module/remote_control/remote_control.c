@@ -172,25 +172,43 @@ void Sbus_Data_Count(rc_info_t *rc, uint8_t *sbusData)
 }
 
 //获取指定通道解析后的值
+// 修改 get_channel_raw_value 函数
 int16_t get_channel_raw_value(uint8_t ch_num)
 {
-    if(ch_num > 4) return 0;//只支持0-4通道
-
+    int16_t value = 0;
+    
+    if(ch_num > 4) 
+        return 0;
+    
+    // 进入临界区（禁用中断）
+    __disable_irq();
+    
     #if defined(RC_PROTOCOL_DJI)
-        return rc_ctrl.rc.ch[ch_num];
+        switch(ch_num) {
+            case 0: value = rc_ctrl.rc.ch[0]; break;
+            case 1: value = rc_ctrl.rc.ch[1]; break;
+            case 2: value = rc_ctrl.rc.ch[2]; break;
+            case 3: value = rc_ctrl.rc.ch[3]; break;
+            case 4: value = rc_ctrl.rc.ch[4]; break;
+            default: value = 0; break;
+        }
     #elif defined(RC_PROTOCOL_TDF)
-        switch (ch_num)
-        {
-        case 0 : return rc_ctrl1.ch1;
-        case 1 : return rc_ctrl1.ch2;
-        case 2 : return rc_ctrl1.ch3;
-        case 3 : return rc_ctrl1.ch4;
-        case 4 : return rc_ctrl1.Vra;
-        default : return 0;
+        switch(ch_num) {
+            case 0: value = rc_ctrl1.ch1; break;
+            case 1: value = rc_ctrl1.ch2; break;
+            case 2: value = rc_ctrl1.ch3; break;
+            case 3: value = rc_ctrl1.ch4; break;
+            case 4: value = rc_ctrl1.Vra; break;
+            default: value = 0; break;
         }
     #else 
-        return 0;
+        value = 0;
     #endif
+    
+    // 退出临界区（启用中断）
+    __enable_irq();
+    
+    return value;
 }
 
 //获取遥控器通道映射后的值
