@@ -1,7 +1,12 @@
 #include "kinematic_solver.h"
 #include <math.h>
 #include <stdbool.h>
-#include "arm_math.h"
+
+// 确保定义π常量
+#ifndef M_PI
+#define M_PI 3.14159265358979323846f
+#endif
+#define PI M_PI
 
 // 定义π常量
 #define DEG_TO_RAD(x) ((x) * PI / 180.0f)
@@ -21,8 +26,8 @@ JointAngles IK_Solve(point2D target, float L1, float L2, const JointLimits* limi
     float y = target.y;
     
     // 计算目标到原点的距离
-    float32_t R;
-    arm_sqrt_f32(x*x + y*y, &R);
+    float R;
+    R = sqrtf(x*x + y*y);
     
     // 检查工作空间边界
     float minR = fabsf(L1 - L2);
@@ -49,8 +54,8 @@ JointAngles IK_Solve(point2D target, float L1, float L2, const JointLimits* limi
     float theta1 = alpha + beta;
     
     // 使用CMSIS-DSP优化三角函数计算
-    float32_t sin_theta1, cos_theta1;
-    arm_sin_cos_f32(RAD_TO_DEG(theta1), &sin_theta1, &cos_theta1);
+    float sin_theta1 = sinf(theta1);
+    float cos_theta1 = cosf(theta1);
     
     // 根据新方程计算sinθ2和cosθ2
     float sin_theta2 = (L1 * sin_theta1 - x) / L2;

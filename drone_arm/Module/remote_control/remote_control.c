@@ -171,7 +171,7 @@ void Sbus_Data_Count(rc_info_t *rc, uint8_t *sbusData)
 
 }
 
-//获取指定通道解析后的值
+//获取指定通道原始值
 int16_t get_channel_raw_value(uint8_t ch_num)
 {
     if(ch_num > 4) return 0;//只支持0-4通道

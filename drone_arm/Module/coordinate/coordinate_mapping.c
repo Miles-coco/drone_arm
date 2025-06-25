@@ -3,7 +3,7 @@
 #include "Remote_Control.h"
 
 // 默认工作空间配置
-static WorkspaceConfig workspace_config = 
+WorkspaceConfig workspace_config = 
 {
     .x_min = -0.3f,
     .x_max = 0.3f,

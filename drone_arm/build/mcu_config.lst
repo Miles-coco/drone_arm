@@ -1,0 +1,91 @@
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqEbClD.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"mcu_config.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Module/config/mcu_config.c"
+  20              		.section	.text.MCU_Init,"ax",%progbits
+  21              		.align	1
+  22              		.global	MCU_Init
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	MCU_Init:
+  28              	.LFB134:
+   1:Module/config/mcu_config.c **** #include "mcu_config.h"
+   2:Module/config/mcu_config.c **** #include "driver.h"
+   3:Module/config/mcu_config.c **** #include "task.h"
+   4:Module/config/mcu_config.c **** #include "dm_ctrl.h"
+   5:Module/config/mcu_config.c **** #include "remote_control.h"
+   6:Module/config/mcu_config.c **** #include "arm_control.h"
+   7:Module/config/mcu_config.c **** 
+   8:Module/config/mcu_config.c **** void MCU_Init(void)
+   9:Module/config/mcu_config.c **** {
+  29              		.loc 1 9 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  10:Module/config/mcu_config.c ****     task_init();
+  38              		.loc 1 10 5 view .LVU1
+  39 0002 FFF7FEFF 		bl	task_init
+  40              	.LVL0:
+  11:Module/config/mcu_config.c ****     remote_control_init();
+  41              		.loc 1 11 5 view .LVU2
+  42 0006 FFF7FEFF 		bl	remote_control_init
+  43              	.LVL1:
+  12:Module/config/mcu_config.c ****     can_driver_init();
+  44              		.loc 1 12 5 view .LVU3
+  45 000a FFF7FEFF 		bl	can_driver_init
+  46              	.LVL2:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqEbClD.s 			page 2
+
+
+  13:Module/config/mcu_config.c ****     ArmControl_Init();
+  47              		.loc 1 13 5 view .LVU4
+  48 000e FFF7FEFF 		bl	ArmControl_Init
+  49              	.LVL3:
+  14:Module/config/mcu_config.c **** }...
+  50              		.loc 1 14 1 is_stmt 0 view .LVU5
+  51 0012 08BD     		pop	{r3, pc}
+  52              		.cfi_endproc
+  53              	.LFE134:
+  55              		.text
+  56              	.Letext0:
+  57              		.file 2 "Module/arm_control/arm_control.h"
+  58              		.file 3 "driver/can_driver.h"
+  59              		.file 4 "Module/remote_control/remote_control.h"
+  60              		.file 5 "Module/task/task.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqEbClD.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 mcu_config.c
+C:\Users\30514\AppData\Local\Temp\ccqEbClD.s:21     .text.MCU_Init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccqEbClD.s:27     .text.MCU_Init:00000000 MCU_Init
+
+UNDEFINED SYMBOLS
+task_init
+remote_control_init
+can_driver_init
+ArmControl_Init

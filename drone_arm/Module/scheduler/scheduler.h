@@ -6,7 +6,7 @@
 #include <stdbool.h>
 
 
-#define MAX_TASKS 32   // 更合理的任务数量（节省RAM）
+#define MAX_TASKS 8   // 更合理的任务数量（节省RAM）
 #define SCHEDULER_TIME_MS 1  // 时间单位=1ms
 
 typedef struct

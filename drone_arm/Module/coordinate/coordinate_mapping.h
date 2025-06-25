@@ -38,4 +38,6 @@ void Set_Stick_Channels(uint8_t x_ch, uint8_t y_ch);
  */
 point2D Map_To_Cartesian(void);
 
+extern WorkspaceConfig workspace_config;
+
 #endif // __COORDINATE_MAPPING_H__

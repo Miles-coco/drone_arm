@@ -1,6 +1,5 @@
-build/task.o: Module/task/task.c Module/task/task.h \
- Module/scheduler/scheduler.h Core/Inc/main.h \
- Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+build/mcu_config.o: Module/config/mcu_config.c Module/config/mcu_config.h \
+ Core/Inc/main.h Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  Core/Inc/stm32f4xx_hal_conf.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -26,12 +25,11 @@ build/task.o: Module/task/task.c Module/task/task.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h driver/driver.h \
  driver/can_driver.h Bsp/bsp_can.h Core/Inc/can.h Core/Inc/main.h \
- Module/motor/dm_ctrl.h Module/motor/dm_drv.h Module/motor/dm_drv.h \
+ Module/task/task.h Module/motor/dm_ctrl.h Module/motor/dm_drv.h \
+ Module/remote_control/remote_control.h Core/Inc/usart.h \
  Module/arm_control/arm_control.h Module/kinematic/kinematic_solver.h \
- Module/coordinate/coordinate_mapping.h \
- Module/remote_control/remote_control.h Core/Inc/usart.h
-Module/task/task.h:
-Module/scheduler/scheduler.h:
+ Module/coordinate/coordinate_mapping.h
+Module/config/mcu_config.h:
 Core/Inc/main.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 Core/Inc/stm32f4xx_hal_conf.h:
@@ -65,11 +63,11 @@ driver/can_driver.h:
 Bsp/bsp_can.h:
 Core/Inc/can.h:
 Core/Inc/main.h:
+Module/task/task.h:
 Module/motor/dm_ctrl.h:
 Module/motor/dm_drv.h:
-Module/motor/dm_drv.h:
+Module/remote_control/remote_control.h:
+Core/Inc/usart.h:
 Module/arm_control/arm_control.h:
 Module/kinematic/kinematic_solver.h:
 Module/coordinate/coordinate_mapping.h:
-Module/remote_control/remote_control.h:
-Core/Inc/usart.h:

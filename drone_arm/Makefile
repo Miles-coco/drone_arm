@@ -68,7 +68,8 @@ Module/task/task.c \
 Module/kinematic/kinematic_solver.c \
 Module/coordinate/coordinate_mapping.c \
 Module/arm_control/arm_control.c \
-driver/can_driver.c
+Module/config/mcu_config.c \
+driver/can_driver.c 
 
 # ASM sources
 ASM_SOURCES =  \
@@ -141,6 +142,7 @@ C_INCLUDES =  \
 -IModule/kinematic \
 -IModule/arm_control \
 -IModule/coordinate \
+-IModule/config \
 -Idriver \
 -IMiddlewares/ST/ARM/DSP/Inc
 

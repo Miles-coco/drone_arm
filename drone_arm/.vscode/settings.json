@@ -7,6 +7,7 @@
         "arm_control.h": "c",
         "kinematic_solver.h": "c",
         "remote_control.h": "c",
-        "coordinate_mapping.h": "c"
+        "coordinate_mapping.h": "c",
+        "scheduler.h": "c"
     }
 }
