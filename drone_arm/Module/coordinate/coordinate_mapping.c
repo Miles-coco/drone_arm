@@ -15,12 +15,12 @@ static StickChannelConfig stick_config =
 
 
 // 默认工作空间配置
-static WorkspaceConfig workspace_config = 
+static WorkspaceConfig workspace_config =
 {
-    .min_theta1 = -M_PI,   // 默认电机1最小角度 -180°
-    .max_theta1 = M_PI,    // 默认电机1最大角度 180°
-    .min_theta2 = -3*M_PI/4, // 默认电机2最小角度 -135°
-    .max_theta2 = -M_PI/4   // 默认电机2最大角度 -45°
+    .min_theta1 = -(30.0f/180.0f)*M_PI,   // 默认电机1最小角度 -180°
+    .max_theta1 = 0.0f,     // 默认电机1最大角度 180°
+    .min_theta2 = -(110.0f/180.0f)*M_PI, // 默认电机2最小角度 -135°
+    .max_theta2 = -(60.0f/180.0f)*M_PI    // 默认电机2最大角度 -45°
 };
 
 // 辅助函数：将值从一个范围映射到另一个范围

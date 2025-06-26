@@ -26,10 +26,10 @@ void ArmControl_Init(void)
 {
     // 设置工作空间范围（使用默认值）
     Set_Joint_Ranges(
-        -M_PI,          // 关节1最小角度 -180°
-        M_PI,           // 关节1最大角度 180°
-        -3*M_PI/4,      // 关节2最小角度 -135°
-        -M_PI/4         // 关节2最大角度 -45°
+        -(30.0f/180.0f)*M_PI,          // 关节1最小角度 -180°
+        0,           // 关节1最大角度 180°
+        -(110.0f/180.0f)*M_PI,      // 关节2最小角度 -135°
+        -(60.0f/180.0f)*M_PI         // 关节2最大角度 -45°
     );
     
     // 设置摇杆通道（使用默认配置）
@@ -42,7 +42,7 @@ void ArmControl_Init(void)
     ctrl_enable(ALL_MOTORS);
     
     // 初始化角度为安全位置
-    target_angles.theta1 = 0.0f;
+    target_angles.theta1 = (-15/180)*M_PI;
     target_angles.theta2 = -M_PI/2;  // -90度
     target_angles.valid = true;
     current_angles = target_angles;  // 初始当前角度等于目标角度

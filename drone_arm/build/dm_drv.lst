@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
   48 000c 93F93C30 		ldrsb	r3, [r3, #60]
   49              		.loc 1 8 2
   50 0010 022B     		cmp	r3, #2
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 2
 
 
   51 0012 1BD0     		beq	.L2
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
   86 004c 3B68     		ldr	r3, [r7]
   87 004e 93F90030 		ldrsb	r3, [r3]
   17:Module/motor/dm_drv.c **** 			break;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 3
 
 
   88              		.loc 1 17 4
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  138 000a 3B68     		ldr	r3, [r7]
  139 000c 93F93C30 		ldrsb	r3, [r3, #60]
  140              		.loc 1 25 2
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 4
 
 
  141 0010 022B     		cmp	r3, #2
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  185 0060 00BF     		nop
  186              	.L9:
   36:Module/motor/dm_drv.c **** 	}	
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 5
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 5
 
 
   37:Module/motor/dm_drv.c **** 	dm4310_clear_para(motor);
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  236 0016 47DC     		bgt	.L17
  237 0018 002B     		cmp	r3, #0
  238 001a 02D0     		beq	.L15
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 6
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 6
 
 
  239 001c 012B     		cmp	r3, #1
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  276 0070 D3ED107A 		vldr.32	s15, [r3, #64]
  277 0074 3B68     		ldr	r3, [r7]
  278 0076 93ED117A 		vldr.32	s14, [r3, #68]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 7
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 7
 
 
  279 007a F0EE470A 		vmov.f32	s1, s14
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  327              		@ frame_needed = 1, uses_anonymous_args = 0
  328              		@ link register save eliminated.
  329 0000 80B4     		push	{r7}
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 8
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 8
 
 
  330              	.LCFI15:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  377              		.cfi_def_cfa_register 13
  378              		@ sp needed
  379 0036 5DF8047B 		ldr	r7, [sp], #4
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 9
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 9
 
 
  380              	.LCFI20:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
   75:Module/motor/dm_drv.c **** 	motor->cmd.tor_set 	= 0;
  428              		.loc 1 75 22
  429 0028 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 10
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 10
 
 
  430 002a 4FF00002 		mov	r2, #0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
   84:Module/motor/dm_drv.c **** //用于清除电机在特定模式下可能产生的错误状态
   85:Module/motor/dm_drv.c **** void dm4310_clear_err(hcan_t* hcan, motor_t *motor)
   86:Module/motor/dm_drv.c **** {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 11
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 11
 
 
  478              		.loc 1 86 1
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  517 002e 7868     		ldr	r0, [r7, #4]
  518 0030 FFF7FEFF 		bl	clear_err
   91:Module/motor/dm_drv.c **** 		case 1:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 12
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 12
 
 
  519              		.loc 1 91 4
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  100:Module/motor/dm_drv.c **** 
  101:Module/motor/dm_drv.c **** //通过运算得到电机的反馈值
  102:Module/motor/dm_drv.c **** void dm4310_fbdata(motor_t *motor, uint8_t *rx_data)
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 13
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 13
 
 
  103:Module/motor/dm_drv.c **** {
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  107:Module/motor/dm_drv.c **** 	motor->para.v_int=(rx_data[3]<<4)|(rx_data[4]>>4);					//速度反馈
  619              		.loc 1 107 28
  620 0038 3B68     		ldr	r3, [r7]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 14
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 14
 
 
  621 003a 0333     		adds	r3, r3, #3
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  672 0096 FFF7FEFF 		bl	uint_to_float
  673 009a F0EE407A 		vmov.f32	s15, s0
  674              		.loc 1 110 18 discriminator 1
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 15
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 15
 
 
  675 009e 7B68     		ldr	r3, [r7, #4]
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  726              		.thumb
  727              		.thumb_func
  729              	float_to_uint:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 16
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 16
 
 
  730              	.LFB141:
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  775 004e C6EE877A 		vdiv.f32	s15, s13, s14
  776              		.loc 1 123 9
  777 0052 FDEEE77A 		vcvt.s32.f32	s15, s15
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 17
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 17
 
 
  778              		.loc 1 123 9 is_stmt 0 discriminator 1
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  827 0016 D7ED027A 		vldr.32	s15, [r7, #8]
  828 001a 77EE677A 		vsub.f32	s15, s14, s15
  829 001e C7ED057A 		vstr.32	s15, [r7, #20]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 18
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 18
 
 
  131:Module/motor/dm_drv.c **** 	float offset = x_min;
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  137:Module/motor/dm_drv.c **** {
  880              		.loc 1 137 1
  881              		.cfi_startproc
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 19
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 19
 
 
  882              		@ args = 0, pretend = 0, frame = 24
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  148:Module/motor/dm_drv.c **** 	data[7] = 0xFC;
  926              		.loc 1 148 10
  927 0034 FC23     		movs	r3, #252
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 20
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 20
 
 
  928 0036 FB74     		strb	r3, [r7, #19]
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  156:Module/motor/dm_drv.c **** 	uint8_t data[8];
  157:Module/motor/dm_drv.c **** 	uint16_t id = motor_id + mode_id;
  977              		.loc 1 157 11
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 21
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 21
 
 
  978 0010 7A88     		ldrh	r2, [r7, #2]	@ movhi
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  1020              		@ sp needed
  1021 004c 80BD     		pop	{r7, pc}
  1022              		.cfi_endproc
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 22
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 22
 
 
  1023              	.LFE144:
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  1068              		.loc 1 180 10
  1069 0024 FF23     		movs	r3, #255
  1070 0026 FB73     		strb	r3, [r7, #15]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 23
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 23
 
 
  181:Module/motor/dm_drv.c **** 	data[4] = 0xFF;
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  1116              	.LCFI64:
  1117              		.cfi_def_cfa_offset 8
  1118              		.cfi_offset 7, -8
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 24
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 24
 
 
  1119              		.cfi_offset 14, -4
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  1160              		.loc 1 204 2
  1161 0038 07F10C02 		add	r2, r7, #12
  1162 003c F98A     		ldrh	r1, [r7, #22]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 25
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 25
 
 
  1163 003e 0823     		movs	r3, #8
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  1211              		.loc 1 212 11
  1212 0020 7B8B     		ldrh	r3, [r7, #26]	@ movhi
  1213 0022 FB86     		strh	r3, [r7, #54]	@ movhi
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 26
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 26
 
 
  213:Module/motor/dm_drv.c **** 
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  1260 0092 BB8E     		ldrh	r3, [r7, #52]
  1261 0094 1B0A     		lsrs	r3, r3, #8
  1262 0096 9BB2     		uxth	r3, r3
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 27
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 27
 
 
  1263 0098 DBB2     		uxtb	r3, r3
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  1311              		.loc 1 226 10
  1312 00f6 87F82A30 		strb	r3, [r7, #42]
  227:Module/motor/dm_drv.c **** 	data[7] = tor_tmp;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 28
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 28
 
 
  1313              		.loc 1 227 10
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  1362 0004 00AF     		add	r7, sp, #0
  1363              	.LCFI76:
  1364              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 29
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 29
 
 
  1365 0006 F860     		str	r0, [r7, #12]
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  1404 0044 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
  1405 0046 7B76     		strb	r3, [r7, #25]
  250:Module/motor/dm_drv.c **** 	data[6] = *(vbuf+2);
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 30
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 30
 
 
  1406              		.loc 1 250 10
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  1454 0004 00AF     		add	r7, sp, #0
  1455              	.LCFI81:
  1456              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 31
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 31
 
 
  1457 0006 F860     		str	r0, [r7, #12]
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  1497              	.LCFI83:
  1498              		.cfi_def_cfa_register 13
  1499              		@ sp needed
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 32
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 32
 
 
  1500 0048 80BD     		pop	{r7, pc}
@@ -1874,44 +1874,44 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 1
  1511              		.file 7 "Bsp/bsp_can.h"
  1512              		.file 8 "Module/motor/dm_drv.h"
  1513              		.file 9 "driver/can_driver.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 33
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 33
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 dm_drv.c
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:21     .text.dm4310_enable:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:27     .text.dm4310_enable:00000000 dm4310_enable
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:878    .text.enable_motor_mode:00000000 enable_motor_mode
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:112    .text.dm4310_disable:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:118    .text.dm4310_disable:00000000 dm4310_disable
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:955    .text.disable_motor_mode:00000000 disable_motor_mode
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:394    .text.dm4310_clear_para:00000000 dm4310_clear_para
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:204    .text.dm4310_ctrl_send:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:210    .text.dm4310_ctrl_send:00000000 dm4310_ctrl_send
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:1186   .text.mit_ctrl:00000000 mit_ctrl
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:1348   .text.pos_speed_ctrl:00000000 pos_speed_ctrl
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:1440   .text.speed_ctrl:00000000 speed_ctrl
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:316    .text.dm4310_set:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:322    .text.dm4310_set:00000000 dm4310_set
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:388    .text.dm4310_clear_para:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:470    .text.dm4310_clear_err:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:476    .text.dm4310_clear_err:00000000 dm4310_clear_err
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:1109   .text.clear_err:00000000 clear_err
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:561    .text.dm4310_fbdata:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:567    .text.dm4310_fbdata:00000000 dm4310_fbdata
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:804    .text.uint_to_float:00000000 uint_to_float
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:723    .text.float_to_uint:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:729    .text.float_to_uint:00000000 float_to_uint
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:798    .text.uint_to_float:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:872    .text.enable_motor_mode:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:949    .text.disable_motor_mode:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:1026   .text.save_pos_zero:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:1032   .text.save_pos_zero:00000000 save_pos_zero
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:1103   .text.clear_err:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:1180   .text.mit_ctrl:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:1336   .text.mit_ctrl:00000118 $d
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:1342   .text.pos_speed_ctrl:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:1434   .text.speed_ctrl:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:21     .text.dm4310_enable:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:27     .text.dm4310_enable:00000000 dm4310_enable
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:878    .text.enable_motor_mode:00000000 enable_motor_mode
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:112    .text.dm4310_disable:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:118    .text.dm4310_disable:00000000 dm4310_disable
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:955    .text.disable_motor_mode:00000000 disable_motor_mode
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:394    .text.dm4310_clear_para:00000000 dm4310_clear_para
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:204    .text.dm4310_ctrl_send:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:210    .text.dm4310_ctrl_send:00000000 dm4310_ctrl_send
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1186   .text.mit_ctrl:00000000 mit_ctrl
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1348   .text.pos_speed_ctrl:00000000 pos_speed_ctrl
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1440   .text.speed_ctrl:00000000 speed_ctrl
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:316    .text.dm4310_set:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:322    .text.dm4310_set:00000000 dm4310_set
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:388    .text.dm4310_clear_para:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:470    .text.dm4310_clear_err:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:476    .text.dm4310_clear_err:00000000 dm4310_clear_err
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1109   .text.clear_err:00000000 clear_err
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:561    .text.dm4310_fbdata:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:567    .text.dm4310_fbdata:00000000 dm4310_fbdata
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:804    .text.uint_to_float:00000000 uint_to_float
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:723    .text.float_to_uint:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:729    .text.float_to_uint:00000000 float_to_uint
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:798    .text.uint_to_float:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:872    .text.enable_motor_mode:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:949    .text.disable_motor_mode:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1026   .text.save_pos_zero:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1032   .text.save_pos_zero:00000000 save_pos_zero
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1103   .text.clear_err:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1180   .text.mit_ctrl:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1336   .text.mit_ctrl:00000118 $d
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1342   .text.pos_speed_ctrl:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1434   .text.speed_ctrl:00000000 $t
                            .group:00000000 wm4.0.3e68c699c40fadf7e6c1e499de837233
                            .group:00000000 wm4.stm32f4xx_hal_conf.h.25.a9a6e27d8b41172b5af7d7631d763ee0
                            .group:00000000 wm4.stm32f4xx.h.38.63e3ea23bd63a94457417730025259b6
@@ -1934,7 +1934,7 @@ C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s:1434   .text.speed_ctrl:00000000 $t
                            .group:00000000 wm4.stm32f4xx_hal_def.h.58.3cb484e92e5ccf2e55312a4714e27917
                            .group:00000000 wm4.stm32f4xx_hal_rcc_ex.h.20.9b6e314009d4800dd71c0ec1c264a1ea
                            .group:00000000 wm4.stm32f4xx_hal_rcc.h.106.0887cf5d985ae88e345b0aed0ceb4729
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccqZGAU1.s 			page 34
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 34
 
 
                            .group:00000000 wm4.stm32f4xx_hal_gpio.h.21.22da6a14b6049d6ac156577be74df1d7

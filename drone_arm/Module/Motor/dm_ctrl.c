@@ -23,13 +23,13 @@ void dm4310_motor_init(void)
 
 	// 设置Motor1的电机信息
 	motor[Motor1].id = 1;
-	motor[Motor1].ctrl.mode = 2;		// 0: MIT模式   1: 位置速度模式   2: 速度模式
-	motor[Motor1].cmd.mode = 2;
+	motor[Motor1].ctrl.mode = 0;		// 0: MIT模式   1: 位置速度模式   2: 速度模式
+	motor[Motor1].cmd.mode = 0;
 
 	// 设置Motor2的电机信息
 	motor[Motor2].id = 3;
-	motor[Motor2].ctrl.mode = 2;
-	motor[Motor2].cmd.mode = 2;
+	motor[Motor2].ctrl.mode = 0;
+	motor[Motor2].cmd.mode = 0;
 	
 	// 设置Motor3的电机信息
 	//motor[Motor3].id = 2;

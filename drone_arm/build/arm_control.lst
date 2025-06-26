@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 1
   12:Module/arm_control/arm_control.c **** 
   13:Module/arm_control/arm_control.c **** // 角度转换宏
   14:Module/arm_control/arm_control.c **** #define DEG_TO_RAD(x) ((x) * M_PI / 180.0f)
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 2
 
 
   15:Module/arm_control/arm_control.c **** 
@@ -93,10 +93,10 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 1
   62 000c DFED110A 		vldr.32	s1, .L2+8
   63 0010 9FED110A 		vldr.32	s0, .L2+12
   64 0014 FFF7FEFF 		bl	Set_Joint_Ranges
-  29:Module/arm_control/arm_control.c ****         -M_PI,          // 关节1最小角度 -180°
-  30:Module/arm_control/arm_control.c ****         M_PI,           // 关节1最大角度 180°
-  31:Module/arm_control/arm_control.c ****         -3*M_PI/4,      // 关节2最小角度 -135°
-  32:Module/arm_control/arm_control.c ****         -M_PI/4         // 关节2最大角度 -45°
+  29:Module/arm_control/arm_control.c ****         -(30.0f/180.0f)*M_PI,          // 关节1最小角度 -180°
+  30:Module/arm_control/arm_control.c ****         0,           // 关节1最大角度 180°
+  31:Module/arm_control/arm_control.c ****         -(110.0f/180.0f)*M_PI,      // 关节2最小角度 -135°
+  32:Module/arm_control/arm_control.c ****         -(60.0f/180.0f)*M_PI         // 关节2最大角度 -45°
   33:Module/arm_control/arm_control.c ****     );
   34:Module/arm_control/arm_control.c ****     
   35:Module/arm_control/arm_control.c ****     // 设置摇杆通道（使用默认配置）
@@ -118,10 +118,10 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 1
   73 0026 FFF7FEFF 		bl	ctrl_enable
   43:Module/arm_control/arm_control.c ****     
   44:Module/arm_control/arm_control.c ****     // 初始化角度为安全位置
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 3
 
 
-  45:Module/arm_control/arm_control.c ****     target_angles.theta1 = 0.0f;
+  45:Module/arm_control/arm_control.c ****     target_angles.theta1 = (-15/180)*M_PI;
   74              		.loc 1 45 26
   75 002a 0C4B     		ldr	r3, .L2+16
   76 002c 4FF00002 		mov	r2, #0
@@ -149,10 +149,10 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 1
   94              	.L3:
   95              		.align	2
   96              	.L2:
-  97 004c DB0F49BF 		.word	-1085730853
-  98 0050 E4CB16C0 		.word	-1072247836
-  99 0054 DB0F4940 		.word	1078530011
- 100 0058 DB0F49C0 		.word	-1068953637
+  97 004c 920A86BF 		.word	-1081734510
+  98 0050 0BBEF5BF 		.word	-1074414069
+  99 0054 00000000 		.word	0
+ 100 0058 920A06BF 		.word	-1090123118
  101 005c 00000000 		.word	target_angles
  102 0060 DB0FC9BF 		.word	-1077342245
  103 0064 00000000 		.word	current_angles
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 1
  121              		.cfi_def_cfa_offset 8
  122              		.cfi_offset 7, -8
  123              		.cfi_offset 14, -4
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 4
 
 
  124 0002 2DED028B 		vpush.64	{d8}
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 1
  172 005e 1B4A     		ldr	r2, .L16+4
  173 0060 1360     		str	r3, [r2]	@ float
  174              	.L7:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 5
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 5
 
 
   60:Module/arm_control/arm_control.c ****     }
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 1
  217 00ba 00BF     		nop
  218 00bc 0837     		adds	r7, r7, #8
  219              	.LCFI6:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 6
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 6
 
 
  220              		.cfi_def_cfa_offset 16
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 1
  270 000e 0DD0     		beq	.L19
  271              	.LBB2:
   76:Module/arm_control/arm_control.c ****     {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 7
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 7
 
 
   77:Module/arm_control/arm_control.c ****         // 获取遥控器映射的关节角度
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 1
  306              		.loc 1 96 5
  307 0048 0748     		ldr	r0, .L21+12
  308 004a FFF7FEFF 		bl	dm4310_set
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 8
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 8
 
 
   97:Module/arm_control/arm_control.c ****     
@@ -456,26 +456,26 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 1
  338              		.file 6 "Module/motor/dm_ctrl.h"
  339              		.file 7 "Module/remote_control/remote_control.h"
  340              		.file 8 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/math.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 9
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 arm_control.c
-C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s:21     .bss.target_angles:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s:24     .bss.target_angles:00000000 target_angles
-C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s:27     .bss.current_angles:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s:30     .bss.current_angles:00000000 current_angles
-C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s:33     .rodata.MAX_ANGLE_STEP:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s:36     .rodata.MAX_ANGLE_STEP:00000000 MAX_ANGLE_STEP
-C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s:39     .text.ArmControl_Init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s:45     .text.ArmControl_Init:00000000 ArmControl_Init
-C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s:97     .text.ArmControl_Init:0000004c $d
-C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s:108    .text.Apply_Smoothing:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s:113    .text.Apply_Smoothing:00000000 Apply_Smoothing
-C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s:234    .text.Apply_Smoothing:000000c8 $d
-C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s:241    .text.ArmControl_Update:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s:247    .text.ArmControl_Update:00000000 ArmControl_Update
-C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s:325    .text.ArmControl_Update:0000005c $d
+C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:21     .bss.target_angles:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:24     .bss.target_angles:00000000 target_angles
+C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:27     .bss.current_angles:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:30     .bss.current_angles:00000000 current_angles
+C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:33     .rodata.MAX_ANGLE_STEP:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:36     .rodata.MAX_ANGLE_STEP:00000000 MAX_ANGLE_STEP
+C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:39     .text.ArmControl_Init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:45     .text.ArmControl_Init:00000000 ArmControl_Init
+C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:97     .text.ArmControl_Init:0000004c $d
+C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:108    .text.Apply_Smoothing:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:113    .text.Apply_Smoothing:00000000 Apply_Smoothing
+C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:234    .text.Apply_Smoothing:000000c8 $d
+C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:241    .text.ArmControl_Update:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:247    .text.ArmControl_Update:00000000 ArmControl_Update
+C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:325    .text.ArmControl_Update:0000005c $d
                            .group:00000000 wm4.0.3e68c699c40fadf7e6c1e499de837233
                            .group:00000000 wm4.stdbool.h.29.c08aa3eec75cf5b9b5003883f43253f0
                            .group:00000000 wm4._newlib_version.h.4.0eb654b64686e2bd29646258853f6c22
@@ -516,7 +516,7 @@ C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s:325    .text.ArmControl_Update:0000
                            .group:00000000 wm4.stm32f4xx_hal_pwr.h.338.debc0a4a62ba54688e63ab53dd99c4ea
                            .group:00000000 wm4.stm32f4xx_hal_uart.h.21.ba8e24dd05c77faac3f3d48472e636ba
                            .group:00000000 wm4.stm32f4xx_hal.h.71.02372bc31d47d29d3f67fbfe1429649e
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccgU6XYJ.s 			page 10
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 10
 
 
                            .group:00000000 wm4.remote_control.h.15.dad157441a7369e14747acc4dfbe8b08
