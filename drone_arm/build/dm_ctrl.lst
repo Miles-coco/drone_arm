@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccjySyA5.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 1
   36              		.loc 1 18 1
   37              		.cfi_startproc
   38              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccjySyA5.s 			page 2
 
 
   39              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 1
   79 003e 034B     		ldr	r3, .L2
   80 0040 0222     		movs	r2, #2
   81 0042 83F8C020 		strb	r2, [r3, #192]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccjySyA5.s 			page 3
 
 
   33:Module/motor/dm_ctrl.c **** 	
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 1
  119 0008 7B68     		ldr	r3, [r7, #4]
  120 000a 03F00103 		and	r3, r3, #1
  121              		.loc 1 51 8
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccjySyA5.s 			page 4
 
 
  122 000e 002B     		cmp	r3, #0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 1
  165              		.cfi_endproc
  166              	.LFE135:
  168              		.section	.text.ctrl_disable,"ax",%progbits
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 5
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccjySyA5.s 			page 5
 
 
  169              		.align	1
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 1
   79:Module/motor/dm_ctrl.c ****     
   80:Module/motor/dm_ctrl.c ****     if (motor_mask & MOTOR2_BIT) 
  208              		.loc 1 80 20
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 6
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccjySyA5.s 			page 6
 
 
  209 0020 7B68     		ldr	r3, [r7, #4]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 1
   94:Module/motor/dm_ctrl.c **** **/
   95:Module/motor/dm_ctrl.c **** void ctrl_set(uint32_t motor_mask)
   96:Module/motor/dm_ctrl.c **** {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 7
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccjySyA5.s 			page 7
 
 
  252              		.loc 1 96 1
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 1
  296              		@ sp needed
  297 002e 80BD     		pop	{r7, pc}
  298              	.L21:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 8
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccjySyA5.s 			page 8
 
 
  299              		.align	2
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 1
  121:Module/motor/dm_ctrl.c ****     }
  122:Module/motor/dm_ctrl.c ****     
  123:Module/motor/dm_ctrl.c ****     if (motor_mask & MOTOR2_BIT) 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 9
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccjySyA5.s 			page 9
 
 
  341              		.loc 1 123 20
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 1
  382 0000 80B5     		push	{r7, lr}
  383              	.LCFI22:
  384              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 10
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccjySyA5.s 			page 10
 
 
  385              		.cfi_offset 7, -8
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 1
  429 0034 00000000 		.word	motor
  430 0038 00000000 		.word	hcan1
  431 003c 6C000000 		.word	motor+108
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 11
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccjySyA5.s 			page 11
 
 
  432 0040 00000000 		.word	hcan2
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 1
  165:Module/motor/dm_ctrl.c ****     if (motor_mask & MOTOR2_BIT) 
  472              		.loc 1 165 20
  473 001a 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 12
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccjySyA5.s 			page 12
 
 
  474 001c 03F00203 		and	r3, r3, #2
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 1
  515              		@ frame_needed = 1, uses_anonymous_args = 0
  516 0000 80B5     		push	{r7, lr}
  517              	.LCFI32:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 13
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccjySyA5.s 			page 13
 
 
  518              		.cfi_def_cfa_offset 8
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 1
  557 0036 0848     		ldr	r0, .L47+4
  558 0038 FFF7FEFF 		bl	dm4310_fbdata
  190:Module/motor/dm_ctrl.c **** 					case 3: dm4310_fbdata(&motor[Motor2], rx_data); break;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 14
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccjySyA5.s 			page 14
 
 
  559              		.loc 1 190 54
@@ -832,37 +832,37 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 1
  604              		.file 11 "Module/motor/dm_ctrl.h"
  605              		.file 12 "driver/can_driver.h"
  606              		.file 13 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/string.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 15
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccjySyA5.s 			page 15
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 dm_ctrl.c
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:25     .bss.motor:00000000 motor
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:22     .bss.motor:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:28     .text.dm4310_motor_init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:34     .text.dm4310_motor_init:00000000 dm4310_motor_init
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:88     .text.dm4310_motor_init:0000004c $d
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:94     .text.ctrl_enable:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:100    .text.ctrl_enable:00000000 ctrl_enable
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:161    .text.ctrl_enable:00000044 $d
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:169    .text.ctrl_disable:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:175    .text.ctrl_disable:00000000 ctrl_disable
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:236    .text.ctrl_disable:00000044 $d
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:244    .text.ctrl_set:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:250    .text.ctrl_set:00000000 ctrl_set
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:301    .text.ctrl_set:00000030 $d
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:307    .text.ctrl_clear_para:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:313    .text.ctrl_clear_para:00000000 ctrl_clear_para
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:364    .text.ctrl_clear_para:00000030 $d
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:370    .text.ctrl_clear_err:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:376    .text.ctrl_clear_err:00000000 ctrl_clear_err
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:429    .text.ctrl_clear_err:00000034 $d
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:437    .text.ctrl_send:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:443    .text.ctrl_send:00000000 ctrl_send
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:496    .text.ctrl_send:00000034 $d
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:504    .text.can1_rx_callback:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:510    .text.can1_rx_callback:00000000 can1_rx_callback
-C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:587    .text.can1_rx_callback:00000054 $d
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:25     .bss.motor:00000000 motor
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:22     .bss.motor:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:28     .text.dm4310_motor_init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:34     .text.dm4310_motor_init:00000000 dm4310_motor_init
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:88     .text.dm4310_motor_init:0000004c $d
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:94     .text.ctrl_enable:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:100    .text.ctrl_enable:00000000 ctrl_enable
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:161    .text.ctrl_enable:00000044 $d
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:169    .text.ctrl_disable:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:175    .text.ctrl_disable:00000000 ctrl_disable
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:236    .text.ctrl_disable:00000044 $d
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:244    .text.ctrl_set:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:250    .text.ctrl_set:00000000 ctrl_set
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:301    .text.ctrl_set:00000030 $d
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:307    .text.ctrl_clear_para:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:313    .text.ctrl_clear_para:00000000 ctrl_clear_para
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:364    .text.ctrl_clear_para:00000030 $d
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:370    .text.ctrl_clear_err:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:376    .text.ctrl_clear_err:00000000 ctrl_clear_err
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:429    .text.ctrl_clear_err:00000034 $d
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:437    .text.ctrl_send:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:443    .text.ctrl_send:00000000 ctrl_send
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:496    .text.ctrl_send:00000034 $d
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:504    .text.can1_rx_callback:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:510    .text.can1_rx_callback:00000000 can1_rx_callback
+C:\Users\30514\AppData\Local\Temp\ccjySyA5.s:587    .text.can1_rx_callback:00000054 $d
                            .group:00000000 wm4.0.3e68c699c40fadf7e6c1e499de837233
                            .group:00000000 wm4.stm32f4xx_hal_conf.h.25.a9a6e27d8b41172b5af7d7631d763ee0
                            .group:00000000 wm4.stm32f4xx.h.38.63e3ea23bd63a94457417730025259b6
@@ -892,7 +892,7 @@ C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s:587    .text.can1_rx_callback:00000
                            .group:00000000 wm4.stm32f4xx_hal_dma.h.21.8e4b1421c914345c23be719e5e528779
                            .group:00000000 wm4.stm32f4xx_hal_dma.h.720.ac2d7eef74792e4026acc4d2923c5da4
                            .group:00000000 wm4.stm32f4xx_hal_cortex.h.20.03673e4f79386680bf73ba399c19306b
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccj8Y8UV.s 			page 16
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccjySyA5.s 			page 16
 
 
                            .group:00000000 wm4.stm32f4xx_hal_can.h.21.4b16c8dedf31ba328482231f811a7e65

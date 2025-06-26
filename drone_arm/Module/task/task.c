@@ -41,9 +41,6 @@ void task_100ms(void)
 {
 	// 调试信息输出    
         // 获取当前位置
-        point2D current_pos = Get_Current_Position();
-        
-        point2D mapped_pos = Map_To_Cartesian(); 
         
         // 实际系统中通过串口输出
         /*

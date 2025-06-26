@@ -1,16 +1,10 @@
 #include "coordinate_mapping.h"
-#include "math.h"
+#include <math.h>
 #include "Remote_Control.h"
 
-// 默认工作空间配置
-WorkspaceConfig workspace_config = 
-{
-    .x_min = 0.04f,
-    .x_max = 0.12f,
-    .y_min = -0.18f,
-    .y_max = -0.07f,
-    .safety_margin = 0.01f //安全边界
-};
+#ifndef M_PI
+#define M_PI 3.14159265358979323846f
+#endif
 
 // 默认摇杆通道配置
 static StickChannelConfig stick_config = 
@@ -19,20 +13,26 @@ static StickChannelConfig stick_config =
     .y_channel = 1  // 默认通道1控制Y轴
 };
 
-// 映射曲线平滑函数
-static float smooth_curve(float value) 
-{
-    // 使用Sigmoid函数实现平滑过渡
-    const float k = 3.0f; // 调整曲线陡峭程度
-    return (2.0f / (1.0f + expf(-k * value))) - 1.0f;
-}
 
-//映射初始化函数
-void Mapping_Init(WorkspaceConfig* config) 
+// 默认工作空间配置
+static WorkspaceConfig workspace_config = 
 {
-    if (config != NULL) {
-        workspace_config = *config;
+    .min_theta1 = -M_PI,   // 默认电机1最小角度 -180°
+    .max_theta1 = M_PI,    // 默认电机1最大角度 180°
+    .min_theta2 = -3*M_PI/4, // 默认电机2最小角度 -135°
+    .max_theta2 = -M_PI/4   // 默认电机2最大角度 -45°
+};
+
+// 辅助函数：将值从一个范围映射到另一个范围
+static float map_value(float input, float in_min, float in_max, float out_min, float out_max) 
+{
+    // 处理除零错误
+    if (fabsf(in_max - in_min) < 0.0001f) {
+        return (out_min + out_max) * 0.5f; // 返回中间值
     }
+    
+    // 线性映射
+    return (input - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
 //用于配置映射到x,y的遥控器通道
@@ -42,10 +42,24 @@ void Set_Stick_Channels(uint8_t x_ch, uint8_t y_ch)
     stick_config.y_channel = y_ch;
 }
 
-//将遥控器的原始值映射到工作空间
-point2D Map_To_Cartesian(void) 
+// 设置关节角度范围
+void Set_Joint_Ranges(float min_t1, float max_t1, float min_t2, float max_t2)
 {
-    point2D result = {0, 0};
+    workspace_config.min_theta1 = min_t1;
+    workspace_config.max_theta1 = max_t1;
+    workspace_config.min_theta2 = min_t2;
+    workspace_config.max_theta2 = max_t2;
+}
+
+// 将遥控器通道值直接映射到关节角度
+JointAngles Map_To_JointSpace(void) 
+{
+    // 默认返回值
+    JointAngles angles = { 
+        .theta1 = 0.0f,
+        .theta2 = -M_PI,  // 默认-90°的安全位置
+        .valid = false
+    };
     
     // 获取摇杆原始值
     int16_t ch_x = get_channel_raw_value(stick_config.x_channel);
@@ -63,32 +77,40 @@ point2D Map_To_Cartesian(void)
         const int16_t RAW_MAX = 1000;
     #endif
     
-    // 归一化到[-1, 1]范围
-    float norm_x = (float)(ch_x - RAW_MIN) / (RAW_MAX - RAW_MIN) * 2.0f - 1.0f;
-    float norm_y = (float)(ch_y - RAW_MIN) / (RAW_MAX - RAW_MIN) * 2.0f - 1.0f;
-    
     // 应用死区处理（消除摇杆中心的微小偏移）
-    const float deadzone = 0.05f; // 5%死区
-    if (fabsf(norm_x) < deadzone) norm_x = 0.0f;
-    if (fabsf(norm_y) < deadzone) norm_y = 0.0f;
+    const int16_t deadzone = 50; // 原始值死区
+    if (abs(ch_x) < deadzone) ch_x = 0;
+    if (abs(ch_y) < deadzone) ch_y = 0;
     
-    // 应用平滑曲线（可选）
-    // norm_x = smooth_curve(norm_x);
-    // norm_y = smooth_curve(norm_y);
+    // 映射到电机1的角度范围（θ₁）
+    angles.theta1 = map_value(
+        (float)ch_x, 
+        (float)RAW_MIN, 
+        (float)RAW_MAX, 
+        workspace_config.min_theta1, 
+        workspace_config.max_theta1
+    );
     
-    // 计算范围比例
-    float range_x = workspace_config.x_max - workspace_config.x_min;
-    float range_y = workspace_config.y_max - workspace_config.y_min;
+    // 映射到电机2的角度范围（θ₂）
+    angles.theta2 = map_value(
+        (float)ch_y, 
+        (float)RAW_MIN, 
+        (float)RAW_MAX, 
+        workspace_config.min_theta2, 
+        workspace_config.max_theta2
+    );
     
-    // 映射到实际工作空间
-    result.x = workspace_config.x_min + (norm_x + 1.0f) * 0.5f * range_x;
-    result.y = workspace_config.y_min + (norm_y + 1.0f) * 0.5f * range_y;
+    // 应用安全边界（确保角度在限位范围内）
+    angles.theta1 = fmaxf(fminf(angles.theta1, workspace_config.max_theta1), workspace_config.min_theta1);
+    angles.theta2 = fmaxf(fminf(angles.theta2, workspace_config.max_theta2), workspace_config.min_theta2);
     
-    // 应用安全边界（确保不超出工作空间）
-    result.x = fmaxf(fminf(result.x, workspace_config.x_max - workspace_config.safety_margin), 
-                     workspace_config.x_min + workspace_config.safety_margin);
-    result.y = fmaxf(fminf(result.y, workspace_config.y_max - workspace_config.safety_margin), 
-                     workspace_config.y_min + workspace_config.safety_margin);
+    // 验证θ₁ > θ₂约束（使用容差）
+    const float angle_tolerance = 0.001f;
+    if (angles.theta1 < angles.theta2 - angle_tolerance) {
+        // 违反约束时调整为安全位置
+        angles.theta1 = angles.theta2 - angle_tolerance;
+    }
     
-    return result;
+    angles.valid = true;
+    return angles;
 }

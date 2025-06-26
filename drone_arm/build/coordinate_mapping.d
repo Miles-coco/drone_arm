@@ -26,7 +26,6 @@ build/coordinate_mapping.o: Module/coordinate/coordinate_mapping.c \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- Module/kinematic/kinematic_solver.h \
  Module/remote_control/Remote_Control.h
 Module/coordinate/coordinate_mapping.h:
 Module/remote_control/remote_control.h:
@@ -59,5 +58,4 @@ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-Module/kinematic/kinematic_solver.h:
 Module/remote_control/Remote_Control.h:

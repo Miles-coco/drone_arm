@@ -1,6 +1,5 @@
 build/arm_control.o: Module/arm_control/arm_control.c \
- Module/arm_control/arm_control.h Module/kinematic/kinematic_solver.h \
- Module/coordinate/coordinate_mapping.h \
+ Module/arm_control/arm_control.h Module/coordinate/coordinate_mapping.h \
  Module/remote_control/remote_control.h Core/Inc/usart.h Core/Inc/main.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  Core/Inc/stm32f4xx_hal_conf.h \
@@ -30,7 +29,6 @@ build/arm_control.o: Module/arm_control/arm_control.c \
  Module/motor/dm_ctrl.h Module/motor/dm_drv.h Core/Inc/can.h \
  Bsp/bsp_can.h
 Module/arm_control/arm_control.h:
-Module/kinematic/kinematic_solver.h:
 Module/coordinate/coordinate_mapping.h:
 Module/remote_control/remote_control.h:
 Core/Inc/usart.h:

@@ -65,7 +65,6 @@ Module/motor/dm_drv.c \
 Module/remote_control/remote_control.c \
 Module/scheduler/scheduler.c \
 Module/task/task.c \
-Module/kinematic/kinematic_solver.c \
 Module/coordinate/coordinate_mapping.c \
 Module/arm_control/arm_control.c \
 Module/config/mcu_config.c \
@@ -139,7 +138,6 @@ C_INCLUDES =  \
 -IModule/remote_control \
 -IModule/scheduler \
 -IModule/task \
--IModule/kinematic \
 -IModule/arm_control \
 -IModule/coordinate \
 -IModule/config \
