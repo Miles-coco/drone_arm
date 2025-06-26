@@ -19,22 +19,31 @@ void dm4310_motor_init(void)
 	// 初始化Motor1和Motor2的电机结构
 	memset(&motor[Motor1], 0, sizeof(motor[Motor1]));
 	memset(&motor[Motor2], 0, sizeof(motor[Motor2]));
-	//memset(&motor[Motor3], 0, sizeof(motor[Motor2]));
+	// memset(&motor[Motor3], 0, sizeof(motor[Motor2]));
 
 	// 设置Motor1的电机信息
 	motor[Motor1].id = 1;
-	motor[Motor1].ctrl.mode = 0;		// 0: MIT模式   1: 位置速度模式   2: 速度模式
+	motor[Motor1].ctrl.mode = 0; // 0: MIT模式   1: 位置速度模式   2: 速度模式
 	motor[Motor1].cmd.mode = 0;
+	motor[Motor1].cmd.pos_set = 0.0f;
+  	motor[Motor1].cmd.vel_set = 0.0f;
+  	motor[Motor1].cmd.kp_set = 80.0f; // 位置增益
+  	motor[Motor1].cmd.kd_set = 2.0f;  // 速度增益
+ 	motor[Motor1].cmd.tor_set = 0.5f;
 
 	// 设置Motor2的电机信息
 	motor[Motor2].id = 3;
 	motor[Motor2].ctrl.mode = 0;
 	motor[Motor2].cmd.mode = 0;
-	
+	motor[Motor2].cmd.pos_set = 0.0f;
+  	motor[Motor2].cmd.vel_set = 0.0f;
+  	motor[Motor2].cmd.kp_set = 80.0f; // 位置增益
+  	motor[Motor2].cmd.kd_set = 2.0f;  // 速度增益
+ 	motor[Motor2].cmd.tor_set = 0.5f;
 	// 设置Motor3的电机信息
-	//motor[Motor3].id = 2;
-	//motor[Motor3].ctrl.mode = 2;
-	//motor[Motor3].cmd.mode = 2;
+	// motor[Motor3].id = 2;
+	// motor[Motor3].ctrl.mode = 2;
+	// motor[Motor3].cmd.mode = 2;
 }
 
 /**
@@ -48,17 +57,17 @@ void dm4310_motor_init(void)
 **/
 void ctrl_enable(uint32_t motor_mask)
 {
-    if (motor_mask & MOTOR1_BIT) 
+	if (motor_mask & MOTOR1_BIT)
 	{
-        motor[Motor1].start_flag = 1;
-        dm4310_enable(&hcan1, &motor[Motor1]);
-    }
-    
-    if (motor_mask & MOTOR2_BIT) 
+		motor[Motor1].start_flag = 1;
+		dm4310_enable(&hcan1, &motor[Motor1]);
+	}
+
+	if (motor_mask & MOTOR2_BIT)
 	{
-        motor[Motor2].start_flag = 1;
-        dm4310_enable(&hcan2, &motor[Motor2]);
-    }
+		motor[Motor2].start_flag = 1;
+		dm4310_enable(&hcan2, &motor[Motor2]);
+	}
 }
 /**
 ************************************************************************
@@ -71,17 +80,17 @@ void ctrl_enable(uint32_t motor_mask)
 **/
 void ctrl_disable(uint32_t motor_mask)
 {
-    if (motor_mask & MOTOR1_BIT) 
+	if (motor_mask & MOTOR1_BIT)
 	{
-        motor[Motor1].start_flag = 0;
-        dm4310_disable(&hcan1, &motor[Motor1]);
-    }
-    
-    if (motor_mask & MOTOR2_BIT) 
+		motor[Motor1].start_flag = 0;
+		dm4310_disable(&hcan1, &motor[Motor1]);
+	}
+
+	if (motor_mask & MOTOR2_BIT)
 	{
-        motor[Motor2].start_flag = 0;
-        dm4310_disable(&hcan2, &motor[Motor2]);
-    }
+		motor[Motor2].start_flag = 0;
+		dm4310_disable(&hcan2, &motor[Motor2]);
+	}
 }
 /**
 ************************************************************************
@@ -94,15 +103,15 @@ void ctrl_disable(uint32_t motor_mask)
 **/
 void ctrl_set(uint32_t motor_mask)
 {
-    if (motor_mask & MOTOR1_BIT) 
+	if (motor_mask & MOTOR1_BIT)
 	{
-        dm4310_set(&motor[Motor1]);
-    }
-    
-    if (motor_mask & MOTOR2_BIT) 
+		dm4310_set(&motor[Motor1]);
+	}
+
+	if (motor_mask & MOTOR2_BIT)
 	{
-        dm4310_set(&motor[Motor2]);
-    }
+		dm4310_set(&motor[Motor2]);
+	}
 }
 /**
 ************************************************************************
@@ -115,15 +124,15 @@ void ctrl_set(uint32_t motor_mask)
 **/
 void ctrl_clear_para(uint32_t motor_mask)
 {
-    if (motor_mask & MOTOR1_BIT) 
+	if (motor_mask & MOTOR1_BIT)
 	{
-        dm4310_clear_para(&motor[Motor1]);
-    }
-    
-    if (motor_mask & MOTOR2_BIT) 
+		dm4310_clear_para(&motor[Motor1]);
+	}
+
+	if (motor_mask & MOTOR2_BIT)
 	{
-        dm4310_clear_para(&motor[Motor2]);
-    }
+		dm4310_clear_para(&motor[Motor2]);
+	}
 }
 /**
 ************************************************************************
@@ -136,15 +145,15 @@ void ctrl_clear_para(uint32_t motor_mask)
 **/
 void ctrl_clear_err(uint32_t motor_mask)
 {
-    if (motor_mask & MOTOR1_BIT) 
+	if (motor_mask & MOTOR1_BIT)
 	{
-        dm4310_clear_err(&hcan1, &motor[Motor1]);
-    }
-    
-    if (motor_mask & MOTOR2_BIT) 
+		dm4310_clear_err(&hcan1, &motor[Motor1]);
+	}
+
+	if (motor_mask & MOTOR2_BIT)
 	{
-        dm4310_clear_err(&hcan2, &motor[Motor2]);
-    }
+		dm4310_clear_err(&hcan2, &motor[Motor2]);
+	}
 }
 /**
 ************************************************************************
@@ -157,15 +166,15 @@ void ctrl_clear_err(uint32_t motor_mask)
 **/
 void ctrl_send(uint32_t motor_mask)
 {
-    if (motor_mask & MOTOR1_BIT) 
+	if (motor_mask & MOTOR1_BIT)
 	{
-        dm4310_ctrl_send(&hcan1, &motor[Motor1]);
-    }
-    
-    if (motor_mask & MOTOR2_BIT) 
+		dm4310_ctrl_send(&hcan1, &motor[Motor1]);
+	}
+
+	if (motor_mask & MOTOR2_BIT)
 	{
-        dm4310_ctrl_send(&hcan2, &motor[Motor2]);
-    }
+		dm4310_ctrl_send(&hcan2, &motor[Motor2]);
+	}
 }
 /**
 ************************************************************************
@@ -183,15 +192,19 @@ void can1_rx_callback(void)
 	canx_receive_data(&hcan1, &rec_id, rx_data);
 	switch (rec_id)
 	{
- 		case 0: 
-			{
-				switch ((rx_data[0])&0x0F)
-				{
-					case 1: dm4310_fbdata(&motor[Motor1], rx_data); break;
-					case 3: dm4310_fbdata(&motor[Motor2], rx_data); break;
-				}
-				
-			} break;
+	case 0:
+	{
+		switch ((rx_data[0]) & 0x0F)
+		{
+		case 1:
+			dm4310_fbdata(&motor[Motor1], rx_data);
+			break;
+		case 3:
+			dm4310_fbdata(&motor[Motor2], rx_data);
+			break;
+		}
+	}
+	break;
 	}
 }
 /**
@@ -203,10 +216,10 @@ void can1_rx_callback(void)
 *               当接收到ID为0时，调用dm4310_fbdata函数更新Motor的反馈数据。
 ************************************************************************
 **/
-//uint16_t rec_id;
-//void can2_rx_callback(void)
+// uint16_t rec_id;
+// void can2_rx_callback(void)
 //{
-	
+
 //	uint8_t rx_data[8] = {0};
 //	canx_receive_data(&hcan2, &rec_id, rx_data);
 //	switch (rec_id)
@@ -214,4 +227,3 @@ void can1_rx_callback(void)
 //		case 0: dm4310_fbdata(&motor[Motor], rx_data); break;
 //	}
 //}
-

@@ -2,11 +2,11 @@
 
 void can_bsp_init(void)
 { 
-	can_filter_init();
+	can_filter_init();     //配置can过滤器
 	HAL_CAN_Start(&hcan1);   
 	HAL_CAN_Start(&hcan2);   
-	HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);	
-	HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING);
+	HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);	//启用接收中断
+	HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING);  //启用接收中断
 }
 
 void can_filter_init(void)

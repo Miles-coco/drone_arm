@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -28,7 +28,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
   27              		.section	.data.workspace_config,"aw"
   28              		.align	2
   31              	workspace_config:
-  32 0000 920A06BF 		.word	-1090123118
+  32 0000 920A063F 		.word	1057360530
   33 0004 00000000 		.word	0
   34 0008 0BBEF5BF 		.word	-1074414069
   35 000c 920A86BF 		.word	-1081734510
@@ -48,29 +48,28 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
    7:Module/coordinate/coordinate_mapping.c **** #endif
    8:Module/coordinate/coordinate_mapping.c **** 
    9:Module/coordinate/coordinate_mapping.c **** // 默认摇杆通道配置
-  10:Module/coordinate/coordinate_mapping.c **** static StickChannelConfig stick_config = 
-  11:Module/coordinate/coordinate_mapping.c **** {
-  12:Module/coordinate/coordinate_mapping.c ****     .x_channel = 2, // 默认通道2控制X轴
-  13:Module/coordinate/coordinate_mapping.c ****     .y_channel = 1  // 默认通道1控制Y轴
+  10:Module/coordinate/coordinate_mapping.c **** static StickChannelConfig stick_config =
+  11:Module/coordinate/coordinate_mapping.c ****     {
+  12:Module/coordinate/coordinate_mapping.c ****         .x_channel = 2, // 默认通道2控制X轴
+  13:Module/coordinate/coordinate_mapping.c ****         .y_channel = 1  // 默认通道1控制Y轴
   14:Module/coordinate/coordinate_mapping.c **** };
   15:Module/coordinate/coordinate_mapping.c **** 
-  16:Module/coordinate/coordinate_mapping.c **** 
-  17:Module/coordinate/coordinate_mapping.c **** // 默认工作空间配置
-  18:Module/coordinate/coordinate_mapping.c **** static WorkspaceConfig workspace_config =
-  19:Module/coordinate/coordinate_mapping.c **** {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 2
+  16:Module/coordinate/coordinate_mapping.c **** // 默认工作空间配置
+  17:Module/coordinate/coordinate_mapping.c **** static WorkspaceConfig workspace_config =
+  18:Module/coordinate/coordinate_mapping.c ****     {
+  19:Module/coordinate/coordinate_mapping.c ****         .min_theta1 = (30.0f / 180.0f) * M_PI,   // 默认电机1最小角度 -180°
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s 			page 2
 
 
-  20:Module/coordinate/coordinate_mapping.c ****     .min_theta1 = -(30.0f/180.0f)*M_PI,   // 默认电机1最小角度 -180°
-  21:Module/coordinate/coordinate_mapping.c ****     .max_theta1 = 0.0f,     // 默认电机1最大角度 180°
-  22:Module/coordinate/coordinate_mapping.c ****     .min_theta2 = -(110.0f/180.0f)*M_PI, // 默认电机2最小角度 -135°
-  23:Module/coordinate/coordinate_mapping.c ****     .max_theta2 = -(60.0f/180.0f)*M_PI    // 默认电机2最大角度 -45°
-  24:Module/coordinate/coordinate_mapping.c **** };
-  25:Module/coordinate/coordinate_mapping.c **** 
-  26:Module/coordinate/coordinate_mapping.c **** // 辅助函数：将值从一个范围映射到另一个范围
-  27:Module/coordinate/coordinate_mapping.c **** static float map_value(float input, float in_min, float in_max, float out_min, float out_max) 
-  28:Module/coordinate/coordinate_mapping.c **** {
-  44              		.loc 1 28 1
+  20:Module/coordinate/coordinate_mapping.c ****         .max_theta1 = 0.0f,                      // 默认电机1最大角度 180°
+  21:Module/coordinate/coordinate_mapping.c ****         .min_theta2 = -(110.0f / 180.0f) * M_PI, // 默认电机2最小角度 -135°
+  22:Module/coordinate/coordinate_mapping.c ****         .max_theta2 = -(60.0f / 180.0f) * M_PI   // 默认电机2最大角度 -45°
+  23:Module/coordinate/coordinate_mapping.c **** };
+  24:Module/coordinate/coordinate_mapping.c **** 
+  25:Module/coordinate/coordinate_mapping.c **** // 辅助函数：将值从一个范围映射到另一个范围
+  26:Module/coordinate/coordinate_mapping.c **** static float map_value(float input, float in_min, float in_max, float out_min, float out_max)
+  27:Module/coordinate/coordinate_mapping.c **** {
+  44              		.loc 1 27 1
   45              		.cfi_startproc
   46              		@ args = 0, pretend = 0, frame = 24
   47              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -90,19 +89,20 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
   61 000e 87ED031A 		vstr.32	s2, [r7, #12]
   62 0012 C7ED021A 		vstr.32	s3, [r7, #8]
   63 0016 87ED012A 		vstr.32	s4, [r7, #4]
-  29:Module/coordinate/coordinate_mapping.c ****     // 处理除零错误
-  30:Module/coordinate/coordinate_mapping.c ****     if (fabsf(in_max - in_min) < 0.0001f) {
-  64              		.loc 1 30 22
+  28:Module/coordinate/coordinate_mapping.c ****     // 处理除零错误
+  29:Module/coordinate/coordinate_mapping.c ****     if (fabsf(in_max - in_min) < 0.0001f)
+  64              		.loc 1 29 22
   65 001a 97ED037A 		vldr.32	s14, [r7, #12]
   66 001e D7ED047A 		vldr.32	s15, [r7, #16]
   67 0022 77EE677A 		vsub.f32	s15, s14, s15
-  68              		.loc 1 30 9
+  68              		.loc 1 29 9
   69 0026 F0EEE77A 		vabs.f32	s15, s15
-  70              		.loc 1 30 8
+  70              		.loc 1 29 8
   71 002a 9FED197A 		vldr.32	s14, .L7
   72 002e F4EEC77A 		vcmpe.f32	s15, s14
   73 0032 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
   74 0036 0AD5     		bpl	.L6
+  30:Module/coordinate/coordinate_mapping.c ****     {
   31:Module/coordinate/coordinate_mapping.c ****         return (out_min + out_max) * 0.5f; // 返回中间值
   75              		.loc 1 31 25
   76 0038 97ED027A 		vldr.32	s14, [r7, #8]
@@ -114,11 +114,11 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
   82 004c 19E0     		b	.L4
   83              	.L6:
   32:Module/coordinate/coordinate_mapping.c ****     }
-  33:Module/coordinate/coordinate_mapping.c ****     
+  33:Module/coordinate/coordinate_mapping.c **** 
   34:Module/coordinate/coordinate_mapping.c ****     // 线性映射
   35:Module/coordinate/coordinate_mapping.c ****     return (input - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
   84              		.loc 1 35 19
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s 			page 3
 
 
   85 004e 97ED057A 		vldr.32	s14, [r7, #20]
@@ -170,15 +170,15 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
  132              	Set_Stick_Channels:
  133              	.LFB135:
   37:Module/coordinate/coordinate_mapping.c **** 
-  38:Module/coordinate/coordinate_mapping.c **** //用于配置映射到x,y的遥控器通道
-  39:Module/coordinate/coordinate_mapping.c **** void Set_Stick_Channels(uint8_t x_ch, uint8_t y_ch) 
+  38:Module/coordinate/coordinate_mapping.c **** // 用于配置映射到x,y的遥控器通道
+  39:Module/coordinate/coordinate_mapping.c **** void Set_Stick_Channels(uint8_t x_ch, uint8_t y_ch)
   40:Module/coordinate/coordinate_mapping.c **** {
  134              		.loc 1 40 1
  135              		.cfi_startproc
  136              		@ args = 0, pretend = 0, frame = 8
  137              		@ frame_needed = 1, uses_anonymous_args = 0
  138              		@ link register save eliminated.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s 			page 4
 
 
  139 0000 80B4     		push	{r7}
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
   44:Module/coordinate/coordinate_mapping.c **** 
   45:Module/coordinate/coordinate_mapping.c **** // 设置关节角度范围
   46:Module/coordinate/coordinate_mapping.c **** void Set_Joint_Ranges(float min_t1, float max_t1, float min_t2, float max_t2)
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 5
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s 			page 5
 
 
   47:Module/coordinate/coordinate_mapping.c **** {
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
  240 0038 7047     		bx	lr
  241              	.L14:
  242 003a 00BF     		.align	2
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 6
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s 			page 6
 
 
  243              	.L13:
@@ -315,7 +315,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
  256              	.LFB137:
   53:Module/coordinate/coordinate_mapping.c **** 
   54:Module/coordinate/coordinate_mapping.c **** // 将遥控器通道值直接映射到关节角度
-  55:Module/coordinate/coordinate_mapping.c **** JointAngles Map_To_JointSpace(void) 
+  55:Module/coordinate/coordinate_mapping.c **** JointAngles Map_To_JointSpace(void)
   56:Module/coordinate/coordinate_mapping.c **** {
  257              		.loc 1 56 1
  258              		.cfi_startproc
@@ -335,7 +335,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
  272              		.cfi_def_cfa_register 7
  273 0006 7860     		str	r0, [r7, #4]
   57:Module/coordinate/coordinate_mapping.c ****     // 默认返回值
-  58:Module/coordinate/coordinate_mapping.c ****     JointAngles angles = { 
+  58:Module/coordinate/coordinate_mapping.c ****     JointAngles angles = {
  274              		.loc 1 58 17
  275 0008 4FF00003 		mov	r3, #0
  276 000c FB60     		str	r3, [r7, #12]	@ float
@@ -344,81 +344,81 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
  279 0012 0023     		movs	r3, #0
  280 0014 3B75     		strb	r3, [r7, #20]
   59:Module/coordinate/coordinate_mapping.c ****         .theta1 = 0.0f,
-  60:Module/coordinate/coordinate_mapping.c ****         .theta2 = -M_PI,  // 默认-90°的安全位置
-  61:Module/coordinate/coordinate_mapping.c ****         .valid = false
-  62:Module/coordinate/coordinate_mapping.c ****     };
-  63:Module/coordinate/coordinate_mapping.c ****     
-  64:Module/coordinate/coordinate_mapping.c ****     // 获取摇杆原始值
-  65:Module/coordinate/coordinate_mapping.c ****     int16_t ch_x = get_channel_raw_value(stick_config.x_channel);
- 281              		.loc 1 65 20
+  60:Module/coordinate/coordinate_mapping.c ****         .theta2 = -M_PI, // 默认-90°的安全位置
+  61:Module/coordinate/coordinate_mapping.c ****         .valid = false};
+  62:Module/coordinate/coordinate_mapping.c **** 
+  63:Module/coordinate/coordinate_mapping.c ****     // 获取摇杆原始值
+  64:Module/coordinate/coordinate_mapping.c ****     int16_t ch_x = get_channel_raw_value(stick_config.x_channel);
+ 281              		.loc 1 64 20
  282 0016 6D4B     		ldr	r3, .L22+4
  283 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  284 001a 1846     		mov	r0, r3
  285 001c FFF7FEFF 		bl	get_channel_raw_value
  286 0020 0346     		mov	r3, r0
  287 0022 FB84     		strh	r3, [r7, #38]	@ movhi
-  66:Module/coordinate/coordinate_mapping.c ****     int16_t ch_y = get_channel_raw_value(stick_config.y_channel);
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 7
+  65:Module/coordinate/coordinate_mapping.c ****     int16_t ch_y = get_channel_raw_value(stick_config.y_channel);
+ 288              		.loc 1 65 20
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s 			page 7
 
 
- 288              		.loc 1 66 20
  289 0024 694B     		ldr	r3, .L22+4
  290 0026 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
  291 0028 1846     		mov	r0, r3
  292 002a FFF7FEFF 		bl	get_channel_raw_value
  293 002e 0346     		mov	r3, r0
  294 0030 BB84     		strh	r3, [r7, #36]	@ movhi
-  67:Module/coordinate/coordinate_mapping.c ****     
-  68:Module/coordinate/coordinate_mapping.c ****     // 确定原始值范围（根据遥控器类型）
-  69:Module/coordinate/coordinate_mapping.c ****     #if defined(RC_PROTOCOL_DJI)
-  70:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MIN = -660;
-  71:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MAX = 660;
-  72:Module/coordinate/coordinate_mapping.c ****     #elif defined(RC_PROTOCOL_TDF)
-  73:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MIN = -1024;
- 295              		.loc 1 73 23
+  66:Module/coordinate/coordinate_mapping.c **** 
+  67:Module/coordinate/coordinate_mapping.c **** // 确定原始值范围（根据遥控器类型）
+  68:Module/coordinate/coordinate_mapping.c **** #if defined(RC_PROTOCOL_DJI)
+  69:Module/coordinate/coordinate_mapping.c ****     const int16_t RAW_MIN = -660;
+  70:Module/coordinate/coordinate_mapping.c ****     const int16_t RAW_MAX = 660;
+  71:Module/coordinate/coordinate_mapping.c **** #elif defined(RC_PROTOCOL_TDF)
+  72:Module/coordinate/coordinate_mapping.c ****     const int16_t RAW_MIN = -1024;
+ 295              		.loc 1 72 19
  296 0032 4FF47C43 		mov	r3, #64512
  297 0036 7B84     		strh	r3, [r7, #34]	@ movhi
-  74:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MAX = 1024;
- 298              		.loc 1 74 23
+  73:Module/coordinate/coordinate_mapping.c ****     const int16_t RAW_MAX = 1024;
+ 298              		.loc 1 73 19
  299 0038 4FF48063 		mov	r3, #1024
  300 003c 3B84     		strh	r3, [r7, #32]	@ movhi
-  75:Module/coordinate/coordinate_mapping.c ****     #else
-  76:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MIN = -1000;
-  77:Module/coordinate/coordinate_mapping.c ****         const int16_t RAW_MAX = 1000;
-  78:Module/coordinate/coordinate_mapping.c ****     #endif
-  79:Module/coordinate/coordinate_mapping.c ****     
-  80:Module/coordinate/coordinate_mapping.c ****     // 应用死区处理（消除摇杆中心的微小偏移）
-  81:Module/coordinate/coordinate_mapping.c ****     const int16_t deadzone = 50; // 原始值死区
- 301              		.loc 1 81 19
+  74:Module/coordinate/coordinate_mapping.c **** #else
+  75:Module/coordinate/coordinate_mapping.c ****     const int16_t RAW_MIN = -1000;
+  76:Module/coordinate/coordinate_mapping.c ****     const int16_t RAW_MAX = 1000;
+  77:Module/coordinate/coordinate_mapping.c **** #endif
+  78:Module/coordinate/coordinate_mapping.c **** 
+  79:Module/coordinate/coordinate_mapping.c ****     // 应用死区处理（消除摇杆中心的微小偏移）
+  80:Module/coordinate/coordinate_mapping.c ****     const int16_t deadzone = 50; // 原始值死区
+ 301              		.loc 1 80 19
  302 003e 3223     		movs	r3, #50
  303 0040 FB83     		strh	r3, [r7, #30]	@ movhi
  304              	.LBB2:
-  82:Module/coordinate/coordinate_mapping.c ****     if (abs(ch_x) < deadzone) ch_x = 0;
- 305              		.loc 1 82 9
+  81:Module/coordinate/coordinate_mapping.c ****     if (abs(ch_x) < deadzone)
+ 305              		.loc 1 81 9
  306 0042 B7F92630 		ldrsh	r3, [r7, #38]
  307 0046 002B     		cmp	r3, #0
  308 0048 B8BF     		it	lt
  309 004a 5B42     		rsblt	r3, r3, #0
  310 004c 9BB2     		uxth	r3, r3
  311 004e 1A46     		mov	r2, r3
- 312              		.loc 1 82 19
+ 312              		.loc 1 81 19
  313 0050 B7F91E30 		ldrsh	r3, [r7, #30]
- 314              		.loc 1 82 8
+ 314              		.loc 1 81 8
  315 0054 9A42     		cmp	r2, r3
  316 0056 01DA     		bge	.L16
- 317              		.loc 1 82 36 discriminator 1
+  82:Module/coordinate/coordinate_mapping.c ****         ch_x = 0;
+ 317              		.loc 1 82 14
  318 0058 0023     		movs	r3, #0
  319 005a FB84     		strh	r3, [r7, #38]	@ movhi
  320              	.L16:
  321              	.LBE2:
  322              	.LBB3:
-  83:Module/coordinate/coordinate_mapping.c ****     if (abs(ch_y) < deadzone) ch_y = 0;
+  83:Module/coordinate/coordinate_mapping.c ****     if (abs(ch_y) < deadzone)
  323              		.loc 1 83 9
  324 005c B7F92430 		ldrsh	r3, [r7, #36]
  325 0060 002B     		cmp	r3, #0
  326 0062 B8BF     		it	lt
  327 0064 5B42     		rsblt	r3, r3, #0
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 8
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s 			page 8
 
 
  328 0066 9BB2     		uxth	r3, r3
@@ -428,15 +428,16 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
  332              		.loc 1 83 8
  333 006e 9A42     		cmp	r2, r3
  334 0070 01DA     		bge	.L17
- 335              		.loc 1 83 36 discriminator 1
+  84:Module/coordinate/coordinate_mapping.c ****         ch_y = 0;
+ 335              		.loc 1 84 14
  336 0072 0023     		movs	r3, #0
  337 0074 BB84     		strh	r3, [r7, #36]	@ movhi
  338              	.L17:
  339              	.LBE3:
-  84:Module/coordinate/coordinate_mapping.c ****     
-  85:Module/coordinate/coordinate_mapping.c ****     // 映射到电机1的角度范围（θ₁）
-  86:Module/coordinate/coordinate_mapping.c ****     angles.theta1 = map_value(
- 340              		.loc 1 86 21
+  85:Module/coordinate/coordinate_mapping.c **** 
+  86:Module/coordinate/coordinate_mapping.c ****     // 映射到电机1的角度范围（θ₁）
+  87:Module/coordinate/coordinate_mapping.c ****     angles.theta1 = map_value(
+ 340              		.loc 1 87 21
  341 0076 B7F92630 		ldrsh	r3, [r7, #38]
  342 007a 07EE903A 		vmov	s15, r3	@ int
  343 007e F8EEE77A 		vcvt.f32.s32	s15, s15
@@ -457,15 +458,14 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
  358 00b6 B0EE670A 		vmov.f32	s0, s15
  359 00ba FFF7FEFF 		bl	map_value
  360 00be F0EE407A 		vmov.f32	s15, s0
- 361              		.loc 1 86 19 discriminator 1
+ 361              		.loc 1 87 19 discriminator 1
  362 00c2 C7ED037A 		vstr.32	s15, [r7, #12]
-  87:Module/coordinate/coordinate_mapping.c ****         (float)ch_x, 
-  88:Module/coordinate/coordinate_mapping.c ****         (float)RAW_MIN, 
-  89:Module/coordinate/coordinate_mapping.c ****         (float)RAW_MAX, 
-  90:Module/coordinate/coordinate_mapping.c ****         workspace_config.min_theta1, 
-  91:Module/coordinate/coordinate_mapping.c ****         workspace_config.max_theta1
-  92:Module/coordinate/coordinate_mapping.c ****     );
-  93:Module/coordinate/coordinate_mapping.c ****     
+  88:Module/coordinate/coordinate_mapping.c ****         (float)ch_x,
+  89:Module/coordinate/coordinate_mapping.c ****         (float)RAW_MIN,
+  90:Module/coordinate/coordinate_mapping.c ****         (float)RAW_MAX,
+  91:Module/coordinate/coordinate_mapping.c ****         workspace_config.min_theta1,
+  92:Module/coordinate/coordinate_mapping.c ****         workspace_config.max_theta1);
+  93:Module/coordinate/coordinate_mapping.c **** 
   94:Module/coordinate/coordinate_mapping.c ****     // 映射到电机2的角度范围（θ₂）
   95:Module/coordinate/coordinate_mapping.c ****     angles.theta2 = map_value(
  363              		.loc 1 95 21
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
  370 00de B7F92030 		ldrsh	r3, [r7, #32]
  371 00e2 06EE903A 		vmov	s13, r3	@ int
  372 00e6 F8EEE66A 		vcvt.f32.s32	s13, s13
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 9
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s 			page 9
 
 
  373 00ea 394B     		ldr	r3, .L22+8
@@ -494,16 +494,15 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
  383 010e F0EE407A 		vmov.f32	s15, s0
  384              		.loc 1 95 19 discriminator 1
  385 0112 C7ED047A 		vstr.32	s15, [r7, #16]
-  96:Module/coordinate/coordinate_mapping.c ****         (float)ch_y, 
-  97:Module/coordinate/coordinate_mapping.c ****         (float)RAW_MIN, 
-  98:Module/coordinate/coordinate_mapping.c ****         (float)RAW_MAX, 
-  99:Module/coordinate/coordinate_mapping.c ****         workspace_config.min_theta2, 
- 100:Module/coordinate/coordinate_mapping.c ****         workspace_config.max_theta2
- 101:Module/coordinate/coordinate_mapping.c ****     );
- 102:Module/coordinate/coordinate_mapping.c ****     
- 103:Module/coordinate/coordinate_mapping.c ****     // 应用安全边界（确保角度在限位范围内）
- 104:Module/coordinate/coordinate_mapping.c ****     angles.theta1 = fmaxf(fminf(angles.theta1, workspace_config.max_theta1), workspace_config.min_t
- 386              		.loc 1 104 21
+  96:Module/coordinate/coordinate_mapping.c ****         (float)ch_y,
+  97:Module/coordinate/coordinate_mapping.c ****         (float)RAW_MIN,
+  98:Module/coordinate/coordinate_mapping.c ****         (float)RAW_MAX,
+  99:Module/coordinate/coordinate_mapping.c ****         workspace_config.min_theta2,
+ 100:Module/coordinate/coordinate_mapping.c ****         workspace_config.max_theta2);
+ 101:Module/coordinate/coordinate_mapping.c **** 
+ 102:Module/coordinate/coordinate_mapping.c ****     // 应用安全边界（确保角度在限位范围内）
+ 103:Module/coordinate/coordinate_mapping.c ****     angles.theta1 = fmaxf(fminf(angles.theta1, workspace_config.max_theta1), workspace_config.min_t
+ 386              		.loc 1 103 21
  387 0116 D7ED037A 		vldr.32	s15, [r7, #12]
  388 011a 2D4B     		ldr	r3, .L22+8
  389 011c 93ED017A 		vldr.32	s14, [r3, #4]
@@ -511,17 +510,17 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
  391 0124 B0EE670A 		vmov.f32	s0, s15
  392 0128 FFF7FEFF 		bl	fminf
  393 012c B0EE407A 		vmov.f32	s14, s0
- 394              		.loc 1 104 21 is_stmt 0 discriminator 1
+ 394              		.loc 1 103 21 is_stmt 0 discriminator 1
  395 0130 274B     		ldr	r3, .L22+8
  396 0132 D3ED007A 		vldr.32	s15, [r3]
  397 0136 F0EE670A 		vmov.f32	s1, s15
  398 013a B0EE470A 		vmov.f32	s0, s14
  399 013e FFF7FEFF 		bl	fmaxf
  400 0142 F0EE407A 		vmov.f32	s15, s0
- 401              		.loc 1 104 19 is_stmt 1 discriminator 2
+ 401              		.loc 1 103 19 is_stmt 1 discriminator 2
  402 0146 C7ED037A 		vstr.32	s15, [r7, #12]
- 105:Module/coordinate/coordinate_mapping.c ****     angles.theta2 = fmaxf(fminf(angles.theta2, workspace_config.max_theta2), workspace_config.min_t
- 403              		.loc 1 105 21
+ 104:Module/coordinate/coordinate_mapping.c ****     angles.theta2 = fmaxf(fminf(angles.theta2, workspace_config.max_theta2), workspace_config.min_t
+ 403              		.loc 1 104 21
  404 014a D7ED047A 		vldr.32	s15, [r7, #16]
  405 014e 204B     		ldr	r3, .L22+8
  406 0150 93ED037A 		vldr.32	s14, [r3, #12]
@@ -529,36 +528,37 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
  408 0158 B0EE670A 		vmov.f32	s0, s15
  409 015c FFF7FEFF 		bl	fminf
  410 0160 B0EE407A 		vmov.f32	s14, s0
- 411              		.loc 1 105 21 is_stmt 0 discriminator 1
+ 411              		.loc 1 104 21 is_stmt 0 discriminator 1
  412 0164 1A4B     		ldr	r3, .L22+8
  413 0166 D3ED027A 		vldr.32	s15, [r3, #8]
  414 016a F0EE670A 		vmov.f32	s1, s15
  415 016e B0EE470A 		vmov.f32	s0, s14
  416 0172 FFF7FEFF 		bl	fmaxf
  417 0176 F0EE407A 		vmov.f32	s15, s0
- 418              		.loc 1 105 19 is_stmt 1 discriminator 2
+ 418              		.loc 1 104 19 is_stmt 1 discriminator 2
  419 017a C7ED047A 		vstr.32	s15, [r7, #16]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 10
+ 105:Module/coordinate/coordinate_mapping.c **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s 			page 10
 
 
- 106:Module/coordinate/coordinate_mapping.c ****     
- 107:Module/coordinate/coordinate_mapping.c ****     // 验证θ₁ > θ₂约束（使用容差）
- 108:Module/coordinate/coordinate_mapping.c ****     const float angle_tolerance = 0.001f;
- 420              		.loc 1 108 17
+ 106:Module/coordinate/coordinate_mapping.c ****     // 验证θ₁ > θ₂约束（使用容差）
+ 107:Module/coordinate/coordinate_mapping.c ****     const float angle_tolerance = 0.001f;
+ 420              		.loc 1 107 17
  421 017e 154B     		ldr	r3, .L22+12
  422 0180 BB61     		str	r3, [r7, #24]	@ float
- 109:Module/coordinate/coordinate_mapping.c ****     if (angles.theta1 < angles.theta2 - angle_tolerance) {
- 423              		.loc 1 109 15
+ 108:Module/coordinate/coordinate_mapping.c ****     if (angles.theta1 < angles.theta2 - angle_tolerance)
+ 423              		.loc 1 108 15
  424 0182 97ED037A 		vldr.32	s14, [r7, #12]
- 425              		.loc 1 109 31
+ 425              		.loc 1 108 31
  426 0186 D7ED046A 		vldr.32	s13, [r7, #16]
- 427              		.loc 1 109 39
+ 427              		.loc 1 108 39
  428 018a D7ED067A 		vldr.32	s15, [r7, #24]
  429 018e 76EEE77A 		vsub.f32	s15, s13, s15
- 430              		.loc 1 109 8
+ 430              		.loc 1 108 8
  431 0192 B4EEE77A 		vcmpe.f32	s14, s15
  432 0196 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  433 019a 07D5     		bpl	.L18
+ 109:Module/coordinate/coordinate_mapping.c ****     {
  110:Module/coordinate/coordinate_mapping.c ****         // 违反约束时调整为安全位置
  111:Module/coordinate/coordinate_mapping.c ****         angles.theta1 = angles.theta2 - angle_tolerance;
  434              		.loc 1 111 31
@@ -570,7 +570,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
  440 01a8 C7ED037A 		vstr.32	s15, [r7, #12]
  441              	.L18:
  112:Module/coordinate/coordinate_mapping.c ****     }
- 113:Module/coordinate/coordinate_mapping.c ****     
+ 113:Module/coordinate/coordinate_mapping.c **** 
  114:Module/coordinate/coordinate_mapping.c ****     angles.valid = true;
  442              		.loc 1 114 18
  443 01ac 0123     		movs	r3, #1
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
  463              	.L22:
  464 01c8 DB0F49C0 		.word	-1068953637
  465 01cc 00000000 		.word	stick_config
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 11
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s 			page 11
 
 
  466 01d0 00000000 		.word	workspace_config
@@ -613,27 +613,27 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 1
  476              		.file 5 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/math.h"
  477              		.file 6 "Module/remote_control/remote_control.h"
  478              		.file 7 "<built-in>"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 12
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 coordinate_mapping.c
-C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:21     .data.stick_config:00000000 $d
-C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:24     .data.stick_config:00000000 stick_config
-C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:28     .data.workspace_config:00000000 $d
-C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:31     .data.workspace_config:00000000 workspace_config
-C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:37     .text.map_value:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:42     .text.map_value:00000000 map_value
-C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:121    .text.map_value:00000090 $d
-C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:126    .text.Set_Stick_Channels:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:132    .text.Set_Stick_Channels:00000000 Set_Stick_Channels
-C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:179    .text.Set_Stick_Channels:00000028 $d
-C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:184    .text.Set_Joint_Ranges:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:190    .text.Set_Joint_Ranges:00000000 Set_Joint_Ranges
-C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:244    .text.Set_Joint_Ranges:0000003c $d
-C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:249    .text.Map_To_JointSpace:00000000 $t
-C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:255    .text.Map_To_JointSpace:00000000 Map_To_JointSpace
-C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:464    .text.Map_To_JointSpace:000001c8 $d
+C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s:21     .data.stick_config:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s:24     .data.stick_config:00000000 stick_config
+C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s:28     .data.workspace_config:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s:31     .data.workspace_config:00000000 workspace_config
+C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s:37     .text.map_value:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s:42     .text.map_value:00000000 map_value
+C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s:121    .text.map_value:00000090 $d
+C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s:126    .text.Set_Stick_Channels:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s:132    .text.Set_Stick_Channels:00000000 Set_Stick_Channels
+C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s:179    .text.Set_Stick_Channels:00000028 $d
+C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s:184    .text.Set_Joint_Ranges:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s:190    .text.Set_Joint_Ranges:00000000 Set_Joint_Ranges
+C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s:244    .text.Set_Joint_Ranges:0000003c $d
+C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s:249    .text.Map_To_JointSpace:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s:255    .text.Map_To_JointSpace:00000000 Map_To_JointSpace
+C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s:464    .text.Map_To_JointSpace:000001c8 $d
                            .group:00000000 wm4.0.3e68c699c40fadf7e6c1e499de837233
                            .group:00000000 wm4._newlib_version.h.4.0eb654b64686e2bd29646258853f6c22
                            .group:00000000 wm4.features.h.33.d554620bb17bd3b714c3fb5c268772bc
@@ -673,7 +673,7 @@ C:\Users\30514\AppData\Local\Temp\cczeGSYv.s:464    .text.Map_To_JointSpace:0000
                            .group:00000000 wm4.stm32f4xx_hal_pwr_ex.h.20.9786dbd699c850465fa7b77273740267
                            .group:00000000 wm4.stm32f4xx_hal_pwr.h.338.debc0a4a62ba54688e63ab53dd99c4ea
                            .group:00000000 wm4.stm32f4xx_hal_uart.h.21.ba8e24dd05c77faac3f3d48472e636ba
-ARM GAS  C:\Users\30514\AppData\Local\Temp\cczeGSYv.s 			page 13
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccb9g2aJ.s 			page 13
 
 
                            .group:00000000 wm4.stm32f4xx_hal.h.71.02372bc31d47d29d3f67fbfe1429649e

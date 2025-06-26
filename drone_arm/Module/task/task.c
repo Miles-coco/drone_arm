@@ -39,19 +39,12 @@ void task_10ms(void)
 
 void task_100ms(void)
 {
-	// 调试信息输出    
-        // 获取当前位置
-        
-        // 实际系统中通过串口输出
-        /*
-        printf("Arm State: %d\n", Get_Arm_State());
-        printf("Position: X=%.3f, Y=%.3f\n", current_pos.x, current_pos.y);
-        printf("Angles: Theta1=%.1f°, Theta2=%.1f°\n", 
-               angles.theta1 * 180/M_PI, angles.theta2 * 180/M_PI);
-        */
+
 }
 
 void task_500ms(void)
 {
-
+      float real_pos1 = motor[Motor1].para.pos;
+      float real_pos2 = motor[Motor2].para.pos;
+  
 }

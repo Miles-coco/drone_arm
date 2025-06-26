@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cccMDHgY.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s 			page 1
    1:Module/task/task.c **** #include "task.h"
    2:Module/task/task.c **** #include "scheduler.h"
    3:Module/task/task.c **** #include "driver.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cccMDHgY.s 			page 2
 
 
    4:Module/task/task.c **** #include "dm_ctrl.h"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s 			page 1
   81              	.L2:
   82 0034 00000000 		.word	.LC0
   83 0038 00000000 		.word	task_1ms
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cccMDHgY.s 			page 3
 
 
   84 003c 10000000 		.word	.LC1
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s 			page 1
   24:Module/task/task.c **** 
   25:Module/task/task.c **** void task_2ms(void)
   26:Module/task/task.c **** {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s 			page 4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cccMDHgY.s 			page 4
 
 
  137              		.loc 1 26 1
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s 			page 1
   33:Module/task/task.c **** }
  187              		.loc 1 33 1
  188 000a 00BF     		nop
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s 			page 5
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cccMDHgY.s 			page 5
 
 
  189 000c 80BD     		pop	{r7, pc}
@@ -298,22 +298,13 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s 			page 1
  239              		.cfi_offset 7, -4
  240 0002 00AF     		add	r7, sp, #0
  241              	.LCFI15:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s 			page 6
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cccMDHgY.s 			page 6
 
 
  242              		.cfi_def_cfa_register 7
-  42:Module/task/task.c **** 	// 调试信息输出    
-  43:Module/task/task.c ****         // 获取当前位置
-  44:Module/task/task.c ****         
-  45:Module/task/task.c ****         // 实际系统中通过串口输出
-  46:Module/task/task.c ****         /*
-  47:Module/task/task.c ****         printf("Arm State: %d\n", Get_Arm_State());
-  48:Module/task/task.c ****         printf("Position: X=%.3f, Y=%.3f\n", current_pos.x, current_pos.y);
-  49:Module/task/task.c ****         printf("Angles: Theta1=%.1f°, Theta2=%.1f°\n", 
-  50:Module/task/task.c ****                angles.theta1 * 180/M_PI, angles.theta2 * 180/M_PI);
-  51:Module/task/task.c ****         */
-  52:Module/task/task.c **** }
- 243              		.loc 1 52 1
+  42:Module/task/task.c **** 
+  43:Module/task/task.c **** }
+ 243              		.loc 1 43 1
  244 0004 00BF     		nop
  245 0006 BD46     		mov	sp, r7
  246              	.LCFI16:
@@ -334,67 +325,89 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s 			page 1
  262              		.thumb_func
  264              	task_500ms:
  265              	.LFB140:
-  53:Module/task/task.c **** 
-  54:Module/task/task.c **** void task_500ms(void)
-  55:Module/task/task.c **** {
- 266              		.loc 1 55 1
+  44:Module/task/task.c **** 
+  45:Module/task/task.c **** void task_500ms(void)
+  46:Module/task/task.c **** {
+ 266              		.loc 1 46 1
  267              		.cfi_startproc
- 268              		@ args = 0, pretend = 0, frame = 0
+ 268              		@ args = 0, pretend = 0, frame = 8
  269              		@ frame_needed = 1, uses_anonymous_args = 0
  270              		@ link register save eliminated.
  271 0000 80B4     		push	{r7}
  272              	.LCFI18:
  273              		.cfi_def_cfa_offset 4
  274              		.cfi_offset 7, -4
- 275 0002 00AF     		add	r7, sp, #0
+ 275 0002 83B0     		sub	sp, sp, #12
  276              	.LCFI19:
- 277              		.cfi_def_cfa_register 7
-  56:Module/task/task.c **** 
-  57:Module/task/task.c **** }
- 278              		.loc 1 57 1
- 279 0004 00BF     		nop
- 280 0006 BD46     		mov	sp, r7
- 281              	.LCFI20:
- 282              		.cfi_def_cfa_register 13
- 283              		@ sp needed
- 284 0008 5DF8047B 		ldr	r7, [sp], #4
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s 			page 7
+ 277              		.cfi_def_cfa_offset 16
+ 278 0004 00AF     		add	r7, sp, #0
+ 279              	.LCFI20:
+ 280              		.cfi_def_cfa_register 7
+  47:Module/task/task.c ****       float real_pos1 = motor[Motor1].para.pos;
+ 281              		.loc 1 47 13
+ 282 0006 064B     		ldr	r3, .L10
+ 283 0008 1B6A     		ldr	r3, [r3, #32]	@ float
+ 284 000a 7B60     		str	r3, [r7, #4]	@ float
+  48:Module/task/task.c ****       float real_pos2 = motor[Motor2].para.pos;
+ 285              		.loc 1 48 13
+ 286 000c 044B     		ldr	r3, .L10
+ 287 000e D3F88C30 		ldr	r3, [r3, #140]	@ float
+ 288 0012 3B60     		str	r3, [r7]	@ float
+  49:Module/task/task.c ****   
+  50:Module/task/task.c **** }
+ 289              		.loc 1 50 1
+ 290 0014 00BF     		nop
+ 291 0016 0C37     		adds	r7, r7, #12
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cccMDHgY.s 			page 7
 
 
- 285              	.LCFI21:
- 286              		.cfi_restore 7
- 287              		.cfi_def_cfa_offset 0
- 288 000c 7047     		bx	lr
- 289              		.cfi_endproc
- 290              	.LFE140:
- 292              		.text
- 293              	.Letext0:
- 294              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
- 295              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
- 296              		.file 4 "Module/motor/dm_ctrl.h"
- 297              		.file 5 "Module/arm_control/arm_control.h"
- 298              		.file 6 "Module/scheduler/scheduler.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s 			page 8
+ 292              	.LCFI21:
+ 293              		.cfi_def_cfa_offset 4
+ 294 0018 BD46     		mov	sp, r7
+ 295              	.LCFI22:
+ 296              		.cfi_def_cfa_register 13
+ 297              		@ sp needed
+ 298 001a 5DF8047B 		ldr	r7, [sp], #4
+ 299              	.LCFI23:
+ 300              		.cfi_restore 7
+ 301              		.cfi_def_cfa_offset 0
+ 302 001e 7047     		bx	lr
+ 303              	.L11:
+ 304              		.align	2
+ 305              	.L10:
+ 306 0020 00000000 		.word	motor
+ 307              		.cfi_endproc
+ 308              	.LFE140:
+ 310              		.text
+ 311              	.Letext0:
+ 312              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 313              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 314              		.file 4 "Module/motor/dm_drv.h"
+ 315              		.file 5 "Module/motor/dm_ctrl.h"
+ 316              		.file 6 "Module/arm_control/arm_control.h"
+ 317              		.file 7 "Module/scheduler/scheduler.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cccMDHgY.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 task.c
-C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:21     .rodata:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:34     .text.task_init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:40     .text.task_init:00000000 task_init
-C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:82     .text.task_init:00000034 $d
-C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:100    .text.task_1ms:00000000 task_1ms
-C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:170    .text.task_5ms:00000000 task_5ms
-C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:200    .text.task_10ms:00000000 task_10ms
-C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:229    .text.task_100ms:00000000 task_100ms
-C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:94     .text.task_1ms:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:129    .text.task_2ms:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:135    .text.task_2ms:00000000 task_2ms
-C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:164    .text.task_5ms:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:194    .text.task_10ms:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:223    .text.task_100ms:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:258    .text.task_500ms:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:264    .text.task_500ms:00000000 task_500ms
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:21     .rodata:00000000 $d
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:34     .text.task_init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:40     .text.task_init:00000000 task_init
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:82     .text.task_init:00000034 $d
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:100    .text.task_1ms:00000000 task_1ms
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:170    .text.task_5ms:00000000 task_5ms
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:200    .text.task_10ms:00000000 task_10ms
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:229    .text.task_100ms:00000000 task_100ms
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:94     .text.task_1ms:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:129    .text.task_2ms:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:135    .text.task_2ms:00000000 task_2ms
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:164    .text.task_5ms:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:194    .text.task_10ms:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:223    .text.task_100ms:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:258    .text.task_500ms:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:264    .text.task_500ms:00000000 task_500ms
+C:\Users\30514\AppData\Local\Temp\cccMDHgY.s:306    .text.task_500ms:00000020 $d
                            .group:00000000 wm4.0.3e68c699c40fadf7e6c1e499de837233
                            .group:00000000 wm4.stm32f4xx_hal_conf.h.25.a9a6e27d8b41172b5af7d7631d763ee0
                            .group:00000000 wm4.stm32f4xx.h.38.63e3ea23bd63a94457417730025259b6
@@ -433,10 +446,10 @@ C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s:264    .text.task_500ms:00000000 ta
                            .group:00000000 wm4.stm32f4xx_hal_pwr.h.338.debc0a4a62ba54688e63ab53dd99c4ea
                            .group:00000000 wm4.stm32f4xx_hal_uart.h.21.ba8e24dd05c77faac3f3d48472e636ba
                            .group:00000000 wm4.stm32f4xx_hal.h.71.02372bc31d47d29d3f67fbfe1429649e
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cccMDHgY.s 			page 9
+
+
                            .group:00000000 wm4.stdbool.h.29.c08aa3eec75cf5b9b5003883f43253f0
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccpMGNKH.s 			page 9
-
-
                            .group:00000000 wm4.scheduler.h.9.c2e72bc7fdb275ad1ef5b8f9f98c2cf5
                            .group:00000000 wm4.can_driver.h.7.fc481f2a7d74537943d77eaf4fae2a89
                            .group:00000000 wm4.dm_drv.h.2.164616a3c14c5eba86a5356bad76ec61
@@ -449,3 +462,4 @@ scheduler_init
 create_task
 ctrl_send
 ArmControl_Update
+motor

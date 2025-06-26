@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -32,8 +32,8 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
    2:Module/motor/dm_drv.c **** #include "can_driver.h"
    3:Module/motor/dm_drv.c **** #include "can.h"
    4:Module/motor/dm_drv.c **** 
-   5:Module/motor/dm_drv.c **** //使能电机函数
-   6:Module/motor/dm_drv.c **** void dm4310_enable(hcan_t* hcan, motor_t *motor)
+   5:Module/motor/dm_drv.c **** // 使能电机函数
+   6:Module/motor/dm_drv.c **** void dm4310_enable(hcan_t *hcan, motor_t *motor)
    7:Module/motor/dm_drv.c **** {
   29              		.loc 1 7 1
   30              		.cfi_startproc
@@ -52,13 +52,13 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
   43              		.cfi_def_cfa_register 7
   44 0006 7860     		str	r0, [r7, #4]
   45 0008 3960     		str	r1, [r7]
-   8:Module/motor/dm_drv.c **** 	switch(motor->ctrl.mode)
-  46              		.loc 1 8 20
+   8:Module/motor/dm_drv.c **** 	switch (motor->ctrl.mode)
+  46              		.loc 1 8 21
   47 000a 3B68     		ldr	r3, [r7]
   48 000c 93F93C30 		ldrsb	r3, [r3, #60]
   49              		.loc 1 8 2
   50 0010 022B     		cmp	r3, #2
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 2
 
 
   51 0012 1BD0     		beq	.L2
@@ -69,66 +69,66 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
   56 001c 012B     		cmp	r3, #1
   57 001e 0AD0     		beq	.L5
    9:Module/motor/dm_drv.c **** 	{
-  10:Module/motor/dm_drv.c **** 		case 0:
-  11:Module/motor/dm_drv.c **** 			enable_motor_mode(hcan, motor->id, MIT_MODE);//如果是0，则mit模式
-  12:Module/motor/dm_drv.c **** 			break;
-  13:Module/motor/dm_drv.c **** 		case 1:
-  14:Module/motor/dm_drv.c **** 			enable_motor_mode(hcan, motor->id, POS_MODE);//如果是1，则位置模式
-  15:Module/motor/dm_drv.c **** 			break;
-  16:Module/motor/dm_drv.c **** 		case 2:
-  17:Module/motor/dm_drv.c **** 			enable_motor_mode(hcan, motor->id, SPEED_MODE);//如果是2，则速度模式
-  18:Module/motor/dm_drv.c **** 			break;
-  19:Module/motor/dm_drv.c **** 	}	
+  10:Module/motor/dm_drv.c **** 	case 0:
+  11:Module/motor/dm_drv.c **** 		enable_motor_mode(hcan, motor->id, MIT_MODE); // 如果是0，则mit模式
+  12:Module/motor/dm_drv.c **** 		break;
+  13:Module/motor/dm_drv.c **** 	case 1:
+  14:Module/motor/dm_drv.c **** 		enable_motor_mode(hcan, motor->id, POS_MODE); // 如果是1，则位置模式
+  15:Module/motor/dm_drv.c **** 		break;
+  16:Module/motor/dm_drv.c **** 	case 2:
+  17:Module/motor/dm_drv.c **** 		enable_motor_mode(hcan, motor->id, SPEED_MODE); // 如果是2，则速度模式
+  18:Module/motor/dm_drv.c **** 		break;
+  19:Module/motor/dm_drv.c **** 	}
   20:Module/motor/dm_drv.c **** }
   58              		.loc 1 20 1
   59 0020 1FE0     		b	.L6
   60              	.L4:
-  11:Module/motor/dm_drv.c **** 			break;
-  61              		.loc 1 11 33
+  11:Module/motor/dm_drv.c **** 		break;
+  61              		.loc 1 11 32
   62 0022 3B68     		ldr	r3, [r7]
   63 0024 93F90030 		ldrsb	r3, [r3]
-  11:Module/motor/dm_drv.c **** 			break;
-  64              		.loc 1 11 4
+  11:Module/motor/dm_drv.c **** 		break;
+  64              		.loc 1 11 3
   65 0028 9BB2     		uxth	r3, r3
   66 002a 0022     		movs	r2, #0
   67 002c 1946     		mov	r1, r3
   68 002e 7868     		ldr	r0, [r7, #4]
   69 0030 FFF7FEFF 		bl	enable_motor_mode
-  12:Module/motor/dm_drv.c **** 		case 1:
-  70              		.loc 1 12 4
+  12:Module/motor/dm_drv.c **** 	case 1:
+  70              		.loc 1 12 3
   71 0034 15E0     		b	.L3
   72              	.L5:
-  14:Module/motor/dm_drv.c **** 			break;
-  73              		.loc 1 14 33
+  14:Module/motor/dm_drv.c **** 		break;
+  73              		.loc 1 14 32
   74 0036 3B68     		ldr	r3, [r7]
   75 0038 93F90030 		ldrsb	r3, [r3]
-  14:Module/motor/dm_drv.c **** 			break;
-  76              		.loc 1 14 4
+  14:Module/motor/dm_drv.c **** 		break;
+  76              		.loc 1 14 3
   77 003c 9BB2     		uxth	r3, r3
   78 003e 4FF48072 		mov	r2, #256
   79 0042 1946     		mov	r1, r3
   80 0044 7868     		ldr	r0, [r7, #4]
   81 0046 FFF7FEFF 		bl	enable_motor_mode
-  15:Module/motor/dm_drv.c **** 		case 2:
-  82              		.loc 1 15 4
+  15:Module/motor/dm_drv.c **** 	case 2:
+  82              		.loc 1 15 3
   83 004a 0AE0     		b	.L3
   84              	.L2:
-  17:Module/motor/dm_drv.c **** 			break;
-  85              		.loc 1 17 33
+  17:Module/motor/dm_drv.c **** 		break;
+  85              		.loc 1 17 32
   86 004c 3B68     		ldr	r3, [r7]
   87 004e 93F90030 		ldrsb	r3, [r3]
-  17:Module/motor/dm_drv.c **** 			break;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 3
+  17:Module/motor/dm_drv.c **** 		break;
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 3
 
 
-  88              		.loc 1 17 4
+  88              		.loc 1 17 3
   89 0052 9BB2     		uxth	r3, r3
   90 0054 4FF40072 		mov	r2, #512
   91 0058 1946     		mov	r1, r3
   92 005a 7868     		ldr	r0, [r7, #4]
   93 005c FFF7FEFF 		bl	enable_motor_mode
-  18:Module/motor/dm_drv.c **** 	}	
-  94              		.loc 1 18 4
+  18:Module/motor/dm_drv.c **** 	}
+  94              		.loc 1 18 3
   95 0060 00BF     		nop
   96              	.L3:
   97              	.L6:
@@ -153,8 +153,8 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  118              	dm4310_disable:
  119              	.LFB135:
   21:Module/motor/dm_drv.c **** 
-  22:Module/motor/dm_drv.c **** //失能电机函数，根据电机模式来失能
-  23:Module/motor/dm_drv.c **** void dm4310_disable(hcan_t* hcan, motor_t *motor)
+  22:Module/motor/dm_drv.c **** // 失能电机函数，根据电机模式来失能
+  23:Module/motor/dm_drv.c **** void dm4310_disable(hcan_t *hcan, motor_t *motor)
   24:Module/motor/dm_drv.c **** {
  120              		.loc 1 24 1
  121              		.cfi_startproc
@@ -173,12 +173,12 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  134              		.cfi_def_cfa_register 7
  135 0006 7860     		str	r0, [r7, #4]
  136 0008 3960     		str	r1, [r7]
-  25:Module/motor/dm_drv.c **** 	switch(motor->ctrl.mode)
- 137              		.loc 1 25 20
+  25:Module/motor/dm_drv.c **** 	switch (motor->ctrl.mode)
+ 137              		.loc 1 25 21
  138 000a 3B68     		ldr	r3, [r7]
  139 000c 93F93C30 		ldrsb	r3, [r3, #60]
  140              		.loc 1 25 2
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 4
 
 
  141 0010 022B     		cmp	r3, #2
@@ -192,53 +192,53 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  149 0020 1FE0     		b	.L9
  150              	.L10:
   26:Module/motor/dm_drv.c **** 	{
-  27:Module/motor/dm_drv.c **** 		case 0:
-  28:Module/motor/dm_drv.c **** 			disable_motor_mode(hcan, motor->id, MIT_MODE);
- 151              		.loc 1 28 34
+  27:Module/motor/dm_drv.c **** 	case 0:
+  28:Module/motor/dm_drv.c **** 		disable_motor_mode(hcan, motor->id, MIT_MODE);
+ 151              		.loc 1 28 33
  152 0022 3B68     		ldr	r3, [r7]
  153 0024 93F90030 		ldrsb	r3, [r3]
- 154              		.loc 1 28 4
+ 154              		.loc 1 28 3
  155 0028 9BB2     		uxth	r3, r3
  156 002a 0022     		movs	r2, #0
  157 002c 1946     		mov	r1, r3
  158 002e 7868     		ldr	r0, [r7, #4]
  159 0030 FFF7FEFF 		bl	disable_motor_mode
-  29:Module/motor/dm_drv.c **** 			break;
- 160              		.loc 1 29 4
+  29:Module/motor/dm_drv.c **** 		break;
+ 160              		.loc 1 29 3
  161 0034 15E0     		b	.L9
  162              	.L11:
-  30:Module/motor/dm_drv.c **** 		case 1:
-  31:Module/motor/dm_drv.c **** 			disable_motor_mode(hcan, motor->id, POS_MODE);
- 163              		.loc 1 31 34
+  30:Module/motor/dm_drv.c **** 	case 1:
+  31:Module/motor/dm_drv.c **** 		disable_motor_mode(hcan, motor->id, POS_MODE);
+ 163              		.loc 1 31 33
  164 0036 3B68     		ldr	r3, [r7]
  165 0038 93F90030 		ldrsb	r3, [r3]
- 166              		.loc 1 31 4
+ 166              		.loc 1 31 3
  167 003c 9BB2     		uxth	r3, r3
  168 003e 4FF48072 		mov	r2, #256
  169 0042 1946     		mov	r1, r3
  170 0044 7868     		ldr	r0, [r7, #4]
  171 0046 FFF7FEFF 		bl	disable_motor_mode
-  32:Module/motor/dm_drv.c **** 			break;
- 172              		.loc 1 32 4
+  32:Module/motor/dm_drv.c **** 		break;
+ 172              		.loc 1 32 3
  173 004a 0AE0     		b	.L9
  174              	.L8:
-  33:Module/motor/dm_drv.c **** 		case 2:
-  34:Module/motor/dm_drv.c **** 			disable_motor_mode(hcan, motor->id, SPEED_MODE);
- 175              		.loc 1 34 34
+  33:Module/motor/dm_drv.c **** 	case 2:
+  34:Module/motor/dm_drv.c **** 		disable_motor_mode(hcan, motor->id, SPEED_MODE);
+ 175              		.loc 1 34 33
  176 004c 3B68     		ldr	r3, [r7]
  177 004e 93F90030 		ldrsb	r3, [r3]
- 178              		.loc 1 34 4
+ 178              		.loc 1 34 3
  179 0052 9BB2     		uxth	r3, r3
  180 0054 4FF40072 		mov	r2, #512
  181 0058 1946     		mov	r1, r3
  182 005a 7868     		ldr	r0, [r7, #4]
  183 005c FFF7FEFF 		bl	disable_motor_mode
-  35:Module/motor/dm_drv.c **** 			break;
- 184              		.loc 1 35 4
+  35:Module/motor/dm_drv.c **** 		break;
+ 184              		.loc 1 35 3
  185 0060 00BF     		nop
  186              	.L9:
-  36:Module/motor/dm_drv.c **** 	}	
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 5
+  36:Module/motor/dm_drv.c **** 	}
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 5
 
 
   37:Module/motor/dm_drv.c **** 	dm4310_clear_para(motor);
@@ -267,8 +267,8 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  210              	dm4310_ctrl_send:
  211              	.LFB136:
   39:Module/motor/dm_drv.c **** 
-  40:Module/motor/dm_drv.c **** //发送电机指令函数
-  41:Module/motor/dm_drv.c **** void dm4310_ctrl_send(hcan_t* hcan, motor_t *motor)
+  40:Module/motor/dm_drv.c **** // 发送电机指令函数
+  41:Module/motor/dm_drv.c **** void dm4310_ctrl_send(hcan_t *hcan, motor_t *motor)
   42:Module/motor/dm_drv.c **** {
  212              		.loc 1 42 1
  213              		.cfi_startproc
@@ -287,8 +287,8 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  226              		.cfi_def_cfa_register 7
  227 0006 7860     		str	r0, [r7, #4]
  228 0008 3960     		str	r1, [r7]
-  43:Module/motor/dm_drv.c **** 	switch(motor->ctrl.mode)
- 229              		.loc 1 43 20
+  43:Module/motor/dm_drv.c **** 	switch (motor->ctrl.mode)
+ 229              		.loc 1 43 21
  230 000a 3B68     		ldr	r3, [r7]
  231 000c 93F93C30 		ldrsb	r3, [r3, #60]
  232              		.loc 1 43 2
@@ -298,32 +298,32 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  236 0016 47DC     		bgt	.L17
  237 0018 002B     		cmp	r3, #0
  238 001a 02D0     		beq	.L15
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 6
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 6
 
 
  239 001c 012B     		cmp	r3, #1
  240 001e 22D0     		beq	.L16
   44:Module/motor/dm_drv.c **** 	{
-  45:Module/motor/dm_drv.c **** 		case 0:
-  46:Module/motor/dm_drv.c **** 			mit_ctrl(hcan, motor->id, motor->ctrl.pos_set, motor->ctrl.vel_set, motor->ctrl.kp_set, motor->c
-  47:Module/motor/dm_drv.c **** 			break;
-  48:Module/motor/dm_drv.c **** 		case 1:
-  49:Module/motor/dm_drv.c **** 			pos_speed_ctrl(hcan, motor->id, motor->ctrl.pos_set, motor->ctrl.vel_set);
-  50:Module/motor/dm_drv.c **** 			break;
-  51:Module/motor/dm_drv.c **** 		case 2:
-  52:Module/motor/dm_drv.c **** 			speed_ctrl(hcan, motor->id, motor->ctrl.vel_set);
-  53:Module/motor/dm_drv.c **** 			break;
-  54:Module/motor/dm_drv.c **** 	}	
+  45:Module/motor/dm_drv.c **** 	case 0:
+  46:Module/motor/dm_drv.c **** 		mit_ctrl(hcan, motor->id, motor->ctrl.pos_set, motor->ctrl.vel_set, motor->ctrl.kp_set, motor->ct
+  47:Module/motor/dm_drv.c **** 		break;
+  48:Module/motor/dm_drv.c **** 	case 1:
+  49:Module/motor/dm_drv.c **** 		pos_speed_ctrl(hcan, motor->id, motor->ctrl.pos_set, motor->ctrl.vel_set);
+  50:Module/motor/dm_drv.c **** 		break;
+  51:Module/motor/dm_drv.c **** 	case 2:
+  52:Module/motor/dm_drv.c **** 		speed_ctrl(hcan, motor->id, motor->ctrl.vel_set);
+  53:Module/motor/dm_drv.c **** 		break;
+  54:Module/motor/dm_drv.c **** 	}
   55:Module/motor/dm_drv.c **** }
  241              		.loc 1 55 1
  242 0020 42E0     		b	.L17
  243              	.L15:
-  46:Module/motor/dm_drv.c **** 			break;
- 244              		.loc 1 46 24
+  46:Module/motor/dm_drv.c **** 		break;
+ 244              		.loc 1 46 23
  245 0022 3B68     		ldr	r3, [r7]
  246 0024 93F90030 		ldrsb	r3, [r3]
-  46:Module/motor/dm_drv.c **** 			break;
- 247              		.loc 1 46 4
+  46:Module/motor/dm_drv.c **** 		break;
+ 247              		.loc 1 46 3
  248 0028 9AB2     		uxth	r2, r3
  249 002a 3B68     		ldr	r3, [r7]
  250 002c D3ED107A 		vldr.32	s15, [r3, #64]
@@ -343,22 +343,22 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  264 005c 1146     		mov	r1, r2
  265 005e 7868     		ldr	r0, [r7, #4]
  266 0060 FFF7FEFF 		bl	mit_ctrl
-  47:Module/motor/dm_drv.c **** 		case 1:
- 267              		.loc 1 47 4
+  47:Module/motor/dm_drv.c **** 	case 1:
+ 267              		.loc 1 47 3
  268 0064 20E0     		b	.L14
  269              	.L16:
-  49:Module/motor/dm_drv.c **** 			break;
- 270              		.loc 1 49 30
+  49:Module/motor/dm_drv.c **** 		break;
+ 270              		.loc 1 49 29
  271 0066 3B68     		ldr	r3, [r7]
  272 0068 93F90030 		ldrsb	r3, [r3]
-  49:Module/motor/dm_drv.c **** 			break;
- 273              		.loc 1 49 4
+  49:Module/motor/dm_drv.c **** 		break;
+ 273              		.loc 1 49 3
  274 006c 9AB2     		uxth	r2, r3
  275 006e 3B68     		ldr	r3, [r7]
  276 0070 D3ED107A 		vldr.32	s15, [r3, #64]
  277 0074 3B68     		ldr	r3, [r7]
  278 0076 93ED117A 		vldr.32	s14, [r3, #68]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 7
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 7
 
 
  279 007a F0EE470A 		vmov.f32	s1, s14
@@ -366,16 +366,16 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  281 0082 1146     		mov	r1, r2
  282 0084 7868     		ldr	r0, [r7, #4]
  283 0086 FFF7FEFF 		bl	pos_speed_ctrl
-  50:Module/motor/dm_drv.c **** 		case 2:
- 284              		.loc 1 50 4
+  50:Module/motor/dm_drv.c **** 	case 2:
+ 284              		.loc 1 50 3
  285 008a 0DE0     		b	.L14
  286              	.L13:
-  52:Module/motor/dm_drv.c **** 			break;
- 287              		.loc 1 52 26
+  52:Module/motor/dm_drv.c **** 		break;
+ 287              		.loc 1 52 25
  288 008c 3B68     		ldr	r3, [r7]
  289 008e 93F90030 		ldrsb	r3, [r3]
-  52:Module/motor/dm_drv.c **** 			break;
- 290              		.loc 1 52 4
+  52:Module/motor/dm_drv.c **** 		break;
+ 290              		.loc 1 52 3
  291 0092 9AB2     		uxth	r2, r3
  292 0094 3B68     		ldr	r3, [r7]
  293 0096 D3ED117A 		vldr.32	s15, [r3, #68]
@@ -383,8 +383,8 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  295 009e 1146     		mov	r1, r2
  296 00a0 7868     		ldr	r0, [r7, #4]
  297 00a2 FFF7FEFF 		bl	speed_ctrl
-  53:Module/motor/dm_drv.c **** 	}	
- 298              		.loc 1 53 4
+  53:Module/motor/dm_drv.c **** 	}
+ 298              		.loc 1 53 3
  299 00a6 00BF     		nop
  300              	.L14:
  301              	.L17:
@@ -409,7 +409,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  322              	dm4310_set:
  323              	.LFB137:
   56:Module/motor/dm_drv.c **** 
-  57:Module/motor/dm_drv.c **** //motor_t是一个用于存储各项电机参数的结构体，该函数的核心作用是将用户
+  57:Module/motor/dm_drv.c **** // motor_t是一个用于存储各项电机参数的结构体，该函数的核心作用是将用�
   58:Module/motor/dm_drv.c **** void dm4310_set(motor_t *motor)
   59:Module/motor/dm_drv.c **** {
  324              		.loc 1 59 1
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  327              		@ frame_needed = 1, uses_anonymous_args = 0
  328              		@ link register save eliminated.
  329 0000 80B4     		push	{r7}
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 8
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 8
 
 
  330              	.LCFI15:
@@ -431,44 +431,43 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  337              	.LCFI17:
  338              		.cfi_def_cfa_register 7
  339 0006 7860     		str	r0, [r7, #4]
-  60:Module/motor/dm_drv.c **** 	motor->ctrl.kd_set 	= motor->cmd.kd_set;
- 340              		.loc 1 60 34
+  60:Module/motor/dm_drv.c **** 	motor->ctrl.kd_set = motor->cmd.kd_set;
+ 340              		.loc 1 60 33
  341 0008 7B68     		ldr	r3, [r7, #4]
  342 000a 9A6E     		ldr	r2, [r3, #104]	@ float
- 343              		.loc 1 60 22
+ 343              		.loc 1 60 21
  344 000c 7B68     		ldr	r3, [r7, #4]
  345 000e 1A65     		str	r2, [r3, #80]	@ float
-  61:Module/motor/dm_drv.c **** 	motor->ctrl.kp_set	= motor->cmd.kp_set;
+  61:Module/motor/dm_drv.c **** 	motor->ctrl.kp_set = motor->cmd.kp_set;
  346              		.loc 1 61 33
  347 0010 7B68     		ldr	r3, [r7, #4]
  348 0012 5A6E     		ldr	r2, [r3, #100]	@ float
  349              		.loc 1 61 21
  350 0014 7B68     		ldr	r3, [r7, #4]
  351 0016 DA64     		str	r2, [r3, #76]	@ float
-  62:Module/motor/dm_drv.c **** 	motor->ctrl.pos_set	= motor->cmd.pos_set;
+  62:Module/motor/dm_drv.c **** 	motor->ctrl.pos_set = motor->cmd.pos_set;
  352              		.loc 1 62 34
  353 0018 7B68     		ldr	r3, [r7, #4]
  354 001a 9A6D     		ldr	r2, [r3, #88]	@ float
  355              		.loc 1 62 22
  356 001c 7B68     		ldr	r3, [r7, #4]
  357 001e 1A64     		str	r2, [r3, #64]	@ float
-  63:Module/motor/dm_drv.c **** 	motor->ctrl.vel_set	= motor->cmd.vel_set;
+  63:Module/motor/dm_drv.c **** 	motor->ctrl.vel_set = motor->cmd.vel_set;
  358              		.loc 1 63 34
  359 0020 7B68     		ldr	r3, [r7, #4]
  360 0022 DA6D     		ldr	r2, [r3, #92]	@ float
  361              		.loc 1 63 22
  362 0024 7B68     		ldr	r3, [r7, #4]
  363 0026 5A64     		str	r2, [r3, #68]	@ float
-  64:Module/motor/dm_drv.c **** 	motor->ctrl.tor_set	= motor->cmd.tor_set;
+  64:Module/motor/dm_drv.c **** 	motor->ctrl.tor_set = motor->cmd.tor_set;
  364              		.loc 1 64 34
  365 0028 7B68     		ldr	r3, [r7, #4]
  366 002a 1A6E     		ldr	r2, [r3, #96]	@ float
  367              		.loc 1 64 22
  368 002c 7B68     		ldr	r3, [r7, #4]
  369 002e 9A64     		str	r2, [r3, #72]	@ float
-  65:Module/motor/dm_drv.c **** 
-  66:Module/motor/dm_drv.c **** }
- 370              		.loc 1 66 1
+  65:Module/motor/dm_drv.c **** }
+ 370              		.loc 1 65 1
  371 0030 00BF     		nop
  372 0032 0C37     		adds	r7, r7, #12
  373              	.LCFI18:
@@ -478,10 +477,10 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  377              		.cfi_def_cfa_register 13
  378              		@ sp needed
  379 0036 5DF8047B 		ldr	r7, [sp], #4
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 9
-
-
  380              	.LCFI20:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 9
+
+
  381              		.cfi_restore 7
  382              		.cfi_def_cfa_offset 0
  383 003a 7047     		bx	lr
@@ -495,11 +494,11 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  392              		.thumb_func
  394              	dm4310_clear_para:
  395              	.LFB138:
-  67:Module/motor/dm_drv.c **** 
-  68:Module/motor/dm_drv.c **** //重置电机各项参数
-  69:Module/motor/dm_drv.c **** void dm4310_clear_para(motor_t *motor)
-  70:Module/motor/dm_drv.c **** {
- 396              		.loc 1 70 1
+  66:Module/motor/dm_drv.c **** 
+  67:Module/motor/dm_drv.c **** // 重置电机各项参数
+  68:Module/motor/dm_drv.c **** void dm4310_clear_para(motor_t *motor)
+  69:Module/motor/dm_drv.c **** {
+ 396              		.loc 1 69 1
  397              		.cfi_startproc
  398              		@ args = 0, pretend = 0, frame = 8
  399              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -515,62 +514,62 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  409              	.LCFI23:
  410              		.cfi_def_cfa_register 7
  411 0006 7860     		str	r0, [r7, #4]
-  71:Module/motor/dm_drv.c **** 	motor->cmd.kd_set 	= 0;
- 412              		.loc 1 71 21
+  70:Module/motor/dm_drv.c **** 	motor->cmd.kd_set = 0;
+ 412              		.loc 1 70 20
  413 0008 7B68     		ldr	r3, [r7, #4]
  414 000a 4FF00002 		mov	r2, #0
  415 000e 9A66     		str	r2, [r3, #104]	@ float
-  72:Module/motor/dm_drv.c **** 	motor->cmd.kp_set	 	= 0;
- 416              		.loc 1 72 22
+  71:Module/motor/dm_drv.c **** 	motor->cmd.kp_set = 0;
+ 416              		.loc 1 71 20
  417 0010 7B68     		ldr	r3, [r7, #4]
  418 0012 4FF00002 		mov	r2, #0
  419 0016 5A66     		str	r2, [r3, #100]	@ float
-  73:Module/motor/dm_drv.c **** 	motor->cmd.pos_set 	= 0;
- 420              		.loc 1 73 22
+  72:Module/motor/dm_drv.c **** 	motor->cmd.pos_set = 0;
+ 420              		.loc 1 72 21
  421 0018 7B68     		ldr	r3, [r7, #4]
  422 001a 4FF00002 		mov	r2, #0
  423 001e 9A65     		str	r2, [r3, #88]	@ float
-  74:Module/motor/dm_drv.c **** 	motor->cmd.vel_set 	= 0;
- 424              		.loc 1 74 22
+  73:Module/motor/dm_drv.c **** 	motor->cmd.vel_set = 0;
+ 424              		.loc 1 73 21
  425 0020 7B68     		ldr	r3, [r7, #4]
  426 0022 4FF00002 		mov	r2, #0
  427 0026 DA65     		str	r2, [r3, #92]	@ float
-  75:Module/motor/dm_drv.c **** 	motor->cmd.tor_set 	= 0;
- 428              		.loc 1 75 22
+  74:Module/motor/dm_drv.c **** 	motor->cmd.tor_set = 0;
+ 428              		.loc 1 74 21
  429 0028 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 10
-
-
  430 002a 4FF00002 		mov	r2, #0
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 10
+
+
  431 002e 1A66     		str	r2, [r3, #96]	@ float
-  76:Module/motor/dm_drv.c **** 	
-  77:Module/motor/dm_drv.c **** 	motor->ctrl.kd_set 	= 0;
- 432              		.loc 1 77 22
+  75:Module/motor/dm_drv.c **** 
+  76:Module/motor/dm_drv.c **** 	motor->ctrl.kd_set = 0;
+ 432              		.loc 1 76 21
  433 0030 7B68     		ldr	r3, [r7, #4]
  434 0032 4FF00002 		mov	r2, #0
  435 0036 1A65     		str	r2, [r3, #80]	@ float
-  78:Module/motor/dm_drv.c **** 	motor->ctrl.kp_set	= 0;
- 436              		.loc 1 78 21
+  77:Module/motor/dm_drv.c **** 	motor->ctrl.kp_set = 0;
+ 436              		.loc 1 77 21
  437 0038 7B68     		ldr	r3, [r7, #4]
  438 003a 4FF00002 		mov	r2, #0
  439 003e DA64     		str	r2, [r3, #76]	@ float
-  79:Module/motor/dm_drv.c **** 	motor->ctrl.pos_set = 0;
- 440              		.loc 1 79 22
+  78:Module/motor/dm_drv.c **** 	motor->ctrl.pos_set = 0;
+ 440              		.loc 1 78 22
  441 0040 7B68     		ldr	r3, [r7, #4]
  442 0042 4FF00002 		mov	r2, #0
  443 0046 1A64     		str	r2, [r3, #64]	@ float
-  80:Module/motor/dm_drv.c **** 	motor->ctrl.vel_set = 0;
- 444              		.loc 1 80 22
+  79:Module/motor/dm_drv.c **** 	motor->ctrl.vel_set = 0;
+ 444              		.loc 1 79 22
  445 0048 7B68     		ldr	r3, [r7, #4]
  446 004a 4FF00002 		mov	r2, #0
  447 004e 5A64     		str	r2, [r3, #68]	@ float
-  81:Module/motor/dm_drv.c **** 	motor->ctrl.tor_set = 0;
- 448              		.loc 1 81 22
+  80:Module/motor/dm_drv.c **** 	motor->ctrl.tor_set = 0;
+ 448              		.loc 1 80 22
  449 0050 7B68     		ldr	r3, [r7, #4]
  450 0052 4FF00002 		mov	r2, #0
  451 0056 9A64     		str	r2, [r3, #72]	@ float
-  82:Module/motor/dm_drv.c **** }
- 452              		.loc 1 82 1
+  81:Module/motor/dm_drv.c **** }
+ 452              		.loc 1 81 1
  453 0058 00BF     		nop
  454 005a 0C37     		adds	r7, r7, #12
  455              	.LCFI24:
@@ -594,14 +593,14 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  474              		.thumb_func
  476              	dm4310_clear_err:
  477              	.LFB139:
-  83:Module/motor/dm_drv.c **** 
-  84:Module/motor/dm_drv.c **** //用于清除电机在特定模式下可能产生的错误状态
-  85:Module/motor/dm_drv.c **** void dm4310_clear_err(hcan_t* hcan, motor_t *motor)
-  86:Module/motor/dm_drv.c **** {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 11
+  82:Module/motor/dm_drv.c **** 
+  83:Module/motor/dm_drv.c **** // 用于清除电机在特定模式下可能产生的错误状态
+  84:Module/motor/dm_drv.c **** void dm4310_clear_err(hcan_t *hcan, motor_t *motor)
+  85:Module/motor/dm_drv.c **** {
+ 478              		.loc 1 85 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 11
 
 
- 478              		.loc 1 86 1
  479              		.cfi_startproc
  480              		@ args = 0, pretend = 0, frame = 8
  481              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -618,11 +617,11 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  492              		.cfi_def_cfa_register 7
  493 0006 7860     		str	r0, [r7, #4]
  494 0008 3960     		str	r1, [r7]
-  87:Module/motor/dm_drv.c **** 	switch(motor->ctrl.mode)
- 495              		.loc 1 87 20
+  86:Module/motor/dm_drv.c **** 	switch (motor->ctrl.mode)
+ 495              		.loc 1 86 21
  496 000a 3B68     		ldr	r3, [r7]
  497 000c 93F93C30 		ldrsb	r3, [r3, #60]
- 498              		.loc 1 87 2
+ 498              		.loc 1 86 2
  499 0010 022B     		cmp	r3, #2
  500 0012 1BD0     		beq	.L21
  501 0014 022B     		cmp	r3, #2
@@ -631,71 +630,71 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  504 001a 02D0     		beq	.L23
  505 001c 012B     		cmp	r3, #1
  506 001e 0AD0     		beq	.L24
-  88:Module/motor/dm_drv.c **** 	{
-  89:Module/motor/dm_drv.c **** 		case 0:
-  90:Module/motor/dm_drv.c **** 			clear_err(hcan, motor->id, MIT_MODE);
-  91:Module/motor/dm_drv.c **** 			break;
-  92:Module/motor/dm_drv.c **** 		case 1:
-  93:Module/motor/dm_drv.c **** 			clear_err(hcan, motor->id, POS_MODE);
-  94:Module/motor/dm_drv.c **** 			break;
-  95:Module/motor/dm_drv.c **** 		case 2:
-  96:Module/motor/dm_drv.c **** 			clear_err(hcan, motor->id, SPEED_MODE);
-  97:Module/motor/dm_drv.c **** 			break;
-  98:Module/motor/dm_drv.c **** 	}	
-  99:Module/motor/dm_drv.c **** }
- 507              		.loc 1 99 1
+  87:Module/motor/dm_drv.c **** 	{
+  88:Module/motor/dm_drv.c **** 	case 0:
+  89:Module/motor/dm_drv.c **** 		clear_err(hcan, motor->id, MIT_MODE);
+  90:Module/motor/dm_drv.c **** 		break;
+  91:Module/motor/dm_drv.c **** 	case 1:
+  92:Module/motor/dm_drv.c **** 		clear_err(hcan, motor->id, POS_MODE);
+  93:Module/motor/dm_drv.c **** 		break;
+  94:Module/motor/dm_drv.c **** 	case 2:
+  95:Module/motor/dm_drv.c **** 		clear_err(hcan, motor->id, SPEED_MODE);
+  96:Module/motor/dm_drv.c **** 		break;
+  97:Module/motor/dm_drv.c **** 	}
+  98:Module/motor/dm_drv.c **** }
+ 507              		.loc 1 98 1
  508 0020 1FE0     		b	.L25
  509              	.L23:
-  90:Module/motor/dm_drv.c **** 			break;
- 510              		.loc 1 90 25
+  89:Module/motor/dm_drv.c **** 		break;
+ 510              		.loc 1 89 24
  511 0022 3B68     		ldr	r3, [r7]
  512 0024 93F90030 		ldrsb	r3, [r3]
-  90:Module/motor/dm_drv.c **** 			break;
- 513              		.loc 1 90 4
+  89:Module/motor/dm_drv.c **** 		break;
+ 513              		.loc 1 89 3
  514 0028 9BB2     		uxth	r3, r3
  515 002a 0022     		movs	r2, #0
  516 002c 1946     		mov	r1, r3
  517 002e 7868     		ldr	r0, [r7, #4]
  518 0030 FFF7FEFF 		bl	clear_err
-  91:Module/motor/dm_drv.c **** 		case 1:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 12
+  90:Module/motor/dm_drv.c **** 	case 1:
+ 519              		.loc 1 90 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 12
 
 
- 519              		.loc 1 91 4
  520 0034 15E0     		b	.L22
  521              	.L24:
-  93:Module/motor/dm_drv.c **** 			break;
- 522              		.loc 1 93 25
+  92:Module/motor/dm_drv.c **** 		break;
+ 522              		.loc 1 92 24
  523 0036 3B68     		ldr	r3, [r7]
  524 0038 93F90030 		ldrsb	r3, [r3]
-  93:Module/motor/dm_drv.c **** 			break;
- 525              		.loc 1 93 4
+  92:Module/motor/dm_drv.c **** 		break;
+ 525              		.loc 1 92 3
  526 003c 9BB2     		uxth	r3, r3
  527 003e 4FF48072 		mov	r2, #256
  528 0042 1946     		mov	r1, r3
  529 0044 7868     		ldr	r0, [r7, #4]
  530 0046 FFF7FEFF 		bl	clear_err
-  94:Module/motor/dm_drv.c **** 		case 2:
- 531              		.loc 1 94 4
+  93:Module/motor/dm_drv.c **** 	case 2:
+ 531              		.loc 1 93 3
  532 004a 0AE0     		b	.L22
  533              	.L21:
-  96:Module/motor/dm_drv.c **** 			break;
- 534              		.loc 1 96 25
+  95:Module/motor/dm_drv.c **** 		break;
+ 534              		.loc 1 95 24
  535 004c 3B68     		ldr	r3, [r7]
  536 004e 93F90030 		ldrsb	r3, [r3]
-  96:Module/motor/dm_drv.c **** 			break;
- 537              		.loc 1 96 4
+  95:Module/motor/dm_drv.c **** 		break;
+ 537              		.loc 1 95 3
  538 0052 9BB2     		uxth	r3, r3
  539 0054 4FF40072 		mov	r2, #512
  540 0058 1946     		mov	r1, r3
  541 005a 7868     		ldr	r0, [r7, #4]
  542 005c FFF7FEFF 		bl	clear_err
-  97:Module/motor/dm_drv.c **** 	}	
- 543              		.loc 1 97 4
+  96:Module/motor/dm_drv.c **** 	}
+ 543              		.loc 1 96 3
  544 0060 00BF     		nop
  545              	.L22:
  546              	.L25:
- 547              		.loc 1 99 1
+ 547              		.loc 1 98 1
  548 0062 00BF     		nop
  549 0064 0837     		adds	r7, r7, #8
  550              	.LCFI30:
@@ -715,14 +714,14 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  565              		.thumb_func
  567              	dm4310_fbdata:
  568              	.LFB140:
- 100:Module/motor/dm_drv.c **** 
- 101:Module/motor/dm_drv.c **** //通过运算得到电机的反馈值
- 102:Module/motor/dm_drv.c **** void dm4310_fbdata(motor_t *motor, uint8_t *rx_data)
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 13
+  99:Module/motor/dm_drv.c **** 
+ 100:Module/motor/dm_drv.c **** // 通过运算得到电机的反馈值
+ 101:Module/motor/dm_drv.c **** void dm4310_fbdata(motor_t *motor, uint8_t *rx_data)
+ 102:Module/motor/dm_drv.c **** {
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 13
 
 
- 103:Module/motor/dm_drv.c **** {
- 569              		.loc 1 103 1
+ 569              		.loc 1 102 1
  570              		.cfi_startproc
  571              		@ args = 0, pretend = 0, frame = 8
  572              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -739,83 +738,83 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  583              		.cfi_def_cfa_register 7
  584 0006 7860     		str	r0, [r7, #4]
  585 0008 3960     		str	r1, [r7]
- 104:Module/motor/dm_drv.c **** 	motor->para.id = (rx_data[0])&0x0F;                                 //电机id
- 586              		.loc 1 104 27
+ 103:Module/motor/dm_drv.c **** 	motor->para.id = (rx_data[0]) & 0x0F;								  // 电机id
+ 586              		.loc 1 103 27
  587 000a 3B68     		ldr	r3, [r7]
  588 000c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 589              		.loc 1 104 31
+ 589              		.loc 1 103 32
  590 000e 03F00F02 		and	r2, r3, #15
- 591              		.loc 1 104 17
+ 591              		.loc 1 103 17
  592 0012 7B68     		ldr	r3, [r7, #4]
  593 0014 5A60     		str	r2, [r3, #4]
- 105:Module/motor/dm_drv.c **** 	motor->para.state = (rx_data[0])>>4;								//电机状态
- 594              		.loc 1 105 30
+ 104:Module/motor/dm_drv.c **** 	motor->para.state = (rx_data[0]) >> 4;								  // 电机状态
+ 594              		.loc 1 104 30
  595 0016 3B68     		ldr	r3, [r7]
  596 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 597              		.loc 1 105 34
+ 597              		.loc 1 104 35
  598 001a 1B09     		lsrs	r3, r3, #4
  599 001c DBB2     		uxtb	r3, r3
  600 001e 1A46     		mov	r2, r3
- 601              		.loc 1 105 20
+ 601              		.loc 1 104 20
  602 0020 7B68     		ldr	r3, [r7, #4]
  603 0022 9A60     		str	r2, [r3, #8]
- 106:Module/motor/dm_drv.c **** 	motor->para.p_int=(rx_data[1]<<8)|rx_data[2];						//位置反馈
- 604              		.loc 1 106 28
+ 105:Module/motor/dm_drv.c **** 	motor->para.p_int = (rx_data[1] << 8) | rx_data[2];					  // 位置反馈
+ 604              		.loc 1 105 30
  605 0024 3B68     		ldr	r3, [r7]
  606 0026 0133     		adds	r3, r3, #1
  607 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 608              		.loc 1 106 31
+ 608              		.loc 1 105 34
  609 002a 1B02     		lsls	r3, r3, #8
- 610              		.loc 1 106 43
+ 610              		.loc 1 105 49
  611 002c 3A68     		ldr	r2, [r7]
  612 002e 0232     		adds	r2, r2, #2
  613 0030 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
- 614              		.loc 1 106 35
+ 614              		.loc 1 105 40
  615 0032 1A43     		orrs	r2, r2, r3
- 616              		.loc 1 106 19
+ 616              		.loc 1 105 20
  617 0034 7B68     		ldr	r3, [r7, #4]
  618 0036 DA60     		str	r2, [r3, #12]
- 107:Module/motor/dm_drv.c **** 	motor->para.v_int=(rx_data[3]<<4)|(rx_data[4]>>4);					//速度反馈
- 619              		.loc 1 107 28
+ 106:Module/motor/dm_drv.c **** 	motor->para.v_int = (rx_data[3] << 4) | (rx_data[4] >> 4);			  // 速度反馈
+ 619              		.loc 1 106 30
  620 0038 3B68     		ldr	r3, [r7]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 14
-
-
  621 003a 0333     		adds	r3, r3, #3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 14
+
+
  622 003c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 623              		.loc 1 107 31
+ 623              		.loc 1 106 34
  624 003e 1B01     		lsls	r3, r3, #4
- 625              		.loc 1 107 44
+ 625              		.loc 1 106 50
  626 0040 3A68     		ldr	r2, [r7]
  627 0042 0432     		adds	r2, r2, #4
  628 0044 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
- 629              		.loc 1 107 47
+ 629              		.loc 1 106 54
  630 0046 1209     		lsrs	r2, r2, #4
  631 0048 D2B2     		uxtb	r2, r2
- 632              		.loc 1 107 35
+ 632              		.loc 1 106 40
  633 004a 1A43     		orrs	r2, r2, r3
- 634              		.loc 1 107 19
+ 634              		.loc 1 106 20
  635 004c 7B68     		ldr	r3, [r7, #4]
  636 004e 1A61     		str	r2, [r3, #16]
- 108:Module/motor/dm_drv.c **** 	motor->para.t_int=((rx_data[4]&0xF)<<8)|rx_data[5];					//转矩反馈
- 637              		.loc 1 108 29
+ 107:Module/motor/dm_drv.c **** 	motor->para.t_int = ((rx_data[4] & 0xF) << 8) | rx_data[5];			  // 转矩反馈
+ 637              		.loc 1 107 31
  638 0050 3B68     		ldr	r3, [r7]
  639 0052 0433     		adds	r3, r3, #4
  640 0054 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 641              		.loc 1 108 37
+ 641              		.loc 1 107 42
  642 0056 1B02     		lsls	r3, r3, #8
  643 0058 03F47063 		and	r3, r3, #3840
- 644              		.loc 1 108 49
+ 644              		.loc 1 107 57
  645 005c 3A68     		ldr	r2, [r7]
  646 005e 0532     		adds	r2, r2, #5
  647 0060 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
- 648              		.loc 1 108 41
+ 648              		.loc 1 107 48
  649 0062 1A43     		orrs	r2, r2, r3
- 650              		.loc 1 108 19
+ 650              		.loc 1 107 20
  651 0064 7B68     		ldr	r3, [r7, #4]
  652 0066 5A61     		str	r2, [r3, #20]
- 109:Module/motor/dm_drv.c **** 	motor->para.pos = uint_to_float(motor->para.p_int, P_MIN, P_MAX, 16); // (-12.5,12.5)
- 653              		.loc 1 109 20
+ 108:Module/motor/dm_drv.c **** 	motor->para.pos = uint_to_float(motor->para.p_int, P_MIN, P_MAX, 16); // (-12.5,12.5)
+ 653              		.loc 1 108 20
  654 0068 7B68     		ldr	r3, [r7, #4]
  655 006a DB68     		ldr	r3, [r3, #12]
  656 006c 1021     		movs	r1, #16
@@ -824,11 +823,11 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  659 0076 1846     		mov	r0, r3
  660 0078 FFF7FEFF 		bl	uint_to_float
  661 007c F0EE407A 		vmov.f32	s15, s0
- 662              		.loc 1 109 18 discriminator 1
+ 662              		.loc 1 108 18 discriminator 1
  663 0080 7B68     		ldr	r3, [r7, #4]
  664 0082 C3ED087A 		vstr.32	s15, [r3, #32]
- 110:Module/motor/dm_drv.c **** 	motor->para.vel = uint_to_float(motor->para.v_int, V_MIN, V_MAX, 12); // (-45.0,45.0)
- 665              		.loc 1 110 20
+ 109:Module/motor/dm_drv.c **** 	motor->para.vel = uint_to_float(motor->para.v_int, V_MIN, V_MAX, 12); // (-45.0,45.0)
+ 665              		.loc 1 109 20
  666 0086 7B68     		ldr	r3, [r7, #4]
  667 0088 1B69     		ldr	r3, [r3, #16]
  668 008a 0C21     		movs	r1, #12
@@ -837,14 +836,14 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  671 0094 1846     		mov	r0, r3
  672 0096 FFF7FEFF 		bl	uint_to_float
  673 009a F0EE407A 		vmov.f32	s15, s0
- 674              		.loc 1 110 18 discriminator 1
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 15
-
-
+ 674              		.loc 1 109 18 discriminator 1
  675 009e 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 15
+
+
  676 00a0 C3ED097A 		vstr.32	s15, [r3, #36]
- 111:Module/motor/dm_drv.c **** 	motor->para.tor = uint_to_float(motor->para.t_int, T_MIN, T_MAX, 12);  // (-18.0,18.0)
- 677              		.loc 1 111 20
+ 110:Module/motor/dm_drv.c **** 	motor->para.tor = uint_to_float(motor->para.t_int, T_MIN, T_MAX, 12); // (-18.0,18.0)
+ 677              		.loc 1 110 20
  678 00a4 7B68     		ldr	r3, [r7, #4]
  679 00a6 5B69     		ldr	r3, [r3, #20]
  680 00a8 0C21     		movs	r1, #12
@@ -853,33 +852,33 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  683 00b2 1846     		mov	r0, r3
  684 00b4 FFF7FEFF 		bl	uint_to_float
  685 00b8 F0EE407A 		vmov.f32	s15, s0
- 686              		.loc 1 111 18 discriminator 1
+ 686              		.loc 1 110 18 discriminator 1
  687 00bc 7B68     		ldr	r3, [r7, #4]
  688 00be C3ED0A7A 		vstr.32	s15, [r3, #40]
- 112:Module/motor/dm_drv.c **** 	motor->para.Tmos = (float)(rx_data[6]);								//mos温度反馈
- 689              		.loc 1 112 36
+ 111:Module/motor/dm_drv.c **** 	motor->para.Tmos = (float)(rx_data[6]);								  // mos温度反馈
+ 689              		.loc 1 111 36
  690 00c2 3B68     		ldr	r3, [r7]
  691 00c4 0633     		adds	r3, r3, #6
  692 00c6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 693              		.loc 1 112 21
+ 693              		.loc 1 111 21
  694 00c8 07EE903A 		vmov	s15, r3	@ int
  695 00cc F8EE677A 		vcvt.f32.u32	s15, s15
- 696              		.loc 1 112 19
+ 696              		.loc 1 111 19
  697 00d0 7B68     		ldr	r3, [r7, #4]
  698 00d2 C3ED0D7A 		vstr.32	s15, [r3, #52]
- 113:Module/motor/dm_drv.c **** 	motor->para.Tcoil = (float)(rx_data[7]);							//电机线圈温度反馈
- 699              		.loc 1 113 37
+ 112:Module/motor/dm_drv.c **** 	motor->para.Tcoil = (float)(rx_data[7]);							  // 电机线圈温度反馈
+ 699              		.loc 1 112 37
  700 00d6 3B68     		ldr	r3, [r7]
  701 00d8 0733     		adds	r3, r3, #7
  702 00da 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 703              		.loc 1 113 22
+ 703              		.loc 1 112 22
  704 00dc 07EE903A 		vmov	s15, r3	@ int
  705 00e0 F8EE677A 		vcvt.f32.u32	s15, s15
- 706              		.loc 1 113 20
+ 706              		.loc 1 112 20
  707 00e4 7B68     		ldr	r3, [r7, #4]
  708 00e6 C3ED0E7A 		vstr.32	s15, [r3, #56]
- 114:Module/motor/dm_drv.c **** }
- 709              		.loc 1 114 1
+ 113:Module/motor/dm_drv.c **** }
+ 709              		.loc 1 113 1
  710 00ea 00BF     		nop
  711 00ec 0837     		adds	r7, r7, #8
  712              	.LCFI35:
@@ -898,16 +897,14 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  726              		.thumb
  727              		.thumb_func
  729              	float_to_uint:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 16
-
-
  730              	.LFB141:
- 115:Module/motor/dm_drv.c **** 
- 116:Module/motor/dm_drv.c **** 
- 117:Module/motor/dm_drv.c **** 
- 118:Module/motor/dm_drv.c **** int float_to_uint(float x_float, float x_min, float x_max, int bits)
- 119:Module/motor/dm_drv.c **** {
- 731              		.loc 1 119 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 16
+
+
+ 114:Module/motor/dm_drv.c **** 
+ 115:Module/motor/dm_drv.c **** int float_to_uint(float x_float, float x_min, float x_max, int bits)
+ 116:Module/motor/dm_drv.c **** {
+ 731              		.loc 1 116 1
  732              		.cfi_startproc
  733              		@ args = 0, pretend = 0, frame = 24
  734              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -926,45 +923,45 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  747 000a C7ED020A 		vstr.32	s1, [r7, #8]
  748 000e 87ED011A 		vstr.32	s2, [r7, #4]
  749 0012 3860     		str	r0, [r7]
- 120:Module/motor/dm_drv.c **** 	/* Converts a float to an unsigned int, given range and number of bits */
- 121:Module/motor/dm_drv.c **** 	float span = x_max - x_min;
- 750              		.loc 1 121 8
+ 117:Module/motor/dm_drv.c **** 	/* Converts a float to an unsigned int, given range and number of bits */
+ 118:Module/motor/dm_drv.c **** 	float span = x_max - x_min;
+ 750              		.loc 1 118 8
  751 0014 97ED017A 		vldr.32	s14, [r7, #4]
  752 0018 D7ED027A 		vldr.32	s15, [r7, #8]
  753 001c 77EE677A 		vsub.f32	s15, s14, s15
  754 0020 C7ED057A 		vstr.32	s15, [r7, #20]
- 122:Module/motor/dm_drv.c **** 	float offset = x_min;
- 755              		.loc 1 122 8
+ 119:Module/motor/dm_drv.c **** 	float offset = x_min;
+ 755              		.loc 1 119 8
  756 0024 BB68     		ldr	r3, [r7, #8]	@ float
  757 0026 3B61     		str	r3, [r7, #16]	@ float
- 123:Module/motor/dm_drv.c **** 	return (int) ((x_float-offset)*((float)((1<<bits)-1))/span);
- 758              		.loc 1 123 24
+ 120:Module/motor/dm_drv.c **** 	return (int)((x_float - offset) * ((float)((1 << bits) - 1)) / span);
+ 758              		.loc 1 120 24
  759 0028 97ED037A 		vldr.32	s14, [r7, #12]
  760 002c D7ED047A 		vldr.32	s15, [r7, #16]
  761 0030 37EE677A 		vsub.f32	s14, s14, s15
- 762              		.loc 1 123 44
+ 762              		.loc 1 120 48
  763 0034 0122     		movs	r2, #1
  764 0036 3B68     		ldr	r3, [r7]
  765 0038 02FA03F3 		lsl	r3, r2, r3
- 766              		.loc 1 123 51
+ 766              		.loc 1 120 57
  767 003c 013B     		subs	r3, r3, #1
- 768              		.loc 1 123 34
+ 768              		.loc 1 120 37
  769 003e 07EE903A 		vmov	s15, r3	@ int
  770 0042 F8EEE77A 		vcvt.f32.s32	s15, s15
- 771              		.loc 1 123 32
+ 771              		.loc 1 120 34
  772 0046 67EE276A 		vmul.f32	s13, s14, s15
- 773              		.loc 1 123 55
+ 773              		.loc 1 120 63
  774 004a 97ED057A 		vldr.32	s14, [r7, #20]
  775 004e C6EE877A 		vdiv.f32	s15, s13, s14
- 776              		.loc 1 123 9
+ 776              		.loc 1 120 9
  777 0052 FDEEE77A 		vcvt.s32.f32	s15, s15
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 17
-
-
- 778              		.loc 1 123 9 is_stmt 0 discriminator 1
+ 778              		.loc 1 120 9 is_stmt 0 discriminator 1
  779 0056 17EE903A 		vmov	r3, s15	@ int
- 124:Module/motor/dm_drv.c **** }
- 780              		.loc 1 124 1 is_stmt 1
+ 121:Module/motor/dm_drv.c **** }
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 17
+
+
+ 780              		.loc 1 121 1 is_stmt 1
  781 005a 1846     		mov	r0, r3
  782 005c 1C37     		adds	r7, r7, #28
  783              	.LCFI40:
@@ -988,11 +985,10 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  802              		.thumb_func
  804              	uint_to_float:
  805              	.LFB142:
- 125:Module/motor/dm_drv.c **** 
- 126:Module/motor/dm_drv.c **** 
- 127:Module/motor/dm_drv.c **** float uint_to_float(int x_int, float x_min, float x_max, int bits)
- 128:Module/motor/dm_drv.c **** {
- 806              		.loc 1 128 1
+ 122:Module/motor/dm_drv.c **** 
+ 123:Module/motor/dm_drv.c **** float uint_to_float(int x_int, float x_min, float x_max, int bits)
+ 124:Module/motor/dm_drv.c **** {
+ 806              		.loc 1 124 1
  807              		.cfi_startproc
  808              		@ args = 0, pretend = 0, frame = 24
  809              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -1011,44 +1007,44 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  822 0008 87ED020A 		vstr.32	s0, [r7, #8]
  823 000c C7ED010A 		vstr.32	s1, [r7, #4]
  824 0010 3960     		str	r1, [r7]
- 129:Module/motor/dm_drv.c **** 	/* converts unsigned int to float, given range and number of bits */
- 130:Module/motor/dm_drv.c **** 	float span = x_max - x_min;
- 825              		.loc 1 130 8
+ 125:Module/motor/dm_drv.c **** 	/* converts unsigned int to float, given range and number of bits */
+ 126:Module/motor/dm_drv.c **** 	float span = x_max - x_min;
+ 825              		.loc 1 126 8
  826 0012 97ED017A 		vldr.32	s14, [r7, #4]
  827 0016 D7ED027A 		vldr.32	s15, [r7, #8]
  828 001a 77EE677A 		vsub.f32	s15, s14, s15
  829 001e C7ED057A 		vstr.32	s15, [r7, #20]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 18
-
-
- 131:Module/motor/dm_drv.c **** 	float offset = x_min;
- 830              		.loc 1 131 8
+ 127:Module/motor/dm_drv.c **** 	float offset = x_min;
+ 830              		.loc 1 127 8
  831 0022 BB68     		ldr	r3, [r7, #8]	@ float
  832 0024 3B61     		str	r3, [r7, #16]	@ float
- 132:Module/motor/dm_drv.c **** 	return ((float)x_int)*span/((float)((1<<bits)-1)) + offset;
- 833              		.loc 1 132 10
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 18
+
+
+ 128:Module/motor/dm_drv.c **** 	return ((float)x_int) * span / ((float)((1 << bits) - 1)) + offset;
+ 833              		.loc 1 128 10
  834 0026 FB68     		ldr	r3, [r7, #12]
  835 0028 07EE903A 		vmov	s15, r3	@ int
  836 002c B8EEE77A 		vcvt.f32.s32	s14, s15
- 837              		.loc 1 132 23
+ 837              		.loc 1 128 24
  838 0030 D7ED057A 		vldr.32	s15, [r7, #20]
  839 0034 67EE276A 		vmul.f32	s13, s14, s15
- 840              		.loc 1 132 40
+ 840              		.loc 1 128 45
  841 0038 0122     		movs	r2, #1
  842 003a 3B68     		ldr	r3, [r7]
  843 003c 02FA03F3 		lsl	r3, r2, r3
- 844              		.loc 1 132 47
+ 844              		.loc 1 128 54
  845 0040 013B     		subs	r3, r3, #1
- 846              		.loc 1 132 30
+ 846              		.loc 1 128 34
  847 0042 07EE903A 		vmov	s15, r3	@ int
  848 0046 F8EEE77A 		vcvt.f32.s32	s15, s15
- 849              		.loc 1 132 28
+ 849              		.loc 1 128 31
  850 004a 86EEA77A 		vdiv.f32	s14, s13, s15
- 851              		.loc 1 132 52
+ 851              		.loc 1 128 60
  852 004e D7ED047A 		vldr.32	s15, [r7, #16]
  853 0052 77EE277A 		vadd.f32	s15, s14, s15
- 133:Module/motor/dm_drv.c **** }
- 854              		.loc 1 133 1
+ 129:Module/motor/dm_drv.c **** }
+ 854              		.loc 1 129 1
  855 0056 B0EE670A 		vmov.f32	s0, s15
  856 005a 1C37     		adds	r7, r7, #28
  857              	.LCFI46:
@@ -1072,20 +1068,19 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  876              		.thumb_func
  878              	enable_motor_mode:
  879              	.LFB143:
- 134:Module/motor/dm_drv.c **** 
- 135:Module/motor/dm_drv.c **** 
- 136:Module/motor/dm_drv.c **** void enable_motor_mode(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id)
- 137:Module/motor/dm_drv.c **** {
- 880              		.loc 1 137 1
+ 130:Module/motor/dm_drv.c **** 
+ 131:Module/motor/dm_drv.c **** void enable_motor_mode(hcan_t *hcan, uint16_t motor_id, uint16_t mode_id)
+ 132:Module/motor/dm_drv.c **** {
+ 880              		.loc 1 132 1
  881              		.cfi_startproc
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 19
-
-
  882              		@ args = 0, pretend = 0, frame = 24
  883              		@ frame_needed = 1, uses_anonymous_args = 0
  884 0000 80B5     		push	{r7, lr}
  885              	.LCFI49:
  886              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 19
+
+
  887              		.cfi_offset 7, -8
  888              		.cfi_offset 14, -4
  889 0002 86B0     		sub	sp, sp, #24
@@ -1099,59 +1094,59 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  897 000a 7B80     		strh	r3, [r7, #2]	@ movhi
  898 000c 1346     		mov	r3, r2	@ movhi
  899 000e 3B80     		strh	r3, [r7]	@ movhi
- 138:Module/motor/dm_drv.c **** 	uint8_t data[8];
- 139:Module/motor/dm_drv.c **** 	uint16_t id = motor_id + mode_id;
- 900              		.loc 1 139 11
+ 133:Module/motor/dm_drv.c **** 	uint8_t data[8];
+ 134:Module/motor/dm_drv.c **** 	uint16_t id = motor_id + mode_id;
+ 900              		.loc 1 134 11
  901 0010 7A88     		ldrh	r2, [r7, #2]	@ movhi
  902 0012 3B88     		ldrh	r3, [r7]	@ movhi
  903 0014 1344     		add	r3, r3, r2
  904 0016 FB82     		strh	r3, [r7, #22]	@ movhi
- 140:Module/motor/dm_drv.c **** 	
- 141:Module/motor/dm_drv.c **** 	data[0] = 0xFF;
- 905              		.loc 1 141 10
+ 135:Module/motor/dm_drv.c **** 
+ 136:Module/motor/dm_drv.c **** 	data[0] = 0xFF;
+ 905              		.loc 1 136 10
  906 0018 FF23     		movs	r3, #255
  907 001a 3B73     		strb	r3, [r7, #12]
- 142:Module/motor/dm_drv.c **** 	data[1] = 0xFF;
- 908              		.loc 1 142 10
+ 137:Module/motor/dm_drv.c **** 	data[1] = 0xFF;
+ 908              		.loc 1 137 10
  909 001c FF23     		movs	r3, #255
  910 001e 7B73     		strb	r3, [r7, #13]
- 143:Module/motor/dm_drv.c **** 	data[2] = 0xFF;
- 911              		.loc 1 143 10
+ 138:Module/motor/dm_drv.c **** 	data[2] = 0xFF;
+ 911              		.loc 1 138 10
  912 0020 FF23     		movs	r3, #255
  913 0022 BB73     		strb	r3, [r7, #14]
- 144:Module/motor/dm_drv.c **** 	data[3] = 0xFF;
- 914              		.loc 1 144 10
+ 139:Module/motor/dm_drv.c **** 	data[3] = 0xFF;
+ 914              		.loc 1 139 10
  915 0024 FF23     		movs	r3, #255
  916 0026 FB73     		strb	r3, [r7, #15]
- 145:Module/motor/dm_drv.c **** 	data[4] = 0xFF;
- 917              		.loc 1 145 10
+ 140:Module/motor/dm_drv.c **** 	data[4] = 0xFF;
+ 917              		.loc 1 140 10
  918 0028 FF23     		movs	r3, #255
  919 002a 3B74     		strb	r3, [r7, #16]
- 146:Module/motor/dm_drv.c **** 	data[5] = 0xFF;
- 920              		.loc 1 146 10
+ 141:Module/motor/dm_drv.c **** 	data[5] = 0xFF;
+ 920              		.loc 1 141 10
  921 002c FF23     		movs	r3, #255
  922 002e 7B74     		strb	r3, [r7, #17]
- 147:Module/motor/dm_drv.c **** 	data[6] = 0xFF;
- 923              		.loc 1 147 10
+ 142:Module/motor/dm_drv.c **** 	data[6] = 0xFF;
+ 923              		.loc 1 142 10
  924 0030 FF23     		movs	r3, #255
  925 0032 BB74     		strb	r3, [r7, #18]
- 148:Module/motor/dm_drv.c **** 	data[7] = 0xFC;
- 926              		.loc 1 148 10
+ 143:Module/motor/dm_drv.c **** 	data[7] = 0xFC;
+ 926              		.loc 1 143 10
  927 0034 FC23     		movs	r3, #252
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 20
-
-
  928 0036 FB74     		strb	r3, [r7, #19]
- 149:Module/motor/dm_drv.c **** 	
- 150:Module/motor/dm_drv.c **** 	canx_send_data(hcan, id, data, 8);
- 929              		.loc 1 150 2
+ 144:Module/motor/dm_drv.c **** 
+ 145:Module/motor/dm_drv.c **** 	canx_send_data(hcan, id, data, 8);
+ 929              		.loc 1 145 2
  930 0038 07F10C02 		add	r2, r7, #12
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 20
+
+
  931 003c F98A     		ldrh	r1, [r7, #22]
  932 003e 0823     		movs	r3, #8
  933 0040 7868     		ldr	r0, [r7, #4]
  934 0042 FFF7FEFF 		bl	canx_send_data
- 151:Module/motor/dm_drv.c **** }
- 935              		.loc 1 151 1
+ 146:Module/motor/dm_drv.c **** }
+ 935              		.loc 1 146 1
  936 0046 00BF     		nop
  937 0048 1837     		adds	r7, r7, #24
  938              	.LCFI52:
@@ -1171,11 +1166,10 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  953              		.thumb_func
  955              	disable_motor_mode:
  956              	.LFB144:
- 152:Module/motor/dm_drv.c **** 
- 153:Module/motor/dm_drv.c **** 
- 154:Module/motor/dm_drv.c **** void disable_motor_mode(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id)
- 155:Module/motor/dm_drv.c **** {
- 957              		.loc 1 155 1
+ 147:Module/motor/dm_drv.c **** 
+ 148:Module/motor/dm_drv.c **** void disable_motor_mode(hcan_t *hcan, uint16_t motor_id, uint16_t mode_id)
+ 149:Module/motor/dm_drv.c **** {
+ 957              		.loc 1 149 1
  958              		.cfi_startproc
  959              		@ args = 0, pretend = 0, frame = 24
  960              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -1195,59 +1189,59 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  974 000a 7B80     		strh	r3, [r7, #2]	@ movhi
  975 000c 1346     		mov	r3, r2	@ movhi
  976 000e 3B80     		strh	r3, [r7]	@ movhi
- 156:Module/motor/dm_drv.c **** 	uint8_t data[8];
- 157:Module/motor/dm_drv.c **** 	uint16_t id = motor_id + mode_id;
- 977              		.loc 1 157 11
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 21
-
-
+ 150:Module/motor/dm_drv.c **** 	uint8_t data[8];
+ 151:Module/motor/dm_drv.c **** 	uint16_t id = motor_id + mode_id;
+ 977              		.loc 1 151 11
  978 0010 7A88     		ldrh	r2, [r7, #2]	@ movhi
  979 0012 3B88     		ldrh	r3, [r7]	@ movhi
  980 0014 1344     		add	r3, r3, r2
  981 0016 FB82     		strh	r3, [r7, #22]	@ movhi
- 158:Module/motor/dm_drv.c **** 	
- 159:Module/motor/dm_drv.c **** 	data[0] = 0xFF;
- 982              		.loc 1 159 10
+ 152:Module/motor/dm_drv.c **** 
+ 153:Module/motor/dm_drv.c **** 	data[0] = 0xFF;
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 21
+
+
+ 982              		.loc 1 153 10
  983 0018 FF23     		movs	r3, #255
  984 001a 3B73     		strb	r3, [r7, #12]
- 160:Module/motor/dm_drv.c **** 	data[1] = 0xFF;
- 985              		.loc 1 160 10
+ 154:Module/motor/dm_drv.c **** 	data[1] = 0xFF;
+ 985              		.loc 1 154 10
  986 001c FF23     		movs	r3, #255
  987 001e 7B73     		strb	r3, [r7, #13]
- 161:Module/motor/dm_drv.c **** 	data[2] = 0xFF;
- 988              		.loc 1 161 10
+ 155:Module/motor/dm_drv.c **** 	data[2] = 0xFF;
+ 988              		.loc 1 155 10
  989 0020 FF23     		movs	r3, #255
  990 0022 BB73     		strb	r3, [r7, #14]
- 162:Module/motor/dm_drv.c **** 	data[3] = 0xFF;
- 991              		.loc 1 162 10
+ 156:Module/motor/dm_drv.c **** 	data[3] = 0xFF;
+ 991              		.loc 1 156 10
  992 0024 FF23     		movs	r3, #255
  993 0026 FB73     		strb	r3, [r7, #15]
- 163:Module/motor/dm_drv.c **** 	data[4] = 0xFF;
- 994              		.loc 1 163 10
+ 157:Module/motor/dm_drv.c **** 	data[4] = 0xFF;
+ 994              		.loc 1 157 10
  995 0028 FF23     		movs	r3, #255
  996 002a 3B74     		strb	r3, [r7, #16]
- 164:Module/motor/dm_drv.c **** 	data[5] = 0xFF;
- 997              		.loc 1 164 10
+ 158:Module/motor/dm_drv.c **** 	data[5] = 0xFF;
+ 997              		.loc 1 158 10
  998 002c FF23     		movs	r3, #255
  999 002e 7B74     		strb	r3, [r7, #17]
- 165:Module/motor/dm_drv.c **** 	data[6] = 0xFF;
- 1000              		.loc 1 165 10
+ 159:Module/motor/dm_drv.c **** 	data[6] = 0xFF;
+ 1000              		.loc 1 159 10
  1001 0030 FF23     		movs	r3, #255
  1002 0032 BB74     		strb	r3, [r7, #18]
- 166:Module/motor/dm_drv.c **** 	data[7] = 0xFD;
- 1003              		.loc 1 166 10
+ 160:Module/motor/dm_drv.c **** 	data[7] = 0xFD;
+ 1003              		.loc 1 160 10
  1004 0034 FD23     		movs	r3, #253
  1005 0036 FB74     		strb	r3, [r7, #19]
- 167:Module/motor/dm_drv.c **** 	
- 168:Module/motor/dm_drv.c **** 	canx_send_data(hcan, id, data, 8);
- 1006              		.loc 1 168 2
+ 161:Module/motor/dm_drv.c **** 
+ 162:Module/motor/dm_drv.c **** 	canx_send_data(hcan, id, data, 8);
+ 1006              		.loc 1 162 2
  1007 0038 07F10C02 		add	r2, r7, #12
  1008 003c F98A     		ldrh	r1, [r7, #22]
  1009 003e 0823     		movs	r3, #8
  1010 0040 7868     		ldr	r0, [r7, #4]
  1011 0042 FFF7FEFF 		bl	canx_send_data
- 169:Module/motor/dm_drv.c **** }
- 1012              		.loc 1 169 1
+ 163:Module/motor/dm_drv.c **** }
+ 1012              		.loc 1 163 1
  1013 0046 00BF     		nop
  1014 0048 1837     		adds	r7, r7, #24
  1015              	.LCFI57:
@@ -1258,23 +1252,22 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  1020              		@ sp needed
  1021 004c 80BD     		pop	{r7, pc}
  1022              		.cfi_endproc
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 22
-
-
  1023              	.LFE144:
  1025              		.section	.text.save_pos_zero,"ax",%progbits
  1026              		.align	1
  1027              		.global	save_pos_zero
  1028              		.syntax unified
  1029              		.thumb
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 22
+
+
  1030              		.thumb_func
  1032              	save_pos_zero:
  1033              	.LFB145:
- 170:Module/motor/dm_drv.c **** 
- 171:Module/motor/dm_drv.c **** 
- 172:Module/motor/dm_drv.c **** void save_pos_zero(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id)
- 173:Module/motor/dm_drv.c **** {
- 1034              		.loc 1 173 1
+ 164:Module/motor/dm_drv.c **** 
+ 165:Module/motor/dm_drv.c **** void save_pos_zero(hcan_t *hcan, uint16_t motor_id, uint16_t mode_id)
+ 166:Module/motor/dm_drv.c **** {
+ 1034              		.loc 1 166 1
  1035              		.cfi_startproc
  1036              		@ args = 0, pretend = 0, frame = 24
  1037              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -1294,59 +1287,59 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  1051 000a 7B80     		strh	r3, [r7, #2]	@ movhi
  1052 000c 1346     		mov	r3, r2	@ movhi
  1053 000e 3B80     		strh	r3, [r7]	@ movhi
- 174:Module/motor/dm_drv.c **** 	uint8_t data[8];
- 175:Module/motor/dm_drv.c **** 	uint16_t id = motor_id + mode_id;
- 1054              		.loc 1 175 11
+ 167:Module/motor/dm_drv.c **** 	uint8_t data[8];
+ 168:Module/motor/dm_drv.c **** 	uint16_t id = motor_id + mode_id;
+ 1054              		.loc 1 168 11
  1055 0010 7A88     		ldrh	r2, [r7, #2]	@ movhi
  1056 0012 3B88     		ldrh	r3, [r7]	@ movhi
  1057 0014 1344     		add	r3, r3, r2
  1058 0016 FB82     		strh	r3, [r7, #22]	@ movhi
- 176:Module/motor/dm_drv.c **** 	
- 177:Module/motor/dm_drv.c **** 	data[0] = 0xFF;
- 1059              		.loc 1 177 10
+ 169:Module/motor/dm_drv.c **** 
+ 170:Module/motor/dm_drv.c **** 	data[0] = 0xFF;
+ 1059              		.loc 1 170 10
  1060 0018 FF23     		movs	r3, #255
  1061 001a 3B73     		strb	r3, [r7, #12]
- 178:Module/motor/dm_drv.c **** 	data[1] = 0xFF;
- 1062              		.loc 1 178 10
+ 171:Module/motor/dm_drv.c **** 	data[1] = 0xFF;
+ 1062              		.loc 1 171 10
  1063 001c FF23     		movs	r3, #255
  1064 001e 7B73     		strb	r3, [r7, #13]
- 179:Module/motor/dm_drv.c **** 	data[2] = 0xFF;
- 1065              		.loc 1 179 10
+ 172:Module/motor/dm_drv.c **** 	data[2] = 0xFF;
+ 1065              		.loc 1 172 10
  1066 0020 FF23     		movs	r3, #255
  1067 0022 BB73     		strb	r3, [r7, #14]
- 180:Module/motor/dm_drv.c **** 	data[3] = 0xFF;
- 1068              		.loc 1 180 10
+ 173:Module/motor/dm_drv.c **** 	data[3] = 0xFF;
+ 1068              		.loc 1 173 10
  1069 0024 FF23     		movs	r3, #255
  1070 0026 FB73     		strb	r3, [r7, #15]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 23
-
-
- 181:Module/motor/dm_drv.c **** 	data[4] = 0xFF;
- 1071              		.loc 1 181 10
+ 174:Module/motor/dm_drv.c **** 	data[4] = 0xFF;
+ 1071              		.loc 1 174 10
  1072 0028 FF23     		movs	r3, #255
  1073 002a 3B74     		strb	r3, [r7, #16]
- 182:Module/motor/dm_drv.c **** 	data[5] = 0xFF;
- 1074              		.loc 1 182 10
+ 175:Module/motor/dm_drv.c **** 	data[5] = 0xFF;
+ 1074              		.loc 1 175 10
  1075 002c FF23     		movs	r3, #255
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 23
+
+
  1076 002e 7B74     		strb	r3, [r7, #17]
- 183:Module/motor/dm_drv.c **** 	data[6] = 0xFF;
- 1077              		.loc 1 183 10
+ 176:Module/motor/dm_drv.c **** 	data[6] = 0xFF;
+ 1077              		.loc 1 176 10
  1078 0030 FF23     		movs	r3, #255
  1079 0032 BB74     		strb	r3, [r7, #18]
- 184:Module/motor/dm_drv.c **** 	data[7] = 0xFE;
- 1080              		.loc 1 184 10
+ 177:Module/motor/dm_drv.c **** 	data[7] = 0xFE;
+ 1080              		.loc 1 177 10
  1081 0034 FE23     		movs	r3, #254
  1082 0036 FB74     		strb	r3, [r7, #19]
- 185:Module/motor/dm_drv.c **** 	
- 186:Module/motor/dm_drv.c **** 	canx_send_data(hcan, id, data, 8);
- 1083              		.loc 1 186 2
+ 178:Module/motor/dm_drv.c **** 
+ 179:Module/motor/dm_drv.c **** 	canx_send_data(hcan, id, data, 8);
+ 1083              		.loc 1 179 2
  1084 0038 07F10C02 		add	r2, r7, #12
  1085 003c F98A     		ldrh	r1, [r7, #22]
  1086 003e 0823     		movs	r3, #8
  1087 0040 7868     		ldr	r0, [r7, #4]
  1088 0042 FFF7FEFF 		bl	canx_send_data
- 187:Module/motor/dm_drv.c **** }
- 1089              		.loc 1 187 1
+ 180:Module/motor/dm_drv.c **** }
+ 1089              		.loc 1 180 1
  1090 0046 00BF     		nop
  1091 0048 1837     		adds	r7, r7, #24
  1092              	.LCFI62:
@@ -1366,11 +1359,10 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  1107              		.thumb_func
  1109              	clear_err:
  1110              	.LFB146:
- 188:Module/motor/dm_drv.c **** 
- 189:Module/motor/dm_drv.c **** 
- 190:Module/motor/dm_drv.c **** void clear_err(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id)
- 191:Module/motor/dm_drv.c **** {
- 1111              		.loc 1 191 1
+ 181:Module/motor/dm_drv.c **** 
+ 182:Module/motor/dm_drv.c **** void clear_err(hcan_t *hcan, uint16_t motor_id, uint16_t mode_id)
+ 183:Module/motor/dm_drv.c **** {
+ 1111              		.loc 1 183 1
  1112              		.cfi_startproc
  1113              		@ args = 0, pretend = 0, frame = 24
  1114              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -1378,9 +1370,6 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  1116              	.LCFI64:
  1117              		.cfi_def_cfa_offset 8
  1118              		.cfi_offset 7, -8
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 24
-
-
  1119              		.cfi_offset 14, -4
  1120 0002 86B0     		sub	sp, sp, #24
  1121              	.LCFI65:
@@ -1389,66 +1378,69 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  1124              	.LCFI66:
  1125              		.cfi_def_cfa_register 7
  1126 0006 7860     		str	r0, [r7, #4]
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 24
+
+
  1127 0008 0B46     		mov	r3, r1
  1128 000a 7B80     		strh	r3, [r7, #2]	@ movhi
  1129 000c 1346     		mov	r3, r2	@ movhi
  1130 000e 3B80     		strh	r3, [r7]	@ movhi
- 192:Module/motor/dm_drv.c **** 	uint8_t data[8];
- 193:Module/motor/dm_drv.c **** 	uint16_t id = motor_id + mode_id;
- 1131              		.loc 1 193 11
+ 184:Module/motor/dm_drv.c **** 	uint8_t data[8];
+ 185:Module/motor/dm_drv.c **** 	uint16_t id = motor_id + mode_id;
+ 1131              		.loc 1 185 11
  1132 0010 7A88     		ldrh	r2, [r7, #2]	@ movhi
  1133 0012 3B88     		ldrh	r3, [r7]	@ movhi
  1134 0014 1344     		add	r3, r3, r2
  1135 0016 FB82     		strh	r3, [r7, #22]	@ movhi
- 194:Module/motor/dm_drv.c **** 	
- 195:Module/motor/dm_drv.c **** 	data[0] = 0xFF;
- 1136              		.loc 1 195 10
+ 186:Module/motor/dm_drv.c **** 
+ 187:Module/motor/dm_drv.c **** 	data[0] = 0xFF;
+ 1136              		.loc 1 187 10
  1137 0018 FF23     		movs	r3, #255
  1138 001a 3B73     		strb	r3, [r7, #12]
- 196:Module/motor/dm_drv.c **** 	data[1] = 0xFF;
- 1139              		.loc 1 196 10
+ 188:Module/motor/dm_drv.c **** 	data[1] = 0xFF;
+ 1139              		.loc 1 188 10
  1140 001c FF23     		movs	r3, #255
  1141 001e 7B73     		strb	r3, [r7, #13]
- 197:Module/motor/dm_drv.c **** 	data[2] = 0xFF;
- 1142              		.loc 1 197 10
+ 189:Module/motor/dm_drv.c **** 	data[2] = 0xFF;
+ 1142              		.loc 1 189 10
  1143 0020 FF23     		movs	r3, #255
  1144 0022 BB73     		strb	r3, [r7, #14]
- 198:Module/motor/dm_drv.c **** 	data[3] = 0xFF;
- 1145              		.loc 1 198 10
+ 190:Module/motor/dm_drv.c **** 	data[3] = 0xFF;
+ 1145              		.loc 1 190 10
  1146 0024 FF23     		movs	r3, #255
  1147 0026 FB73     		strb	r3, [r7, #15]
- 199:Module/motor/dm_drv.c **** 	data[4] = 0xFF;
- 1148              		.loc 1 199 10
+ 191:Module/motor/dm_drv.c **** 	data[4] = 0xFF;
+ 1148              		.loc 1 191 10
  1149 0028 FF23     		movs	r3, #255
  1150 002a 3B74     		strb	r3, [r7, #16]
- 200:Module/motor/dm_drv.c **** 	data[5] = 0xFF;
- 1151              		.loc 1 200 10
+ 192:Module/motor/dm_drv.c **** 	data[5] = 0xFF;
+ 1151              		.loc 1 192 10
  1152 002c FF23     		movs	r3, #255
  1153 002e 7B74     		strb	r3, [r7, #17]
- 201:Module/motor/dm_drv.c **** 	data[6] = 0xFF;
- 1154              		.loc 1 201 10
+ 193:Module/motor/dm_drv.c **** 	data[6] = 0xFF;
+ 1154              		.loc 1 193 10
  1155 0030 FF23     		movs	r3, #255
  1156 0032 BB74     		strb	r3, [r7, #18]
- 202:Module/motor/dm_drv.c **** 	data[7] = 0xFB;
- 1157              		.loc 1 202 10
+ 194:Module/motor/dm_drv.c **** 	data[7] = 0xFB;
+ 1157              		.loc 1 194 10
  1158 0034 FB23     		movs	r3, #251
  1159 0036 FB74     		strb	r3, [r7, #19]
- 203:Module/motor/dm_drv.c **** 	
- 204:Module/motor/dm_drv.c **** 	canx_send_data(hcan, id, data, 8);
- 1160              		.loc 1 204 2
+ 195:Module/motor/dm_drv.c **** 
+ 196:Module/motor/dm_drv.c **** 	canx_send_data(hcan, id, data, 8);
+ 1160              		.loc 1 196 2
  1161 0038 07F10C02 		add	r2, r7, #12
  1162 003c F98A     		ldrh	r1, [r7, #22]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 25
-
-
  1163 003e 0823     		movs	r3, #8
  1164 0040 7868     		ldr	r0, [r7, #4]
  1165 0042 FFF7FEFF 		bl	canx_send_data
- 205:Module/motor/dm_drv.c **** }
- 1166              		.loc 1 205 1
+ 197:Module/motor/dm_drv.c **** }
+ 1166              		.loc 1 197 1
  1167 0046 00BF     		nop
  1168 0048 1837     		adds	r7, r7, #24
  1169              	.LCFI67:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 25
+
+
  1170              		.cfi_def_cfa_offset 8
  1171 004a BD46     		mov	sp, r7
  1172              	.LCFI68:
@@ -1465,11 +1457,10 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  1184              		.thumb_func
  1186              	mit_ctrl:
  1187              	.LFB147:
- 206:Module/motor/dm_drv.c **** 
- 207:Module/motor/dm_drv.c **** 
- 208:Module/motor/dm_drv.c **** void mit_ctrl(hcan_t* hcan, uint16_t motor_id, float pos, float vel,float kp, float kd, float torq)
- 209:Module/motor/dm_drv.c **** {
- 1188              		.loc 1 209 1
+ 198:Module/motor/dm_drv.c **** 
+ 199:Module/motor/dm_drv.c **** void mit_ctrl(hcan_t *hcan, uint16_t motor_id, float pos, float vel, float kp, float kd, float torq
+ 200:Module/motor/dm_drv.c **** {
+ 1188              		.loc 1 200 1
  1189              		.cfi_startproc
  1190              		@ args = 0, pretend = 0, frame = 56
  1191              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -1492,91 +1483,91 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  1208 0016 C7ED021A 		vstr.32	s3, [r7, #8]
  1209 001a 87ED012A 		vstr.32	s4, [r7, #4]
  1210 001e 7B83     		strh	r3, [r7, #26]	@ movhi
- 210:Module/motor/dm_drv.c **** 	uint8_t data[8];
- 211:Module/motor/dm_drv.c **** 	uint16_t pos_tmp,vel_tmp,kp_tmp,kd_tmp,tor_tmp;
- 212:Module/motor/dm_drv.c **** 	uint16_t id = motor_id + MIT_MODE;
- 1211              		.loc 1 212 11
+ 201:Module/motor/dm_drv.c **** 	uint8_t data[8];
+ 202:Module/motor/dm_drv.c **** 	uint16_t pos_tmp, vel_tmp, kp_tmp, kd_tmp, tor_tmp;
+ 203:Module/motor/dm_drv.c **** 	uint16_t id = motor_id + MIT_MODE;
+ 1211              		.loc 1 203 11
  1212 0020 7B8B     		ldrh	r3, [r7, #26]	@ movhi
  1213 0022 FB86     		strh	r3, [r7, #54]	@ movhi
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 26
-
-
- 213:Module/motor/dm_drv.c **** 
- 214:Module/motor/dm_drv.c **** 	pos_tmp = float_to_uint(pos,  P_MIN,  P_MAX,  16);
- 1214              		.loc 1 214 12
+ 204:Module/motor/dm_drv.c **** 
+ 205:Module/motor/dm_drv.c **** 	pos_tmp = float_to_uint(pos, P_MIN, P_MAX, 16);
+ 1214              		.loc 1 205 12
  1215 0024 1020     		movs	r0, #16
  1216 0026 B2EE091A 		vmov.f32	s2, #1.25e+1
  1217 002a FAEE090A 		vmov.f32	s1, #-1.25e+1
  1218 002e 97ED050A 		vldr.32	s0, [r7, #20]
  1219 0032 FFF7FEFF 		bl	float_to_uint
  1220 0036 0346     		mov	r3, r0
- 1221              		.loc 1 214 10 discriminator 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 26
+
+
+ 1221              		.loc 1 205 10 discriminator 1
  1222 0038 BB86     		strh	r3, [r7, #52]	@ movhi
- 215:Module/motor/dm_drv.c **** 	vel_tmp = float_to_uint(vel,  V_MIN,  V_MAX,  12);
- 1223              		.loc 1 215 12
+ 206:Module/motor/dm_drv.c **** 	vel_tmp = float_to_uint(vel, V_MIN, V_MAX, 12);
+ 1223              		.loc 1 206 12
  1224 003a 0C20     		movs	r0, #12
  1225 003c B3EE0E1A 		vmov.f32	s2, #3.0e+1
  1226 0040 FBEE0E0A 		vmov.f32	s1, #-3.0e+1
  1227 0044 97ED040A 		vldr.32	s0, [r7, #16]
  1228 0048 FFF7FEFF 		bl	float_to_uint
  1229 004c 0346     		mov	r3, r0
- 1230              		.loc 1 215 10 discriminator 1
+ 1230              		.loc 1 206 10 discriminator 1
  1231 004e 7B86     		strh	r3, [r7, #50]	@ movhi
- 216:Module/motor/dm_drv.c **** 	kp_tmp  = float_to_uint(kp,   KP_MIN, KP_MAX, 12);
- 1232              		.loc 1 216 12
+ 207:Module/motor/dm_drv.c **** 	kp_tmp = float_to_uint(kp, KP_MIN, KP_MAX, 12);
+ 1232              		.loc 1 207 11
  1233 0050 0C20     		movs	r0, #12
  1234 0052 9FED311A 		vldr.32	s2, .L36
  1235 0056 DFED310A 		vldr.32	s1, .L36+4
  1236 005a 97ED030A 		vldr.32	s0, [r7, #12]
  1237 005e FFF7FEFF 		bl	float_to_uint
  1238 0062 0346     		mov	r3, r0
- 1239              		.loc 1 216 10 discriminator 1
+ 1239              		.loc 1 207 9 discriminator 1
  1240 0064 3B86     		strh	r3, [r7, #48]	@ movhi
- 217:Module/motor/dm_drv.c **** 	kd_tmp  = float_to_uint(kd,   KD_MIN, KD_MAX, 12);
- 1241              		.loc 1 217 12
+ 208:Module/motor/dm_drv.c **** 	kd_tmp = float_to_uint(kd, KD_MIN, KD_MAX, 12);
+ 1241              		.loc 1 208 11
  1242 0066 0C20     		movs	r0, #12
  1243 0068 B1EE041A 		vmov.f32	s2, #5.0e+0
  1244 006c DFED2B0A 		vldr.32	s1, .L36+4
  1245 0070 97ED020A 		vldr.32	s0, [r7, #8]
  1246 0074 FFF7FEFF 		bl	float_to_uint
  1247 0078 0346     		mov	r3, r0
- 1248              		.loc 1 217 10 discriminator 1
+ 1248              		.loc 1 208 9 discriminator 1
  1249 007a FB85     		strh	r3, [r7, #46]	@ movhi
- 218:Module/motor/dm_drv.c **** 	tor_tmp = float_to_uint(torq, T_MIN,  T_MAX,  12);
- 1250              		.loc 1 218 12
+ 209:Module/motor/dm_drv.c **** 	tor_tmp = float_to_uint(torq, T_MIN, T_MAX, 12);
+ 1250              		.loc 1 209 12
  1251 007c 0C20     		movs	r0, #12
  1252 007e B2EE041A 		vmov.f32	s2, #1.0e+1
  1253 0082 FAEE040A 		vmov.f32	s1, #-1.0e+1
  1254 0086 97ED010A 		vldr.32	s0, [r7, #4]
  1255 008a FFF7FEFF 		bl	float_to_uint
  1256 008e 0346     		mov	r3, r0
- 1257              		.loc 1 218 10 discriminator 1
+ 1257              		.loc 1 209 10 discriminator 1
  1258 0090 BB85     		strh	r3, [r7, #44]	@ movhi
- 219:Module/motor/dm_drv.c **** 
- 220:Module/motor/dm_drv.c **** 	data[0] = (pos_tmp >> 8);
- 1259              		.loc 1 220 10
+ 210:Module/motor/dm_drv.c **** 
+ 211:Module/motor/dm_drv.c **** 	data[0] = (pos_tmp >> 8);
+ 1259              		.loc 1 211 10
  1260 0092 BB8E     		ldrh	r3, [r7, #52]
  1261 0094 1B0A     		lsrs	r3, r3, #8
  1262 0096 9BB2     		uxth	r3, r3
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 27
-
-
  1263 0098 DBB2     		uxtb	r3, r3
  1264 009a 87F82430 		strb	r3, [r7, #36]
- 221:Module/motor/dm_drv.c **** 	data[1] = pos_tmp;
- 1265              		.loc 1 221 10
+ 212:Module/motor/dm_drv.c **** 	data[1] = pos_tmp;
+ 1265              		.loc 1 212 10
  1266 009e BB8E     		ldrh	r3, [r7, #52]	@ movhi
  1267 00a0 DBB2     		uxtb	r3, r3
  1268 00a2 87F82530 		strb	r3, [r7, #37]
- 222:Module/motor/dm_drv.c **** 	data[2] = (vel_tmp >> 4);
- 1269              		.loc 1 222 10
+ 213:Module/motor/dm_drv.c **** 	data[2] = (vel_tmp >> 4);
+ 1269              		.loc 1 213 10
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 27
+
+
  1270 00a6 7B8E     		ldrh	r3, [r7, #50]
  1271 00a8 1B09     		lsrs	r3, r3, #4
  1272 00aa 9BB2     		uxth	r3, r3
  1273 00ac DBB2     		uxtb	r3, r3
  1274 00ae 87F82630 		strb	r3, [r7, #38]
- 223:Module/motor/dm_drv.c **** 	data[3] = ((vel_tmp&0xF)<<4)|(kp_tmp>>8);
- 1275              		.loc 1 223 30
+ 214:Module/motor/dm_drv.c **** 	data[3] = ((vel_tmp & 0xF) << 4) | (kp_tmp >> 8);
+ 1275              		.loc 1 214 35
  1276 00b2 7B8E     		ldrh	r3, [r7, #50]	@ movhi
  1277 00b4 5BB2     		sxtb	r3, r3
  1278 00b6 1B01     		lsls	r3, r3, #4
@@ -1588,22 +1579,22 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  1284 00c2 1343     		orrs	r3, r3, r2
  1285 00c4 5BB2     		sxtb	r3, r3
  1286 00c6 DBB2     		uxtb	r3, r3
- 1287              		.loc 1 223 10
+ 1287              		.loc 1 214 10
  1288 00c8 87F82730 		strb	r3, [r7, #39]
- 224:Module/motor/dm_drv.c **** 	data[4] = kp_tmp;
- 1289              		.loc 1 224 10
+ 215:Module/motor/dm_drv.c **** 	data[4] = kp_tmp;
+ 1289              		.loc 1 215 10
  1290 00cc 3B8E     		ldrh	r3, [r7, #48]	@ movhi
  1291 00ce DBB2     		uxtb	r3, r3
  1292 00d0 87F82830 		strb	r3, [r7, #40]
- 225:Module/motor/dm_drv.c **** 	data[5] = (kd_tmp >> 4);
- 1293              		.loc 1 225 10
+ 216:Module/motor/dm_drv.c **** 	data[5] = (kd_tmp >> 4);
+ 1293              		.loc 1 216 10
  1294 00d4 FB8D     		ldrh	r3, [r7, #46]
  1295 00d6 1B09     		lsrs	r3, r3, #4
  1296 00d8 9BB2     		uxth	r3, r3
  1297 00da DBB2     		uxtb	r3, r3
  1298 00dc 87F82930 		strb	r3, [r7, #41]
- 226:Module/motor/dm_drv.c **** 	data[6] = ((kd_tmp&0xF)<<4)|(tor_tmp>>8);
- 1299              		.loc 1 226 29
+ 217:Module/motor/dm_drv.c **** 	data[6] = ((kd_tmp & 0xF) << 4) | (tor_tmp >> 8);
+ 1299              		.loc 1 217 34
  1300 00e0 FB8D     		ldrh	r3, [r7, #46]	@ movhi
  1301 00e2 5BB2     		sxtb	r3, r3
  1302 00e4 1B01     		lsls	r3, r3, #4
@@ -1615,26 +1606,26 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  1308 00f0 1343     		orrs	r3, r3, r2
  1309 00f2 5BB2     		sxtb	r3, r3
  1310 00f4 DBB2     		uxtb	r3, r3
- 1311              		.loc 1 226 10
+ 1311              		.loc 1 217 10
  1312 00f6 87F82A30 		strb	r3, [r7, #42]
- 227:Module/motor/dm_drv.c **** 	data[7] = tor_tmp;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 28
-
-
- 1313              		.loc 1 227 10
+ 218:Module/motor/dm_drv.c **** 	data[7] = tor_tmp;
+ 1313              		.loc 1 218 10
  1314 00fa BB8D     		ldrh	r3, [r7, #44]	@ movhi
  1315 00fc DBB2     		uxtb	r3, r3
  1316 00fe 87F82B30 		strb	r3, [r7, #43]
- 228:Module/motor/dm_drv.c **** 	
- 229:Module/motor/dm_drv.c **** 	canx_send_data(hcan, id, data, 8);
- 1317              		.loc 1 229 2
+ 219:Module/motor/dm_drv.c **** 
+ 220:Module/motor/dm_drv.c **** 	canx_send_data(hcan, id, data, 8);
+ 1317              		.loc 1 220 2
  1318 0102 07F12402 		add	r2, r7, #36
  1319 0106 F98E     		ldrh	r1, [r7, #54]
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 28
+
+
  1320 0108 0823     		movs	r3, #8
  1321 010a F869     		ldr	r0, [r7, #28]
  1322 010c FFF7FEFF 		bl	canx_send_data
- 230:Module/motor/dm_drv.c **** }
- 1323              		.loc 1 230 1
+ 221:Module/motor/dm_drv.c **** }
+ 1323              		.loc 1 221 1
  1324 0110 00BF     		nop
  1325 0112 3837     		adds	r7, r7, #56
  1326              	.LCFI72:
@@ -1659,11 +1650,10 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  1346              		.thumb_func
  1348              	pos_speed_ctrl:
  1349              	.LFB148:
- 231:Module/motor/dm_drv.c **** 
- 232:Module/motor/dm_drv.c **** 
- 233:Module/motor/dm_drv.c **** void pos_speed_ctrl(hcan_t* hcan,uint16_t motor_id, float pos, float vel)
- 234:Module/motor/dm_drv.c **** {
- 1350              		.loc 1 234 1
+ 222:Module/motor/dm_drv.c **** 
+ 223:Module/motor/dm_drv.c **** void pos_speed_ctrl(hcan_t *hcan, uint16_t motor_id, float pos, float vel)
+ 224:Module/motor/dm_drv.c **** {
+ 1350              		.loc 1 224 1
  1351              		.cfi_startproc
  1352              		@ args = 0, pretend = 0, frame = 40
  1353              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -1678,88 +1668,88 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  1362 0004 00AF     		add	r7, sp, #0
  1363              	.LCFI76:
  1364              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 29
-
-
  1365 0006 F860     		str	r0, [r7, #12]
  1366 0008 0B46     		mov	r3, r1
  1367 000a 87ED010A 		vstr.32	s0, [r7, #4]
  1368 000e C7ED000A 		vstr.32	s1, [r7]
  1369 0012 7B81     		strh	r3, [r7, #10]	@ movhi
- 235:Module/motor/dm_drv.c **** 	uint16_t id;
- 236:Module/motor/dm_drv.c **** 	uint8_t *pbuf, *vbuf;
- 237:Module/motor/dm_drv.c **** 	uint8_t data[8];
- 238:Module/motor/dm_drv.c **** 	
- 239:Module/motor/dm_drv.c **** 	id = motor_id + POS_MODE;
- 1370              		.loc 1 239 5
+ 225:Module/motor/dm_drv.c **** 	uint16_t id;
+ 226:Module/motor/dm_drv.c **** 	uint8_t *pbuf, *vbuf;
+ 227:Module/motor/dm_drv.c **** 	uint8_t data[8];
+ 228:Module/motor/dm_drv.c **** 
+ 229:Module/motor/dm_drv.c **** 	id = motor_id + POS_MODE;
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 29
+
+
+ 1370              		.loc 1 229 5
  1371 0014 7B89     		ldrh	r3, [r7, #10]	@ movhi
  1372 0016 03F58073 		add	r3, r3, #256
  1373 001a FB84     		strh	r3, [r7, #38]	@ movhi
- 240:Module/motor/dm_drv.c **** 	pbuf=(uint8_t*)&pos;
- 1374              		.loc 1 240 6
+ 230:Module/motor/dm_drv.c **** 	pbuf = (uint8_t *)&pos;
+ 1374              		.loc 1 230 7
  1375 001c 3B1D     		adds	r3, r7, #4
  1376 001e 3B62     		str	r3, [r7, #32]
- 241:Module/motor/dm_drv.c **** 	vbuf=(uint8_t*)&vel;
- 1377              		.loc 1 241 6
+ 231:Module/motor/dm_drv.c **** 	vbuf = (uint8_t *)&vel;
+ 1377              		.loc 1 231 7
  1378 0020 3B46     		mov	r3, r7
  1379 0022 FB61     		str	r3, [r7, #28]
- 242:Module/motor/dm_drv.c **** 	
- 243:Module/motor/dm_drv.c **** 	data[0] = *pbuf;
- 1380              		.loc 1 243 12
+ 232:Module/motor/dm_drv.c **** 
+ 233:Module/motor/dm_drv.c **** 	data[0] = *pbuf;
+ 1380              		.loc 1 233 12
  1381 0024 3B6A     		ldr	r3, [r7, #32]
  1382 0026 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1383              		.loc 1 243 10
+ 1383              		.loc 1 233 10
  1384 0028 3B75     		strb	r3, [r7, #20]
- 244:Module/motor/dm_drv.c **** 	data[1] = *(pbuf+1);
- 1385              		.loc 1 244 10
+ 234:Module/motor/dm_drv.c **** 	data[1] = *(pbuf + 1);
+ 1385              		.loc 1 234 10
  1386 002a 3B6A     		ldr	r3, [r7, #32]
  1387 002c 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
  1388 002e 7B75     		strb	r3, [r7, #21]
- 245:Module/motor/dm_drv.c **** 	data[2] = *(pbuf+2);
- 1389              		.loc 1 245 10
+ 235:Module/motor/dm_drv.c **** 	data[2] = *(pbuf + 2);
+ 1389              		.loc 1 235 10
  1390 0030 3B6A     		ldr	r3, [r7, #32]
  1391 0032 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
  1392 0034 BB75     		strb	r3, [r7, #22]
- 246:Module/motor/dm_drv.c **** 	data[3] = *(pbuf+3);
- 1393              		.loc 1 246 10
+ 236:Module/motor/dm_drv.c **** 	data[3] = *(pbuf + 3);
+ 1393              		.loc 1 236 10
  1394 0036 3B6A     		ldr	r3, [r7, #32]
  1395 0038 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
  1396 003a FB75     		strb	r3, [r7, #23]
- 247:Module/motor/dm_drv.c **** 
- 248:Module/motor/dm_drv.c **** 	data[4] = *vbuf;
- 1397              		.loc 1 248 12
+ 237:Module/motor/dm_drv.c **** 
+ 238:Module/motor/dm_drv.c **** 	data[4] = *vbuf;
+ 1397              		.loc 1 238 12
  1398 003c FB69     		ldr	r3, [r7, #28]
  1399 003e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1400              		.loc 1 248 10
+ 1400              		.loc 1 238 10
  1401 0040 3B76     		strb	r3, [r7, #24]
- 249:Module/motor/dm_drv.c **** 	data[5] = *(vbuf+1);
- 1402              		.loc 1 249 10
+ 239:Module/motor/dm_drv.c **** 	data[5] = *(vbuf + 1);
+ 1402              		.loc 1 239 10
  1403 0042 FB69     		ldr	r3, [r7, #28]
  1404 0044 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
  1405 0046 7B76     		strb	r3, [r7, #25]
- 250:Module/motor/dm_drv.c **** 	data[6] = *(vbuf+2);
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 30
-
-
- 1406              		.loc 1 250 10
+ 240:Module/motor/dm_drv.c **** 	data[6] = *(vbuf + 2);
+ 1406              		.loc 1 240 10
  1407 0048 FB69     		ldr	r3, [r7, #28]
  1408 004a 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
  1409 004c BB76     		strb	r3, [r7, #26]
- 251:Module/motor/dm_drv.c **** 	data[7] = *(vbuf+3);
- 1410              		.loc 1 251 10
+ 241:Module/motor/dm_drv.c **** 	data[7] = *(vbuf + 3);
+ 1410              		.loc 1 241 10
  1411 004e FB69     		ldr	r3, [r7, #28]
  1412 0050 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
  1413 0052 FB76     		strb	r3, [r7, #27]
- 252:Module/motor/dm_drv.c **** 	
- 253:Module/motor/dm_drv.c **** 	canx_send_data(hcan, id, data, 8);
- 1414              		.loc 1 253 2
+ 242:Module/motor/dm_drv.c **** 
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 30
+
+
+ 243:Module/motor/dm_drv.c **** 	canx_send_data(hcan, id, data, 8);
+ 1414              		.loc 1 243 2
  1415 0054 07F11402 		add	r2, r7, #20
  1416 0058 F98C     		ldrh	r1, [r7, #38]
  1417 005a 0823     		movs	r3, #8
  1418 005c F868     		ldr	r0, [r7, #12]
  1419 005e FFF7FEFF 		bl	canx_send_data
- 254:Module/motor/dm_drv.c **** }
- 1420              		.loc 1 254 1
+ 244:Module/motor/dm_drv.c **** }
+ 1420              		.loc 1 244 1
  1421 0062 00BF     		nop
  1422 0064 2837     		adds	r7, r7, #40
  1423              	.LCFI77:
@@ -1779,11 +1769,10 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  1438              		.thumb_func
  1440              	speed_ctrl:
  1441              	.LFB149:
- 255:Module/motor/dm_drv.c **** 
- 256:Module/motor/dm_drv.c **** 
- 257:Module/motor/dm_drv.c **** void speed_ctrl(hcan_t* hcan,uint16_t motor_id, float vel)
- 258:Module/motor/dm_drv.c **** {
- 1442              		.loc 1 258 1
+ 245:Module/motor/dm_drv.c **** 
+ 246:Module/motor/dm_drv.c **** void speed_ctrl(hcan_t *hcan, uint16_t motor_id, float vel)
+ 247:Module/motor/dm_drv.c **** {
+ 1442              		.loc 1 247 1
  1443              		.cfi_startproc
  1444              		@ args = 0, pretend = 0, frame = 32
  1445              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -1798,58 +1787,58 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  1454 0004 00AF     		add	r7, sp, #0
  1455              	.LCFI81:
  1456              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 31
-
-
  1457 0006 F860     		str	r0, [r7, #12]
  1458 0008 0B46     		mov	r3, r1
  1459 000a 87ED010A 		vstr.32	s0, [r7, #4]
  1460 000e 7B81     		strh	r3, [r7, #10]	@ movhi
- 259:Module/motor/dm_drv.c **** 	uint16_t id;
- 260:Module/motor/dm_drv.c **** 	uint8_t *vbuf;
- 261:Module/motor/dm_drv.c **** 	uint8_t data[4];
- 262:Module/motor/dm_drv.c **** 	
- 263:Module/motor/dm_drv.c **** 	id = motor_id + SPEED_MODE;
- 1461              		.loc 1 263 5
+ 248:Module/motor/dm_drv.c **** 	uint16_t id;
+ 249:Module/motor/dm_drv.c **** 	uint8_t *vbuf;
+ 250:Module/motor/dm_drv.c **** 	uint8_t data[4];
+ 251:Module/motor/dm_drv.c **** 
+ 252:Module/motor/dm_drv.c **** 	id = motor_id + SPEED_MODE;
+ 1461              		.loc 1 252 5
  1462 0010 7B89     		ldrh	r3, [r7, #10]	@ movhi
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 31
+
+
  1463 0012 03F50073 		add	r3, r3, #512
  1464 0016 FB83     		strh	r3, [r7, #30]	@ movhi
- 264:Module/motor/dm_drv.c **** 	vbuf=(uint8_t*)&vel;
- 1465              		.loc 1 264 6
+ 253:Module/motor/dm_drv.c **** 	vbuf = (uint8_t *)&vel;
+ 1465              		.loc 1 253 7
  1466 0018 3B1D     		adds	r3, r7, #4
  1467 001a BB61     		str	r3, [r7, #24]
- 265:Module/motor/dm_drv.c **** 	
- 266:Module/motor/dm_drv.c **** 	data[0] = *vbuf;
- 1468              		.loc 1 266 12
+ 254:Module/motor/dm_drv.c **** 
+ 255:Module/motor/dm_drv.c **** 	data[0] = *vbuf;
+ 1468              		.loc 1 255 12
  1469 001c BB69     		ldr	r3, [r7, #24]
  1470 001e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 1471              		.loc 1 266 10
+ 1471              		.loc 1 255 10
  1472 0020 3B75     		strb	r3, [r7, #20]
- 267:Module/motor/dm_drv.c **** 	data[1] = *(vbuf+1);
- 1473              		.loc 1 267 10
+ 256:Module/motor/dm_drv.c **** 	data[1] = *(vbuf + 1);
+ 1473              		.loc 1 256 10
  1474 0022 BB69     		ldr	r3, [r7, #24]
  1475 0024 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
  1476 0026 7B75     		strb	r3, [r7, #21]
- 268:Module/motor/dm_drv.c **** 	data[2] = *(vbuf+2);
- 1477              		.loc 1 268 10
+ 257:Module/motor/dm_drv.c **** 	data[2] = *(vbuf + 2);
+ 1477              		.loc 1 257 10
  1478 0028 BB69     		ldr	r3, [r7, #24]
  1479 002a 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
  1480 002c BB75     		strb	r3, [r7, #22]
- 269:Module/motor/dm_drv.c **** 	data[3] = *(vbuf+3);
- 1481              		.loc 1 269 10
+ 258:Module/motor/dm_drv.c **** 	data[3] = *(vbuf + 3);
+ 1481              		.loc 1 258 10
  1482 002e BB69     		ldr	r3, [r7, #24]
  1483 0030 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
  1484 0032 FB75     		strb	r3, [r7, #23]
- 270:Module/motor/dm_drv.c **** 	
- 271:Module/motor/dm_drv.c **** 	canx_send_data(hcan, id, data, 4);
- 1485              		.loc 1 271 2
+ 259:Module/motor/dm_drv.c **** 
+ 260:Module/motor/dm_drv.c **** 	canx_send_data(hcan, id, data, 4);
+ 1485              		.loc 1 260 2
  1486 0034 07F11402 		add	r2, r7, #20
  1487 0038 F98B     		ldrh	r1, [r7, #30]
  1488 003a 0423     		movs	r3, #4
  1489 003c F868     		ldr	r0, [r7, #12]
  1490 003e FFF7FEFF 		bl	canx_send_data
- 272:Module/motor/dm_drv.c **** }
- 1491              		.loc 1 272 1
+ 261:Module/motor/dm_drv.c **** }
+ 1491              		.loc 1 261 1
  1492 0042 00BF     		nop
  1493 0044 2037     		adds	r7, r7, #32
  1494              	.LCFI82:
@@ -1858,9 +1847,6 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  1497              	.LCFI83:
  1498              		.cfi_def_cfa_register 13
  1499              		@ sp needed
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 32
-
-
  1500 0048 80BD     		pop	{r7, pc}
  1501              		.cfi_endproc
  1502              	.LFE149:
@@ -1872,46 +1858,49 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 1
  1509              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
  1510              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
  1511              		.file 7 "Bsp/bsp_can.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 32
+
+
  1512              		.file 8 "Module/motor/dm_drv.h"
  1513              		.file 9 "driver/can_driver.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 33
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 33
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 dm_drv.c
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:21     .text.dm4310_enable:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:27     .text.dm4310_enable:00000000 dm4310_enable
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:878    .text.enable_motor_mode:00000000 enable_motor_mode
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:112    .text.dm4310_disable:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:118    .text.dm4310_disable:00000000 dm4310_disable
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:955    .text.disable_motor_mode:00000000 disable_motor_mode
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:394    .text.dm4310_clear_para:00000000 dm4310_clear_para
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:204    .text.dm4310_ctrl_send:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:210    .text.dm4310_ctrl_send:00000000 dm4310_ctrl_send
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1186   .text.mit_ctrl:00000000 mit_ctrl
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1348   .text.pos_speed_ctrl:00000000 pos_speed_ctrl
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1440   .text.speed_ctrl:00000000 speed_ctrl
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:316    .text.dm4310_set:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:322    .text.dm4310_set:00000000 dm4310_set
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:388    .text.dm4310_clear_para:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:470    .text.dm4310_clear_err:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:476    .text.dm4310_clear_err:00000000 dm4310_clear_err
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1109   .text.clear_err:00000000 clear_err
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:561    .text.dm4310_fbdata:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:567    .text.dm4310_fbdata:00000000 dm4310_fbdata
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:804    .text.uint_to_float:00000000 uint_to_float
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:723    .text.float_to_uint:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:729    .text.float_to_uint:00000000 float_to_uint
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:798    .text.uint_to_float:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:872    .text.enable_motor_mode:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:949    .text.disable_motor_mode:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1026   .text.save_pos_zero:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1032   .text.save_pos_zero:00000000 save_pos_zero
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1103   .text.clear_err:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1180   .text.mit_ctrl:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1336   .text.mit_ctrl:00000118 $d
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1342   .text.pos_speed_ctrl:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1434   .text.speed_ctrl:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:21     .text.dm4310_enable:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:27     .text.dm4310_enable:00000000 dm4310_enable
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:878    .text.enable_motor_mode:00000000 enable_motor_mode
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:112    .text.dm4310_disable:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:118    .text.dm4310_disable:00000000 dm4310_disable
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:955    .text.disable_motor_mode:00000000 disable_motor_mode
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:394    .text.dm4310_clear_para:00000000 dm4310_clear_para
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:204    .text.dm4310_ctrl_send:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:210    .text.dm4310_ctrl_send:00000000 dm4310_ctrl_send
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:1186   .text.mit_ctrl:00000000 mit_ctrl
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:1348   .text.pos_speed_ctrl:00000000 pos_speed_ctrl
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:1440   .text.speed_ctrl:00000000 speed_ctrl
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:316    .text.dm4310_set:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:322    .text.dm4310_set:00000000 dm4310_set
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:388    .text.dm4310_clear_para:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:470    .text.dm4310_clear_err:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:476    .text.dm4310_clear_err:00000000 dm4310_clear_err
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:1109   .text.clear_err:00000000 clear_err
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:561    .text.dm4310_fbdata:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:567    .text.dm4310_fbdata:00000000 dm4310_fbdata
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:804    .text.uint_to_float:00000000 uint_to_float
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:723    .text.float_to_uint:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:729    .text.float_to_uint:00000000 float_to_uint
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:798    .text.uint_to_float:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:872    .text.enable_motor_mode:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:949    .text.disable_motor_mode:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:1026   .text.save_pos_zero:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:1032   .text.save_pos_zero:00000000 save_pos_zero
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:1103   .text.clear_err:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:1180   .text.mit_ctrl:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:1336   .text.mit_ctrl:00000118 $d
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:1342   .text.pos_speed_ctrl:00000000 $t
+C:\Users\30514\AppData\Local\Temp\cce6J8lz.s:1434   .text.speed_ctrl:00000000 $t
                            .group:00000000 wm4.0.3e68c699c40fadf7e6c1e499de837233
                            .group:00000000 wm4.stm32f4xx_hal_conf.h.25.a9a6e27d8b41172b5af7d7631d763ee0
                            .group:00000000 wm4.stm32f4xx.h.38.63e3ea23bd63a94457417730025259b6
@@ -1934,7 +1923,7 @@ C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s:1434   .text.speed_ctrl:00000000 $t
                            .group:00000000 wm4.stm32f4xx_hal_def.h.58.3cb484e92e5ccf2e55312a4714e27917
                            .group:00000000 wm4.stm32f4xx_hal_rcc_ex.h.20.9b6e314009d4800dd71c0ec1c264a1ea
                            .group:00000000 wm4.stm32f4xx_hal_rcc.h.106.0887cf5d985ae88e345b0aed0ceb4729
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccRpd3gu.s 			page 34
+ARM GAS  C:\Users\30514\AppData\Local\Temp\cce6J8lz.s 			page 34
 
 
                            .group:00000000 wm4.stm32f4xx_hal_gpio.h.21.22da6a14b6049d6ac156577be74df1d7

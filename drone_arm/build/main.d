@@ -25,7 +25,8 @@ build/main.o: Core/Src/main.c Core/Inc/main.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h Core/Inc/can.h \
  Core/Inc/main.h Core/Inc/dma.h Core/Inc/usart.h Core/Inc/gpio.h \
- Module/scheduler/scheduler.h Module/config/mcu_config.h
+ Module/scheduler/scheduler.h Module/config/mcu_config.h \
+ Module/motor/dm_ctrl.h Module/motor/dm_drv.h Bsp/bsp_can.h
 Core/Inc/main.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 Core/Inc/stm32f4xx_hal_conf.h:
@@ -61,3 +62,6 @@ Core/Inc/usart.h:
 Core/Inc/gpio.h:
 Module/scheduler/scheduler.h:
 Module/config/mcu_config.h:
+Module/motor/dm_ctrl.h:
+Module/motor/dm_drv.h:
+Bsp/bsp_can.h:

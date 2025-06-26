@@ -27,6 +27,8 @@
 /* USER CODE BEGIN Includes */
 #include "scheduler.h"
 #include "mcu_config.h"
+#include "stm32f4xx_hal_can.h"
+#include "dm_ctrl.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,6 +98,7 @@ int main(void)
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
   MCU_Init();
+  
   /* USER CODE END 2 */
 
   /* Infinite loop */

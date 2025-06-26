@@ -2,7 +2,7 @@
 #define __ARM_CONTROL_H_
 
 #include <stdbool.h>
-#include "coordinate_mapping.h"  // 包含坐标映射头文件
+#include "coordinate_mapping.h" // 包含坐标映射头文件
 
 // 初始化函数
 void ArmControl_Init(void);

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccabBB2v.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -47,7 +47,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 1
    1:Module/arm_control/arm_control.c **** #include "arm_control.h"
    2:Module/arm_control/arm_control.c **** #include "main.h"
    3:Module/arm_control/arm_control.c **** #include "math.h"
-   4:Module/arm_control/arm_control.c **** #include "remote_control.h"  // 包含remote_control_active声明
+   4:Module/arm_control/arm_control.c **** #include "remote_control.h" // 包含remote_control_active声明
    5:Module/arm_control/arm_control.c **** #include "dm_ctrl.h"
    6:Module/arm_control/arm_control.c **** #include "coordinate_mapping.h"
    7:Module/arm_control/arm_control.c **** 
@@ -58,22 +58,24 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 1
   12:Module/arm_control/arm_control.c **** 
   13:Module/arm_control/arm_control.c **** // 角度转换宏
   14:Module/arm_control/arm_control.c **** #define DEG_TO_RAD(x) ((x) * M_PI / 180.0f)
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccabBB2v.s 			page 2
 
 
   15:Module/arm_control/arm_control.c **** 
-  16:Module/arm_control/arm_control.c **** // 当前目标角度
-  17:Module/arm_control/arm_control.c **** static JointAngles target_angles;
-  18:Module/arm_control/arm_control.c **** // 当前执行角度
-  19:Module/arm_control/arm_control.c **** static JointAngles current_angles;
-  20:Module/arm_control/arm_control.c **** 
-  21:Module/arm_control/arm_control.c **** // 最大角度变化率 (约5度/控制周期)
-  22:Module/arm_control/arm_control.c **** static const float MAX_ANGLE_STEP = DEG_TO_RAD(5.0f);
-  23:Module/arm_control/arm_control.c **** 
-  24:Module/arm_control/arm_control.c **** // 初始化函数
-  25:Module/arm_control/arm_control.c **** void ArmControl_Init(void) 
-  26:Module/arm_control/arm_control.c **** {
-  47              		.loc 1 26 1
+  16:Module/arm_control/arm_control.c **** extern motor_t motor[num];
+  17:Module/arm_control/arm_control.c **** 
+  18:Module/arm_control/arm_control.c **** // 当前目标角度
+  19:Module/arm_control/arm_control.c **** static JointAngles target_angles;
+  20:Module/arm_control/arm_control.c **** // 当前执行角度
+  21:Module/arm_control/arm_control.c **** static JointAngles current_angles;
+  22:Module/arm_control/arm_control.c **** 
+  23:Module/arm_control/arm_control.c **** // 最大角度变化率 (约5度/控制周期)
+  24:Module/arm_control/arm_control.c **** static const float MAX_ANGLE_STEP = DEG_TO_RAD(5.0f);
+  25:Module/arm_control/arm_control.c **** 
+  26:Module/arm_control/arm_control.c **** // 初始化函数
+  27:Module/arm_control/arm_control.c **** void ArmControl_Init(void)
+  28:Module/arm_control/arm_control.c **** {
+  47              		.loc 1 28 1
   48              		.cfi_startproc
   49              		@ args = 0, pretend = 0, frame = 0
   50              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -85,397 +87,430 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 1
   56 0002 00AF     		add	r7, sp, #0
   57              	.LCFI1:
   58              		.cfi_def_cfa_register 7
-  27:Module/arm_control/arm_control.c ****     // 设置工作空间范围（使用默认值）
-  28:Module/arm_control/arm_control.c ****     Set_Joint_Ranges(
-  59              		.loc 1 28 5
-  60 0004 DFED111A 		vldr.32	s3, .L2
-  61 0008 9FED111A 		vldr.32	s2, .L2+4
-  62 000c DFED110A 		vldr.32	s1, .L2+8
-  63 0010 9FED110A 		vldr.32	s0, .L2+12
+  29:Module/arm_control/arm_control.c ****     // 设置工作空间范围（使用默认值）
+  30:Module/arm_control/arm_control.c ****     Set_Joint_Ranges(
+  59              		.loc 1 30 5
+  60 0004 DFED151A 		vldr.32	s3, .L2
+  61 0008 9FED151A 		vldr.32	s2, .L2+4
+  62 000c DFED150A 		vldr.32	s1, .L2+8
+  63 0010 9FED150A 		vldr.32	s0, .L2+12
   64 0014 FFF7FEFF 		bl	Set_Joint_Ranges
-  29:Module/arm_control/arm_control.c ****         -(30.0f/180.0f)*M_PI,          // 关节1最小角度 -180°
-  30:Module/arm_control/arm_control.c ****         0,           // 关节1最大角度 180°
-  31:Module/arm_control/arm_control.c ****         -(110.0f/180.0f)*M_PI,      // 关节2最小角度 -135°
-  32:Module/arm_control/arm_control.c ****         -(60.0f/180.0f)*M_PI         // 关节2最大角度 -45°
-  33:Module/arm_control/arm_control.c ****     );
-  34:Module/arm_control/arm_control.c ****     
-  35:Module/arm_control/arm_control.c ****     // 设置摇杆通道（使用默认配置）
-  36:Module/arm_control/arm_control.c ****     Set_Stick_Channels(1, 2);
-  65              		.loc 1 36 5
+  31:Module/arm_control/arm_control.c ****         (30.0f / 180.0f) * M_PI,   // 关节1最小角度 -180°
+  32:Module/arm_control/arm_control.c ****         0,                         // 关节1最大角度 180°
+  33:Module/arm_control/arm_control.c ****         -(110.0f / 180.0f) * M_PI, // 关节2最小角度 -135°
+  34:Module/arm_control/arm_control.c ****         -(60.0f / 180.0f) * M_PI   // 关节2最大角度 -45°
+  35:Module/arm_control/arm_control.c ****     );
+  36:Module/arm_control/arm_control.c **** 
+  37:Module/arm_control/arm_control.c ****     // 设置摇杆通道（使用默认配置）
+  38:Module/arm_control/arm_control.c ****     Set_Stick_Channels(1, 2);
+  65              		.loc 1 38 5
   66 0018 0221     		movs	r1, #2
   67 001a 0120     		movs	r0, #1
   68 001c FFF7FEFF 		bl	Set_Stick_Channels
-  37:Module/arm_control/arm_control.c ****     
-  38:Module/arm_control/arm_control.c ****     // 初始化电机
-  39:Module/arm_control/arm_control.c ****     dm4310_motor_init();
-  69              		.loc 1 39 5
-  70 0020 FFF7FEFF 		bl	dm4310_motor_init
-  40:Module/arm_control/arm_control.c ****     
-  41:Module/arm_control/arm_control.c ****     // 启用电机控制
-  42:Module/arm_control/arm_control.c ****     ctrl_enable(ALL_MOTORS);
-  71              		.loc 1 42 5
-  72 0024 0320     		movs	r0, #3
-  73 0026 FFF7FEFF 		bl	ctrl_enable
-  43:Module/arm_control/arm_control.c ****     
-  44:Module/arm_control/arm_control.c ****     // 初始化角度为安全位置
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 3
+  39:Module/arm_control/arm_control.c **** 
+  40:Module/arm_control/arm_control.c ****     motor[Motor1].ctrl.mode = 0; // MIT模式
+  69              		.loc 1 40 29
+  70 0020 124B     		ldr	r3, .L2+16
+  71 0022 0022     		movs	r2, #0
+  72 0024 83F83C20 		strb	r2, [r3, #60]
+  41:Module/arm_control/arm_control.c ****     motor[Motor2].ctrl.mode = 0; // MIT模式
+  73              		.loc 1 41 29
+  74 0028 104B     		ldr	r3, .L2+16
+  75 002a 0022     		movs	r2, #0
+  76 002c 83F8A820 		strb	r2, [r3, #168]
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccabBB2v.s 			page 3
 
 
-  45:Module/arm_control/arm_control.c ****     target_angles.theta1 = (-15/180)*M_PI;
-  74              		.loc 1 45 26
-  75 002a 0C4B     		ldr	r3, .L2+16
-  76 002c 4FF00002 		mov	r2, #0
-  77 0030 1A60     		str	r2, [r3]	@ float
-  46:Module/arm_control/arm_control.c ****     target_angles.theta2 = -M_PI/2;  // -90度
-  78              		.loc 1 46 26
-  79 0032 0A4B     		ldr	r3, .L2+16
-  80 0034 0A4A     		ldr	r2, .L2+20
-  81 0036 5A60     		str	r2, [r3, #4]	@ float
-  47:Module/arm_control/arm_control.c ****     target_angles.valid = true;
-  82              		.loc 1 47 25
-  83 0038 084B     		ldr	r3, .L2+16
-  84 003a 0122     		movs	r2, #1
-  85 003c 1A72     		strb	r2, [r3, #8]
-  48:Module/arm_control/arm_control.c ****     current_angles = target_angles;  // 初始当前角度等于目标角度
-  86              		.loc 1 48 20
-  87 003e 094B     		ldr	r3, .L2+24
-  88 0040 064A     		ldr	r2, .L2+16
-  89 0042 07CA     		ldm	r2, {r0, r1, r2}
-  90 0044 83E80700 		stm	r3, {r0, r1, r2}
-  49:Module/arm_control/arm_control.c **** }
-  91              		.loc 1 49 1
-  92 0048 00BF     		nop
-  93 004a 80BD     		pop	{r7, pc}
-  94              	.L3:
-  95              		.align	2
-  96              	.L2:
-  97 004c 920A86BF 		.word	-1081734510
-  98 0050 0BBEF5BF 		.word	-1074414069
-  99 0054 00000000 		.word	0
- 100 0058 920A06BF 		.word	-1090123118
- 101 005c 00000000 		.word	target_angles
- 102 0060 DB0FC9BF 		.word	-1077342245
- 103 0064 00000000 		.word	current_angles
- 104              		.cfi_endproc
- 105              	.LFE134:
- 107              		.section	.text.Apply_Smoothing,"ax",%progbits
- 108              		.align	1
- 109              		.syntax unified
- 110              		.thumb
- 111              		.thumb_func
- 113              	Apply_Smoothing:
- 114              	.LFB135:
-  50:Module/arm_control/arm_control.c **** 
-  51:Module/arm_control/arm_control.c **** // 应用平滑处理
-  52:Module/arm_control/arm_control.c **** static void Apply_Smoothing(void)
-  53:Module/arm_control/arm_control.c **** {
- 115              		.loc 1 53 1
- 116              		.cfi_startproc
- 117              		@ args = 0, pretend = 0, frame = 8
- 118              		@ frame_needed = 1, uses_anonymous_args = 0
- 119 0000 80B5     		push	{r7, lr}
- 120              	.LCFI2:
- 121              		.cfi_def_cfa_offset 8
- 122              		.cfi_offset 7, -8
- 123              		.cfi_offset 14, -4
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 4
+  42:Module/arm_control/arm_control.c **** 
+  43:Module/arm_control/arm_control.c ****     // 初始化电机
+  44:Module/arm_control/arm_control.c ****     dm4310_motor_init();
+  77              		.loc 1 44 5
+  78 0030 FFF7FEFF 		bl	dm4310_motor_init
+  45:Module/arm_control/arm_control.c **** 
+  46:Module/arm_control/arm_control.c ****     // 启用电机控制
+  47:Module/arm_control/arm_control.c ****     ctrl_enable(ALL_MOTORS);
+  79              		.loc 1 47 5
+  80 0034 0320     		movs	r0, #3
+  81 0036 FFF7FEFF 		bl	ctrl_enable
+  48:Module/arm_control/arm_control.c **** 
+  49:Module/arm_control/arm_control.c ****     // 初始化角度为安全位置
+  50:Module/arm_control/arm_control.c ****     target_angles.theta1 = (15 / 180) * M_PI;
+  82              		.loc 1 50 26
+  83 003a 0D4B     		ldr	r3, .L2+20
+  84 003c 4FF00002 		mov	r2, #0
+  85 0040 1A60     		str	r2, [r3]	@ float
+  51:Module/arm_control/arm_control.c ****     target_angles.theta2 = -M_PI / 2; // -90度
+  86              		.loc 1 51 26
+  87 0042 0B4B     		ldr	r3, .L2+20
+  88 0044 0B4A     		ldr	r2, .L2+24
+  89 0046 5A60     		str	r2, [r3, #4]	@ float
+  52:Module/arm_control/arm_control.c ****     target_angles.valid = true;
+  90              		.loc 1 52 25
+  91 0048 094B     		ldr	r3, .L2+20
+  92 004a 0122     		movs	r2, #1
+  93 004c 1A72     		strb	r2, [r3, #8]
+  53:Module/arm_control/arm_control.c ****     current_angles = target_angles; // 初始当前角度等于目标角度
+  94              		.loc 1 53 20
+  95 004e 0A4B     		ldr	r3, .L2+28
+  96 0050 074A     		ldr	r2, .L2+20
+  97 0052 07CA     		ldm	r2, {r0, r1, r2}
+  98 0054 83E80700 		stm	r3, {r0, r1, r2}
+  54:Module/arm_control/arm_control.c **** }
+  99              		.loc 1 54 1
+ 100 0058 00BF     		nop
+ 101 005a 80BD     		pop	{r7, pc}
+ 102              	.L3:
+ 103              		.align	2
+ 104              	.L2:
+ 105 005c 920A86BF 		.word	-1081734510
+ 106 0060 0BBEF5BF 		.word	-1074414069
+ 107 0064 00000000 		.word	0
+ 108 0068 920A063F 		.word	1057360530
+ 109 006c 00000000 		.word	motor
+ 110 0070 00000000 		.word	target_angles
+ 111 0074 DB0FC9BF 		.word	-1077342245
+ 112 0078 00000000 		.word	current_angles
+ 113              		.cfi_endproc
+ 114              	.LFE134:
+ 116              		.section	.text.Apply_Smoothing,"ax",%progbits
+ 117              		.align	1
+ 118              		.syntax unified
+ 119              		.thumb
+ 120              		.thumb_func
+ 122              	Apply_Smoothing:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccabBB2v.s 			page 4
 
 
- 124 0002 2DED028B 		vpush.64	{d8}
- 125              	.LCFI3:
- 126              		.cfi_def_cfa_offset 16
- 127              		.cfi_offset 80, -16
- 128              		.cfi_offset 81, -12
- 129 0006 82B0     		sub	sp, sp, #8
- 130              	.LCFI4:
- 131              		.cfi_def_cfa_offset 24
- 132 0008 00AF     		add	r7, sp, #0
- 133              	.LCFI5:
- 134              		.cfi_def_cfa_register 7
-  54:Module/arm_control/arm_control.c ****     // 关节1平滑
-  55:Module/arm_control/arm_control.c ****     float delta1 = target_angles.theta1 - current_angles.theta1;
- 135              		.loc 1 55 33
- 136 000a 2F4B     		ldr	r3, .L16
- 137 000c 93ED007A 		vldr.32	s14, [r3]
- 138              		.loc 1 55 57
- 139 0010 2E4B     		ldr	r3, .L16+4
- 140 0012 D3ED007A 		vldr.32	s15, [r3]
- 141              		.loc 1 55 11
- 142 0016 77EE677A 		vsub.f32	s15, s14, s15
- 143 001a C7ED017A 		vstr.32	s15, [r7, #4]
-  56:Module/arm_control/arm_control.c ****     if(fabsf(delta1) > MAX_ANGLE_STEP) {
- 144              		.loc 1 56 8
- 145 001e D7ED017A 		vldr.32	s15, [r7, #4]
- 146 0022 F0EEE77A 		vabs.f32	s15, s15
- 147              		.loc 1 56 22
- 148 0026 9FED2A7A 		vldr.32	s14, .L16+8
- 149              		.loc 1 56 7
- 150 002a F4EEC77A 		vcmpe.f32	s15, s14
- 151 002e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 152 0032 12DD     		ble	.L13
-  57:Module/arm_control/arm_control.c ****         current_angles.theta1 += copysignf(MAX_ANGLE_STEP, delta1);
- 153              		.loc 1 57 23
- 154 0034 254B     		ldr	r3, .L16+4
- 155 0036 93ED008A 		vldr.32	s16, [r3]
- 156              		.loc 1 57 34
- 157 003a DFED257A 		vldr.32	s15, .L16+8
- 158 003e D7ED010A 		vldr.32	s1, [r7, #4]
- 159 0042 B0EE670A 		vmov.f32	s0, s15
- 160 0046 FFF7FEFF 		bl	copysignf
- 161 004a F0EE407A 		vmov.f32	s15, s0
- 162              		.loc 1 57 31 discriminator 1
- 163 004e 78EE277A 		vadd.f32	s15, s16, s15
- 164 0052 1E4B     		ldr	r3, .L16+4
- 165 0054 C3ED007A 		vstr.32	s15, [r3]
- 166 0058 03E0     		b	.L7
- 167              	.L13:
-  58:Module/arm_control/arm_control.c ****     } else {
-  59:Module/arm_control/arm_control.c ****         current_angles.theta1 = target_angles.theta1;
- 168              		.loc 1 59 46
- 169 005a 1B4B     		ldr	r3, .L16
- 170 005c 1B68     		ldr	r3, [r3]	@ float
- 171              		.loc 1 59 31
- 172 005e 1B4A     		ldr	r2, .L16+4
- 173 0060 1360     		str	r3, [r2]	@ float
- 174              	.L7:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 5
+ 123              	.LFB135:
+  55:Module/arm_control/arm_control.c **** 
+  56:Module/arm_control/arm_control.c **** // 应用平滑处理
+  57:Module/arm_control/arm_control.c **** static void Apply_Smoothing(void)
+  58:Module/arm_control/arm_control.c **** {
+ 124              		.loc 1 58 1
+ 125              		.cfi_startproc
+ 126              		@ args = 0, pretend = 0, frame = 8
+ 127              		@ frame_needed = 1, uses_anonymous_args = 0
+ 128 0000 80B5     		push	{r7, lr}
+ 129              	.LCFI2:
+ 130              		.cfi_def_cfa_offset 8
+ 131              		.cfi_offset 7, -8
+ 132              		.cfi_offset 14, -4
+ 133 0002 2DED028B 		vpush.64	{d8}
+ 134              	.LCFI3:
+ 135              		.cfi_def_cfa_offset 16
+ 136              		.cfi_offset 80, -16
+ 137              		.cfi_offset 81, -12
+ 138 0006 82B0     		sub	sp, sp, #8
+ 139              	.LCFI4:
+ 140              		.cfi_def_cfa_offset 24
+ 141 0008 00AF     		add	r7, sp, #0
+ 142              	.LCFI5:
+ 143              		.cfi_def_cfa_register 7
+  59:Module/arm_control/arm_control.c ****     // 关节1平滑
+  60:Module/arm_control/arm_control.c ****     float delta1 = target_angles.theta1 - current_angles.theta1;
+ 144              		.loc 1 60 33
+ 145 000a 2F4B     		ldr	r3, .L16
+ 146 000c 93ED007A 		vldr.32	s14, [r3]
+ 147              		.loc 1 60 57
+ 148 0010 2E4B     		ldr	r3, .L16+4
+ 149 0012 D3ED007A 		vldr.32	s15, [r3]
+ 150              		.loc 1 60 11
+ 151 0016 77EE677A 		vsub.f32	s15, s14, s15
+ 152 001a C7ED017A 		vstr.32	s15, [r7, #4]
+  61:Module/arm_control/arm_control.c ****     if (fabsf(delta1) > MAX_ANGLE_STEP)
+ 153              		.loc 1 61 9
+ 154 001e D7ED017A 		vldr.32	s15, [r7, #4]
+ 155 0022 F0EEE77A 		vabs.f32	s15, s15
+ 156              		.loc 1 61 23
+ 157 0026 9FED2A7A 		vldr.32	s14, .L16+8
+ 158              		.loc 1 61 8
+ 159 002a F4EEC77A 		vcmpe.f32	s15, s14
+ 160 002e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 161 0032 12DD     		ble	.L13
+  62:Module/arm_control/arm_control.c ****     {
+  63:Module/arm_control/arm_control.c ****         current_angles.theta1 += copysignf(MAX_ANGLE_STEP, delta1);
+ 162              		.loc 1 63 23
+ 163 0034 254B     		ldr	r3, .L16+4
+ 164 0036 93ED008A 		vldr.32	s16, [r3]
+ 165              		.loc 1 63 34
+ 166 003a DFED257A 		vldr.32	s15, .L16+8
+ 167 003e D7ED010A 		vldr.32	s1, [r7, #4]
+ 168 0042 B0EE670A 		vmov.f32	s0, s15
+ 169 0046 FFF7FEFF 		bl	copysignf
+ 170 004a F0EE407A 		vmov.f32	s15, s0
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccabBB2v.s 			page 5
 
 
-  60:Module/arm_control/arm_control.c ****     }
-  61:Module/arm_control/arm_control.c ****     
-  62:Module/arm_control/arm_control.c ****     // 关节2平滑
-  63:Module/arm_control/arm_control.c ****     float delta2 = target_angles.theta2 - current_angles.theta2;
- 175              		.loc 1 63 33
- 176 0062 194B     		ldr	r3, .L16
- 177 0064 93ED017A 		vldr.32	s14, [r3, #4]
- 178              		.loc 1 63 57
- 179 0068 184B     		ldr	r3, .L16+4
- 180 006a D3ED017A 		vldr.32	s15, [r3, #4]
- 181              		.loc 1 63 11
- 182 006e 77EE677A 		vsub.f32	s15, s14, s15
- 183 0072 C7ED007A 		vstr.32	s15, [r7]
-  64:Module/arm_control/arm_control.c ****     if(fabsf(delta2) > MAX_ANGLE_STEP) {
- 184              		.loc 1 64 8
- 185 0076 D7ED007A 		vldr.32	s15, [r7]
- 186 007a F0EEE77A 		vabs.f32	s15, s15
- 187              		.loc 1 64 22
- 188 007e 9FED147A 		vldr.32	s14, .L16+8
- 189              		.loc 1 64 7
- 190 0082 F4EEC77A 		vcmpe.f32	s15, s14
- 191 0086 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 192 008a 12DD     		ble	.L14
-  65:Module/arm_control/arm_control.c ****         current_angles.theta2 += copysignf(MAX_ANGLE_STEP, delta2);
- 193              		.loc 1 65 23
- 194 008c 0F4B     		ldr	r3, .L16+4
- 195 008e 93ED018A 		vldr.32	s16, [r3, #4]
- 196              		.loc 1 65 34
- 197 0092 DFED0F7A 		vldr.32	s15, .L16+8
- 198 0096 D7ED000A 		vldr.32	s1, [r7]
- 199 009a B0EE670A 		vmov.f32	s0, s15
- 200 009e FFF7FEFF 		bl	copysignf
- 201 00a2 F0EE407A 		vmov.f32	s15, s0
- 202              		.loc 1 65 31 discriminator 1
- 203 00a6 78EE277A 		vadd.f32	s15, s16, s15
- 204 00aa 084B     		ldr	r3, .L16+4
- 205 00ac C3ED017A 		vstr.32	s15, [r3, #4]
-  66:Module/arm_control/arm_control.c ****     } else {
-  67:Module/arm_control/arm_control.c ****         current_angles.theta2 = target_angles.theta2;
+ 171              		.loc 1 63 31 discriminator 1
+ 172 004e 78EE277A 		vadd.f32	s15, s16, s15
+ 173 0052 1E4B     		ldr	r3, .L16+4
+ 174 0054 C3ED007A 		vstr.32	s15, [r3]
+ 175 0058 03E0     		b	.L7
+ 176              	.L13:
+  64:Module/arm_control/arm_control.c ****     }
+  65:Module/arm_control/arm_control.c ****     else
+  66:Module/arm_control/arm_control.c ****     {
+  67:Module/arm_control/arm_control.c ****         current_angles.theta1 = target_angles.theta1;
+ 177              		.loc 1 67 46
+ 178 005a 1B4B     		ldr	r3, .L16
+ 179 005c 1B68     		ldr	r3, [r3]	@ float
+ 180              		.loc 1 67 31
+ 181 005e 1B4A     		ldr	r2, .L16+4
+ 182 0060 1360     		str	r3, [r2]	@ float
+ 183              	.L7:
   68:Module/arm_control/arm_control.c ****     }
-  69:Module/arm_control/arm_control.c **** }
- 206              		.loc 1 69 1
- 207 00b0 03E0     		b	.L15
- 208              	.L14:
-  67:Module/arm_control/arm_control.c ****     }
- 209              		.loc 1 67 46
- 210 00b2 054B     		ldr	r3, .L16
- 211 00b4 5B68     		ldr	r3, [r3, #4]	@ float
-  67:Module/arm_control/arm_control.c ****     }
- 212              		.loc 1 67 31
- 213 00b6 054A     		ldr	r2, .L16+4
- 214 00b8 5360     		str	r3, [r2, #4]	@ float
- 215              	.L15:
- 216              		.loc 1 69 1
- 217 00ba 00BF     		nop
- 218 00bc 0837     		adds	r7, r7, #8
- 219              	.LCFI6:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 6
+  69:Module/arm_control/arm_control.c **** 
+  70:Module/arm_control/arm_control.c ****     // 关节2平滑
+  71:Module/arm_control/arm_control.c ****     float delta2 = target_angles.theta2 - current_angles.theta2;
+ 184              		.loc 1 71 33
+ 185 0062 194B     		ldr	r3, .L16
+ 186 0064 93ED017A 		vldr.32	s14, [r3, #4]
+ 187              		.loc 1 71 57
+ 188 0068 184B     		ldr	r3, .L16+4
+ 189 006a D3ED017A 		vldr.32	s15, [r3, #4]
+ 190              		.loc 1 71 11
+ 191 006e 77EE677A 		vsub.f32	s15, s14, s15
+ 192 0072 C7ED007A 		vstr.32	s15, [r7]
+  72:Module/arm_control/arm_control.c ****     if (fabsf(delta2) > MAX_ANGLE_STEP)
+ 193              		.loc 1 72 9
+ 194 0076 D7ED007A 		vldr.32	s15, [r7]
+ 195 007a F0EEE77A 		vabs.f32	s15, s15
+ 196              		.loc 1 72 23
+ 197 007e 9FED147A 		vldr.32	s14, .L16+8
+ 198              		.loc 1 72 8
+ 199 0082 F4EEC77A 		vcmpe.f32	s15, s14
+ 200 0086 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 201 008a 12DD     		ble	.L14
+  73:Module/arm_control/arm_control.c ****     {
+  74:Module/arm_control/arm_control.c ****         current_angles.theta2 += copysignf(MAX_ANGLE_STEP, delta2);
+ 202              		.loc 1 74 23
+ 203 008c 0F4B     		ldr	r3, .L16+4
+ 204 008e 93ED018A 		vldr.32	s16, [r3, #4]
+ 205              		.loc 1 74 34
+ 206 0092 DFED0F7A 		vldr.32	s15, .L16+8
+ 207 0096 D7ED000A 		vldr.32	s1, [r7]
+ 208 009a B0EE670A 		vmov.f32	s0, s15
+ 209 009e FFF7FEFF 		bl	copysignf
+ 210 00a2 F0EE407A 		vmov.f32	s15, s0
+ 211              		.loc 1 74 31 discriminator 1
+ 212 00a6 78EE277A 		vadd.f32	s15, s16, s15
+ 213 00aa 084B     		ldr	r3, .L16+4
+ 214 00ac C3ED017A 		vstr.32	s15, [r3, #4]
+  75:Module/arm_control/arm_control.c ****     }
+  76:Module/arm_control/arm_control.c ****     else
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccabBB2v.s 			page 6
 
 
- 220              		.cfi_def_cfa_offset 16
- 221 00be BD46     		mov	sp, r7
- 222              	.LCFI7:
- 223              		.cfi_def_cfa_register 13
- 224              		@ sp needed
- 225 00c0 BDEC028B 		vldm	sp!, {d8}
- 226              	.LCFI8:
- 227              		.cfi_restore 80
- 228              		.cfi_restore 81
- 229              		.cfi_def_cfa_offset 8
- 230 00c4 80BD     		pop	{r7, pc}
- 231              	.L17:
- 232 00c6 00BF     		.align	2
- 233              	.L16:
- 234 00c8 00000000 		.word	target_angles
- 235 00cc 00000000 		.word	current_angles
- 236 00d0 C2B8B23D 		.word	1035122882
- 237              		.cfi_endproc
- 238              	.LFE135:
- 240              		.section	.text.ArmControl_Update,"ax",%progbits
- 241              		.align	1
- 242              		.global	ArmControl_Update
- 243              		.syntax unified
- 244              		.thumb
- 245              		.thumb_func
- 247              	ArmControl_Update:
- 248              	.LFB136:
-  70:Module/arm_control/arm_control.c **** 
-  71:Module/arm_control/arm_control.c **** // 更新机械臂控制
-  72:Module/arm_control/arm_control.c **** void ArmControl_Update(void) 
-  73:Module/arm_control/arm_control.c **** {
- 249              		.loc 1 73 1
- 250              		.cfi_startproc
- 251              		@ args = 0, pretend = 0, frame = 16
- 252              		@ frame_needed = 1, uses_anonymous_args = 0
- 253 0000 90B5     		push	{r4, r7, lr}
- 254              	.LCFI9:
- 255              		.cfi_def_cfa_offset 12
- 256              		.cfi_offset 4, -12
- 257              		.cfi_offset 7, -8
- 258              		.cfi_offset 14, -4
- 259 0002 85B0     		sub	sp, sp, #20
- 260              	.LCFI10:
- 261              		.cfi_def_cfa_offset 32
- 262 0004 00AF     		add	r7, sp, #0
- 263              	.LCFI11:
- 264              		.cfi_def_cfa_register 7
-  74:Module/arm_control/arm_control.c ****     // 检查遥控器是否激活
-  75:Module/arm_control/arm_control.c ****     if (remote_control_active()) 
- 265              		.loc 1 75 9
- 266 0006 FFF7FEFF 		bl	remote_control_active
- 267 000a 0346     		mov	r3, r0
- 268              		.loc 1 75 8 discriminator 1
- 269 000c 002B     		cmp	r3, #0
- 270 000e 0DD0     		beq	.L19
- 271              	.LBB2:
-  76:Module/arm_control/arm_control.c ****     {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 7
+  77:Module/arm_control/arm_control.c ****     {
+  78:Module/arm_control/arm_control.c ****         current_angles.theta2 = target_angles.theta2;
+  79:Module/arm_control/arm_control.c ****     }
+  80:Module/arm_control/arm_control.c **** }
+ 215              		.loc 1 80 1
+ 216 00b0 03E0     		b	.L15
+ 217              	.L14:
+  78:Module/arm_control/arm_control.c ****     }
+ 218              		.loc 1 78 46
+ 219 00b2 054B     		ldr	r3, .L16
+ 220 00b4 5B68     		ldr	r3, [r3, #4]	@ float
+  78:Module/arm_control/arm_control.c ****     }
+ 221              		.loc 1 78 31
+ 222 00b6 054A     		ldr	r2, .L16+4
+ 223 00b8 5360     		str	r3, [r2, #4]	@ float
+ 224              	.L15:
+ 225              		.loc 1 80 1
+ 226 00ba 00BF     		nop
+ 227 00bc 0837     		adds	r7, r7, #8
+ 228              	.LCFI6:
+ 229              		.cfi_def_cfa_offset 16
+ 230 00be BD46     		mov	sp, r7
+ 231              	.LCFI7:
+ 232              		.cfi_def_cfa_register 13
+ 233              		@ sp needed
+ 234 00c0 BDEC028B 		vldm	sp!, {d8}
+ 235              	.LCFI8:
+ 236              		.cfi_restore 80
+ 237              		.cfi_restore 81
+ 238              		.cfi_def_cfa_offset 8
+ 239 00c4 80BD     		pop	{r7, pc}
+ 240              	.L17:
+ 241 00c6 00BF     		.align	2
+ 242              	.L16:
+ 243 00c8 00000000 		.word	target_angles
+ 244 00cc 00000000 		.word	current_angles
+ 245 00d0 C2B8B23D 		.word	1035122882
+ 246              		.cfi_endproc
+ 247              	.LFE135:
+ 249              		.section	.text.ArmControl_Update,"ax",%progbits
+ 250              		.align	1
+ 251              		.global	ArmControl_Update
+ 252              		.syntax unified
+ 253              		.thumb
+ 254              		.thumb_func
+ 256              	ArmControl_Update:
+ 257              	.LFB136:
+  81:Module/arm_control/arm_control.c **** 
+  82:Module/arm_control/arm_control.c **** // 更新机械臂控制
+  83:Module/arm_control/arm_control.c **** void ArmControl_Update(void)
+  84:Module/arm_control/arm_control.c **** {
+ 258              		.loc 1 84 1
+ 259              		.cfi_startproc
+ 260              		@ args = 0, pretend = 0, frame = 16
+ 261              		@ frame_needed = 1, uses_anonymous_args = 0
+ 262 0000 90B5     		push	{r4, r7, lr}
+ 263              	.LCFI9:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccabBB2v.s 			page 7
 
 
-  77:Module/arm_control/arm_control.c ****         // 获取遥控器映射的关节角度
-  78:Module/arm_control/arm_control.c ****         JointAngles new_angles = Map_To_JointSpace();
- 272              		.loc 1 78 34
- 273 0010 3B1D     		adds	r3, r7, #4
- 274 0012 1846     		mov	r0, r3
- 275 0014 FFF7FEFF 		bl	Map_To_JointSpace
-  79:Module/arm_control/arm_control.c ****         
-  80:Module/arm_control/arm_control.c ****         // 如果映射有效，则更新目标角度
-  81:Module/arm_control/arm_control.c ****         if (new_angles.valid) {
- 276              		.loc 1 81 23
- 277 0018 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
- 278              		.loc 1 81 12
- 279 001a 002B     		cmp	r3, #0
- 280 001c 06D0     		beq	.L19
-  82:Module/arm_control/arm_control.c ****             target_angles = new_angles;
- 281              		.loc 1 82 27
- 282 001e 0F4B     		ldr	r3, .L21
- 283 0020 1C46     		mov	r4, r3
- 284 0022 3B1D     		adds	r3, r7, #4
- 285 0024 93E80700 		ldm	r3, {r0, r1, r2}
- 286 0028 84E80700 		stm	r4, {r0, r1, r2}
- 287              	.L19:
- 288              	.LBE2:
-  83:Module/arm_control/arm_control.c ****         }
-  84:Module/arm_control/arm_control.c ****     }
-  85:Module/arm_control/arm_control.c ****     
-  86:Module/arm_control/arm_control.c ****     // 应用平滑处理
-  87:Module/arm_control/arm_control.c ****     Apply_Smoothing();
- 289              		.loc 1 87 5
- 290 002c FFF7FEFF 		bl	Apply_Smoothing
-  88:Module/arm_control/arm_control.c ****     
-  89:Module/arm_control/arm_control.c ****     // 直接应用平滑后的角度到电机
-  90:Module/arm_control/arm_control.c ****     // 应用关节1角度
-  91:Module/arm_control/arm_control.c ****     motor[Motor1].cmd.pos_set = current_angles.theta1;
- 291              		.loc 1 91 47
- 292 0030 0B4B     		ldr	r3, .L21+4
- 293 0032 1B68     		ldr	r3, [r3]	@ float
- 294              		.loc 1 91 31
- 295 0034 0B4A     		ldr	r2, .L21+8
- 296 0036 9365     		str	r3, [r2, #88]	@ float
-  92:Module/arm_control/arm_control.c ****     dm4310_set(&motor[Motor1]);
- 297              		.loc 1 92 5
- 298 0038 0A48     		ldr	r0, .L21+8
- 299 003a FFF7FEFF 		bl	dm4310_set
-  93:Module/arm_control/arm_control.c ****     
-  94:Module/arm_control/arm_control.c ****     // 应用关节2角度
-  95:Module/arm_control/arm_control.c ****     motor[Motor2].cmd.pos_set = current_angles.theta2;
- 300              		.loc 1 95 47
- 301 003e 084B     		ldr	r3, .L21+4
- 302 0040 5B68     		ldr	r3, [r3, #4]	@ float
- 303              		.loc 1 95 31
- 304 0042 084A     		ldr	r2, .L21+8
- 305 0044 C2F8C430 		str	r3, [r2, #196]	@ float
-  96:Module/arm_control/arm_control.c ****     dm4310_set(&motor[Motor2]);
- 306              		.loc 1 96 5
- 307 0048 0748     		ldr	r0, .L21+12
- 308 004a FFF7FEFF 		bl	dm4310_set
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 8
+ 264              		.cfi_def_cfa_offset 12
+ 265              		.cfi_offset 4, -12
+ 266              		.cfi_offset 7, -8
+ 267              		.cfi_offset 14, -4
+ 268 0002 85B0     		sub	sp, sp, #20
+ 269              	.LCFI10:
+ 270              		.cfi_def_cfa_offset 32
+ 271 0004 00AF     		add	r7, sp, #0
+ 272              	.LCFI11:
+ 273              		.cfi_def_cfa_register 7
+  85:Module/arm_control/arm_control.c ****     // 检查遥控器是否激活
+  86:Module/arm_control/arm_control.c ****     if (remote_control_active())
+ 274              		.loc 1 86 9
+ 275 0006 FFF7FEFF 		bl	remote_control_active
+ 276 000a 0346     		mov	r3, r0
+ 277              		.loc 1 86 8 discriminator 1
+ 278 000c 002B     		cmp	r3, #0
+ 279 000e 0DD0     		beq	.L19
+ 280              	.LBB2:
+  87:Module/arm_control/arm_control.c ****     {
+  88:Module/arm_control/arm_control.c ****         // 获取遥控器映射的关节角度
+  89:Module/arm_control/arm_control.c ****         JointAngles new_angles = Map_To_JointSpace();
+ 281              		.loc 1 89 34
+ 282 0010 3B1D     		adds	r3, r7, #4
+ 283 0012 1846     		mov	r0, r3
+ 284 0014 FFF7FEFF 		bl	Map_To_JointSpace
+  90:Module/arm_control/arm_control.c **** 
+  91:Module/arm_control/arm_control.c ****         // 如果映射有效，则更新目标角度
+  92:Module/arm_control/arm_control.c ****         if (new_angles.valid)
+ 285              		.loc 1 92 23
+ 286 0018 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 287              		.loc 1 92 12
+ 288 001a 002B     		cmp	r3, #0
+ 289 001c 06D0     		beq	.L19
+  93:Module/arm_control/arm_control.c ****         {
+  94:Module/arm_control/arm_control.c ****             target_angles = new_angles;
+ 290              		.loc 1 94 27
+ 291 001e 134B     		ldr	r3, .L21
+ 292 0020 1C46     		mov	r4, r3
+ 293 0022 3B1D     		adds	r3, r7, #4
+ 294 0024 93E80700 		ldm	r3, {r0, r1, r2}
+ 295 0028 84E80700 		stm	r4, {r0, r1, r2}
+ 296              	.L19:
+ 297              	.LBE2:
+  95:Module/arm_control/arm_control.c ****         }
+  96:Module/arm_control/arm_control.c ****     }
+  97:Module/arm_control/arm_control.c **** 
+  98:Module/arm_control/arm_control.c ****     // 应用平滑处理
+  99:Module/arm_control/arm_control.c ****     Apply_Smoothing();
+ 298              		.loc 1 99 5
+ 299 002c FFF7FEFF 		bl	Apply_Smoothing
+ 100:Module/arm_control/arm_control.c **** 
+ 101:Module/arm_control/arm_control.c ****     motor[Motor1].ctrl.mode = 0; // MIT模式
+ 300              		.loc 1 101 29
+ 301 0030 0F4B     		ldr	r3, .L21+4
+ 302 0032 0022     		movs	r2, #0
+ 303 0034 83F83C20 		strb	r2, [r3, #60]
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccabBB2v.s 			page 8
 
 
-  97:Module/arm_control/arm_control.c ****     
-  98:Module/arm_control/arm_control.c ****     // 发送控制命令
-  99:Module/arm_control/arm_control.c ****     ctrl_send(ALL_MOTORS);
- 309              		.loc 1 99 5
- 310 004e 0320     		movs	r0, #3
- 311 0050 FFF7FEFF 		bl	ctrl_send
- 100:Module/arm_control/arm_control.c **** }...
- 312              		.loc 1 100 1
- 313 0054 00BF     		nop
- 314 0056 1437     		adds	r7, r7, #20
- 315              	.LCFI12:
- 316              		.cfi_def_cfa_offset 12
- 317 0058 BD46     		mov	sp, r7
- 318              	.LCFI13:
- 319              		.cfi_def_cfa_register 13
- 320              		@ sp needed
- 321 005a 90BD     		pop	{r4, r7, pc}
- 322              	.L22:
- 323              		.align	2
- 324              	.L21:
- 325 005c 00000000 		.word	target_angles
- 326 0060 00000000 		.word	current_angles
- 327 0064 00000000 		.word	motor
- 328 0068 6C000000 		.word	motor+108
- 329              		.cfi_endproc
- 330              	.LFE136:
- 332              		.text
- 333              	.Letext0:
- 334              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
- 335              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
- 336              		.file 4 "Module/coordinate/coordinate_mapping.h"
- 337              		.file 5 "Module/motor/dm_drv.h"
- 338              		.file 6 "Module/motor/dm_ctrl.h"
- 339              		.file 7 "Module/remote_control/remote_control.h"
- 340              		.file 8 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/math.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 9
+ 102:Module/arm_control/arm_control.c ****     motor[Motor2].ctrl.mode = 0; // MIT模式
+ 304              		.loc 1 102 29
+ 305 0038 0D4B     		ldr	r3, .L21+4
+ 306 003a 0022     		movs	r2, #0
+ 307 003c 83F8A820 		strb	r2, [r3, #168]
+ 103:Module/arm_control/arm_control.c **** 
+ 104:Module/arm_control/arm_control.c ****     // 直接应用平滑后的角度到电机
+ 105:Module/arm_control/arm_control.c ****     // 应用关节1角度
+ 106:Module/arm_control/arm_control.c ****     motor[Motor1].cmd.pos_set = current_angles.theta1;
+ 308              		.loc 1 106 47
+ 309 0040 0C4B     		ldr	r3, .L21+8
+ 310 0042 1B68     		ldr	r3, [r3]	@ float
+ 311              		.loc 1 106 31
+ 312 0044 0A4A     		ldr	r2, .L21+4
+ 313 0046 9365     		str	r3, [r2, #88]	@ float
+ 107:Module/arm_control/arm_control.c ****     dm4310_set(&motor[Motor1]);
+ 314              		.loc 1 107 5
+ 315 0048 0948     		ldr	r0, .L21+4
+ 316 004a FFF7FEFF 		bl	dm4310_set
+ 108:Module/arm_control/arm_control.c **** 
+ 109:Module/arm_control/arm_control.c ****     // 应用关节2角度
+ 110:Module/arm_control/arm_control.c ****     motor[Motor2].cmd.pos_set = current_angles.theta2;
+ 317              		.loc 1 110 47
+ 318 004e 094B     		ldr	r3, .L21+8
+ 319 0050 5B68     		ldr	r3, [r3, #4]	@ float
+ 320              		.loc 1 110 31
+ 321 0052 074A     		ldr	r2, .L21+4
+ 322 0054 C2F8C430 		str	r3, [r2, #196]	@ float
+ 111:Module/arm_control/arm_control.c ****     dm4310_set(&motor[Motor2]);
+ 323              		.loc 1 111 5
+ 324 0058 0748     		ldr	r0, .L21+12
+ 325 005a FFF7FEFF 		bl	dm4310_set
+ 112:Module/arm_control/arm_control.c **** 
+ 113:Module/arm_control/arm_control.c ****     // 发送控制命令
+ 114:Module/arm_control/arm_control.c ****     ctrl_send(ALL_MOTORS);
+ 326              		.loc 1 114 5
+ 327 005e 0320     		movs	r0, #3
+ 328 0060 FFF7FEFF 		bl	ctrl_send
+ 115:Module/arm_control/arm_control.c **** }...
+ 329              		.loc 1 115 1
+ 330 0064 00BF     		nop
+ 331 0066 1437     		adds	r7, r7, #20
+ 332              	.LCFI12:
+ 333              		.cfi_def_cfa_offset 12
+ 334 0068 BD46     		mov	sp, r7
+ 335              	.LCFI13:
+ 336              		.cfi_def_cfa_register 13
+ 337              		@ sp needed
+ 338 006a 90BD     		pop	{r4, r7, pc}
+ 339              	.L22:
+ 340              		.align	2
+ 341              	.L21:
+ 342 006c 00000000 		.word	target_angles
+ 343 0070 00000000 		.word	motor
+ 344 0074 00000000 		.word	current_angles
+ 345 0078 6C000000 		.word	motor+108
+ 346              		.cfi_endproc
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccabBB2v.s 			page 9
+
+
+ 347              	.LFE136:
+ 349              		.text
+ 350              	.Letext0:
+ 351              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 352              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 353              		.file 4 "Module/coordinate/coordinate_mapping.h"
+ 354              		.file 5 "Module/motor/dm_drv.h"
+ 355              		.file 6 "Module/motor/dm_ctrl.h"
+ 356              		.file 7 "Module/remote_control/remote_control.h"
+ 357              		.file 8 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/math.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccabBB2v.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 arm_control.c
-C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:21     .bss.target_angles:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:24     .bss.target_angles:00000000 target_angles
-C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:27     .bss.current_angles:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:30     .bss.current_angles:00000000 current_angles
-C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:33     .rodata.MAX_ANGLE_STEP:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:36     .rodata.MAX_ANGLE_STEP:00000000 MAX_ANGLE_STEP
-C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:39     .text.ArmControl_Init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:45     .text.ArmControl_Init:00000000 ArmControl_Init
-C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:97     .text.ArmControl_Init:0000004c $d
-C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:108    .text.Apply_Smoothing:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:113    .text.Apply_Smoothing:00000000 Apply_Smoothing
-C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:234    .text.Apply_Smoothing:000000c8 $d
-C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:241    .text.ArmControl_Update:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:247    .text.ArmControl_Update:00000000 ArmControl_Update
-C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:325    .text.ArmControl_Update:0000005c $d
+C:\Users\30514\AppData\Local\Temp\ccabBB2v.s:21     .bss.target_angles:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccabBB2v.s:24     .bss.target_angles:00000000 target_angles
+C:\Users\30514\AppData\Local\Temp\ccabBB2v.s:27     .bss.current_angles:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccabBB2v.s:30     .bss.current_angles:00000000 current_angles
+C:\Users\30514\AppData\Local\Temp\ccabBB2v.s:33     .rodata.MAX_ANGLE_STEP:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccabBB2v.s:36     .rodata.MAX_ANGLE_STEP:00000000 MAX_ANGLE_STEP
+C:\Users\30514\AppData\Local\Temp\ccabBB2v.s:39     .text.ArmControl_Init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccabBB2v.s:45     .text.ArmControl_Init:00000000 ArmControl_Init
+C:\Users\30514\AppData\Local\Temp\ccabBB2v.s:105    .text.ArmControl_Init:0000005c $d
+C:\Users\30514\AppData\Local\Temp\ccabBB2v.s:117    .text.Apply_Smoothing:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccabBB2v.s:122    .text.Apply_Smoothing:00000000 Apply_Smoothing
+C:\Users\30514\AppData\Local\Temp\ccabBB2v.s:243    .text.Apply_Smoothing:000000c8 $d
+C:\Users\30514\AppData\Local\Temp\ccabBB2v.s:250    .text.ArmControl_Update:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccabBB2v.s:256    .text.ArmControl_Update:00000000 ArmControl_Update
+C:\Users\30514\AppData\Local\Temp\ccabBB2v.s:342    .text.ArmControl_Update:0000006c $d
                            .group:00000000 wm4.0.3e68c699c40fadf7e6c1e499de837233
                            .group:00000000 wm4.stdbool.h.29.c08aa3eec75cf5b9b5003883f43253f0
                            .group:00000000 wm4._newlib_version.h.4.0eb654b64686e2bd29646258853f6c22
@@ -516,7 +551,7 @@ C:\Users\30514\AppData\Local\Temp\ccHerUmk.s:325    .text.ArmControl_Update:0000
                            .group:00000000 wm4.stm32f4xx_hal_pwr.h.338.debc0a4a62ba54688e63ab53dd99c4ea
                            .group:00000000 wm4.stm32f4xx_hal_uart.h.21.ba8e24dd05c77faac3f3d48472e636ba
                            .group:00000000 wm4.stm32f4xx_hal.h.71.02372bc31d47d29d3f67fbfe1429649e
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccHerUmk.s 			page 10
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccabBB2v.s 			page 11
 
 
                            .group:00000000 wm4.remote_control.h.15.dad157441a7369e14747acc4dfbe8b08
@@ -540,9 +575,9 @@ Set_Joint_Ranges
 Set_Stick_Channels
 dm4310_motor_init
 ctrl_enable
+motor
 copysignf
 remote_control_active
 Map_To_JointSpace
 dm4310_set
 ctrl_send
-motor

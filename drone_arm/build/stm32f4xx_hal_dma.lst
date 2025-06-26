@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
   28:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****    -@-   Prior to HAL_DMA_Init() the clock must be enabled for DMA through the following macros:
   29:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****          __HAL_RCC_DMA1_CLK_ENABLE() or __HAL_RCC_DMA2_CLK_ENABLE().
   30:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 2
 
 
   31:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****      *** Polling mode IO operation ***
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
   85:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   *
   86:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   * Copyright (c) 2017 STMicroelectronics.
   87:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   * All rights reserved.
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 3
 
 
   88:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   *
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  142:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   * @{
  143:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   */
  144:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 4
 
 
  145:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c **** /** @addtogroup DMA_Exported_Functions_Group1
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  177:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   if(hdma == NULL)
   51              		.loc 1 177 5
   52 0012 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 5
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 5
 
 
   53 0014 002B     		cmp	r3, #0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  210:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   
  211:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   /* Check if the DMA Stream is effectively disabled */
  212:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   while((hdma->Instance->CR & DMA_SxCR_EN) != RESET)
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 6
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 6
 
 
   75              		.loc 1 212 8
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  109              		.loc 1 228 13
  110 006c 7B68     		ldr	r3, [r7, #4]
  111 006e 1B68     		ldr	r3, [r3]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 7
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 7
 
 
  112              		.loc 1 228 7
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  151              		.loc 1 239 72
  152 00a2 1A43     		orrs	r2, r2, r3
  153              		.loc 1 240 54
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 8
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 8
 
 
  154 00a4 7B68     		ldr	r3, [r7, #4]
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  255:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   /* Clear Direct mode and FIFO threshold bits */
  256:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   tmp &= (uint32_t)~(DMA_SxFCR_DMDIS | DMA_SxFCR_FTH);
  193              		.loc 1 256 7
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 9
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 9
 
 
  194 00d8 7B69     		ldr	r3, [r7, #20]
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  230              		.loc 1 274 25
  231 0110 7B68     		ldr	r3, [r7, #4]
  232 0112 4022     		movs	r2, #64
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 10
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 10
 
 
  233 0114 5A65     		str	r2, [r3, #84]
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  266 0144 5A65     		str	r2, [r3, #84]
  296:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****                                                                                      
  297:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   /* Initialize the DMA state */
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 11
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 11
 
 
  298:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   hdma->State = HAL_DMA_STATE_READY;
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  310              	.LCFI6:
  311              		.cfi_def_cfa_offset 24
  312 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 12
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 12
 
 
  313              	.LCFI7:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  344 0032 7B68     		ldr	r3, [r7, #4]
  345 0034 1B68     		ldr	r3, [r3]
  346              		.loc 1 333 24
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 13
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 13
 
 
  347 0036 0022     		movs	r2, #0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  383              		.loc 1 351 8 discriminator 1
  384 006a FB60     		str	r3, [r7, #12]
  352:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 14
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 14
 
 
  353:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   /* Clean all callbacks */
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  423 00a2 7B68     		ldr	r3, [r7, #4]
  424 00a4 0022     		movs	r2, #0
  425 00a6 83F83520 		strb	r2, [r3, #53]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 15
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 15
 
 
  369:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c **** 
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  396:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   */
  397:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c **** 
  398:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c **** /**
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 16
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 16
 
 
  399:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   * @brief  Starts the DMA Transfer.
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  417:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   if(HAL_DMA_STATE_READY == hdma->State)
  491              		.loc 1 417 33 is_stmt 1
  492 0028 FB68     		ldr	r3, [r7, #12]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 17
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 17
 
 
  493 002a 93F83530 		ldrb	r3, [r3, #53]
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  527 0068 0223     		movs	r3, #2
  528 006a FB75     		strb	r3, [r7, #23]
  529              	.L18:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 18
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 18
 
 
  438:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   } 
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  571 0008 B960     		str	r1, [r7, #8]
  572 000a 7A60     		str	r2, [r7, #4]
  573 000c 3B60     		str	r3, [r7]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 19
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 19
 
 
  453:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   HAL_StatusTypeDef status = HAL_OK;
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  610 0046 5A65     		str	r2, [r3, #84]
  471:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     
  472:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     /* Configure the source, destination address and the data length */
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 20
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 20
 
 
  473:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     DMA_SetConfig(hdma, SrcAddress, DstAddress, DataLength);
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  654              	.L23:
  484:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     }
  485:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 21
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 21
 
 
  486:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     /* Enable the Peripheral */
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  697              	.LFB138:
  500:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c **** 
  501:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c **** /**
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 22
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 22
 
 
  502:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   * @brief  Aborts the DMA Transfer.
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  731 0022 8022     		movs	r2, #128
  732 0024 5A65     		str	r2, [r3, #84]
  523:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 23
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 23
 
 
  524:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     /* Process Unlocked */
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  775              	.L28:
  536:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     {
  537:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****       hdma->Instance->CR  &= ~(DMA_IT_HT);
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 24
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 24
 
 
  776              		.loc 1 537 11
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  814 009a 0322     		movs	r2, #3
  815 009c 83F83520 		strb	r2, [r3, #53]
  554:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****         
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 25
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 25
 
 
  555:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****         /* Process Unlocked */
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  570:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   }
  571:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   return HAL_OK;
  851              		.loc 1 571 10
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 26
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 26
 
 
  852 00d6 0023     		movs	r3, #0
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  897 0010 022B     		cmp	r3, #2
  898 0012 04D0     		beq	.L33
  583:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 27
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 27
 
 
  584:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     hdma->ErrorCode = HAL_DMA_ERROR_NO_XFER;
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  940              		.align	1
  941              		.global	HAL_DMA_PollForTransfer
  942              		.syntax unified
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 28
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 28
 
 
  943              		.thumb
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  975 001a 93F83530 		ldrb	r3, [r3, #53]
  976 001e DBB2     		uxtb	r3, r3
  977              		.loc 1 620 5
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 29
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 29
 
 
  978 0020 022B     		cmp	r3, #2
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  639:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     mask_cpltlevel = DMA_FLAG_TCIF0_4 << hdma->StreamIndex;
  1014              		.loc 1 639 46
  1015 0056 FB68     		ldr	r3, [r7, #12]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 30
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 30
 
 
  1016 0058 DB6D     		ldr	r3, [r3, #92]
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1054              		.loc 1 655 43 discriminator 1
  1055 0092 BB69     		ldr	r3, [r7, #24]
  1056 0094 D31A     		subs	r3, r2, r3
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 31
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 31
 
 
  1057              		.loc 1 655 25 discriminator 1
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1093 00ca 0BD0     		beq	.L44
  674:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     {
  675:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****       /* Update error code */
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 32
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 32
 
 
  676:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****       hdma->ErrorCode |= HAL_DMA_ERROR_TE;
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1135 0106 9A40     		lsls	r2, r2, r3
  1136              		.loc 1 688 18
  1137 0108 7B69     		ldr	r3, [r7, #20]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 33
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 33
 
 
  1138 010a 9A60     		str	r2, [r3, #8]
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1179              		.loc 1 650 67 discriminator 1
  1180 0142 03F00103 		and	r3, r3, #1
  650:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   {
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 34
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 34
 
 
  1181              		.loc 1 650 46 discriminator 1
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1218 017c 83F83420 		strb	r2, [r3, #52]
  715:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c **** 
  716:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****       return HAL_ERROR;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 35
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 35
 
 
  1219              		.loc 1 716 14
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1255              	.L51:
  735:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   }
  736:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 36
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 36
 
 
  737:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   return status;
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1299 000a BB60     		str	r3, [r7, #8]
  750:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   uint32_t timeout = SystemCoreClock / 9600U;
  1300              		.loc 1 750 38
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 37
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 37
 
 
  1301 000c 8E4B     		ldr	r3, .L75
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1342              		.loc 1 763 11
  1343 004a 7B68     		ldr	r3, [r7, #4]
  1344 004c 1B68     		ldr	r3, [r3]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 38
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 38
 
 
  1345              		.loc 1 763 27
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  778:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****       regs->IFCR = DMA_FLAG_FEIF0_4 << hdma->StreamIndex;
  1385              		.loc 1 778 44
  1386 008a 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 39
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 39
 
 
  1387 008c DB6D     		ldr	r3, [r3, #92]
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1429 00c8 3B69     		ldr	r3, [r7, #16]
  1430 00ca 9A60     		str	r2, [r3, #8]
  791:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 40
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 40
 
 
  792:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****       /* Update error code */
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1471              		.loc 1 805 26
  1472 0106 1B68     		ldr	r3, [r3]
  1473              		.loc 1 805 32
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 41
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 41
 
 
  1474 0108 03F48023 		and	r3, r3, #262144
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1511 013a 9B6C     		ldr	r3, [r3, #72]
  1512              		.loc 1 822 13
  1513 013c 7868     		ldr	r0, [r7, #4]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 42
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 42
 
 
  1514 013e 9847     		blx	r3
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1552              	.LVL2:
  1553              	.L56:
  839:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****         }
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 43
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 43
 
 
  840:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****       }
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1593              		.loc 1 854 23
  1594 01ae 1A68     		ldr	r2, [r3]
  1595              		.loc 1 854 13
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 44
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 44
 
 
  1596 01b0 7B68     		ldr	r3, [r7, #4]
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1641 01ee 3F22     		movs	r2, #63
  1642 01f0 9A40     		lsls	r2, r2, r3
  1643              		.loc 1 863 20
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 45
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 45
 
 
  1644 01f2 3B69     		ldr	r3, [r7, #16]
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1680              		.loc 1 881 17
  1681 0226 7B68     		ldr	r3, [r7, #4]
  1682 0228 1B68     		ldr	r3, [r3]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 46
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 46
 
 
  1683              		.loc 1 881 27
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1723 0260 1EE0     		b	.L60
  1724              	.L66:
  896:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****           }
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 47
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 47
 
 
  897:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****         }
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  915:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****         {
  916:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****           /* Transfer complete callback */
  917:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****           hdma->XferCpltCallback(hdma);
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 48
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 48
 
 
  1761              		.loc 1 917 15
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1797 02cc BB68     		ldr	r3, [r7, #8]
  1798 02ce 0133     		adds	r3, r3, #1
  1799              		.loc 1 935 12
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 49
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 49
 
 
  1800 02d0 BB60     		str	r3, [r7, #8]
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1836 0304 DB6C     		ldr	r3, [r3, #76]
  1837              		.loc 1 952 7
  1838 0306 7868     		ldr	r0, [r7, #4]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 50
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 50
 
 
  1839 0308 9847     		blx	r3
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1878              		.cfi_def_cfa_offset 32
  1879 0004 00AF     		add	r7, sp, #0
  1880              	.LCFI43:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 51
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 51
 
 
  1881              		.cfi_def_cfa_register 7
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  978:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     {
  979:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     case  HAL_DMA_XFER_CPLT_CB_ID:
  980:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****       hdma->XferCpltCallback = pCallback;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 52
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 52
 
 
  1926              		.loc 1 980 30
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
 1000:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****       hdma->XferAbortCallback = pCallback;
  1961              		.loc 1 1000 31
  1962 0080 FB68     		ldr	r3, [r7, #12]
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 53
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 53
 
 
  1963 0082 7A68     		ldr	r2, [r7, #4]
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  1998 00a6 7047     		bx	lr
  1999              		.cfi_endproc
  2000              	.LFE142:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 54
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 54
 
 
  2002              		.section	.text.HAL_DMA_UnRegisterCallback,"ax",%progbits
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2042              		.loc 1 1034 3 discriminator 2
  2043 001e 7B68     		ldr	r3, [r7, #4]
  2044 0020 0122     		movs	r2, #1
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 55
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 55
 
 
  2045 0022 83F83420 		strb	r2, [r3, #52]
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2084              		.loc 1 1049 32
  2085 006c 7B68     		ldr	r3, [r7, #4]
  2086 006e 0022     		movs	r2, #0
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 56
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 56
 
 
  2087 0070 5A64     		str	r2, [r3, #68]
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2123 009c 5A64     		str	r2, [r3, #68]
 1068:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****       hdma->XferM1HalfCpltCallback = NULL;
  2124              		.loc 1 1068 36
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 57
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 57
 
 
  2125 009e 7B68     		ldr	r3, [r7, #4]
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2160              		.cfi_def_cfa_offset 4
  2161 00ca BD46     		mov	sp, r7
  2162              	.LCFI51:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 58
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 58
 
 
  2163              		.cfi_def_cfa_register 13
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2191 0002 83B0     		sub	sp, sp, #12
  2192              	.LCFI54:
  2193              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 59
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 59
 
 
  2194 0004 00AF     		add	r7, sp, #0
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2239              		.cfi_def_cfa_offset 16
  2240 0004 00AF     		add	r7, sp, #0
  2241              	.LCFI61:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 60
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 60
 
 
  2242              		.cfi_def_cfa_register 7
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2272              		.loc 1 1152 1
  2273              		.cfi_startproc
  2274              		@ args = 0, pretend = 0, frame = 16
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 61
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 61
 
 
  2275              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2318 0032 7A68     		ldr	r2, [r7, #4]
  2319 0034 9A60     		str	r2, [r3, #8]
 1164:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c **** 
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 62
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 62
 
 
 1165:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     /* Configure DMA Stream source address */
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2357              	.LFE146:
  2359              		.section	.text.DMA_CalcBaseAndBitshift,"ax",%progbits
  2360              		.align	1
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 63
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 63
 
 
  2361              		.syntax unified
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2402 0024 7B68     		ldr	r3, [r7, #4]
  2403 0026 DA65     		str	r2, [r3, #92]
 1192:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 64
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 64
 
 
 1193:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   if (stream_number > 3U)
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2445              		.cfi_restore 7
  2446              		.cfi_def_cfa_offset 0
  2447 0060 7047     		bx	lr
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 65
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 65
 
 
  2448              	.L119:
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2490              		.loc 1 1219 5
  2491 0016 002B     		cmp	r3, #0
  2492 0018 1FD1     		bne	.L121
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 66
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 66
 
 
 1220:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****   {
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2531 0058 3DE0     		b	.L147
  2532              	.L121:
 1236:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     case DMA_FIFO_THRESHOLD_FULL:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 67
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 67
 
 
 1237:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****       break;
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2568 0092 0123     		movs	r3, #1
  2569 0094 FB73     		strb	r3, [r7, #15]
 1256:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****       }
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 68
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 68
 
 
 1257:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****       break;
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2594              	.L140:
 1277:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****       break;
  2595              		.loc 1 1277 14
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 69
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 69
 
 
  2596 00b6 0123     		movs	r3, #1
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2638              	.L151:
 1284:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c ****     default:
  2639              		.loc 1 1284 7
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 70
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 70
 
 
  2640 00e6 00BF     		nop
@@ -4181,55 +4181,55 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 1
  2674              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
  2675              		.file 8 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
  2676              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 71
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 71
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_hal_dma.c
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:21     .text.HAL_DMA_Init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:27     .text.HAL_DMA_Init:00000000 HAL_DMA_Init
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2462   .text.DMA_CheckFifoParam:00000000 DMA_CheckFifoParam
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2365   .text.DMA_CalcBaseAndBitshift:00000000 DMA_CalcBaseAndBitshift
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:287    .text.HAL_DMA_Init:00000158 $d
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:292    .text.HAL_DMA_DeInit:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:298    .text.HAL_DMA_DeInit:00000000 HAL_DMA_DeInit
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:447    .text.HAL_DMA_Start:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:453    .text.HAL_DMA_Start:00000000 HAL_DMA_Start
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2270   .text.DMA_SetConfig:00000000 DMA_SetConfig
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:547    .text.HAL_DMA_Start_IT:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:553    .text.HAL_DMA_Start_IT:00000000 HAL_DMA_Start_IT
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:690    .text.HAL_DMA_Abort:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:696    .text.HAL_DMA_Abort:00000000 HAL_DMA_Abort
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:868    .text.HAL_DMA_Abort_IT:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:874    .text.HAL_DMA_Abort_IT:00000000 HAL_DMA_Abort_IT
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:940    .text.HAL_DMA_PollForTransfer:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:946    .text.HAL_DMA_PollForTransfer:00000000 HAL_DMA_PollForTransfer
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:1273   .text.HAL_DMA_IRQHandler:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:1279   .text.HAL_DMA_IRQHandler:00000000 HAL_DMA_IRQHandler
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:1707   .text.HAL_DMA_IRQHandler:00000248 $d
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:1711   .text.HAL_DMA_IRQHandler:00000250 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:1859   .text.HAL_DMA_RegisterCallback:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:1865   .text.HAL_DMA_RegisterCallback:00000000 HAL_DMA_RegisterCallback
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:1918   .text.HAL_DMA_RegisterCallback:00000040 $d
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:1924   .text.HAL_DMA_RegisterCallback:00000058 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2003   .text.HAL_DMA_UnRegisterCallback:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2009   .text.HAL_DMA_UnRegisterCallback:00000000 HAL_DMA_UnRegisterCallback
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2061   .text.HAL_DMA_UnRegisterCallback:00000040 $d
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2068   .text.HAL_DMA_UnRegisterCallback:0000005c $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2174   .text.HAL_DMA_GetState:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2180   .text.HAL_DMA_GetState:00000000 HAL_DMA_GetState
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2220   .text.HAL_DMA_GetError:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2226   .text.HAL_DMA_GetError:00000000 HAL_DMA_GetError
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2265   .text.DMA_SetConfig:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2360   .text.DMA_CalcBaseAndBitshift:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2451   .text.DMA_CalcBaseAndBitshift:00000064 $d
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2665   .rodata.flagBitshiftOffset.0:00000000 flagBitshiftOffset.0
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2457   .text.DMA_CheckFifoParam:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2501   .text.DMA_CheckFifoParam:00000028 $d
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2505   .text.DMA_CheckFifoParam:00000038 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2547   .text.DMA_CheckFifoParam:00000070 $d
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2551   .text.DMA_CheckFifoParam:00000080 $t
-C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2662   .rodata.flagBitshiftOffset.0:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:21     .text.HAL_DMA_Init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:27     .text.HAL_DMA_Init:00000000 HAL_DMA_Init
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2462   .text.DMA_CheckFifoParam:00000000 DMA_CheckFifoParam
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2365   .text.DMA_CalcBaseAndBitshift:00000000 DMA_CalcBaseAndBitshift
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:287    .text.HAL_DMA_Init:00000158 $d
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:292    .text.HAL_DMA_DeInit:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:298    .text.HAL_DMA_DeInit:00000000 HAL_DMA_DeInit
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:447    .text.HAL_DMA_Start:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:453    .text.HAL_DMA_Start:00000000 HAL_DMA_Start
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2270   .text.DMA_SetConfig:00000000 DMA_SetConfig
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:547    .text.HAL_DMA_Start_IT:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:553    .text.HAL_DMA_Start_IT:00000000 HAL_DMA_Start_IT
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:690    .text.HAL_DMA_Abort:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:696    .text.HAL_DMA_Abort:00000000 HAL_DMA_Abort
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:868    .text.HAL_DMA_Abort_IT:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:874    .text.HAL_DMA_Abort_IT:00000000 HAL_DMA_Abort_IT
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:940    .text.HAL_DMA_PollForTransfer:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:946    .text.HAL_DMA_PollForTransfer:00000000 HAL_DMA_PollForTransfer
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:1273   .text.HAL_DMA_IRQHandler:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:1279   .text.HAL_DMA_IRQHandler:00000000 HAL_DMA_IRQHandler
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:1707   .text.HAL_DMA_IRQHandler:00000248 $d
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:1711   .text.HAL_DMA_IRQHandler:00000250 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:1859   .text.HAL_DMA_RegisterCallback:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:1865   .text.HAL_DMA_RegisterCallback:00000000 HAL_DMA_RegisterCallback
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:1918   .text.HAL_DMA_RegisterCallback:00000040 $d
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:1924   .text.HAL_DMA_RegisterCallback:00000058 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2003   .text.HAL_DMA_UnRegisterCallback:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2009   .text.HAL_DMA_UnRegisterCallback:00000000 HAL_DMA_UnRegisterCallback
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2061   .text.HAL_DMA_UnRegisterCallback:00000040 $d
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2068   .text.HAL_DMA_UnRegisterCallback:0000005c $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2174   .text.HAL_DMA_GetState:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2180   .text.HAL_DMA_GetState:00000000 HAL_DMA_GetState
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2220   .text.HAL_DMA_GetError:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2226   .text.HAL_DMA_GetError:00000000 HAL_DMA_GetError
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2265   .text.DMA_SetConfig:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2360   .text.DMA_CalcBaseAndBitshift:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2451   .text.DMA_CalcBaseAndBitshift:00000064 $d
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2665   .rodata.flagBitshiftOffset.0:00000000 flagBitshiftOffset.0
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2457   .text.DMA_CheckFifoParam:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2501   .text.DMA_CheckFifoParam:00000028 $d
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2505   .text.DMA_CheckFifoParam:00000038 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2547   .text.DMA_CheckFifoParam:00000070 $d
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2551   .text.DMA_CheckFifoParam:00000080 $t
+C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s:2662   .rodata.flagBitshiftOffset.0:00000000 $d
                            .group:00000000 wm4.0.3e68c699c40fadf7e6c1e499de837233
                            .group:00000000 wm4.stm32f4xx_hal_conf.h.25.a9a6e27d8b41172b5af7d7631d763ee0
                            .group:00000000 wm4.stm32f4xx.h.38.63e3ea23bd63a94457417730025259b6
@@ -4241,7 +4241,7 @@ C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s:2662   .rodata.flagBitshiftOffset.0
                            .group:00000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
                            .group:00000000 wm4.stdint.h.23.d53047a68f4a85177f80b422d52785ed
                            .group:00000000 wm4.cmsis_version.h.32.0ac195c83bb4537824e6ad1c47474b79
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccS4r4bG.s 			page 72
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccBIN0KF.s 			page 72
 
 
                            .group:00000000 wm4.core_cm4.h.66.e4ff136c4a17abc46741866f64f8e729
