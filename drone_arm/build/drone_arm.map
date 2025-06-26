@@ -1874,8 +1874,6 @@ Discarded input sections
                 0x00000000       0x50 build/stm32f4xx_hal.o
  .text.HAL_GetTickFreq
                 0x00000000       0x18 build/stm32f4xx_hal.o
- .text.HAL_Delay
-                0x00000000       0x48 build/stm32f4xx_hal.o
  .text.HAL_SuspendTick
                 0x00000000       0x20 build/stm32f4xx_hal.o
  .text.HAL_ResumeTick
@@ -2635,13 +2633,13 @@ Discarded input sections
  .data          0x00000000        0x0 build/dm_ctrl.o
  .bss           0x00000000        0x0 build/dm_ctrl.o
  .text.ctrl_disable
-                0x00000000       0x54 build/dm_ctrl.o
+                0x00000000       0x50 build/dm_ctrl.o
  .text.ctrl_set
                 0x00000000       0x38 build/dm_ctrl.o
  .text.ctrl_clear_para
                 0x00000000       0x38 build/dm_ctrl.o
  .text.ctrl_clear_err
-                0x00000000       0x44 build/dm_ctrl.o
+                0x00000000       0x40 build/dm_ctrl.o
  .debug_macro   0x00000000      0xad2 build/dm_ctrl.o
  .debug_macro   0x00000000      0x29b build/dm_ctrl.o
  .debug_macro   0x00000000       0x2e build/dm_ctrl.o
@@ -3056,8 +3054,6 @@ Discarded input sections
  .text          0x00000000        0x0 build/task.o
  .data          0x00000000        0x0 build/task.o
  .bss           0x00000000        0x0 build/task.o
- .text.task_2ms
-                0x00000000        0xe build/task.o
  .text.task_500ms
                 0x00000000       0x24 build/task.o
  .debug_macro   0x00000000      0xad2 build/task.o
@@ -4283,7 +4279,7 @@ LOAD D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m
                 0x08000000                g_pfnVectors
                 0x080001c4                        . = ALIGN (0x4)
 
-.text           0x080001c4     0x4914
+.text           0x080001c4     0x496c
                 0x080001c4                        . = ALIGN (0x4)
  *(.text)
  .text          0x080001c4       0xa4 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
@@ -4497,334 +4493,333 @@ LOAD D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m
  .text.HAL_GetTick
                 0x0800295c       0x18 build/stm32f4xx_hal.o
                 0x0800295c                HAL_GetTick
+ .text.HAL_Delay
+                0x08002974       0x48 build/stm32f4xx_hal.o
+                0x08002974                HAL_Delay
  .text.SystemInit
-                0x08002974       0x24 build/system_stm32f4xx.o
-                0x08002974                SystemInit
+                0x080029bc       0x24 build/system_stm32f4xx.o
+                0x080029bc                SystemInit
  .text.MX_DMA_Init
-                0x08002998       0x40 build/dma.o
-                0x08002998                MX_DMA_Init
+                0x080029e0       0x40 build/dma.o
+                0x080029e0                MX_DMA_Init
  .text.MX_USART3_UART_Init
-                0x080029d8       0x58 build/usart.o
-                0x080029d8                MX_USART3_UART_Init
+                0x08002a20       0x58 build/usart.o
+                0x08002a20                MX_USART3_UART_Init
  .text.HAL_UART_MspInit
-                0x08002a30      0x14c build/usart.o
-                0x08002a30                HAL_UART_MspInit
+                0x08002a78      0x14c build/usart.o
+                0x08002a78                HAL_UART_MspInit
  .text.HAL_UART_Init
-                0x08002b7c       0xa0 build/stm32f4xx_hal_uart.o
-                0x08002b7c                HAL_UART_Init
+                0x08002bc4       0xa0 build/stm32f4xx_hal_uart.o
+                0x08002bc4                HAL_UART_Init
  .text.UART_SetConfig
-                0x08002c1c      0x4e8 build/stm32f4xx_hal_uart.o
+                0x08002c64      0x4e8 build/stm32f4xx_hal_uart.o
  .text.can_bsp_init
-                0x08003104       0x30 build/bsp_can.o
-                0x08003104                can_bsp_init
+                0x0800314c       0x30 build/bsp_can.o
+                0x0800314c                can_bsp_init
  .text.can_filter_init
-                0x08003134       0x74 build/bsp_can.o
-                0x08003134                can_filter_init
+                0x0800317c       0x74 build/bsp_can.o
+                0x0800317c                can_filter_init
  .text.canx_bsp_send_data
-                0x080031a8       0x64 build/bsp_can.o
-                0x080031a8                canx_bsp_send_data
+                0x080031f0       0x64 build/bsp_can.o
+                0x080031f0                canx_bsp_send_data
  .text.canx_bsp_receive
-                0x0800320c       0x38 build/bsp_can.o
-                0x0800320c                canx_bsp_receive
+                0x08003254       0x38 build/bsp_can.o
+                0x08003254                canx_bsp_receive
  .text.HAL_CAN_RxFifo0MsgPendingCallback
-                0x08003244       0x30 build/bsp_can.o
-                0x08003244                HAL_CAN_RxFifo0MsgPendingCallback
+                0x0800328c       0x30 build/bsp_can.o
+                0x0800328c                HAL_CAN_RxFifo0MsgPendingCallback
  .text.can2_rx_callback
-                0x08003274        0xe build/bsp_can.o
-                0x08003274                can2_rx_callback
- *fill*         0x08003282        0x2 
+                0x080032bc        0xe build/bsp_can.o
+                0x080032bc                can2_rx_callback
+ *fill*         0x080032ca        0x2 
  .text.dm4310_motor_init
-                0x08003284       0xac build/dm_ctrl.o
-                0x08003284                dm4310_motor_init
+                0x080032cc       0xac build/dm_ctrl.o
+                0x080032cc                dm4310_motor_init
  .text.ctrl_enable
-                0x08003330       0x54 build/dm_ctrl.o
-                0x08003330                ctrl_enable
+                0x08003378       0x54 build/dm_ctrl.o
+                0x08003378                ctrl_enable
  .text.ctrl_send
-                0x08003384       0x44 build/dm_ctrl.o
-                0x08003384                ctrl_send
+                0x080033cc       0x40 build/dm_ctrl.o
+                0x080033cc                ctrl_send
  .text.can1_rx_callback
-                0x080033c8       0x60 build/dm_ctrl.o
-                0x080033c8                can1_rx_callback
+                0x0800340c       0x90 build/dm_ctrl.o
+                0x0800340c                can1_rx_callback
  .text.dm4310_enable
-                0x08003428       0x6a build/dm_drv.o
-                0x08003428                dm4310_enable
+                0x0800349c       0x6a build/dm_drv.o
+                0x0800349c                dm4310_enable
  .text.dm4310_ctrl_send
-                0x08003492       0xb0 build/dm_drv.o
-                0x08003492                dm4310_ctrl_send
+                0x08003506       0xb0 build/dm_drv.o
+                0x08003506                dm4310_ctrl_send
  .text.dm4310_set
-                0x08003542       0x3c build/dm_drv.o
-                0x08003542                dm4310_set
+                0x080035b6       0x3c build/dm_drv.o
+                0x080035b6                dm4310_set
  .text.dm4310_fbdata
-                0x0800357e       0xf2 build/dm_drv.o
-                0x0800357e                dm4310_fbdata
+                0x080035f2       0xf2 build/dm_drv.o
+                0x080035f2                dm4310_fbdata
  .text.float_to_uint
-                0x08003670       0x66 build/dm_drv.o
-                0x08003670                float_to_uint
+                0x080036e4       0x66 build/dm_drv.o
+                0x080036e4                float_to_uint
  .text.uint_to_float
-                0x080036d6       0x64 build/dm_drv.o
-                0x080036d6                uint_to_float
+                0x0800374a       0x64 build/dm_drv.o
+                0x0800374a                uint_to_float
  .text.enable_motor_mode
-                0x0800373a       0x4e build/dm_drv.o
-                0x0800373a                enable_motor_mode
+                0x080037ae       0x4e build/dm_drv.o
+                0x080037ae                enable_motor_mode
  .text.mit_ctrl
-                0x08003788      0x120 build/dm_drv.o
-                0x08003788                mit_ctrl
+                0x080037fc      0x120 build/dm_drv.o
+                0x080037fc                mit_ctrl
  .text.pos_speed_ctrl
-                0x080038a8       0x6a build/dm_drv.o
-                0x080038a8                pos_speed_ctrl
+                0x0800391c       0x6a build/dm_drv.o
+                0x0800391c                pos_speed_ctrl
  .text.speed_ctrl
-                0x08003912       0x4a build/dm_drv.o
-                0x08003912                speed_ctrl
- .text.RC_init  0x0800395c       0xb8 build/remote_control.o
-                0x0800395c                RC_init
+                0x08003986       0x4a build/dm_drv.o
+                0x08003986                speed_ctrl
+ .text.RC_init  0x080039d0       0xb8 build/remote_control.o
+                0x080039d0                RC_init
  .text.remote_control_init
-                0x08003a14       0x1c build/remote_control.o
-                0x08003a14                remote_control_init
+                0x08003a88       0x1c build/remote_control.o
+                0x08003a88                remote_control_init
  .text.Sbus_Data_Count
-                0x08003a30      0x3bc build/remote_control.o
-                0x08003a30                Sbus_Data_Count
+                0x08003aa4      0x3bc build/remote_control.o
+                0x08003aa4                Sbus_Data_Count
  .text.get_channel_raw_value
-                0x08003dec       0x84 build/remote_control.o
-                0x08003dec                get_channel_raw_value
+                0x08003e60       0x84 build/remote_control.o
+                0x08003e60                get_channel_raw_value
  .text.USART3_IRQHandler
-                0x08003e70      0x138 build/remote_control.o
-                0x08003e70                USART3_IRQHandler
+                0x08003ee4      0x138 build/remote_control.o
+                0x08003ee4                USART3_IRQHandler
  .text.remote_control_active
-                0x08003fa8       0x10 build/remote_control.o
-                0x08003fa8                remote_control_active
+                0x0800401c       0x10 build/remote_control.o
+                0x0800401c                remote_control_active
  .text.scheduler_init
-                0x08003fb8       0x74 build/scheduler.o
-                0x08003fb8                scheduler_init
+                0x0800402c       0x74 build/scheduler.o
+                0x0800402c                scheduler_init
  .text.create_task
-                0x0800402c      0x114 build/scheduler.o
-                0x0800402c                create_task
+                0x080040a0      0x114 build/scheduler.o
+                0x080040a0                create_task
  .text.scheduler_run
-                0x08004140       0xf0 build/scheduler.o
-                0x08004140                scheduler_run
+                0x080041b4       0xf0 build/scheduler.o
+                0x080041b4                scheduler_run
  .text.task_init
-                0x08004230       0x54 build/task.o
-                0x08004230                task_init
- .text.task_1ms
-                0x08004284        0xe build/task.o
-                0x08004284                task_1ms
- .text.task_5ms
-                0x08004292        0xe build/task.o
-                0x08004292                task_5ms
+                0x080042a4       0x44 build/task.o
+                0x080042a4                task_init
  .text.task_10ms
-                0x080042a0        0xc build/task.o
-                0x080042a0                task_10ms
+                0x080042e8        0xe build/task.o
+                0x080042e8                task_10ms
+ .text.task_20ms
+                0x080042f6        0xc build/task.o
+                0x080042f6                task_20ms
  .text.task_100ms
-                0x080042ac        0xe build/task.o
-                0x080042ac                task_100ms
- *fill*         0x080042ba        0x2 
+                0x08004302        0xe build/task.o
+                0x08004302                task_100ms
  .text.map_value
-                0x080042bc       0x94 build/coordinate_mapping.o
+                0x08004310       0x94 build/coordinate_mapping.o
  .text.Set_Stick_Channels
-                0x08004350       0x2c build/coordinate_mapping.o
-                0x08004350                Set_Stick_Channels
+                0x080043a4       0x2c build/coordinate_mapping.o
+                0x080043a4                Set_Stick_Channels
  .text.Set_Joint_Ranges
-                0x0800437c       0x40 build/coordinate_mapping.o
-                0x0800437c                Set_Joint_Ranges
+                0x080043d0       0x40 build/coordinate_mapping.o
+                0x080043d0                Set_Joint_Ranges
  .text.Map_To_JointSpace
-                0x080043bc      0x1d8 build/coordinate_mapping.o
-                0x080043bc                Map_To_JointSpace
+                0x08004410      0x1d8 build/coordinate_mapping.o
+                0x08004410                Map_To_JointSpace
  .text.ArmControl_Init
-                0x08004594       0x7c build/arm_control.o
-                0x08004594                ArmControl_Init
+                0x080045e8       0x80 build/arm_control.o
+                0x080045e8                ArmControl_Init
  .text.Apply_Smoothing
-                0x08004610       0xd4 build/arm_control.o
+                0x08004668       0xd4 build/arm_control.o
  .text.ArmControl_Update
-                0x080046e4       0x7c build/arm_control.o
-                0x080046e4                ArmControl_Update
+                0x0800473c       0x7c build/arm_control.o
+                0x0800473c                ArmControl_Update
  .text.MCU_Init
-                0x08004760       0x18 build/mcu_config.o
-                0x08004760                MCU_Init
+                0x080047b8       0x18 build/mcu_config.o
+                0x080047b8                MCU_Init
  .text.can_driver_init
-                0x08004778        0xc build/can_driver.o
-                0x08004778                can_driver_init
+                0x080047d0        0xc build/can_driver.o
+                0x080047d0                can_driver_init
  .text.canx_send_data
-                0x08004784       0x24 build/can_driver.o
-                0x08004784                canx_send_data
+                0x080047dc       0x24 build/can_driver.o
+                0x080047dc                canx_send_data
  .text.canx_receive_data
-                0x080047a8       0x24 build/can_driver.o
-                0x080047a8                canx_receive_data
+                0x08004800       0x24 build/can_driver.o
+                0x08004800                canx_receive_data
  .text.Reset_Handler
-                0x080047cc       0x50 build/startup_stm32f446xx.o
-                0x080047cc                Reset_Handler
+                0x08004824       0x50 build/startup_stm32f446xx.o
+                0x08004824                Reset_Handler
  .text.Default_Handler
-                0x0800481c        0x2 build/startup_stm32f446xx.o
-                0x0800481c                RTC_Alarm_IRQHandler
-                0x0800481c                EXTI2_IRQHandler
-                0x0800481c                TIM8_CC_IRQHandler
-                0x0800481c                FMPI2C1_EV_IRQHandler
-                0x0800481c                SPI4_IRQHandler
-                0x0800481c                TIM1_CC_IRQHandler
-                0x0800481c                DMA2_Stream5_IRQHandler
-                0x0800481c                DMA1_Stream5_IRQHandler
-                0x0800481c                PVD_IRQHandler
-                0x0800481c                SDIO_IRQHandler
-                0x0800481c                TAMP_STAMP_IRQHandler
-                0x0800481c                EXTI3_IRQHandler
-                0x0800481c                TIM8_TRG_COM_TIM14_IRQHandler
-                0x0800481c                TIM1_UP_TIM10_IRQHandler
-                0x0800481c                TIM8_UP_TIM13_IRQHandler
-                0x0800481c                I2C3_ER_IRQHandler
-                0x0800481c                EXTI0_IRQHandler
-                0x0800481c                I2C2_EV_IRQHandler
-                0x0800481c                DMA1_Stream2_IRQHandler
-                0x0800481c                FPU_IRQHandler
-                0x0800481c                OTG_HS_WKUP_IRQHandler
-                0x0800481c                CAN2_SCE_IRQHandler
-                0x0800481c                DMA2_Stream2_IRQHandler
-                0x0800481c                SPI1_IRQHandler
-                0x0800481c                TIM6_DAC_IRQHandler
-                0x0800481c                TIM1_BRK_TIM9_IRQHandler
-                0x0800481c                DCMI_IRQHandler
-                0x0800481c                DMA2_Stream3_IRQHandler
-                0x0800481c                SAI2_IRQHandler
-                0x0800481c                USART6_IRQHandler
-                0x0800481c                UART5_IRQHandler
-                0x0800481c                DMA2_Stream0_IRQHandler
-                0x0800481c                TIM4_IRQHandler
-                0x0800481c                QUADSPI_IRQHandler
-                0x0800481c                I2C1_EV_IRQHandler
-                0x0800481c                DMA1_Stream6_IRQHandler
-                0x0800481c                DMA1_Stream1_IRQHandler
-                0x0800481c                UART4_IRQHandler
-                0x0800481c                TIM3_IRQHandler
-                0x0800481c                RCC_IRQHandler
-                0x0800481c                TIM8_BRK_TIM12_IRQHandler
-                0x0800481c                Default_Handler
-                0x0800481c                CEC_IRQHandler
-                0x0800481c                EXTI15_10_IRQHandler
-                0x0800481c                ADC_IRQHandler
-                0x0800481c                DMA1_Stream7_IRQHandler
-                0x0800481c                TIM7_IRQHandler
-                0x0800481c                CAN2_TX_IRQHandler
-                0x0800481c                TIM5_IRQHandler
-                0x0800481c                DMA2_Stream7_IRQHandler
-                0x0800481c                I2C3_EV_IRQHandler
-                0x0800481c                EXTI9_5_IRQHandler
-                0x0800481c                RTC_WKUP_IRQHandler
-                0x0800481c                SPDIF_RX_IRQHandler
-                0x0800481c                SPI2_IRQHandler
-                0x0800481c                OTG_HS_EP1_IN_IRQHandler
-                0x0800481c                DMA1_Stream0_IRQHandler
-                0x0800481c                CAN1_TX_IRQHandler
-                0x0800481c                FMPI2C1_ER_IRQHandler
-                0x0800481c                EXTI4_IRQHandler
-                0x0800481c                OTG_HS_EP1_OUT_IRQHandler
-                0x0800481c                WWDG_IRQHandler
-                0x0800481c                TIM2_IRQHandler
-                0x0800481c                OTG_FS_WKUP_IRQHandler
-                0x0800481c                TIM1_TRG_COM_TIM11_IRQHandler
-                0x0800481c                OTG_HS_IRQHandler
-                0x0800481c                EXTI1_IRQHandler
-                0x0800481c                USART2_IRQHandler
-                0x0800481c                I2C2_ER_IRQHandler
-                0x0800481c                DMA2_Stream1_IRQHandler
-                0x0800481c                CAN1_SCE_IRQHandler
-                0x0800481c                FLASH_IRQHandler
-                0x0800481c                DMA2_Stream4_IRQHandler
-                0x0800481c                USART1_IRQHandler
-                0x0800481c                OTG_FS_IRQHandler
-                0x0800481c                SPI3_IRQHandler
-                0x0800481c                DMA1_Stream4_IRQHandler
-                0x0800481c                I2C1_ER_IRQHandler
-                0x0800481c                FMC_IRQHandler
-                0x0800481c                DMA2_Stream6_IRQHandler
-                0x0800481c                SAI1_IRQHandler
-                0x0800481c                DMA1_Stream3_IRQHandler
+                0x08004874        0x2 build/startup_stm32f446xx.o
+                0x08004874                RTC_Alarm_IRQHandler
+                0x08004874                EXTI2_IRQHandler
+                0x08004874                TIM8_CC_IRQHandler
+                0x08004874                FMPI2C1_EV_IRQHandler
+                0x08004874                SPI4_IRQHandler
+                0x08004874                TIM1_CC_IRQHandler
+                0x08004874                DMA2_Stream5_IRQHandler
+                0x08004874                DMA1_Stream5_IRQHandler
+                0x08004874                PVD_IRQHandler
+                0x08004874                SDIO_IRQHandler
+                0x08004874                TAMP_STAMP_IRQHandler
+                0x08004874                EXTI3_IRQHandler
+                0x08004874                TIM8_TRG_COM_TIM14_IRQHandler
+                0x08004874                TIM1_UP_TIM10_IRQHandler
+                0x08004874                TIM8_UP_TIM13_IRQHandler
+                0x08004874                I2C3_ER_IRQHandler
+                0x08004874                EXTI0_IRQHandler
+                0x08004874                I2C2_EV_IRQHandler
+                0x08004874                DMA1_Stream2_IRQHandler
+                0x08004874                FPU_IRQHandler
+                0x08004874                OTG_HS_WKUP_IRQHandler
+                0x08004874                CAN2_SCE_IRQHandler
+                0x08004874                DMA2_Stream2_IRQHandler
+                0x08004874                SPI1_IRQHandler
+                0x08004874                TIM6_DAC_IRQHandler
+                0x08004874                TIM1_BRK_TIM9_IRQHandler
+                0x08004874                DCMI_IRQHandler
+                0x08004874                DMA2_Stream3_IRQHandler
+                0x08004874                SAI2_IRQHandler
+                0x08004874                USART6_IRQHandler
+                0x08004874                UART5_IRQHandler
+                0x08004874                DMA2_Stream0_IRQHandler
+                0x08004874                TIM4_IRQHandler
+                0x08004874                QUADSPI_IRQHandler
+                0x08004874                I2C1_EV_IRQHandler
+                0x08004874                DMA1_Stream6_IRQHandler
+                0x08004874                DMA1_Stream1_IRQHandler
+                0x08004874                UART4_IRQHandler
+                0x08004874                TIM3_IRQHandler
+                0x08004874                RCC_IRQHandler
+                0x08004874                TIM8_BRK_TIM12_IRQHandler
+                0x08004874                Default_Handler
+                0x08004874                CEC_IRQHandler
+                0x08004874                EXTI15_10_IRQHandler
+                0x08004874                ADC_IRQHandler
+                0x08004874                DMA1_Stream7_IRQHandler
+                0x08004874                TIM7_IRQHandler
+                0x08004874                CAN2_TX_IRQHandler
+                0x08004874                TIM5_IRQHandler
+                0x08004874                DMA2_Stream7_IRQHandler
+                0x08004874                I2C3_EV_IRQHandler
+                0x08004874                EXTI9_5_IRQHandler
+                0x08004874                RTC_WKUP_IRQHandler
+                0x08004874                SPDIF_RX_IRQHandler
+                0x08004874                SPI2_IRQHandler
+                0x08004874                OTG_HS_EP1_IN_IRQHandler
+                0x08004874                DMA1_Stream0_IRQHandler
+                0x08004874                CAN1_TX_IRQHandler
+                0x08004874                FMPI2C1_ER_IRQHandler
+                0x08004874                EXTI4_IRQHandler
+                0x08004874                OTG_HS_EP1_OUT_IRQHandler
+                0x08004874                WWDG_IRQHandler
+                0x08004874                TIM2_IRQHandler
+                0x08004874                OTG_FS_WKUP_IRQHandler
+                0x08004874                TIM1_TRG_COM_TIM11_IRQHandler
+                0x08004874                OTG_HS_IRQHandler
+                0x08004874                EXTI1_IRQHandler
+                0x08004874                USART2_IRQHandler
+                0x08004874                I2C2_ER_IRQHandler
+                0x08004874                DMA2_Stream1_IRQHandler
+                0x08004874                CAN1_SCE_IRQHandler
+                0x08004874                FLASH_IRQHandler
+                0x08004874                DMA2_Stream4_IRQHandler
+                0x08004874                USART1_IRQHandler
+                0x08004874                OTG_FS_IRQHandler
+                0x08004874                SPI3_IRQHandler
+                0x08004874                DMA1_Stream4_IRQHandler
+                0x08004874                I2C1_ER_IRQHandler
+                0x08004874                FMC_IRQHandler
+                0x08004874                DMA2_Stream6_IRQHandler
+                0x08004874                SAI1_IRQHandler
+                0x08004874                DMA1_Stream3_IRQHandler
  .text.__udivmoddi4
-                0x0800481e      0x2a0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
-                0x0800481e                __udivmoddi4
+                0x08004876      0x2a0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x08004876                __udivmoddi4
  *(.glue_7)
- .glue_7        0x08004abe        0x0 linker stubs
+ .glue_7        0x08004b16        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08004abe        0x0 linker stubs
+ .glue_7t       0x08004b16        0x0 linker stubs
  *(.eh_frame)
- *fill*         0x08004abe        0x2 
- .eh_frame      0x08004ac0        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
+ *fill*         0x08004b16        0x2 
+ .eh_frame      0x08004b18        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x08004ac0        0x4 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crti.o
-                0x08004ac0                _init
- .init          0x08004ac4        0x8 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x08004b18        0x4 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crti.o
+                0x08004b18                _init
+ .init          0x08004b1c        0x8 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x08004acc        0x4 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crti.o
-                0x08004acc                _fini
- .fini          0x08004ad0        0x8 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtn.o
-                0x08004ad8                        . = ALIGN (0x4)
-                0x08004ad8                        _etext = .
+ .fini          0x08004b24        0x4 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crti.o
+                0x08004b24                _fini
+ .fini          0x08004b28        0x8 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtn.o
+                0x08004b30                        . = ALIGN (0x4)
+                0x08004b30                        _etext = .
 
-.vfp11_veneer   0x08004ad8        0x0
- .vfp11_veneer  0x08004ad8        0x0 linker stubs
+.vfp11_veneer   0x08004b30        0x0
+ .vfp11_veneer  0x08004b30        0x0 linker stubs
 
-.v4_bx          0x08004ad8        0x0
- .v4_bx         0x08004ad8        0x0 linker stubs
+.v4_bx          0x08004b30        0x0
+ .v4_bx         0x08004b30        0x0 linker stubs
 
-.iplt           0x08004ad8        0x0
- .iplt          0x08004ad8        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x08004b30        0x0
+ .iplt          0x08004b30        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
 
-.rodata         0x08004ad8       0x68
-                0x08004ad8                        . = ALIGN (0x4)
+.rodata         0x08004b30       0x4c
+                0x08004b30                        . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x08004ad8       0x47 build/task.o
+ .rodata        0x08004b30       0x2b build/task.o
  *(.rodata*)
- *fill*         0x08004b1f        0x1 
+ *fill*         0x08004b5b        0x1 
  .rodata.flagBitshiftOffset.0
-                0x08004b20        0x8 build/stm32f4xx_hal_dma.o
+                0x08004b5c        0x8 build/stm32f4xx_hal_dma.o
  .rodata.AHBPrescTable
-                0x08004b28       0x10 build/system_stm32f4xx.o
-                0x08004b28                AHBPrescTable
+                0x08004b64       0x10 build/system_stm32f4xx.o
+                0x08004b64                AHBPrescTable
  .rodata.APBPrescTable
-                0x08004b38        0x8 build/system_stm32f4xx.o
-                0x08004b38                APBPrescTable
-                0x08004b40                        . = ALIGN (0x4)
+                0x08004b74        0x8 build/system_stm32f4xx.o
+                0x08004b74                APBPrescTable
+                0x08004b7c                        . = ALIGN (0x4)
 
-.ARM.extab      0x08004b40        0x0
-                0x08004b40                        . = ALIGN (0x4)
+.ARM.extab      0x08004b7c        0x0
+                0x08004b7c                        . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08004b40                        . = ALIGN (0x4)
+                0x08004b7c                        . = ALIGN (0x4)
 
-.ARM            0x08004b40        0x8
-                0x08004b40                        . = ALIGN (0x4)
-                0x08004b40                        __exidx_start = .
+.ARM            0x08004b7c        0x8
+                0x08004b7c                        . = ALIGN (0x4)
+                0x08004b7c                        __exidx_start = .
  *(.ARM.exidx*)
  .ARM.exidx.text.__udivmoddi4
-                0x08004b40        0x8 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
-                0x08004b48                        __exidx_end = .
-                0x08004b48                        . = ALIGN (0x4)
+                0x08004b7c        0x8 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x08004b84                        __exidx_end = .
+                0x08004b84                        . = ALIGN (0x4)
 
-.preinit_array  0x08004b48        0x0
-                0x08004b48                        . = ALIGN (0x4)
-                0x08004b48                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08004b84        0x0
+                0x08004b84                        . = ALIGN (0x4)
+                0x08004b84                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x08004b48                        PROVIDE (__preinit_array_end = .)
-                0x08004b48                        . = ALIGN (0x4)
+                0x08004b84                        PROVIDE (__preinit_array_end = .)
+                0x08004b84                        . = ALIGN (0x4)
 
-.init_array     0x08004b48        0x4
-                0x08004b48                        . = ALIGN (0x4)
-                0x08004b48                        PROVIDE (__init_array_start = .)
+.init_array     0x08004b84        0x4
+                0x08004b84                        . = ALIGN (0x4)
+                0x08004b84                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x08004b48        0x4 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
-                0x08004b4c                        PROVIDE (__init_array_end = .)
-                0x08004b4c                        . = ALIGN (0x4)
+ .init_array    0x08004b84        0x4 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
+                0x08004b88                        PROVIDE (__init_array_end = .)
+                0x08004b88                        . = ALIGN (0x4)
 
-.fini_array     0x08004b4c        0x4
-                0x08004b4c                        . = ALIGN (0x4)
-                0x08004b4c                        PROVIDE (__fini_array_start = .)
+.fini_array     0x08004b88        0x4
+                0x08004b88                        . = ALIGN (0x4)
+                0x08004b88                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08004b4c        0x4 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
-                0x08004b50                        PROVIDE (__fini_array_end = .)
-                0x08004b50                        . = ALIGN (0x4)
-                0x08004b50                        _sidata = LOADADDR (.data)
+ .fini_array    0x08004b88        0x4 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
+                0x08004b8c                        PROVIDE (__fini_array_end = .)
+                0x08004b8c                        . = ALIGN (0x4)
+                0x08004b8c                        _sidata = LOADADDR (.data)
 
-.rel.dyn        0x08004b50        0x0
- .rel.iplt      0x08004b50        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x08004b8c        0x0
+ .rel.iplt      0x08004b8c        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
 
-.data           0x20000000       0x20 load address 0x08004b50
+.data           0x20000000       0x20 load address 0x08004b8c
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -4849,11 +4844,11 @@ LOAD D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m
                 0x20000020                        . = ALIGN (0x4)
                 0x20000020                        _edata = .
 
-.igot.plt       0x20000020        0x0 load address 0x08004b70
+.igot.plt       0x20000020        0x0 load address 0x08004bac
  .igot.plt      0x20000020        0x0 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
                 0x20000020                        . = ALIGN (0x4)
 
-.bss            0x20000020      0x374 load address 0x08004b70
+.bss            0x20000020      0x374 load address 0x08004bac
                 0x20000020                        _sbss = .
                 0x20000020                        __bss_start__ = _sbss
  *(.bss)
@@ -4906,7 +4901,7 @@ LOAD D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m
                 0x20000394                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x20000394      0x604 load address 0x08004b70
+                0x20000394      0x604 load address 0x08004bac
                 0x20000398                        . = ALIGN (0x8)
  *fill*         0x20000394        0x4 
                 0x20000398                        PROVIDE (end = .)
@@ -5041,7 +5036,7 @@ LOAD D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m
  .comment       0x00000012       0x13 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libm_a-sf_copysign.o)
  .comment       0x00000012       0x13 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
 
-.debug_info     0x00000000    0x11245
+.debug_info     0x00000000    0x1121e
  .debug_info    0x00000000      0x64f build/main.o
  .debug_info    0x0000064f      0x36d build/gpio.o
  .debug_info    0x000009bc      0xd0f build/can.o
@@ -5059,22 +5054,22 @@ LOAD D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m
  .debug_info    0x00007f95      0xdf9 build/usart.o
  .debug_info    0x00008d8e     0x330e build/stm32f4xx_hal_uart.o
  .debug_info    0x0000c09c      0x947 build/bsp_can.o
- .debug_info    0x0000c9e3      0x9d2 build/dm_ctrl.o
- .debug_info    0x0000d3b5      0xd30 build/dm_drv.o
- .debug_info    0x0000e0e5      0xb62 build/remote_control.o
- .debug_info    0x0000ec47      0x3ff build/scheduler.o
- .debug_info    0x0000f046      0x3f5 build/task.o
- .debug_info    0x0000f43b      0x3cc build/coordinate_mapping.o
- .debug_info    0x0000f807      0x4a1 build/arm_control.o
- .debug_info    0x0000fca8       0xcc build/mcu_config.o
- .debug_info    0x0000fd74      0x983 build/can_driver.o
- .debug_info    0x000106f7       0x30 build/startup_stm32f446xx.o
- .debug_info    0x00010727      0x135 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
- .debug_info    0x0001085c      0x10b D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
- .debug_info    0x00010967      0x17b D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libm_a-sf_copysign.o)
- .debug_info    0x00010ae2       0x24 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_info    0x00010b06      0x703 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
- .debug_info    0x00011209       0x3c D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+ .debug_info    0x0000c9e3      0x9d9 build/dm_ctrl.o
+ .debug_info    0x0000d3bc      0xd30 build/dm_drv.o
+ .debug_info    0x0000e0ec      0xb62 build/remote_control.o
+ .debug_info    0x0000ec4e      0x3ff build/scheduler.o
+ .debug_info    0x0000f04d      0x3c7 build/task.o
+ .debug_info    0x0000f414      0x3cc build/coordinate_mapping.o
+ .debug_info    0x0000f7e0      0x4a1 build/arm_control.o
+ .debug_info    0x0000fc81       0xcc build/mcu_config.o
+ .debug_info    0x0000fd4d      0x983 build/can_driver.o
+ .debug_info    0x000106d0       0x30 build/startup_stm32f446xx.o
+ .debug_info    0x00010700      0x135 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+ .debug_info    0x00010835      0x10b D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+ .debug_info    0x00010940      0x17b D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libm_a-sf_copysign.o)
+ .debug_info    0x00010abb       0x24 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_info    0x00010adf      0x703 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_info    0x000111e2       0x3c D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
 
 .debug_abbrev   0x00000000     0x32d2
  .debug_abbrev  0x00000000      0x1d5 build/main.o
@@ -5111,7 +5106,7 @@ LOAD D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m
  .debug_abbrev  0x00003142      0x16a D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
  .debug_abbrev  0x000032ac       0x26 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
 
-.debug_loc      0x00000000     0x5f5e
+.debug_loc      0x00000000     0x5ed6
  .debug_loc     0x00000000       0xaa build/main.o
  .debug_loc     0x000000aa       0x5c build/gpio.o
  .debug_loc     0x00000106       0xf8 build/can.o
@@ -5133,13 +5128,13 @@ LOAD D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m
  .debug_loc     0x00004e0c      0x532 build/dm_drv.o
  .debug_loc     0x0000533e      0x2dc build/remote_control.o
  .debug_loc     0x0000561a      0x1a8 build/scheduler.o
- .debug_loc     0x000057c2      0x1ac build/task.o
- .debug_loc     0x0000596e      0x164 build/coordinate_mapping.o
- .debug_loc     0x00005ad2       0xe4 build/arm_control.o
- .debug_loc     0x00005bb6       0x2c build/mcu_config.o
- .debug_loc     0x00005be2      0x37c build/can_driver.o
+ .debug_loc     0x000057c2      0x124 build/task.o
+ .debug_loc     0x000058e6      0x164 build/coordinate_mapping.o
+ .debug_loc     0x00005a4a       0xe4 build/arm_control.o
+ .debug_loc     0x00005b2e       0x2c build/mcu_config.o
+ .debug_loc     0x00005b5a      0x37c build/can_driver.o
 
-.debug_aranges  0x00000000      0xcf8
+.debug_aranges  0x00000000      0xce8
  .debug_aranges
                 0x00000000       0x30 build/main.o
  .debug_aranges
@@ -5183,31 +5178,31 @@ LOAD D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m
  .debug_aranges
                 0x00000a88       0x40 build/scheduler.o
  .debug_aranges
-                0x00000ac8       0x50 build/task.o
+                0x00000ac8       0x40 build/task.o
  .debug_aranges
-                0x00000b18       0x38 build/coordinate_mapping.o
+                0x00000b08       0x38 build/coordinate_mapping.o
  .debug_aranges
-                0x00000b50       0x30 build/arm_control.o
+                0x00000b40       0x30 build/arm_control.o
  .debug_aranges
-                0x00000b80       0x20 build/mcu_config.o
+                0x00000b70       0x20 build/mcu_config.o
  .debug_aranges
-                0x00000ba0       0x70 build/can_driver.o
+                0x00000b90       0x70 build/can_driver.o
  .debug_aranges
-                0x00000c10       0x28 build/startup_stm32f446xx.o
+                0x00000c00       0x28 build/startup_stm32f446xx.o
  .debug_aranges
-                0x00000c38       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+                0x00000c28       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
  .debug_aranges
-                0x00000c58       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+                0x00000c48       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
  .debug_aranges
-                0x00000c78       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libm_a-sf_copysign.o)
+                0x00000c68       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libm_a-sf_copysign.o)
  .debug_aranges
-                0x00000c98       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+                0x00000c88       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
  .debug_aranges
-                0x00000cb8       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x00000ca8       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
  .debug_aranges
-                0x00000cd8       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+                0x00000cc8       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
 
-.debug_ranges   0x00000000      0xaf0
+.debug_ranges   0x00000000      0xae0
  .debug_ranges  0x00000000       0x20 build/main.o
  .debug_ranges  0x00000020       0x10 build/gpio.o
  .debug_ranges  0x00000030       0x28 build/can.o
@@ -5229,12 +5224,12 @@ LOAD D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m
  .debug_ranges  0x000008a0       0x88 build/dm_drv.o
  .debug_ranges  0x00000928       0x68 build/remote_control.o
  .debug_ranges  0x00000990       0x30 build/scheduler.o
- .debug_ranges  0x000009c0       0x40 build/task.o
- .debug_ranges  0x00000a00       0x28 build/coordinate_mapping.o
- .debug_ranges  0x00000a28       0x20 build/arm_control.o
- .debug_ranges  0x00000a48       0x10 build/mcu_config.o
- .debug_ranges  0x00000a58       0x78 build/can_driver.o
- .debug_ranges  0x00000ad0       0x20 build/startup_stm32f446xx.o
+ .debug_ranges  0x000009c0       0x30 build/task.o
+ .debug_ranges  0x000009f0       0x28 build/coordinate_mapping.o
+ .debug_ranges  0x00000a18       0x20 build/arm_control.o
+ .debug_ranges  0x00000a38       0x10 build/mcu_config.o
+ .debug_ranges  0x00000a48       0x78 build/can_driver.o
+ .debug_ranges  0x00000ac0       0x20 build/startup_stm32f446xx.o
 
 .debug_macro    0x00000000    0x23a60
  .debug_macro   0x00000000      0x244 build/main.o
@@ -5340,7 +5335,7 @@ LOAD D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m
  .debug_macro   0x00023551      0x260 build/mcu_config.o
  .debug_macro   0x000237b1      0x2af build/can_driver.o
 
-.debug_line     0x00000000     0xf373
+.debug_line     0x00000000     0xf367
  .debug_line    0x00000000      0x5ce build/main.o
  .debug_line    0x000005ce      0x4a6 build/gpio.o
  .debug_line    0x00000a74      0x5c9 build/can.o
@@ -5358,60 +5353,60 @@ LOAD D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m
  .debug_line    0x000079da      0x554 build/usart.o
  .debug_line    0x00007f2e     0x22e1 build/stm32f4xx_hal_uart.o
  .debug_line    0x0000a20f      0x594 build/bsp_can.o
- .debug_line    0x0000a7a3      0x6d6 build/dm_ctrl.o
- .debug_line    0x0000ae79      0x823 build/dm_drv.o
- .debug_line    0x0000b69c      0xa19 build/remote_control.o
- .debug_line    0x0000c0b5      0x786 build/scheduler.o
- .debug_line    0x0000c83b      0x639 build/task.o
- .debug_line    0x0000ce74      0x67d build/coordinate_mapping.o
- .debug_line    0x0000d4f1      0x691 build/arm_control.o
- .debug_line    0x0000db82      0x5be build/mcu_config.o
- .debug_line    0x0000e140      0x7e1 build/can_driver.o
- .debug_line    0x0000e921       0x73 build/startup_stm32f446xx.o
- .debug_line    0x0000e994      0x1ca D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
- .debug_line    0x0000eb5e      0x13c D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
- .debug_line    0x0000ec9a      0x13e D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libm_a-sf_copysign.o)
- .debug_line    0x0000edd8       0x4e D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_line    0x0000ee26      0x503 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
- .debug_line    0x0000f329       0x4a D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+ .debug_line    0x0000a7a3      0x6ef build/dm_ctrl.o
+ .debug_line    0x0000ae92      0x823 build/dm_drv.o
+ .debug_line    0x0000b6b5      0xa19 build/remote_control.o
+ .debug_line    0x0000c0ce      0x786 build/scheduler.o
+ .debug_line    0x0000c854      0x614 build/task.o
+ .debug_line    0x0000ce68      0x67d build/coordinate_mapping.o
+ .debug_line    0x0000d4e5      0x691 build/arm_control.o
+ .debug_line    0x0000db76      0x5be build/mcu_config.o
+ .debug_line    0x0000e134      0x7e1 build/can_driver.o
+ .debug_line    0x0000e915       0x73 build/startup_stm32f446xx.o
+ .debug_line    0x0000e988      0x1ca D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+ .debug_line    0x0000eb52      0x13c D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+ .debug_line    0x0000ec8e      0x13e D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libm_a-sf_copysign.o)
+ .debug_line    0x0000edcc       0x4e D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_line    0x0000ee1a      0x503 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_line    0x0000f31d       0x4a D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
 
-.debug_str      0x00000000    0xcc982
- .debug_str     0x00000000    0xcc982 build/main.o
+.debug_str      0x00000000    0xcc971
+ .debug_str     0x00000000    0xcc971 build/main.o
                               0xc4c24 (size before relaxing)
- .debug_str     0x000cc982    0xc481c build/gpio.o
- .debug_str     0x000cc982    0xc5136 build/can.o
- .debug_str     0x000cc982    0xc4b0c build/stm32f4xx_it.o
- .debug_str     0x000cc982    0xc481c build/stm32f4xx_hal_msp.o
- .debug_str     0x000cc982    0xc4fa1 build/stm32f4xx_hal_can.o
- .debug_str     0x000cc982    0xc4d05 build/stm32f4xx_hal_rcc.o
- .debug_str     0x000cc982    0xc4d38 build/stm32f4xx_hal_rcc_ex.o
- .debug_str     0x000cc982    0xc4a47 build/stm32f4xx_hal_gpio.o
- .debug_str     0x000cc982    0xc4cc1 build/stm32f4xx_hal_dma.o
- .debug_str     0x000cc982    0xc51e8 build/stm32f4xx_hal_cortex.o
- .debug_str     0x000cc982    0xc5491 build/stm32f4xx_hal.o
- .debug_str     0x000cc982    0xc48cc build/system_stm32f4xx.o
- .debug_str     0x000cc982    0xc4d7a build/dma.o
- .debug_str     0x000cc982    0xc5344 build/usart.o
- .debug_str     0x000cc982    0xc52bc build/stm32f4xx_hal_uart.o
- .debug_str     0x000cc982    0xc4c17 build/bsp_can.o
- .debug_str     0x000cc982    0xc7875 build/dm_ctrl.o
- .debug_str     0x000cc982    0xc4ce4 build/dm_drv.o
- .debug_str     0x000cc982    0xc7da4 build/remote_control.o
- .debug_str     0x000cc982    0xc7ab0 build/scheduler.o
- .debug_str     0x000cc982    0xc4e87 build/task.o
- .debug_str     0x000cc982    0xc8041 build/coordinate_mapping.o
- .debug_str     0x000cc982    0xc8203 build/arm_control.o
- .debug_str     0x000cc982    0xc4d48 build/mcu_config.o
- .debug_str     0x000cc982    0xc7744 build/can_driver.o
- .debug_str     0x000cc982       0x52 build/startup_stm32f446xx.o
- .debug_str     0x000cc982      0x19b D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
- .debug_str     0x000cc982      0x1e8 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
- .debug_str     0x000cc982      0x1d8 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libm_a-sf_copysign.o)
- .debug_str     0x000cc982       0x7e D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_str     0x000cc982      0x696 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
- .debug_str     0x000cc982       0x9e D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+ .debug_str     0x000cc971    0xc481c build/gpio.o
+ .debug_str     0x000cc971    0xc5136 build/can.o
+ .debug_str     0x000cc971    0xc4b0c build/stm32f4xx_it.o
+ .debug_str     0x000cc971    0xc481c build/stm32f4xx_hal_msp.o
+ .debug_str     0x000cc971    0xc4fa1 build/stm32f4xx_hal_can.o
+ .debug_str     0x000cc971    0xc4d05 build/stm32f4xx_hal_rcc.o
+ .debug_str     0x000cc971    0xc4d38 build/stm32f4xx_hal_rcc_ex.o
+ .debug_str     0x000cc971    0xc4a47 build/stm32f4xx_hal_gpio.o
+ .debug_str     0x000cc971    0xc4cc1 build/stm32f4xx_hal_dma.o
+ .debug_str     0x000cc971    0xc51e8 build/stm32f4xx_hal_cortex.o
+ .debug_str     0x000cc971    0xc5491 build/stm32f4xx_hal.o
+ .debug_str     0x000cc971    0xc48cc build/system_stm32f4xx.o
+ .debug_str     0x000cc971    0xc4d7a build/dma.o
+ .debug_str     0x000cc971    0xc5344 build/usart.o
+ .debug_str     0x000cc971    0xc52bc build/stm32f4xx_hal_uart.o
+ .debug_str     0x000cc971    0xc4c17 build/bsp_can.o
+ .debug_str     0x000cc971    0xc7879 build/dm_ctrl.o
+ .debug_str     0x000cc971    0xc4ce4 build/dm_drv.o
+ .debug_str     0x000cc971    0xc7da4 build/remote_control.o
+ .debug_str     0x000cc971    0xc7ab0 build/scheduler.o
+ .debug_str     0x000cc971    0xc4e76 build/task.o
+ .debug_str     0x000cc971    0xc8041 build/coordinate_mapping.o
+ .debug_str     0x000cc971    0xc8203 build/arm_control.o
+ .debug_str     0x000cc971    0xc4d48 build/mcu_config.o
+ .debug_str     0x000cc971    0xc7744 build/can_driver.o
+ .debug_str     0x000cc971       0x52 build/startup_stm32f446xx.o
+ .debug_str     0x000cc971      0x19b D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+ .debug_str     0x000cc971      0x1e8 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+ .debug_str     0x000cc971      0x1d8 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libm_a-sf_copysign.o)
+ .debug_str     0x000cc971       0x7e D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_str     0x000cc971      0x696 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_str     0x000cc971       0x9e D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
 
-.debug_frame    0x00000000     0x2ee8
+.debug_frame    0x00000000     0x2ea8
  .debug_frame   0x00000000       0x68 build/main.o
  .debug_frame   0x00000068       0x38 build/gpio.o
  .debug_frame   0x000000a0       0x90 build/can.o
@@ -5433,19 +5428,19 @@ LOAD D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m
  .debug_frame   0x000024e8      0x260 build/dm_drv.o
  .debug_frame   0x00002748      0x160 build/remote_control.o
  .debug_frame   0x000028a8       0xcc build/scheduler.o
- .debug_frame   0x00002974       0xec build/task.o
- .debug_frame   0x00002a60       0xb0 build/coordinate_mapping.o
- .debug_frame   0x00002b10       0x88 build/arm_control.o
- .debug_frame   0x00002b98       0x2c build/mcu_config.o
- .debug_frame   0x00002bc4      0x1a4 build/can_driver.o
- .debug_frame   0x00002d68       0x2c D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
- .debug_frame   0x00002d94       0x2c D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
- .debug_frame   0x00002dc0       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libm_a-sf_copysign.o)
- .debug_frame   0x00002de0       0x44 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fmax.o)
- .debug_frame   0x00002e24       0x44 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fmin.o)
- .debug_frame   0x00002e68       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fpclassify.o)
- .debug_frame   0x00002e88       0x2c D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00002eb4       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00002974       0xac build/task.o
+ .debug_frame   0x00002a20       0xb0 build/coordinate_mapping.o
+ .debug_frame   0x00002ad0       0x88 build/arm_control.o
+ .debug_frame   0x00002b58       0x2c build/mcu_config.o
+ .debug_frame   0x00002b84      0x1a4 build/can_driver.o
+ .debug_frame   0x00002d28       0x2c D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+ .debug_frame   0x00002d54       0x2c D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+ .debug_frame   0x00002d80       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libm_a-sf_copysign.o)
+ .debug_frame   0x00002da0       0x44 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fmax.o)
+ .debug_frame   0x00002de4       0x44 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fmin.o)
+ .debug_frame   0x00002e28       0x20 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a(libm_a-sf_fpclassify.o)
+ .debug_frame   0x00002e48       0x2c D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00002e74       0x34 D:/enviroment/msys2/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
 
 .debug_loclists
                 0x00000000      0xb0c
@@ -5617,6 +5612,7 @@ HAL_DMA_Start_IT                                  build/stm32f4xx_hal_dma.o
 HAL_DMA_UnRegisterCallback                        build/stm32f4xx_hal_dma.o
 HAL_DeInit                                        build/stm32f4xx_hal.o
 HAL_Delay                                         build/stm32f4xx_hal.o
+                                                  build/dm_ctrl.o
 HAL_DisableCompensationCell                       build/stm32f4xx_hal.o
 HAL_EXTI_ClearConfigLine                          build/stm32f4xx_hal_exti.o
 HAL_EXTI_ClearPending                             build/stm32f4xx_hal_exti.o
@@ -6228,7 +6224,6 @@ hcan1                                             build/can.o
                                                   build/stm32f4xx_it.o
 hcan2                                             build/can.o
                                                   build/can_driver.o
-                                                  build/dm_ctrl.o
                                                   build/bsp_can.o
                                                   build/stm32f4xx_it.o
 hdma_usart3_rx                                    build/usart.o
@@ -6286,10 +6281,8 @@ sys_time                                          build/scheduler.o
                                                   build/stm32f4xx_it.o
 task_100ms                                        build/task.o
 task_10ms                                         build/task.o
-task_1ms                                          build/task.o
-task_2ms                                          build/task.o
+task_20ms                                         build/task.o
 task_500ms                                        build/task.o
-task_5ms                                          build/task.o
 task_init                                         build/task.o
                                                   build/mcu_config.o
 task_num                                          build/scheduler.o

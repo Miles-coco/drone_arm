@@ -62,11 +62,11 @@ void ctrl_enable(uint32_t motor_mask)
 		motor[Motor1].start_flag = 1;
 		dm4310_enable(&hcan1, &motor[Motor1]);
 	}
-
+	HAL_Delay(5);
 	if (motor_mask & MOTOR2_BIT)
 	{
 		motor[Motor2].start_flag = 1;
-		dm4310_enable(&hcan2, &motor[Motor2]);
+		dm4310_enable(&hcan1, &motor[Motor2]);
 	}
 }
 /**
@@ -89,7 +89,7 @@ void ctrl_disable(uint32_t motor_mask)
 	if (motor_mask & MOTOR2_BIT)
 	{
 		motor[Motor2].start_flag = 0;
-		dm4310_disable(&hcan2, &motor[Motor2]);
+		dm4310_disable(&hcan1, &motor[Motor2]);
 	}
 }
 /**
@@ -152,7 +152,7 @@ void ctrl_clear_err(uint32_t motor_mask)
 
 	if (motor_mask & MOTOR2_BIT)
 	{
-		dm4310_clear_err(&hcan2, &motor[Motor2]);
+		dm4310_clear_err(&hcan1, &motor[Motor2]);
 	}
 }
 /**
@@ -173,7 +173,7 @@ void ctrl_send(uint32_t motor_mask)
 
 	if (motor_mask & MOTOR2_BIT)
 	{
-		dm4310_ctrl_send(&hcan2, &motor[Motor2]);
+		dm4310_ctrl_send(&hcan1, &motor[Motor2]);
 	}
 }
 /**
@@ -192,7 +192,19 @@ void can1_rx_callback(void)
 	canx_receive_data(&hcan1, &rec_id, rx_data);
 	switch (rec_id)
 	{
-	case 0:
+	case 1:
+	{
+		switch ((rx_data[0]) & 0x0F)
+		{
+		case 1:
+			dm4310_fbdata(&motor[Motor1], rx_data);
+			break;
+		case 3:
+			dm4310_fbdata(&motor[Motor2], rx_data);
+			break;
+		}
+	}
+	case 3:
 	{
 		switch ((rx_data[0]) & 0x0F)
 		{

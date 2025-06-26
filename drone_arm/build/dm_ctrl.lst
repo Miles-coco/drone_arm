@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 1
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 1
   36              		.loc 1 18 1
   37              		.cfi_startproc
   38              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 2
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 2
 
 
   39              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 1
   81 0042 5A66     		str	r2, [r3, #100]	@ float
   31:Module/motor/dm_ctrl.c ****   	motor[Motor1].cmd.kd_set = 2.0f;  // 速度增益
   82              		.loc 1 31 29
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 3
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 3
 
 
   83 0044 164B     		ldr	r3, .L2
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 1
   47:Module/motor/dm_ctrl.c **** }
  122              		.loc 1 47 1
  123 009c 00BF     		nop
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 4
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 4
 
 
  124 009e 80BD     		pop	{r7, pc}
@@ -236,71 +236,73 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 1
   61:Module/motor/dm_ctrl.c **** 	{
   62:Module/motor/dm_ctrl.c **** 		motor[Motor1].start_flag = 1;
  165              		.loc 1 62 28
- 166 0012 0C4B     		ldr	r3, .L8
+ 166 0012 0D4B     		ldr	r3, .L8
  167 0014 0122     		movs	r2, #1
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 5
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 5
 
 
  168 0016 5A70     		strb	r2, [r3, #1]
   63:Module/motor/dm_ctrl.c **** 		dm4310_enable(&hcan1, &motor[Motor1]);
  169              		.loc 1 63 3
- 170 0018 0A49     		ldr	r1, .L8
- 171 001a 0B48     		ldr	r0, .L8+4
+ 170 0018 0B49     		ldr	r1, .L8
+ 171 001a 0C48     		ldr	r0, .L8+4
  172 001c FFF7FEFF 		bl	dm4310_enable
  173              	.L5:
   64:Module/motor/dm_ctrl.c **** 	}
-  65:Module/motor/dm_ctrl.c **** 
+  65:Module/motor/dm_ctrl.c **** 	HAL_Delay(5);
+ 174              		.loc 1 65 2
+ 175 0020 0520     		movs	r0, #5
+ 176 0022 FFF7FEFF 		bl	HAL_Delay
   66:Module/motor/dm_ctrl.c **** 	if (motor_mask & MOTOR2_BIT)
- 174              		.loc 1 66 17
- 175 0020 7B68     		ldr	r3, [r7, #4]
- 176 0022 03F00203 		and	r3, r3, #2
- 177              		.loc 1 66 5
- 178 0026 002B     		cmp	r3, #0
- 179 0028 07D0     		beq	.L7
+ 177              		.loc 1 66 17
+ 178 0026 7B68     		ldr	r3, [r7, #4]
+ 179 0028 03F00203 		and	r3, r3, #2
+ 180              		.loc 1 66 5
+ 181 002c 002B     		cmp	r3, #0
+ 182 002e 07D0     		beq	.L7
   67:Module/motor/dm_ctrl.c **** 	{
   68:Module/motor/dm_ctrl.c **** 		motor[Motor2].start_flag = 1;
- 180              		.loc 1 68 28
- 181 002a 064B     		ldr	r3, .L8
- 182 002c 0122     		movs	r2, #1
- 183 002e 83F86D20 		strb	r2, [r3, #109]
-  69:Module/motor/dm_ctrl.c **** 		dm4310_enable(&hcan2, &motor[Motor2]);
- 184              		.loc 1 69 3
- 185 0032 0649     		ldr	r1, .L8+8
- 186 0034 0648     		ldr	r0, .L8+12
- 187 0036 FFF7FEFF 		bl	dm4310_enable
- 188              	.L7:
+ 183              		.loc 1 68 28
+ 184 0030 054B     		ldr	r3, .L8
+ 185 0032 0122     		movs	r2, #1
+ 186 0034 83F86D20 		strb	r2, [r3, #109]
+  69:Module/motor/dm_ctrl.c **** 		dm4310_enable(&hcan1, &motor[Motor2]);
+ 187              		.loc 1 69 3
+ 188 0038 0549     		ldr	r1, .L8+8
+ 189 003a 0448     		ldr	r0, .L8+4
+ 190 003c FFF7FEFF 		bl	dm4310_enable
+ 191              	.L7:
   70:Module/motor/dm_ctrl.c **** 	}
   71:Module/motor/dm_ctrl.c **** }
- 189              		.loc 1 71 1
- 190 003a 00BF     		nop
- 191 003c 0837     		adds	r7, r7, #8
- 192              	.LCFI5:
- 193              		.cfi_def_cfa_offset 8
- 194 003e BD46     		mov	sp, r7
- 195              	.LCFI6:
- 196              		.cfi_def_cfa_register 13
- 197              		@ sp needed
- 198 0040 80BD     		pop	{r7, pc}
- 199              	.L9:
- 200 0042 00BF     		.align	2
- 201              	.L8:
- 202 0044 00000000 		.word	motor
- 203 0048 00000000 		.word	hcan1
- 204 004c 6C000000 		.word	motor+108
- 205 0050 00000000 		.word	hcan2
- 206              		.cfi_endproc
- 207              	.LFE135:
- 209              		.section	.text.ctrl_disable,"ax",%progbits
- 210              		.align	1
- 211              		.global	ctrl_disable
- 212              		.syntax unified
- 213              		.thumb
- 214              		.thumb_func
- 216              	ctrl_disable:
- 217              	.LFB136:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 6
+ 192              		.loc 1 71 1
+ 193 0040 00BF     		nop
+ 194 0042 0837     		adds	r7, r7, #8
+ 195              	.LCFI5:
+ 196              		.cfi_def_cfa_offset 8
+ 197 0044 BD46     		mov	sp, r7
+ 198              	.LCFI6:
+ 199              		.cfi_def_cfa_register 13
+ 200              		@ sp needed
+ 201 0046 80BD     		pop	{r7, pc}
+ 202              	.L9:
+ 203              		.align	2
+ 204              	.L8:
+ 205 0048 00000000 		.word	motor
+ 206 004c 00000000 		.word	hcan1
+ 207 0050 6C000000 		.word	motor+108
+ 208              		.cfi_endproc
+ 209              	.LFE135:
+ 211              		.section	.text.ctrl_disable,"ax",%progbits
+ 212              		.align	1
+ 213              		.global	ctrl_disable
+ 214              		.syntax unified
+ 215              		.thumb
+ 216              		.thumb_func
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 6
 
 
+ 218              	ctrl_disable:
+ 219              	.LFB136:
   72:Module/motor/dm_ctrl.c **** /**
   73:Module/motor/dm_ctrl.c **** ************************************************************************
   74:Module/motor/dm_ctrl.c **** * @brief:      	ctrl_disable: 禁用电机控制函数
@@ -312,94 +314,93 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 1
   80:Module/motor/dm_ctrl.c **** **/
   81:Module/motor/dm_ctrl.c **** void ctrl_disable(uint32_t motor_mask)
   82:Module/motor/dm_ctrl.c **** {
- 218              		.loc 1 82 1
- 219              		.cfi_startproc
- 220              		@ args = 0, pretend = 0, frame = 8
- 221              		@ frame_needed = 1, uses_anonymous_args = 0
- 222 0000 80B5     		push	{r7, lr}
- 223              	.LCFI7:
- 224              		.cfi_def_cfa_offset 8
- 225              		.cfi_offset 7, -8
- 226              		.cfi_offset 14, -4
- 227 0002 82B0     		sub	sp, sp, #8
- 228              	.LCFI8:
- 229              		.cfi_def_cfa_offset 16
- 230 0004 00AF     		add	r7, sp, #0
- 231              	.LCFI9:
- 232              		.cfi_def_cfa_register 7
- 233 0006 7860     		str	r0, [r7, #4]
+ 220              		.loc 1 82 1
+ 221              		.cfi_startproc
+ 222              		@ args = 0, pretend = 0, frame = 8
+ 223              		@ frame_needed = 1, uses_anonymous_args = 0
+ 224 0000 80B5     		push	{r7, lr}
+ 225              	.LCFI7:
+ 226              		.cfi_def_cfa_offset 8
+ 227              		.cfi_offset 7, -8
+ 228              		.cfi_offset 14, -4
+ 229 0002 82B0     		sub	sp, sp, #8
+ 230              	.LCFI8:
+ 231              		.cfi_def_cfa_offset 16
+ 232 0004 00AF     		add	r7, sp, #0
+ 233              	.LCFI9:
+ 234              		.cfi_def_cfa_register 7
+ 235 0006 7860     		str	r0, [r7, #4]
   83:Module/motor/dm_ctrl.c **** 	if (motor_mask & MOTOR1_BIT)
- 234              		.loc 1 83 17
- 235 0008 7B68     		ldr	r3, [r7, #4]
- 236 000a 03F00103 		and	r3, r3, #1
- 237              		.loc 1 83 5
- 238 000e 002B     		cmp	r3, #0
- 239 0010 06D0     		beq	.L11
+ 236              		.loc 1 83 17
+ 237 0008 7B68     		ldr	r3, [r7, #4]
+ 238 000a 03F00103 		and	r3, r3, #1
+ 239              		.loc 1 83 5
+ 240 000e 002B     		cmp	r3, #0
+ 241 0010 06D0     		beq	.L11
   84:Module/motor/dm_ctrl.c **** 	{
   85:Module/motor/dm_ctrl.c **** 		motor[Motor1].start_flag = 0;
- 240              		.loc 1 85 28
- 241 0012 0C4B     		ldr	r3, .L14
- 242 0014 0022     		movs	r2, #0
- 243 0016 5A70     		strb	r2, [r3, #1]
+ 242              		.loc 1 85 28
+ 243 0012 0C4B     		ldr	r3, .L14
+ 244 0014 0022     		movs	r2, #0
+ 245 0016 5A70     		strb	r2, [r3, #1]
   86:Module/motor/dm_ctrl.c **** 		dm4310_disable(&hcan1, &motor[Motor1]);
- 244              		.loc 1 86 3
- 245 0018 0A49     		ldr	r1, .L14
- 246 001a 0B48     		ldr	r0, .L14+4
- 247 001c FFF7FEFF 		bl	dm4310_disable
- 248              	.L11:
+ 246              		.loc 1 86 3
+ 247 0018 0A49     		ldr	r1, .L14
+ 248 001a 0B48     		ldr	r0, .L14+4
+ 249 001c FFF7FEFF 		bl	dm4310_disable
+ 250              	.L11:
   87:Module/motor/dm_ctrl.c **** 	}
   88:Module/motor/dm_ctrl.c **** 
   89:Module/motor/dm_ctrl.c **** 	if (motor_mask & MOTOR2_BIT)
- 249              		.loc 1 89 17
- 250 0020 7B68     		ldr	r3, [r7, #4]
- 251 0022 03F00203 		and	r3, r3, #2
- 252              		.loc 1 89 5
- 253 0026 002B     		cmp	r3, #0
- 254 0028 07D0     		beq	.L13
+ 251              		.loc 1 89 17
+ 252 0020 7B68     		ldr	r3, [r7, #4]
+ 253 0022 03F00203 		and	r3, r3, #2
+ 254              		.loc 1 89 5
+ 255 0026 002B     		cmp	r3, #0
+ 256 0028 07D0     		beq	.L13
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 7
+
+
   90:Module/motor/dm_ctrl.c **** 	{
   91:Module/motor/dm_ctrl.c **** 		motor[Motor2].start_flag = 0;
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 7
-
-
- 255              		.loc 1 91 28
- 256 002a 064B     		ldr	r3, .L14
- 257 002c 0022     		movs	r2, #0
- 258 002e 83F86D20 		strb	r2, [r3, #109]
-  92:Module/motor/dm_ctrl.c **** 		dm4310_disable(&hcan2, &motor[Motor2]);
- 259              		.loc 1 92 3
- 260 0032 0649     		ldr	r1, .L14+8
- 261 0034 0648     		ldr	r0, .L14+12
- 262 0036 FFF7FEFF 		bl	dm4310_disable
- 263              	.L13:
+ 257              		.loc 1 91 28
+ 258 002a 064B     		ldr	r3, .L14
+ 259 002c 0022     		movs	r2, #0
+ 260 002e 83F86D20 		strb	r2, [r3, #109]
+  92:Module/motor/dm_ctrl.c **** 		dm4310_disable(&hcan1, &motor[Motor2]);
+ 261              		.loc 1 92 3
+ 262 0032 0649     		ldr	r1, .L14+8
+ 263 0034 0448     		ldr	r0, .L14+4
+ 264 0036 FFF7FEFF 		bl	dm4310_disable
+ 265              	.L13:
   93:Module/motor/dm_ctrl.c **** 	}
   94:Module/motor/dm_ctrl.c **** }
- 264              		.loc 1 94 1
- 265 003a 00BF     		nop
- 266 003c 0837     		adds	r7, r7, #8
- 267              	.LCFI10:
- 268              		.cfi_def_cfa_offset 8
- 269 003e BD46     		mov	sp, r7
- 270              	.LCFI11:
- 271              		.cfi_def_cfa_register 13
- 272              		@ sp needed
- 273 0040 80BD     		pop	{r7, pc}
- 274              	.L15:
- 275 0042 00BF     		.align	2
- 276              	.L14:
- 277 0044 00000000 		.word	motor
- 278 0048 00000000 		.word	hcan1
- 279 004c 6C000000 		.word	motor+108
- 280 0050 00000000 		.word	hcan2
- 281              		.cfi_endproc
- 282              	.LFE136:
- 284              		.section	.text.ctrl_set,"ax",%progbits
- 285              		.align	1
- 286              		.global	ctrl_set
- 287              		.syntax unified
- 288              		.thumb
- 289              		.thumb_func
- 291              	ctrl_set:
- 292              	.LFB137:
+ 266              		.loc 1 94 1
+ 267 003a 00BF     		nop
+ 268 003c 0837     		adds	r7, r7, #8
+ 269              	.LCFI10:
+ 270              		.cfi_def_cfa_offset 8
+ 271 003e BD46     		mov	sp, r7
+ 272              	.LCFI11:
+ 273              		.cfi_def_cfa_register 13
+ 274              		@ sp needed
+ 275 0040 80BD     		pop	{r7, pc}
+ 276              	.L15:
+ 277 0042 00BF     		.align	2
+ 278              	.L14:
+ 279 0044 00000000 		.word	motor
+ 280 0048 00000000 		.word	hcan1
+ 281 004c 6C000000 		.word	motor+108
+ 282              		.cfi_endproc
+ 283              	.LFE136:
+ 285              		.section	.text.ctrl_set,"ax",%progbits
+ 286              		.align	1
+ 287              		.global	ctrl_set
+ 288              		.syntax unified
+ 289              		.thumb
+ 290              		.thumb_func
+ 292              	ctrl_set:
+ 293              	.LFB137:
   95:Module/motor/dm_ctrl.c **** /**
   96:Module/motor/dm_ctrl.c **** ************************************************************************
   97:Module/motor/dm_ctrl.c **** * @brief:      	ctrl_set: 设置电机参数函数
@@ -411,83 +412,83 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 1
  103:Module/motor/dm_ctrl.c **** **/
  104:Module/motor/dm_ctrl.c **** void ctrl_set(uint32_t motor_mask)
  105:Module/motor/dm_ctrl.c **** {
- 293              		.loc 1 105 1
- 294              		.cfi_startproc
- 295              		@ args = 0, pretend = 0, frame = 8
- 296              		@ frame_needed = 1, uses_anonymous_args = 0
- 297 0000 80B5     		push	{r7, lr}
- 298              	.LCFI12:
- 299              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 8
+ 294              		.loc 1 105 1
+ 295              		.cfi_startproc
+ 296              		@ args = 0, pretend = 0, frame = 8
+ 297              		@ frame_needed = 1, uses_anonymous_args = 0
+ 298 0000 80B5     		push	{r7, lr}
+ 299              	.LCFI12:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 8
 
 
- 300              		.cfi_offset 7, -8
- 301              		.cfi_offset 14, -4
- 302 0002 82B0     		sub	sp, sp, #8
- 303              	.LCFI13:
- 304              		.cfi_def_cfa_offset 16
- 305 0004 00AF     		add	r7, sp, #0
- 306              	.LCFI14:
- 307              		.cfi_def_cfa_register 7
- 308 0006 7860     		str	r0, [r7, #4]
+ 300              		.cfi_def_cfa_offset 8
+ 301              		.cfi_offset 7, -8
+ 302              		.cfi_offset 14, -4
+ 303 0002 82B0     		sub	sp, sp, #8
+ 304              	.LCFI13:
+ 305              		.cfi_def_cfa_offset 16
+ 306 0004 00AF     		add	r7, sp, #0
+ 307              	.LCFI14:
+ 308              		.cfi_def_cfa_register 7
+ 309 0006 7860     		str	r0, [r7, #4]
  106:Module/motor/dm_ctrl.c **** 	if (motor_mask & MOTOR1_BIT)
- 309              		.loc 1 106 17
- 310 0008 7B68     		ldr	r3, [r7, #4]
- 311 000a 03F00103 		and	r3, r3, #1
- 312              		.loc 1 106 5
- 313 000e 002B     		cmp	r3, #0
- 314 0010 02D0     		beq	.L17
+ 310              		.loc 1 106 17
+ 311 0008 7B68     		ldr	r3, [r7, #4]
+ 312 000a 03F00103 		and	r3, r3, #1
+ 313              		.loc 1 106 5
+ 314 000e 002B     		cmp	r3, #0
+ 315 0010 02D0     		beq	.L17
  107:Module/motor/dm_ctrl.c **** 	{
  108:Module/motor/dm_ctrl.c **** 		dm4310_set(&motor[Motor1]);
- 315              		.loc 1 108 3
- 316 0012 0748     		ldr	r0, .L20
- 317 0014 FFF7FEFF 		bl	dm4310_set
- 318              	.L17:
+ 316              		.loc 1 108 3
+ 317 0012 0748     		ldr	r0, .L20
+ 318 0014 FFF7FEFF 		bl	dm4310_set
+ 319              	.L17:
  109:Module/motor/dm_ctrl.c **** 	}
  110:Module/motor/dm_ctrl.c **** 
  111:Module/motor/dm_ctrl.c **** 	if (motor_mask & MOTOR2_BIT)
- 319              		.loc 1 111 17
- 320 0018 7B68     		ldr	r3, [r7, #4]
- 321 001a 03F00203 		and	r3, r3, #2
- 322              		.loc 1 111 5
- 323 001e 002B     		cmp	r3, #0
- 324 0020 02D0     		beq	.L19
+ 320              		.loc 1 111 17
+ 321 0018 7B68     		ldr	r3, [r7, #4]
+ 322 001a 03F00203 		and	r3, r3, #2
+ 323              		.loc 1 111 5
+ 324 001e 002B     		cmp	r3, #0
+ 325 0020 02D0     		beq	.L19
  112:Module/motor/dm_ctrl.c **** 	{
  113:Module/motor/dm_ctrl.c **** 		dm4310_set(&motor[Motor2]);
- 325              		.loc 1 113 3
- 326 0022 0448     		ldr	r0, .L20+4
- 327 0024 FFF7FEFF 		bl	dm4310_set
- 328              	.L19:
+ 326              		.loc 1 113 3
+ 327 0022 0448     		ldr	r0, .L20+4
+ 328 0024 FFF7FEFF 		bl	dm4310_set
+ 329              	.L19:
  114:Module/motor/dm_ctrl.c **** 	}
  115:Module/motor/dm_ctrl.c **** }
- 329              		.loc 1 115 1
- 330 0028 00BF     		nop
- 331 002a 0837     		adds	r7, r7, #8
- 332              	.LCFI15:
- 333              		.cfi_def_cfa_offset 8
- 334 002c BD46     		mov	sp, r7
- 335              	.LCFI16:
- 336              		.cfi_def_cfa_register 13
- 337              		@ sp needed
- 338 002e 80BD     		pop	{r7, pc}
- 339              	.L21:
- 340              		.align	2
- 341              	.L20:
- 342 0030 00000000 		.word	motor
- 343 0034 6C000000 		.word	motor+108
- 344              		.cfi_endproc
- 345              	.LFE137:
- 347              		.section	.text.ctrl_clear_para,"ax",%progbits
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 9
+ 330              		.loc 1 115 1
+ 331 0028 00BF     		nop
+ 332 002a 0837     		adds	r7, r7, #8
+ 333              	.LCFI15:
+ 334              		.cfi_def_cfa_offset 8
+ 335 002c BD46     		mov	sp, r7
+ 336              	.LCFI16:
+ 337              		.cfi_def_cfa_register 13
+ 338              		@ sp needed
+ 339 002e 80BD     		pop	{r7, pc}
+ 340              	.L21:
+ 341              		.align	2
+ 342              	.L20:
+ 343 0030 00000000 		.word	motor
+ 344 0034 6C000000 		.word	motor+108
+ 345              		.cfi_endproc
+ 346              	.LFE137:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 9
 
 
- 348              		.align	1
- 349              		.global	ctrl_clear_para
- 350              		.syntax unified
- 351              		.thumb
- 352              		.thumb_func
- 354              	ctrl_clear_para:
- 355              	.LFB138:
+ 348              		.section	.text.ctrl_clear_para,"ax",%progbits
+ 349              		.align	1
+ 350              		.global	ctrl_clear_para
+ 351              		.syntax unified
+ 352              		.thumb
+ 353              		.thumb_func
+ 355              	ctrl_clear_para:
+ 356              	.LFB138:
  116:Module/motor/dm_ctrl.c **** /**
  117:Module/motor/dm_ctrl.c **** ************************************************************************
  118:Module/motor/dm_ctrl.c **** * @brief:      	ctrl_clear_para: 清除电机参数函数
@@ -499,80 +500,80 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 1
  124:Module/motor/dm_ctrl.c **** **/
  125:Module/motor/dm_ctrl.c **** void ctrl_clear_para(uint32_t motor_mask)
  126:Module/motor/dm_ctrl.c **** {
- 356              		.loc 1 126 1
- 357              		.cfi_startproc
- 358              		@ args = 0, pretend = 0, frame = 8
- 359              		@ frame_needed = 1, uses_anonymous_args = 0
- 360 0000 80B5     		push	{r7, lr}
- 361              	.LCFI17:
- 362              		.cfi_def_cfa_offset 8
- 363              		.cfi_offset 7, -8
- 364              		.cfi_offset 14, -4
- 365 0002 82B0     		sub	sp, sp, #8
- 366              	.LCFI18:
- 367              		.cfi_def_cfa_offset 16
- 368 0004 00AF     		add	r7, sp, #0
- 369              	.LCFI19:
- 370              		.cfi_def_cfa_register 7
- 371 0006 7860     		str	r0, [r7, #4]
+ 357              		.loc 1 126 1
+ 358              		.cfi_startproc
+ 359              		@ args = 0, pretend = 0, frame = 8
+ 360              		@ frame_needed = 1, uses_anonymous_args = 0
+ 361 0000 80B5     		push	{r7, lr}
+ 362              	.LCFI17:
+ 363              		.cfi_def_cfa_offset 8
+ 364              		.cfi_offset 7, -8
+ 365              		.cfi_offset 14, -4
+ 366 0002 82B0     		sub	sp, sp, #8
+ 367              	.LCFI18:
+ 368              		.cfi_def_cfa_offset 16
+ 369 0004 00AF     		add	r7, sp, #0
+ 370              	.LCFI19:
+ 371              		.cfi_def_cfa_register 7
+ 372 0006 7860     		str	r0, [r7, #4]
  127:Module/motor/dm_ctrl.c **** 	if (motor_mask & MOTOR1_BIT)
- 372              		.loc 1 127 17
- 373 0008 7B68     		ldr	r3, [r7, #4]
- 374 000a 03F00103 		and	r3, r3, #1
- 375              		.loc 1 127 5
- 376 000e 002B     		cmp	r3, #0
- 377 0010 02D0     		beq	.L23
+ 373              		.loc 1 127 17
+ 374 0008 7B68     		ldr	r3, [r7, #4]
+ 375 000a 03F00103 		and	r3, r3, #1
+ 376              		.loc 1 127 5
+ 377 000e 002B     		cmp	r3, #0
+ 378 0010 02D0     		beq	.L23
  128:Module/motor/dm_ctrl.c **** 	{
  129:Module/motor/dm_ctrl.c **** 		dm4310_clear_para(&motor[Motor1]);
- 378              		.loc 1 129 3
- 379 0012 0748     		ldr	r0, .L26
- 380 0014 FFF7FEFF 		bl	dm4310_clear_para
- 381              	.L23:
+ 379              		.loc 1 129 3
+ 380 0012 0748     		ldr	r0, .L26
+ 381 0014 FFF7FEFF 		bl	dm4310_clear_para
+ 382              	.L23:
  130:Module/motor/dm_ctrl.c **** 	}
  131:Module/motor/dm_ctrl.c **** 
  132:Module/motor/dm_ctrl.c **** 	if (motor_mask & MOTOR2_BIT)
- 382              		.loc 1 132 17
- 383 0018 7B68     		ldr	r3, [r7, #4]
- 384 001a 03F00203 		and	r3, r3, #2
- 385              		.loc 1 132 5
- 386 001e 002B     		cmp	r3, #0
- 387 0020 02D0     		beq	.L25
+ 383              		.loc 1 132 17
+ 384 0018 7B68     		ldr	r3, [r7, #4]
+ 385 001a 03F00203 		and	r3, r3, #2
+ 386              		.loc 1 132 5
+ 387 001e 002B     		cmp	r3, #0
+ 388 0020 02D0     		beq	.L25
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 10
+
+
  133:Module/motor/dm_ctrl.c **** 	{
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 10
-
-
  134:Module/motor/dm_ctrl.c **** 		dm4310_clear_para(&motor[Motor2]);
- 388              		.loc 1 134 3
- 389 0022 0448     		ldr	r0, .L26+4
- 390 0024 FFF7FEFF 		bl	dm4310_clear_para
- 391              	.L25:
+ 389              		.loc 1 134 3
+ 390 0022 0448     		ldr	r0, .L26+4
+ 391 0024 FFF7FEFF 		bl	dm4310_clear_para
+ 392              	.L25:
  135:Module/motor/dm_ctrl.c **** 	}
  136:Module/motor/dm_ctrl.c **** }
- 392              		.loc 1 136 1
- 393 0028 00BF     		nop
- 394 002a 0837     		adds	r7, r7, #8
- 395              	.LCFI20:
- 396              		.cfi_def_cfa_offset 8
- 397 002c BD46     		mov	sp, r7
- 398              	.LCFI21:
- 399              		.cfi_def_cfa_register 13
- 400              		@ sp needed
- 401 002e 80BD     		pop	{r7, pc}
- 402              	.L27:
- 403              		.align	2
- 404              	.L26:
- 405 0030 00000000 		.word	motor
- 406 0034 6C000000 		.word	motor+108
- 407              		.cfi_endproc
- 408              	.LFE138:
- 410              		.section	.text.ctrl_clear_err,"ax",%progbits
- 411              		.align	1
- 412              		.global	ctrl_clear_err
- 413              		.syntax unified
- 414              		.thumb
- 415              		.thumb_func
- 417              	ctrl_clear_err:
- 418              	.LFB139:
+ 393              		.loc 1 136 1
+ 394 0028 00BF     		nop
+ 395 002a 0837     		adds	r7, r7, #8
+ 396              	.LCFI20:
+ 397              		.cfi_def_cfa_offset 8
+ 398 002c BD46     		mov	sp, r7
+ 399              	.LCFI21:
+ 400              		.cfi_def_cfa_register 13
+ 401              		@ sp needed
+ 402 002e 80BD     		pop	{r7, pc}
+ 403              	.L27:
+ 404              		.align	2
+ 405              	.L26:
+ 406 0030 00000000 		.word	motor
+ 407 0034 6C000000 		.word	motor+108
+ 408              		.cfi_endproc
+ 409              	.LFE138:
+ 411              		.section	.text.ctrl_clear_err,"ax",%progbits
+ 412              		.align	1
+ 413              		.global	ctrl_clear_err
+ 414              		.syntax unified
+ 415              		.thumb
+ 416              		.thumb_func
+ 418              	ctrl_clear_err:
+ 419              	.LFB139:
  137:Module/motor/dm_ctrl.c **** /**
  138:Module/motor/dm_ctrl.c **** ************************************************************************
  139:Module/motor/dm_ctrl.c **** * @brief:      	ctrl_clear_err: 清除电机错误信息
@@ -584,81 +585,80 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 1
  145:Module/motor/dm_ctrl.c **** **/
  146:Module/motor/dm_ctrl.c **** void ctrl_clear_err(uint32_t motor_mask)
  147:Module/motor/dm_ctrl.c **** {
- 419              		.loc 1 147 1
- 420              		.cfi_startproc
- 421              		@ args = 0, pretend = 0, frame = 8
- 422              		@ frame_needed = 1, uses_anonymous_args = 0
- 423 0000 80B5     		push	{r7, lr}
- 424              	.LCFI22:
- 425              		.cfi_def_cfa_offset 8
- 426              		.cfi_offset 7, -8
- 427              		.cfi_offset 14, -4
- 428 0002 82B0     		sub	sp, sp, #8
- 429              	.LCFI23:
- 430              		.cfi_def_cfa_offset 16
- 431 0004 00AF     		add	r7, sp, #0
- 432              	.LCFI24:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 11
+ 420              		.loc 1 147 1
+ 421              		.cfi_startproc
+ 422              		@ args = 0, pretend = 0, frame = 8
+ 423              		@ frame_needed = 1, uses_anonymous_args = 0
+ 424 0000 80B5     		push	{r7, lr}
+ 425              	.LCFI22:
+ 426              		.cfi_def_cfa_offset 8
+ 427              		.cfi_offset 7, -8
+ 428              		.cfi_offset 14, -4
+ 429 0002 82B0     		sub	sp, sp, #8
+ 430              	.LCFI23:
+ 431              		.cfi_def_cfa_offset 16
+ 432 0004 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 11
 
 
- 433              		.cfi_def_cfa_register 7
- 434 0006 7860     		str	r0, [r7, #4]
+ 433              	.LCFI24:
+ 434              		.cfi_def_cfa_register 7
+ 435 0006 7860     		str	r0, [r7, #4]
  148:Module/motor/dm_ctrl.c **** 	if (motor_mask & MOTOR1_BIT)
- 435              		.loc 1 148 17
- 436 0008 7B68     		ldr	r3, [r7, #4]
- 437 000a 03F00103 		and	r3, r3, #1
- 438              		.loc 1 148 5
- 439 000e 002B     		cmp	r3, #0
- 440 0010 03D0     		beq	.L29
+ 436              		.loc 1 148 17
+ 437 0008 7B68     		ldr	r3, [r7, #4]
+ 438 000a 03F00103 		and	r3, r3, #1
+ 439              		.loc 1 148 5
+ 440 000e 002B     		cmp	r3, #0
+ 441 0010 03D0     		beq	.L29
  149:Module/motor/dm_ctrl.c **** 	{
  150:Module/motor/dm_ctrl.c **** 		dm4310_clear_err(&hcan1, &motor[Motor1]);
- 441              		.loc 1 150 3
- 442 0012 0849     		ldr	r1, .L32
- 443 0014 0848     		ldr	r0, .L32+4
- 444 0016 FFF7FEFF 		bl	dm4310_clear_err
- 445              	.L29:
+ 442              		.loc 1 150 3
+ 443 0012 0849     		ldr	r1, .L32
+ 444 0014 0848     		ldr	r0, .L32+4
+ 445 0016 FFF7FEFF 		bl	dm4310_clear_err
+ 446              	.L29:
  151:Module/motor/dm_ctrl.c **** 	}
  152:Module/motor/dm_ctrl.c **** 
  153:Module/motor/dm_ctrl.c **** 	if (motor_mask & MOTOR2_BIT)
- 446              		.loc 1 153 17
- 447 001a 7B68     		ldr	r3, [r7, #4]
- 448 001c 03F00203 		and	r3, r3, #2
- 449              		.loc 1 153 5
- 450 0020 002B     		cmp	r3, #0
- 451 0022 03D0     		beq	.L31
+ 447              		.loc 1 153 17
+ 448 001a 7B68     		ldr	r3, [r7, #4]
+ 449 001c 03F00203 		and	r3, r3, #2
+ 450              		.loc 1 153 5
+ 451 0020 002B     		cmp	r3, #0
+ 452 0022 03D0     		beq	.L31
  154:Module/motor/dm_ctrl.c **** 	{
- 155:Module/motor/dm_ctrl.c **** 		dm4310_clear_err(&hcan2, &motor[Motor2]);
- 452              		.loc 1 155 3
- 453 0024 0549     		ldr	r1, .L32+8
- 454 0026 0648     		ldr	r0, .L32+12
- 455 0028 FFF7FEFF 		bl	dm4310_clear_err
- 456              	.L31:
+ 155:Module/motor/dm_ctrl.c **** 		dm4310_clear_err(&hcan1, &motor[Motor2]);
+ 453              		.loc 1 155 3
+ 454 0024 0549     		ldr	r1, .L32+8
+ 455 0026 0448     		ldr	r0, .L32+4
+ 456 0028 FFF7FEFF 		bl	dm4310_clear_err
+ 457              	.L31:
  156:Module/motor/dm_ctrl.c **** 	}
  157:Module/motor/dm_ctrl.c **** }
- 457              		.loc 1 157 1
- 458 002c 00BF     		nop
- 459 002e 0837     		adds	r7, r7, #8
- 460              	.LCFI25:
- 461              		.cfi_def_cfa_offset 8
- 462 0030 BD46     		mov	sp, r7
- 463              	.LCFI26:
- 464              		.cfi_def_cfa_register 13
- 465              		@ sp needed
- 466 0032 80BD     		pop	{r7, pc}
- 467              	.L33:
- 468              		.align	2
- 469              	.L32:
- 470 0034 00000000 		.word	motor
- 471 0038 00000000 		.word	hcan1
- 472 003c 6C000000 		.word	motor+108
- 473 0040 00000000 		.word	hcan2
+ 458              		.loc 1 157 1
+ 459 002c 00BF     		nop
+ 460 002e 0837     		adds	r7, r7, #8
+ 461              	.LCFI25:
+ 462              		.cfi_def_cfa_offset 8
+ 463 0030 BD46     		mov	sp, r7
+ 464              	.LCFI26:
+ 465              		.cfi_def_cfa_register 13
+ 466              		@ sp needed
+ 467 0032 80BD     		pop	{r7, pc}
+ 468              	.L33:
+ 469              		.align	2
+ 470              	.L32:
+ 471 0034 00000000 		.word	motor
+ 472 0038 00000000 		.word	hcan1
+ 473 003c 6C000000 		.word	motor+108
  474              		.cfi_endproc
  475              	.LFE139:
  477              		.section	.text.ctrl_send,"ax",%progbits
  478              		.align	1
  479              		.global	ctrl_send
  480              		.syntax unified
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 12
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 12
 
 
  481              		.thumb
@@ -716,13 +716,13 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 1
  517 0020 002B     		cmp	r3, #0
  518 0022 03D0     		beq	.L37
  175:Module/motor/dm_ctrl.c **** 	{
- 176:Module/motor/dm_ctrl.c **** 		dm4310_ctrl_send(&hcan2, &motor[Motor2]);
+ 176:Module/motor/dm_ctrl.c **** 		dm4310_ctrl_send(&hcan1, &motor[Motor2]);
  519              		.loc 1 176 3
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 13
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 13
 
 
  520 0024 0549     		ldr	r1, .L38+8
- 521 0026 0648     		ldr	r0, .L38+12
+ 521 0026 0448     		ldr	r0, .L38+4
  522 0028 FFF7FEFF 		bl	dm4310_ctrl_send
  523              	.L37:
  177:Module/motor/dm_ctrl.c **** 	}
@@ -743,17 +743,16 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 1
  537 0034 00000000 		.word	motor
  538 0038 00000000 		.word	hcan1
  539 003c 6C000000 		.word	motor+108
- 540 0040 00000000 		.word	hcan2
- 541              		.cfi_endproc
- 542              	.LFE140:
- 544              		.section	.text.can1_rx_callback,"ax",%progbits
- 545              		.align	1
- 546              		.global	can1_rx_callback
- 547              		.syntax unified
- 548              		.thumb
- 549              		.thumb_func
- 551              	can1_rx_callback:
- 552              	.LFB141:
+ 540              		.cfi_endproc
+ 541              	.LFE140:
+ 543              		.section	.text.can1_rx_callback,"ax",%progbits
+ 544              		.align	1
+ 545              		.global	can1_rx_callback
+ 546              		.syntax unified
+ 547              		.thumb
+ 548              		.thumb_func
+ 550              	can1_rx_callback:
+ 551              	.LFB141:
  179:Module/motor/dm_ctrl.c **** /**
  180:Module/motor/dm_ctrl.c **** ************************************************************************
  181:Module/motor/dm_ctrl.c **** * @brief:      	can1_rx_callback: CAN1接收回调函数
@@ -765,56 +764,49 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 1
  187:Module/motor/dm_ctrl.c **** **/
  188:Module/motor/dm_ctrl.c **** void can1_rx_callback(void)
  189:Module/motor/dm_ctrl.c **** {
- 553              		.loc 1 189 1
- 554              		.cfi_startproc
- 555              		@ args = 0, pretend = 0, frame = 16
- 556              		@ frame_needed = 1, uses_anonymous_args = 0
- 557 0000 80B5     		push	{r7, lr}
- 558              	.LCFI32:
- 559              		.cfi_def_cfa_offset 8
- 560              		.cfi_offset 7, -8
- 561              		.cfi_offset 14, -4
- 562 0002 84B0     		sub	sp, sp, #16
- 563              	.LCFI33:
- 564              		.cfi_def_cfa_offset 24
- 565 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 14
+ 552              		.loc 1 189 1
+ 553              		.cfi_startproc
+ 554              		@ args = 0, pretend = 0, frame = 16
+ 555              		@ frame_needed = 1, uses_anonymous_args = 0
+ 556 0000 80B5     		push	{r7, lr}
+ 557              	.LCFI32:
+ 558              		.cfi_def_cfa_offset 8
+ 559              		.cfi_offset 7, -8
+ 560              		.cfi_offset 14, -4
+ 561 0002 84B0     		sub	sp, sp, #16
+ 562              	.LCFI33:
+ 563              		.cfi_def_cfa_offset 24
+ 564 0004 00AF     		add	r7, sp, #0
+ 565              	.LCFI34:
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 14
 
 
- 566              	.LCFI34:
- 567              		.cfi_def_cfa_register 7
+ 566              		.cfi_def_cfa_register 7
  190:Module/motor/dm_ctrl.c **** 	uint16_t rec_id;
  191:Module/motor/dm_ctrl.c **** 	uint8_t rx_data[8] = {0};
- 568              		.loc 1 191 10
- 569 0006 3B1D     		adds	r3, r7, #4
- 570 0008 0022     		movs	r2, #0
- 571 000a 1A60     		str	r2, [r3]
- 572 000c 5A60     		str	r2, [r3, #4]
+ 567              		.loc 1 191 10
+ 568 0006 3B1D     		adds	r3, r7, #4
+ 569 0008 0022     		movs	r2, #0
+ 570 000a 1A60     		str	r2, [r3]
+ 571 000c 5A60     		str	r2, [r3, #4]
  192:Module/motor/dm_ctrl.c **** 	canx_receive_data(&hcan1, &rec_id, rx_data);
- 573              		.loc 1 192 2
- 574 000e 3A1D     		adds	r2, r7, #4
- 575 0010 07F10E03 		add	r3, r7, #14
- 576 0014 1946     		mov	r1, r3
- 577 0016 0F48     		ldr	r0, .L47
- 578 0018 FFF7FEFF 		bl	canx_receive_data
+ 572              		.loc 1 192 2
+ 573 000e 3A1D     		adds	r2, r7, #4
+ 574 0010 07F10E03 		add	r3, r7, #14
+ 575 0014 1946     		mov	r1, r3
+ 576 0016 1B48     		ldr	r0, .L51
+ 577 0018 FFF7FEFF 		bl	canx_receive_data
  193:Module/motor/dm_ctrl.c **** 	switch (rec_id)
- 579              		.loc 1 193 2
- 580 001c FB89     		ldrh	r3, [r7, #14]
- 581 001e 002B     		cmp	r3, #0
- 582 0020 14D1     		bne	.L45
+ 578              		.loc 1 193 2
+ 579 001c FB89     		ldrh	r3, [r7, #14]
+ 580 001e 012B     		cmp	r3, #1
+ 581 0020 02D0     		beq	.L41
+ 582 0022 032B     		cmp	r3, #3
+ 583 0024 14D0     		beq	.L42
  194:Module/motor/dm_ctrl.c **** 	{
- 195:Module/motor/dm_ctrl.c **** 	case 0:
+ 195:Module/motor/dm_ctrl.c **** 	case 1:
  196:Module/motor/dm_ctrl.c **** 	{
  197:Module/motor/dm_ctrl.c **** 		switch ((rx_data[0]) & 0x0F)
- 583              		.loc 1 197 19
- 584 0022 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
- 585              		.loc 1 197 24
- 586 0024 03F00F03 		and	r3, r3, #15
- 587              		.loc 1 197 3
- 588 0028 012B     		cmp	r3, #1
- 589 002a 02D0     		beq	.L42
- 590 002c 032B     		cmp	r3, #3
- 591 002e 06D0     		beq	.L43
  198:Module/motor/dm_ctrl.c **** 		{
  199:Module/motor/dm_ctrl.c **** 		case 1:
  200:Module/motor/dm_ctrl.c **** 			dm4310_fbdata(&motor[Motor1], rx_data);
@@ -824,102 +816,169 @@ ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 1
  204:Module/motor/dm_ctrl.c **** 			break;
  205:Module/motor/dm_ctrl.c **** 		}
  206:Module/motor/dm_ctrl.c **** 	}
- 207:Module/motor/dm_ctrl.c **** 	break;
- 592              		.loc 1 207 2
- 593 0030 0BE0     		b	.L46
- 594              	.L42:
+ 207:Module/motor/dm_ctrl.c **** 	case 3:
+ 208:Module/motor/dm_ctrl.c **** 	{
+ 209:Module/motor/dm_ctrl.c **** 		switch ((rx_data[0]) & 0x0F)
+ 210:Module/motor/dm_ctrl.c **** 		{
+ 211:Module/motor/dm_ctrl.c **** 		case 1:
+ 212:Module/motor/dm_ctrl.c **** 			dm4310_fbdata(&motor[Motor1], rx_data);
+ 213:Module/motor/dm_ctrl.c **** 			break;
+ 214:Module/motor/dm_ctrl.c **** 		case 3:
+ 215:Module/motor/dm_ctrl.c **** 			dm4310_fbdata(&motor[Motor2], rx_data);
+ 216:Module/motor/dm_ctrl.c **** 			break;
+ 217:Module/motor/dm_ctrl.c **** 		}
+ 218:Module/motor/dm_ctrl.c **** 	}
+ 219:Module/motor/dm_ctrl.c **** 	break;
+ 220:Module/motor/dm_ctrl.c **** 	}
+ 221:Module/motor/dm_ctrl.c **** }
+ 584              		.loc 1 221 1
+ 585 0026 28E0     		b	.L50
+ 586              	.L41:
+ 197:Module/motor/dm_ctrl.c **** 		{
+ 587              		.loc 1 197 19
+ 588 0028 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 197:Module/motor/dm_ctrl.c **** 		{
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 15
+
+
+ 589              		.loc 1 197 24
+ 590 002a 03F00F03 		and	r3, r3, #15
+ 197:Module/motor/dm_ctrl.c **** 		{
+ 591              		.loc 1 197 3
+ 592 002e 012B     		cmp	r3, #1
+ 593 0030 02D0     		beq	.L44
+ 594 0032 032B     		cmp	r3, #3
+ 595 0034 06D0     		beq	.L45
+ 596 0036 0BE0     		b	.L42
+ 597              	.L44:
  200:Module/motor/dm_ctrl.c **** 			break;
- 595              		.loc 1 200 4
- 596 0032 3B1D     		adds	r3, r7, #4
- 597 0034 1946     		mov	r1, r3
- 598 0036 0848     		ldr	r0, .L47+4
- 599 0038 FFF7FEFF 		bl	dm4310_fbdata
+ 598              		.loc 1 200 4
+ 599 0038 3B1D     		adds	r3, r7, #4
+ 600 003a 1946     		mov	r1, r3
+ 601 003c 1248     		ldr	r0, .L51+4
+ 602 003e FFF7FEFF 		bl	dm4310_fbdata
  201:Module/motor/dm_ctrl.c **** 		case 3:
- 600              		.loc 1 201 4
- 601 003c 05E0     		b	.L44
- 602              	.L43:
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 15
-
-
+ 603              		.loc 1 201 4
+ 604 0042 05E0     		b	.L42
+ 605              	.L45:
  203:Module/motor/dm_ctrl.c **** 			break;
- 603              		.loc 1 203 4
- 604 003e 3B1D     		adds	r3, r7, #4
- 605 0040 1946     		mov	r1, r3
- 606 0042 0648     		ldr	r0, .L47+8
- 607 0044 FFF7FEFF 		bl	dm4310_fbdata
+ 606              		.loc 1 203 4
+ 607 0044 3B1D     		adds	r3, r7, #4
+ 608 0046 1946     		mov	r1, r3
+ 609 0048 1048     		ldr	r0, .L51+8
+ 610 004a FFF7FEFF 		bl	dm4310_fbdata
  204:Module/motor/dm_ctrl.c **** 		}
- 608              		.loc 1 204 4
- 609 0048 00BF     		nop
- 610              	.L44:
- 611              	.L46:
- 612              		.loc 1 207 2
- 613 004a 00BF     		nop
- 614              	.L45:
- 208:Module/motor/dm_ctrl.c **** 	}
- 209:Module/motor/dm_ctrl.c **** }
- 615              		.loc 1 209 1
- 616 004c 00BF     		nop
- 617 004e 1037     		adds	r7, r7, #16
- 618              	.LCFI35:
- 619              		.cfi_def_cfa_offset 8
- 620 0050 BD46     		mov	sp, r7
- 621              	.LCFI36:
- 622              		.cfi_def_cfa_register 13
- 623              		@ sp needed
- 624 0052 80BD     		pop	{r7, pc}
- 625              	.L48:
- 626              		.align	2
- 627              	.L47:
- 628 0054 00000000 		.word	hcan1
- 629 0058 00000000 		.word	motor
- 630 005c 6C000000 		.word	motor+108
- 631              		.cfi_endproc
- 632              	.LFE141:
- 634              		.text
- 635              	.Letext0:
- 636              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
- 637              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
- 638              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
- 639              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 640              		.file 6 "D:/enviroment/msys2/mingw64/lib/gcc/arm-none-eabi/13.3.0/include/stddef.h"
- 641              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
- 642              		.file 8 "Core/Inc/can.h"
- 643              		.file 9 "Bsp/bsp_can.h"
- 644              		.file 10 "Module/motor/dm_drv.h"
- 645              		.file 11 "Module/motor/dm_ctrl.h"
- 646              		.file 12 "driver/can_driver.h"
- 647              		.file 13 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/string.h"
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 16
+ 611              		.loc 1 204 4
+ 612 004e 00BF     		nop
+ 613              	.L42:
+ 209:Module/motor/dm_ctrl.c **** 		{
+ 614              		.loc 1 209 19
+ 615 0050 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 209:Module/motor/dm_ctrl.c **** 		{
+ 616              		.loc 1 209 24
+ 617 0052 03F00F03 		and	r3, r3, #15
+ 209:Module/motor/dm_ctrl.c **** 		{
+ 618              		.loc 1 209 3
+ 619 0056 012B     		cmp	r3, #1
+ 620 0058 02D0     		beq	.L46
+ 621 005a 032B     		cmp	r3, #3
+ 622 005c 06D0     		beq	.L47
+ 219:Module/motor/dm_ctrl.c **** 	}
+ 623              		.loc 1 219 2
+ 624 005e 0BE0     		b	.L49
+ 625              	.L46:
+ 212:Module/motor/dm_ctrl.c **** 			break;
+ 626              		.loc 1 212 4
+ 627 0060 3B1D     		adds	r3, r7, #4
+ 628 0062 1946     		mov	r1, r3
+ 629 0064 0848     		ldr	r0, .L51+4
+ 630 0066 FFF7FEFF 		bl	dm4310_fbdata
+ 213:Module/motor/dm_ctrl.c **** 		case 3:
+ 631              		.loc 1 213 4
+ 632 006a 05E0     		b	.L48
+ 633              	.L47:
+ 215:Module/motor/dm_ctrl.c **** 			break;
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 16
+
+
+ 634              		.loc 1 215 4
+ 635 006c 3B1D     		adds	r3, r7, #4
+ 636 006e 1946     		mov	r1, r3
+ 637 0070 0648     		ldr	r0, .L51+8
+ 638 0072 FFF7FEFF 		bl	dm4310_fbdata
+ 216:Module/motor/dm_ctrl.c **** 		}
+ 639              		.loc 1 216 4
+ 640 0076 00BF     		nop
+ 641              	.L48:
+ 642              	.L49:
+ 219:Module/motor/dm_ctrl.c **** 	}
+ 643              		.loc 1 219 2
+ 644 0078 00BF     		nop
+ 645              	.L50:
+ 646              		.loc 1 221 1
+ 647 007a 00BF     		nop
+ 648 007c 1037     		adds	r7, r7, #16
+ 649              	.LCFI35:
+ 650              		.cfi_def_cfa_offset 8
+ 651 007e BD46     		mov	sp, r7
+ 652              	.LCFI36:
+ 653              		.cfi_def_cfa_register 13
+ 654              		@ sp needed
+ 655 0080 80BD     		pop	{r7, pc}
+ 656              	.L52:
+ 657 0082 00BF     		.align	2
+ 658              	.L51:
+ 659 0084 00000000 		.word	hcan1
+ 660 0088 00000000 		.word	motor
+ 661 008c 6C000000 		.word	motor+108
+ 662              		.cfi_endproc
+ 663              	.LFE141:
+ 665              		.text
+ 666              	.Letext0:
+ 667              		.file 2 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/machine/_default_types.h"
+ 668              		.file 3 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/sys/_stdint.h"
+ 669              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 670              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 671              		.file 6 "D:/enviroment/msys2/mingw64/lib/gcc/arm-none-eabi/13.3.0/include/stddef.h"
+ 672              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 673              		.file 8 "Bsp/bsp_can.h"
+ 674              		.file 9 "Module/motor/dm_drv.h"
+ 675              		.file 10 "Module/motor/dm_ctrl.h"
+ 676              		.file 11 "Core/Inc/can.h"
+ 677              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 678              		.file 13 "driver/can_driver.h"
+ 679              		.file 14 "D:/enviroment/msys2/mingw64/arm-none-eabi/include/string.h"
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 17
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 dm_ctrl.c
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:25     .bss.motor:00000000 motor
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:22     .bss.motor:00000000 $d
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:28     .text.dm4310_motor_init:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:34     .text.dm4310_motor_init:00000000 dm4310_motor_init
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:128    .text.dm4310_motor_init:000000a0 $d
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:135    .text.ctrl_enable:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:141    .text.ctrl_enable:00000000 ctrl_enable
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:202    .text.ctrl_enable:00000044 $d
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:210    .text.ctrl_disable:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:216    .text.ctrl_disable:00000000 ctrl_disable
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:277    .text.ctrl_disable:00000044 $d
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:285    .text.ctrl_set:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:291    .text.ctrl_set:00000000 ctrl_set
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:342    .text.ctrl_set:00000030 $d
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:348    .text.ctrl_clear_para:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:354    .text.ctrl_clear_para:00000000 ctrl_clear_para
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:405    .text.ctrl_clear_para:00000030 $d
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:411    .text.ctrl_clear_err:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:417    .text.ctrl_clear_err:00000000 ctrl_clear_err
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:470    .text.ctrl_clear_err:00000034 $d
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:478    .text.ctrl_send:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:484    .text.ctrl_send:00000000 ctrl_send
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:537    .text.ctrl_send:00000034 $d
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:545    .text.can1_rx_callback:00000000 $t
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:551    .text.can1_rx_callback:00000000 can1_rx_callback
-C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:628    .text.can1_rx_callback:00000054 $d
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:25     .bss.motor:00000000 motor
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:22     .bss.motor:00000000 $d
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:28     .text.dm4310_motor_init:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:34     .text.dm4310_motor_init:00000000 dm4310_motor_init
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:128    .text.dm4310_motor_init:000000a0 $d
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:135    .text.ctrl_enable:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:141    .text.ctrl_enable:00000000 ctrl_enable
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:205    .text.ctrl_enable:00000048 $d
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:212    .text.ctrl_disable:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:218    .text.ctrl_disable:00000000 ctrl_disable
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:279    .text.ctrl_disable:00000044 $d
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:286    .text.ctrl_set:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:292    .text.ctrl_set:00000000 ctrl_set
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:343    .text.ctrl_set:00000030 $d
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:349    .text.ctrl_clear_para:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:355    .text.ctrl_clear_para:00000000 ctrl_clear_para
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:406    .text.ctrl_clear_para:00000030 $d
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:412    .text.ctrl_clear_err:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:418    .text.ctrl_clear_err:00000000 ctrl_clear_err
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:471    .text.ctrl_clear_err:00000034 $d
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:478    .text.ctrl_send:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:484    .text.ctrl_send:00000000 ctrl_send
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:537    .text.ctrl_send:00000034 $d
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:544    .text.can1_rx_callback:00000000 $t
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:550    .text.can1_rx_callback:00000000 can1_rx_callback
+C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s:659    .text.can1_rx_callback:00000084 $d
                            .group:00000000 wm4.0.3e68c699c40fadf7e6c1e499de837233
                            .group:00000000 wm4.stm32f4xx_hal_conf.h.25.a9a6e27d8b41172b5af7d7631d763ee0
                            .group:00000000 wm4.stm32f4xx.h.38.63e3ea23bd63a94457417730025259b6
@@ -949,7 +1008,7 @@ C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:628    .text.can1_rx_callback:00000
                            .group:00000000 wm4.stm32f4xx_hal_dma.h.21.8e4b1421c914345c23be719e5e528779
                            .group:00000000 wm4.stm32f4xx_hal_dma.h.720.ac2d7eef74792e4026acc4d2923c5da4
                            .group:00000000 wm4.stm32f4xx_hal_cortex.h.20.03673e4f79386680bf73ba399c19306b
-ARM GAS  C:\Users\30514\AppData\Local\Temp\ccdAOshX.s 			page 17
+ARM GAS  C:\Users\30514\AppData\Local\Temp\ccfwGPXg.s 			page 18
 
 
                            .group:00000000 wm4.stm32f4xx_hal_can.h.21.4b16c8dedf31ba328482231f811a7e65
@@ -981,8 +1040,8 @@ C:\Users\30514\AppData\Local\Temp\ccdAOshX.s:628    .text.can1_rx_callback:00000
 UNDEFINED SYMBOLS
 memset
 dm4310_enable
+HAL_Delay
 hcan1
-hcan2
 dm4310_disable
 dm4310_set
 dm4310_clear_para
